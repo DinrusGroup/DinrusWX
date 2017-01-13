@@ -180,7 +180,14 @@
     <ClCompile Include="contextmenuevent.cpp" />
     <ClCompile Include="control.cpp" />
     <ClCompile Include="cursor.cpp" />
+    <ClCompile Include="dataformat.cpp" />
+    <ClCompile Include="dataobject.cpp" />
+    <ClCompile Include="dc.cpp" />
+    <ClCompile Include="dialog.cpp" />
     <ClCompile Include="DinrusWX.cpp" />
+    <ClCompile Include="dirdialog.cpp" />
+    <ClCompile Include="display.cpp" />
+    <ClCompile Include="displaychangedevent.cpp" />
     <ClCompile Include="dllmain.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -195,6 +202,9 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="eraseevent.cpp" />
+    <ClCompile Include="event.cpp" />
+    <ClCompile Include="evthandler.cpp" />
     <ClCompile Include="object.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
@@ -202,6 +212,11 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="control.inc" />
+    <None Include="panel.inc" />
+    <None Include="window.inc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

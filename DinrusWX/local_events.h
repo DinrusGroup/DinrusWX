@@ -13,6 +13,7 @@
 #ifndef WX_C_LOCAL_EVENTS_H
 #define WX_C_LOCAL_EVENTS_H
 
+#include "stdafx.h"
 // I use this class to route virtual functions originating from within
 // wxWidgets to the .NET framework. The framework will catch the event,
 // and then trigger the appropriate function on that side of the wall.

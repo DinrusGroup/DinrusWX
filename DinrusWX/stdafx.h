@@ -14,14 +14,15 @@
 
 #define _CRT_SECURE_NO_WARNINGS
 
+
+
 #pragma warning( push )
 #pragma warning (disable : 4996)
 
 // TODO: Установите здесь ссылки на дополнительные заголовки, требующиеся для программы
 #include <wx/config.h>
 #include <wx/wx.h>
-#include "common.h"
-#include "local_events.h"
+#include <wx/event.h>
 #include <wx/button.h>
 #include <wx/msw/button.h>
 #include <wx/bmpbuttn.h>
@@ -44,4 +45,28 @@
 #include <wx/caret.h>
 #include <wx/calctrl.h>
 #include <wx/generic/calctrlg.h>
+#include <wx/tglbtn.h>
+#include <wx/calctrl.h>
+#include <wx/fdrepdlg.h>
+#include <wx/treectrl.h>
+#include <wx/listctrl.h>
+#include <wx/notebook.h>
+#include <wx/listbook.h>
+#include <wx/grid.h>
+#include <wx/sashwin.h>
+#include <wx/laywin.h>
+#include <wx/display.h>
+#include <wx/dirdlg.h>
+#include <wx/dataobj.h>
+#include <wx/msw/dc.h>
+#include <wx/msw/dcclient.h>
+#include <wx/dcclient.h>
+/*
+#ifndef __WXGTK__
+#include <wx/tabctrl.h>
+#endif
+*/
 #pragma warning( pop )
+
+#include "common.h"
+#include "local_events.h"
