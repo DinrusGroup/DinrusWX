@@ -1,0 +1,1 @@
+dmlink -L/exet:nt/su:windows:4.0   dnd.obj wxd.lib DD-wx.lib kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib odbc32.lib 

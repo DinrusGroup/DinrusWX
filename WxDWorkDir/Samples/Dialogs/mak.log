@@ -1,0 +1,80 @@
+dmd -c -version=wx28 -version=__WXMSW__ -version=ANSI -I..\.. Dialogs.d
+
+dmd -g -of..\..\bin\Dialogs.exe Dialogs.obj ..\..\wxd.lib ..\..\wxc.lib c:\wxWidgets-2.8.10\lib\dmc_lib\wxbase28d.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxbase28d_xml.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxmsw28d_core.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxmsw28d_adv.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxmsw28d_html.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxmsw28d_xrc.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxtiffd.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxjpegd.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxpngd.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxzlibd.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxregexd.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxexpatd.lib   kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib odbc32.lib    -L/EXETYPE:NT -L/SU:WINDOWS:4.0
+OPTLINK (R) for Win32  Release 8.00.1
+Copyright (C) Digital Mars 1989-2004  All rights reserved.
+OPTLINK : Error 168: >64K Global Types 
+--- errorlevel 1
+
+--- errorlevel 1
+Target 'all' is up to date
+dmd -c -version=wx28 -version=__WXMSW__ -version=ANSI -I..\.. Dialogs.d
+
+dmd -g -of..\..\bin\Dialogs.exe Dialogs.obj ..\..\wxd.lib ..\..\wxc.lib c:\wxWidgets-2.8.10\lib\dmc_lib\wxbase28d.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxbase28d_xml.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxmsw28d_core.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxmsw28d_adv.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxmsw28d_html.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxmsw28d_xrc.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxtiffd.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxjpegd.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxpngd.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxzlibd.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxregexd.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxexpatd.lib   kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib odbc32.lib    -L/EXETYPE:NT -L/SU:WINDOWS:4.0
+Can't run 'c:\dmd\bin\link.exe /CO:4 /L /I', check PATH
+Error: 'dmd' not found
+dmd -c -version=wx28 -version=__WXMSW__ -version=ANSI -I..\.. Dialogs.d
+
+dmd -g -of..\..\bin\Dialogs.exe Dialogs.obj ..\..\wxd.lib ..\..\wxc.lib c:\wxWidgets-2.8.10\lib\dmc_lib\wxbase28d.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxbase28d_xml.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxmsw28d_core.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxmsw28d_adv.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxmsw28d_html.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxmsw28d_xrc.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxtiffd.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxjpegd.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxpngd.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxzlibd.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxregexd.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxexpatd.lib   kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib odbc32.lib    -L/EXETYPE:NT -L/SU:WINDOWS:4.0
+OPTLINK (R) for Win32  Release 8.00.1
+Copyright (C) Digital Mars 1989-2004  All rights reserved.
+OPTLINK : Error 168: >64K Global Types 
+--- errorlevel 1
+
+--- errorlevel 1
+dmd -c -version=wx28 -version=__WXMSW__ -version=ANSI -I..\.. Dialogs.d
+
+dmd -g -of..\..\bin\Dialogs.exe Dialogs.obj ..\..\wxd.lib ..\..\wxc.lib c:\wxWidgets-2.8.10\lib\dmc_lib\wxbase28d.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxbase28d_xml.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxmsw28d_core.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxmsw28d_adv.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxmsw28d_html.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxmsw28d_xrc.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxtiffd.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxjpegd.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxpngd.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxzlibd.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxregexd.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxexpatd.lib   kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib odbc32.lib    -L/EXETYPE:NT -L/SU:WINDOWS:4.0
+OPTLINK (R) for Win32  Release 8.00.2
+Copyright (C) Digital Mars 1989-2009  All rights reserved.
+http://www.digitalmars.com/ctg/optlink.html
+OPTLINK : Error 118: Filename Expected 
+Path=c:\Program Files\Microsoft Visual Studio 9.0\VC\bin;c:\dmd\bin;c:\cygwin\bin;c:\ruby\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\system32\WBEM;C:\Program Files\TortoiseSVN\bin;C:\Program Files\MySQL\MySQL Server 5.0\bin;c:\lab\vasm;c:\masm32\bin;c\Program Files\CodeGear\RAD Studio\6.0\bin;C:\Program Files\Common Files\Autodesk Shared\;c:\cint;C:\Program Files\Bakefile;c:\masm32\masm611\bin;C:\Documents and Settings\All Users\?R  "R¢?å?-ç<\RAD Studio\6.0\BPL;C:\Program Files\CodeGear\RAD Studio\6.0\bpl;C:\Delphi\Delphi10L\lib\kol;c:\dmd\bin;"c:\dmd\bin\..\bin"
+^
+--- errorlevel 1
+
+--- errorlevel 1
+dmd -c -version=wx28 -version=__WXMSW__ -version=ANSI -I..\.. Dialogs.d
+
+dmd -g -of..\..\bin\Dialogs.exe Dialogs.obj ..\..\wxd.lib ..\..\wxc.lib c:\wxWidgets-2.8.10\lib\dmc_lib\wxbase28d.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxbase28d_xml.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxmsw28d_core.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxmsw28d_adv.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxmsw28d_html.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxmsw28d_xrc.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxtiffd.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxjpegd.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxpngd.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxzlibd.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxregexd.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxexpatd.lib   kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib odbc32.lib    -L/EXETYPE:NT -L/SU:WINDOWS:4.0
+OPTLINK (R) for Win32  Release 8.00.5
+Copyright (C) Digital Mars 1989-2009  All rights reserved.
+http://www.digitalmars.com/ctg/optlink.html
+OPTLINK : Error 118: Filename Expected 
+Path=c:\dmd\bin;c:\Program Files\Microsoft Visual Studio 9.0\VC\bin;c:\cygwin\bin;c:\ruby\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\system32\WBEM;C:\Program Files\TortoiseSVN\bin;C:\Program Files\MySQL\MySQL Server 5.0\bin;c:\lab\vasm;c:\masm32\bin;c\Program Files\CodeGear\RAD Studio\6.0\bin;C:\Program Files\Common Files\Autodesk Shared\;c:\cint;C:\Program Files\Bakefile;c:\masm32\masm611\bin;C:\Documents and Settings\All Users\?R  "R¢?å?-ç<\RAD Studio\6.0\BPL;C:\Program Files\CodeGear\RAD Studio\6.0\bpl;C:\Delphi\Delphi10L\lib\kol;c:\dmd\bin;"c:\dmd\bin\..\bin"
+^
+--- errorlevel 1
+
+--- errorlevel 1
+dmd -g -ofDialogs.exe Dialogs.obj ..\..\wxd.lib ..\..\wxc.lib c:\wxWidgets-2.8.10\lib\dmc_lib\wxbase28d.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxbase28d_xml.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxmsw28d_core.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxmsw28d_adv.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxmsw28d_html.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxmsw28d_xrc.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxtiffd.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxjpegd.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxpngd.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxzlibd.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxregexd.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxexpatd.lib   kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib odbc32.lib    -L/EXETYPE:NT -L/SU:WINDOWS:4.0
+OPTLINK (R) for Win32  Release 8.00.5
+Copyright (C) Digital Mars 1989-2009  All rights reserved.
+http://www.digitalmars.com/ctg/optlink.html
+OPTLINK : Error 118: Filename Expected 
+Path=c:\dmd\bin;c:\Program Files\Microsoft Visual Studio 9.0\VC\bin;c:\cygwin\bin;c:\ruby\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\system32\WBEM;C:\Program Files\TortoiseSVN\bin;C:\Program Files\MySQL\MySQL Server 5.0\bin;c:\lab\vasm;c:\masm32\bin;c\Program Files\CodeGear\RAD Studio\6.0\bin;C:\Program Files\Common Files\Autodesk Shared\;c:\cint;C:\Program Files\Bakefile;c:\masm32\masm611\bin;C:\Documents and Settings\All Users\?R  "R¢?å?-ç<\RAD Studio\6.0\BPL;C:\Program Files\CodeGear\RAD Studio\6.0\bpl;C:\Delphi\Delphi10L\lib\kol;c:\dmd\bin;"c:\dmd\bin\..\bin"
+^
+--- errorlevel 1
+
+--- errorlevel 1
+dmd -g -ofDialogs.exe Dialogs.obj ..\..\wxd.lib ..\..\wxc.lib c:\wxWidgets-2.8.10\lib\dmc_lib\wxbase28d.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxbase28d_xml.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxmsw28d_core.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxmsw28d_adv.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxmsw28d_html.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxmsw28d_xrc.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxtiffd.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxjpegd.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxpngd.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxzlibd.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxregexd.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxexpatd.lib   kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib odbc32.lib    -L/EXETYPE:NT -L/SU:WINDOWS:4.0
+OPTLINK (R) for Win32  Release 8.00.5
+Copyright (C) Digital Mars 1989-2009  All rights reserved.
+http://www.digitalmars.com/ctg/optlink.html
+OPTLINK : Error 118: Filename Expected 
+Path=c:\dmd\bin;c:\Program Files\Microsoft Visual Studio 9.0\VC\bin;c:\cygwin\bin;c:\ruby\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\system32\WBEM;C:\Program Files\TortoiseSVN\bin;C:\Program Files\MySQL\MySQL Server 5.0\bin;c:\lab\vasm;c:\masm32\bin;c\Program Files\CodeGear\RAD Studio\6.0\bin;C:\Program Files\Common Files\Autodesk Shared\;c:\cint;C:\Program Files\Bakefile;c:\masm32\masm611\bin;C:\Documents and Settings\All Users\?R  "R¢?å?-ç<\RAD Studio\6.0\BPL;C:\Program Files\CodeGear\RAD Studio\6.0\bpl;C:\Delphi\Delphi10L\lib\kol;c:\dmd\bin;"c:\dmd\bin\..\bin"
+^
+--- errorlevel 1
+
+--- errorlevel 1
+dmd -c -version=wx28 -version=__WXMSW__ -version=ANSI -I..\.. Dialogs.d
+
+dmd -g -ofDialogs.exe Dialogs.obj ..\..\wxd.lib ..\..\wxc.lib c:\wxWidgets-2.8.10\lib\dmc_lib\wxbase28d.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxbase28d_xml.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxmsw28d_core.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxmsw28d_adv.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxmsw28d_html.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxmsw28d_xrc.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxtiffd.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxjpegd.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxpngd.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxzlibd.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxregexd.lib  c:\wxWidgets-2.8.10\lib\dmc_lib\wxexpatd.lib   kernel32.lib user32.lib gdi32.lib comdlg32.lib winspool.lib winmm.lib shell32.lib comctl32.lib ole32.lib oleaut32.lib uuid.lib rpcrt4.lib advapi32.lib wsock32.lib odbc32.lib    -L/EXETYPE:NT -L/SU:WINDOWS:4.0
+OPTLINK (R) for Win32  Release 8.00.5
+Copyright (C) Digital Mars 1989-2009  All rights reserved.
+http://www.digitalmars.com/ctg/optlink.html
+OPTLINK : Error 118: Filename Expected 
+Path=c:\dmd\bin;c:\Program Files\Microsoft Visual Studio 9.0\VC\bin;c:\cygwin\bin;c:\ruby\bin;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\system32\WBEM;C:\Program Files\TortoiseSVN\bin;C:\Program Files\MySQL\MySQL Server 5.0\bin;c:\lab\vasm;c:\masm32\bin;c\Program Files\CodeGear\RAD Studio\6.0\bin;C:\Program Files\Common Files\Autodesk Shared\;c:\cint;C:\Program Files\Bakefile;c:\masm32\masm611\bin;C:\Documents and Settings\All Users\?R  "R¢?å?-ç<\RAD Studio\6.0\BPL;C:\Program Files\CodeGear\RAD Studio\6.0\bpl;C:\Delphi\Delphi10L\lib\kol;c:\dmd\bin;"c:\dmd\bin\..\bin"
+^
+--- errorlevel 1
+
+--- errorlevel 1

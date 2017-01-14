@@ -1,0 +1,80 @@
+OPTLINK (R) for Win32  Release 8.00.5
+Copyright (C) Digital Mars 1989-2009  All rights reserved.
+http://www.digitalmars.com/ctg/optlink.html
+c:\dmd\bin\..\lib\c\wxbase28d_odbc.lib
+ Warning 140: Library probably needs FIXLIB 
+c:\dmd\bin\..\lib\c\wxmsw28d_dbgrid.lib
+ Warning 140: Library probably needs FIXLIB 
+OPTLINK : Error 3: Cannot Create File Controls.exe
+--- errorlevel 1
+OPTLINK (R) for Win32  Release 8.00.5
+Copyright (C) Digital Mars 1989-2009  All rights reserved.
+http://www.digitalmars.com/ctg/optlink.html
+c:\dmd\bin\..\lib\c\wxbase28d_odbc.lib
+ Warning 140: Library probably needs FIXLIB 
+c:\dmd\bin\..\lib\c\wxmsw28d_dbgrid.lib
+ Warning 140: Library probably needs FIXLIB 
+OPTLINK (R) for Win32  Release 8.00.5
+Copyright (C) Digital Mars 1989-2009  All rights reserved.
+http://www.digitalmars.com/ctg/optlink.html
+c:\dmd\bin\..\lib\c\wxbase28d_odbc.lib
+ Warning 140: Library probably needs FIXLIB 
+c:\dmd\bin\..\lib\c\wxmsw28d_dbgrid.lib
+ Warning 140: Library probably needs FIXLIB 
+OPTLINK (R) for Win32  Release 8.00.5
+Copyright (C) Digital Mars 1989-2009  All rights reserved.
+http://www.digitalmars.com/ctg/optlink.html
+c:\dmd\bin\..\lib\c\wxbase28d_odbc.lib
+ Warning 140: Library probably needs FIXLIB 
+c:\dmd\bin\..\lib\c\wxmsw28d_dbgrid.lib
+ Warning 140: Library probably needs FIXLIB 
+OPTLINK (R) for Win32  Release 8.00.5
+Copyright (C) Digital Mars 1989-2009  All rights reserved.
+http://www.digitalmars.com/ctg/optlink.html
+c:\dmd\bin\..\lib\c\wxbase28d_odbc.lib
+ Warning 140: Library probably needs FIXLIB 
+c:\dmd\bin\..\lib\c\wxmsw28d_dbgrid.lib
+ Warning 140: Library probably needs FIXLIB 
+Error: invalid file name ''
+OPTLINK (R) for Win32  Release 8.00.5
+Copyright (C) Digital Mars 1989-2009  All rights reserved.
+http://www.digitalmars.com/ctg/optlink.html
+c:\dmd\bin\..\lib\c\wxbase28d_odbc.lib
+ Warning 140: Library probably needs FIXLIB 
+c:\dmd\bin\..\lib\c\wxmsw28d_dbgrid.lib
+ Warning 140: Library probably needs FIXLIB 
+OPTLINK (R) for Win32  Release 8.00.5
+Copyright (C) Digital Mars 1989-2009  All rights reserved.
+http://www.digitalmars.com/ctg/optlink.html
+c:\dmd\bin\..\lib\c\wxbase28d_odbc.lib
+ Warning 140: Library probably needs FIXLIB 
+c:\dmd\bin\..\lib\c\wxmsw28d_dbgrid.lib
+ Warning 140: Library probably needs FIXLIB 
+OPTLINK (R) for Win32  Release 8.00.5
+Copyright (C) Digital Mars 1989-2009  All rights reserved.
+http://www.digitalmars.com/ctg/optlink.html
+wxmsw28d_foldbar.lib
+ Warning 2: File Not Found wxmsw28d_foldbar.lib
+wxmsw28d_stc.lib
+ Warning 2: File Not Found wxmsw28d_stc.lib
+wxmsw28d_svg.lib
+ Warning 2: File Not Found wxmsw28d_svg.lib
+wxmsw28d_fl.lib
+ Warning 2: File Not Found wxmsw28d_fl.lib
+wxmsw28d_plot.lib
+ Warning 2: File Not Found wxmsw28d_plot.lib
+wxmsw28d_netutils.lib
+ Warning 2: File Not Found wxmsw28d_netutils.lib
+c:\dm\bin\..\lib\c\wxbase28d_odbc.lib
+ Warning 140: Library probably needs FIXLIB 
+c:\dm\bin\..\lib\c\wxmsw28d_dbgrid.lib
+ Warning 140: Library probably needs FIXLIB 
+wxmsw28d_mmedia.lib
+ Warning 2: File Not Found wxmsw28d_mmedia.lib
+wxmsw28d_ogl.lib
+ Warning 2: File Not Found wxmsw28d_ogl.lib
+import32.lib
+ Warning 2: File Not Found import32.lib
+jpeg62.lib
+ Warning 2: File Not Found jpeg62.lib
+--- errorlevel 1
