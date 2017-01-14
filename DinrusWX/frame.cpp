@@ -13,9 +13,7 @@
 // $Id: frame.cpp,v 1.10 2007/01/15 11:55:36 afb Exp $
 //-----------------------------------------------------------------------------
 
-#include <wx/wx.h>
-#include "common.h"
-#include "local_events.h"
+#include "stdafx.h"
 
 //-----------------------------------------------------------------------------
 
@@ -201,7 +199,7 @@ void wxFrame_SetStatusWidths(wxFrame* self, int n, int* widths)
 
 //-----------------------------------------------------------------------------
 
-extern "C"WXEXPORT
+extern "C" WXEXPORT
 void wxFrame_GetClientAreaOrigin(wxFrame* self, wxPoint* pt)
 {
 	*pt=self->GetClientAreaOrigin();

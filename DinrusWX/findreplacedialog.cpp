@@ -13,10 +13,7 @@
 // $Id: findreplacedialog.cpp,v 1.11 2007/01/28 23:06:38 afb Exp $
 //-----------------------------------------------------------------------------
 
-#include <wx/wx.h>
-#include "common.h"
-#include <wx/fdrepdlg.h>
-#include "local_events.h"
+#include "stdafx.h"
 
 //-----------------------------------------------------------------------------
 

@@ -12,11 +12,7 @@
 // $Id: dnd.cpp,v 1.10 2007/01/15 11:55:36 afb Exp $
 //-----------------------------------------------------------------------------
 
-#include <wx/wx.h>
-#include "common.h"
-#include <wx/dnd.h>
-#include <wx/dataobj.h>
-#include "local_events.h"
+#include "stdafx.h"
 
 //-----------------------------------------------------------------------------
 

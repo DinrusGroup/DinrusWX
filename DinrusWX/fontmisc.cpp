@@ -13,12 +13,8 @@
 // $Id: fontmisc.cpp,v 1.11 2007/01/28 23:06:38 afb Exp $
 //-----------------------------------------------------------------------------
 
-#include <wx/wx.h>
-#include "common.h"
-#include <wx/fontmap.h>
-#include <wx/encconv.h>
-#include <wx/fontenum.h>
-#include "local_events.h"
+#include "stdafx.h"
+
 
 extern "C" WXEXPORT
 wxFontMapper* wxFontMapper_ctor()

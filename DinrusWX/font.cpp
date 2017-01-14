@@ -13,9 +13,7 @@
 // $Id: font.cpp,v 1.11 2007/01/28 23:06:38 afb Exp $
 //-----------------------------------------------------------------------------
 
-#include <wx/wx.h>
-#include "common.h"
-#include <wx/font.h>
+#include "stdafx.h"
 
 //-----------------------------------------------------------------------------
 
@@ -41,7 +39,9 @@ wxFont* wxFont_ctorDef()
 extern "C" WXEXPORT
 wxFont* wxFont_ctor(int pointSize, int family, int style, int weight, const wxc_bool underline, wxc_string faceName, wxFontEncoding encoding)
 {
-	return new wxFont(pointSize, family, style, weight, underline, wxstr(faceName), encoding);
+	wxFont *f = new wxFont();
+	 f->Create(pointSize, (wxFontFamily) family, (wxFontStyle) style, (wxFontWeight) weight, underline, wxstr(faceName), encoding);
+	 return f;
 }
 
 //-----------------------------------------------------------------------------
@@ -161,7 +161,7 @@ void wxFont_SetPointSize(wxFont* self, int pointSize)
 extern "C" WXEXPORT
 void wxFont_SetFamily(wxFont* self, int family)
 {
-	self->SetFamily(family);
+	self->SetFamily((wxFontFamily) family);
 }
 
 //-----------------------------------------------------------------------------
@@ -169,7 +169,7 @@ void wxFont_SetFamily(wxFont* self, int family)
 extern "C" WXEXPORT
 void wxFont_SetStyle(wxFont* self, int style)
 {
-	self->SetStyle(style);
+	self->SetStyle((wxFontStyle) style);
 }
 
 //-----------------------------------------------------------------------------
@@ -177,7 +177,7 @@ void wxFont_SetStyle(wxFont* self, int style)
 extern "C" WXEXPORT
 void wxFont_SetWeight(wxFont* self, int weight)
 {
-	self->SetWeight(weight);
+	self->SetWeight((wxFontWeight) weight);
 }
 
 //-----------------------------------------------------------------------------
@@ -237,7 +237,7 @@ wxString* wxFont_GetWeightString(wxFont* self)
 }
 
 //-----------------------------------------------------------------------------
-
+/*
 extern "C" WXEXPORT
 void wxFont_SetNoAntiAliasing(wxFont* self, wxc_bool no)
 {
@@ -251,7 +251,7 @@ wxc_bool wxFont_GetNoAntiAliasing(wxFont* self)
 {
 	return self->GetNoAntiAliasing();
 }
-
+*/
 //-----------------------------------------------------------------------------
 
 extern "C" WXEXPORT

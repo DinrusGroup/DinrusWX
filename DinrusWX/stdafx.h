@@ -65,6 +65,18 @@
 #include <wx/msw/dc.h>
 #include <wx/msw/dcclient.h>
 #include <wx/dcclient.h>
+#include <wx/docview.h>
+#include <wx/dnd.h>
+#include <wx/filedlg.h>
+#include <wx/fdrepdlg.h>
+#include <wx/sizer.h>
+#include <wx/font.h>
+#include <wx/fontdlg.h>
+#include <wx/fontmap.h>
+#include <wx/encconv.h>
+#include <wx/fontenum.h>
+#include <wx/msw/font.h>
+
 /*
 #ifndef __WXGTK__
 #include <wx/tabctrl.h>
@@ -96,10 +108,16 @@ public:
 
 BEGIN_DECLARE_EVENT_TYPES()
 DECLARE_LOCAL_EVENT_TYPE(wxEVT_APPINIT, 0)
-DECLARE_LOCAL_EVENT_TYPE(wxEVT_TRANSFERDATAFROMWINDOW, 0)
-DECLARE_LOCAL_EVENT_TYPE(wxEVT_TRANSFERDATATOWINDOW, 0)
+//DECLARE_LOCAL_EVENT_TYPE(wxEVT_TRANSFERDATAFROMWINDOW, 0)
+//DECLARE_LOCAL_EVENT_TYPE(wxEVT_TRANSFERDATATOWINDOW, 0)
 DECLARE_LOCAL_EVENT_TYPE(wxEVT_OBJECTDELETED, 0)
 END_DECLARE_EVENT_TYPES()
+
+
+//#define wxEVT_APPINIT 0
+#define wxEVT_TRANSFERDATAFROMWINDOW 0
+#define wxEVT_TRANSFERDATATOWINDOW 0
+//#define wxEVT_OBJECTDELETED 0
 
 // Short-cut for virtual destructors
 

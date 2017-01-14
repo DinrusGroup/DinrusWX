@@ -13,9 +13,8 @@
 // $Id: document.cpp,v 1.11 2007/01/28 23:06:38 afb Exp $
 //-----------------------------------------------------------------------------
 
-#include <wx/wx.h>
-#include "common.h"
-#include <wx/docview.h>
+#include "stdafx.h"
+
 
 //-----------------------------------------------------------------------------
 
@@ -266,9 +265,9 @@ void wxDocument_SetDocumentTemplate(wxDocument* self, wxDocTemplate* temp)
 //-----------------------------------------------------------------------------
 
 extern "C" WXEXPORT
-wxc_bool wxDocument_GetPrintableName(wxDocument* self, wxString* name)
+wxString wxDocument_GetUserReadableName(wxDocument* self)
 {
-    return self->GetPrintableName(*name);
+    return self->GetUserReadableName();
 }
 
 //-----------------------------------------------------------------------------

@@ -204,12 +204,18 @@
       </PrecompiledHeader>
     </ClCompile>
     <ClCompile Include="dnd.cpp" />
-    <ClCompile Include="docmanager.cpp" />
-    <ClCompile Include="doctemplate.cpp" />
     <ClCompile Include="document.cpp" />
     <ClCompile Include="eraseevent.cpp" />
     <ClCompile Include="event.cpp" />
     <ClCompile Include="evthandler.cpp" />
+    <ClCompile Include="filedialog.cpp" />
+    <ClCompile Include="findreplacedialog.cpp" />
+    <ClCompile Include="flexgridsizer.cpp" />
+    <ClCompile Include="focusevent.cpp" />
+    <ClCompile Include="font.cpp" />
+    <ClCompile Include="fontdialog.cpp" />
+    <ClCompile Include="fontmisc.cpp" />
+    <ClCompile Include="frame.cpp" />
     <ClCompile Include="object.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
