@@ -203,6 +203,10 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
       </PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="dnd.cpp" />
+    <ClCompile Include="docmanager.cpp" />
+    <ClCompile Include="doctemplate.cpp" />
+    <ClCompile Include="document.cpp" />
     <ClCompile Include="eraseevent.cpp" />
     <ClCompile Include="event.cpp" />
     <ClCompile Include="evthandler.cpp" />
