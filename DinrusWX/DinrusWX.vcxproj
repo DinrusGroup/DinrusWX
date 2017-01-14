@@ -71,10 +71,13 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>D:\dinrus\dev\DINRUS\wx\wxWidgets-3.1.0\lib\vc_lib\mswud;D:\dinrus\dev\DINRUS\wx\wxWidgets-3.1.0\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(MSBuildProjectDirectory)\wxWidgets-3.1.x\include\;$(MSBuildProjectDirectory)\wxWidgets-3.1.x\lib\vc_lib\mswud;$(IncludePath)</IncludePath>
+    <LibraryPath>$(MSBuildProjectDirectory)\wxWidgets-3.1.x\lib\vc_lib\;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
+    <LibraryPath>.\wxWidgets-3.1.x\lib\vc_lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>.\wxWidgets-3.1.x\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -148,8 +151,6 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="common.h" />
-    <ClInclude Include="local_events.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>

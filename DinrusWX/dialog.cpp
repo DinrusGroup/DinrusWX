@@ -15,6 +15,13 @@
 
 #include "stdafx.h"
 
+
+#define wxEVT_APPINIT 0
+#define wxEVT_TRANSFERDATAFROMWINDOW 0
+#define wxEVT_TRANSFERDATATOWINDOW 0
+#define wxEVT_OBJECTDELETED 0
+
+
 //-----------------------------------------------------------------------------
 
 class _Dialog : public wxDialog
