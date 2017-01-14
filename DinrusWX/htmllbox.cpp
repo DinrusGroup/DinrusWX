@@ -13,10 +13,7 @@
 // $Id: htmllbox.cpp,v 1.11 2007/01/28 23:06:38 afb Exp $
 //-----------------------------------------------------------------------------
 
-#include <wx/wx.h>
-#include "common.h"
-#include <wx/htmllbox.h>
-#include "local_events.h"
+#include "stdafx.h"
 
 typedef void (CALLBACK* Virtual_VoidNoParams) (wxc_object);
 typedef void (CALLBACK* Virtual_VoidSizeT) (wxc_object, size_t);

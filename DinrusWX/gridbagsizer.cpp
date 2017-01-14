@@ -11,9 +11,8 @@
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //-----------------------------------------------------------------------------
 
-#include <wx/wx.h>
-#include "common.h"
-#include <wx/gbsizer.h>
+#include "stdafx.h"
+
 
 //-----------------------------------------------------------------------------
 // wxGBSizerItem

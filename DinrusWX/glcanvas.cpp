@@ -9,11 +9,7 @@
 // $Id: glcanvas.cpp,v 1.7 2007/04/17 21:35:25 afb Exp $
 //-----------------------------------------------------------------------------
 
-#include <wx/wx.h>
-#include "common.h"
-#include <wx/glcanvas.h>
-#include <wx/window.h>
-#include "local_events.h"
+#include "stdafx.h"
 
 #if wxUSE_GLCANVAS
 

@@ -76,7 +76,22 @@
 #include <wx/encconv.h>
 #include <wx/fontenum.h>
 #include <wx/msw/font.h>
-
+#include <wx/gauge.h>
+#include <wx/gdicmn.h>
+#include <wx/glcanvas.h>
+#include <wx/window.h>
+#include <wx/busyinfo.h>
+#include <wx/grid.h>
+#include <wx/generic/gridctrl.h>
+#include <wx/gbsizer.h>
+#include <wx/grid.h>
+#include <wx/generic/gridctrl.h>
+#include <wx/sizer.h>
+#include <wx/html/htmlwin.h>
+#include <wx/html/htmlproc.h>
+#include <wx/html/htmprint.h>
+#include <wx/html/helpctrl.h>
+#include <wx/htmllbox.h>
 /*
 #ifndef __WXGTK__
 #include <wx/tabctrl.h>

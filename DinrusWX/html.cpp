@@ -13,12 +13,7 @@
 // $Id: html.cpp,v 1.12 2007/02/01 00:24:17 afb Exp $
 //-----------------------------------------------------------------------------
 
-#include <wx/wx.h>
-#include "common.h"
-#include <wx/html/htmlwin.h>
-#include <wx/html/htmlproc.h>
-#include <wx/html/htmprint.h>
-#include "local_events.h"
+#include "stdafx.h"
 
 //-----------------------------------------------------------------------------
 

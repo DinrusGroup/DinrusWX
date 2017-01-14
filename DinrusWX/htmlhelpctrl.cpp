@@ -13,9 +13,8 @@
 // $Id: htmlhelpctrl.cpp,v 1.10 2007/01/15 11:55:37 afb Exp $
 //-----------------------------------------------------------------------------
 
-#include <wx/wx.h>
-#include "common.h"
-#include <wx/html/helpctrl.h>
+#include "stdafx.h"
+
 
 extern "C" WXEXPORT
 wxHtmlHelpController* wxHtmlHelpController_ctor(int style)
