@@ -65,8 +65,8 @@ class _HtmlListBox : public wxHtmlListBox
 		void POnDrawBackground(wxDC& dc, wxRect& rect, size_t n)
 			{ wxHtmlListBox::OnDrawBackground(dc, rect, n); }		
 			
-		wxCoord POnGetLineHeight(int n) 
-			{ return wxHtmlListBox::OnGetLineHeight(n); }
+	//	wxCoord POnGetLineHeight(int n) 
+		//	{ return wxHtmlListBox::OnGetLineHeight(n); }
 		
 			
 	protected:
@@ -282,14 +282,14 @@ void wxHtmlListBox_OnDrawBackground(_HtmlListBox* self, wxDC* dc, wxRect* rect, 
 }
 
 //-----------------------------------------------------------------------------
-
+/*
 extern "C" WXEXPORT
 wxCoord wxHtmlListBox_OnGetLineHeight(_HtmlListBox* self, int line)
 {
 	return self->POnGetLineHeight(line);
 }
 
-
+*/
 
 
 

@@ -185,9 +185,9 @@ void wxGridCellEnumEditor_BeginEdit(wxGridCellEnumEditor* self, int row, int col
 }
 
 extern "C" WXEXPORT
-wxc_bool wxGridCellEnumEditor_EndEdit(wxGridCellEnumEditor* self, int row, int col, wxGrid* grid)
+wxc_bool wxGridCellEnumEditor_EndEdit(wxGridCellEnumEditor* self, int row, int col, wxGrid* grid, wxString& oldval, wxString* newval)
 {
-	return self->EndEdit(row, col, grid)?1:0;
+	return self->EndEdit(row, col, grid, oldval, newval)?1:0;
 }
 
 extern "C" WXEXPORT

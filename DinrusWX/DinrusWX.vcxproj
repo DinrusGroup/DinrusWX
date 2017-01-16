@@ -216,17 +216,12 @@
     <ClCompile Include="fontdialog.cpp" />
     <ClCompile Include="fontmisc.cpp" />
     <ClCompile Include="frame.cpp" />
-    <ClCompile Include="gauge.cpp" />
-    <ClCompile Include="gdicmn.cpp" />
     <ClCompile Include="gdiobject.cpp" />
-    <ClCompile Include="glcanvas.cpp" />
     <ClCompile Include="global.cpp" />
-    <ClCompile Include="grid.cpp" />
     <ClCompile Include="gridbagsizer.cpp" />
     <ClCompile Include="gridctrl.cpp" />
     <ClCompile Include="gridsizer.cpp" />
     <ClCompile Include="helpevent.cpp" />
-    <ClCompile Include="html.cpp" />
     <ClCompile Include="htmlhelpctrl.cpp" />
     <ClCompile Include="htmllbox.cpp" />
     <ClCompile Include="object.cpp" />
