@@ -24,10 +24,16 @@ import tango.core.Version;
 static if (Tango.Major == 0 && Tango.Minor < 994)
 alias Object.toUtf8 toString;
 }
-else // Phobos
+
+version(Phobos) // Phobos
 {
 private import std.string;
 private import std.utf;
+}
+
+version(Dinrus)
+{
+
 }
 //! \endcond
 

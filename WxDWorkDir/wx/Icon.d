@@ -28,10 +28,16 @@ char[] toUTF8( char[] str) { return str; }
 char[] toUTF8(wchar[] str) { return toUtf8(str); }
 char[] toUTF8(dchar[] str) { return toUtf8(str); }
 }
-else // Phobos
+
+version (Phobos)
 {
 private import std.string;
 private import std.utf;
+}
+
+version(Dinrus)
+{
+import dinrus;
 }
 //! \endcond
 

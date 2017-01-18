@@ -13,9 +13,8 @@
 // $Id: wxdatetime.cpp,v 1.9 2006/11/17 15:21:06 afb Exp $
 //-----------------------------------------------------------------------------
 
-#include <wx/wx.h>
-#include "common.h"
-#include <wx/datetime.h>
+#include "stdafx.h"
+
 
 extern "C" WXEXPORT
 const wxDateTime* wxDefaultDateTime_Get()

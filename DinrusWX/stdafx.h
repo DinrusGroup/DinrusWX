@@ -149,6 +149,7 @@
 #include <wx/vlbox.h>
 #include <wx/vscroll.h>
 #include <wx/wizard.h>
+#include <wx/datetime.h>
 
 /*
 #ifndef __WXGTK__

@@ -20,10 +20,16 @@ public import wx.common;
 version (Tango)
 {
 }
-else // Phobos
+
+version(Phobos)
 {
 private import std.string;
 private import std.utf;
+}
+
+version(Dinrus)
+{
+import dinrus;
 }
 //! \endcond
 

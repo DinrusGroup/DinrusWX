@@ -1,6 +1,6 @@
 LIBTARGET = ..\DinrusWX.lib
 
-MAKESTUB=..\config.mak
+#MAKESTUB=..\config.mak
 
 OBJECTS = \
 	Accelerator.obj \
@@ -178,7 +178,7 @@ WX_VERSION = 3.1.10
 PLATFORM = WXMSW
 ENCODING = UNICODE
 
-include $(MAKESTUB)
+#include $(MAKESTUB)
 
 all:  $(LIBTARGET)
 

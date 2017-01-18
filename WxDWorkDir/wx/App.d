@@ -42,10 +42,19 @@ char[] toUTF8(wchar[] str) { return toString(str); }
 char[] toUTF8(dchar[] str) { return toString(str); }
  }
 }
-else // Phobos
+
+version(Phobos)
 {
 private import std.string;
 private import std.utf;
+}
+
+version(Dinrus)
+{
+import dinrus;
+alias вТкст0 toStringz;
+alias вТкст toString;
+alias вЮ8 toUTF8;
 }
 //! \endcond
 
@@ -180,7 +189,7 @@ private import std.utf;
 			char*[] c_args = new char*[args.length];
 			foreach (int i, char[] arg; args)
 			{
-				string str = assumeUnique(arg);
+				string str = arg;// assumeUnique(arg);
 				c_args[i] = cast(char*) toStringz(toUTF8(str));
 			}
 			

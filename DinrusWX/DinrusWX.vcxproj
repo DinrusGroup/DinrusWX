@@ -311,6 +311,7 @@
     <ClCompile Include="window.cpp" />
     <ClCompile Include="windowcreateevent.cpp" />
     <ClCompile Include="windowdestroyevent.cpp" />
+    <ClCompile Include="wxdatetime.cpp" />
     <ClCompile Include="wxstring.cpp" />
   </ItemGroup>
   <ItemGroup>
