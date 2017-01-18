@@ -9,10 +9,7 @@
 // $Id: taskbaricon.cpp,v 1.2 2007/09/08 09:21:54 afb Exp $
 //-----------------------------------------------------------------------------
 
-#include <wx/wx.h>
-#include "common.h"
-#include <wx/taskbar.h>
-#include "local_events.h"
+#include "stdafx.h"
 
 //-----------------------------------------------------------------------------
 

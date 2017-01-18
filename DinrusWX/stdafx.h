@@ -133,6 +133,22 @@
 #include <wx/statline.h>
 #include <wx/stc/stc.h>
 #include <wx/settings.h>
+//#include <wx/tabctrl.h>
+#include <wx/taskbar.h>
+#include <wx/textctrl.h>
+#include <wx/textdlg.h>
+#include <wx/thread.h>
+#include <wx/timer.h>
+#include <wx/tipdlg.h>
+#include <wx/tipwin.h>
+#include <wx/tglbtn.h>
+#include <wx/toolbar.h>
+#include <wx/tooltip.h>
+#include <wx/treectrl.h>
+#include <wx/validate.h>
+#include <wx/vlbox.h>
+#include <wx/vscroll.h>
+#include <wx/wizard.h>
 
 /*
 #ifndef __WXGTK__

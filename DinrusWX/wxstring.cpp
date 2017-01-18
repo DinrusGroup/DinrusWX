@@ -12,8 +12,7 @@
 // $Id: wxstring.cpp,v 1.13 2007/04/05 21:20:33 afb Exp $
 //-----------------------------------------------------------------------------
 
-#include <wx/wx.h>
-#include "common.h"
+#include "stdafx.h"
 
 class _wxString : public wxString
 {

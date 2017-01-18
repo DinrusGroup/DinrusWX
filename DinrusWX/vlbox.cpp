@@ -12,12 +12,7 @@
 //
 // $Id: vlbox.cpp,v 1.10 2007/01/15 11:55:40 afb Exp $
 //-----------------------------------------------------------------------------
-
-#include <wx/wx.h>
-#include "common.h"
-#include <wx/vlbox.h>
-#include "local_events.h"
-
+#include "stdafx.h"
 //-----------------------------------------------------------------------------
 
 typedef void (CALLBACK* Virtual_voidDcRectSizeT) (wxc_object, wxDC*, const wxRect*, size_t);
@@ -54,12 +49,12 @@ public:
 		{
 			wxVListBox::OnDrawBackground(dc, rect, n);
 		}
-		
+/*VK!		
 	wxCoord POnGetLineHeight(int n)
 		{
 			return wxVListBox::OnGetLineHeight(n); 
 		}
-		
+	*/	
 protected:
 	void OnDrawItem( wxDC& dc, const wxRect& rect, size_t n) const
 		{ m_OnDrawItem(m_dobj,  &dc, &rect, n); }	
@@ -155,13 +150,13 @@ void wxVListBox_OnDrawBackground(_VListBox* self, wxDC* dc, wxRect* rect, int n)
 }
 
 //-----------------------------------------------------------------------------
-
+/*VK!
 extern "C" WXEXPORT
 wxCoord wxVListBox_OnGetLineHeight(_VListBox* self, int line)
 {
 	return self->POnGetLineHeight(line);
 }
-
+*/
 //-----------------------------------------------------------------------------
 
 extern "C" WXEXPORT

@@ -13,10 +13,8 @@
 // $Id: tabctrl.cpp,v 1.13 2007/06/08 09:45:07 afb Exp $
 //-----------------------------------------------------------------------------
 
-#include <wx/wx.h>
-#include "common.h"
-#include <wx/tabctrl.h>
-#include "local_events.h"
+#include "stdafx.h"
+
 
 #if wxUSE_TAB_DIALOG && (defined(__WXMSW__) || defined(__WXMAC__))
 

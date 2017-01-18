@@ -9,10 +9,8 @@
 // $Id: thread.cpp,v 1.1 2007/08/21 20:58:45 afb Exp $
 //-----------------------------------------------------------------------------
 
-#include <wx/wx.h>
-#include "common.h"
-#include <wx/thread.h>
-#include "local_events.h"
+#include "stdafx.h"
+
 
 #if wxUSE_THREADS
 
@@ -436,13 +434,13 @@ wxThreadIdType wxThread_GetId(wxThread* self)
 }
 
 //-----------------------------------------------------------------------------
-
+/*VK!
 extern "C" WXEXPORT
 void wxThread_OnExit(wxThread* self)
 {
     self->OnExit();
 }
-
+*/
 //-----------------------------------------------------------------------------
 
 extern "C" WXEXPORT
@@ -453,13 +451,13 @@ wxc_bool wxThread_TestDestroy(wxThread* self)
 
 //-----------------------------------------------------------------------------
 // wxThreadHelperThread
-
+/*VK!
 extern "C" WXEXPORT
-wxThreadHelperThread* wxThreadHelperThread_ctor(wxThreadHelper* owner)
+wxThreadHelperThread* wxThreadHelperThread_ctor(wxThreadHelperThread* owner)
 {
     return new wxThreadHelperThread(*owner);
 }
-
+*/
 //-----------------------------------------------------------------------------
 // wxThreadHelper
 
@@ -505,13 +503,13 @@ void wxThreadHelper_dtor(wxThreadHelper* self)
 }
 
 //-----------------------------------------------------------------------------
-
+/*VK!
 extern "C" WXEXPORT
 wxThreadError wxThreadHelper_Create(wxThreadHelper* self, unsigned int stackSize)
 {
     return self->Create(stackSize);
 }
-
+*/
 //-----------------------------------------------------------------------------
 
 extern "C" WXEXPORT

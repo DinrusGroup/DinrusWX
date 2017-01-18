@@ -12,11 +12,8 @@
 //
 // $Id: textdialog.cpp,v 1.11 2007/01/28 23:06:39 afb Exp $
 //-----------------------------------------------------------------------------
+#include "stdafx.h"
 
-#include <wx/wx.h>
-#include "common.h"
-#include <wx/textdlg.h>
-#include "local_events.h"
 
 class _TextEntryDialog : public wxTextEntryDialog
 {

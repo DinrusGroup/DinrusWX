@@ -13,14 +13,12 @@
 // $Id: window.cpp,v 1.16 2007/08/20 08:52:00 afb Exp $
 //-----------------------------------------------------------------------------
 
-#include <wx/wx.h>
-#include "common.h"
-#include "local_events.h"
+#include "stdafx.h"
 
 //-----------------------------------------------------------------------------
 // Define new event types for virtual functions
 
-DEFINE_LOCAL_EVENT_TYPE(wxEVT_TRANSFERDATAFROMWINDOW)
+//VK! DEFINE_LOCAL_EVENT_TYPE(wxEVT_TRANSFERDATAFROMWINDOW)
 
 extern "C" WXEXPORT
 int wxWindow_EVT_TRANSFERDATAFROMWINDOW()
@@ -28,7 +26,7 @@ int wxWindow_EVT_TRANSFERDATAFROMWINDOW()
     return wxEVT_TRANSFERDATAFROMWINDOW;
 }
 
-DEFINE_LOCAL_EVENT_TYPE(wxEVT_TRANSFERDATATOWINDOW)
+// VK! DEFINE_LOCAL_EVENT_TYPE(wxEVT_TRANSFERDATATOWINDOW)
 
 extern "C" WXEXPORT
 int wxWindow_EVT_TRANSFERDATATOWINDOW()
@@ -343,7 +341,7 @@ int wxWindow_NewControlId()
 {
 	return wxWindow::NewControlId();
 }
-
+/* VK!
 extern "C" WXEXPORT
 int wxWindow_NextControlId(int id)
 {
@@ -355,7 +353,7 @@ int wxWindow_PrevControlId(int id)
 {
 	return wxWindow::PrevControlId(id);
 }
-
+*/
 //-----------------------------------------------------------------------------
 
 extern "C" WXEXPORT
@@ -485,13 +483,13 @@ void wxWindow_SetSizeHints(wxWindow* self, int minW, int minH, int maxW, int max
 {
 	self->SetSizeHints(minW, minH, maxW, maxH, incW, incH);
 }
-
+/* VK!
 extern "C" WXEXPORT
 void wxWindow_SetVirtualSizeHints(wxWindow* self, int minW, int minH, int maxW, int maxH)
 {
 	self->SetVirtualSizeHints(minW, minH, maxW, maxH);
 }
-
+*/
 //-----------------------------------------------------------------------------
 
 extern "C" WXEXPORT
@@ -639,13 +637,13 @@ long wxWindow_GetExtraStyle(wxWindow* self)
 }
 
 //-----------------------------------------------------------------------------
-
+/*VK!
 extern "C" WXEXPORT
 void wxWindow_MakeModal(wxWindow* self, wxc_bool modal)
 {
 	self->MakeModal(modal);
 }
-
+*/
 //-----------------------------------------------------------------------------
 
 extern "C" WXEXPORT
@@ -1255,13 +1253,13 @@ void wxWindow_SetHelpText(wxWindow* self, wxc_string text)
 {
 	self->SetHelpText(wxstr(text));
 }
-
+/*VK!
 extern "C" WXEXPORT
 void wxWindow_SetHelpTextForId(wxWindow* self, wxc_string text)
 {
 	self->SetHelpTextForId(wxstr(text));
 }
-
+*/
 extern "C" WXEXPORT
 wxString* wxWindow_GetHelpText(wxWindow* self)
 {

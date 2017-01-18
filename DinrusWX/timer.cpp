@@ -9,10 +9,8 @@
 // $Id: timer.cpp,v 1.1 2007/08/21 20:58:45 afb Exp $
 //-----------------------------------------------------------------------------
 
-#include <wx/wx.h>
-#include "common.h"
-#include <wx/timer.h>
-#include "local_events.h"
+#include "stdafx.h"
+
 
 typedef void (CALLBACK* Virtual_Notify) (wxc_object);
 

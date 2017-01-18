@@ -13,10 +13,8 @@
 // $Id: tipdialog.cpp,v 1.10 2007/01/15 11:55:39 afb Exp $
 //-----------------------------------------------------------------------------
 
-#include <wx/wx.h>
-#include "common.h"
-#include <wx/tipdlg.h>
-#include "local_events.h"
+#include "stdafx.h"
+
 
 static wxTipProvider* mpTipProvider = NULL;
 

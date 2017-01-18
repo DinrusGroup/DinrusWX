@@ -13,9 +13,8 @@
 // $Id: validator.cpp,v 1.9 2006/11/17 15:21:05 afb Exp $
 //-----------------------------------------------------------------------------
 
-#include <wx/wx.h>
-#include "common.h"
-#include <wx/validate.h>
+#include "stdafx.h"
+
 
 extern "C" WXEXPORT
 wxValidator* wxValidator_ctor()

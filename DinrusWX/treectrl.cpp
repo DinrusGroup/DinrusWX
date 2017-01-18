@@ -14,10 +14,7 @@
 // $Id: treectrl.cpp,v 1.11 2007/01/28 23:06:39 afb Exp $
 //-----------------------------------------------------------------------------
 
-#include <wx/wx.h>
-#include "common.h"
-#include <wx/treectrl.h>
-#include "local_events.h"
+#include "stdafx.h"
 
 //-----------------------------------------------------------------------------
 // wxTreeCtrl

@@ -13,10 +13,8 @@
 // $Id: tipwindow.cpp,v 1.11 2008/04/06 18:55:49 afb Exp $
 //-----------------------------------------------------------------------------
 
-#include <wx/wx.h>
-#include "common.h"
-#include <wx/tipwin.h>
-#include "local_events.h"
+#include "stdafx.h"
+
 
 #if wxUSE_TIPWINDOW
 
