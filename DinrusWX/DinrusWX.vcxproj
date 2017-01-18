@@ -97,7 +97,7 @@
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>C:\Program Files\Microsoft SDKs\Windows\v7.1A\Lib;D:\dinrus\dev\DINRUS\wx\wxWidgets-3.1.0\lib\vc_lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>wxbase31ud.lib;wxmsw31ud_core.lib;wxscintillad.lib;wxmsw31ud_adv.lib;wxmsw31ud_gl.lib;wxmsw31ud_html.lib;wxmsw31ud_media.lib;wxmsw31ud_propgrid.lib;wxmsw31ud_qa.lib;wxmsw31ud_ribbon.lib;wxmsw31ud_richtext.lib;wxmsw31ud_stc.lib;wxmsw31ud_webview.lib;wxmsw31ud_xrc.lib;wxbase31ud_net.lib;wxbase31ud_xml.lib;wxmsw31ud_aui.lib;wxpngd.lib;wxregexud.lib;wxtiffd.lib;wxjpegd.lib;wxzlibd.lib;wxexpatd.lib;comctl32.lib;rpcrt4.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>wxbase31ud.lib;wxmsw31ud_core.lib;wxscintillad.lib;wxmsw31ud_adv.lib;wxmsw31ud_gl.lib;wxmsw31ud_html.lib;wxmsw31ud_media.lib;wxmsw31ud_propgrid.lib;wxmsw31ud_qa.lib;wxmsw31ud_ribbon.lib;wxmsw31ud_richtext.lib;wxmsw31ud_stc.lib;wxmsw31ud_webview.lib;wxmsw31ud_xrc.lib;wxbase31ud_net.lib;wxbase31ud_xml.lib;wxmsw31ud_aui.lib;wxpngd.lib;wxregexud.lib;wxtiffd.lib;wxjpegd.lib;wxzlibd.lib;wxexpatd.lib;comctl32.lib;rpcrt4.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">

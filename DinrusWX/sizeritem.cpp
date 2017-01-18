@@ -180,7 +180,7 @@ int wxSizerItem_GetBorder(wxSizerItem* self)
 }
 
 //-----------------------------------------------------------------------------
-
+#if WXWIN_COMPATIBILITY_2_8
 extern "C" WXEXPORT
 wxWindow* wxSizerItem_GetWindow(wxSizerItem* self)
 {
@@ -206,7 +206,7 @@ void wxSizerItem_SetSizer(wxSizerItem* self, wxSizer* sizer)
 {
     self->SetSizer(sizer);
 }
-
+#endif
 //-----------------------------------------------------------------------------
 
 extern "C" WXEXPORT
@@ -215,12 +215,13 @@ void wxSizerItem_GetSpacer(wxSizerItem* self, wxSize* size)
     *size = self->GetSpacer();
 }
 
+/*VK!
 extern "C" WXEXPORT
 void wxSizerItem_SetSpacer(wxSizerItem* self, wxSize* size)
 {
     self->SetSpacer(*size);
 }
-
+*/
 //-----------------------------------------------------------------------------
 
 extern "C" WXEXPORT

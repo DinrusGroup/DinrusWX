@@ -98,12 +98,13 @@ void wxSizer_Prepend(wxSizer* self, int width, int height, int option,
 }
 
 //-----------------------------------------------------------------------------
-
+/*VK!
 extern "C" WXEXPORT
 wxc_bool wxSizer_RemoveWindow(wxSizer* self, wxWindow *window)
 {
 	return self->Remove(window)?1:0;
 }
+*/
 
 extern "C" WXEXPORT
 wxc_bool wxSizer_RemoveSizer(wxSizer* self, wxSizer *sizer)
@@ -214,13 +215,13 @@ void wxSizer_SetSizeHints(wxSizer* self, wxWindow *window)
 }
 
 //-----------------------------------------------------------------------------
-
+/*VK!
 extern "C" WXEXPORT
 void wxSizer_SetVirtualSizeHints(wxSizer* self, wxWindow *window)
 {
 	self->SetVirtualSizeHints(window);
 }
-
+*/
 //-----------------------------------------------------------------------------
 
 extern "C" WXEXPORT

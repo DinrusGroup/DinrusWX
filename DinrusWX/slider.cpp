@@ -142,13 +142,13 @@ int wxSlider_GetThumbLength(wxSlider* self)
 }
 
 //-----------------------------------------------------------------------------
-
+/*VK!
 extern "C" WXEXPORT
 void wxSlider_SetTickFreq(wxSlider* self, int n, int pos)
 {
 	self->SetTickFreq(n, pos);
 }
-
+*/
 //-----------------------------------------------------------------------------
 
 extern "C" WXEXPORT
