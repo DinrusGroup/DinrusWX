@@ -23,10 +23,15 @@ version (Tango)
 import tango.core.Vararg;
 import tango.text.convert.Format;
 }
-else // Phobos
+version(Phobos)
 {
 private import std.format;
 private import std.stdarg;
+}
+
+version(Dinrus)
+{
+import dinrus;
 }
 //! \endcond
 
@@ -131,7 +136,7 @@ private import std.stdarg;
 			}
 			s = Format.convert(arguments, argptr, fmts);
 		}
-		else // Phobos
+		version( Phobos)
 		{
 			void putc(dchar c)
 			{
@@ -141,8 +146,19 @@ private import std.stdarg;
 			std.format.doFormat(&putc, arguments, argptr);
 		}
 
-			return assumeUnique(s);
+
+		version(Dinrus)
+		{
+			void putc(dchar c)
+			{
+				кодируйЮ(s, c);
+			}
+
+			stdrus.форматДелай(&putc, arguments, argptr);		
+
 		}
+	return s;//assumeUnique(s);
+	}
 
 //! \cond VERSION
 version (none) {

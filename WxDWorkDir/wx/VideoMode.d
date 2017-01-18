@@ -37,10 +37,17 @@ version (Tango)
 import tango.core.Version;
 import tango.text.convert.Integer;
 }
-else // Phobos
+
+version(Phobos)
 {
 private import std.string;
 private import std.conv;
+}
+
+version(Dinrus)
+{
+import stdrus;
+alias вТкст toString;
 }
 //! \endcond
 

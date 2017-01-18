@@ -35,7 +35,7 @@ public import std.contracts; // DMD 2.006
 
 version(Dinrus)
 {
-import dinrus;
+import stdrus;
 }
 
 interface IDisposable

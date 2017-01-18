@@ -1,4 +1,4 @@
-LIBTARGET = ..\DinrusWX.lib
+LIBTARGET = ..\DinrusWXD.lib
 
 #MAKESTUB=..\config.mak
 
@@ -133,7 +133,7 @@ OBJECTS = \
 	TaskBarIcon.obj \
 	TextCtrl.obj \
 	TextDialog.obj \
-	Thread.obj \
+	wxThread.obj \
 	Timer.obj \
 	TipDialog.obj \
 	TipWindow.obj \

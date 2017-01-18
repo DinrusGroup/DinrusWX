@@ -33,10 +33,15 @@ public import wx.ToolBar;
 version (Tango)
 {
 }
-else // Phobos
+version(Phobos)
 {
 private import std.stream;
 private import std.regexp;
+}
+
+version(Dinrus)
+{
+import stdrus;
 }
 //! \endcond
 

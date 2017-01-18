@@ -38,6 +38,7 @@ private import std.utf;
 version(Dinrus)
 {
 import dinrus;
+alias вЮ8 toUTF8;
 }
 //! \endcond
 
