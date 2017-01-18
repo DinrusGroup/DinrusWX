@@ -155,7 +155,7 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Accel.cpp" />
+    <ClCompile Include="accel.cpp" />
     <ClCompile Include="activateevent.cpp" />
     <ClCompile Include="app.cpp" />
     <ClCompile Include="artprovider.cpp" />
@@ -224,13 +224,76 @@
     <ClCompile Include="helpevent.cpp" />
     <ClCompile Include="htmlhelpctrl.cpp" />
     <ClCompile Include="htmllbox.cpp" />
+    <ClCompile Include="icon.cpp" />
+    <ClCompile Include="imagelist.cpp" />
+    <ClCompile Include="imghandler.cpp" />
+    <ClCompile Include="initdialogevent.cpp" />
+    <ClCompile Include="keyevent.cpp" />
+    <ClCompile Include="laywin.cpp" />
+    <ClCompile Include="listbook.cpp" />
+    <ClCompile Include="listbox.cpp" />
+    <ClCompile Include="listctrl.cpp" />
+    <ClCompile Include="locale.cpp" />
+    <ClCompile Include="manager.cpp" />
+    <ClCompile Include="maximizeevent.cpp" />
+    <ClCompile Include="mdi.cpp" />
+    <ClCompile Include="memorydc.cpp" />
+    <ClCompile Include="menu.cpp" />
+    <ClCompile Include="menubar.cpp" />
+    <ClCompile Include="menuitem.cpp" />
+    <ClCompile Include="messagedialog.cpp" />
+    <ClCompile Include="miniframe.cpp" />
+    <ClCompile Include="mousecapturechangedevent.cpp" />
+    <ClCompile Include="mouseevent.cpp" />
+    <ClCompile Include="moveevent.cpp" />
+    <ClCompile Include="navigationkeyevent.cpp" />
+    <ClCompile Include="ncpaintevent.cpp" />
+    <ClCompile Include="notebook.cpp" />
+    <ClCompile Include="notebooksizer.cpp" />
+    <ClCompile Include="notifyevent.cpp" />
+    <ClCompile Include="numdialog.cpp" />
     <ClCompile Include="object.cpp" />
+    <ClCompile Include="paintevent.cpp" />
+    <ClCompile Include="palette.cpp" />
+    <ClCompile Include="palettechangedevent.cpp" />
+    <ClCompile Include="panel.cpp" />
+    <ClCompile Include="printdata.cpp" />
+    <ClCompile Include="printdialog.cpp" />
+    <ClCompile Include="printer.cpp" />
+    <ClCompile Include="printpreview.cpp" />
+    <ClCompile Include="progdlg.cpp" />
+    <ClCompile Include="querynewpaletteevent.cpp" />
+    <ClCompile Include="radiobox.cpp" />
+    <ClCompile Include="radiobutton.cpp" />
+    <ClCompile Include="region.cpp" />
+    <ClCompile Include="sashwindow.cpp" />
+    <ClCompile Include="scrollbar.cpp" />
+    <ClCompile Include="scrolledwindow.cpp" />
+    <ClCompile Include="setcursorevent.cpp" />
+    <ClCompile Include="showevent.cpp" />
+    <ClCompile Include="sizeevent.cpp" />
+    <ClCompile Include="sizer.cpp" />
+    <ClCompile Include="sizeritem.cpp" />
+    <ClCompile Include="slider.cpp" />
+    <ClCompile Include="sound.cpp" />
+    <ClCompile Include="spinbutton.cpp" />
+    <ClCompile Include="spinctrl.cpp" />
+    <ClCompile Include="splashscreen.cpp" />
+    <ClCompile Include="splitterwindow.cpp" />
+    <ClCompile Include="staticbitmap.cpp" />
+    <ClCompile Include="staticbox.cpp" />
+    <ClCompile Include="staticboxsizer.cpp" />
+    <ClCompile Include="staticline.cpp" />
+    <ClCompile Include="statictext.cpp" />
+    <ClCompile Include="statusbar.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="syscolourchangedevent.cpp" />
+    <ClCompile Include="systemsettings.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="control.inc" />
