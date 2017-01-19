@@ -86,7 +86,7 @@ alias вЮ8 toUTF8;
 
         static extern (C) bool   wxApp_SafeYield(IntPtr win, bool onlyIfNeeded);
         static extern (C) bool   wxApp_Yield(IntPtr self, bool onlyIfNeeded);
-        static extern (C) void   wxApp_WakeUpIdle();
+       // static extern (C) void   wxApp_WakeUpIdle();
         static extern (C) void   wxApp_ExitMainLoop(IntPtr self);
 		//! \endcond
 
@@ -232,12 +232,12 @@ alias вЮ8 toUTF8;
             { return wxApp_Yield(wxobj, onlyIfNeeded); }
 
         //---------------------------------------------------------------------
-
+/+
         public static void WakeUpIdle()
         {
             wxApp_WakeUpIdle();
         }
-		
+		+/
 		public void ExitMainLoop()
 		{
 			wxApp_ExitMainLoop(wxobj);

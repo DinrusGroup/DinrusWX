@@ -151,7 +151,7 @@ extern "C" WXEXPORT int wxEvent_EVT_COMMAND_KILL_FOCUS()            { return wxE
 extern "C" WXEXPORT int wxEvent_EVT_COMMAND_ENTER()                 { return wxEVT_COMMAND_ENTER; }
 extern "C" WXEXPORT int wxEvent_EVT_HELP()                          { return wxEVT_HELP; }
 extern "C" WXEXPORT int wxEvent_EVT_DETAILED_HELP()                 { return wxEVT_DETAILED_HELP; }
-//extern "C" WXEXPORT int wxEvent_EVT_COMMAND_TOGGLEBUTTON_CLICKED()  { return wxEVT_COMMAND_TOGGLEBUTTON_CLICKED; }
+extern "C" WXEXPORT int wxEvent_EVT_COMMAND_TOGGLEBUTTON_CLICKED()  { return wxEVT_COMMAND_TOGGLEBUTTON_CLICKED; }
 extern "C" WXEXPORT int wxEvent_EVT_OBJECTDELETED()                 { return wxEVT_OBJECTDELETED; }
 
 

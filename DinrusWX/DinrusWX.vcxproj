@@ -216,6 +216,7 @@
     <ClCompile Include="fontdialog.cpp" />
     <ClCompile Include="fontmisc.cpp" />
     <ClCompile Include="frame.cpp" />
+    <ClCompile Include="gauge.cpp" />
     <ClCompile Include="gdiobject.cpp" />
     <ClCompile Include="global.cpp" />
     <ClCompile Include="gridbagsizer.cpp" />
@@ -311,8 +312,13 @@
     <ClCompile Include="window.cpp" />
     <ClCompile Include="windowcreateevent.cpp" />
     <ClCompile Include="windowdestroyevent.cpp" />
+    <ClCompile Include="wizardpagesimple.cpp" />
+    <ClCompile Include="wxaui.cpp" />
     <ClCompile Include="wxdatetime.cpp" />
+    <ClCompile Include="wxplatform.cpp" />
     <ClCompile Include="wxstring.cpp" />
+    <ClCompile Include="wxversion.cpp" />
+    <ClCompile Include="xmlresource.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include="control.inc" />

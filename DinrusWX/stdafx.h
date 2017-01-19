@@ -150,6 +150,12 @@
 #include <wx/vscroll.h>
 #include <wx/wizard.h>
 #include <wx/datetime.h>
+#include <wx/platform.h>
+#include <wx/utils.h>
+#include <wx/version.h>
+#include <wx/xrc/xmlres.h>
+#include <wx/fontenum.h>
+#include <wx/fs_mem.h>
 
 /*
 #ifndef __WXGTK__

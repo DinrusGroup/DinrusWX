@@ -68,7 +68,7 @@ void wxToggleButton_SetValue(wxToggleButton* self, const wxc_bool state)
 	self->SetValue(state);
 }
 
-extern "C" WXEXPORT int wxEvent_EVT_COMMAND_TOGGLEBUTTON_CLICKED()  { return wxEVT_COMMAND_TOGGLEBUTTON_CLICKED; }
+//extern "C" WXEXPORT int wxEvent_EVT_COMMAND_TOGGLEBUTTON_CLICKED()  { return wxEVT_COMMAND_TOGGLEBUTTON_CLICKED; }
 
 #else
 #ifdef __GNUC__

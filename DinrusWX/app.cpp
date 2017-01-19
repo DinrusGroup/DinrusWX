@@ -207,13 +207,13 @@ wxc_bool wxApp_Yield(wxApp* self, wxc_bool onlyIfNeeded)
 {
     return self->Yield(onlyIfNeeded)?1:0;
 }
-
+/*VK!
 extern "C" WXEXPORT
 void wxApp_WakeUpIdle()
 {
     //::wxWakeUpIdle();
 }
-
+*/
 extern "C" WXEXPORT 
 void wxApp_ExitMainLoop(wxApp* self)
 {
