@@ -28,26 +28,26 @@ public import wx.Control;
 		static extern (C) void   wxBitmapButton_RegisterVirtual(IntPtr self, BitmapButton obj,Virtual_OnSetBitmap onSetBitmap);
 		//static extern (C) void   wxBitmapButton_RegisterDisposable(IntPtr self, Virtual_Dispose onDispose);
 		static extern (C) bool   wxBitmapButton_Create(IntPtr self, IntPtr parent, int id, IntPtr label, inout Point pos, inout Size size, uint style, IntPtr validator, string name);
-		static extern (C) void   wxBitmapButton_SetDefault(IntPtr self);
+	//	static extern (C) void   wxBitmapButton_SetDefault(IntPtr self);
 		
-		static extern (C) void wxBitmapButton_SetLabel(IntPtr self, string label);
-		static extern (C) IntPtr wxBitmapButton_GetLabel(IntPtr self);
+		//static extern (C) void wxBitmapButton_SetLabel(IntPtr self, string label);
+		//static extern (C) IntPtr wxBitmapButton_GetLabel(IntPtr self);
 		
-		static extern (C) bool wxBitmapButton_Enable(IntPtr self, bool enable);
+		//static extern (C) bool wxBitmapButton_Enable(IntPtr self, bool enable);
 
-		static extern (C) void   wxBitmapButton_SetBitmapLabel(IntPtr self, IntPtr bitmap);
-		static extern (C) IntPtr wxBitmapButton_GetBitmapLabel(IntPtr self);
+		//static extern (C) void   wxBitmapButton_SetBitmapLabel(IntPtr self, IntPtr bitmap);
+		//static extern (C) IntPtr wxBitmapButton_GetBitmapLabel(IntPtr self);
 		
-		static extern (C) void wxBitmapButton_SetBitmapSelected(IntPtr self, IntPtr bitmap);
-		static extern (C) IntPtr wxBitmapButton_GetBitmapSelected(IntPtr self);
+		//static extern (C) void wxBitmapButton_SetBitmapSelected(IntPtr self, IntPtr bitmap);
+	//	static extern (C) IntPtr wxBitmapButton_GetBitmapSelected(IntPtr self);
 
-		static extern (C) void wxBitmapButton_SetBitmapFocus(IntPtr self, IntPtr bitmap);
-		static extern (C) IntPtr wxBitmapButton_GetBitmapFocus(IntPtr self);
+		//static extern (C) void wxBitmapButton_SetBitmapFocus(IntPtr self, IntPtr bitmap);
+		//static extern (C) IntPtr wxBitmapButton_GetBitmapFocus(IntPtr self);
 
-		static extern (C) void wxBitmapButton_SetBitmapDisabled(IntPtr self, IntPtr bitmap);
-		static extern (C) IntPtr wxBitmapButton_GetBitmapDisabled(IntPtr self);
+	//	static extern (C) void wxBitmapButton_SetBitmapDisabled(IntPtr self, IntPtr bitmap);
+	//	static extern (C) IntPtr wxBitmapButton_GetBitmapDisabled(IntPtr self);
 		
-		static extern (C) void wxBitmapButton_OnSetBitmap(IntPtr self);
+		//static extern (C) void wxBitmapButton_OnSetBitmap(IntPtr self);
 		
 		//static extern (C) void wxBitmapButton_ApplyParentThemeBackground(IntPtr self, IntPtr colour);
 		//! \endcond
@@ -64,7 +64,7 @@ public import wx.Control;
 		public this(IntPtr wxobj) 
 			{ super(wxobj); }
 
-		public this()
+/+		public this()
 		{
 			this(wxBitmapButton_ctor());
 			wxBitmapButton_RegisterVirtual(wxobj, this, &staticOnSetBitmap);
@@ -94,7 +94,7 @@ public import wx.Control;
 				throw new InvalidOperationException("Failed to create BitmapButton");
 			}
 		}
-			
+		
 		public static wxObject New(IntPtr wxobj) { return new BitmapButton(wxobj); }
 	
 		//---------------------------------------------------------------------
@@ -117,7 +117,7 @@ public import wx.Control;
 
 		public this(Window parent, Bitmap label, Point pos, Size size, int style, Validator validator, string name)
 			{ this(parent, Window.UniqueID, label, pos, size, style, validator, name);}
-
++/
 		//---------------------------------------------------------------------
 		
 		public bool Create(Window parent, int id, Bitmap label, Point pos, Size size, uint style, Validator validator, string name)
@@ -126,14 +126,14 @@ public import wx.Control;
 		}
 
 		//---------------------------------------------------------------------		
-
+/+
 		public void SetDefault()
 		{
 			wxBitmapButton_SetDefault(wxobj);
 		}
-		
+		+/
 		//---------------------------------------------------------------------		
-		
+/+		
 		public string StringLabel() { return cast(string) new wxString(wxBitmapButton_GetLabel(wxobj), true); }
 		public void StringLabel(string value) { wxBitmapButton_SetLabel(wxobj, value); }
 		
@@ -146,9 +146,9 @@ public import wx.Control;
 		{
 			return cast(string) new wxString(wxBitmapButton_GetLabel(wxobj), true);
 		}
-		
+		+/
 		//---------------------------------------------------------------------
-		
+/+		
 		public bool Enable()
 		{
 			return Enable(true);
@@ -158,36 +158,38 @@ public import wx.Control;
 		{
 			return wxBitmapButton_Enable(wxobj, enable);
 		}
-
++/
 		//---------------------------------------------------------------------
-
+/+
 		public Bitmap BitmapLabel() { return cast(Bitmap)FindObject(wxBitmapButton_GetBitmapLabel(wxobj), &Bitmap.New); }
 		public void BitmapLabel(Bitmap value) { wxBitmapButton_SetBitmapLabel(wxobj, wxObject.SafePtr(value)); }
+		+/
 /+
 		public Bitmap Label() { return cast(Bitmap)FindObject(wxBitmapButton_GetBitmapLabel(wxobj), &Bitmap.New); }
 		public void Label(Bitmap value) { wxBitmapButton_SetBitmapLabel(wxobj, wxObject.SafePtr(value)); }
 +/
 		
 		//---------------------------------------------------------------------
-		
+/+		
 		public Bitmap BitmapSelected() { return cast(Bitmap)FindObject(wxBitmapButton_GetBitmapSelected(wxobj), &Bitmap.New); }
 		public void BitmapSelected(Bitmap value) { wxBitmapButton_SetBitmapSelected(wxobj, wxObject.SafePtr(value)); }
-		
+		+/
+		/+
 		public Bitmap BitmapFocus() { return cast(Bitmap)FindObject(wxBitmapButton_GetBitmapFocus(wxobj), &Bitmap.New); }
 		public void BitmapFocus(Bitmap value) { wxBitmapButton_SetBitmapFocus(wxobj, wxObject.SafePtr(value)); }
 
 		public Bitmap BitmapDisabled() { return cast(Bitmap)FindObject(wxBitmapButton_GetBitmapDisabled(wxobj), &Bitmap.New); }
 		public void BitmapDisabled(Bitmap value) { wxBitmapButton_SetBitmapDisabled(wxobj, wxObject.SafePtr(value)); }
-
++/
 		//---------------------------------------------------------------------
 		//! \cond EXTERN
-		extern(C) private static void staticOnSetBitmap(BitmapButton obj) { return obj.OnSetBitmap(); }
+/+		extern(C) private static void staticOnSetBitmap(BitmapButton obj) { return obj.OnSetBitmap(); }
 		//! \endcond
 		protected /+virtual+/ void OnSetBitmap()
 		{
 			wxBitmapButton_OnSetBitmap(wxobj);
 		}
-		
+		+/
 		//---------------------------------------------------------------------
 		
 		/*public /+virtual+/ void ApplyParentThemeBackground(Colour bg)

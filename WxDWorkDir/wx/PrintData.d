@@ -418,7 +418,7 @@ public import wx.common;
         static extern (C) int wxPrintData_GetQuality(IntPtr self);
         static extern (C) void wxPrintData_SetNoCopies(IntPtr self, int v);
         static extern (C) void wxPrintData_SetCollate(IntPtr self, bool flag);
-        static extern (C) void wxPrintData_SetOrientation(IntPtr self, int orient);
+       // static extern (C) void wxPrintData_SetOrientation(IntPtr self, int orient);
         static extern (C) void wxPrintData_SetPrinterName(IntPtr self, string name);
         static extern (C) void wxPrintData_SetColour(IntPtr self, bool colour);
         static extern (C) void wxPrintData_SetDuplex(IntPtr self, int duplex);
@@ -477,7 +477,7 @@ public import wx.common;
         //-----------------------------------------------------------------------------
 
         public int Orientation() { return wxPrintData_GetOrientation(wxobj); }
-        public void Orientation(int value) { wxPrintData_SetOrientation(wxobj, value); }
+       // public void Orientation(int value) { wxPrintData_SetOrientation(wxobj, value); }
 
         //-----------------------------------------------------------------------------
 

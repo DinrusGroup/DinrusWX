@@ -34,7 +34,7 @@ public import wx.Window;
 		static extern (C) void wxSizer_PrependSizer(IntPtr self, IntPtr sizer, int option, uint flag, int border, IntPtr userData);
 		static extern (C) void wxSizer_Prepend(IntPtr self, int width, int height, int option, uint flag, int border, IntPtr userData);
 
-		static extern (C) bool wxSizer_RemoveWindow(IntPtr self, IntPtr window);
+	//	static extern (C) bool wxSizer_RemoveWindow(IntPtr self, IntPtr window);
 		static extern (C) bool wxSizer_RemoveSizer(IntPtr self, IntPtr sizer);
 		static extern (C) bool wxSizer_Remove(IntPtr self, int pos);
 
@@ -55,7 +55,7 @@ public import wx.Window;
 		static extern (C) void wxSizer_CalcMin(IntPtr self, out Size size);
 
 		static extern (C) void wxSizer_SetSizeHints(IntPtr self, IntPtr window);
-		static extern (C) void wxSizer_SetVirtualSizeHints(IntPtr self, IntPtr window);
+		//static extern (C) void wxSizer_SetVirtualSizeHints(IntPtr self, IntPtr window);
 		static extern (C) void wxSizer_SetDimension(IntPtr self, int x, int y, int width, int height);
 
 		static extern (C) void wxSizer_ShowWindow(IntPtr self, IntPtr window, bool show);
@@ -190,12 +190,12 @@ public import wx.Window;
 		}
 
 		//---------------------------------------------------------------------
-
+/+
 		public bool Remove(Window window)
 		{
 			return wxSizer_RemoveWindow(wxobj, wxObject.SafePtr(window));
 		}
-
++/
 		public bool Remove(Sizer sizer)
 		{
 			return wxSizer_RemoveSizer(wxobj, wxObject.SafePtr(sizer));
@@ -275,12 +275,12 @@ public import wx.Window;
 		{
 			wxSizer_SetSizeHints(wxobj, wxObject.SafePtr(window));
 		}
-
+/+
 		public void SetVirtualSizeHints(Window window)
 		{
 			wxSizer_SetVirtualSizeHints(wxobj, wxObject.SafePtr(window));
 		}
-
++/
 		public void SetDimension(int x, int y, int width, int height)
 		{
 			wxSizer_SetDimension(wxobj, x, y, width, height);

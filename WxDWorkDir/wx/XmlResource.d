@@ -313,7 +313,7 @@ import stdrus;
 		}
 	
 		//---------------------------------------------------------------------
-
+/+
 		public ToolBar LoadToolBar(Window parent, string name)
 		{
 			SetSubclassDefaults();
@@ -323,7 +323,7 @@ import stdrus;
 			else
 				return null;
 		}
-	
+	+/
 		//---------------------------------------------------------------------
 
 		public void Flags(XmlResourceFlags value) { wxXmlResource_SetFlags(wxobj, cast(int)value); }

@@ -110,7 +110,7 @@ alias вЮ8 toUTF8;
 
         //---------------------------------------------------------------------
 
-        protected this() 
+       this() 
         {
         	super(wxApp_ctor());
             app = this;

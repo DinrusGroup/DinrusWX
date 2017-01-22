@@ -129,7 +129,7 @@ public import wx.PrintData;
         static extern (C) void   wxPrintout_SetPPIPrinter(IntPtr self, int x, int y);
         static extern (C) void   wxPrintout_GetPPIPrinter(IntPtr self, inout int x, inout int y);
         static extern (C) bool   wxPrintout_IsPreview(IntPtr self);
-        static extern (C) void   wxPrintout_SetIsPreview(IntPtr self, bool p);
+      //  static extern (C) void   wxPrintout_SetIsPreview(IntPtr self, bool p);
 
         static extern (C) void   wxPrintout_RegisterVirtual(IntPtr self, Printout obj, Virtual_OnBeginDocument onBeginDocument, Virtual_NoParams onEndDocument, Virtual_NoParams onBeginPrinting, Virtual_NoParams onEndPrinting, Virtual_NoParams onPreparePrinting, Virtual_ParamsInt hasPage, Virtual_ParamsInt onPrintPage, Virtual_GetPageInfo getPageInfo);
 		//! \endcond
@@ -305,6 +305,6 @@ public import wx.PrintData;
         //-----------------------------------------------------------------------------
 
         public bool IsPreview() { return wxPrintout_IsPreview(wxobj); }
-        public void IsPreview(bool value) { wxPrintout_SetIsPreview(wxobj, value); }
+       // public void IsPreview(bool value) { wxPrintout_SetIsPreview(wxobj, value); }
     }
 

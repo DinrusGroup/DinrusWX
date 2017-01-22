@@ -17,7 +17,7 @@ module wx.VScroll;
 public import wx.common;
 public import wx.Panel;
 public import wx.SizeEvent;
-
+/+
 		//-----------------------------------------------------------------------------
 		
 		//! \cond EXTERN
@@ -142,3 +142,4 @@ public import wx.SizeEvent;
 			return wxVScrolledWindow_IsVisible(wxobj, line);
 		}
 	}
++/

@@ -32,9 +32,9 @@ wxToolBarToolBase* wxToolBarToolBase_ctor(wxToolBar *tbar, int toolid, wxc_strin
 //-----------------------------------------------------------------------------
 
 extern "C" WXEXPORT
-wxToolBarToolBase* wxToolBarToolBase_ctorCtrl(wxToolBar *tbar, wxControl *control)
+wxToolBarToolBase* wxToolBarToolBase_ctorCtrl(wxToolBar *tbar, wxControl *control, const wxString& label)
 {
-	return new wxToolBarToolBase(tbar, control);
+	return new wxToolBarToolBase(tbar, control, label);
 }
 
 //-----------------------------------------------------------------------------

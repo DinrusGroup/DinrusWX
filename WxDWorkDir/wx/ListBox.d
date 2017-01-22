@@ -287,7 +287,7 @@ public import wx.ClientData;
 			string name);
 		static extern (C) bool wxCheckListBox_IsChecked(IntPtr self, int index);
 		static extern (C) void wxCheckListBox_Check(IntPtr self, int index, bool check);
-		static extern (C) int wxCheckListBox_GetItemHeight(IntPtr self);
+		//static extern (C) int wxCheckListBox_GetItemHeight(IntPtr self);
 		//! \endcond
 				
 	alias CheckListBox wxCheckListBox;
@@ -334,7 +334,7 @@ public import wx.ClientData;
 		//---------------------------------------------------------------------
 		
 		version(__WXMAC__) {} else
-		public int ItemHeight() { return wxCheckListBox_GetItemHeight(wxobj); }
+	//	public int ItemHeight() { return wxCheckListBox_GetItemHeight(wxobj); }
 		
 		//---------------------------------------------------------------------
 		

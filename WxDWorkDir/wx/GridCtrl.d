@@ -16,7 +16,7 @@
 module wx.GridCtrl;
 public import wx.common;
 public import wx.Grid;
-
+/+
 		//! \cond EXTERN
 		static extern (C) IntPtr wxGridCellDateTimeRenderer_ctor(string outformat, string informat);
 		static extern (C) void wxGridCellDateTimeRenderer_dtor(IntPtr self);
@@ -287,3 +287,4 @@ public import wx.Grid;
 			return new GridCellAutoWrapStringRenderer(wxGridCellAutoWrapStringRenderer_Clone(wxobj));
 		}			
 	}
++/

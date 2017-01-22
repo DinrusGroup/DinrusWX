@@ -16,7 +16,7 @@
 module wx.VLBox;
 public import wx.common;
 public import wx.VScroll;
-
+/+
 		//! \cond EXTERN
 		extern (C) {
 		alias int function(VListBox obj, int n) Virtual_IntInt;
@@ -258,3 +258,4 @@ public import wx.VScroll;
 			return wxVListBox_DeselectAll(wxobj);
 		}
 	}
++/

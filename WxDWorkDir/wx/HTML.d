@@ -194,7 +194,7 @@ public import wx.MouseEvent;
         static extern (C) void   wxHtmlCell_Draw(IntPtr self, IntPtr dc, int x, int y, int view_y1, int view_y2, IntPtr info);
         static extern (C) void   wxHtmlCell_DrawInvisible(IntPtr self, IntPtr dc, int x, int y, IntPtr info);
         static extern (C) IntPtr wxHtmlCell_Find(IntPtr self, int condition, IntPtr param);
-        static extern (C) void   wxHtmlCell_OnMouseClick(IntPtr self, IntPtr parent, int x, int y, IntPtr evt);
+        //static extern (C) void   wxHtmlCell_OnMouseClick(IntPtr self, IntPtr parent, int x, int y, IntPtr evt);
         static extern (C) bool   wxHtmlCell_AdjustPagebreak(IntPtr self, inout int pagebreak);
         static extern (C) void   wxHtmlCell_SetCanLiveOnPagebreak(IntPtr self, bool can);
         static extern (C) void   wxHtmlCell_GetHorizontalConstraints(IntPtr self, inout int left, inout int right);
@@ -296,12 +296,12 @@ public import wx.MouseEvent;
         }
 
         //-----------------------------------------------------------------------------
-
+/+
         public /+virtual+/ void OnMouseClick(Window parent, int x, int y, MouseEvent evt)
         {
             wxHtmlCell_OnMouseClick(wxobj, wxObject.SafePtr(parent), x, y, wxObject.SafePtr(evt));
         }
-
++/
         //-----------------------------------------------------------------------------
 
         public /+virtual+/ bool AdjustPagebreak(inout int pagebreak)
@@ -400,7 +400,7 @@ public import wx.MouseEvent;
         static extern (C) void   wxHtmlContainerCell_SetBorder(IntPtr self, IntPtr clr1, IntPtr clr2);
         static extern (C) IntPtr wxHtmlContainerCell_GetLink(IntPtr self, int x, int y);
         static extern (C) IntPtr wxHtmlContainerCell_Find(IntPtr self, int condition, IntPtr param);
-        static extern (C) void   wxHtmlContainerCell_OnMouseClick(IntPtr self, IntPtr parent, int x, int y, IntPtr evt);
+      //  static extern (C) void   wxHtmlContainerCell_OnMouseClick(IntPtr self, IntPtr parent, int x, int y, IntPtr evt);
         static extern (C) void   wxHtmlContainerCell_GetHorizontalConstraints(IntPtr self, inout int left, inout int right);
         static extern (C) IntPtr wxHtmlContainerCell_GetFirstCell(IntPtr self);
         static extern (C) bool   wxHtmlContainerCell_IsTerminalCell(IntPtr self);
@@ -533,12 +533,12 @@ public import wx.MouseEvent;
         }
 
         //-----------------------------------------------------------------------------
-
+/+
         public override void OnMouseClick(Window parent, int x, int y, MouseEvent evt)
         {
             wxHtmlContainerCell_OnMouseClick(wxobj, wxObject.SafePtr(parent), x, y, wxObject.SafePtr(evt));
         }
-
++/
         //-----------------------------------------------------------------------------
 /*
         public void GetHorizontalConstraints(out int left, out int right)
@@ -1317,11 +1317,11 @@ public import wx.MouseEvent;
 		static extern (C) IntPtr wxHtmlSelection_GetToCell(IntPtr self);
 		static extern (C) void wxHtmlSelection_GetFromPos(IntPtr self, out Point fromPos);
 		static extern (C) void wxHtmlSelection_GetToPos(IntPtr self, out Point toPos);
-		static extern (C) void wxHtmlSelection_GetFromPrivPos(IntPtr self, out Point fromPrivPos);
-		static extern (C) void wxHtmlSelection_GetToPrivPos(IntPtr self, out Point toPrivPos);
-		static extern (C) void wxHtmlSelection_SetFromPrivPos(IntPtr self, inout Point pos);
-		static extern (C) void wxHtmlSelection_SetToPrivPos(IntPtr self, inout Point pos);
-		static extern (C) void wxHtmlSelection_ClearPrivPos(IntPtr self);
+		//static extern (C) void wxHtmlSelection_GetFromPrivPos(IntPtr self, out Point fromPrivPos);
+		//static extern (C) void wxHtmlSelection_GetToPrivPos(IntPtr self, out Point toPrivPos);
+		//static extern (C) void wxHtmlSelection_SetFromPrivPos(IntPtr self, inout Point pos);
+		//static extern (C) void wxHtmlSelection_SetToPrivPos(IntPtr self, inout Point pos);
+		//static extern (C) void wxHtmlSelection_ClearPrivPos(IntPtr self);
 		static extern (C) bool wxHtmlSelection_IsEmpty(IntPtr self);
         //! \endcond
 		
@@ -1383,7 +1383,7 @@ public import wx.MouseEvent;
 			}
 		
 		//-----------------------------------------------------------------------------
-		
+	/+	
 		public Point FromPrivPos() { 
 				Point tpoint;
 				wxHtmlSelection_GetFromPrivPos(wxobj, tpoint);
@@ -1406,7 +1406,7 @@ public import wx.MouseEvent;
 		{
 			wxHtmlSelection_ClearPrivPos(wxobj);
 		}
-		
+	+/	
 		//-----------------------------------------------------------------------------
 		
 		public bool Empty() { return wxHtmlSelection_IsEmpty(wxobj); }

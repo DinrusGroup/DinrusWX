@@ -78,7 +78,7 @@ import stdrus;
 		{
 			super(title, pos, size);
 			// Set the window icon
-			icon = new Icon("../Samples/Dialogs/mondrian.png");
+			icon = new Icon("./Samples/Dialogs/mondrian.png");
 
 			// Set up a menu
 			Menu fileMenu = new Menu();

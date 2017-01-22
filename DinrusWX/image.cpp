@@ -23,19 +23,19 @@ wxImage* wxImage_ctor()
 }
 
 extern "C" WXEXPORT
-wxImage* wxImage_ctorByName(wxc_string name, int type)
+wxImage* wxImage_ctorByName(wxc_string name, int type, int index = -1)
 {
-	return new wxImage(wxstr(name), type);
+	return new wxImage(wxstr(name), (wxBitmapType) type, index);
 }
 
 extern "C" WXEXPORT
-wxImage* wxImage_ctorByByteArray(const char* data, int length, int type)
+wxImage* wxImage_ctorByByteArray(const char* data, int length, int type, int index = -1)
 {
 	wxMemoryInputStream* image_stream;
 	
 	image_stream = new wxMemoryInputStream(data, length);
 
-	return new wxImage(*image_stream, type);
+	return new wxImage(*image_stream, (wxBitmapType) type, index);
 }
 
 extern "C" WXEXPORT
@@ -112,7 +112,7 @@ void wxImage_InitAllHandlers()
 extern "C" WXEXPORT
 wxc_bool wxImage_LoadFileByTypeId(wxImage* self, wxc_string name, int type, int index)
 {
-	return self->LoadFile(wxstr(name), type, index)?1:0;
+	return self->LoadFile(wxstr(name), (wxBitmapType) type, index)?1:0;
 }
 
 extern "C" WXEXPORT
@@ -125,7 +125,7 @@ wxc_bool wxImage_LoadFileByMimeTypeId(wxImage* self, wxc_string name, wxc_string
 extern "C" WXEXPORT
 wxc_bool wxImage_SaveFileByType(wxImage* self, wxc_string name, int type)
 {
-    return self->SaveFile(wxstr(name), type)?1:0;
+    return self->SaveFile(wxstr(name), (wxBitmapType) type)?1:0;
 }
 
 extern "C" WXEXPORT
@@ -330,7 +330,7 @@ wxc_bool wxImage_CanRead(wxc_string name)
 extern "C" WXEXPORT
 int wxImage_GetImageCount(wxc_string name, int type)
 {
-	return wxImage::GetImageCount(wxstr(name), type);
+	return wxImage::GetImageCount(wxstr(name), (wxBitmapType) type);
 }
 
 //-----------------------------------------------------------------------------
@@ -490,7 +490,7 @@ wxImageHandler* wxImage_FindHandler(wxc_string name)
 extern "C" WXEXPORT
 wxImageHandler* wxImage_FindHandler2(wxc_string name, long imageType)
 {
-	return wxImage::FindHandler(wxstr(name), imageType);
+	return wxImage::FindHandler(wxstr(name), (wxBitmapType) imageType);
 }
 
 //-----------------------------------------------------------------------------
@@ -498,7 +498,7 @@ wxImageHandler* wxImage_FindHandler2(wxc_string name, long imageType)
 extern "C" WXEXPORT
 wxImageHandler* wxImage_FindHandler3(long imageType)
 {
-	return wxImage::FindHandler(imageType);
+	return wxImage::FindHandler((wxBitmapType) imageType);
 }
 
 //-----------------------------------------------------------------------------
@@ -556,7 +556,7 @@ void wxImageHandler_SetExtension(wxImageHandler* self, wxc_string ext)
 extern "C" WXEXPORT
 void wxImageHandler_SetType(wxImageHandler* self, long type)
 {
-	self->SetType(type);
+	self->SetType((wxBitmapType) type);
 }
 
 //-----------------------------------------------------------------------------

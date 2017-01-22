@@ -42,7 +42,7 @@ public import wx.Menu;
 		
 		static extern (C) IntPtr wxMenuBar_GetHelpString(IntPtr self, int id);
 		static extern (C) IntPtr wxMenuBar_GetLabel(IntPtr self, int id);
-		static extern (C) IntPtr wxMenuBar_GetLabelTop(IntPtr self, int pos);
+		//static extern (C) IntPtr wxMenuBar_GetLabelTop(IntPtr self, int pos);
 		
 		static extern (C) bool   wxMenuBar_IsEnabled(IntPtr self, int id);
 		
@@ -50,7 +50,7 @@ public import wx.Menu;
 		
 		static extern (C) void   wxMenuBar_SetHelpString(IntPtr self, int id, string helpstring);
 		static extern (C) void   wxMenuBar_SetLabel(IntPtr self, int id, string label);
-		static extern (C) void   wxMenuBar_SetLabelTop(IntPtr self, int pos, string label);
+		//static extern (C) void   wxMenuBar_SetLabelTop(IntPtr self, int pos, string label);
 		//! \endcond
 
 	alias MenuBar wxMenuBar;
@@ -185,12 +185,12 @@ public import wx.Menu;
 		}
 		
 		//-----------------------------------------------------------------------------
-		
+	/+	
 		public string GetLabelTop(int pos)
 		{
 			return cast(string) new wxString(wxMenuBar_GetLabelTop(wxobj, pos), true);
 		}
-		
+		+/
 		//-----------------------------------------------------------------------------
 		
 		public bool IsEnabled(int id)
@@ -220,9 +220,10 @@ public import wx.Menu;
 		}
 		
 		//-----------------------------------------------------------------------------
-		
+	/+	
 		public void SetLabelTop(int pos, string label)
 		{
 			wxMenuBar_SetLabelTop(wxobj, pos, label);
 		}
+		+/
 	}

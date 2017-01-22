@@ -30,7 +30,7 @@ public import wx.Control;
 		static extern (C) int    wxSlider_GetPageSize(IntPtr self);
 		static extern (C) void   wxSlider_SetThumbLength(IntPtr self, int lenPixels);
 		static extern (C) int    wxSlider_GetThumbLength(IntPtr self);
-		static extern (C) void   wxSlider_SetTickFreq(IntPtr self, int n, int pos);
+		//static extern (C) void   wxSlider_SetTickFreq(IntPtr self, int n, int pos);
 		static extern (C) int    wxSlider_GetTickFreq(IntPtr self);
 		static extern (C) void   wxSlider_ClearTicks(IntPtr self);
 		static extern (C) void   wxSlider_SetTick(IntPtr self, int tickPos);
@@ -129,12 +129,12 @@ public import wx.Control;
 		//---------------------------------------------------------------------
 
 		public int TickFreq() { return wxSlider_GetTickFreq(wxobj); }
-
+/+
 		public void SetTickFreq(int n, int pos)
 		{
 			wxSlider_SetTickFreq(wxobj, n, pos);
 		}
-
++/
 		//---------------------------------------------------------------------
 
 		public void SetTick(int tickPos)

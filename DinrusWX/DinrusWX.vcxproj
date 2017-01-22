@@ -22,7 +22,6 @@
     <ProjectGuid>{C12B9A9E-AA1A-41C9-AA5A-451AEE4F46E3}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>DinrusWX</RootNamespace>
-    <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -98,6 +97,7 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <AdditionalLibraryDirectories>C:\Program Files\Microsoft SDKs\Windows\v7.1A\Lib;D:\dinrus\dev\DINRUS\wx\wxWidgets-3.1.0\lib\vc_lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>wxbase31ud.lib;wxmsw31ud_core.lib;wxscintillad.lib;wxmsw31ud_adv.lib;wxmsw31ud_gl.lib;wxmsw31ud_html.lib;wxmsw31ud_media.lib;wxmsw31ud_propgrid.lib;wxmsw31ud_qa.lib;wxmsw31ud_ribbon.lib;wxmsw31ud_richtext.lib;wxmsw31ud_stc.lib;wxmsw31ud_webview.lib;wxmsw31ud_xrc.lib;wxbase31ud_net.lib;wxbase31ud_xml.lib;wxmsw31ud_aui.lib;wxpngd.lib;wxregexud.lib;wxtiffd.lib;wxjpegd.lib;wxzlibd.lib;wxexpatd.lib;comctl32.lib;rpcrt4.lib;winmm.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <EnableUAC>false</EnableUAC>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -221,7 +221,6 @@
     <ClCompile Include="gdiobject.cpp" />
     <ClCompile Include="glcanvas.cpp" />
     <ClCompile Include="global.cpp" />
-    <ClCompile Include="grid.cpp" />
     <ClCompile Include="gridbagsizer.cpp" />
     <ClCompile Include="gridctrl.cpp" />
     <ClCompile Include="gridsizer.cpp" />
@@ -232,6 +231,7 @@
     <ClCompile Include="icon.cpp" />
     <ClCompile Include="iconizeevent.cpp" />
     <ClCompile Include="idleevent.cpp" />
+    <ClCompile Include="image.cpp" />
     <ClCompile Include="imagelist.cpp" />
     <ClCompile Include="imghandler.cpp" />
     <ClCompile Include="initdialogevent.cpp" />
@@ -301,7 +301,6 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
-    <ClCompile Include="styledtextctrl.cpp" />
     <ClCompile Include="syscolourchangedevent.cpp" />
     <ClCompile Include="systemsettings.cpp" />
     <ClCompile Include="tabctrl.cpp" />
@@ -313,18 +312,15 @@
     <ClCompile Include="tipdialog.cpp" />
     <ClCompile Include="tipwindow.cpp" />
     <ClCompile Include="togglebutton.cpp" />
-    <ClCompile Include="toolbar.cpp" />
     <ClCompile Include="tooltip.cpp" />
     <ClCompile Include="treectrl.cpp" />
     <ClCompile Include="updateuievent.cpp" />
     <ClCompile Include="validator.cpp" />
     <ClCompile Include="vlbox.cpp" />
-    <ClCompile Include="vscroll.cpp" />
     <ClCompile Include="window.cpp" />
     <ClCompile Include="windowcreateevent.cpp" />
     <ClCompile Include="windowdestroyevent.cpp" />
     <ClCompile Include="wizard.cpp" />
-    <ClCompile Include="wizardpagesimple.cpp" />
     <ClCompile Include="wxaui.cpp" />
     <ClCompile Include="wxdatetime.cpp" />
     <ClCompile Include="wxplatform.cpp" />

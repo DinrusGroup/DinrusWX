@@ -25,10 +25,10 @@ public import wx.Control;
 		static extern (C) int    wxGauge_GetRange(IntPtr self);
 		static extern (C) void   wxGauge_SetValue(IntPtr self, int pos);
 		static extern (C) int    wxGauge_GetValue(IntPtr self);
-		static extern (C) void   wxGauge_SetShadowWidth(IntPtr self, int w);
-		static extern (C) int    wxGauge_GetShadowWidth(IntPtr self);
-		static extern (C) void   wxGauge_SetBezelFace(IntPtr self, int w);
-		static extern (C) int    wxGauge_GetBezelFace(IntPtr self);
+		//static extern (C) void   wxGauge_SetShadowWidth(IntPtr self, int w);
+		//static extern (C) int    wxGauge_GetShadowWidth(IntPtr self);
+		//static extern (C) void   wxGauge_SetBezelFace(IntPtr self, int w);
+		//static extern (C) int    wxGauge_GetBezelFace(IntPtr self);
 		static extern (C) bool   wxGauge_AcceptsFocus(IntPtr self);
 		static extern (C) bool   wxGauge_IsVertical(IntPtr self);
 		//! \endcond
@@ -97,15 +97,15 @@ public import wx.Control;
 		public void Value(int value) { wxGauge_SetValue(wxobj, value); }
 
 		//---------------------------------------------------------------------
-
+/+
 		public int ShadowWidth() { return wxGauge_GetShadowWidth(wxobj); }
 		public void ShadowWidth(int value) { wxGauge_SetShadowWidth(wxobj, value); }
-
++/
 		//---------------------------------------------------------------------
-
+/+
 		public int BezelFace() { return wxGauge_GetBezelFace(wxobj); }
 		public void BezelFace(int value) { wxGauge_SetBezelFace(wxobj, value); }
-
++/
 		//---------------------------------------------------------------------
 
 		public override bool AcceptsFocus()

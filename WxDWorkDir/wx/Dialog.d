@@ -32,7 +32,7 @@ public import wx.Window;
 		static extern (C) void   wxDialog_EndModal(IntPtr self, int retCode);
 
 		static extern (C) bool   wxDialog_IsModal(IntPtr self);
-		static extern (C) void   wxDialog_SetModal(IntPtr self, bool modal);
+	//	static extern (C) void   wxDialog_SetModal(IntPtr self, bool modal);
 
 		static extern (C) void   wxDialog_SetIcon(IntPtr self, IntPtr icon);
 		static extern (C) void   wxDialog_SetIcons(IntPtr self, IntPtr icons);
@@ -150,6 +150,6 @@ public import wx.Window;
 
 		//---------------------------------------------------------------------
 
-		deprecated public void Modal(bool value) { wxDialog_SetModal(wxobj, value); }
+		//deprecated public void Modal(bool value) { wxDialog_SetModal(wxobj, value); }
 		public bool Modal() { return wxDialog_IsModal(wxobj); }
 	}

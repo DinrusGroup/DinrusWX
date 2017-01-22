@@ -1,4 +1,4 @@
-/// Common structs that do not belong to any particular class
+﻿/// Common structs that do not belong to any particular class
 module wx.common;
 
 /*! \mainpage
@@ -180,4 +180,50 @@ deprecated Rectangle new_Rectangle(int x,int y,int w,int h)
 	return Rectangle(x,y,w,h);
 }
 
+/+
+
+//Список импортов из DinrusWX.dll
+
+//accel.cpp
+
+wxAcceleratorEntry* wxAcceleratorEntry_ctor(int flags, int keyCode, int cmd, wxMenuItem* item);
+void wxAcceleratorEntry_RegisterDisposable(_AcceleratorEntry* self, Virtual_Dispose onDispose);
+void wxAcceleratorEntry_dtor(wxAcceleratorEntry* self);
+void wxAcceleratorEntry_Set(wxAcceleratorEntry* self, int flags, int keyCode, int cmd, wxMenuItem* item);
+void wxAcceleratorEntry_SetMenuItem(wxAcceleratorEntry* self, wxMenuItem* item);
+int wxAcceleratorEntry_GetFlags(wxAcceleratorEntry* self);
+int wxAcceleratorEntry_GetKeyCode(wxAcceleratorEntry* self);
+int wxAcceleratorEntry_GetCommand(wxAcceleratorEntry* self);
+wxMenuItem* wxAcceleratorEntry_GetMenuItem(wxAcceleratorEntry* self);
+wxAcceleratorEntry* wxAcceleratorEntry_GetAccelFromString(wxc_string label);
+wxAcceleratorTable* wxAcceleratorTable_ctor();
+wxc_bool wxAcceleratorTable_Ok(wxAcceleratorTable* self);
+
+// activateevent.cpp
+
+wxActivateEvent* wxActivateEvent_ctor(wxEventType type, wxc_bool active, int Id);
+wxc_bool wxActivateEvent_GetActive(wxActivateEvent* self);
+
+// wxD - app.cpp
+
+_App* wxApp_ctor();
+void wxApp_RegisterVirtual(_App* self, wxc_object obj, Virtual_OnInit onInit, Virtual_OnRun onRun, Virtual_OnExit onExit,Virtual_Initialize initialize);
+wxc_bool wxApp_OnInit(_App* self);
+int wxApp_OnRun(_App* self);
+int wxApp_OnExit(_App* self);
+wxc_bool wxApp_Initialize(_App* self,int *argc, char **argv); 
+	void wxApp_Run(int argc, char* argv[]); 
+	void wxApp_Run(int argc, char* argv[]);
+wxString* wxApp_GetVendorName(wxApp* self);
+void wxApp_SetVendorName(wxApp* self, wxc_string name);
+wxString* wxApp_GetAppName(wxApp* self);
+void wxApp_SetAppName(wxApp* self, wxc_string name);
+wxWindow* wxApp_GetTopWindow(wxApp* self);
+void wxApp_SetTopWindow(wxApp* self, wxWindow* window);
+wxc_bool wxApp_SafeYield(wxWindow* win, wxc_bool onlyIfNeeded) ;
+wxc_bool wxApp_Yield(wxApp* self, wxc_bool onlyIfNeeded);
+void wxApp_ExitMainLoop(wxApp* self);
+
+
++/
 

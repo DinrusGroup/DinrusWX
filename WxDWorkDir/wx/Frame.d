@@ -218,7 +218,7 @@ public import wx.Icon;
 		}
 
 		//---------------------------------------------------------------------
-
+/+
 		public ToolBar CreateToolBar()
 		{ return CreateToolBar(/*Border.*/wxNO_BORDER | ToolBar.wxTB_HORIZONTAL, -1, "toolBar"); }
 		public ToolBar CreateToolBar(int style)
@@ -233,7 +233,7 @@ public import wx.Icon;
 
 		public ToolBar toolBar() { return cast(ToolBar)FindObject(wxFrame_GetToolBar(wxobj)); }
 		public void toolBar(ToolBar value) { wxFrame_SetToolBar(wxobj, wxObject.SafePtr(value)); }
-
++/
 		//---------------------------------------------------------------------
 
 		public bool Iconized() { return wxFrame_IsIconized(wxobj); }

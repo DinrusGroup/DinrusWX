@@ -16,7 +16,7 @@
 module wx.HtmlListBox;
 public import wx.common;
 public import wx.VLBox;
-
+/+
 		//-----------------------------------------------------------------------------
 		
 		//! \cond EXTERN
@@ -245,3 +245,4 @@ public import wx.VLBox;
 		}
 		
 	}
++/

@@ -20,7 +20,7 @@ public import wx.Event;
 
 		//! \cond EXTERN
 		static extern (C) IntPtr wxShowEvent_ctor(int winid, bool show);
-		static extern (C) bool wxShowEvent_GetShow(IntPtr self);
+		//static extern (C) bool wxShowEvent_GetShow(IntPtr self);
 		static extern (C) void wxShowEvent_SetShow(IntPtr self, bool show);
 		//! \endcond
 		
@@ -37,7 +37,7 @@ public import wx.Event;
 
 		//-----------------------------------------------------------------------------	
 		
-		public bool Show() { return wxShowEvent_GetShow(wxobj); }
+		//public bool Show() { return wxShowEvent_GetShow(wxobj); }
 		public void Show(bool value) { wxShowEvent_SetShow(wxobj, value); }
 
 		private static Event New(IntPtr obj) { return new ShowEvent(obj); }

@@ -18,7 +18,7 @@ public import wx.common;
 public import wx.Bitmap;
 public import wx.Control;
 public import wx.ClientData;
-
+/+
 		//! \cond EXTERN
 		static extern (C) IntPtr wxToolBarToolBase_ctor(IntPtr tbar, int toolid, string label, IntPtr bmpNormal, IntPtr bmpDisabled, int kind, IntPtr clientData, string shortHelpString, string longHelpString);
 		static extern (C) IntPtr wxToolBarToolBase_ctorCtrl(IntPtr tbar, IntPtr control);
@@ -467,3 +467,4 @@ public import wx.ClientData;
 
 	}
 
++/

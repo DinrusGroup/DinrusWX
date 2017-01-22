@@ -183,7 +183,7 @@ public import wx.ToolTip;
 		static extern (C) void   wxWindow_Fit(IntPtr self);
 		static extern (C) void   wxWindow_FitInside(IntPtr self);
 		static extern (C) void   wxWindow_SetSizeHints(IntPtr self, int minW, int minH, int maxW, int maxH, int incW, int incH);
-		static extern (C) void   wxWindow_SetVirtualSizeHints(IntPtr self, int minW, int minH, int maxW, int maxH);
+	//	static extern (C) void   wxWindow_SetVirtualSizeHints(IntPtr self, int minW, int minH, int maxW, int maxH);
 		static extern (C) int    wxWindow_GetMinWidth(IntPtr self);
 		static extern (C) int    wxWindow_GetMinHeight(IntPtr self);
 		static extern (C) void   wxWindow_GetMinSize(IntPtr self, out Size size);
@@ -204,7 +204,7 @@ public import wx.ToolTip;
 		static extern (C) bool   wxWindow_IsRetained(IntPtr self);
 		static extern (C) void   wxWindow_SetExtraStyle(IntPtr self, uint exStyle);
 		static extern (C) uint   wxWindow_GetExtraStyle(IntPtr self);
-		static extern (C) void   wxWindow_MakeModal(IntPtr self, bool modal);
+		//static extern (C) void   wxWindow_MakeModal(IntPtr self, bool modal);
 		static extern (C) void   wxWindow_SetThemeEnabled(IntPtr self, bool enableTheme);
 		static extern (C) bool   wxWindow_GetThemeEnabled(IntPtr self);
 		static extern (C) void   wxWindow_SetFocus(IntPtr self);
@@ -283,7 +283,7 @@ public import wx.ToolTip;
 		static extern (C) bool   wxWindow_PageUp(IntPtr self);
 		static extern (C) bool   wxWindow_PageDown(IntPtr self);
 		static extern (C) void   wxWindow_SetHelpText(IntPtr self, string text);
-		static extern (C) void   wxWindow_SetHelpTextForId(IntPtr self, string text);
+		//static extern (C) void   wxWindow_SetHelpTextForId(IntPtr self, string text);
 		static extern (C) IntPtr wxWindow_GetHelpText(IntPtr self);
 		//static extern (C) void wxWindow_SetToolTip(IntPtr self, IntPtr tip);
 		//static extern (C) IntPtr wxWindow_GetToolTip(IntPtr self);
@@ -827,12 +827,12 @@ public import wx.ToolTip;
 		{
 			wxWindow_SetSizeHints(wxobj, minW, minH, maxW, maxH, incW, incH);
 		}
-
+/+
 		public /+virtual+/ void SetVirtualSizeHints(int minW, int minH, int maxW, int maxH)
 		{
 			wxWindow_SetVirtualSizeHints(wxobj, minW, minH, maxW, maxH);
 		}
-
++/
 		//---------------------------------------------------------------------
 
 		public /+virtual+/ int MinWidth()
@@ -955,13 +955,13 @@ public import wx.ToolTip;
 			}
 
 		//---------------------------------------------------------------------
-
+/+
 		public void MakeModal(bool value)
 		{
 			wxWindow_MakeModal(wxobj, value);
 		}
 
-		//---------------------------------------------------------------------
+	+/	//---------------------------------------------------------------------
 
 		public bool ThemeEnabled()
 		{
@@ -1423,13 +1423,13 @@ public import wx.ToolTip;
 			{
 				wxWindow_SetHelpText(wxobj, value);
 			}
-
+/+
 		public /+virtual+/ void SetHelpTextForId(string text)
 		{
 			wxWindow_SetHelpTextForId(wxobj, text);
 		}
 
-		//---------------------------------------------------------------------
++/		//---------------------------------------------------------------------
 /+FIXME
 		public /+virtual+/ DropTarget dropTarget()
 			{

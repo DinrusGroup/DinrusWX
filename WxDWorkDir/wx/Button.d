@@ -24,10 +24,10 @@ public import wx.Bitmap;
 		static extern (C) void   wxButton_SetDefault(IntPtr self);
 		static extern (C) void   wxButton_GetDefaultSize(out Size size);
 		
-		static extern (C) void wxButton_SetImageMargins(IntPtr self, int x, int y);
-		static extern (C) void wxButton_SetImageLabel(IntPtr self, IntPtr bitmap);
+		//static extern (C) void wxButton_SetImageMargins(IntPtr self, int x, int y);
+		//static extern (C) void wxButton_SetImageLabel(IntPtr self, IntPtr bitmap);
 		
-		static extern (C) void wxButton_SetLabel(IntPtr self, string label);
+		//static extern (C) void wxButton_SetLabel(IntPtr self, string label);
 		//! \endcond
 
 		//---------------------------------------------------------------------
@@ -90,27 +90,27 @@ public import wx.Bitmap;
 		}
 		
 		//---------------------------------------------------------------------
-		
+	/+	
 		public /+virtual+/ void ImageLabel(Bitmap value)
 		{
 			wxButton_SetImageLabel(wxobj, wxObject.SafePtr(value));
 		}
-		
+	+/	
 		//---------------------------------------------------------------------
-		
+	/+	
 		public /+virtual+/ void SetImageMargins(int x, int y)
 		{
 			wxButton_SetImageMargins(wxobj, x, y);
 		}
-		
+		+/
 		//---------------------------------------------------------------------
 		// Do we need get also ?
-		
+	/+	
 		public override void Label(string value)
 		{
 			wxButton_SetLabel(wxobj, value);
 		}
-		
+		+/
 		//---------------------------------------------------------------------
 		
 		public void Click_Add(EventListener value) { AddCommandListener(Event.wxEVT_COMMAND_BUTTON_CLICKED, ID, value, this); }

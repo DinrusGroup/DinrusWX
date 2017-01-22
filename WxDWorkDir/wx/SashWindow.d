@@ -41,7 +41,7 @@ public import wx.CommandEvent;
 		static extern (C) IntPtr wxSashEdge_ctor();
 		static extern (C) void wxSashEdge_dtor(IntPtr self);
 		static extern (C) bool wxSashEdge_m_show(IntPtr self);
-		static extern (C) bool wxSashEdge_m_border(IntPtr self);
+		//static extern (C) bool wxSashEdge_m_border(IntPtr self);
 		static extern (C) int wxSashEdge_m_margin(IntPtr self);
 		//! \endcond
 		
@@ -74,7 +74,7 @@ public import wx.CommandEvent;
 		
 		//-----------------------------------------------------------------------------
 		
-		public bool m_border() { return wxSashEdge_m_border(wxobj); }
+	//	public bool m_border() { return wxSashEdge_m_border(wxobj); }
 		
 		//-----------------------------------------------------------------------------
 		
@@ -88,7 +88,7 @@ public import wx.CommandEvent;
 		static extern (C) bool wxSashWindow_Create(IntPtr self, IntPtr parent, int id, inout Point pos, inout Size size, uint style, string name);
 		static extern (C) void wxSashWindow_SetSashVisible(IntPtr self, SashEdgePosition edge, bool sash);
 		static extern (C) bool wxSashWindow_GetSashVisible(IntPtr self, SashEdgePosition edge);
-		static extern (C) void wxSashWindow_SetSashBorder(IntPtr self, SashEdgePosition edge, bool border);
+		//static extern (C) void wxSashWindow_SetSashBorder(IntPtr self, SashEdgePosition edge, bool border);
 		static extern (C) bool wxSashWindow_HasBorder(IntPtr self, SashEdgePosition edge);
 		static extern (C) int wxSashWindow_GetEdgeMargin(IntPtr self, SashEdgePosition edge);
 		static extern (C) void wxSashWindow_SetDefaultBorderSize(IntPtr self, int width);
@@ -168,12 +168,12 @@ public import wx.CommandEvent;
 		}
 		
 		//-----------------------------------------------------------------------------
-		
+	/+	
 		public void SetSashBorder(SashEdgePosition edge, bool border)
 		{
 			wxSashWindow_SetSashBorder(wxobj, edge, border);
 		}
-		
+		+/
 		//-----------------------------------------------------------------------------
 		
 		public int GetEdgeMargin(SashEdgePosition edge)

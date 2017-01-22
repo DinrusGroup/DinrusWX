@@ -41,12 +41,12 @@ public import wx.Window;
         static extern (C) int    wxSizerItem_GetFlag(IntPtr self);
         static extern (C) void   wxSizerItem_SetBorder(IntPtr self, int border);
         static extern (C) int    wxSizerItem_GetBorder(IntPtr self);
-        static extern (C) IntPtr wxSizerItem_GetWindow(IntPtr self);
-        static extern (C) void   wxSizerItem_SetWindow(IntPtr self, IntPtr window);
-        static extern (C) IntPtr wxSizerItem_GetSizer(IntPtr self);
-        static extern (C) void   wxSizerItem_SetSizer(IntPtr self, IntPtr sizer);
+        //static extern (C) IntPtr wxSizerItem_GetWindow(IntPtr self);
+       // static extern (C) void   wxSizerItem_SetWindow(IntPtr self, IntPtr window);
+      //  static extern (C) IntPtr wxSizerItem_GetSizer(IntPtr self);
+      //  static extern (C) void   wxSizerItem_SetSizer(IntPtr self, IntPtr sizer);
         static extern (C) void   wxSizerItem_GetSpacer(IntPtr self, inout Size size);
-        static extern (C) void   wxSizerItem_SetSpacer(IntPtr self, inout Size size);
+       // static extern (C) void   wxSizerItem_SetSpacer(IntPtr self, inout Size size);
         static extern (C) void   wxSizerItem_Show(IntPtr self, bool show);
         static extern (C) bool   wxSizerItem_IsShown(IntPtr self);
         static extern (C) IntPtr wxSizerItem_GetUserData(IntPtr self);
@@ -161,15 +161,15 @@ public import wx.Window;
         public int Border() { return wxSizerItem_GetBorder(wxobj); }
 
         //-----------------------------------------------------------------------------
-
+/+
         public Window window() { return cast(Window)FindObject(wxSizerItem_GetWindow(wxobj)); }
         public void window(Window value) { wxSizerItem_SetWindow(wxobj, wxObject.SafePtr(value)); }
-
++/
         //-----------------------------------------------------------------------------
-
+/+
         public Sizer sizer() { return cast(Sizer)FindObject(wxSizerItem_GetSizer(wxobj)); }
         public void sizer(Sizer value) { wxSizerItem_SetSizer(wxobj, wxObject.SafePtr(value)); }
-
++/
         //-----------------------------------------------------------------------------
 
         public Size Spacer() { 
@@ -177,8 +177,9 @@ public import wx.Window;
                 wxSizerItem_GetSpacer(wxobj, spacer);
                 return spacer;
             }
+	/+		
         public void Spacer(Size value) { wxSizerItem_SetSpacer(wxobj, value); }
-
++/
         //-----------------------------------------------------------------------------
 
         public void Show(bool show)

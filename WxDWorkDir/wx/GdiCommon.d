@@ -168,7 +168,7 @@ public import wx.Colour;
 		static extern (C) IntPtr wxPenList_ctor();
 		static extern (C) void wxPenList_AddPen(IntPtr self, IntPtr pen);
 		static extern (C) void wxPenList_RemovePen(IntPtr self, IntPtr pen);
-		static extern (C) IntPtr wxPenList_FindOrCreatePen(IntPtr self, IntPtr colour, int width, int style);
+		//static extern (C) IntPtr wxPenList_FindOrCreatePen(IntPtr self, IntPtr colour, int width, int style);
 		//! \endcond
 		
 		//-----------------------------------------------------------------------------
@@ -197,11 +197,13 @@ public import wx.Colour;
 		}
 		
 		//-----------------------------------------------------------------------------
-		
+	/+	
 		public Pen FindOrCreatePen(Colour colour, int width, int style)
 		{
 			return new Pen(wxPenList_FindOrCreatePen(wxobj, wxObject.SafePtr(colour), width, style));
 		}
+		
+		+/
 	}
 	
 	//-----------------------------------------------------------------------------
@@ -210,7 +212,7 @@ public import wx.Colour;
 		static extern (C) IntPtr wxBrushList_ctor();
 		static extern (C) void wxBrushList_AddBrush(IntPtr self, IntPtr brush);
 		static extern (C) void wxBrushList_RemoveBrush(IntPtr self, IntPtr brush);
-		static extern (C) IntPtr wxBrushList_FindOrCreateBrush(IntPtr self, IntPtr colour, int style);
+		//static extern (C) IntPtr wxBrushList_FindOrCreateBrush(IntPtr self, IntPtr colour, int style);
 		//! \endcond
 		
 		//-----------------------------------------------------------------------------
@@ -239,11 +241,12 @@ public import wx.Colour;
 		}
 		
 		//-----------------------------------------------------------------------------
-		
+		/+
 		public Brush FindOrCreateBrush(Colour colour, int style)
 		{
 			return new Brush(wxBrushList_FindOrCreateBrush(wxobj, wxObject.SafePtr(colour), style));
 		}
+		+/
 	}	
 	
 	//-----------------------------------------------------------------------------
@@ -252,14 +255,14 @@ public import wx.Colour;
 		static extern (C) IntPtr wxFontList_ctor();
 		static extern (C) void wxFontList_AddFont(IntPtr self, IntPtr font);
 		static extern (C) void wxFontList_RemoveFont(IntPtr self, IntPtr font);
-		static extern (C) IntPtr wxFontList_FindOrCreateFont(IntPtr self, 
+		/*static extern (C) IntPtr wxFontList_FindOrCreateFont(IntPtr self, 
 			int pointSize, 
 			int family, 
 			int style, 
 			int weight,
 			bool underline,
 			string face,
-			FontEncoding encoding);
+			FontEncoding encoding);*/
 		//! \endcond
 		
 		//-----------------------------------------------------------------------------
@@ -288,7 +291,7 @@ public import wx.Colour;
 		}
 		
 		//-----------------------------------------------------------------------------
-		
+	/+	
 		public Font FindOrCreateFont(int pointSize, int family, int style, int weight)
 		{
 			return FindOrCreateFont(pointSize, family, style, weight, false, "", FontEncoding.wxFONTENCODING_DEFAULT);
@@ -309,6 +312,7 @@ public import wx.Colour;
 		{
 			return new Font(wxFontList_FindOrCreateFont(wxobj, pointSize, family, style, weight, underline, face, encoding));
 		}
+		+/
 	}		
 	
 	//-----------------------------------------------------------------------------

@@ -914,8 +914,8 @@ public import wx.ArrayInt;
 	//---------------------------------------------------------------------
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxWindowDC_ctor();
-		static extern (C) IntPtr wxWindowDC_ctor2(IntPtr win);
+		//static extern (C) IntPtr wxWindowDC_ctor();
+		static extern (C) IntPtr wxWindowDC_ctor(IntPtr win);
 		static extern (C) bool wxWindowDC_CanDrawBitmap(IntPtr self);
 		static extern (C) bool wxWindowDC_CanGetTextExtent(IntPtr self);
 		static extern (C) int wxWindowDC_GetCharWidth(IntPtr self);
@@ -948,11 +948,11 @@ public import wx.ArrayInt;
 			this.memOwn = memOwn;
 		}
 		
-		public this()
-			{ this(wxWindowDC_ctor(), true);}
+		//public this()
+		//	{ this(wxWindowDC_ctor(), true);}
 			
 		public this(Window win)
-			{ this(wxWindowDC_ctor2(wxObject.SafePtr(win)), true);}
+			{ this(wxWindowDC_ctor(wxObject.SafePtr(win)), true);}
 			
 		//---------------------------------------------------------------------
 		
@@ -1080,8 +1080,8 @@ public import wx.ArrayInt;
 		//---------------------------------------------------------------------
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxClientDC_ctor();
-		static extern (C) IntPtr wxClientDC_ctor2(IntPtr window);
+		//static extern (C) IntPtr wxClientDC_ctor();
+		static extern (C) IntPtr wxClientDC_ctor(IntPtr window);
 		//! \endcond
 
 		//---------------------------------------------------------------------
@@ -1098,18 +1098,18 @@ public import wx.ArrayInt;
 			this.memOwn = memOwn;
 		}
 			
-		public this()
-			{ this(wxClientDC_ctor(), true);}
+	//	public this()
+		//	{ this(wxClientDC_ctor(), true);}
 
 		public this(Window window)
-			{ this(wxClientDC_ctor2(wxObject.SafePtr(window)), true); }
+			{ this(wxClientDC_ctor(wxObject.SafePtr(window)), true); }
 	}
     
 	//---------------------------------------------------------------------
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxPaintDC_ctor();
-		static extern (C) IntPtr wxPaintDC_ctor2(IntPtr window);
+		//static extern (C) IntPtr wxPaintDC_ctor();
+		static extern (C) IntPtr wxPaintDC_ctor(IntPtr window);
 		//! \endcond
 
 		//---------------------------------------------------------------------
@@ -1126,9 +1126,9 @@ public import wx.ArrayInt;
 			this.memOwn = memOwn;
 		}
 			
-		public this()
-			{ this(wxPaintDC_ctor(), true); }
+	//	public this()
+			//{ this(wxPaintDC_ctor(), true); }
 			
 		public this(Window window)
-			{ this(wxPaintDC_ctor2(wxObject.SafePtr(window)), true); }
+			{ this(wxPaintDC_ctor(wxObject.SafePtr(window)), true); }
 	}

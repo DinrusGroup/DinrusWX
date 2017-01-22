@@ -160,4 +160,6 @@ public import wx.wxVersion;
 public import wx.wxPlatform;
 public import wx.NumberDialog;
 // library link pragmas
-private import wx.libs;
+//private import wx.libs;
+
+

@@ -64,8 +64,8 @@ void wxWizard_SetPageSize(wxWizard* self, const wxSize* size)
 class _WizardPageSimple : public wxWizardPageSimple
 {
 public:
-	_WizardPageSimple(wxWizard* parent, wxWizardPage* prev, wxWizardPage* next,const wxBitmap& bitmap,const wxChar* resource)
-		: wxWizardPageSimple(parent, prev, next, bitmap, resource)
+	_WizardPageSimple(wxWizard* parent, wxWizardPage* prev, wxWizardPage* next,const wxBitmap& bitmap)//,const wxChar* resource)
+		: wxWizardPageSimple(parent, prev, next, bitmap)//, resource)
 	{
 	}
 
@@ -78,10 +78,10 @@ public:
 // C stubs for class methods
 
 extern "C" WXEXPORT
-wxWizardPageSimple* wxWizardPageSimple_ctor(wxWizard* parent, wxWizardPage* prev, wxWizardPage* next, const wxBitmap* bitmap, wxc_string resource)
+wxWizardPageSimple* wxWizardPageSimple_ctor(wxWizard* parent, wxWizardPage* prev, wxWizardPage* next, const wxBitmap* bitmap)//, wxc_string resource)
 {
-	wxString wxresource = wxstr(resource);
-	return new _WizardPageSimple(parent, prev, next, *bitmap, wxresource.c_str());
+//	wxString wxresource = wxstr(resource);
+	return new _WizardPageSimple(parent, prev, next, *bitmap);// , wxresource.c_str());
 }
 
 //-----------------------------------------------------------------------------

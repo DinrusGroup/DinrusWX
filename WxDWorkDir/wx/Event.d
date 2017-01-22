@@ -30,7 +30,7 @@ typedef int EventType;
 		//---------------------------------------------------------------------
 		static extern (C) EventType wxEvent_EVT_NULL();
 		static extern (C) EventType wxEvent_EVT_IDLE();
-		static extern (C) EventType wxEvent_EVT_SOCKET();
+		//static extern (C) EventType wxEvent_EVT_SOCKET();
 	
 		static extern (C) EventType wxEvent_EVT_COMMAND_BUTTON_CLICKED();
 		static extern (C) EventType wxEvent_EVT_COMMAND_CHECKBOX_CLICKED();
@@ -51,7 +51,7 @@ typedef int EventType;
 		static extern (C) EventType wxEvent_EVT_COMMAND_COMBOBOX_SELECTED();
 		static extern (C) EventType wxEvent_EVT_COMMAND_TOOL_RCLICKED();
 		static extern (C) EventType wxEvent_EVT_COMMAND_TOOL_ENTER();
-		static extern (C) EventType wxEvent_EVT_COMMAND_SPINCTRL_UPDATED();
+		//static extern (C) EventType wxEvent_EVT_COMMAND_SPINCTRL_UPDATED();
 
 		// Sockets and timers send events, too
 		static extern (C) EventType wxEvent_EVT_TIMER ();
@@ -75,18 +75,18 @@ typedef int EventType;
 		static extern (C) EventType wxEvent_EVT_MOUSEWHEEL();
 
 		// Non-client mouse events
-		static extern (C) EventType wxEvent_EVT_NC_LEFT_DOWN();
-		static extern (C) EventType wxEvent_EVT_NC_LEFT_UP();
-		static extern (C) EventType wxEvent_EVT_NC_MIDDLE_DOWN();
-		static extern (C) EventType wxEvent_EVT_NC_MIDDLE_UP();
-		static extern (C) EventType wxEvent_EVT_NC_RIGHT_DOWN();
-		static extern (C) EventType wxEvent_EVT_NC_RIGHT_UP();
-		static extern (C) EventType wxEvent_EVT_NC_MOTION();
-		static extern (C) EventType wxEvent_EVT_NC_ENTER_WINDOW();
-		static extern (C) EventType wxEvent_EVT_NC_LEAVE_WINDOW();
-		static extern (C) EventType wxEvent_EVT_NC_LEFT_DCLICK();
-		static extern (C) EventType wxEvent_EVT_NC_MIDDLE_DCLICK();
-		static extern (C) EventType wxEvent_EVT_NC_RIGHT_DCLICK();
+		//static extern (C) EventType wxEvent_EVT_NC_LEFT_DOWN();
+		//static extern (C) EventType wxEvent_EVT_NC_LEFT_UP();
+		//static extern (C) EventType wxEvent_EVT_NC_MIDDLE_DOWN();
+	//	static extern (C) EventType wxEvent_EVT_NC_MIDDLE_UP();
+	//	static extern (C) EventType wxEvent_EVT_NC_RIGHT_DOWN();
+		//static extern (C) EventType wxEvent_EVT_NC_RIGHT_UP();
+		//static extern (C) EventType wxEvent_EVT_NC_MOTION();
+		//static extern (C) EventType wxEvent_EVT_NC_ENTER_WINDOW();
+	//	static extern (C) EventType wxEvent_EVT_NC_LEAVE_WINDOW();
+		//static extern (C) EventType wxEvent_EVT_NC_LEFT_DCLICK();
+		//static extern (C) EventType wxEvent_EVT_NC_MIDDLE_DCLICK();
+		//static extern (C) EventType wxEvent_EVT_NC_RIGHT_DCLICK();
 
 		// Character input event type
 		static extern (C) EventType wxEvent_EVT_CHAR();
@@ -110,7 +110,7 @@ typedef int EventType;
 		static extern (C) EventType wxEvent_EVT_SCROLL_PAGEDOWN();
 		static extern (C) EventType wxEvent_EVT_SCROLL_THUMBTRACK();
 		static extern (C) EventType wxEvent_EVT_SCROLL_THUMBRELEASE();
-		static extern (C) EventType wxEvent_EVT_SCROLL_ENDSCROLL();
+		//static extern (C) EventType wxEvent_EVT_SCROLL_ENDSCROLL();
 		
 		// Scroll events from wxWindow
 		static extern (C) EventType wxEvent_EVT_SCROLLWIN_TOP();
@@ -142,14 +142,14 @@ typedef int EventType;
 		static extern (C) EventType wxEvent_EVT_PAINT();
 		static extern (C) EventType wxEvent_EVT_ERASE_BACKGROUND();
 		static extern (C) EventType wxEvent_EVT_NC_PAINT();
-		static extern (C) EventType wxEvent_EVT_PAINT_ICON();
+		//static extern (C) EventType wxEvent_EVT_PAINT_ICON();
 		static extern (C) EventType wxEvent_EVT_MENU_OPEN();
 		static extern (C) EventType wxEvent_EVT_MENU_CLOSE();
 		static extern (C) EventType wxEvent_EVT_MENU_HIGHLIGHT();
 		static extern (C) EventType wxEvent_EVT_CONTEXT_MENU();
 		static extern (C) EventType wxEvent_EVT_SYS_COLOUR_CHANGED();
 		static extern (C) EventType wxEvent_EVT_DISPLAY_CHANGED();
-		static extern (C) EventType wxEvent_EVT_SETTING_CHANGED();
+		//static extern (C) EventType wxEvent_EVT_SETTING_CHANGED();
 		static extern (C) EventType wxEvent_EVT_QUERY_NEW_PALETTE();
 		static extern (C) EventType wxEvent_EVT_PALETTE_CHANGED();
 		static extern (C) EventType wxEvent_EVT_JOY_BUTTON_DOWN();
@@ -157,9 +157,9 @@ typedef int EventType;
 		static extern (C) EventType wxEvent_EVT_JOY_MOVE();
 		static extern (C) EventType wxEvent_EVT_JOY_ZMOVE();
 		static extern (C) EventType wxEvent_EVT_DROP_FILES();
-		static extern (C) EventType wxEvent_EVT_DRAW_ITEM();
-		static extern (C) EventType wxEvent_EVT_MEASURE_ITEM();
-		static extern (C) EventType wxEvent_EVT_COMPARE_ITEM();
+		//static extern (C) EventType wxEvent_EVT_DRAW_ITEM();
+		//static extern (C) EventType wxEvent_EVT_MEASURE_ITEM();
+		//static extern (C) EventType wxEvent_EVT_COMPARE_ITEM();
 		static extern (C) EventType wxEvent_EVT_INIT_DIALOG();
 		static extern (C) EventType wxEvent_EVT_UPDATE_UI();
 
@@ -520,7 +520,7 @@ version(__WXMSW__){
 			wxEVT_COMMAND_COMBOBOX_SELECTED = wxEvent_EVT_COMMAND_COMBOBOX_SELECTED();
 			wxEVT_COMMAND_TOOL_RCLICKED = wxEvent_EVT_COMMAND_TOOL_RCLICKED();
 			wxEVT_COMMAND_TOOL_ENTER = wxEvent_EVT_COMMAND_TOOL_ENTER();
-			wxEVT_COMMAND_SPINCTRL_UPDATED = wxEvent_EVT_COMMAND_SPINCTRL_UPDATED();
+			//wxEVT_COMMAND_SPINCTRL_UPDATED = wxEvent_EVT_COMMAND_SPINCTRL_UPDATED();
 
 			wxEVT_COMMAND_TOOL_CLICKED = wxEVT_COMMAND_MENU_SELECTED;
 
@@ -529,7 +529,7 @@ version(__WXMSW__){
 			wxEVT_COMMAND_TEXT_URL = wxEvent_EVT_COMMAND_TEXT_URL();
 			wxEVT_COMMAND_TEXT_MAXLEN = wxEvent_EVT_COMMAND_TEXT_MAXLEN();
 
-			wxEVT_SOCKET = wxEvent_EVT_SOCKET();
+			//wxEVT_SOCKET = wxEvent_EVT_SOCKET();
 			wxEVT_TIMER  = wxEvent_EVT_TIMER ();
 			
 			wxEVT_LEFT_DOWN = wxEvent_EVT_LEFT_DOWN();
@@ -549,18 +549,18 @@ version(__WXMSW__){
 			wxEVT_CHILD_FOCUS = wxEvent_EVT_CHILD_FOCUS();
 			wxEVT_MOUSEWHEEL = wxEvent_EVT_MOUSEWHEEL();
 
-			wxEVT_NC_LEFT_DOWN = wxEvent_EVT_NC_LEFT_DOWN();
-			wxEVT_NC_LEFT_UP = wxEvent_EVT_NC_LEFT_UP();
-			wxEVT_NC_MIDDLE_DOWN = wxEvent_EVT_NC_MIDDLE_DOWN();
-			wxEVT_NC_MIDDLE_UP = wxEvent_EVT_NC_MIDDLE_UP();
-			wxEVT_NC_RIGHT_DOWN = wxEvent_EVT_NC_RIGHT_DOWN();
-			wxEVT_NC_RIGHT_UP = wxEvent_EVT_NC_RIGHT_UP();
-			wxEVT_NC_MOTION = wxEvent_EVT_NC_MOTION();
-			wxEVT_NC_ENTER_WINDOW = wxEvent_EVT_NC_ENTER_WINDOW();
-			wxEVT_NC_LEAVE_WINDOW = wxEvent_EVT_NC_LEAVE_WINDOW();
-			wxEVT_NC_LEFT_DCLICK = wxEvent_EVT_NC_LEFT_DCLICK();
-			wxEVT_NC_MIDDLE_DCLICK = wxEvent_EVT_NC_MIDDLE_DCLICK();
-			wxEVT_NC_RIGHT_DCLICK = wxEvent_EVT_NC_RIGHT_DCLICK();
+			//wxEVT_NC_LEFT_DOWN = wxEvent_EVT_NC_LEFT_DOWN();
+			//wxEVT_NC_LEFT_UP = wxEvent_EVT_NC_LEFT_UP();
+			//wxEVT_NC_MIDDLE_DOWN = wxEvent_EVT_NC_MIDDLE_DOWN();
+			//wxEVT_NC_MIDDLE_UP = wxEvent_EVT_NC_MIDDLE_UP();
+			//wxEVT_NC_RIGHT_DOWN = wxEvent_EVT_NC_RIGHT_DOWN();
+			//wxEVT_NC_RIGHT_UP = wxEvent_EVT_NC_RIGHT_UP();
+			//wxEVT_NC_MOTION = wxEvent_EVT_NC_MOTION();
+			//wxEVT_NC_ENTER_WINDOW = wxEvent_EVT_NC_ENTER_WINDOW();
+		//	wxEVT_NC_LEAVE_WINDOW = wxEvent_EVT_NC_LEAVE_WINDOW();
+			//wxEVT_NC_LEFT_DCLICK = wxEvent_EVT_NC_LEFT_DCLICK();
+			//wxEVT_NC_MIDDLE_DCLICK = wxEvent_EVT_NC_MIDDLE_DCLICK();
+		//	wxEVT_NC_RIGHT_DCLICK = wxEvent_EVT_NC_RIGHT_DCLICK();
 
 			wxEVT_CHAR = wxEvent_EVT_CHAR();
 			wxEVT_CHAR_HOOK = wxEvent_EVT_CHAR_HOOK();
@@ -581,7 +581,7 @@ version(__WXMSW__){
 			wxEVT_SCROLL_PAGEDOWN = wxEvent_EVT_SCROLL_PAGEDOWN();
 			wxEVT_SCROLL_THUMBTRACK = wxEvent_EVT_SCROLL_THUMBTRACK();
 			wxEVT_SCROLL_THUMBRELEASE = wxEvent_EVT_SCROLL_THUMBRELEASE();
-			wxEVT_SCROLL_ENDSCROLL = wxEvent_EVT_SCROLL_ENDSCROLL();
+		//	wxEVT_SCROLL_ENDSCROLL = wxEvent_EVT_SCROLL_ENDSCROLL();
 
 			wxEVT_SCROLLWIN_TOP = wxEvent_EVT_SCROLLWIN_TOP();
 			wxEVT_SCROLLWIN_BOTTOM = wxEvent_EVT_SCROLLWIN_BOTTOM();
@@ -611,14 +611,14 @@ version(__WXMSW__){
 			wxEVT_PAINT = wxEvent_EVT_PAINT();
 			wxEVT_ERASE_BACKGROUND = wxEvent_EVT_ERASE_BACKGROUND();
 			wxEVT_NC_PAINT = wxEvent_EVT_NC_PAINT();
-			wxEVT_PAINT_ICON = wxEvent_EVT_PAINT_ICON();
+			//wxEVT_PAINT_ICON = wxEvent_EVT_PAINT_ICON();
 			wxEVT_MENU_OPEN = wxEvent_EVT_MENU_OPEN();
 			wxEVT_MENU_CLOSE = wxEvent_EVT_MENU_CLOSE();
 			wxEVT_MENU_HIGHLIGHT = wxEvent_EVT_MENU_HIGHLIGHT();
 			wxEVT_CONTEXT_MENU = wxEvent_EVT_CONTEXT_MENU();
 			wxEVT_SYS_COLOUR_CHANGED = wxEvent_EVT_SYS_COLOUR_CHANGED();
 			wxEVT_DISPLAY_CHANGED = wxEvent_EVT_DISPLAY_CHANGED();
-			wxEVT_SETTING_CHANGED = wxEvent_EVT_SETTING_CHANGED();
+			//wxEVT_SETTING_CHANGED = wxEvent_EVT_SETTING_CHANGED();
 			wxEVT_QUERY_NEW_PALETTE = wxEvent_EVT_QUERY_NEW_PALETTE();
 			wxEVT_PALETTE_CHANGED = wxEvent_EVT_PALETTE_CHANGED();
 			wxEVT_JOY_BUTTON_DOWN = wxEvent_EVT_JOY_BUTTON_DOWN();
@@ -626,9 +626,9 @@ version(__WXMSW__){
 			wxEVT_JOY_MOVE = wxEvent_EVT_JOY_MOVE();
 			wxEVT_JOY_ZMOVE = wxEvent_EVT_JOY_ZMOVE();
 			wxEVT_DROP_FILES = wxEvent_EVT_DROP_FILES();
-			wxEVT_DRAW_ITEM = wxEvent_EVT_DRAW_ITEM();
-			wxEVT_MEASURE_ITEM = wxEvent_EVT_MEASURE_ITEM();
-			wxEVT_COMPARE_ITEM = wxEvent_EVT_COMPARE_ITEM();
+		//	wxEVT_DRAW_ITEM = wxEvent_EVT_DRAW_ITEM();
+			//wxEVT_MEASURE_ITEM = wxEvent_EVT_MEASURE_ITEM();
+			//wxEVT_COMPARE_ITEM = wxEvent_EVT_COMPARE_ITEM();
 			wxEVT_INIT_DIALOG = wxEvent_EVT_INIT_DIALOG();
 			wxEVT_IDLE = wxEvent_EVT_IDLE();
 			wxEVT_UPDATE_UI = wxEvent_EVT_UPDATE_UI();

@@ -30,7 +30,7 @@ public import wx.Frame;
 		static extern (C) IntPtr wxMDIParentFrame_GetActiveChild(IntPtr self);
 		//static extern (C) void   wxMDIParentFrame_SetActiveChild(IntPtr self, IntPtr pChildFrame);
 	
-		static extern (C) IntPtr wxMDIParentFrame_GetClientWindow(IntPtr self);
+	//	static extern (C) IntPtr wxMDIParentFrame_GetClientWindow(IntPtr self);
 	
 		static extern (C) void   wxMDIParentFrame_Cascade(IntPtr self);
 		static extern (C) void   wxMDIParentFrame_Tile(IntPtr self);
@@ -111,12 +111,12 @@ public import wx.Frame;
 		*/
 
 		//-----------------------------------------------------------------------------
-
+/+
 		public MDIClientWindow GetClientWindow()
 		{
 			return cast(MDIClientWindow)FindObject(wxMDIParentFrame_GetClientWindow(wxobj), &MDIClientWindow.New);
 		}
-
++/
 		//-----------------------------------------------------------------------------
 
 		public /+virtual+/ void Cascade()

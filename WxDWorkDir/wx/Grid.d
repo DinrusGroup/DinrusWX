@@ -21,7 +21,7 @@ public import wx.CommandEvent;
 public import wx.Window;
 public import wx.Control;
 public import wx.ScrolledWindow;
-
+/+
     public enum GridSelectionMode
     {
         wxGridSelectCells,
@@ -3735,3 +3735,4 @@ version(NOT_IMPLEMENTED){
             wxGridCellAttrProvider_UpdateAttrCols(wxobj, pos, numCols);
         }       
     }
++/
