@@ -698,24 +698,20 @@ const wxHtmlCell* wxHtmlCell_Find(wxHtmlCell* self, int condition, void* param)
 }
 
 //-----------------------------------------------------------------------------
-
+/*VK!
 extern "C" WXEXPORT
 void wxHtmlCell_OnMouseClick(wxHtmlCell* self, wxWindow* parent, int x, int y, wxMouseEvent* event)
 {
     self->OnMouseClick(parent, x, y, *event);
 }
-
+*/
 //-----------------------------------------------------------------------------
 
 extern "C" WXEXPORT
-wxc_bool wxHtmlCell_AdjustPagebreak(wxHtmlCell* self, int* pagebreak)
+wxc_bool wxHtmlCell_AdjustPagebreak(wxHtmlCell* self, int* pagebreak, const wxArrayInt& known_pagebreaks, int pageHeight)
 {
-#if wxABI_VERSION < 20700
-    return self->AdjustPagebreak(pagebreak)?1:0;
-#else
-    wxArrayInt ai;
-    return self->AdjustPagebreak(pagebreak, ai)?1:0;
-#endif
+    return self->AdjustPagebreak(pagebreak, known_pagebreaks, pageHeight )?1:0;
+
 }
 
 //-----------------------------------------------------------------------------
@@ -801,14 +797,11 @@ void wxHtmlContainerCell_DrawInvisible(wxHtmlContainerCell* self, wxDC* dc, int 
 //-----------------------------------------------------------------------------
 
 extern "C" WXEXPORT
-wxc_bool wxHtmlContainerCell_AdjustPagebreak(wxHtmlContainerCell* self, int* pagebreak)
+wxc_bool wxHtmlContainerCell_AdjustPagebreak(wxHtmlContainerCell* self, int* pagebreak, const wxArrayInt& known_pagebreaks, int pageHeight)
 {
-#if wxABI_VERSION < 20700
-    return self->AdjustPagebreak(pagebreak)?1:0;
-#else
-    wxArrayInt ai;
-    return self->AdjustPagebreak(pagebreak, ai)?1:0;
-#endif
+
+    return self->AdjustPagebreak(pagebreak, known_pagebreaks, pageHeight)?1:0;
+
 }
 
 //-----------------------------------------------------------------------------
@@ -948,13 +941,13 @@ const wxHtmlCell* wxHtmlContainerCell_Find(wxHtmlContainerCell* self, int condit
 }
 
 //-----------------------------------------------------------------------------
-
+/*VK!
 extern "C" WXEXPORT
 void wxHtmlContainerCell_OnMouseClick(wxHtmlContainerCell* self, wxWindow* parent, int x, int y, wxMouseEvent* event)
 {
     self->OnMouseClick(parent, x, y, *event);
 }
-
+*/
 //-----------------------------------------------------------------------------
 /*
 extern "C" WXEXPORT
@@ -1089,7 +1082,7 @@ extern "C" WXEXPORT
 int wxHtmlTag_ScanParam(wxHtmlTag* self, wxc_string par, wxc_string format, void* param)
 {
 	wxString wxformat = wxstr(format);
-    return self->ScanParam(wxstr(par), wxformat.c_str(), param);
+    return self->ScanParam((wxString&)wxstr(par), (const char*) wxformat.c_str(), param);
 }
 
 //-----------------------------------------------------------------------------
@@ -1119,26 +1112,27 @@ wxc_bool wxHtmlTag_HasEnding(wxHtmlTag* self)
 //-----------------------------------------------------------------------------
 
 extern "C" WXEXPORT
-int wxHtmlTag_GetBeginPos(wxHtmlTag* self)
+wxString::const_iterator wxHtmlTag_GetBeginPos(wxHtmlTag* self)
 {
-    return self->GetBeginPos();
+    return self->GetBeginIter();
 }
 
 //-----------------------------------------------------------------------------
 
 extern "C" WXEXPORT
-int wxHtmlTag_GetEndPos1(wxHtmlTag* self)
+wxString::const_iterator wxHtmlTag_GetEndPos1(wxHtmlTag* self)
 {
-    return self->GetEndPos1();
+    return self->GetEndIter1();
 }
 
 //-----------------------------------------------------------------------------
 
 extern "C" WXEXPORT
-int wxHtmlTag_GetEndPos2(wxHtmlTag* self)
+wxString::const_iterator wxHtmlTag_GetEndPos2(wxHtmlTag* self)
 {
-    return self->GetEndPos2();
+    return self->GetEndIter2();
 }
+
 
 //-----------------------------------------------------------------------------
 // wxHtmlFilter
@@ -1663,7 +1657,7 @@ void wxHtmlParser_StopParsing(wxHtmlParser* self)
 //-----------------------------------------------------------------------------
 
 extern "C" WXEXPORT
-void wxHtmlParser_DoParsing(wxHtmlParser* self, int begin_pos, int end_pos)
+void wxHtmlParser_DoParsing(wxHtmlParser* self, const wxString::const_iterator& begin_pos, const wxString::const_iterator& end_pos)
 {
     self->DoParsing(begin_pos, end_pos);
 }
@@ -1719,7 +1713,7 @@ void wxHtmlParser_PopTagHandler(wxHtmlParser* self)
 extern "C" WXEXPORT
 wxString* wxHtmlParser_GetSource(wxHtmlParser* self)
 {
-	wxString *src = self->GetSource();
+	const wxString *src = self->GetSource();
     return new wxString(*src);
 }
 
@@ -1858,7 +1852,7 @@ void wxHtmlSelection_GetToPos(wxHtmlSelection* self, wxPoint* toPos)
 {
 	toPos = new wxPoint(self->GetToPos());
 }
-
+/*VK!
 extern "C" WXEXPORT
 void wxHtmlSelection_GetFromPrivPos(wxHtmlSelection* self, wxPoint* fromPrivPos)
 {
@@ -1888,7 +1882,7 @@ void wxHtmlSelection_ClearPrivPos(wxHtmlSelection* self)
 {
 	self->ClearPrivPos();
 }
-
+*/
 extern "C" WXEXPORT
 wxc_bool wxHtmlSelection_IsEmpty(wxHtmlSelection* self)
 {

@@ -202,7 +202,7 @@ public:
     virtual wxGridCellRenderer *Clone() const = 0;
 };
 
-// ----------------------------------------------------------------------------
+//  ----------------------------------------------------------------------------
 // wxGridCellEditor:  This class is responsible for providing and manipulating
 // the in-place edit controls for the grid.  Instances of wxGridCellEditor
 // (actually, instances of derived classes since it is an ABC) can be
@@ -1946,7 +1946,7 @@ protected:
     // this function must be public for compatibility...
 public:
     int GetRowHeight(int row) const;
-protected:
+//protected: //redefined by VK!
 
     int GetRowTop(int row) const;
     int GetRowBottom(int row) const;
@@ -2182,7 +2182,7 @@ protected:
 
     friend class wxGridHeaderCtrl;
 
-private:
+public: //redefined from 'private' by VK!
 
     // implement wxScrolledWindow method to return m_gridWin size
     virtual wxSize GetSizeAvailableForScrollTarget(const wxSize& size) wxOVERRIDE;

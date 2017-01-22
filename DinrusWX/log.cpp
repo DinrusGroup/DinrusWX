@@ -145,13 +145,13 @@ void wxLog_DontCreateOnDemand()
 }
 
 //-----------------------------------------------------------------------------
-
+/*VK!
 extern "C" WXEXPORT
 void wxLog_SetTraceMask(wxTraceMask ulMask)
 {
     wxLog::SetTraceMask(ulMask);
 }
-
+*/
 //-----------------------------------------------------------------------------
 
 extern "C" WXEXPORT
@@ -201,13 +201,13 @@ wxc_bool wxLog_GetVerbose()
 }
 
 //-----------------------------------------------------------------------------
-
+/*VK!
 extern "C" WXEXPORT
 wxTraceMask wxLog_GetTraceMask()
 {
     return wxLog::GetTraceMask();
 }
-
+*/
 //-----------------------------------------------------------------------------
 
 extern "C" WXEXPORT

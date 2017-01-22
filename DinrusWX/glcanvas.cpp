@@ -75,21 +75,31 @@ wxWindow* wxGLContext_GetWindow(wxGLContext* self)
 class _GLCanvas : public wxGLCanvas
 {
 public:
-	_GLCanvas(wxWindow* parent, wxWindowID id, const wxPoint& pos, const wxSize& size, long style, const wxChar* name,
-		int* attribList, const wxPalette& palette)
-		: wxGLCanvas(parent, id, pos, size, style, name, attribList, palette)
+
+	_GLCanvas(wxWindow *parent,
+               const wxGLAttributes& dispAttrs,
+               wxWindowID id = wxID_ANY,
+               const wxPoint& pos = wxDefaultPosition,
+               const wxSize& size = wxDefaultSize,
+               long style = 0,
+               const wxString& name = wxGLCanvasName,
+               const wxPalette& palette = wxNullPalette)
+		: wxGLCanvas(parent, dispAttrs, id, pos, size, style, name, palette)
 	{
+
 	}
-	_GLCanvas(wxWindow* parent, const wxGLContext *shared, wxWindowID id, const wxPoint& pos, const wxSize& size, long style, const wxChar* name,
-		int* attribList, const wxPalette& palette)
-		: wxGLCanvas(parent, shared, id, pos, size, style, name, attribList, palette)
+
+	_GLCanvas(wxWindow *parent,
+               wxWindowID id = wxID_ANY,
+               const int *attribList = NULL,
+               const wxPoint& pos = wxDefaultPosition,
+               const wxSize& size = wxDefaultSize,
+               long style = 0,
+               const wxString& name = wxGLCanvasName,
+               const wxPalette& palette = wxNullPalette)
+		: wxGLCanvas(parent, id, attribList, pos, size, style, name, palette)
 	{
-	}
-	_GLCanvas(wxWindow* parent, const wxGLCanvas *shared, wxWindowID id, const wxPoint& pos, const wxSize& size, long style, const wxChar* name,
-		int* attribList, const wxPalette& palette)
-		: wxGLCanvas(parent, shared, id, pos, size, style, name, attribList, palette)
-	{
-	}
+	}	
 
     DECLARE_OBJECTDELETED(_GLCanvas)
 };
@@ -98,72 +108,71 @@ public:
 // C stubs for class methods
 
 extern "C" WXEXPORT
-wxGLCanvas* wxGLCanvas_ctor(wxWindow *parent, wxWindowID id, const wxPoint* pos,
-					const wxSize* size, int style, wxc_string name, int* attribList,  const wxPalette* palette)
+wxGLCanvas* wxGLCanvas_ctor(wxWindow *parent,
+               wxGLAttributes& dispAttrs,
+               wxWindowID id,
+               wxPoint& pos,
+               wxSize& size,
+               long style,
+               const wxString& name = "GLCanvas",
+               wxPalette& palette = wxNullPalette)
 {
-	if (pos == NULL)
-		pos = &wxDefaultPosition;
 
-	if (size == NULL)
-		size = &wxDefaultSize;
+	if (id == NULL)
+		id = wxID_ANY;
+	
+	if ( pos.x == wxDefaultCoord && pos.y == wxDefaultCoord)
+		pos = wxDefaultPosition;
 
-	if (name.data==NULL)
-		name = wxc_string("GLCanvas");
+	if (size.x == wxDefaultCoord && size.y == wxDefaultCoord)
+		size = wxDefaultSize;
 
-	if (palette == NULL)
-		palette = &wxNullPalette;
+	//if (name.data == NULL)
+		//name = wxc_string("GLCanvas");
 
-	return new _GLCanvas(parent, id, *pos, *size, style, wxstr(name), attribList, *palette);
+	//if (palette == NULL)
+		//palette = wxNullPalette;
+
+	return new _GLCanvas(parent, dispAttrs, id, pos, size, style, wxstr(name), palette);
 }
 
 //-----------------------------------------------------------------------------
 
 extern "C" WXEXPORT
-wxGLCanvas* wxGLCanvas_ctor2(wxWindow *parent, const wxGLContext *shared, wxWindowID id, const wxPoint* pos,
-					const wxSize* size, int style, wxc_string name, int* attribList,  const wxPalette* palette)
+wxGLCanvas* wxGLCanvas_ctor2(wxWindow *parent,
+               wxWindowID id,
+               const int *attribList,
+               wxPoint& pos,
+                wxSize& size,
+               long style,
+               const wxString& name = "GLCanvas",
+               const wxPalette& palette = wxNullPalette)
 {
-	if (pos == NULL)
-		pos = &wxDefaultPosition;
+	
+		if (id == NULL)
+			id = wxID_ANY;
 
-	if (size == NULL)
-		size = &wxDefaultSize;
+		if (pos.x == wxDefaultCoord && pos.y == wxDefaultCoord)
+			pos = wxDefaultPosition;
 
-	if (name.data==NULL)
-		name = wxc_string("GLCanvas");
+		if (size.x == wxDefaultCoord && size.y == wxDefaultCoord)
+			size = wxDefaultSize;
 
-	if (palette == NULL)
-		palette = &wxNullPalette;
+		//if (name.data==NULL)
+			//name = wxc_string("GLCanvas");
 
-	return new _GLCanvas(parent, shared, id, *pos, *size, style, wxstr(name), attribList, *palette);
+	//	if (palette == NULL)
+		//	palette = &wxNullPalette;
+
+	return new _GLCanvas(parent, id, attribList, pos, size, style, wxstr(name), palette);
 }
 
 //-----------------------------------------------------------------------------
 
 extern "C" WXEXPORT
-wxGLCanvas* wxGLCanvas_ctor3(wxWindow *parent, const wxGLCanvas *shared, wxWindowID id, const wxPoint* pos,
-					const wxSize* size, int style, wxc_string name, int* attribList,  const wxPalette* palette)
+void wxGLCanvas_SetCurrent(wxGLCanvas* self, wxGLContext& ctxt)
 {
-	if (pos == NULL)
-		pos = &wxDefaultPosition;
-
-	if (size == NULL)
-		size = &wxDefaultSize;
-
-	if (name.data==NULL)
-		name = wxc_string("GLCanvas");
-
-	if (palette == NULL)
-		palette = &wxNullPalette;
-
-	return new _GLCanvas(parent, shared, id, *pos, *size, style, wxstr(name), attribList, *palette);
-}
-
-//-----------------------------------------------------------------------------
-
-extern "C" WXEXPORT
-void wxGLCanvas_SetCurrent(wxGLCanvas* self)
-{
-	self->SetCurrent();
+	self->SetCurrent(ctxt);
 }
 
 //-----------------------------------------------------------------------------
@@ -193,13 +202,13 @@ void wxGLCanvas_SwapBuffers(wxGLCanvas* self)
 }
 
 //-----------------------------------------------------------------------------
-
+/*VK!
 extern "C" WXEXPORT
 wxGLContext* wxGLCanvas_GetContext(wxGLCanvas* self)
 {
 	return self->GetContext();
 }
-
+*/
 #else
 #ifdef __GNUC__
 #warning "wxUSE_GLCANVAS is not set"

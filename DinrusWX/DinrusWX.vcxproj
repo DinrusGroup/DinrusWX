@@ -217,15 +217,21 @@
     <ClCompile Include="fontmisc.cpp" />
     <ClCompile Include="frame.cpp" />
     <ClCompile Include="gauge.cpp" />
+    <ClCompile Include="gdicmn.cpp" />
     <ClCompile Include="gdiobject.cpp" />
+    <ClCompile Include="glcanvas.cpp" />
     <ClCompile Include="global.cpp" />
+    <ClCompile Include="grid.cpp" />
     <ClCompile Include="gridbagsizer.cpp" />
     <ClCompile Include="gridctrl.cpp" />
     <ClCompile Include="gridsizer.cpp" />
     <ClCompile Include="helpevent.cpp" />
+    <ClCompile Include="html.cpp" />
     <ClCompile Include="htmlhelpctrl.cpp" />
     <ClCompile Include="htmllbox.cpp" />
     <ClCompile Include="icon.cpp" />
+    <ClCompile Include="iconizeevent.cpp" />
+    <ClCompile Include="idleevent.cpp" />
     <ClCompile Include="imagelist.cpp" />
     <ClCompile Include="imghandler.cpp" />
     <ClCompile Include="initdialogevent.cpp" />
@@ -235,6 +241,7 @@
     <ClCompile Include="listbox.cpp" />
     <ClCompile Include="listctrl.cpp" />
     <ClCompile Include="locale.cpp" />
+    <ClCompile Include="log.cpp" />
     <ClCompile Include="manager.cpp" />
     <ClCompile Include="maximizeevent.cpp" />
     <ClCompile Include="mdi.cpp" />
@@ -258,6 +265,7 @@
     <ClCompile Include="palette.cpp" />
     <ClCompile Include="palettechangedevent.cpp" />
     <ClCompile Include="panel.cpp" />
+    <ClCompile Include="pen.cpp" />
     <ClCompile Include="printdata.cpp" />
     <ClCompile Include="printdialog.cpp" />
     <ClCompile Include="printer.cpp" />
@@ -293,6 +301,7 @@
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|x64'">Create</PrecompiledHeader>
     </ClCompile>
+    <ClCompile Include="styledtextctrl.cpp" />
     <ClCompile Include="syscolourchangedevent.cpp" />
     <ClCompile Include="systemsettings.cpp" />
     <ClCompile Include="tabctrl.cpp" />
@@ -304,14 +313,17 @@
     <ClCompile Include="tipdialog.cpp" />
     <ClCompile Include="tipwindow.cpp" />
     <ClCompile Include="togglebutton.cpp" />
+    <ClCompile Include="toolbar.cpp" />
     <ClCompile Include="tooltip.cpp" />
     <ClCompile Include="treectrl.cpp" />
     <ClCompile Include="updateuievent.cpp" />
     <ClCompile Include="validator.cpp" />
     <ClCompile Include="vlbox.cpp" />
+    <ClCompile Include="vscroll.cpp" />
     <ClCompile Include="window.cpp" />
     <ClCompile Include="windowcreateevent.cpp" />
     <ClCompile Include="windowdestroyevent.cpp" />
+    <ClCompile Include="wizard.cpp" />
     <ClCompile Include="wizardpagesimple.cpp" />
     <ClCompile Include="wxaui.cpp" />
     <ClCompile Include="wxdatetime.cpp" />

@@ -20,7 +20,7 @@
 extern "C" WXEXPORT
 wxPen* wxPen_ctorByName(wxc_string name, int width, int style)
 {
-	return new wxPen(wxstr(name), width, style);
+	return new wxPen(wxstr(name), width, (wxPenStyle) style);
 }
 
 //-----------------------------------------------------------------------------
@@ -28,7 +28,7 @@ wxPen* wxPen_ctorByName(wxc_string name, int width, int style)
 extern "C" WXEXPORT
 wxPen* wxPen_ctor(const wxColour* col, int width, int style)
 {
-	return new wxPen(*col, width, style);
+	return new wxPen(*col, width, (wxPenStyle) style);
 }
 
 //-----------------------------------------------------------------------------
@@ -96,7 +96,7 @@ wxc_bool wxPen_Ok(wxPen* self)
 extern "C" WXEXPORT
 void wxPen_SetCap(wxPen* self, int capStyle)
 {
-	self->SetCap(capStyle);
+	self->SetCap((wxPenCap) capStyle);
 }
 
 //-----------------------------------------------------------------------------
@@ -104,7 +104,7 @@ void wxPen_SetCap(wxPen* self, int capStyle)
 extern "C" WXEXPORT
 void wxPen_SetJoin(wxPen* self, int join_style)
 {
-	self->SetJoin(join_style);
+	self->SetJoin((wxPenJoin) join_style);
 }
 
 //-----------------------------------------------------------------------------
@@ -112,6 +112,6 @@ void wxPen_SetJoin(wxPen* self, int join_style)
 extern "C" WXEXPORT
 void wxPen_SetStyle(wxPen* self, int style)
 {
-	self->SetStyle(style);
+	self->SetStyle((wxPenStyle) style);
 }
 

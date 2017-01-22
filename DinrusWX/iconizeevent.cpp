@@ -26,5 +26,5 @@ wxIconizeEvent* wxIconizeEvent_ctor(int winid, wxc_bool iconized)
 extern "C" WXEXPORT
 wxc_bool wxIconizeEvent_Iconized(wxIconizeEvent* self)
 {
-	return self->Iconized()?1:0;
+	return self->IsIconized()?1:0;
 }

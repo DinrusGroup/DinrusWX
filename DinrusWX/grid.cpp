@@ -19,9 +19,10 @@
 // wxGridEvent
 
 extern "C" WXEXPORT
-wxGridEvent* wxGridEvent_ctor(int id, wxEventType type, wxObject* obj, int row, int col, int x, int y, wxc_bool sel, wxc_bool control, wxc_bool shift, wxc_bool alt, wxc_bool meta)
+wxGridEvent* wxGridEvent_ctor(int id, wxEventType type, wxObject* obj, int row = -1, int col = -1, int x = -1, int y = -1, wxc_bool sel = true)
 {
-    return new wxGridEvent(id, type, obj, row, col, x, y, sel, control, shift, alt, meta);
+	const wxKeyboardState& kbd = wxKeyboardState();
+    return new wxGridEvent(id, type, obj, row, col, x, y, sel, kbd);
 }
 
 //-----------------------------------------------------------------------------
@@ -112,11 +113,12 @@ wxc_bool wxGridEvent_IsAllowed(wxGridEvent* self)
 // wxGridRangeSelectEvent
 
 extern "C" WXEXPORT
-wxGridRangeSelectEvent* wxGridRangeSelectEvent_ctor(int id, wxEventType type, wxObject* obj, wxGridCellCoords* topLeft, wxGridCellCoords* bottomRight, wxc_bool sel, wxc_bool control, wxc_bool shift, wxc_bool alt, wxc_bool meta)
+wxGridRangeSelectEvent* wxGridRangeSelectEvent_ctor(int id, wxEventType type, wxObject* obj, wxGridCellCoords* topLeft, wxGridCellCoords* bottomRight, wxc_bool sel = true)
 {
-    return new wxGridRangeSelectEvent(id, type, obj, *topLeft, *bottomRight, sel, control, shift, alt, meta);
+	const wxKeyboardState& kbd = wxKeyboardState();
+    return new wxGridRangeSelectEvent(id, type, obj, *topLeft, *bottomRight, sel, kbd);
 }
-
+                           
 //-----------------------------------------------------------------------------
 
 extern "C" WXEXPORT
@@ -1053,9 +1055,9 @@ void wxGrid_DisableDragRowSize(wxGrid* self)
 //-----------------------------------------------------------------------------
 
 extern "C" WXEXPORT
-wxc_bool wxGrid_CanDragRowSize(wxGrid* self)
+wxc_bool wxGrid_CanDragRowSize(wxGrid* self, int raw)
 {
-    return self->CanDragRowSize()?1:0;
+    return self->CanDragRowSize(raw)?1:0;
 }
 
 //-----------------------------------------------------------------------------
@@ -1077,9 +1079,9 @@ void wxGrid_DisableDragColSize(wxGrid* self)
 //-----------------------------------------------------------------------------
 
 extern "C" WXEXPORT
-wxc_bool wxGrid_CanDragColSize(wxGrid* self)
+wxc_bool wxGrid_CanDragColSize(wxGrid* self, int col)
 {
-    return self->CanDragColSize()?1:0;
+    return self->CanDragColSize(col)?1:0;
 }
 
 //-----------------------------------------------------------------------------
@@ -1843,7 +1845,7 @@ wxGrid* wxGrid_ctor(wxWindow* parent, int x, int y, int w, int h, int style, wxc
 extern "C" WXEXPORT
 void wxGrid_UpdateDimensions(wxGrid* self)
 {
-    self->UpdateDimensions();
+    self->CalcDimensions();
 }
 
 //-----------------------------------------------------------------------------
@@ -1851,7 +1853,7 @@ void wxGrid_UpdateDimensions(wxGrid* self)
 extern "C" WXEXPORT
 int wxGrid_GetRows(wxGrid* self)
 {
-    return self->GetRows();
+    return self->GetNumberRows();
 }
 
 //-----------------------------------------------------------------------------
@@ -1859,7 +1861,7 @@ int wxGrid_GetRows(wxGrid* self)
 extern "C" WXEXPORT
 int wxGrid_GetCols(wxGrid* self)
 {
-    return self->GetCols();
+    return self->GetNumberCols();
 }
 
 //-----------------------------------------------------------------------------
@@ -1867,7 +1869,7 @@ int wxGrid_GetCols(wxGrid* self)
 extern "C" WXEXPORT
 int wxGrid_GetCursorRow(wxGrid* self)
 {
-    return self->GetCursorRow();
+    return self->GetGridCursorRow();
 }
 
 //-----------------------------------------------------------------------------
@@ -1875,7 +1877,7 @@ int wxGrid_GetCursorRow(wxGrid* self)
 extern "C" WXEXPORT
 int wxGrid_GetCursorColumn(wxGrid* self)
 {
-    return self->GetCursorColumn();
+    return self->GetGridCursorCol();
 }
 
 //-----------------------------------------------------------------------------
@@ -1883,7 +1885,7 @@ int wxGrid_GetCursorColumn(wxGrid* self)
 extern "C" WXEXPORT
 int wxGrid_GetScrollPosX(wxGrid* self)
 {
-    return self->GetScrollPosX();
+    return  0; 
 }
 
 //-----------------------------------------------------------------------------
@@ -1891,7 +1893,7 @@ int wxGrid_GetScrollPosX(wxGrid* self)
 extern "C" WXEXPORT
 int wxGrid_GetScrollPosY(wxGrid* self)
 {
-    return self->GetScrollPosY();
+    return 0;
 }
 
 //-----------------------------------------------------------------------------
@@ -1899,7 +1901,7 @@ int wxGrid_GetScrollPosY(wxGrid* self)
 extern "C" WXEXPORT
 void wxGrid_SetScrollX(wxGrid* self, int x)
 {
-    self->SetScrollX(x);
+    
 }
 
 //-----------------------------------------------------------------------------
@@ -1907,7 +1909,7 @@ void wxGrid_SetScrollX(wxGrid* self, int x)
 extern "C" WXEXPORT
 void wxGrid_SetScrollY(wxGrid* self, int y)
 {
-    self->SetScrollY(y);
+  
 }
 
 //-----------------------------------------------------------------------------
@@ -1915,7 +1917,7 @@ void wxGrid_SetScrollY(wxGrid* self, int y)
 extern "C" WXEXPORT
 void wxGrid_SetColumnWidth(wxGrid* self, int col, int width)
 {
-    self->SetColumnWidth(col, width);
+    self->SetColSize(col, width);
 }
 
 //-----------------------------------------------------------------------------
@@ -1923,7 +1925,7 @@ void wxGrid_SetColumnWidth(wxGrid* self, int col, int width)
 extern "C" WXEXPORT
 int wxGrid_GetColumnWidth(wxGrid* self, int col)
 {
-    return self->GetColumnWidth(col);
+    return self->GetColSize(col);
 }
 
 //-----------------------------------------------------------------------------
@@ -1931,7 +1933,7 @@ int wxGrid_GetColumnWidth(wxGrid* self, int col)
 extern "C" WXEXPORT
 void wxGrid_SetRowHeight(wxGrid* self, int row, int height)
 {
-    self->SetRowHeight(row, height);
+    self->SetRowSize(row, height);
 }
 
 //-----------------------------------------------------------------------------
@@ -1939,7 +1941,7 @@ void wxGrid_SetRowHeight(wxGrid* self, int row, int height)
 extern "C" WXEXPORT
 int wxGrid_GetViewHeight(wxGrid* self)
 {
-    return self->GetViewHeight();
+    return 0;
 }
 
 //-----------------------------------------------------------------------------
@@ -1947,7 +1949,7 @@ int wxGrid_GetViewHeight(wxGrid* self)
 extern "C" WXEXPORT
 int wxGrid_GetViewWidth(wxGrid* self)
 {
-    return self->GetViewWidth();
+    return 0;
 }
 
 //-----------------------------------------------------------------------------
@@ -1955,7 +1957,10 @@ int wxGrid_GetViewWidth(wxGrid* self)
 extern "C" WXEXPORT
 void wxGrid_SetLabelSize(wxGrid* self, int orientation, int sz)
 {
-    self->SetLabelSize(orientation, sz);
+	if (orientation == wxHORIZONTAL)
+		self->SetColLabelSize(sz);
+	else
+		self->SetRowLabelSize(sz);
 }
 
 //-----------------------------------------------------------------------------
@@ -1963,7 +1968,10 @@ void wxGrid_SetLabelSize(wxGrid* self, int orientation, int sz)
 extern "C" WXEXPORT
 int wxGrid_GetLabelSize(wxGrid* self, int orientation)
 {
-    return self->GetLabelSize(orientation);
+	if (orientation == wxHORIZONTAL)
+		return self ->GetColLabelSize();
+	else
+		return self -> GetRowLabelSize();
 }
 
 //-----------------------------------------------------------------------------
@@ -1971,7 +1979,10 @@ int wxGrid_GetLabelSize(wxGrid* self, int orientation)
 extern "C" WXEXPORT
 void wxGrid_SetLabelAlignment(wxGrid* self, int orientation, int align)
 {
-    self->SetLabelAlignment(orientation, align);
+	if (orientation == wxHORIZONTAL)
+		self->SetColLabelAlignment(align, wxALIGN_INVALID);
+	else
+		self->SetRowLabelAlignment(align, wxALIGN_INVALID);
 }
 
 //-----------------------------------------------------------------------------
@@ -1979,7 +1990,17 @@ void wxGrid_SetLabelAlignment(wxGrid* self, int orientation, int align)
 extern "C" WXEXPORT
 int wxGrid_GetLabelAlignment(wxGrid* self, int orientation, int align)
 {
-    return self->GetLabelAlignment(orientation, align);
+	int h, v;
+	if (orientation == wxHORIZONTAL)
+	{
+		self->GetColLabelAlignment(&h, &v);
+		return h;
+	}
+	else
+	{
+		self->GetRowLabelAlignment(&h, &v);
+		return h;
+	}
 }
 
 //-----------------------------------------------------------------------------
@@ -1987,41 +2008,48 @@ int wxGrid_GetLabelAlignment(wxGrid* self, int orientation, int align)
 extern "C" WXEXPORT
 void wxGrid_SetLabelValue(wxGrid* self, int orientation, wxc_string val, int pos)
 {
-    self->SetLabelValue(orientation, wxstr(val), pos);
+	if (orientation == wxHORIZONTAL)
+		self->SetColLabelValue(pos, val);
+	else
+		self->SetRowLabelValue(pos, val);
 }
 
 extern "C" WXEXPORT
-wxString* wxGrid_GetLabelValue(wxGrid* self, int orientation, int pos)
+wxString wxGrid_GetLabelValue(wxGrid* self, int orientation, int pos)
 {
-    return new wxString(self->GetLabelValue(orientation, pos));
-}
-
-//-----------------------------------------------------------------------------
-
-extern "C" WXEXPORT
-wxFont* wxGrid_GetCellTextFontGrid(wxGrid* self)
-{
-    return new wxFont(self->GetCellTextFont());
-}
-
-extern "C" WXEXPORT
-wxFont* wxGrid_GetCellTextFont(wxGrid* self, int row, int col)
-{
-    return new wxFont(self->GetCellTextFont(row, col));
+    
+	if (orientation == wxHORIZONTAL)
+		return self->GetColLabelValue(pos);
+	else
+		return self->GetRowLabelValue(pos);
 }
 
 //-----------------------------------------------------------------------------
 
 extern "C" WXEXPORT
-void wxGrid_SetCellTextFontGrid(wxGrid* self, wxFont* fnt)
+wxFont wxGrid_GetCellTextFontGrid(wxGrid* self)
 {
-    self->SetCellTextFont(*fnt);
+    return self -> m_defaultCellAttr->GetFont();
 }
 
 extern "C" WXEXPORT
-void wxGrid_SetCellTextFont(wxGrid* self, wxFont* fnt, int row, int col)
+wxFont wxGrid_GetCellTextFont(wxGrid* self, int row, int col)
 {
-    self->SetCellTextFont(*fnt, row, col);
+    return self->m_defaultCellAttr->GetFont();
+}
+
+//-----------------------------------------------------------------------------
+
+extern "C" WXEXPORT
+void wxGrid_SetCellTextFontGrid(wxGrid* self, const wxFont& fnt)
+{
+    self->SetDefaultCellFont(fnt);
+}
+
+extern "C" WXEXPORT
+void wxGrid_SetCellTextFont(wxGrid* self, const wxFont& fnt, int row, int col)
+{
+    self-> SetCellFont(row, col, fnt);
 }
 
 //-----------------------------------------------------------------------------
@@ -2035,7 +2063,7 @@ void wxGrid_SetCellTextColour(wxGrid* self, int row, int col, wxColour* val)
 extern "C" WXEXPORT
 void wxGrid_SetCellTextColourGrid(wxGrid* self, wxColour* col)
 {
-    self->SetCellTextColour(*col);
+    self->SetDefaultCellTextColour(*col);
 }
 
 //-----------------------------------------------------------------------------
@@ -2043,7 +2071,7 @@ void wxGrid_SetCellTextColourGrid(wxGrid* self, wxColour* col)
 extern "C" WXEXPORT
 void wxGrid_SetCellBackgroundColourGrid(wxGrid* self, wxColour* col)
 {
-    self->SetCellBackgroundColour(*col);
+    self->SetDefaultCellBackgroundColour(*col);
 }
 
 extern "C" WXEXPORT
@@ -2057,7 +2085,7 @@ void wxGrid_SetCellBackgroundColour(wxGrid* self, int row, int col, wxColour* co
 extern "C" WXEXPORT
 wxc_bool wxGrid_GetEditable(wxGrid* self)
 {
-    return self->GetEditable()?1:0;
+    return self->IsEditable()?1:0;
 }
 
 //-----------------------------------------------------------------------------
@@ -2065,7 +2093,7 @@ wxc_bool wxGrid_GetEditable(wxGrid* self)
 extern "C" WXEXPORT
 void wxGrid_SetEditable(wxGrid* self, wxc_bool edit)
 {
-    self->SetEditable(edit);
+    self->EnableEditing(edit);
 }
 
 //-----------------------------------------------------------------------------
@@ -2073,7 +2101,7 @@ void wxGrid_SetEditable(wxGrid* self, wxc_bool edit)
 extern "C" WXEXPORT
 wxc_bool wxGrid_GetEditInPlace(wxGrid* self)
 {
-    return self->GetEditInPlace()?1:0;
+    return self->IsCellEditControlEnabled()?1:0;
 }
 
 //-----------------------------------------------------------------------------
@@ -2081,13 +2109,13 @@ wxc_bool wxGrid_GetEditInPlace(wxGrid* self)
 extern "C" WXEXPORT
 void wxGrid_SetCellAlignment(wxGrid* self, int align, int row, int col)
 {
-    self->SetCellAlignment(align, row, col);
+    self->SetCellAlignment(row, col, align, wxALIGN_CENTER);
 }
-
+/*VK!
 extern "C" WXEXPORT
 void wxGrid_SetCellAlignmentGrid(wxGrid* self, int align)
 {
-    self->SetCellAlignment(align);
+   // self->SetCellAlignment(align);
 }
 
 //-----------------------------------------------------------------------------
@@ -2095,7 +2123,7 @@ void wxGrid_SetCellAlignmentGrid(wxGrid* self, int align)
 extern "C" WXEXPORT
 void wxGrid_SetCellBitmap(wxGrid* self, wxBitmap* bitmap, int row, int col)
 {
-    self->SetCellBitmap(bitmap, row, col);
+   // self->SetCellBitmap(bitmap, row, col);
 }
 
 //-----------------------------------------------------------------------------
@@ -2103,7 +2131,7 @@ void wxGrid_SetCellBitmap(wxGrid* self, wxBitmap* bitmap, int row, int col)
 extern "C" WXEXPORT
 void wxGrid_SetDividerPen(wxGrid* self, wxPen* pen)
 {
-    self->SetDividerPen(*pen);
+    //self->SetDividerPen(*pen);
 }
 
 //-----------------------------------------------------------------------------
@@ -2111,7 +2139,7 @@ void wxGrid_SetDividerPen(wxGrid* self, wxPen* pen)
 extern "C" WXEXPORT
 wxPen* wxGrid_GetDividerPen(wxGrid* self)
 {
-    return &(self->GetDividerPen());
+   // return &(self->GetDividerPen());
 }
 
 //-----------------------------------------------------------------------------
@@ -2119,9 +2147,9 @@ wxPen* wxGrid_GetDividerPen(wxGrid* self)
 extern "C" WXEXPORT
 void wxGrid_OnActivate(wxGrid* self, wxc_bool active)
 {
-    self->OnActivate(active);
+    //self->OnActivate(active);
 }
-
+*/
 //-----------------------------------------------------------------------------
 
 extern "C" WXEXPORT
@@ -2461,9 +2489,10 @@ wxGridSizeEvent* wxGridSizeEvent_ctor()
 //-----------------------------------------------------------------------------
 
 extern "C" WXEXPORT
-wxGridSizeEvent* wxGridSizeEvent_ctorParam(int id, wxEventType type, wxObject* obj, int rowOrCol, int x, int y, wxc_bool control, wxc_bool shift, wxc_bool alt, wxc_bool meta)
+wxGridSizeEvent* wxGridSizeEvent_ctorParam(int id, wxEventType type, wxObject* obj, int rowOrCol, int x, int y)
 {
-    return new wxGridSizeEvent(id, type, obj, rowOrCol, x, y, control, shift, alt, meta);
+	const wxKeyboardState& kbd = wxKeyboardState();
+    return new wxGridSizeEvent(id, type, obj, rowOrCol, x, y, kbd);
 }
 
 //-----------------------------------------------------------------------------
@@ -2561,16 +2590,21 @@ public:
     void Create(wxWindow* parent, wxWindowID id, wxEvtHandler* evtHandler)
         { return m_Create(m_dobj, parent, id, evtHandler); }
 
-    void BeginEdit(int row, int col, wxGrid* grid)
+    void BeginEdit(int row, int col, wxGrid* grid) //override
         { return m_BeginEdit(m_dobj, row, col, grid); }
         
-    bool EndEdit(int row, int col, wxGrid* grid)
+    bool EndEdit(int row, int col, wxGrid* grid) // override
         { return m_EndEdit(m_dobj, row, col, grid); }
+		
+	void ApplyEdit(int row, int col, wxGrid* grid) //override
+	{ 
+	//to be implemented
+	}
             
-    void Reset()
+    void Reset() override
         { return m_Reset(m_dobj); }
         
-    wxGridCellEditor* Clone() const
+    wxGridCellEditor* Clone() const //override
         { return m_Clone(m_dobj); }
     
     void SetSize(const wxRect& rect)
@@ -2597,7 +2631,7 @@ public:
     void Destroy()
         { return m_Destroy(m_dobj);}
         
-    wxString GetValue() const
+    wxString GetValue() const // override
         { return wxString(m_GetValue(m_dobj));}
 
     void RegisterVirtual(wxc_object obj, Virtual_Create create,
@@ -2723,9 +2757,9 @@ void wxGridCellEditor_Show(_GridCellEditor* self, wxc_bool show, wxGridCellAttr*
 //-----------------------------------------------------------------------------
 
 extern "C" WXEXPORT
-void wxGridCellEditor_PaintBackground(_GridCellEditor* self, wxRect* rectCell, wxGridCellAttr* attr)
+void wxGridCellEditor_PaintBackground(_GridCellEditor* self, wxDC& dc, wxRect& rectCell, wxGridCellAttr& attr)
 {
-    self->wxGridCellEditor::PaintBackground(*rectCell, attr);
+    self->wxGridCellEditor::PaintBackground(dc, rectCell, attr);
 }
 
 //-----------------------------------------------------------------------------
@@ -3367,9 +3401,9 @@ void wxGridCellTextEditor_SetSize(wxGridCellTextEditor* self, wxRect* rect)
 }
 
 extern "C" WXEXPORT
-void wxGridCellTextEditor_PaintBackground(wxGridCellTextEditor* self, wxRect* rectCell, wxGridCellAttr* attr)
+void wxGridCellTextEditor_PaintBackground(wxGridCellTextEditor* self, wxDC& dc, wxRect& rectCell, wxGridCellAttr& attr)
 {
-    self->PaintBackground(*rectCell, attr);
+    self->PaintBackground(dc, rectCell, attr);
 }
 
 extern "C" WXEXPORT
@@ -3385,9 +3419,9 @@ void wxGridCellTextEditor_BeginEdit(wxGridCellTextEditor* self, int row, int col
 }
 
 extern "C" WXEXPORT
-wxc_bool wxGridCellTextEditor_EndEdit(wxGridCellTextEditor* self, int row, int col, wxGrid* grid)
+wxc_bool wxGridCellTextEditor_EndEdit(wxGridCellTextEditor* self, int row, int col, wxGrid* grid, const wxString& oldval, wxString *newval)
 {
-    return self->EndEdit(row, col, grid)?1:0;
+    return self->EndEdit(row, col, grid, oldval, newval)?1:0;
 }
 
 extern "C" WXEXPORT
@@ -3578,9 +3612,9 @@ void wxGridCellNumberEditor_BeginEdit(wxGridCellNumberEditor* self, int row, int
 }
 
 extern "C" WXEXPORT
-wxc_bool wxGridCellNumberEditor_EndEdit(wxGridCellNumberEditor* self, int row, int col, wxGrid* grid)
+wxc_bool wxGridCellNumberEditor_EndEdit(wxGridCellNumberEditor* self, int row, int col, wxGrid* grid, const wxString& oldval, wxString *newval)
 {
-    return self->EndEdit(row, col, grid)?1:0;
+    return self->EndEdit(row, col, grid, oldval, newval)?1:0;
 }
 
 extern "C" WXEXPORT
@@ -3648,9 +3682,9 @@ void wxGridCellFloatEditor_BeginEdit(wxGridCellFloatEditor* self, int row, int c
 }
 
 extern "C" WXEXPORT
-wxc_bool wxGridCellFloatEditor_EndEdit(wxGridCellFloatEditor* self, int row, int col, wxGrid* grid)
+wxc_bool wxGridCellFloatEditor_EndEdit(wxGridCellFloatEditor* self, int row, int col, wxGrid* grid, const wxString& oldval, wxString *newval)
 {
-    return self->EndEdit(row, col, grid)?1:0;
+    return self->EndEdit(row, col, grid, oldval, newval)?1:0;
 }
 
 extern "C" WXEXPORT
@@ -3739,9 +3773,9 @@ void wxGridCellBoolEditor_BeginEdit(wxGridCellBoolEditor* self, int row, int col
 }
 
 extern "C" WXEXPORT
-wxc_bool wxGridCellBoolEditor_EndEdit(wxGridCellBoolEditor* self, int row, int col, wxGrid* grid)
+wxc_bool wxGridCellBoolEditor_EndEdit(wxGridCellBoolEditor* self, int row, int col, wxGrid* grid, const wxString& oldval, wxString *newval)
 {
-    return self->EndEdit(row, col, grid)?1:0;
+    return self->EndEdit(row, col, grid, oldval, newval)?1:0;
 }
 
 extern "C" WXEXPORT
@@ -3812,9 +3846,9 @@ void wxGridCellChoiceEditor_Create(wxGridCellChoiceEditor* self, wxWindow* paren
 }
 
 extern "C" WXEXPORT
-void wxGridCellChoiceEditor_PaintBackground(wxGridCellChoiceEditor* self, wxRect* rect, wxGridCellAttr* attr)
+void wxGridCellChoiceEditor_PaintBackground(wxGridCellChoiceEditor* self, wxDC& dc, wxRect& rect, wxGridCellAttr& attr)
 {
-    self->PaintBackground(*rect, attr);
+    self->PaintBackground(dc, rect, attr);
 }
 
 extern "C" WXEXPORT
@@ -3824,9 +3858,9 @@ void wxGridCellChoiceEditor_BeginEdit(wxGridCellChoiceEditor* self, int row, int
 }
 
 extern "C" WXEXPORT
-wxc_bool wxGridCellChoiceEditor_EndEdit(wxGridCellChoiceEditor* self, int row, int col, wxGrid* grid)
+wxc_bool wxGridCellChoiceEditor_EndEdit(wxGridCellChoiceEditor* self, int row, int col, wxGrid* grid, const wxString& oldval, wxString *newval)
 {
-    return self->EndEdit(row, col, grid)?1:0;
+    return self->EndEdit(row, col, grid, oldval, newval)?1:0;
 }
 
 extern "C" WXEXPORT
@@ -4129,7 +4163,7 @@ extern "C" WXEXPORT int wxEvent_EVT_GRID_LABEL_RIGHT_DCLICK()		{ return wxEVT_GR
 extern "C" WXEXPORT int wxEvent_EVT_GRID_ROW_SIZE()			{ return wxEVT_GRID_ROW_SIZE; }
 extern "C" WXEXPORT int wxEvent_EVT_GRID_COL_SIZE()			{ return wxEVT_GRID_COL_SIZE; }
 extern "C" WXEXPORT int wxEvent_EVT_GRID_RANGE_SELECT()			{ return wxEVT_GRID_RANGE_SELECT; }
-extern "C" WXEXPORT int wxEvent_EVT_GRID_CELL_CHANGE()			{ return wxEVT_GRID_CELL_CHANGE; }
+extern "C" WXEXPORT int wxEvent_EVT_GRID_CELL_CHANGE()			{ return wxEVT_GRID_CELL_CHANGED; }
 extern "C" WXEXPORT int wxEvent_EVT_GRID_SELECT_CELL()			{ return wxEVT_GRID_SELECT_CELL; }
 extern "C" WXEXPORT int wxEvent_EVT_GRID_EDITOR_SHOWN()			{ return wxEVT_GRID_EDITOR_SHOWN; }
 extern "C" WXEXPORT int wxEvent_EVT_GRID_EDITOR_HIDDEN()		{ return wxEVT_GRID_EDITOR_HIDDEN; }

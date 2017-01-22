@@ -278,13 +278,13 @@ void wxPenList_RemovePen(wxPenList* self, wxPen* pen)
 }
 
 //-----------------------------------------------------------------------------
-
+/*VK!
 extern "C" WXEXPORT
 wxPen* wxPenList_FindOrCreatePen(wxPenList* self, wxColour* colour, int width, int style)
 {
 	return self->FindOrCreatePen(*colour, width, style);
 }
-
+*/
 //-----------------------------------------------------------------------------
 // wxBrushList
 
@@ -324,13 +324,13 @@ void wxBrushList_RemoveBrush(wxBrushList* self, wxBrush* brush)
 }
 
 //-----------------------------------------------------------------------------
-
+/*VK!
 extern "C" WXEXPORT
 wxBrush* wxBrushList_FindOrCreateBrush(wxBrushList* self, wxColour* colour, int style)
 {
 	return self->FindOrCreateBrush(*colour, style);
 }
-
+*/
 //-----------------------------------------------------------------------------
 
 extern "C" WXEXPORT
@@ -363,7 +363,7 @@ void wxFontList_RemoveFont(wxFontList* self, wxFont* font)
 	self->RemoveFont(font);
 #endif
 }
-
+/*VK!
 extern "C" WXEXPORT
 wxFont* wxFontList_FindOrCreateFont(wxFontList* self, int pointSize, int family, int style, int weight,
                              wxc_bool underline,
@@ -372,7 +372,7 @@ wxFont* wxFontList_FindOrCreateFont(wxFontList* self, int pointSize, int family,
 {
 	return self->FindOrCreateFont(pointSize, family, style, weight, underline, wxstr(face), encoding);
 }
-
+*/
 #if wxABI_VERSION < 20700
 //-----------------------------------------------------------------------------
 // wxBitmapList

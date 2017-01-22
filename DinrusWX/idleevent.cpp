@@ -56,11 +56,11 @@ wxIdleMode wxIdleEvent_GetMode()
 }
 
 //-----------------------------------------------------------------------------
-
+/*VK!
 extern "C" WXEXPORT
 wxc_bool wxIdleEvent_CanSend(wxWindow* win)
 {
 	return wxIdleEvent::CanSend(win)?1:0;
 }
-
+*/
 

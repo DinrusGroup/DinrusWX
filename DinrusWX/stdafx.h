@@ -91,6 +91,7 @@
 #include <wx/html/htmlproc.h>
 #include <wx/html/htmprint.h>
 #include <wx/html/helpctrl.h>
+#include <wx/html/htmlcell.h>
 #include <wx/htmllbox.h>
 #include <wx/image.h>
 #include <wx/mstream.h>
