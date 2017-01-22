@@ -1,4 +1,4 @@
-//-----------------------------------------------------------------------------
+﻿//-----------------------------------------------------------------------------
 // wxD - HTML.d
 // (C) 2005 bero <berobero@users.sourceforge.net>
 // based on
@@ -10,7 +10,7 @@
 // (C) 2003 Bryan Bulten
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: HTML.d,v 1.14 2009/01/16 14:06:00 afb Exp $
+// $Ид: HTML.d,v 1.14 2009/01/16 14:06:00 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.HTML;
@@ -46,25 +46,25 @@ public import wx.MouseEvent;
 	//-----------------------------------------------------------------------------
 
 		//! \cond EXTERN
-        static extern (C) IntPtr wxHtmlTag_GetParent(IntPtr self);
-        static extern (C) IntPtr wxHtmlTag_GetFirstSibling(IntPtr self);
-        static extern (C) IntPtr wxHtmlTag_GetLastSibling(IntPtr self);
-        static extern (C) IntPtr wxHtmlTag_GetChildren(IntPtr self);
-        static extern (C) IntPtr wxHtmlTag_GetPreviousSibling(IntPtr self);
-        static extern (C) IntPtr wxHtmlTag_GetNextSibling(IntPtr self);
-        static extern (C) IntPtr wxHtmlTag_GetNextTag(IntPtr self);
-        static extern (C) IntPtr wxHtmlTag_GetName(IntPtr self);
-        static extern (C) bool   wxHtmlTag_HasParam(IntPtr self, string par);
-        static extern (C) IntPtr wxHtmlTag_GetParam(IntPtr self, string par, bool with_commas);
-        static extern (C) bool   wxHtmlTag_GetParamAsColour(IntPtr self, string par, IntPtr clr);
-        static extern (C) bool   wxHtmlTag_GetParamAsInt(IntPtr self, string par, inout int clr);
-        static extern (C) int    wxHtmlTag_ScanParam(IntPtr self, string par, string format, IntPtr param);
-        static extern (C) IntPtr wxHtmlTag_GetAllParams(IntPtr self);
-        static extern (C) bool   wxHtmlTag_IsEnding(IntPtr self);
-        static extern (C) bool   wxHtmlTag_HasEnding(IntPtr self);
-        static extern (C) int    wxHtmlTag_GetBeginPos(IntPtr self);
-        static extern (C) int    wxHtmlTag_GetEndPos1(IntPtr self);
-        static extern (C) int    wxHtmlTag_GetEndPos2(IntPtr self);
+        static extern (C) ЦУк wxHtmlTag_GetParent(ЦУк сам);
+        static extern (C) ЦУк wxHtmlTag_GetFirstSibling(ЦУк сам);
+        static extern (C) ЦУк wxHtmlTag_GetLastSibling(ЦУк сам);
+        static extern (C) ЦУк wxHtmlTag_GetChildren(ЦУк сам);
+        static extern (C) ЦУк wxHtmlTag_GetPreviousSibling(ЦУк сам);
+        static extern (C) ЦУк wxHtmlTag_GetNextSibling(ЦУк сам);
+        static extern (C) ЦУк wxHtmlTag_GetNextTag(ЦУк сам);
+        static extern (C) ЦУк wxHtmlTag_GetName(ЦУк сам);
+        static extern (C) бул   wxHtmlTag_HasParam(ЦУк сам, ткст par);
+        static extern (C) ЦУк wxHtmlTag_GetParam(ЦУк сам, ткст par, бул with_commas);
+        static extern (C) бул   wxHtmlTag_GetParamAsColour(ЦУк сам, ткст par, ЦУк clr);
+        static extern (C) бул   wxHtmlTag_GetParamAsInt(ЦУк сам, ткст par, inout цел clr);
+        static extern (C) цел    wxHtmlTag_ScanParam(ЦУк сам, ткст par, ткст format, ЦУк param);
+        static extern (C) ЦУк wxHtmlTag_GetAllParams(ЦУк сам);
+        static extern (C) бул   wxHtmlTag_IsEnding(ЦУк сам);
+        static extern (C) бул   wxHtmlTag_HasEnding(ЦУк сам);
+        static extern (C) цел    wxHtmlTag_GetBeginPos(ЦУк сам);
+        static extern (C) цел    wxHtmlTag_GetEndPos1(ЦУк сам);
+        static extern (C) цел    wxHtmlTag_GetEndPos2(ЦУк сам);
 		//! \endcond
 
         //-----------------------------------------------------------------------------
@@ -72,92 +72,92 @@ public import wx.MouseEvent;
     alias HtmlTag wxHtmlTag;
     public class HtmlTag : wxObject
     {
-        public this(IntPtr wxobj) 
-            { super(wxobj); }
+        public this(ЦУк шхобъ) 
+            { super(шхобъ); }
 
-	public static wxObject New(IntPtr ptr) { return new HtmlTag(ptr); }
+	public static wxObject Нов(ЦУк ptr) { return new HtmlTag(ptr); }
         //-----------------------------------------------------------------------------
-	private static HtmlTag FindObj(IntPtr ptr) { return cast(HtmlTag)FindObject(ptr, &HtmlTag.New); }
+	private static HtmlTag FindObj(ЦУк ptr) { return cast(HtmlTag)FindObject(ptr, &HtmlTag.Нов); }
 
-        public HtmlTag Parent() { return HtmlTag.FindObj(wxHtmlTag_GetParent(wxobj)); }
+        public HtmlTag Parent() { return HtmlTag.FindObj(wxHtmlTag_GetParent(шхобъ)); }
 
-        public HtmlTag FirstSibling() { return HtmlTag.FindObj(wxHtmlTag_GetFirstSibling(wxobj)); }
+        public HtmlTag FirstSibling() { return HtmlTag.FindObj(wxHtmlTag_GetFirstSibling(шхобъ)); }
 
-        public HtmlTag LastSibling() { return HtmlTag.FindObj(wxHtmlTag_GetLastSibling(wxobj)); }
+        public HtmlTag LastSibling() { return HtmlTag.FindObj(wxHtmlTag_GetLastSibling(шхобъ)); }
 
-        public HtmlTag Children() { return HtmlTag.FindObj(wxHtmlTag_GetChildren(wxobj)); }
-
-        //-----------------------------------------------------------------------------
-
-        public HtmlTag PreviousSibling() { return HtmlTag.FindObj(wxHtmlTag_GetPreviousSibling(wxobj)); }
-
-        public HtmlTag NextSibling() { return HtmlTag.FindObj(wxHtmlTag_GetNextSibling(wxobj)); }
+        public HtmlTag Children() { return HtmlTag.FindObj(wxHtmlTag_GetChildren(шхобъ)); }
 
         //-----------------------------------------------------------------------------
 
-        public HtmlTag NextTag() { return HtmlTag.FindObj(wxHtmlTag_GetNextTag(wxobj)); }
+        public HtmlTag PreviousSibling() { return HtmlTag.FindObj(wxHtmlTag_GetPreviousSibling(шхобъ)); }
+
+        public HtmlTag NextSibling() { return HtmlTag.FindObj(wxHtmlTag_GetNextSibling(шхобъ)); }
 
         //-----------------------------------------------------------------------------
 
-        public string Name() { return cast(string) new wxString(wxHtmlTag_GetName(wxobj), true); }
+        public HtmlTag NextTag() { return HtmlTag.FindObj(wxHtmlTag_GetNextTag(шхобъ)); }
 
         //-----------------------------------------------------------------------------
 
-        public bool HasParam(string par)
+        public ткст Имя() { return cast(ткст) new wxString(wxHtmlTag_GetName(шхобъ), да); }
+
+        //-----------------------------------------------------------------------------
+
+        public бул HasParam(ткст par)
         {
-            return wxHtmlTag_HasParam(wxobj, par);
+            return wxHtmlTag_HasParam(шхобъ, par);
         }
 
-        public string GetParam(string par, bool with_commas)
+        public ткст GetParam(ткст par, бул with_commas)
         {
-            return cast(string) new wxString(wxHtmlTag_GetParam(wxobj, par, with_commas), true);
-        }
-
-        //-----------------------------------------------------------------------------
-
-        public bool GetParamAsColour(string par, Colour clr)
-        {
-            return wxHtmlTag_GetParamAsColour(wxobj, par, wxObject.SafePtr(clr));
+            return cast(ткст) new wxString(wxHtmlTag_GetParam(шхобъ, par, with_commas), да);
         }
 
         //-----------------------------------------------------------------------------
 
-        public bool GetParamAsInt(string par, out int clr)
+        public бул GetParamAsColour(ткст par, Цвет clr)
+        {
+            return wxHtmlTag_GetParamAsColour(шхобъ, par, wxObject.SafePtr(clr));
+        }
+
+        //-----------------------------------------------------------------------------
+
+        public бул GetParamAsInt(ткст par, out цел clr)
         {
             clr = 0;
-            return wxHtmlTag_GetParamAsInt(wxobj, par, clr);
+            return wxHtmlTag_GetParamAsInt(шхобъ, par, clr);
         }
 
         //-----------------------------------------------------------------------------
 
-        public int ScanParam(string par, string format, wxObject param)
+        public цел ScanParam(ткст par, ткст format, wxObject param)
         {
-            return wxHtmlTag_ScanParam(wxobj, par, format, wxObject.SafePtr(param));
+            return wxHtmlTag_ScanParam(шхобъ, par, format, wxObject.SafePtr(param));
         }
 
         //-----------------------------------------------------------------------------
 
-        public string AllParams() { return cast(string) new wxString(wxHtmlTag_GetAllParams(wxobj), true); }
+        public ткст AllParams() { return cast(ткст) new wxString(wxHtmlTag_GetAllParams(шхобъ), да); }
 
         //-----------------------------------------------------------------------------
 
-        /* public bool IsEnding() { return wxHtmlTag_IsEnding(wxobj); } */
+        /* public бул IsEnding() { return wxHtmlTag_IsEnding(шхобъ); } */
 
-        public bool HasEnding() { return wxHtmlTag_HasEnding(wxobj); }
+        public бул HasEnding() { return wxHtmlTag_HasEnding(шхобъ); }
 
         //-----------------------------------------------------------------------------
 
-        public int BeginPos() { return wxHtmlTag_GetBeginPos(wxobj); }
+        public цел BeginPos() { return wxHtmlTag_GetBeginPos(шхобъ); }
 
-        public int EndPos1() { return wxHtmlTag_GetEndPos1(wxobj); }
+        public цел EndPos1() { return wxHtmlTag_GetEndPos1(шхобъ); }
 
-        public int EndPos2() { return wxHtmlTag_GetEndPos2(wxobj); }
+        public цел EndPos2() { return wxHtmlTag_GetEndPos2(шхобъ); }
 
         //-----------------------------------------------------------------------------
 /+
-        public static implicit operator HtmlTag (IntPtr obj) 
+        public static implicit operator HtmlTag (ЦУк объ) 
         {
-            return cast(HtmlTag)FindObject(obj, &HtmlTag.New);
+            return cast(HtmlTag)FindObject(объ, &HtmlTag.Нов);
         }
 +/
     }
@@ -166,40 +166,40 @@ public import wx.MouseEvent;
     {
         // TODO
 
-        public this(IntPtr wxobj) 
-            { super(wxobj); }
+        public this(ЦУк шхобъ) 
+            { super(шхобъ); }
 
-        /*public abstract bool CanRead(FSFile file);
-        public abstract string ReadFile(FSFile file);*/
+        /*public abstract бул Читается(FSFile file);
+        public abstract ткст ReadFile(FSFile file);*/
     }
 
 	//-----------------------------------------------------------------------------
 
         //! \cond EXTERN
-        static extern (C) IntPtr wxHtmlCell_ctor();
-        static extern (C) void   wxHtmlCell_SetParent(IntPtr self, IntPtr p);
-        static extern (C) IntPtr wxHtmlCell_GetParent(IntPtr self);
-        static extern (C) int    wxHtmlCell_GetPosX(IntPtr self);
-        static extern (C) int    wxHtmlCell_GetPosY(IntPtr self);
-        static extern (C) int    wxHtmlCell_GetWidth(IntPtr self);
-        static extern (C) int    wxHtmlCell_GetHeight(IntPtr self);
-        static extern (C) int    wxHtmlCell_GetDescent(IntPtr self);
-        static extern (C) IntPtr wxHtmlCell_GetId(IntPtr self);
-        static extern (C) void   wxHtmlCell_SetId(IntPtr self, string id);
-        static extern (C) IntPtr wxHtmlCell_GetNext(IntPtr self);
-        static extern (C) void   wxHtmlCell_SetPos(IntPtr self, int x, int y);
-        static extern (C) void   wxHtmlCell_SetLink(IntPtr self, IntPtr link);
-        static extern (C) void   wxHtmlCell_SetNext(IntPtr self, IntPtr cell);
-        static extern (C) void   wxHtmlCell_Layout(IntPtr self, int w);
-        static extern (C) void   wxHtmlCell_Draw(IntPtr self, IntPtr dc, int x, int y, int view_y1, int view_y2, IntPtr info);
-        static extern (C) void   wxHtmlCell_DrawInvisible(IntPtr self, IntPtr dc, int x, int y, IntPtr info);
-        static extern (C) IntPtr wxHtmlCell_Find(IntPtr self, int condition, IntPtr param);
-        //static extern (C) void   wxHtmlCell_OnMouseClick(IntPtr self, IntPtr parent, int x, int y, IntPtr evt);
-        static extern (C) bool   wxHtmlCell_AdjustPagebreak(IntPtr self, inout int pagebreak);
-        static extern (C) void   wxHtmlCell_SetCanLiveOnPagebreak(IntPtr self, bool can);
-        static extern (C) void   wxHtmlCell_GetHorizontalConstraints(IntPtr self, inout int left, inout int right);
-        static extern (C) bool   wxHtmlCell_IsTerminalCell(IntPtr self);
-        static extern (C) IntPtr wxHtmlCell_FindCellByPos(IntPtr self, int x, int y);
+        static extern (C) ЦУк wxHtmlCell_ctor();
+        static extern (C) проц   wxHtmlCell_SetParent(ЦУк сам, ЦУк p);
+        static extern (C) ЦУк wxHtmlCell_GetParent(ЦУк сам);
+        static extern (C) цел    wxHtmlCell_GetPosX(ЦУк сам);
+        static extern (C) цел    wxHtmlCell_GetPosY(ЦУк сам);
+        static extern (C) цел    wxHtmlCell_GetWidth(ЦУк сам);
+        static extern (C) цел    wxHtmlCell_GetHeight(ЦУк сам);
+        static extern (C) цел    wxHtmlCell_GetDescent(ЦУк сам);
+        static extern (C) ЦУк wxHtmlCell_GetId(ЦУк сам);
+        static extern (C) проц   wxHtmlCell_SetId(ЦУк сам, ткст ид);
+        static extern (C) ЦУк wxHtmlCell_GetNext(ЦУк сам);
+        static extern (C) проц   wxHtmlCell_SetPos(ЦУк сам, цел x, цел y);
+        static extern (C) проц   wxHtmlCell_SetLink(ЦУк сам, ЦУк link);
+        static extern (C) проц   wxHtmlCell_SetNext(ЦУк сам, ЦУк cell);
+        static extern (C) проц   wxHtmlCell_Layout(ЦУк сам, цел w);
+        static extern (C) проц   wxHtmlCell_Draw(ЦУк сам, ЦУк dc, цел x, цел y, цел view_y1, цел view_y2, ЦУк info);
+        static extern (C) проц   wxHtmlCell_DrawInvisible(ЦУк сам, ЦУк dc, цел x, цел y, ЦУк info);
+        static extern (C) ЦУк wxHtmlCell_Find(ЦУк сам, цел condition, ЦУк param);
+        //static extern (C) проц   wxHtmlCell_OnMouseClick(ЦУк сам, ЦУк родитель, цел x, цел y, ЦУк evt);
+        static extern (C) бул   wxHtmlCell_AdjustPagebreak(ЦУк сам, inout цел pagebreak);
+        static extern (C) проц   wxHtmlCell_SetCanLiveOnPagebreak(ЦУк сам, бул can);
+        static extern (C) проц   wxHtmlCell_GetHorizontalConstraints(ЦУк сам, inout цел left, inout цел right);
+        static extern (C) бул   wxHtmlCell_IsTerminalCell(ЦУк сам);
+        static extern (C) ЦУк wxHtmlCell_FindCellByPos(ЦУк сам, цел x, цел y);
         //! \endcond
 
     alias HtmlCell wxHtmlCell;
@@ -207,136 +207,136 @@ public import wx.MouseEvent;
     {
         //-----------------------------------------------------------------------------
 
-        public this(IntPtr wxobj) 
-            { super(wxobj); }
+        public this(ЦУк шхобъ) 
+            { super(шхобъ); }
 
         public this()
             { super(wxHtmlCell_ctor()); }
 
-	public static wxObject New(IntPtr ptr) { return new HtmlCell(ptr); }
-	public static HtmlCell FindObj(IntPtr ptr) { return cast(HtmlCell)FindObject(ptr, &HtmlCell.New); }
+	public static wxObject Нов(ЦУк ptr) { return new HtmlCell(ptr); }
+	public static HtmlCell FindObj(ЦУк ptr) { return cast(HtmlCell)FindObject(ptr, &HtmlCell.Нов); }
 	
         //-----------------------------------------------------------------------------
 
-        public void Parent(HtmlContainerCell value) { wxHtmlCell_SetParent(wxobj, wxObject.SafePtr(value)); }
-        public HtmlContainerCell Parent() { return cast(HtmlContainerCell)FindObject(wxHtmlCell_GetParent(wxobj), &HtmlContainerCell.New); }
+        public проц Parent(HtmlContainerCell значение) { wxHtmlCell_SetParent(шхобъ, wxObject.SafePtr(значение)); }
+        public HtmlContainerCell Parent() { return cast(HtmlContainerCell)FindObject(wxHtmlCell_GetParent(шхобъ), &HtmlContainerCell.Нов); }
 
         //-----------------------------------------------------------------------------
 
-        public int X() { return wxHtmlCell_GetPosX(wxobj); }
+        public цел X() { return wxHtmlCell_GetPosX(шхобъ); }
 
-        public int Y() { return wxHtmlCell_GetPosY(wxobj); }
+        public цел Y() { return wxHtmlCell_GetPosY(шхобъ); }
 
-        public int Width() { return wxHtmlCell_GetWidth(wxobj); }
+        public цел Ширина() { return wxHtmlCell_GetWidth(шхобъ); }
 
-        public int Height() { return wxHtmlCell_GetHeight(wxobj); }
+        public цел Высота() { return wxHtmlCell_GetHeight(шхобъ); }
 
 	/* helper */
-	public int PosX() { return X; }
-	public int PosY() { return Y; }
+	public цел PosX() { return X; }
+	public цел PosY() { return Y; }
 
-	public Point Position() { return Point(X,Y); }
-	public void  Position(Point pt) { SetPos(pt.X,pt.Y); }
+	public Точка Положение() { return Точка(X,Y); }
+	public проц  Положение(Точка pt) { SetPos(pt.X,pt.Y); }
 
-	public Size size() { return Size(Width,Height); }
+	public Размер size() { return Размер(Ширина,Высота); }
 
-	public Rectangle rect() { return Rectangle(X,Y,Width,Height); }
-
-        //-----------------------------------------------------------------------------
-
-        public int Descent() { return wxHtmlCell_GetDescent(wxobj); }
+	public Прямоугольник прям() { return Прямоугольник(X,Y,Ширина,Высота); }
 
         //-----------------------------------------------------------------------------
 
-        public /+virtual+/ string Id() { return cast(string) new wxString(wxHtmlCell_GetId(wxobj), true); }
-        public /+virtual+/ void Id(string value) { wxHtmlCell_SetId(wxobj, value); }
+        public цел Descent() { return wxHtmlCell_GetDescent(шхобъ); }
 
         //-----------------------------------------------------------------------------
 
-        public HtmlCell Next() { return cast(HtmlCell)FindObject(wxHtmlCell_GetNext(wxobj), &HtmlCell.New); }
-        public void Next(HtmlCell value) { wxHtmlCell_SetNext(wxobj, wxObject.SafePtr(value)); }
+        public /+virtual+/ ткст Ид() { return cast(ткст) new wxString(wxHtmlCell_GetId(шхобъ), да); }
+        public /+virtual+/ проц Ид(ткст значение) { wxHtmlCell_SetId(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public void SetPos(int x, int y)
+        public HtmlCell Next() { return cast(HtmlCell)FindObject(wxHtmlCell_GetNext(шхобъ), &HtmlCell.Нов); }
+        public проц Next(HtmlCell значение) { wxHtmlCell_SetNext(шхобъ, wxObject.SafePtr(значение)); }
+
+        //-----------------------------------------------------------------------------
+
+        public проц SetPos(цел x, цел y)
         {
-            wxHtmlCell_SetPos(wxobj, x, y);
+            wxHtmlCell_SetPos(шхобъ, x, y);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void Link(HtmlLinkInfo value) { wxHtmlCell_SetLink(wxobj, wxObject.SafePtr(value)); }
+        public проц Link(HtmlLinkInfo значение) { wxHtmlCell_SetLink(шхобъ, wxObject.SafePtr(значение)); }
 
         //-----------------------------------------------------------------------------
 
-        public /+virtual+/ void Layout(int w)
+        public /+virtual+/ проц Layout(цел w)
         {
-            wxHtmlCell_Layout(wxobj, w);
+            wxHtmlCell_Layout(шхобъ, w);
         }
 
         //-----------------------------------------------------------------------------
 
-        public /+virtual+/ void Draw(DC dc, int x, int y, int view_y1, int view_y2, HtmlRenderingInfo info)
+        public /+virtual+/ проц Draw(DC dc, цел x, цел y, цел view_y1, цел view_y2, HtmlRenderingInfo info)
         {
-            wxHtmlCell_Draw(wxobj, wxObject.SafePtr(dc), x, y, view_y1, view_y2, wxObject.SafePtr(info));
+            wxHtmlCell_Draw(шхобъ, wxObject.SafePtr(dc), x, y, view_y1, view_y2, wxObject.SafePtr(info));
         }
 
         //-----------------------------------------------------------------------------
 
-        public /+virtual+/ void DrawInvisible(DC dc, int x, int y, HtmlRenderingInfo info)
+        public /+virtual+/ проц DrawInvisible(DC dc, цел x, цел y, HtmlRenderingInfo info)
         {
-            wxHtmlCell_DrawInvisible(wxobj, wxObject.SafePtr(dc), x, y, wxObject.SafePtr(info));
+            wxHtmlCell_DrawInvisible(шхобъ, wxObject.SafePtr(dc), x, y, wxObject.SafePtr(info));
         }
 
         //-----------------------------------------------------------------------------
 
-        public /+virtual+/ HtmlCell Find(int condition, wxObject param)
+        public /+virtual+/ HtmlCell Find(цел condition, wxObject param)
         {
-            return cast(HtmlCell)FindObject(wxHtmlCell_Find(wxobj, condition, wxObject.SafePtr(param)), &HtmlCell.New);
+            return cast(HtmlCell)FindObject(wxHtmlCell_Find(шхобъ, condition, wxObject.SafePtr(param)), &HtmlCell.Нов);
         }
 
         //-----------------------------------------------------------------------------
 /+
-        public /+virtual+/ void OnMouseClick(Window parent, int x, int y, MouseEvent evt)
+        public /+virtual+/ проц OnMouseClick(Окно родитель, цел x, цел y, MouseEvent evt)
         {
-            wxHtmlCell_OnMouseClick(wxobj, wxObject.SafePtr(parent), x, y, wxObject.SafePtr(evt));
+            wxHtmlCell_OnMouseClick(шхобъ, wxObject.SafePtr(родитель), x, y, wxObject.SafePtr(evt));
         }
 +/
         //-----------------------------------------------------------------------------
 
-        public /+virtual+/ bool AdjustPagebreak(inout int pagebreak)
+        public /+virtual+/ бул AdjustPagebreak(inout цел pagebreak)
         {
-            return wxHtmlCell_AdjustPagebreak(wxobj, pagebreak);
+            return wxHtmlCell_AdjustPagebreak(шхобъ, pagebreak);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void CanLiveOnPagebreak(bool value) { wxHtmlCell_SetCanLiveOnPagebreak(wxobj, value); }
+        public проц CanLiveOnPagebreak(бул значение) { wxHtmlCell_SetCanLiveOnPagebreak(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 /*
-        public void GetHorizontalConstraints(out int left, out int right)
+        public проц GetHorizontalConstraints(out цел left, out цел right)
         {
             left = right = 0;
-            wxHtmlCell_GetHorizontalConstraints(wxobj, left, right);
+            wxHtmlCell_GetHorizontalConstraints(шхобъ, left, right);
         }
 */
         //-----------------------------------------------------------------------------
 
-        public /+virtual+/ bool IsTerminalCell() { return wxHtmlCell_IsTerminalCell(wxobj); }
+        public /+virtual+/ бул IsTerminalCell() { return wxHtmlCell_IsTerminalCell(шхобъ); }
 
         //-----------------------------------------------------------------------------
 
-        public HtmlCell FindCellByPos(int x, int y)
+        public HtmlCell FindCellByPos(цел x, цел y)
         {
-            return cast(HtmlCell)FindObject(wxHtmlCell_FindCellByPos(wxobj, x, y), &HtmlCell.New);
+            return cast(HtmlCell)FindObject(wxHtmlCell_FindCellByPos(шхобъ, x, y), &HtmlCell.Нов);
         }
 
         //-----------------------------------------------------------------------------
 /+
-        public static implicit operator HtmlCell (IntPtr obj) 
+        public static implicit operator HtmlCell (ЦУк объ) 
         {
-            return cast(HtmlCell)FindObject(obj, &HtmlCell.New);
+            return cast(HtmlCell)FindObject(объ, &HtmlCell.Нов);
         }
 +/
     }
@@ -344,9 +344,9 @@ public import wx.MouseEvent;
 	//-----------------------------------------------------------------------------
 
         //! \cond EXTERN
-		static extern (C) IntPtr wxHtmlFontCell_ctor(IntPtr font);
-		static extern (C) void   wxHtmlFontCell_Draw(IntPtr self, IntPtr dc, int x, int y, int view_y1, int view_y2, IntPtr info);
-		static extern (C) void   wxHtmlFontCell_DrawInvisible(IntPtr self, IntPtr dc, int x, int y, IntPtr info);
+		static extern (C) ЦУк wxHtmlFontCell_ctor(ЦУк шрифт);
+		static extern (C) проц   wxHtmlFontCell_Draw(ЦУк сам, ЦУк dc, цел x, цел y, цел view_y1, цел view_y2, ЦУк info);
+		static extern (C) проц   wxHtmlFontCell_DrawInvisible(ЦУк сам, ЦУк dc, цел x, цел y, ЦУк info);
         //! \endcond
 
 	alias HtmlFontCell wxHtmlFontCell;
@@ -354,57 +354,57 @@ public import wx.MouseEvent;
 	{
 		//-----------------------------------------------------------------------------
 
-		public this(IntPtr wxobj)
-			{ super(wxobj);}
+		public this(ЦУк шхобъ)
+			{ super(шхобъ);}
 
-		public this(Font font)
-			{ this(wxHtmlFontCell_ctor(wxObject.SafePtr(font))); }
+		public this(Шрифт шрифт)
+			{ this(wxHtmlFontCell_ctor(wxObject.SafePtr(шрифт))); }
 
 		//-----------------------------------------------------------------------------
 
-		public override void Draw(DC dc, int x, int y, int view_y1, int view_y2, HtmlRenderingInfo info)
+		public override проц Draw(DC dc, цел x, цел y, цел view_y1, цел view_y2, HtmlRenderingInfo info)
 		{
-			wxHtmlFontCell_Draw(wxobj, wxObject.SafePtr(dc), x, y, view_y1, view_y2, wxObject.SafePtr(info));
+			wxHtmlFontCell_Draw(шхобъ, wxObject.SafePtr(dc), x, y, view_y1, view_y2, wxObject.SafePtr(info));
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public override void DrawInvisible(DC dc, int x, int y, HtmlRenderingInfo info)
+		public override проц DrawInvisible(DC dc, цел x, цел y, HtmlRenderingInfo info)
 		{
-			wxHtmlFontCell_DrawInvisible(wxobj, wxObject.SafePtr(dc), x, y, wxObject.SafePtr(info));
+			wxHtmlFontCell_DrawInvisible(шхобъ, wxObject.SafePtr(dc), x, y, wxObject.SafePtr(info));
 		}
 	}
 
 	//-----------------------------------------------------------------------------
 
         //! \cond EXTERN
-        static extern (C) IntPtr wxHtmlContainerCell_ctor(IntPtr parent);
-        static extern (C) void   wxHtmlContainerCell_Layout(IntPtr self, int w);
-        static extern (C) void   wxHtmlContainerCell_Draw(IntPtr self, IntPtr dc, int x, int y, int view_y1, int view_y2, IntPtr info);
-        static extern (C) void   wxHtmlContainerCell_DrawInvisible(IntPtr self, IntPtr dc, int x, int y, IntPtr info);
-        static extern (C) bool   wxHtmlContainerCell_AdjustPagebreak(IntPtr self, inout int pagebreak);
-        static extern (C) void   wxHtmlContainerCell_InsertCell(IntPtr self, IntPtr cell);
-        static extern (C) void   wxHtmlContainerCell_SetAlignHor(IntPtr self, int al);
-        static extern (C) int    wxHtmlContainerCell_GetAlignHor(IntPtr self);
-        static extern (C) void   wxHtmlContainerCell_SetAlignVer(IntPtr self, int al);
-        static extern (C) int    wxHtmlContainerCell_GetAlignVer(IntPtr self);
-        static extern (C) void   wxHtmlContainerCell_SetIndent(IntPtr self, int i, int what, int units);
-        static extern (C) int    wxHtmlContainerCell_GetIndent(IntPtr self, int ind);
-        static extern (C) int    wxHtmlContainerCell_GetIndentUnits(IntPtr self, int ind);
-        static extern (C) void   wxHtmlContainerCell_SetAlign(IntPtr self, IntPtr tag);
-        static extern (C) void   wxHtmlContainerCell_SetWidthFloat(IntPtr self, int w, int units);
-        static extern (C) void   wxHtmlContainerCell_SetWidthFloatTag(IntPtr self, IntPtr tag, double pixel_scale);
-        static extern (C) void   wxHtmlContainerCell_SetMinHeight(IntPtr self, int h, int alignment);
-        static extern (C) void   wxHtmlContainerCell_SetBackgroundColour(IntPtr self, IntPtr clr);
-        static extern (C) IntPtr wxHtmlContainerCell_GetBackgroundColour(IntPtr self);
-        static extern (C) void   wxHtmlContainerCell_SetBorder(IntPtr self, IntPtr clr1, IntPtr clr2);
-        static extern (C) IntPtr wxHtmlContainerCell_GetLink(IntPtr self, int x, int y);
-        static extern (C) IntPtr wxHtmlContainerCell_Find(IntPtr self, int condition, IntPtr param);
-      //  static extern (C) void   wxHtmlContainerCell_OnMouseClick(IntPtr self, IntPtr parent, int x, int y, IntPtr evt);
-        static extern (C) void   wxHtmlContainerCell_GetHorizontalConstraints(IntPtr self, inout int left, inout int right);
-        static extern (C) IntPtr wxHtmlContainerCell_GetFirstCell(IntPtr self);
-        static extern (C) bool   wxHtmlContainerCell_IsTerminalCell(IntPtr self);
-        static extern (C) IntPtr wxHtmlContainerCell_FindCellByPos(IntPtr self, int x, int y);
+        static extern (C) ЦУк wxHtmlContainerCell_ctor(ЦУк родитель);
+        static extern (C) проц   wxHtmlContainerCell_Layout(ЦУк сам, цел w);
+        static extern (C) проц   wxHtmlContainerCell_Draw(ЦУк сам, ЦУк dc, цел x, цел y, цел view_y1, цел view_y2, ЦУк info);
+        static extern (C) проц   wxHtmlContainerCell_DrawInvisible(ЦУк сам, ЦУк dc, цел x, цел y, ЦУк info);
+        static extern (C) бул   wxHtmlContainerCell_AdjustPagebreak(ЦУк сам, inout цел pagebreak);
+        static extern (C) проц   wxHtmlContainerCell_InsertCell(ЦУк сам, ЦУк cell);
+        static extern (C) проц   wxHtmlContainerCell_SetAlignHor(ЦУк сам, цел al);
+        static extern (C) цел    wxHtmlContainerCell_GetAlignHor(ЦУк сам);
+        static extern (C) проц   wxHtmlContainerCell_SetAlignVer(ЦУк сам, цел al);
+        static extern (C) цел    wxHtmlContainerCell_GetAlignVer(ЦУк сам);
+        static extern (C) проц   wxHtmlContainerCell_SetIndent(ЦУк сам, цел i, цел what, цел units);
+        static extern (C) цел    wxHtmlContainerCell_GetIndent(ЦУк сам, цел ind);
+        static extern (C) цел    wxHtmlContainerCell_GetIndentUnits(ЦУк сам, цел ind);
+        static extern (C) проц   wxHtmlContainerCell_SetAlign(ЦУк сам, ЦУк tag);
+        static extern (C) проц   wxHtmlContainerCell_SetWidthFloat(ЦУк сам, цел w, цел units);
+        static extern (C) проц   wxHtmlContainerCell_SetWidthFloatTag(ЦУк сам, ЦУк tag, дво pixel_scale);
+        static extern (C) проц   wxHtmlContainerCell_SetMinHeight(ЦУк сам, цел h, цел alignment);
+        static extern (C) проц   wxHtmlContainerCell_SetBackgroundColour(ЦУк сам, ЦУк clr);
+        static extern (C) ЦУк wxHtmlContainerCell_GetBackgroundColour(ЦУк сам);
+        static extern (C) проц   wxHtmlContainerCell_SetBorder(ЦУк сам, ЦУк clr1, ЦУк clr2);
+        static extern (C) ЦУк wxHtmlContainerCell_GetLink(ЦУк сам, цел x, цел y);
+        static extern (C) ЦУк wxHtmlContainerCell_Find(ЦУк сам, цел condition, ЦУк param);
+      //  static extern (C) проц   wxHtmlContainerCell_OnMouseClick(ЦУк сам, ЦУк родитель, цел x, цел y, ЦУк evt);
+        static extern (C) проц   wxHtmlContainerCell_GetHorizontalConstraints(ЦУк сам, inout цел left, inout цел right);
+        static extern (C) ЦУк wxHtmlContainerCell_GetFirstCell(ЦУк сам);
+        static extern (C) бул   wxHtmlContainerCell_IsTerminalCell(ЦУк сам);
+        static extern (C) ЦУк wxHtmlContainerCell_FindCellByPos(ЦУк сам, цел x, цел y);
         //! \endcond
 
     alias HtmlContainerCell wxHtmlContainerCell;
@@ -412,163 +412,163 @@ public import wx.MouseEvent;
     {
         //-----------------------------------------------------------------------------
 
-        public this(IntPtr wxobj)
-            { super(wxobj); }
+        public this(ЦУк шхобъ)
+            { super(шхобъ); }
 
-        public this(HtmlContainerCell parent)
-            { this(wxHtmlContainerCell_ctor(wxObject.SafePtr(parent))); }
+        public this(HtmlContainerCell родитель)
+            { this(wxHtmlContainerCell_ctor(wxObject.SafePtr(родитель))); }
 
-	public static wxObject New(IntPtr ptr) { return new HtmlContainerCell(ptr); }
+	public static wxObject Нов(ЦУк ptr) { return new HtmlContainerCell(ptr); }
 
         //-----------------------------------------------------------------------------
 
-        public override void Layout(int w)
+        public override проц Layout(цел w)
         {
-            wxHtmlContainerCell_Layout(wxobj, w);
+            wxHtmlContainerCell_Layout(шхобъ, w);
         }
 
         //-----------------------------------------------------------------------------
 
-        public override void Draw(DC dc, int x, int y, int view_y1, int view_y2, HtmlRenderingInfo info)
+        public override проц Draw(DC dc, цел x, цел y, цел view_y1, цел view_y2, HtmlRenderingInfo info)
         {
-            wxHtmlContainerCell_Draw(wxobj, wxObject.SafePtr(dc), x, y, view_y1, view_y2, wxObject.SafePtr(info));
+            wxHtmlContainerCell_Draw(шхобъ, wxObject.SafePtr(dc), x, y, view_y1, view_y2, wxObject.SafePtr(info));
         }
 
         //-----------------------------------------------------------------------------
 
-        public override void DrawInvisible(DC dc, int x, int y, HtmlRenderingInfo info)
+        public override проц DrawInvisible(DC dc, цел x, цел y, HtmlRenderingInfo info)
         {
-            wxHtmlContainerCell_DrawInvisible(wxobj, wxObject.SafePtr(dc), x, y, wxObject.SafePtr(info));
+            wxHtmlContainerCell_DrawInvisible(шхобъ, wxObject.SafePtr(dc), x, y, wxObject.SafePtr(info));
         }
 
         //-----------------------------------------------------------------------------
 
-        public override bool AdjustPagebreak(inout int pagebreak)
+        public override бул AdjustPagebreak(inout цел pagebreak)
         {
-            return wxHtmlContainerCell_AdjustPagebreak(wxobj, pagebreak);
+            return wxHtmlContainerCell_AdjustPagebreak(шхобъ, pagebreak);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void InsertCell(HtmlCell cell)
+        public проц InsertCell(HtmlCell cell)
         {
-            wxHtmlContainerCell_InsertCell(wxobj, wxObject.SafePtr(cell));
+            wxHtmlContainerCell_InsertCell(шхобъ, wxObject.SafePtr(cell));
         }
 
         //-----------------------------------------------------------------------------
 
-        public void AlignHor(int value) { wxHtmlContainerCell_SetAlignHor(wxobj, value); }
-        public int AlignHor() { return wxHtmlContainerCell_GetAlignHor(wxobj); }
+        public проц AlignHor(цел значение) { wxHtmlContainerCell_SetAlignHor(шхобъ, значение); }
+        public цел AlignHor() { return wxHtmlContainerCell_GetAlignHor(шхобъ); }
 
         //-----------------------------------------------------------------------------
 
-        public void AlignVer(int value) { wxHtmlContainerCell_SetAlignVer(wxobj, value); }
-        public int AlignVer() { return wxHtmlContainerCell_GetAlignVer(wxobj); }
+        public проц AlignVer(цел значение) { wxHtmlContainerCell_SetAlignVer(шхобъ, значение); }
+        public цел AlignVer() { return wxHtmlContainerCell_GetAlignVer(шхобъ); }
 
         //-----------------------------------------------------------------------------
 
-        public void SetIndent(int i, int what, int units)
+        public проц SetIndent(цел i, цел what, цел units)
         {
-            wxHtmlContainerCell_SetIndent(wxobj, i, what, units);
+            wxHtmlContainerCell_SetIndent(шхобъ, i, what, units);
         }
 
-        public int GetIndent(int ind)
+        public цел GetIndent(цел ind)
         {
-            return wxHtmlContainerCell_GetIndent(wxobj, ind);
+            return wxHtmlContainerCell_GetIndent(шхобъ, ind);
         }
 
-        public int GetIndentUnits(int ind)
+        public цел GetIndentUnits(цел ind)
         {
-            return wxHtmlContainerCell_GetIndentUnits(wxobj, ind);
-        }
-
-        //-----------------------------------------------------------------------------
-
-        public void Align(HtmlTag value) { wxHtmlContainerCell_SetAlign(wxobj, wxObject.SafePtr(value)); }
-
-        //-----------------------------------------------------------------------------
-
-        public void SetWidthFloat(int w, int units)
-        {
-            wxHtmlContainerCell_SetWidthFloat(wxobj, w, units);
-        }
-
-        public void SetWidthFloat(HtmlTag tag, double pixel_scale)
-        {
-            wxHtmlContainerCell_SetWidthFloatTag(wxobj, wxObject.SafePtr(tag), pixel_scale);
+            return wxHtmlContainerCell_GetIndentUnits(шхобъ, ind);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void SetMinHeight(int h, int alignment)
+        public проц Align(HtmlTag значение) { wxHtmlContainerCell_SetAlign(шхобъ, wxObject.SafePtr(значение)); }
+
+        //-----------------------------------------------------------------------------
+
+        public проц SetWidthFloat(цел w, цел units)
         {
-            wxHtmlContainerCell_SetMinHeight(wxobj, h, alignment);
+            wxHtmlContainerCell_SetWidthFloat(шхобъ, w, units);
+        }
+
+        public проц SetWidthFloat(HtmlTag tag, дво pixel_scale)
+        {
+            wxHtmlContainerCell_SetWidthFloatTag(шхобъ, wxObject.SafePtr(tag), pixel_scale);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void BackgroundColour(Colour value) { wxHtmlContainerCell_SetBackgroundColour(wxobj, wxObject.SafePtr(value)); }
-        public Colour BackgroundColour() { return new Colour(wxHtmlContainerCell_GetBackgroundColour(wxobj), true); }
-
-        //-----------------------------------------------------------------------------
-
-        public void SetBorder(Colour clr1, Colour clr2)
+        public проц SetMinHeight(цел h, цел alignment)
         {
-            wxHtmlContainerCell_SetBorder(wxobj, wxObject.SafePtr(clr1), wxObject.SafePtr(clr2));
+            wxHtmlContainerCell_SetMinHeight(шхобъ, h, alignment);
         }
 
         //-----------------------------------------------------------------------------
 
-        public /+virtual+/ HtmlLinkInfo GetLink(int x, int y)
+        public проц ЦветЗП(Цвет значение) { wxHtmlContainerCell_SetBackgroundColour(шхобъ, wxObject.SafePtr(значение)); }
+        public Цвет ЦветЗП() { return new Цвет(wxHtmlContainerCell_GetBackgroundColour(шхобъ), да); }
+
+        //-----------------------------------------------------------------------------
+
+        public проц SetBorder(Цвет clr1, Цвет clr2)
         {
-            return cast(HtmlLinkInfo)FindObject(wxHtmlContainerCell_GetLink(wxobj, x, y), &HtmlLinkInfo.New);
+            wxHtmlContainerCell_SetBorder(шхобъ, wxObject.SafePtr(clr1), wxObject.SafePtr(clr2));
         }
 
         //-----------------------------------------------------------------------------
 
-        public override HtmlCell Find(int condition, wxObject param)
+        public /+virtual+/ HtmlLinkInfo GetLink(цел x, цел y)
         {
-//            return cast(HtmlCell)FindObject(wxHtmlContainerCell_Find(wxobj, condition, wxObject.SafePtr(param)), &HtmlCell.New);
-            return HtmlCell.FindObj(wxHtmlContainerCell_Find(wxobj, condition, wxObject.SafePtr(param)));
+            return cast(HtmlLinkInfo)FindObject(wxHtmlContainerCell_GetLink(шхобъ, x, y), &HtmlLinkInfo.Нов);
+        }
+
+        //-----------------------------------------------------------------------------
+
+        public override HtmlCell Find(цел condition, wxObject param)
+        {
+//            return cast(HtmlCell)FindObject(wxHtmlContainerCell_Find(шхобъ, condition, wxObject.SafePtr(param)), &HtmlCell.Нов);
+            return HtmlCell.FindObj(wxHtmlContainerCell_Find(шхобъ, condition, wxObject.SafePtr(param)));
         }
 
         //-----------------------------------------------------------------------------
 /+
-        public override void OnMouseClick(Window parent, int x, int y, MouseEvent evt)
+        public override проц OnMouseClick(Окно родитель, цел x, цел y, MouseEvent evt)
         {
-            wxHtmlContainerCell_OnMouseClick(wxobj, wxObject.SafePtr(parent), x, y, wxObject.SafePtr(evt));
+            wxHtmlContainerCell_OnMouseClick(шхобъ, wxObject.SafePtr(родитель), x, y, wxObject.SafePtr(evt));
         }
 +/
         //-----------------------------------------------------------------------------
 /*
-        public void GetHorizontalConstraints(out int left, out int right)
+        public проц GetHorizontalConstraints(out цел left, out цел right)
         {
             left = right = 0;
-            wxHtmlContainerCell_GetHorizontalConstraints(wxobj, left, right);
+            wxHtmlContainerCell_GetHorizontalConstraints(шхобъ, left, right);
         }
 */
         //-----------------------------------------------------------------------------
 /*
-        public HtmlCell FirstCell() { return HtmlCell.FindObj(wxHtmlContainerCell_GetFirstCell(wxobj)); }
+        public HtmlCell FirstCell() { return HtmlCell.FindObj(wxHtmlContainerCell_GetFirstCell(шхобъ)); }
 */
         //-----------------------------------------------------------------------------
 
-        public override bool IsTerminalCell() { return wxHtmlContainerCell_IsTerminalCell(wxobj); }
+        public override бул IsTerminalCell() { return wxHtmlContainerCell_IsTerminalCell(шхобъ); }
 
         //-----------------------------------------------------------------------------
 
-        public override HtmlCell FindCellByPos(int x, int y)
+        public override HtmlCell FindCellByPos(цел x, цел y)
         {
-            return HtmlCell.FindObj(wxHtmlContainerCell_FindCellByPos(wxobj, x, y));
+            return HtmlCell.FindObj(wxHtmlContainerCell_FindCellByPos(шхобъ, x, y));
         }
     }
 
 	//-----------------------------------------------------------------------------
 
         //! \cond EXTERN
-		static extern (C) IntPtr wxHtmlColourCell_ctor(IntPtr clr, int flags);
-		static extern (C) void   wxHtmlColourCell_Draw(IntPtr self, IntPtr dc, int x, int y, int view_y1, int view_y2, IntPtr info);
-		static extern (C) void   wxHtmlColourCell_DrawInvisible(IntPtr self, IntPtr dc, int x, int y, IntPtr info);
+		static extern (C) ЦУк wxHtmlColourCell_ctor(ЦУк clr, цел флаги);
+		static extern (C) проц   wxHtmlColourCell_Draw(ЦУк сам, ЦУк dc, цел x, цел y, цел view_y1, цел view_y2, ЦУк info);
+		static extern (C) проц   wxHtmlColourCell_DrawInvisible(ЦУк сам, ЦУк dc, цел x, цел y, ЦУк info);
         //! \endcond
 
 	alias HtmlColourCell wxHtmlColourCell;
@@ -576,39 +576,39 @@ public import wx.MouseEvent;
 	{
 		//-----------------------------------------------------------------------------
 
-		public this(IntPtr wxobj)
-			{ super(wxobj);}
+		public this(ЦУк шхобъ)
+			{ super(шхобъ);}
 
-		public  this(Colour clr, int flags)
-			{ this(wxHtmlColourCell_ctor(wxObject.SafePtr(clr), flags)); }
+		public  this(Цвет clr, цел флаги)
+			{ this(wxHtmlColourCell_ctor(wxObject.SafePtr(clr), флаги)); }
 
 		//-----------------------------------------------------------------------------
 
-		public override void Draw(DC dc, int x, int y, int view_y1, int view_y2, HtmlRenderingInfo info)
+		public override проц Draw(DC dc, цел x, цел y, цел view_y1, цел view_y2, HtmlRenderingInfo info)
 		{
-			wxHtmlColourCell_Draw(wxobj, wxObject.SafePtr(dc), x, y, view_y1, view_y2, wxObject.SafePtr(info));
+			wxHtmlColourCell_Draw(шхобъ, wxObject.SafePtr(dc), x, y, view_y1, view_y2, wxObject.SafePtr(info));
 		}
 
 		//-----------------------------------------------------------------------------
 
-		public override void DrawInvisible(DC dc, int x, int y, HtmlRenderingInfo info)
+		public override проц DrawInvisible(DC dc, цел x, цел y, HtmlRenderingInfo info)
 		{
-			wxHtmlColourCell_DrawInvisible(wxobj, wxObject.SafePtr(dc), x, y, wxObject.SafePtr(info));
+			wxHtmlColourCell_DrawInvisible(шхобъ, wxObject.SafePtr(dc), x, y, wxObject.SafePtr(info));
 		}
 	}
 
 	//-----------------------------------------------------------------------------
 
         //! \cond EXTERN
-		static extern (C) IntPtr wxHtmlLinkInfo_ctor();
-		/*static extern (C) IntPtr wxHtmlLinkInfo_ctor(string href, string target);*/
-		/*static extern (C) IntPtr wxHtmlLinkInfo_ctor(IntPtr l);*/
-		static extern (C) void   wxHtmlLinkInfo_SetEvent(IntPtr self, IntPtr e);
-		static extern (C) void   wxHtmlLinkInfo_SetHtmlCell(IntPtr self, IntPtr e);
-		static extern (C) IntPtr wxHtmlLinkInfo_GetHref(IntPtr self);
-		static extern (C) IntPtr wxHtmlLinkInfo_GetTarget(IntPtr self);
-		static extern (C) IntPtr wxHtmlLinkInfo_GetEvent(IntPtr self);
-		static extern (C) IntPtr wxHtmlLinkInfo_GetHtmlCell(IntPtr self);
+		static extern (C) ЦУк wxHtmlLinkInfo_ctor();
+		/*static extern (C) ЦУк wxHtmlLinkInfo_ctor(ткст href, ткст target);*/
+		/*static extern (C) ЦУк wxHtmlLinkInfo_ctor(ЦУк l);*/
+		static extern (C) проц   wxHtmlLinkInfo_SetEvent(ЦУк сам, ЦУк e);
+		static extern (C) проц   wxHtmlLinkInfo_SetHtmlCell(ЦУк сам, ЦУк e);
+		static extern (C) ЦУк wxHtmlLinkInfo_GetHref(ЦУк сам);
+		static extern (C) ЦУк wxHtmlLinkInfo_GetTarget(ЦУк сам);
+		static extern (C) ЦУк wxHtmlLinkInfo_GetEvent(ЦУк сам);
+		static extern (C) ЦУк wxHtmlLinkInfo_GetHtmlCell(ЦУк сам);
         //! \endcond
 		
 		//-----------------------------------------------------------------------------
@@ -616,18 +616,18 @@ public import wx.MouseEvent;
 	alias HtmlLinkInfo wxHtmlLinkInfo;
 	public class HtmlLinkInfo : wxObject
 	{
-		public this(IntPtr wxobj)
-			{ super(wxobj);}
+		public this(ЦУк шхобъ)
+			{ super(шхобъ);}
 		
 		public  this()
 			{ super(wxHtmlLinkInfo_ctor()); }
 		
 		//-----------------------------------------------------------------------------
 		
-		/*public  this(string href, string target)
+		/*public  this(ткст href, ткст target)
 			{ super(wxHtmlLinkInfo_ctor(href, target)); }*/
 
-		public static wxObject New(IntPtr ptr) { return new HtmlCell(ptr); }
+		public static wxObject Нов(ЦУк ptr) { return new HtmlCell(ptr); }
 		
 		//-----------------------------------------------------------------------------
 		
@@ -635,30 +635,30 @@ public import wx.MouseEvent;
 			{ super(wxHtmlLinkInfo_ctor(wxObject.SafePtr(l))); }*/
 		//-----------------------------------------------------------------------------
 		
-		public void event(MouseEvent value) { wxHtmlLinkInfo_SetEvent(wxobj, wxObject.SafePtr(value)); }
-		public MouseEvent event() { return cast(MouseEvent)FindObject(wxHtmlLinkInfo_GetEvent(wxobj), cast(wxObject function (IntPtr))&MouseEvent.New); }
+		public проц event(MouseEvent значение) { wxHtmlLinkInfo_SetEvent(шхобъ, wxObject.SafePtr(значение)); }
+		public MouseEvent event() { return cast(MouseEvent)FindObject(wxHtmlLinkInfo_GetEvent(шхобъ), cast(wxObject function (ЦУк))&MouseEvent.Нов); }
 		
 		//-----------------------------------------------------------------------------
 		
-		public string Href() { return cast(string) new wxString(wxHtmlLinkInfo_GetHref(wxobj), true); }
+		public ткст Href() { return cast(ткст) new wxString(wxHtmlLinkInfo_GetHref(шхобъ), да); }
 		
 		//-----------------------------------------------------------------------------
 		
-		public string Target() { return cast(string) new wxString(wxHtmlLinkInfo_GetTarget(wxobj), true); }
+		public ткст Target() { return cast(ткст) new wxString(wxHtmlLinkInfo_GetTarget(шхобъ), да); }
 		
 		//-----------------------------------------------------------------------------
 		
-		public HtmlCell htmlCell() { return cast(HtmlCell)FindObject(wxHtmlLinkInfo_GetHtmlCell(wxobj), &HtmlCell.New); }
-		public void htmlCell(HtmlCell value) { wxHtmlLinkInfo_SetHtmlCell(wxobj, wxObject.SafePtr(value)); }
+		public HtmlCell htmlCell() { return cast(HtmlCell)FindObject(wxHtmlLinkInfo_GetHtmlCell(шхобъ), &HtmlCell.Нов); }
+		public проц htmlCell(HtmlCell значение) { wxHtmlLinkInfo_SetHtmlCell(шхобъ, wxObject.SafePtr(значение)); }
 	}
 
 	//-----------------------------------------------------------------------------
 
         //! \cond EXTERN
-        static extern (C) IntPtr wxHtmlWidgetCell_ctor(IntPtr wnd, int w);
-        static extern (C) void   wxHtmlWidgetCell_Draw(IntPtr self, IntPtr dc, int x, int y, int view_y1, int view_y2, IntPtr info);
-        static extern (C) void   wxHtmlWidgetCell_DrawInvisible(IntPtr self, IntPtr dc, int x, int y, IntPtr info);
-        static extern (C) void   wxHtmlWidgetCell_Layout(IntPtr self, int w);
+        static extern (C) ЦУк wxHtmlWidgetCell_ctor(ЦУк wnd, цел w);
+        static extern (C) проц   wxHtmlWidgetCell_Draw(ЦУк сам, ЦУк dc, цел x, цел y, цел view_y1, цел view_y2, ЦУк info);
+        static extern (C) проц   wxHtmlWidgetCell_DrawInvisible(ЦУк сам, ЦУк dc, цел x, цел y, ЦУк info);
+        static extern (C) проц   wxHtmlWidgetCell_Layout(ЦУк сам, цел w);
         //! \endcond
 
         //-----------------------------------------------------------------------------
@@ -666,39 +666,39 @@ public import wx.MouseEvent;
     alias HtmlWidgetCell wxHtmlWidgetCell;
     public class HtmlWidgetCell : HtmlCell
     {
-		public this(IntPtr wxobj)
-			{ super(wxobj);}
+		public this(ЦУк шхобъ)
+			{ super(шхобъ);}
 
-        public this(Window wnd, int w)
+        public this(Окно wnd, цел w)
             { this(wxHtmlWidgetCell_ctor(wxObject.SafePtr(wnd), w)); }
 
         //-----------------------------------------------------------------------------
 
-        public override void Draw(DC dc, int x, int y, int view_y1, int view_y2, HtmlRenderingInfo info)
+        public override проц Draw(DC dc, цел x, цел y, цел view_y1, цел view_y2, HtmlRenderingInfo info)
         {
-            wxHtmlWidgetCell_Draw(wxobj, wxObject.SafePtr(dc), x, y, view_y1, view_y2, wxObject.SafePtr(info));
+            wxHtmlWidgetCell_Draw(шхобъ, wxObject.SafePtr(dc), x, y, view_y1, view_y2, wxObject.SafePtr(info));
         }
 
         //-----------------------------------------------------------------------------
 
-        public override void DrawInvisible(DC dc, int x, int y, HtmlRenderingInfo info)
+        public override проц DrawInvisible(DC dc, цел x, цел y, HtmlRenderingInfo info)
         {
-            wxHtmlWidgetCell_DrawInvisible(wxobj, wxObject.SafePtr(dc), x, y, wxObject.SafePtr(info));
+            wxHtmlWidgetCell_DrawInvisible(шхобъ, wxObject.SafePtr(dc), x, y, wxObject.SafePtr(info));
         }
 
         //-----------------------------------------------------------------------------
 
-        public override void Layout(int w)
+        public override проц Layout(цел w)
         {
-            wxHtmlWidgetCell_Layout(wxobj, w);
+            wxHtmlWidgetCell_Layout(шхобъ, w);
         }
     }
 
 	//-----------------------------------------------------------------------------
 
         //! \cond EXTERN
-        static extern (C) IntPtr wxHtmlWordCell_ctor(string word, IntPtr dc);
-        static extern (C) void   wxHtmlWordCell_Draw(IntPtr self, IntPtr dc, int x, int y, int view_y1, int view_y2, IntPtr info);
+        static extern (C) ЦУк wxHtmlWordCell_ctor(ткст word, ЦУк dc);
+        static extern (C) проц   wxHtmlWordCell_Draw(ЦУк сам, ЦУк dc, цел x, цел y, цел view_y1, цел view_y2, ЦУк info);
         //! \endcond
 
         //-----------------------------------------------------------------------------
@@ -706,25 +706,25 @@ public import wx.MouseEvent;
     alias HtmlWordCell wxHtmlWordCell;
     public class HtmlWordCell : HtmlCell
     {
-		public this(IntPtr wxobj)
-			{ super(wxobj);}
+		public this(ЦУк шхобъ)
+			{ super(шхобъ);}
 
-        public  this(string word, DC dc)
+        public  this(ткст word, DC dc)
             { this(wxHtmlWordCell_ctor(word, wxObject.SafePtr(dc))); }
 
         //-----------------------------------------------------------------------------
 
-        public override void Draw(DC dc, int x, int y, int view_y1, int view_y2, HtmlRenderingInfo info)
+        public override проц Draw(DC dc, цел x, цел y, цел view_y1, цел view_y2, HtmlRenderingInfo info)
         {
-            wxHtmlWordCell_Draw(wxobj, wxObject.SafePtr(dc), x, y, view_y1, view_y2, wxObject.SafePtr(info));
+            wxHtmlWordCell_Draw(шхобъ, wxObject.SafePtr(dc), x, y, view_y1, view_y2, wxObject.SafePtr(info));
         }
     }
 
 	//-----------------------------------------------------------------------------
 
         //! \cond EXTERN
-        static extern (C) bool   wxHtmlFilterPlainText_CanRead(IntPtr self, IntPtr file);
-        static extern (C) IntPtr wxHtmlFilterPlainText_ReadFile(IntPtr self, IntPtr file);
+        static extern (C) бул   wxHtmlFilterPlainText_CanRead(ЦУк сам, ЦУк file);
+        static extern (C) ЦУк wxHtmlFilterPlainText_ReadFile(ЦУк сам, ЦУк file);
         //! \endcond
 
         //-----------------------------------------------------------------------------
@@ -732,29 +732,29 @@ public import wx.MouseEvent;
     alias HtmlFilterPlainText wxHtmlFilterPlainText;
     public class HtmlFilterPlainText : HtmlFilter
     {
-        public this(IntPtr wxobj) 
-            { super(wxobj); }
+        public this(ЦУк шхобъ) 
+            { super(шхобъ); }
 
         //-----------------------------------------------------------------------------
 
-        /*public override bool CanRead(FSFile file)
+        /*public override бул Читается(FSFile file)
         {
-            return wxHtmlFilterPlainText_CanRead(wxobj, wxObject.SafePtr(file));
+            return wxHtmlFilterPlainText_CanRead(шхобъ, wxObject.SafePtr(file));
         }
 
         //-----------------------------------------------------------------------------
 
-        public override string ReadFile(FSFile file)
+        public override ткст ReadFile(FSFile file)
         {
-            return cast(string) new wxString(wxHtmlFilterPlainText_ReadFile(wxobj, wxObject.SafePtr(file)));
+            return cast(ткст) new wxString(wxHtmlFilterPlainText_ReadFile(шхобъ, wxObject.SafePtr(file)));
         }
     }
 
 	//-----------------------------------------------------------------------------
 
         //! \cond EXTERN
-        static extern (C) bool   wxHtmlFilterHTML_CanRead(IntPtr self, IntPtr file);
-        static extern (C) IntPtr wxHtmlFilterHTML_ReadFile(IntPtr self, IntPtr file);
+        static extern (C) бул   wxHtmlFilterHTML_CanRead(ЦУк сам, ЦУк file);
+        static extern (C) ЦУк wxHtmlFilterHTML_ReadFile(ЦУк сам, ЦУк file);
         //! \endcond
 
         //-----------------------------------------------------------------------------
@@ -762,31 +762,31 @@ public import wx.MouseEvent;
     alias HtmlFilterHTML wxHtmlFilterHTML;
     public class HtmlFilterHTML : HtmlFilter
     {
-        public this(IntPtr wxobj) 
-            { super(wxobj); }
+        public this(ЦУк шхобъ) 
+            { super(шхобъ); }
 
         //-----------------------------------------------------------------------------
 
-        /*public override bool CanRead(FSFile file)
+        /*public override бул Читается(FSFile file)
         {
-            return wxHtmlFilterHTML_CanRead(wxobj, wxObject.SafePtr(file));
+            return wxHtmlFilterHTML_CanRead(шхобъ, wxObject.SafePtr(file));
         }
 
         //-----------------------------------------------------------------------------
 
-        public override string ReadFile(FSFile file)
+        public override ткст ReadFile(FSFile file)
         {
-            return cast(string) new wxString(wxHtmlFilterHTML_ReadFile(wxobj, wxObject.SafePtr(file)));
+            return cast(ткст) new wxString(wxHtmlFilterHTML_ReadFile(шхобъ, wxObject.SafePtr(file)));
         }*/
     }
 
 	//-----------------------------------------------------------------------------
 
         //! \cond EXTERN
-        static extern (C) IntPtr wxHtmlTagsModule_ctor();
-        static extern (C) bool   wxHtmlTagsModule_OnInit(IntPtr self);
-        static extern (C) void   wxHtmlTagsModule_OnExit(IntPtr self);
-        static extern (C) void   wxHtmlTagsModule_FillHandlersTable(IntPtr self, IntPtr parser);
+        static extern (C) ЦУк wxHtmlTagsModule_ctor();
+        static extern (C) бул   wxHtmlTagsModule_OnInit(ЦУк сам);
+        static extern (C) проц   wxHtmlTagsModule_OnExit(ЦУк сам);
+        static extern (C) проц   wxHtmlTagsModule_FillHandlersTable(ЦУк сам, ЦУк parser);
         //! \endcond
         
         //-----------------------------------------------------------------------------
@@ -794,31 +794,31 @@ public import wx.MouseEvent;
     alias HtmlTagsModule wxHtmlTagsModule;
     public class HtmlTagsModule : wxObject // TODO: Module
     {
-		public this(IntPtr wxobj)
-			{ super(wxobj);}
+		public this(ЦУк шхобъ)
+			{ super(шхобъ);}
 
         public this()
             { super(wxHtmlTagsModule_ctor()); }
 
         //-----------------------------------------------------------------------------
 
-        public bool OnInit()
+        public бул ПриИниц()
         {
-            return wxHtmlTagsModule_OnInit(wxobj);
+            return wxHtmlTagsModule_OnInit(шхобъ);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void OnExit()
+        public проц ПриВыходе()
         {
-            wxHtmlTagsModule_OnExit(wxobj);
+            wxHtmlTagsModule_OnExit(шхобъ);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void FillHandlersTable(HtmlWinParser  parser)
+        public проц FillHandlersTable(HtmlWinParser  parser)
         {
-            wxHtmlTagsModule_FillHandlersTable(wxobj, wxObject.SafePtr(parser));
+            wxHtmlTagsModule_FillHandlersTable(шхобъ, wxObject.SafePtr(parser));
         }
     }
 
@@ -826,52 +826,52 @@ public import wx.MouseEvent;
 
     public abstract class HtmlWinTagHandler : HtmlTagHandler
     {
-        public this(IntPtr wxobj) 
-            { super(wxobj); }
+        public this(ЦУк шхобъ) 
+            { super(шхобъ); }
     }
 
 	//-----------------------------------------------------------------------------
 
         //! \cond EXTERN
-        static extern (C) IntPtr wxHtmlWinParser_ctor(IntPtr wnd);
-        static extern (C) void   wxHtmlWinParser_InitParser(IntPtr self, string source);
-        static extern (C) void   wxHtmlWinParser_DoneParser(IntPtr self);
-        static extern (C) IntPtr wxHtmlWinParser_GetProduct(IntPtr self);
-        static extern (C) IntPtr wxHtmlWinParser_OpenURL(IntPtr self, int type, string url);
-        static extern (C) void   wxHtmlWinParser_SetDC(IntPtr self, IntPtr dc, double pixel_scale);
-        static extern (C) IntPtr wxHtmlWinParser_GetDC(IntPtr self);
-        static extern (C) double wxHtmlWinParser_GetPixelScale(IntPtr self);
-        static extern (C) int    wxHtmlWinParser_GetCharHeight(IntPtr self);
-        static extern (C) int    wxHtmlWinParser_GetCharWidth(IntPtr self);
-        static extern (C) IntPtr wxHtmlWinParser_GetWindow(IntPtr self);
-        static extern (C) void   wxHtmlWinParser_SetFonts(IntPtr self, string normal_face, string fixed_face, int* sizes);
-        static extern (C) void   wxHtmlWinParser_AddModule(IntPtr self, IntPtr mod);
-        static extern (C) void   wxHtmlWinParser_RemoveModule(IntPtr self, IntPtr mod);
-        static extern (C) IntPtr wxHtmlWinParser_GetContainer(IntPtr self);
-        static extern (C) IntPtr wxHtmlWinParser_OpenContainer(IntPtr self);
-        static extern (C) IntPtr wxHtmlWinParser_SetContainer(IntPtr self, IntPtr c);
-        static extern (C) IntPtr wxHtmlWinParser_CloseContainer(IntPtr self);
-        static extern (C) int    wxHtmlWinParser_GetFontSize(IntPtr self);
-        static extern (C) void   wxHtmlWinParser_SetFontSize(IntPtr self, int s);
-        static extern (C) int    wxHtmlWinParser_GetFontBold(IntPtr self);
-        static extern (C) void   wxHtmlWinParser_SetFontBold(IntPtr self, int x);
-        static extern (C) int    wxHtmlWinParser_GetFontItalic(IntPtr self);
-        static extern (C) void   wxHtmlWinParser_SetFontItalic(IntPtr self, int x);
-        static extern (C) int    wxHtmlWinParser_GetFontUnderlined(IntPtr self);
-        static extern (C) void   wxHtmlWinParser_SetFontUnderlined(IntPtr self, int x);
-        static extern (C) int    wxHtmlWinParser_GetFontFixed(IntPtr self);
-        static extern (C) void   wxHtmlWinParser_SetFontFixed(IntPtr self, int x);
-        static extern (C) IntPtr wxHtmlWinParser_GetFontFace(IntPtr self);
-        static extern (C) void   wxHtmlWinParser_SetFontFace(IntPtr self, string face);
-        static extern (C) int    wxHtmlWinParser_GetAlign(IntPtr self);
-        static extern (C) void   wxHtmlWinParser_SetAlign(IntPtr self, int a);
-        static extern (C) IntPtr wxHtmlWinParser_GetLinkColor(IntPtr self);
-        static extern (C) void   wxHtmlWinParser_SetLinkColor(IntPtr self, IntPtr clr);
-        static extern (C) IntPtr wxHtmlWinParser_GetActualColor(IntPtr self);
-        static extern (C) void   wxHtmlWinParser_SetActualColor(IntPtr self, IntPtr clr);
-        static extern (C) IntPtr wxHtmlWinParser_GetLink(IntPtr self);
-        static extern (C) void   wxHtmlWinParser_SetLink(IntPtr self, IntPtr link);
-        static extern (C) IntPtr wxHtmlWinParser_CreateCurrentFont(IntPtr self);
+        static extern (C) ЦУк wxHtmlWinParser_ctor(ЦУк wnd);
+        static extern (C) проц   wxHtmlWinParser_InitParser(ЦУк сам, ткст source);
+        static extern (C) проц   wxHtmlWinParser_DoneParser(ЦУк сам);
+        static extern (C) ЦУк wxHtmlWinParser_GetProduct(ЦУк сам);
+        static extern (C) ЦУк wxHtmlWinParser_OpenURL(ЦУк сам, цел тип, ткст url);
+        static extern (C) проц   wxHtmlWinParser_SetDC(ЦУк сам, ЦУк dc, дво pixel_scale);
+        static extern (C) ЦУк wxHtmlWinParser_GetDC(ЦУк сам);
+        static extern (C) дво wxHtmlWinParser_GetPixelScale(ЦУк сам);
+        static extern (C) цел    wxHtmlWinParser_GetCharHeight(ЦУк сам);
+        static extern (C) цел    wxHtmlWinParser_GetCharWidth(ЦУк сам);
+        static extern (C) ЦУк wxHtmlWinParser_GetWindow(ЦУк сам);
+        static extern (C) проц   wxHtmlWinParser_SetFonts(ЦУк сам, ткст normal_face, ткст fixed_face, цел* sizes);
+        static extern (C) проц   wxHtmlWinParser_AddModule(ЦУк сам, ЦУк mod);
+        static extern (C) проц   wxHtmlWinParser_RemoveModule(ЦУк сам, ЦУк mod);
+        static extern (C) ЦУк wxHtmlWinParser_GetContainer(ЦУк сам);
+        static extern (C) ЦУк wxHtmlWinParser_OpenContainer(ЦУк сам);
+        static extern (C) ЦУк wxHtmlWinParser_SetContainer(ЦУк сам, ЦУк c);
+        static extern (C) ЦУк wxHtmlWinParser_CloseContainer(ЦУк сам);
+        static extern (C) цел    wxHtmlWinParser_GetFontSize(ЦУк сам);
+        static extern (C) проц   wxHtmlWinParser_SetFontSize(ЦУк сам, цел s);
+        static extern (C) цел    wxHtmlWinParser_GetFontBold(ЦУк сам);
+        static extern (C) проц   wxHtmlWinParser_SetFontBold(ЦУк сам, цел x);
+        static extern (C) цел    wxHtmlWinParser_GetFontItalic(ЦУк сам);
+        static extern (C) проц   wxHtmlWinParser_SetFontItalic(ЦУк сам, цел x);
+        static extern (C) цел    wxHtmlWinParser_GetFontUnderlined(ЦУк сам);
+        static extern (C) проц   wxHtmlWinParser_SetFontUnderlined(ЦУк сам, цел x);
+        static extern (C) цел    wxHtmlWinParser_GetFontFixed(ЦУк сам);
+        static extern (C) проц   wxHtmlWinParser_SetFontFixed(ЦУк сам, цел x);
+        static extern (C) ЦУк wxHtmlWinParser_GetFontFace(ЦУк сам);
+        static extern (C) проц   wxHtmlWinParser_SetFontFace(ЦУк сам, ткст face);
+        static extern (C) цел    wxHtmlWinParser_GetAlign(ЦУк сам);
+        static extern (C) проц   wxHtmlWinParser_SetAlign(ЦУк сам, цел a);
+        static extern (C) ЦУк wxHtmlWinParser_GetLinkColor(ЦУк сам);
+        static extern (C) проц   wxHtmlWinParser_SetLinkColor(ЦУк сам, ЦУк clr);
+        static extern (C) ЦУк wxHtmlWinParser_GetActualColor(ЦУк сам);
+        static extern (C) проц   wxHtmlWinParser_SetActualColor(ЦУк сам, ЦУк clr);
+        static extern (C) ЦУк wxHtmlWinParser_GetLink(ЦУк сам);
+        static extern (C) проц   wxHtmlWinParser_SetLink(ЦУк сам, ЦУк link);
+        static extern (C) ЦУк wxHtmlWinParser_CreateCurrentFont(ЦУк сам);
         //! \endcond
 
         //-----------------------------------------------------------------------------
@@ -879,184 +879,184 @@ public import wx.MouseEvent;
     alias HtmlWinParser wxHtmlWinParser;
     public class HtmlWinParser : HtmlParser
     {
-		public this(IntPtr wxobj)
-			{ super(wxobj);}
+		public this(ЦУк шхобъ)
+			{ super(шхобъ);}
 
         public this(HtmlWindow wnd)
             { super(wxHtmlWinParser_ctor(wxObject.SafePtr(wnd))); }
 
-	public static wxObject New(IntPtr ptr) { return new HtmlWinParser(ptr); }
+	public static wxObject Нов(ЦУк ptr) { return new HtmlWinParser(ptr); }
         //-----------------------------------------------------------------------------
 
-        public override void InitParser(string source)
+        public override проц InitParser(ткст source)
         {
-            wxHtmlWinParser_InitParser(wxobj, source);
+            wxHtmlWinParser_InitParser(шхобъ, source);
         }
 
         //-----------------------------------------------------------------------------
 
-        public override void DoneParser()
+        public override проц DoneParser()
         {
-            wxHtmlWinParser_DoneParser(wxobj);
+            wxHtmlWinParser_DoneParser(шхобъ);
         }
 
         //-----------------------------------------------------------------------------
 
         public override wxObject Product()
         {
-//FIXME            return FindObject(wxHtmlWinParser_GetProduct(wxobj), typeof(wxObject));
-              return FindObject(wxHtmlWinParser_GetProduct(wxobj));
+//FIXME            return FindObject(wxHtmlWinParser_GetProduct(шхобъ), typeof(wxObject));
+              return FindObject(wxHtmlWinParser_GetProduct(шхобъ));
         }
 
         //-----------------------------------------------------------------------------
 
-        /*public FSFile OpenURL(HtmlURLType type, string url)
+        /*public FSFile OpenURL(HtmlURLType тип, ткст url)
         {
-            return wxHtmlWinParser_OpenURL(wxobj, wxObject.SafePtr(type), url);
+            return wxHtmlWinParser_OpenURL(шхобъ, wxObject.SafePtr(тип), url);
         }*/
 
         //-----------------------------------------------------------------------------
 
-        public void SetDC(DC dc, double pixel_scale)
+        public проц SetDC(DC dc, дво pixel_scale)
         {
-            wxHtmlWinParser_SetDC(wxobj, wxObject.SafePtr(dc), pixel_scale);
+            wxHtmlWinParser_SetDC(шхобъ, wxObject.SafePtr(dc), pixel_scale);
         }
 
         //-----------------------------------------------------------------------------
 
-        public DC GetDC() { return cast(DC)FindObject(wxHtmlWinParser_GetDC(wxobj), &DC.New); }
+        public DC GetDC() { return cast(DC)FindObject(wxHtmlWinParser_GetDC(шхобъ), &DC.Нов); }
 
         //-----------------------------------------------------------------------------
 
-        public double PixelScale() { return wxHtmlWinParser_GetPixelScale(wxobj); }
+        public дво PixelScale() { return wxHtmlWinParser_GetPixelScale(шхобъ); }
 
         //-----------------------------------------------------------------------------
 
-        public int CharHeight() { return wxHtmlWinParser_GetCharHeight(wxobj); }
+        public цел CharHeight() { return wxHtmlWinParser_GetCharHeight(шхобъ); }
 
-        public int CharWidth() { return wxHtmlWinParser_GetCharWidth(wxobj); }
-
-        //-----------------------------------------------------------------------------
-
-        public HtmlWindow window() { return cast(HtmlWindow)FindObject(wxHtmlWinParser_GetWindow(wxobj), &HtmlWindow.New); }
+        public цел CharWidth() { return wxHtmlWinParser_GetCharWidth(шхобъ); }
 
         //-----------------------------------------------------------------------------
 
-        public void SetFonts(string normal_face, string fixed_face, int[] sizes)
+        public HtmlWindow окно() { return cast(HtmlWindow)FindObject(wxHtmlWinParser_GetWindow(шхобъ), &HtmlWindow.Нов); }
+
+        //-----------------------------------------------------------------------------
+
+        public проц SetFonts(ткст normal_face, ткст fixed_face, цел[] sizes)
         {
-            wxHtmlWinParser_SetFonts(wxobj, normal_face, fixed_face, sizes.ptr);
+            wxHtmlWinParser_SetFonts(шхобъ, normal_face, fixed_face, sizes.ptr);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void AddModule(HtmlTagsModule mod)
+        public проц AddModule(HtmlTagsModule mod)
         {
-            wxHtmlWinParser_AddModule(wxobj, wxObject.SafePtr(mod));
+            wxHtmlWinParser_AddModule(шхобъ, wxObject.SafePtr(mod));
         }
 
-        public void RemoveModule(HtmlTagsModule mod)
+        public проц RemoveModule(HtmlTagsModule mod)
         {
-            wxHtmlWinParser_RemoveModule(wxobj, wxObject.SafePtr(mod));
+            wxHtmlWinParser_RemoveModule(шхобъ, wxObject.SafePtr(mod));
         }
 
         //-----------------------------------------------------------------------------
 
-        public HtmlContainerCell Container() { return cast(HtmlContainerCell)FindObject(wxHtmlWinParser_GetContainer(wxobj), &HtmlContainerCell.New); }
+        public HtmlContainerCell Container() { return cast(HtmlContainerCell)FindObject(wxHtmlWinParser_GetContainer(шхобъ), &HtmlContainerCell.Нов); }
 
         public HtmlContainerCell SetContainter(HtmlContainerCell cont)
         {
-            return cast(HtmlContainerCell)FindObject(wxHtmlWinParser_SetContainer(wxobj, wxObject.SafePtr(cont)), &HtmlContainerCell.New);
+            return cast(HtmlContainerCell)FindObject(wxHtmlWinParser_SetContainer(шхобъ, wxObject.SafePtr(cont)), &HtmlContainerCell.Нов);
         }
 
         //-----------------------------------------------------------------------------
 
         public HtmlContainerCell OpenContainer()
         {
-            return cast(HtmlContainerCell)FindObject(wxHtmlWinParser_OpenContainer(wxobj), &HtmlContainerCell.New);
+            return cast(HtmlContainerCell)FindObject(wxHtmlWinParser_OpenContainer(шхобъ), &HtmlContainerCell.Нов);
         }
 
         public HtmlContainerCell CloseContainer()
         {
-            return cast(HtmlContainerCell)FindObject(wxHtmlWinParser_CloseContainer(wxobj), &HtmlContainerCell.New);
+            return cast(HtmlContainerCell)FindObject(wxHtmlWinParser_CloseContainer(шхобъ), &HtmlContainerCell.Нов);
         }
 
         //-----------------------------------------------------------------------------
 
-        public int FontSize() { return wxHtmlWinParser_GetFontSize(wxobj); }
-        public void FontSize(int value) { wxHtmlWinParser_SetFontSize(wxobj, value); }
+        public цел FontSize() { return wxHtmlWinParser_GetFontSize(шхобъ); }
+        public проц FontSize(цел значение) { wxHtmlWinParser_SetFontSize(шхобъ, значение); }
 
-        public int FontBold() { return wxHtmlWinParser_GetFontBold(wxobj); }
-        public void FontBold(int value) { wxHtmlWinParser_SetFontBold(wxobj, value); }
+        public цел FontBold() { return wxHtmlWinParser_GetFontBold(шхобъ); }
+        public проц FontBold(цел значение) { wxHtmlWinParser_SetFontBold(шхобъ, значение); }
 
-        public int FontItalic() { return wxHtmlWinParser_GetFontItalic(wxobj); }
-        public void FontItalic(int value) { wxHtmlWinParser_SetFontItalic(wxobj, value); }
+        public цел FontItalic() { return wxHtmlWinParser_GetFontItalic(шхобъ); }
+        public проц FontItalic(цел значение) { wxHtmlWinParser_SetFontItalic(шхобъ, значение); }
 
-        public int FontUnderlined() { return wxHtmlWinParser_GetFontUnderlined(wxobj); }
-        public void FontUnderlined(int value) { wxHtmlWinParser_SetFontUnderlined(wxobj, value); }
+        public цел FontUnderlined() { return wxHtmlWinParser_GetFontUnderlined(шхобъ); }
+        public проц FontUnderlined(цел значение) { wxHtmlWinParser_SetFontUnderlined(шхобъ, значение); }
 
-        public int FontFixed() { return wxHtmlWinParser_GetFontFixed(wxobj); }
-        public void FontFixed(int value) { wxHtmlWinParser_SetFontFixed(wxobj, value); }
+        public цел FontFixed() { return wxHtmlWinParser_GetFontFixed(шхобъ); }
+        public проц FontFixed(цел значение) { wxHtmlWinParser_SetFontFixed(шхобъ, значение); }
 
-        public string FontFace() { return cast(string) new wxString(wxHtmlWinParser_GetFontFace(wxobj), true); }
-        public void FontFace(string value) { wxHtmlWinParser_SetFontFace(wxobj, value); }
-
-        //-----------------------------------------------------------------------------
-
-        public int Align() { return wxHtmlWinParser_GetAlign(wxobj); }
-        public void Align(int value) { wxHtmlWinParser_SetAlign(wxobj, value); }
+        public ткст FontFace() { return cast(ткст) new wxString(wxHtmlWinParser_GetFontFace(шхобъ), да); }
+        public проц FontFace(ткст значение) { wxHtmlWinParser_SetFontFace(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public Colour LinkColor() { return new Colour(wxHtmlWinParser_GetLinkColor(wxobj), true); }
-        public void LinkColor(Colour value) { wxHtmlWinParser_SetLinkColor(wxobj, wxObject.SafePtr(value)); }
-
-        public Colour ActualColor() { return new Colour(wxHtmlWinParser_GetActualColor(wxobj), true); }
-        public void ActualColor(Colour value) { wxHtmlWinParser_SetActualColor(wxobj, wxObject.SafePtr(value)); }
+        public цел Align() { return wxHtmlWinParser_GetAlign(шхобъ); }
+        public проц Align(цел значение) { wxHtmlWinParser_SetAlign(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public HtmlLinkInfo Link() { return cast(HtmlLinkInfo)FindObject(wxHtmlWinParser_GetLink(wxobj), &HtmlLinkInfo.New); }
-        public void Link(HtmlLinkInfo value) { wxHtmlWinParser_SetLink(wxobj, wxObject.SafePtr(value)); }
+        public Цвет LinkColor() { return new Цвет(wxHtmlWinParser_GetLinkColor(шхобъ), да); }
+        public проц LinkColor(Цвет значение) { wxHtmlWinParser_SetLinkColor(шхобъ, wxObject.SafePtr(значение)); }
+
+        public Цвет ActualColor() { return new Цвет(wxHtmlWinParser_GetActualColor(шхобъ), да); }
+        public проц ActualColor(Цвет значение) { wxHtmlWinParser_SetActualColor(шхобъ, wxObject.SafePtr(значение)); }
 
         //-----------------------------------------------------------------------------
 
-        public Font CreateCurrentFont()
+        public HtmlLinkInfo Link() { return cast(HtmlLinkInfo)FindObject(wxHtmlWinParser_GetLink(шхобъ), &HtmlLinkInfo.Нов); }
+        public проц Link(HtmlLinkInfo значение) { wxHtmlWinParser_SetLink(шхобъ, wxObject.SafePtr(значение)); }
+
+        //-----------------------------------------------------------------------------
+
+        public Шрифт CreateCurrentFont()
         {
-            return new Font(wxHtmlWinParser_CreateCurrentFont(wxobj));
+            return new Шрифт(wxHtmlWinParser_CreateCurrentFont(шхобъ));
         }
     }
 
 	//-----------------------------------------------------------------------------
 
         //! \cond EXTERN
-        static extern (C) void   wxHtmlTagHandler_SetParser(IntPtr self, IntPtr parser);
+        static extern (C) проц   wxHtmlTagHandler_SetParser(ЦУк сам, ЦУк parser);
         //! \endcond
 
         //-----------------------------------------------------------------------------
 
     public abstract class HtmlTagHandler : wxObject
     {
-        public this(IntPtr wxobj) 
-            { super(wxobj); }
+        public this(ЦУк шхобъ) 
+            { super(шхобъ); }
 
         //-----------------------------------------------------------------------------
 
-        public void Parser(HtmlParser value) { wxHtmlTagHandler_SetParser(wxobj, wxObject.SafePtr(value)); }
+        public проц Parser(HtmlParser значение) { wxHtmlTagHandler_SetParser(шхобъ, wxObject.SafePtr(значение)); }
 
         //-----------------------------------------------------------------------------
 
-        public abstract string GetSupportedTags();
-        public abstract bool HandleTag(HtmlTag tag);
+        public abstract ткст GetSupportedTags();
+        public abstract бул HandleTag(HtmlTag tag);
     }
 
 	//-----------------------------------------------------------------------------
 
         //! \cond EXTERN
-        static extern (C) IntPtr wxHtmlEntitiesParser_ctor();
-        static extern (C) void   wxHtmlEntitiesParser_SetEncoding(IntPtr self, int encoding);
-        static extern (C) IntPtr wxHtmlEntitiesParser_Parse(IntPtr self, string input);
-        static extern (C) char   wxHtmlEntitiesParser_GetEntityChar(IntPtr self, string entity);
-        static extern (C) char   wxHtmlEntitiesParser_GetCharForCode(IntPtr self, uint code);
+        static extern (C) ЦУк wxHtmlEntitiesParser_ctor();
+        static extern (C) проц   wxHtmlEntitiesParser_SetEncoding(ЦУк сам, цел encoding);
+        static extern (C) ЦУк wxHtmlEntitiesParser_Parse(ЦУк сам, ткст input);
+        static extern (C) сим   wxHtmlEntitiesParser_GetEntityChar(ЦУк сам, ткст entity);
+        static extern (C) сим   wxHtmlEntitiesParser_GetCharForCode(ЦУк сам, бцел code);
         //! \endcond
 
         //-----------------------------------------------------------------------------
@@ -1064,134 +1064,134 @@ public import wx.MouseEvent;
     alias HtmlEntitiesParser wxHtmlEntitiesParser;
     public class HtmlEntitiesParser : wxObject
     {
-		public this(IntPtr wxobj)
-			{ super(wxobj);}
+		public this(ЦУк шхобъ)
+			{ super(шхобъ);}
 
         public  this()
             { super(wxHtmlEntitiesParser_ctor()); }
 
         //-----------------------------------------------------------------------------
 
-        public void Encoding(FontEncoding value) { wxHtmlEntitiesParser_SetEncoding(wxobj, cast(int)value); }
+        public проц Encoding(FontEncoding значение) { wxHtmlEntitiesParser_SetEncoding(шхобъ, cast(цел)значение); }
 
         //-----------------------------------------------------------------------------
 
-        public string Parse(string input)
+        public ткст Parse(ткст input)
         {
-            return cast(string) new wxString(wxHtmlEntitiesParser_Parse(wxobj, input), true);
+            return cast(ткст) new wxString(wxHtmlEntitiesParser_Parse(шхобъ, input), да);
         }
 
         //-----------------------------------------------------------------------------
 
-        public char GetEntityChar(string entity)
+        public сим GetEntityChar(ткст entity)
         {
-            return wxHtmlEntitiesParser_GetEntityChar(wxobj, entity);
+            return wxHtmlEntitiesParser_GetEntityChar(шхобъ, entity);
         }
 
-        public char GetCharForCode(int code)
+        public сим GetCharForCode(цел code)
         {
-            return wxHtmlEntitiesParser_GetCharForCode(wxobj, cast(uint)code);
+            return wxHtmlEntitiesParser_GetCharForCode(шхобъ, cast(бцел)code);
         }
     }
 
 	//-----------------------------------------------------------------------------
 
          //! \cond EXTERN
-        static extern (C) void   wxHtmlParser_SetFS(IntPtr self, IntPtr fs);
-        static extern (C) IntPtr wxHtmlParser_GetFS(IntPtr self);
-        static extern (C) IntPtr wxHtmlParser_OpenURL(IntPtr self, int type, string url);
-        static extern (C) IntPtr wxHtmlParser_Parse(IntPtr self, string source);
-        static extern (C) void   wxHtmlParser_InitParser(IntPtr self, string source);
-        static extern (C) void   wxHtmlParser_DoneParser(IntPtr self);
-        static extern (C) void   wxHtmlParser_StopParsing(IntPtr self);
-        static extern (C) void   wxHtmlParser_DoParsing(IntPtr self, int begin_pos, int end_pos);
-        static extern (C) void   wxHtmlParser_DoParsingAll(IntPtr self);
-        static extern (C) IntPtr wxHtmlParser_GetCurrentTag(IntPtr self);
-        static extern (C) void   wxHtmlParser_AddTagHandler(IntPtr self, IntPtr handler);
-        static extern (C) void   wxHtmlParser_PushTagHandler(IntPtr self, IntPtr handler, string tags);
-        static extern (C) void   wxHtmlParser_PopTagHandler(IntPtr self);
-        static extern (C) IntPtr wxHtmlParser_GetSource(IntPtr self);
-        static extern (C) void   wxHtmlParser_SetSource(IntPtr self, string src);
-        static extern (C) void   wxHtmlParser_SetSourceAndSaveState(IntPtr self, string src);
-        static extern (C) bool   wxHtmlParser_RestoreState(IntPtr self);
-        static extern (C) IntPtr wxHtmlParser_ExtractCharsetInformation(IntPtr self, string markup);
+        static extern (C) проц   wxHtmlParser_SetFS(ЦУк сам, ЦУк fs);
+        static extern (C) ЦУк wxHtmlParser_GetFS(ЦУк сам);
+        static extern (C) ЦУк wxHtmlParser_OpenURL(ЦУк сам, цел тип, ткст url);
+        static extern (C) ЦУк wxHtmlParser_Parse(ЦУк сам, ткст source);
+        static extern (C) проц   wxHtmlParser_InitParser(ЦУк сам, ткст source);
+        static extern (C) проц   wxHtmlParser_DoneParser(ЦУк сам);
+        static extern (C) проц   wxHtmlParser_StopParsing(ЦУк сам);
+        static extern (C) проц   wxHtmlParser_DoParsing(ЦУк сам, цел begin_pos, цел end_pos);
+        static extern (C) проц   wxHtmlParser_DoParsingAll(ЦУк сам);
+        static extern (C) ЦУк wxHtmlParser_GetCurrentTag(ЦУк сам);
+        static extern (C) проц   wxHtmlParser_AddTagHandler(ЦУк сам, ЦУк handler);
+        static extern (C) проц   wxHtmlParser_PushTagHandler(ЦУк сам, ЦУк handler, ткст tags);
+        static extern (C) проц   wxHtmlParser_PopTagHandler(ЦУк сам);
+        static extern (C) ЦУк wxHtmlParser_GetSource(ЦУк сам);
+        static extern (C) проц   wxHtmlParser_SetSource(ЦУк сам, ткст src);
+        static extern (C) проц   wxHtmlParser_SetSourceAndSaveState(ЦУк сам, ткст src);
+        static extern (C) бул   wxHtmlParser_RestoreState(ЦУк сам);
+        static extern (C) ЦУк wxHtmlParser_ExtractCharsetInformation(ЦУк сам, ткст markup);
         //! \endcond
 
         //-----------------------------------------------------------------------------
 
     public abstract class HtmlParser : wxObject
     {
-        public this(IntPtr wxobj) 
-            { super(wxobj); }
+        public this(ЦУк шхобъ) 
+            { super(шхобъ); }
 
         //-----------------------------------------------------------------------------
 
-        /*public void SetFS(FileSystem fs)
+        /*public проц SetFS(FileSystem fs)
         {
-            wxHtmlParser_SetFS(wxobj, wxObject.SafePtr(fs));
+            wxHtmlParser_SetFS(шхобъ, wxObject.SafePtr(fs));
         }
 
         //-----------------------------------------------------------------------------
 
         public FileSystem GetFS()
         {
-            return wxHtmlParser_GetFS(wxobj);
+            return wxHtmlParser_GetFS(шхобъ);
         }
 
         //-----------------------------------------------------------------------------
 
-        public FSFile OpenURL(HtmlURLType type, string url)
+        public FSFile OpenURL(HtmlURLType тип, ткст url)
         {
-            return wxHtmlParser_OpenURL(wxobj, wxObject.SafePtr(type), url);
+            return wxHtmlParser_OpenURL(шхобъ, wxObject.SafePtr(тип), url);
         }*/
 
         //-----------------------------------------------------------------------------
 
-        public wxObject Parse(string source)
+        public wxObject Parse(ткст source)
         {
-            return new wxObject(wxHtmlParser_Parse(wxobj, source));
+            return new wxObject(wxHtmlParser_Parse(шхобъ, source));
         }
 
         //-----------------------------------------------------------------------------
 
-        public /+virtual+/ void InitParser(string source)
+        public /+virtual+/ проц InitParser(ткст source)
         {
-            wxHtmlParser_InitParser(wxobj, source);
+            wxHtmlParser_InitParser(шхобъ, source);
         }
 
         //-----------------------------------------------------------------------------
 
-        public /+virtual+/ void DoneParser()
+        public /+virtual+/ проц DoneParser()
         {
-            wxHtmlParser_DoneParser(wxobj);
+            wxHtmlParser_DoneParser(шхобъ);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void StopParsing()
+        public проц StopParsing()
         {
-            wxHtmlParser_StopParsing(wxobj);
+            wxHtmlParser_StopParsing(шхобъ);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void DoParsing(int begin_pos, int end_pos)
+        public проц DoParsing(цел begin_pos, цел end_pos)
         {
-            wxHtmlParser_DoParsing(wxobj, begin_pos, end_pos);
+            wxHtmlParser_DoParsing(шхобъ, begin_pos, end_pos);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void DoParsing()
+        public проц DoParsing()
         {
-            wxHtmlParser_DoParsingAll(wxobj);
+            wxHtmlParser_DoParsingAll(шхобъ);
         }
 
         //-----------------------------------------------------------------------------
 
         public HtmlTag GetCurrentTag()
         {
-            return HtmlTag.FindObj(wxHtmlParser_GetCurrentTag(wxobj));
+            return HtmlTag.FindObj(wxHtmlParser_GetCurrentTag(шхобъ));
         }
 
         //-----------------------------------------------------------------------------
@@ -1200,81 +1200,81 @@ public import wx.MouseEvent;
 
         //-----------------------------------------------------------------------------
 
-        public void AddTagHandler(HtmlTagHandler handler)
+        public проц AddTagHandler(HtmlTagHandler handler)
         {
-            wxHtmlParser_AddTagHandler(wxobj, wxObject.SafePtr(handler));
+            wxHtmlParser_AddTagHandler(шхобъ, wxObject.SafePtr(handler));
         }
 
         //-----------------------------------------------------------------------------
 
-        public void PushTagHandler(HtmlTagHandler handler, string tags)
+        public проц PushTagHandler(HtmlTagHandler handler, ткст tags)
         {
-            wxHtmlParser_PushTagHandler(wxobj, wxObject.SafePtr(handler), tags);
+            wxHtmlParser_PushTagHandler(шхобъ, wxObject.SafePtr(handler), tags);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void PopTagHandler()
+        public проц PopTagHandler()
         {
-            wxHtmlParser_PopTagHandler(wxobj);
+            wxHtmlParser_PopTagHandler(шхобъ);
         }
 
         //-----------------------------------------------------------------------------
 
-        public string Source() { return cast(string) new wxString(wxHtmlParser_GetSource(wxobj), true); }
-        public void Source(string value) { wxHtmlParser_SetSource(wxobj, value); }
+        public ткст Source() { return cast(ткст) new wxString(wxHtmlParser_GetSource(шхобъ), да); }
+        public проц Source(ткст значение) { wxHtmlParser_SetSource(шхобъ, значение); }
 
-        public void SourceAndSaveState(string value) { wxHtmlParser_SetSourceAndSaveState(wxobj, value); }
+        public проц SourceAndSaveState(ткст значение) { wxHtmlParser_SetSourceAndSaveState(шхобъ, значение); }
 
-        public bool RestoreState()
+        public бул RestoreState()
         {
-            return wxHtmlParser_RestoreState(wxobj);
+            return wxHtmlParser_RestoreState(шхобъ);
         }
 
         //-----------------------------------------------------------------------------
 
-        public string ExtractCharsetInformation(string markup)
+        public ткст ExtractCharsetInformation(ткст markup)
         {
-            return cast(string) new wxString(wxHtmlParser_ExtractCharsetInformation(wxobj, markup), true);
+            return cast(ткст) new wxString(wxHtmlParser_ExtractCharsetInformation(шхобъ, markup), да);
         }
     }
 
 	//-----------------------------------------------------------------------------
 
         //! \cond EXTERN
-        static extern (C) int    wxHtmlProcessor_GetPriority(IntPtr self);
-        static extern (C) void   wxHtmlProcessor_Enable(IntPtr self, bool enable);
-        static extern (C) bool   wxHtmlProcessor_IsEnabled(IntPtr self);
+        static extern (C) цел    wxHtmlProcessor_GetPriority(ЦУк сам);
+        static extern (C) проц   wxHtmlProcessor_Enable(ЦУк сам, бул enable);
+        static extern (C) бул   wxHtmlProcessor_IsEnabled(ЦУк сам);
         //! \endcond
 
         //-----------------------------------------------------------------------------
 
     public abstract class HtmlProcessor : wxObject
     {
-        public this(IntPtr wxobj) 
-            { super(wxobj); }
+        public this(ЦУк шхобъ) 
+            { super(шхобъ); }
 
         //-----------------------------------------------------------------------------
 
-        public abstract string Process(string text);
+        public abstract ткст Process(ткст текст);
 
         //-----------------------------------------------------------------------------
 
-        public int Priority() { return wxHtmlProcessor_GetPriority(wxobj); }
+        public цел Priority() { return wxHtmlProcessor_GetPriority(шхобъ); }
 
         //-----------------------------------------------------------------------------
 
-        public void Enabled(bool value) { wxHtmlProcessor_Enable(wxobj, value); }
-        public bool Enabled() { return wxHtmlProcessor_IsEnabled(wxobj); }
+        public проц Enabled(бул значение) { wxHtmlProcessor_Enable(шхобъ, значение); }
+        public бул Enabled() { return wxHtmlProcessor_IsEnabled(шхобъ); }
     }
     
 	//-----------------------------------------------------------------------------
     
         //! \cond EXTERN
-		static extern (C) IntPtr wxHtmlRenderingInfo_ctor();
-		static extern (C) void wxHtmlRenderingInfo_dtor(IntPtr self);
-		static extern (C) void wxHtmlRenderingInfo_SetSelection(IntPtr self, IntPtr s);
-		static extern (C) IntPtr wxHtmlRenderingInfo_GetSelection(IntPtr self);
+		static extern (C) ЦУк wxHtmlRenderingInfo_ctor();
+		static extern (C) проц wxHtmlRenderingInfo_dtor(ЦУк сам);
+		static extern (C) проц wxHtmlRenderingInfo_SetSelection(ЦУк сам, ЦУк s);
+		static extern (C) ЦУк wxHtmlRenderingInfo_GetSelection(ЦУк сам);
         //! \endcond
 		
 		//-----------------------------------------------------------------------------
@@ -1282,47 +1282,47 @@ public import wx.MouseEvent;
 	alias HtmlRenderingInfo wxHtmlRenderingInfo;
 	public class HtmlRenderingInfo : wxObject
 	{
-		public this(IntPtr wxobj)
+		public this(ЦУк шхобъ)
 		{	
-			super(wxobj);
+			super(шхобъ);
 		}
 		
-		private this(IntPtr wxobj, bool memOwn)
+		private this(ЦУк шхобъ, бул memOwn)
 		{ 
-			super(wxobj);
+			super(шхобъ);
 			this.memOwn = memOwn;
 		}
 			
 		public this()
-			{ this(wxHtmlRenderingInfo_ctor(), true);}
+			{ this(wxHtmlRenderingInfo_ctor(), да);}
 			
 		//---------------------------------------------------------------------
 				
-		override protected void dtor() { wxHtmlRenderingInfo_dtor(wxobj); }
+		override protected проц dtor() { wxHtmlRenderingInfo_dtor(шхобъ); }
 			
 		//-----------------------------------------------------------------------------
 		
-		public HtmlSelection Selection() { return cast(HtmlSelection)FindObject(wxHtmlRenderingInfo_GetSelection(wxobj), &HtmlSelection.New); }
-		public void Selection(HtmlSelection value) { wxHtmlRenderingInfo_SetSelection(wxobj, wxObject.SafePtr(value)); }
+		public HtmlSelection Selection() { return cast(HtmlSelection)FindObject(wxHtmlRenderingInfo_GetSelection(шхобъ), &HtmlSelection.Нов); }
+		public проц Selection(HtmlSelection значение) { wxHtmlRenderingInfo_SetSelection(шхобъ, wxObject.SafePtr(значение)); }
 	}
 	
 	//-----------------------------------------------------------------------------
 	
         //! \cond EXTERN
-		static extern (C) IntPtr wxHtmlSelection_ctor();
-		static extern (C) void wxHtmlSelection_dtor(IntPtr self);
-		static extern (C) void wxHtmlSelection_Set(IntPtr self, inout Point fromPos, IntPtr fromCell, inout Point toPos, IntPtr toCell);
-		static extern (C) void wxHtmlSelection_Set2(IntPtr self, IntPtr fromCell, IntPtr toCell);
-		static extern (C) IntPtr wxHtmlSelection_GetFromCell(IntPtr self);
-		static extern (C) IntPtr wxHtmlSelection_GetToCell(IntPtr self);
-		static extern (C) void wxHtmlSelection_GetFromPos(IntPtr self, out Point fromPos);
-		static extern (C) void wxHtmlSelection_GetToPos(IntPtr self, out Point toPos);
-		//static extern (C) void wxHtmlSelection_GetFromPrivPos(IntPtr self, out Point fromPrivPos);
-		//static extern (C) void wxHtmlSelection_GetToPrivPos(IntPtr self, out Point toPrivPos);
-		//static extern (C) void wxHtmlSelection_SetFromPrivPos(IntPtr self, inout Point pos);
-		//static extern (C) void wxHtmlSelection_SetToPrivPos(IntPtr self, inout Point pos);
-		//static extern (C) void wxHtmlSelection_ClearPrivPos(IntPtr self);
-		static extern (C) bool wxHtmlSelection_IsEmpty(IntPtr self);
+		static extern (C) ЦУк wxHtmlSelection_ctor();
+		static extern (C) проц wxHtmlSelection_dtor(ЦУк сам);
+		static extern (C) проц wxHtmlSelection_Set(ЦУк сам, inout Точка fromPos, ЦУк fromCell, inout Точка toPos, ЦУк toCell);
+		static extern (C) проц wxHtmlSelection_Set2(ЦУк сам, ЦУк fromCell, ЦУк toCell);
+		static extern (C) ЦУк wxHtmlSelection_GetFromCell(ЦУк сам);
+		static extern (C) ЦУк wxHtmlSelection_GetToCell(ЦУк сам);
+		static extern (C) проц wxHtmlSelection_GetFromPos(ЦУк сам, out Точка fromPos);
+		static extern (C) проц wxHtmlSelection_GetToPos(ЦУк сам, out Точка toPos);
+		//static extern (C) проц wxHtmlSelection_GetFromPrivPos(ЦУк сам, out Точка fromPrivPos);
+		//static extern (C) проц wxHtmlSelection_GetToPrivPos(ЦУк сам, out Точка toPrivPos);
+		//static extern (C) проц wxHtmlSelection_SetFromPrivPos(ЦУк сам, inout Точка поз);
+		//static extern (C) проц wxHtmlSelection_SetToPrivPos(ЦУк сам, inout Точка поз);
+		//static extern (C) проц wxHtmlSelection_ClearPrivPos(ЦУк сам);
+		static extern (C) бул wxHtmlSelection_IsEmpty(ЦУк сам);
         //! \endcond
 		
 		//-----------------------------------------------------------------------------
@@ -1330,104 +1330,104 @@ public import wx.MouseEvent;
 	alias HtmlSelection wxHtmlSelection;
 	public class HtmlSelection : wxObject
 	{
-		public this(IntPtr wxobj)
+		public this(ЦУк шхобъ)
 		{
-			super(wxobj);
+			super(шхобъ);
 		}
 		
-		private this(IntPtr wxobj, bool memOwn)
+		private this(ЦУк шхобъ, бул memOwn)
 		{ 
-			super(wxobj);
+			super(шхобъ);
 			this.memOwn = memOwn;
 		}
 			
 		public this()
-			{ this(wxHtmlSelection_ctor(), true);}
+			{ this(wxHtmlSelection_ctor(), да);}
 			
-		public static wxObject New(IntPtr ptr) { return new HtmlSelection(ptr); }
+		public static wxObject Нов(ЦУк ptr) { return new HtmlSelection(ptr); }
 		
 		//---------------------------------------------------------------------
 				
-		override protected void dtor() { wxHtmlSelection_dtor(wxobj); }
+		override protected проц dtor() { wxHtmlSelection_dtor(шхобъ); }
 			
 		//-----------------------------------------------------------------------------
 		
-		public void Set(Point fromPos, HtmlCell fromCell, Point toPos, HtmlCell toCell)
+		public проц Установи(Точка fromPos, HtmlCell fromCell, Точка toPos, HtmlCell toCell)
 		{
-			wxHtmlSelection_Set(wxobj, fromPos, wxObject.SafePtr(fromCell), toPos, wxObject.SafePtr(toCell));
+			wxHtmlSelection_Set(шхобъ, fromPos, wxObject.SafePtr(fromCell), toPos, wxObject.SafePtr(toCell));
 		}
 		
-		public void Set(HtmlCell fromCell, HtmlCell toCell)
+		public проц Установи(HtmlCell fromCell, HtmlCell toCell)
 		{
-			wxHtmlSelection_Set2(wxobj, wxObject.SafePtr(fromCell), wxObject.SafePtr(toCell));
+			wxHtmlSelection_Set2(шхобъ, wxObject.SafePtr(fromCell), wxObject.SafePtr(toCell));
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public HtmlCell FromCell() { return cast(HtmlCell)FindObject(wxHtmlSelection_GetFromCell(wxobj), &HtmlCell.New); }
+		public HtmlCell FromCell() { return cast(HtmlCell)FindObject(wxHtmlSelection_GetFromCell(шхобъ), &HtmlCell.Нов); }
 		
-		public HtmlCell ToCell() { return cast(HtmlCell)FindObject(wxHtmlSelection_GetToCell(wxobj), &HtmlCell.New); }
+		public HtmlCell ToCell() { return cast(HtmlCell)FindObject(wxHtmlSelection_GetToCell(шхобъ), &HtmlCell.Нов); }
 		
 		//-----------------------------------------------------------------------------
 		
-		public Point FromPos() { 
-				Point tpoint;
-				wxHtmlSelection_GetFromPos(wxobj, tpoint);
+		public Точка FromPos() { 
+				Точка tpoint;
+				wxHtmlSelection_GetFromPos(шхобъ, tpoint);
 				return tpoint;
 			}
 		
-		public Point ToPos() {
-				Point tpoint;
-				wxHtmlSelection_GetToPos(wxobj, tpoint);
+		public Точка ToPos() {
+				Точка tpoint;
+				wxHtmlSelection_GetToPos(шхобъ, tpoint);
 				return tpoint;
 			}
 		
 		//-----------------------------------------------------------------------------
 	/+	
-		public Point FromPrivPos() { 
-				Point tpoint;
-				wxHtmlSelection_GetFromPrivPos(wxobj, tpoint);
+		public Точка FromPrivPos() { 
+				Точка tpoint;
+				wxHtmlSelection_GetFromPrivPos(шхобъ, tpoint);
 				return tpoint;
 			}
 			
-		public void FromPrivPos(Point value) { wxHtmlSelection_SetFromPrivPos(wxobj, value); }
+		public проц FromPrivPos(Точка значение) { wxHtmlSelection_SetFromPrivPos(шхобъ, значение); }
 		
-		public Point ToPrivPos() {
-				Point tpoint;
-				wxHtmlSelection_GetToPrivPos(wxobj, tpoint);
+		public Точка ToPrivPos() {
+				Точка tpoint;
+				wxHtmlSelection_GetToPrivPos(шхобъ, tpoint);
 				return tpoint;
 			}
 			
-		public void ToPrivPos(Point value) { wxHtmlSelection_SetToPrivPos(wxobj, value); }
+		public проц ToPrivPos(Точка значение) { wxHtmlSelection_SetToPrivPos(шхобъ, значение); }
 		
 		//-----------------------------------------------------------------------------
 		
-		public void ClearPrivPos()
+		public проц ClearPrivPos()
 		{
-			wxHtmlSelection_ClearPrivPos(wxobj);
+			wxHtmlSelection_ClearPrivPos(шхобъ);
 		}
 	+/	
 		//-----------------------------------------------------------------------------
 		
-		public bool Empty() { return wxHtmlSelection_IsEmpty(wxobj); }
+		public бул Empty() { return wxHtmlSelection_IsEmpty(шхобъ); }
 	}
 	
 	//-----------------------------------------------------------------------------
 	
         //! \cond EXTERN
-		static extern (C) IntPtr wxHtmlEasyPrinting_ctor(string name, IntPtr parent);
-		static extern (C) bool   wxHtmlEasyPrinting_PreviewFile(IntPtr self, string htmlfile);
-		static extern (C) bool   wxHtmlEasyPrinting_PreviewText(IntPtr self, string htmltext, string basepath);
-		static extern (C) bool   wxHtmlEasyPrinting_PrintFile(IntPtr self, string htmlfile);
-		static extern (C) bool   wxHtmlEasyPrinting_PrintText(IntPtr self, string htmltext, string basepath);
-		//static extern (C) void   wxHtmlEasyPrinting_PrinterSetup(IntPtr self);
-		static extern (C) void   wxHtmlEasyPrinting_PageSetup(IntPtr self);
-		static extern (C) void   wxHtmlEasyPrinting_SetHeader(IntPtr self, string header, int pg);
-		static extern (C) void   wxHtmlEasyPrinting_SetFooter(IntPtr self, string footer, int pg);
-		static extern (C) void   wxHtmlEasyPrinting_SetFonts(IntPtr self, string normal_face, string fixed_face, int* sizes);
-		static extern (C) void   wxHtmlEasyPrinting_SetStandardFonts(IntPtr self, int size, string normal_face, string fixed_face);
-		static extern (C) IntPtr wxHtmlEasyPrinting_GetPrintData(IntPtr self);
-		static extern (C) IntPtr wxHtmlEasyPrinting_GetPageSetupData(IntPtr self);
+		static extern (C) ЦУк wxHtmlEasyPrinting_ctor(ткст имя, ЦУк родитель);
+		static extern (C) бул   wxHtmlEasyPrinting_PreviewFile(ЦУк сам, ткст htmlfile);
+		static extern (C) бул   wxHtmlEasyPrinting_PreviewText(ЦУк сам, ткст htmltext, ткст basepath);
+		static extern (C) бул   wxHtmlEasyPrinting_PrintFile(ЦУк сам, ткст htmlfile);
+		static extern (C) бул   wxHtmlEasyPrinting_PrintText(ЦУк сам, ткст htmltext, ткст basepath);
+		//static extern (C) проц   wxHtmlEasyPrinting_PrinterSetup(ЦУк сам);
+		static extern (C) проц   wxHtmlEasyPrinting_PageSetup(ЦУк сам);
+		static extern (C) проц   wxHtmlEasyPrinting_SetHeader(ЦУк сам, ткст header, цел pg);
+		static extern (C) проц   wxHtmlEasyPrinting_SetFooter(ЦУк сам, ткст footer, цел pg);
+		static extern (C) проц   wxHtmlEasyPrinting_SetFonts(ЦУк сам, ткст normal_face, ткст fixed_face, цел* sizes);
+		static extern (C) проц   wxHtmlEasyPrinting_SetStandardFonts(ЦУк сам, цел size, ткст normal_face, ткст fixed_face);
+		static extern (C) ЦУк wxHtmlEasyPrinting_GetPrintData(ЦУк сам);
+		static extern (C) ЦУк wxHtmlEasyPrinting_GetPageSetupData(ЦУк сам);
         //! \endcond
 		
 		//-----------------------------------------------------------------------------
@@ -1435,199 +1435,199 @@ public import wx.MouseEvent;
 	alias HtmlEasyPrinting wxHtmlEasyPrinting;
 	public class HtmlEasyPrinting : wxObject
 	{
-		public const int wxPAGE_ODD	= 0;
-		public const int wxPAGE_EVEN	= 1;
-		public const int wxPAGE_ALL	= 2;
+		public const цел wxPAGE_ODD	= 0;
+		public const цел wxPAGE_EVEN	= 1;
+		public const цел wxPAGE_ALL	= 2;
 		
 		//-----------------------------------------------------------------------------
 	
-		public this(IntPtr wxobj)
-			{ super(wxobj);}
+		public this(ЦУк шхобъ)
+			{ super(шхобъ);}
 			
 		public this()
-			{ this("Printing", null);}
+			{ this("Printing", пусто);}
 			
-		public this(string name)
-			{ this(name, null);}
+		public this(ткст имя)
+			{ this(имя, пусто);}
 			
-		public this(string name, Window parentWindow)
-			{ super(wxHtmlEasyPrinting_ctor(name, wxObject.SafePtr(parentWindow)));}
+		public this(ткст имя, Окно parentWindow)
+			{ super(wxHtmlEasyPrinting_ctor(имя, wxObject.SafePtr(parentWindow)));}
 			
 		//-----------------------------------------------------------------------------
 		
-		public bool PreviewFile(string htmlfile)
+		public бул PreviewFile(ткст htmlfile)
 		{
-			return wxHtmlEasyPrinting_PreviewFile(wxobj, htmlfile);
+			return wxHtmlEasyPrinting_PreviewFile(шхобъ, htmlfile);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public bool PreviewText(string htmltext)
+		public бул PreviewText(ткст htmltext)
 		{
 			return PreviewText(htmltext, "");
 		}
 		
-		public bool PreviewText(string htmltext, string basepath)
+		public бул PreviewText(ткст htmltext, ткст basepath)
 		{
-			return wxHtmlEasyPrinting_PreviewText(wxobj, htmltext, basepath);
+			return wxHtmlEasyPrinting_PreviewText(шхобъ, htmltext, basepath);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public bool PrintFile(string htmlfile)
+		public бул PrintFile(ткст htmlfile)
 		{
-			return wxHtmlEasyPrinting_PrintFile(wxobj, htmlfile);
+			return wxHtmlEasyPrinting_PrintFile(шхобъ, htmlfile);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public bool PrintText(string htmltext)
+		public бул PrintText(ткст htmltext)
 		{
 			return PrintText(htmltext, "");
 		}
 		
-		public bool PrintText(string htmltext, string basepath)
+		public бул PrintText(ткст htmltext, ткст basepath)
 		{
-			return wxHtmlEasyPrinting_PrintText(wxobj, htmltext, basepath);
+			return wxHtmlEasyPrinting_PrintText(шхобъ, htmltext, basepath);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		/*public void PrinterSetup()
+		/*public проц PrinterSetup()
 		{
-			wxHtmlEasyPrinting_PrinterSetup(wxobj);
+			wxHtmlEasyPrinting_PrinterSetup(шхобъ);
 		}*/
 		
 		//-----------------------------------------------------------------------------
 		
-		public void PageSetup()
+		public проц PageSetup()
 		{
-			wxHtmlEasyPrinting_PageSetup(wxobj);
+			wxHtmlEasyPrinting_PageSetup(шхобъ);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public void SetHeader(string header)
+		public проц SetHeader(ткст header)
 		{
 			SetHeader(header, wxPAGE_ALL);
 		}
 		
-		public void SetHeader(string header, int pg)
+		public проц SetHeader(ткст header, цел pg)
 		{
-			wxHtmlEasyPrinting_SetHeader(wxobj, header, pg);
+			wxHtmlEasyPrinting_SetHeader(шхобъ, header, pg);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public void SetFooter(string footer)
+		public проц SetFooter(ткст footer)
 		{
 			SetFooter(footer, wxPAGE_ALL);
 		}
 		
-		public void SetFooter(string footer, int pg)
+		public проц SetFooter(ткст footer, цел pg)
 		{
-			wxHtmlEasyPrinting_SetFooter(wxobj, footer, pg);
+			wxHtmlEasyPrinting_SetFooter(шхобъ, footer, pg);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public void SetFonts(string normal_face, string fixed_face)
+		public проц SetFonts(ткст normal_face, ткст fixed_face)
 		{
-			SetFonts(normal_face, fixed_face, null);
+			SetFonts(normal_face, fixed_face, пусто);
 		}
 		
-		public void SetFonts(string normal_face, string fixed_face, int[] sizes)
+		public проц SetFonts(ткст normal_face, ткст fixed_face, цел[] sizes)
 		{
-			wxHtmlEasyPrinting_SetFonts(wxobj, normal_face, fixed_face, sizes.ptr);
+			wxHtmlEasyPrinting_SetFonts(шхобъ, normal_face, fixed_face, sizes.ptr);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public void SetStandardFonts()
+		public проц SetStandardFonts()
 		{
 			SetStandardFonts(-1, "", "");
 		}
 		
-		public void SetStandardFonts(int size)
+		public проц SetStandardFonts(цел size)
 		{
 			SetStandardFonts(size, "", "");
 		}
 		
-		public void SetStandardFonts(int size, string normal_face)
+		public проц SetStandardFonts(цел size, ткст normal_face)
 		{
 			SetStandardFonts(size, normal_face, "");
 		}
 		
-		public void SetStandardFonts(int size, string normal_face, string fixed_face)
+		public проц SetStandardFonts(цел size, ткст normal_face, ткст fixed_face)
 		{
-			wxHtmlEasyPrinting_SetStandardFonts(wxobj, size, normal_face, fixed_face);
+			wxHtmlEasyPrinting_SetStandardFonts(шхобъ, size, normal_face, fixed_face);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public PrintData printData() { return cast(PrintData)FindObject(wxHtmlEasyPrinting_GetPrintData(wxobj), &PrintData.New); }
+		public PrintData printData() { return cast(PrintData)FindObject(wxHtmlEasyPrinting_GetPrintData(шхобъ), &PrintData.Нов); }
 		
 		//-----------------------------------------------------------------------------
 		
-		public PageSetupDialogData PageSetupData() { return cast(PageSetupDialogData)FindObject(wxHtmlEasyPrinting_GetPageSetupData(wxobj), &PageSetupDialogData.New); }
+		public PageSetupDialogData PageSetupData() { return cast(PageSetupDialogData)FindObject(wxHtmlEasyPrinting_GetPageSetupData(шхобъ), &PageSetupDialogData.Нов); }
 	}
 
 	//-----------------------------------------------------------------------------
 
         //! \cond EXTERN
 		extern (C) {
-		alias void function(HtmlWindow obj, IntPtr link) Virtual_OnLinkClicked;
-		alias void function(HtmlWindow obj, IntPtr title) Virtual_OnSetTitle;
-		alias void function(HtmlWindow obj, IntPtr cell, int x, int y) Virtual_OnCellMouseHover;
-		alias void function(HtmlWindow obj, IntPtr cell, int x, int y, IntPtr mouseevent) Virtual_OnCellClicked;
-		alias int function(HtmlWindow obj, int type, IntPtr url, IntPtr redirect) Virtual_OnOpeningURL;
+		alias проц function(HtmlWindow объ, ЦУк link) Virtual_OnLinkClicked;
+		alias проц function(HtmlWindow объ, ЦУк title) Virtual_OnSetTitle;
+		alias проц function(HtmlWindow объ, ЦУк cell, цел x, цел y) Virtual_OnCellMouseHover;
+		alias проц function(HtmlWindow объ, ЦУк cell, цел x, цел y, ЦУк mouseevent) Virtual_OnCellClicked;
+		alias цел function(HtmlWindow объ, цел тип, ЦУк url, ЦУк redirect) Virtual_OnOpeningURL;
 		}
 
-		static extern (C) IntPtr wxHtmlWindow_ctor();
-		static extern (C) void   wxHtmlWindow_RegisterVirtual(IntPtr self, HtmlWindow obj, 
+		static extern (C) ЦУк wxHtmlWindow_ctor();
+		static extern (C) проц   wxHtmlWindow_RegisterVirtual(ЦУк сам, HtmlWindow объ, 
 			Virtual_OnLinkClicked onLinkClicked,
 			Virtual_OnSetTitle onSetTitle,
 			Virtual_OnCellMouseHover onCellMouseHover,
 			Virtual_OnCellClicked onCellClicked,
 			Virtual_OnOpeningURL onOpeningURL);
-		static extern (C) bool   wxHtmlWindow_Create(IntPtr self, IntPtr parent, int id, inout Point pos, inout Size size, uint style, string name);
-		static extern (C) bool   wxHtmlWindow_SetPage(IntPtr self, string source);
-		static extern (C) bool   wxHtmlWindow_AppendToPage(IntPtr self, string source);
-		static extern (C) bool   wxHtmlWindow_LoadPage(IntPtr self, string location);
-		static extern (C) bool   wxHtmlWindow_LoadFile(IntPtr self, string filename);
-		static extern (C) IntPtr wxHtmlWindow_GetOpenedPage(IntPtr self);
-		static extern (C) IntPtr wxHtmlWindow_GetOpenedAnchor(IntPtr self);
-		static extern (C) IntPtr wxHtmlWindow_GetOpenedPageTitle(IntPtr self);
-		static extern (C) void   wxHtmlWindow_SetRelatedFrame(IntPtr self, IntPtr frame, string format);
-		static extern (C) IntPtr wxHtmlWindow_GetRelatedFrame(IntPtr self);
-		static extern (C) void   wxHtmlWindow_SetRelatedStatusBar(IntPtr self, int bar);
-		static extern (C) void   wxHtmlWindow_SetFonts(IntPtr self, string normal_face, string fixed_face, int* sizes);
-		static extern (C) void   wxHtmlWindow_SetBorders(IntPtr self, int b);
-		static extern (C) void   wxHtmlWindow_ReadCustomization(IntPtr self, IntPtr cfg, string path);
-		static extern (C) void   wxHtmlWindow_WriteCustomization(IntPtr self, IntPtr cfg, string path);
-		static extern (C) bool   wxHtmlWindow_HistoryBack(IntPtr self);
-		static extern (C) bool   wxHtmlWindow_HistoryForward(IntPtr self);
-		static extern (C) bool   wxHtmlWindow_HistoryCanBack(IntPtr self);
-		static extern (C) bool   wxHtmlWindow_HistoryCanForward(IntPtr self);
-		static extern (C) void   wxHtmlWindow_HistoryClear(IntPtr self);
-		static extern (C) IntPtr wxHtmlWindow_GetInternalRepresentation(IntPtr self);
-		static extern (C) void   wxHtmlWindow_AddFilter(IntPtr filter);
-		static extern (C) IntPtr wxHtmlWindow_GetParser(IntPtr self);
-		static extern (C) void   wxHtmlWindow_AddProcessor(IntPtr self, IntPtr processor);
-		static extern (C) void   wxHtmlWindow_AddGlobalProcessor(IntPtr processor);
-		static extern (C) bool   wxHtmlWindow_AcceptsFocusFromKeyboard(IntPtr self);
-		static extern (C) void   wxHtmlWindow_OnSetTitle(IntPtr self, string title);
-		static extern (C) void   wxHtmlWindow_OnCellClicked(IntPtr self, IntPtr cell, int x, int y, IntPtr evt);
-		static extern (C) void   wxHtmlWindow_OnLinkClicked(IntPtr self, IntPtr link);
-		static extern (C) int    wxHtmlWindow_OnOpeningURL(IntPtr self, int type, string url, string redirect);
+		static extern (C) бул   wxHtmlWindow_Create(ЦУк сам, ЦУк родитель, цел ид, inout Точка поз, inout Размер size, бцел стиль, ткст имя);
+		static extern (C) бул   wxHtmlWindow_SetPage(ЦУк сам, ткст source);
+		static extern (C) бул   wxHtmlWindow_AppendToPage(ЦУк сам, ткст source);
+		static extern (C) бул   wxHtmlWindow_LoadPage(ЦУк сам, ткст location);
+		static extern (C) бул   wxHtmlWindow_LoadFile(ЦУк сам, ткст фимя);
+		static extern (C) ЦУк wxHtmlWindow_GetOpenedPage(ЦУк сам);
+		static extern (C) ЦУк wxHtmlWindow_GetOpenedAnchor(ЦУк сам);
+		static extern (C) ЦУк wxHtmlWindow_GetOpenedPageTitle(ЦУк сам);
+		static extern (C) проц   wxHtmlWindow_SetRelatedFrame(ЦУк сам, ЦУк frame, ткст format);
+		static extern (C) ЦУк wxHtmlWindow_GetRelatedFrame(ЦУк сам);
+		static extern (C) проц   wxHtmlWindow_SetRelatedStatusBar(ЦУк сам, цел bar);
+		static extern (C) проц   wxHtmlWindow_SetFonts(ЦУк сам, ткст normal_face, ткст fixed_face, цел* sizes);
+		static extern (C) проц   wxHtmlWindow_SetBorders(ЦУк сам, цел с);
+		static extern (C) проц   wxHtmlWindow_ReadCustomization(ЦУк сам, ЦУк cfg, ткст путь);
+		static extern (C) проц   wxHtmlWindow_WriteCustomization(ЦУк сам, ЦУк cfg, ткст путь);
+		static extern (C) бул   wxHtmlWindow_HistoryBack(ЦУк сам);
+		static extern (C) бул   wxHtmlWindow_HistoryForward(ЦУк сам);
+		static extern (C) бул   wxHtmlWindow_HistoryCanBack(ЦУк сам);
+		static extern (C) бул   wxHtmlWindow_HistoryCanForward(ЦУк сам);
+		static extern (C) проц   wxHtmlWindow_HistoryClear(ЦУк сам);
+		static extern (C) ЦУк wxHtmlWindow_GetInternalRepresentation(ЦУк сам);
+		static extern (C) проц   wxHtmlWindow_AddFilter(ЦУк filter);
+		static extern (C) ЦУк wxHtmlWindow_GetParser(ЦУк сам);
+		static extern (C) проц   wxHtmlWindow_AddProcessor(ЦУк сам, ЦУк processor);
+		static extern (C) проц   wxHtmlWindow_AddGlobalProcessor(ЦУк processor);
+		static extern (C) бул   wxHtmlWindow_AcceptsFocusFromKeyboard(ЦУк сам);
+		static extern (C) проц   wxHtmlWindow_OnSetTitle(ЦУк сам, ткст title);
+		static extern (C) проц   wxHtmlWindow_OnCellClicked(ЦУк сам, ЦУк cell, цел x, цел y, ЦУк evt);
+		static extern (C) проц   wxHtmlWindow_OnLinkClicked(ЦУк сам, ЦУк link);
+		static extern (C) цел    wxHtmlWindow_OnOpeningURL(ЦУк сам, цел тип, ткст url, ткст redirect);
 		
-		static extern (C) void   wxHtmlWindow_SelectAll(IntPtr self);
-		static extern (C) void   wxHtmlWindow_SelectWord(IntPtr self, inout Point pos);
-		static extern (C) void   wxHtmlWindow_SelectLine(IntPtr self, inout Point pos);
+		static extern (C) проц   wxHtmlWindow_SelectAll(ЦУк сам);
+		static extern (C) проц   wxHtmlWindow_SelectWord(ЦУк сам, inout Точка поз);
+		static extern (C) проц   wxHtmlWindow_SelectLine(ЦУк сам, inout Точка поз);
 		
-		static extern (C) IntPtr wxHtmlWindow_ToText(IntPtr self);
+		static extern (C) ЦУк wxHtmlWindow_ToText(ЦУк сам);
 		
-		static extern (C) IntPtr wxHtmlWindow_SelectionToText(IntPtr self);
+		static extern (C) ЦУк wxHtmlWindow_SelectionToText(ЦУк сам);
         //! \endcond
 		
 		//-----------------------------------------------------------------------------
@@ -1635,23 +1635,23 @@ public import wx.MouseEvent;
 	alias HtmlWindow wxHtmlWindow;
 	public class HtmlWindow : ScrolledWindow
 	{
-		public const int wxHW_SCROLLBAR_NEVER   = 0x0002;
-		public const int wxHW_SCROLLBAR_AUTO    = 0x0004;
-		public const int wxHW_NO_SELECTION      = 0x0008;
+		public const цел wxHW_SCROLLBAR_NEVER   = 0x0002;
+		public const цел wxHW_SCROLLBAR_AUTO    = 0x0004;
+		public const цел wxHW_NO_SELECTION      = 0x0008;
 
 		//-----------------------------------------------------------------------------
 
-		public this(IntPtr  wxobj)
-			{ super(wxobj); }
+		public this(ЦУк  шхобъ)
+			{ super(шхобъ); }
 
 		public this()
 			{ super(wxHtmlWindow_ctor()); }
 		
-		public this(Window parent, int id /*= wxID_ANY*/, Point pos = wxDefaultPosition, Size size = wxDefaultSize, int style = wxHW_SCROLLBAR_AUTO, string name = "htmlWindow")
+		public this(Окно родитель, цел ид /*= wxID_ANY*/, Точка поз = wxDefaultPosition, Размер size = wxDefaultSize, цел стиль = wxHW_SCROLLBAR_AUTO, ткст имя = "htmlWindow")
 		{
 			super(wxHtmlWindow_ctor());
 
-			wxHtmlWindow_RegisterVirtual(wxobj, this,
+			wxHtmlWindow_RegisterVirtual(шхобъ, this,
 				&staticDoOnLinkClicked,
 				&staticDoOnSetTitle,
 				&staticDoOnCellMouseHover,
@@ -1659,243 +1659,243 @@ public import wx.MouseEvent;
 				&staticDoOnOpeningURL
 				);
 
-			if (!Create(parent, id, pos, size, style, name)) 
+			if (!Create(родитель, ид, поз, size, стиль, имя)) 
 			{
 				throw new InvalidOperationException("Failed to create HtmlWindow");
 			}
 		}
 		
 		//---------------------------------------------------------------------
-		// ctors with self created id
+		// ctors with сам created ид
 		
-		public this(Window parent, Point pos = wxDefaultPosition, Size size = wxDefaultSize, int style = wxHW_SCROLLBAR_AUTO, string name = "htmlWindow")
-			{ this(parent, Window.UniqueID, pos, size, style, name);}
+		public this(Окно родитель, Точка поз = wxDefaultPosition, Размер size = wxDefaultSize, цел стиль = wxHW_SCROLLBAR_AUTO, ткст имя = "htmlWindow")
+			{ this(родитель, Окно.UniqueID, поз, size, стиль, имя);}
 
 		//-----------------------------------------------------------------------------
 
-		public override bool Create(Window parent, int id, inout Point pos, inout Size size, int style, string name)
+		public override бул Create(Окно родитель, цел ид, inout Точка поз, inout Размер size, цел стиль, ткст имя)
 		{
-			return wxHtmlWindow_Create(wxobj, wxObject.SafePtr(parent), id, pos, size, cast(uint)style, name);
+			return wxHtmlWindow_Create(шхобъ, wxObject.SafePtr(родитель), ид, поз, size, cast(бцел)стиль, имя);
 		}
 
 		//-----------------------------------------------------------------------------
 
-		public bool SetPage(string source)
+		public бул SetPage(ткст source)
 		{
-			return wxHtmlWindow_SetPage(wxobj, source);
+			return wxHtmlWindow_SetPage(шхобъ, source);
 		}
 		
-		public bool AppendToPage(string source)
+		public бул AppendToPage(ткст source)
 		{
-			return wxHtmlWindow_AppendToPage(wxobj, source);
+			return wxHtmlWindow_AppendToPage(шхобъ, source);
 		}
 
 		//-----------------------------------------------------------------------------
 		
-		public /+virtual+/ bool LoadPage(string location)
+		public /+virtual+/ бул LoadPage(ткст location)
 		{
-			return wxHtmlWindow_LoadPage(wxobj, location);
+			return wxHtmlWindow_LoadPage(шхобъ, location);
 		}
 		
-		public bool LoadFile(string filename)
+		public бул ЗагрузиФайл(ткст фимя)
 		{
-			return wxHtmlWindow_LoadFile(wxobj, filename);
-		}
-		
-		//-----------------------------------------------------------------------------
-		
-		public string OpenedPage() { return cast(string) new wxString(wxHtmlWindow_GetOpenedPage(wxobj), true); } 
-		
-		public string OpenedAnchor() { return cast(string) new wxString(wxHtmlWindow_GetOpenedAnchor(wxobj), true); }
-		
-		public string OpenedPageTitle() { return cast(string) new wxString(wxHtmlWindow_GetOpenedPageTitle(wxobj), true); }
-		
-		//-----------------------------------------------------------------------------
-		
-		public void SetRelatedFrame(Frame frame, string format)
-		{
-			wxHtmlWindow_SetRelatedFrame(wxobj, wxObject.SafePtr(frame), format);
-		}
-		
-		public Frame RelatedFrame() { return cast(Frame)FindObject(wxHtmlWindow_GetRelatedFrame(wxobj), &Frame.New); }
-		
-		//-----------------------------------------------------------------------------
-		
-		public void RelatedStatusBar(int value) { wxHtmlWindow_SetRelatedStatusBar(wxobj, value); }
-		
-		//-----------------------------------------------------------------------------
-		
-		public void SetFonts(string normal_face, string fixed_face, int[] sizes)
-		{
-			wxHtmlWindow_SetFonts(wxobj, normal_face, fixed_face, sizes.ptr);
+			return wxHtmlWindow_LoadFile(шхобъ, фимя);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public void Borders(int value) { wxHtmlWindow_SetBorders(wxobj, value); }
+		public ткст OpenedPage() { return cast(ткст) new wxString(wxHtmlWindow_GetOpenedPage(шхобъ), да); } 
+		
+		public ткст OpenedAnchor() { return cast(ткст) new wxString(wxHtmlWindow_GetOpenedAnchor(шхобъ), да); }
+		
+		public ткст OpenedPageTitle() { return cast(ткст) new wxString(wxHtmlWindow_GetOpenedPageTitle(шхобъ), да); }
 		
 		//-----------------------------------------------------------------------------
 		
-		public /+virtual+/ void ReadCustomization(Config cfg, string path)
+		public проц SetRelatedFrame(Frame frame, ткст format)
 		{
-			wxHtmlWindow_ReadCustomization(wxobj, wxObject.SafePtr(cfg), path);
+			wxHtmlWindow_SetRelatedFrame(шхобъ, wxObject.SafePtr(frame), format);
 		}
+		
+		public Frame RelatedFrame() { return cast(Frame)FindObject(wxHtmlWindow_GetRelatedFrame(шхобъ), &Frame.Нов); }
 		
 		//-----------------------------------------------------------------------------
 		
-		public /+virtual+/ void WriteCustomization(Config cfg, string path)
-		{
-			wxHtmlWindow_WriteCustomization(wxobj, wxObject.SafePtr(cfg), path);
-		}
+		public проц RelatedStatusBar(цел значение) { wxHtmlWindow_SetRelatedStatusBar(шхобъ, значение); }
 		
 		//-----------------------------------------------------------------------------
 		
-		public bool HistoryBack()
+		public проц SetFonts(ткст normal_face, ткст fixed_face, цел[] sizes)
 		{
-			return wxHtmlWindow_HistoryBack(wxobj);
-		}
-		
-		public bool HistoryForward()
-		{
-			return wxHtmlWindow_HistoryForward(wxobj);
-		}
-		
-		public bool HistoryCanBack()
-		{
-			return wxHtmlWindow_HistoryCanBack(wxobj);
-		}
-		
-		public bool HistoryCanForward()
-		{
-			return wxHtmlWindow_HistoryCanForward(wxobj);
-		}
-		
-		public void HistoryClear()
-		{
-			wxHtmlWindow_HistoryClear(wxobj);
+			wxHtmlWindow_SetFonts(шхобъ, normal_face, fixed_face, sizes.ptr);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public HtmlContainerCell InternalRepresentation() { return cast(HtmlContainerCell)FindObject(wxHtmlWindow_GetInternalRepresentation(wxobj), &HtmlContainerCell.New); }
+		public проц Borders(цел значение) { wxHtmlWindow_SetBorders(шхобъ, значение); }
 		
 		//-----------------------------------------------------------------------------
 		
-		public static void AddFilter(HtmlFilter filter)
+		public /+virtual+/ проц ReadCustomization(Config cfg, ткст путь)
+		{
+			wxHtmlWindow_ReadCustomization(шхобъ, wxObject.SafePtr(cfg), путь);
+		}
+		
+		//-----------------------------------------------------------------------------
+		
+		public /+virtual+/ проц WriteCustomization(Config cfg, ткст путь)
+		{
+			wxHtmlWindow_WriteCustomization(шхобъ, wxObject.SafePtr(cfg), путь);
+		}
+		
+		//-----------------------------------------------------------------------------
+		
+		public бул HistoryBack()
+		{
+			return wxHtmlWindow_HistoryBack(шхобъ);
+		}
+		
+		public бул HistoryForward()
+		{
+			return wxHtmlWindow_HistoryForward(шхобъ);
+		}
+		
+		public бул HistoryCanBack()
+		{
+			return wxHtmlWindow_HistoryCanBack(шхобъ);
+		}
+		
+		public бул HistoryCanForward()
+		{
+			return wxHtmlWindow_HistoryCanForward(шхобъ);
+		}
+		
+		public проц HistoryClear()
+		{
+			wxHtmlWindow_HistoryClear(шхобъ);
+		}
+		
+		//-----------------------------------------------------------------------------
+		
+		public HtmlContainerCell InternalRepresentation() { return cast(HtmlContainerCell)FindObject(wxHtmlWindow_GetInternalRepresentation(шхобъ), &HtmlContainerCell.Нов); }
+		
+		//-----------------------------------------------------------------------------
+		
+		public static проц AddFilter(HtmlFilter filter)
 		{
 			wxHtmlWindow_AddFilter(wxObject.SafePtr(filter));
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public HtmlWinParser Parser() { return cast(HtmlWinParser)FindObject(wxHtmlWindow_GetParser(wxobj), &HtmlWinParser.New); }
+		public HtmlWinParser Parser() { return cast(HtmlWinParser)FindObject(wxHtmlWindow_GetParser(шхобъ), &HtmlWinParser.Нов); }
 		
 		//-----------------------------------------------------------------------------
 		
-		public void AddProcessor(HtmlProcessor processor)
+		public проц AddProcessor(HtmlProcessor processor)
 		{
-			wxHtmlWindow_AddProcessor(wxobj, wxObject.SafePtr(processor));
+			wxHtmlWindow_AddProcessor(шхобъ, wxObject.SafePtr(processor));
 		}
 		
-		public static void AddGlobalProcessor(HtmlProcessor processor)
+		public static проц AddGlobalProcessor(HtmlProcessor processor)
 		{
 			wxHtmlWindow_AddGlobalProcessor(wxObject.SafePtr(processor));
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public override bool AcceptsFocusFromKeyboard()
+		public override бул AcceptsFocusFromKeyboard()
 		{
-			return wxHtmlWindow_AcceptsFocusFromKeyboard(wxobj);
+			return wxHtmlWindow_AcceptsFocusFromKeyboard(шхобъ);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		static extern(C) private void staticDoOnSetTitle(HtmlWindow obj, IntPtr title)
+		static extern(C) private проц staticDoOnSetTitle(HtmlWindow объ, ЦУк title)
 		{			
-			obj.OnSetTitle(cast(string) new wxString(title));
+			объ.OnSetTitle(cast(ткст) new wxString(title));
 		}
 		
-		public /+virtual+/ void OnSetTitle(string title)
+		public /+virtual+/ проц OnSetTitle(ткст title)
 		{
-			wxHtmlWindow_OnSetTitle(wxobj, title);
+			wxHtmlWindow_OnSetTitle(шхобъ, title);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		static extern(C) private void staticDoOnCellMouseHover(HtmlWindow obj, IntPtr cell, int x, int y)
+		static extern(C) private проц staticDoOnCellMouseHover(HtmlWindow объ, ЦУк cell, цел x, цел y)
 		{
-			obj.OnCellMouseHover(new HtmlCell(cell), x, y);
+			объ.OnCellMouseHover(new HtmlCell(cell), x, y);
 		}
 		
-		public /+virtual+/ void OnCellMouseHover(HtmlCell cell, int x, int y)
+		public /+virtual+/ проц OnCellMouseHover(HtmlCell cell, цел x, цел y)
 		{
 			// Do nothing here
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		static extern(C) private void staticDoOnCellClicked(HtmlWindow obj, IntPtr cell, int x, int y, IntPtr mouseevent)
+		static extern(C) private проц staticDoOnCellClicked(HtmlWindow объ, ЦУк cell, цел x, цел y, ЦУк mouseevent)
 		{
-			obj.OnCellClicked(new HtmlCell(cell), x, y, new MouseEvent(mouseevent));
+			объ.OnCellClicked(new HtmlCell(cell), x, y, new MouseEvent(mouseevent));
 		}
 		
-		public /+virtual+/ void OnCellClicked(HtmlCell cell, int x, int y, MouseEvent evt)
+		public /+virtual+/ проц OnCellClicked(HtmlCell cell, цел x, цел y, MouseEvent evt)
 		{
-			wxHtmlWindow_OnCellClicked(wxobj, wxObject.SafePtr(cell), x, y, wxObject.SafePtr(evt));
-		}
-		
-		//-----------------------------------------------------------------------------
-		
-		static extern(C) private void staticDoOnLinkClicked(HtmlWindow obj, IntPtr link)
-		{
-			obj.OnLinkClicked(new HtmlLinkInfo(link));
-		}
-		
-		public /+virtual+/ void OnLinkClicked(HtmlLinkInfo link)
-		{
-			wxHtmlWindow_OnLinkClicked(wxobj, wxObject.SafePtr(link));
+			wxHtmlWindow_OnCellClicked(шхобъ, wxObject.SafePtr(cell), x, y, wxObject.SafePtr(evt));
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		static extern(C) private int staticDoOnOpeningURL(HtmlWindow obj, int type, IntPtr url, IntPtr redirect)
+		static extern(C) private проц staticDoOnLinkClicked(HtmlWindow объ, ЦУк link)
 		{
-			return cast(int)obj.OnOpeningURL(cast(HtmlURLType) type, cast(string) new wxString(url), cast(string) new wxString(redirect));
+			объ.OnLinkClicked(new HtmlLinkInfo(link));
 		}
 		
-		public HtmlOpeningStatus OnOpeningURL(HtmlURLType type, string url, string redirect)
+		public /+virtual+/ проц OnLinkClicked(HtmlLinkInfo link)
 		{
-			return cast(HtmlOpeningStatus)wxHtmlWindow_OnOpeningURL(wxobj, cast(int)type, url, redirect);
-		}
-		
-		//-----------------------------------------------------------------------------
-		
-		public void SelectAll()
-		{
-			wxHtmlWindow_SelectAll(wxobj);
+			wxHtmlWindow_OnLinkClicked(шхобъ, wxObject.SafePtr(link));
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public void SelectLine(Point pos)
+		static extern(C) private цел staticDoOnOpeningURL(HtmlWindow объ, цел тип, ЦУк url, ЦУк redirect)
 		{
-			wxHtmlWindow_SelectLine(wxobj, pos);
+			return cast(цел)объ.OnOpeningURL(cast(HtmlURLType) тип, cast(ткст) new wxString(url), cast(ткст) new wxString(redirect));
+		}
+		
+		public HtmlOpeningStatus OnOpeningURL(HtmlURLType тип, ткст url, ткст redirect)
+		{
+			return cast(HtmlOpeningStatus)wxHtmlWindow_OnOpeningURL(шхобъ, cast(цел)тип, url, redirect);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public void SelectWord(Point pos)
+		public проц SelectAll()
 		{
-			wxHtmlWindow_SelectWord(wxobj, pos);
+			wxHtmlWindow_SelectAll(шхобъ);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public string Text() { return cast(string) new wxString(wxHtmlWindow_ToText(wxobj), true); }
+		public проц SelectLine(Точка поз)
+		{
+			wxHtmlWindow_SelectLine(шхобъ, поз);
+		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public string SelectionText() { return cast(string) new wxString(wxHtmlWindow_SelectionToText(wxobj), true); }
+		public проц SelectWord(Точка поз)
+		{
+			wxHtmlWindow_SelectWord(шхобъ, поз);
+		}
+		
+		//-----------------------------------------------------------------------------
+		
+		public ткст Текст() { return cast(ткст) new wxString(wxHtmlWindow_ToText(шхобъ), да); }
+		
+		//-----------------------------------------------------------------------------
+		
+		public ткст SelectionText() { return cast(ткст) new wxString(wxHtmlWindow_SelectionToText(шхобъ), да); }
 	}
 		

@@ -7,11 +7,11 @@
 // (C) 2007
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: Edit.d,v 1.5 2008/09/26 11:37:06 afb Exp $
+// $Ид: Edit.d,v 1.5 2008/09/26 11:37:06 afb Exp $
 //-----------------------------------------------------------------------------
 
-import std.string : find, rfind, format, tolower;
-import std.path : getBaseName;
+import std.ткст : find, rfind, format, tolower;
+import std.путь : getBaseName;
 
 import wx.wx;
 
@@ -26,24 +26,24 @@ import StyledText;
 public class Edit : StyledTextCtrl {
 
 	// file
-	private string m_filename;
+	private ткст m_filename;
 
 	// lanugage properties
 	private Prefs.LanguageInfo m_language;
 
 	// margin variables
-	private int m_LineNrID;
-	private int m_LineNrMargin;
-	private int m_FoldingID;
-	private int m_FoldingMargin;
-	private int m_DividerID;
+	private цел m_LineNrID;
+	private цел m_LineNrMargin;
+	private цел m_FoldingID;
+	private цел m_FoldingMargin;
+	private цел m_DividerID;
 
-	public this (Window parent, int id = wxID_ANY,
-				Point pos = wxDefaultPosition,
-				Size size= wxDefaultSize,
-				long style = wxSUNKEN_BORDER|wxVSCROLL)
+	public this (Окно родитель, цел ид = wxID_ANY,
+				Точка поз = wxDefaultPosition,
+				Размер size= wxDefaultSize,
+				long стиль = wxSUNKEN_BORDER|wxVSCROLL)
 	{
-		super(parent, id, pos, size, style);
+		super(родитель, ид, поз, size, стиль);
 
 		m_filename = "";
 
@@ -51,7 +51,7 @@ public class Edit : StyledTextCtrl {
 		m_DividerID = 1;
 		m_FoldingID = 2;
 
-		// default font for all styles
+		// default шрифт for all styles
 		ViewEOL = g_CommonPrefs.displayEOLEnable;
 		IndentationGuides = g_CommonPrefs.indentGuideEnable;
 		EdgeMode = (g_CommonPrefs.longLineOnEnable ? wxSTC_EDGE_LINE: wxSTC_EDGE_NONE);
@@ -59,13 +59,13 @@ public class Edit : StyledTextCtrl {
 		Overtype = g_CommonPrefs.overTypeInitial;
 		ReadOnly = g_CommonPrefs.readOnlyInitial;
 		WrapMode = (g_CommonPrefs.wrapModeInitial ? wxSTC_WRAP_WORD: wxSTC_WRAP_NONE);
-		Font font = new Font(10, FontFamily.wxMODERN, FontStyle.wxNORMAL, FontWeight.wxNORMAL);
-		StyleSetFont (wxSTC_STYLE_DEFAULT, font);
-		StyleSetForeground (wxSTC_STYLE_DEFAULT, Colour.wxBLACK);
-		StyleSetBackground (wxSTC_STYLE_DEFAULT, Colour.wxWHITE);
-		StyleSetForeground (wxSTC_STYLE_LINENUMBER, new Colour ("DARK GREY"));
-		StyleSetBackground (wxSTC_STYLE_LINENUMBER, Colour.wxWHITE);
-		StyleSetForeground(wxSTC_STYLE_INDENTGUIDE, new Colour ("DARK GREY"));
+		Шрифт шрифт = new Шрифт(10, FontFamily.wxMODERN, FontStyle.wxNORMAL, FontWeight.wxNORMAL);
+		StyleSetFont (wxSTC_STYLE_DEFAULT, шрифт);
+		StyleSetForeground (wxSTC_STYLE_DEFAULT, Цвет.wxBLACK);
+		StyleSetBackground (wxSTC_STYLE_DEFAULT, Цвет.wxWHITE);
+		StyleSetForeground (wxSTC_STYLE_LINENUMBER, new Цвет ("DARK GREY"));
+		StyleSetBackground (wxSTC_STYLE_LINENUMBER, Цвет.wxWHITE);
+		StyleSetForeground(wxSTC_STYLE_INDENTGUIDE, new Цвет ("DARK GREY"));
 		InitializePrefs (DEFAULT_LANGUAGE);
 
 		// set visibility
@@ -74,18 +74,18 @@ public class Edit : StyledTextCtrl {
 		SetYCaretPolicy (wxSTC_CARET_EVEN|wxSTC_VISIBLE_STRICT|wxSTC_CARET_SLOP, 1);
 
 		// markers
-		MarkerDefine (wxSTC_MARKNUM_FOLDER,		wxSTC_MARK_DOTDOTDOT, Colour.wxBLACK, Colour.wxBLACK);
-		MarkerDefine (wxSTC_MARKNUM_FOLDEROPEN,	wxSTC_MARK_ARROWDOWN, Colour.wxBLACK, Colour.wxBLACK);
-		MarkerDefine (wxSTC_MARKNUM_FOLDERSUB,	 wxSTC_MARK_EMPTY,	 Colour.wxBLACK, Colour.wxBLACK);
-		MarkerDefine (wxSTC_MARKNUM_FOLDEREND,	 wxSTC_MARK_DOTDOTDOT, Colour.wxBLACK, Colour.wxWHITE);
-		MarkerDefine (wxSTC_MARKNUM_FOLDEROPENMID, wxSTC_MARK_ARROWDOWN, Colour.wxBLACK, Colour.wxWHITE);
-		MarkerDefine (wxSTC_MARKNUM_FOLDERMIDTAIL, wxSTC_MARK_EMPTY,	 Colour.wxBLACK, Colour.wxBLACK);
-		MarkerDefine (wxSTC_MARKNUM_FOLDERTAIL,	wxSTC_MARK_EMPTY,	 Colour.wxBLACK, Colour.wxBLACK);
+		MarkerDefine (wxSTC_MARKNUM_FOLDER,		wxSTC_MARK_DOTDOTDOT, Цвет.wxBLACK, Цвет.wxBLACK);
+		MarkerDefine (wxSTC_MARKNUM_FOLDEROPEN,	wxSTC_MARK_ARROWDOWN, Цвет.wxBLACK, Цвет.wxBLACK);
+		MarkerDefine (wxSTC_MARKNUM_FOLDERSUB,	 wxSTC_MARK_EMPTY,	 Цвет.wxBLACK, Цвет.wxBLACK);
+		MarkerDefine (wxSTC_MARKNUM_FOLDEREND,	 wxSTC_MARK_DOTDOTDOT, Цвет.wxBLACK, Цвет.wxWHITE);
+		MarkerDefine (wxSTC_MARKNUM_FOLDEROPENMID, wxSTC_MARK_ARROWDOWN, Цвет.wxBLACK, Цвет.wxWHITE);
+		MarkerDefine (wxSTC_MARKNUM_FOLDERMIDTAIL, wxSTC_MARK_EMPTY,	 Цвет.wxBLACK, Цвет.wxBLACK);
+		MarkerDefine (wxSTC_MARKNUM_FOLDERTAIL,	wxSTC_MARK_EMPTY,	 Цвет.wxBLACK, Цвет.wxBLACK);
 
 		// miscelaneous
 		m_LineNrMargin = TextWidth (wxSTC_STYLE_LINENUMBER, "_999999");
 		m_FoldingMargin = 16;
-		CmdKeyClear (wxSTC_KEY_TAB, 0); // this is done by the menu accelerator key
+		CmdKeyClear (wxSTC_KEY_TAB, 0); // this is done by the меню accelerator key
 		LayoutCache (wxSTC_CACHE_PAGE);
 
 		// common
@@ -135,71 +135,71 @@ public class Edit : StyledTextCtrl {
 
 	//----------------------------------------------------------------------------
 	// common event handlers
-	public void OnSize(Object sender, Event event )
+	public проц OnSize(Объект sender, Событие event )
 	{
-		int x = ClientSize.Width +
+		цел x = ClientSize.Ширина +
 				(g_CommonPrefs.lineNumberEnable? m_LineNrMargin: 0) +
 				(g_CommonPrefs.foldEnable? m_FoldingMargin: 0);
 		if (x > 0) ScrollWidth = x;
 		
-		event.Skip();
+		event.Пропусти();
 	}
 
 	// edit event handlers
-	public void OnEditRedo (Object sender, Event event)
+	public проц OnEditRedo (Объект sender, Событие event)
 	{
 		if (!CanRedo()) return;
 
 		Redo ();
 	}
 
-	public void OnEditUndo (Object sender, Event event)
+	public проц OnEditUndo (Объект sender, Событие event)
 	{
 		if (!CanUndo()) return;
 
 		Undo ();
 	}
 
-	public void OnEditClear (Object sender, Event event)
+	public проц OnEditClear (Объект sender, Событие event)
 	{
 		if (ReadOnly) return;
 
-		Clear ();
+		Очисть ();
 	}
 
-	public void OnEditCut (Object sender, Event event)
+	public проц OnEditCut (Объект sender, Событие event)
 	{
 		if (ReadOnly || (SelectionEnd-SelectionStart <= 0)) return;
 
 		Cut ();
 	}
 
-	public void OnEditCopy (Object sender, Event event)
+	public проц OnEditCopy (Объект sender, Событие event)
 	{
 		if (SelectionEnd-SelectionStart <= 0) return;
 
-		Copy ();
+		Копируй ();
 	}
 
-	public void OnEditPaste (Object sender, Event event)
+	public проц OnEditPaste (Объект sender, Событие event)
 	{
 		if (!CanPaste()) return;
 
-		Paste ();
+		Вставь ();
 	}
 
-	public void OnFind (Object sender, Event event) {}
+	public проц OnFind (Объект sender, Событие event) {}
 
-	public void OnFindNext (Object sender, Event event) {}
+	public проц OnFindNext (Объект sender, Событие event) {}
 
-	public void OnReplace (Object sender, Event event) {}
+	public проц OnReplace (Объект sender, Событие event) {}
 
-	public void OnReplaceNext (Object sender, Event event) {}
+	public проц OnReplaceNext (Объект sender, Событие event) {}
 
-	public void OnBraceMatch (Object sender, Event event)
+	public проц OnBraceMatch (Объект sender, Событие event)
 	{
-		int min = CurrentPos;
-		int max = BraceMatch (min);
+		цел min = CurrentPos;
+		цел max = BraceMatch (min);
 		if (max > (min+1))
 		{
 			BraceHighlight (min+1, max);
@@ -211,85 +211,85 @@ public class Edit : StyledTextCtrl {
 		}
 	}
 
-	public void OnGoto (Object sender, Event event) {}
+	public проц OnGoto (Объект sender, Событие event) {}
 
-	public void OnEditIndentInc (Object sender, Event event)
+	public проц OnEditIndentInc (Объект sender, Событие event)
 	{
 		CmdKeyExecute (wxSTC_CMD_TAB);
 	}
 
-	public void OnEditIndentRed (Object sender, Event event)
+	public проц OnEditIndentRed (Объект sender, Событие event)
 	{
 		CmdKeyExecute (wxSTC_CMD_DELETEBACK);
 	}
 
-	public void OnEditSelectAll (Object sender, Event event)
+	public проц OnEditSelectAll (Объект sender, Событие event)
 	{
-		SetSelection (0, TextLength);
+		SetSelection (0, ДлинаТекста);
 	}
 
-	public void OnEditSelectLine (Object sender, Event event)
+	public проц OnEditSelectLine (Объект sender, Событие event)
 	{
-		int lineStart = PositionFromLine (CurrentLine);
-		int lineEnd = PositionFromLine (CurrentLine + 1);
+		цел lineStart = PositionFromLine (CurrentLine);
+		цел lineEnd = PositionFromLine (CurrentLine + 1);
 		SetSelection (lineStart, lineEnd);
 	}
 
-	public void OnHilightLang (Object sender, Event event)
+	public проц OnHilightLang (Объект sender, Событие event)
 	{
-		InitializePrefs (g_LanguagePrefs [event.ID - myID_HILIGHTFIRST].name);
+		InitializePrefs (g_LanguagePrefs [event.ИД - myID_HILIGHTFIRST].имя);
 	}
 
-	public void OnDisplayEOL (Object sender, Event event)
+	public проц OnDisplayEOL (Объект sender, Событие event)
 	{
 		ViewEOL = !ViewEOL;
 	}
 
-	public void OnIndentGuide (Object sender, Event event)
+	public проц OnIndentGuide (Объект sender, Событие event)
 	{
 		IndentationGuides = !IndentationGuides;
 	}
 
-	public void OnLineNumber (Object sender, Event event)
+	public проц OnLineNumber (Объект sender, Событие event)
 	{
 		SetMarginWidth (m_LineNrID,	GetMarginWidth (m_LineNrID) == 0 ? m_LineNrMargin: 0);
 	}
 
-	public void OnLongLineOn (Object sender, Event event)
+	public проц OnLongLineOn (Объект sender, Событие event)
 	{
 		EdgeMode = (EdgeMode == 0 ? wxSTC_EDGE_LINE: wxSTC_EDGE_NONE);
 	}
 
-	public void OnWhiteSpace (Object sender, Event event)
+	public проц OnWhiteSpace (Объект sender, Событие event)
 	{
 		ViewWhiteSpace = (ViewWhiteSpace == 0 ? wxSTC_WS_VISIBLEALWAYS: wxSTC_WS_INVISIBLE);
 	}
 
-	public void OnFoldToggle (Object sender, Event event)
+	public проц OnFoldToggle (Объект sender, Событие event)
 	{
 		ToggleFold (GetFoldParent(CurrentLine));
 	}
 
-	public void OnSetOverType (Object sender, Event event)
+	public проц OnSetOverType (Объект sender, Событие event)
 	{
 		Overtype = !Overtype;
 	}
 
-	public void OnSetReadOnly (Object sender, Event event)
+	public проц OnSetReadOnly (Объект sender, Событие event)
 	{
 		ReadOnly = !ReadOnly;
 	}
 
-	public void OnWrapmodeOn (Object sender, Event event)
+	public проц OnWrapmodeOn (Объект sender, Событие event)
 	{
 		WrapMode = (WrapMode == 0? wxSTC_WRAP_WORD: wxSTC_WRAP_NONE);
 	}
 
-	public void OnUseCharset (Object sender, Event event)
+	public проц OnUseCharset (Объект sender, Событие event)
 	{
-		int Nr;
-		int charset = CodePage;
-		switch (event.ID)
+		цел Nr;
+		цел charset = CodePage;
+		switch (event.ИД)
 		{
 			case myID_CHARSETANSI: {charset = wxSTC_CHARSET_ANSI; break;}
 			case myID_CHARSETMAC: {charset = wxSTC_CHARSET_ANSI; break;}
@@ -301,9 +301,9 @@ public class Edit : StyledTextCtrl {
 		CodePage = charset;
 	}
 
-	public void OnChangeCase (Object sender, Event event)
+	public проц OnChangeCase (Объект sender, Событие event)
 	{
-		switch (event.ID)
+		switch (event.ИД)
 		{
 			case myID_CHANGELOWER:
 				CmdKeyExecute (wxSTC_CMD_LOWERCASE);
@@ -314,10 +314,10 @@ public class Edit : StyledTextCtrl {
 		}
 	}
 
-	public void OnConvertEOL (Object sender, Event event)
+	public проц OnConvertEOL (Объект sender, Событие event)
 	{
-		int eolMode = EOLMode;
-		switch (event.ID)
+		цел eolMode = EOLMode;
+		switch (event.ИД)
 		{
 			case myID_CONVERTCR: { eolMode = wxSTC_EOL_CR; break;}
 			case myID_CONVERTCRLF: { eolMode = wxSTC_EOL_CRLF; break;}
@@ -328,12 +328,12 @@ public class Edit : StyledTextCtrl {
 	}
 
 	// misc
-	public void OnMarginClick (Object sender, StyledTextEvent event)
+	public проц OnMarginClick (Объект sender, StyledTextEvent event)
 	{
 		if (event.Margin == 2)
 		{
-			int lineClick = LineFromPosition (event.Position);
-			int levelClick = GetFoldLevel (lineClick);
+			цел lineClick = LineFromPosition (event.Положение);
+			цел levelClick = GetFoldLevel (lineClick);
 			if ((levelClick & wxSTC_FOLDLEVELHEADERFLAG) > 0)
 			{
 				ToggleFold (lineClick);
@@ -341,14 +341,14 @@ public class Edit : StyledTextCtrl {
 		}
 	}
 
-	public void OnCharAdded (Object sender, StyledTextEvent event)
+	public проц OnCharAdded (Объект sender, StyledTextEvent event)
 	{
-		char chr = cast(char)event.Key;
-		int currentLine = CurrentLine;
-		// Change this if support for mac files with \r is needed
+		сим chr = cast(сим)event.Key;
+		цел currentLine = CurrentLine;
+		// Change this if support for mac files with \к is needed
 		if (chr == '\n')
 		{
-			int lineInd = 0;
+			цел lineInd = 0;
 			if (currentLine > 0)
 			{
 				lineInd = GetLineIndentation(currentLine - 1);
@@ -360,36 +360,36 @@ public class Edit : StyledTextCtrl {
 		}
 	}
 
-	public string DeterminePrefs (string filename)
+	public ткст DeterminePrefs (ткст фимя)
 	{
 		//nested functions used to replace some wxSring functions.
-		char[] AfterFirst(char[] str, char ch)
+		сим[] AfterFirst(сим[] str, сим ch)
 		{
-			int idx = rfind(str, ch);
+			цел idx = rfind(str, ch);
 	
 			if(idx == -1) return "";
 			else return str[idx+1..$].dup;
 		}
 
-		char[] AfterLast(char[] str, char ch)
+		сим[] AfterLast(сим[] str, сим ch)
 		{
-			int idx = rfind(str, ch);
+			цел idx = rfind(str, ch);
 
 			if(idx == -1) return str.dup;
 			else return str[idx+1..$].dup;
 		}
 
-		char[] BeforeFirst(char[] str, char ch)
+		сим[] BeforeFirst(сим[] str, сим ch)
 		{
-			int idx = find(str, ch);
+			цел idx = find(str, ch);
 
 			if(idx == -1) return str.dup;
 			else return str[0..idx];
 		}
 
-		char[] BeforeLast(char[]str, char ch)
+		сим[] BeforeLast(сим[]str, сим ch)
 		{
-			int idx = rfind(str, ch);
+			цел idx = rfind(str, ch);
 
 			if(idx == -1) return "";
 			else return str[0..idx].dup;
@@ -399,19 +399,19 @@ public class Edit : StyledTextCtrl {
 		Prefs.LanguageInfo curInfo;
 
 		// determine language from filepatterns
-		int languageNr;
+		цел languageNr;
 		for (languageNr = 0; languageNr < g_LanguagePrefs.length; languageNr++)
 		{
 			curInfo = g_LanguagePrefs [languageNr];
-			char[] filepattern = curInfo.filepattern;
+			сим[] filepattern = curInfo.filepattern;
 			filepattern = tolower(filepattern);
 			while (!filepattern.length == 0)
 			{
-				char[] cur = BeforeFirst(filepattern, ';');
-				if ((cur == filename) ||
-					(cur == (BeforeLast(filename, '.') ~ ".*")) ||
-					(cur == ("*." ~ AfterLast(filename, '.')))) {
-					return curInfo.name;
+				сим[] cur = BeforeFirst(filepattern, ';');
+				if ((cur == фимя) ||
+					(cur == (BeforeLast(фимя, '.') ~ ".*")) ||
+					(cur == ("*." ~ AfterLast(фимя, '.')))) {
+					return curInfo.имя;
 				}
 				filepattern = AfterFirst(filepattern, ';');
 			}
@@ -420,25 +420,25 @@ public class Edit : StyledTextCtrl {
 		return "";
 	}
 
-	public bool InitializePrefs (string name)
+	public бул InitializePrefs (ткст имя)
 	{
-		// initialize styles
+		// инициализуй styles
 		StyleClearAll();
 		Prefs.LanguageInfo curInfo;
 
 		// determine language
-		bool found = false;
-		int languageNr;
+		бул found = нет;
+		цел languageNr;
 		for (languageNr = 0; languageNr < g_LanguagePrefs.length; languageNr++)
 		{
 			curInfo = g_LanguagePrefs [languageNr];
-			if (curInfo.name == name)
+			if (curInfo.имя == имя)
 			{
-				found = true;
+				found = да;
 				break;
 			}
 		}
-		if (!found) return false;
+		if (!found) return нет;
 
 		// set lexer and language
 		Lexer (curInfo.lexer);
@@ -446,49 +446,49 @@ public class Edit : StyledTextCtrl {
 
 		// set margin for line numbers
 		SetMarginType (m_LineNrID, wxSTC_MARGIN_NUMBER);
-		StyleSetForeground (wxSTC_STYLE_LINENUMBER, new Colour ("DARK GREY"));
-		StyleSetBackground (wxSTC_STYLE_LINENUMBER, Colour.wxWHITE);
+		StyleSetForeground (wxSTC_STYLE_LINENUMBER, new Цвет ("DARK GREY"));
+		StyleSetBackground (wxSTC_STYLE_LINENUMBER, Цвет.wxWHITE);
 		SetMarginWidth (m_LineNrID, 0); // start out not visible
 
 		// default fonts for all styles!
-		int Nr;
+		цел Nr;
 		for (Nr = 0; Nr < wxSTC_STYLE_LASTPREDEFINED; Nr++)
 		{
-			Font font = new Font(10, FontFamily.wxMODERN, FontStyle.wxNORMAL, FontWeight.wxNORMAL);
-			StyleSetFont (Nr, font);
+			Шрифт шрифт = new Шрифт(10, FontFamily.wxMODERN, FontStyle.wxNORMAL, FontWeight.wxNORMAL);
+			StyleSetFont (Nr, шрифт);
 		}
 
 		// set common styles
-		StyleSetForeground (wxSTC_STYLE_DEFAULT, new Colour ("DARK GREY"));
-		StyleSetForeground (wxSTC_STYLE_INDENTGUIDE, new Colour ("DARK GREY"));
+		StyleSetForeground (wxSTC_STYLE_DEFAULT, new Цвет ("DARK GREY"));
+		StyleSetForeground (wxSTC_STYLE_INDENTGUIDE, new Цвет ("DARK GREY"));
 
 		
-		// initialize settings
+		// инициализуй settings
 		if (g_CommonPrefs.syntaxEnable)
 		{
-			int keywordnr = 0;
+			цел keywordnr = 0;
 			for (Nr = 0; Nr < STYLE_TYPES_COUNT; Nr++)
 			{
-				if (curInfo.styles[Nr].type == -1) continue;
+				if (curInfo.styles[Nr].тип == -1) continue;
 
-				/+const+/ StyleInfo curType = g_StylePrefs [curInfo.styles[Nr].type];
-				Font font = new Font(curType.fontsize, FontFamily.wxMODERN, FontStyle.wxNORMAL, FontWeight.wxNORMAL,
-							false, curType.fontname);
-				StyleSetFont (Nr, font);
+				/+const+/ StyleInfo curType = g_StylePrefs [curInfo.styles[Nr].тип];
+				Шрифт шрифт = new Шрифт(curType.fontsize, FontFamily.wxMODERN, FontStyle.wxNORMAL, FontWeight.wxNORMAL,
+							нет, curType.fontname);
+				StyleSetFont (Nr, шрифт);
 				if (curType.foreground)
 				{
-					StyleSetForeground (Nr, new Colour (curType.foreground));
+					StyleSetForeground (Nr, new Цвет (curType.foreground));
 				}
 				if (curType.background)
 				{
-					StyleSetBackground (Nr, new Colour (curType.background));
+					StyleSetBackground (Nr, new Цвет (curType.background));
 				}
 				StyleSetBold (Nr, (curType.fontstyle & mySTC_STYLE_BOLD) > 0);
 				StyleSetItalic (Nr, (curType.fontstyle & mySTC_STYLE_ITALIC) > 0);
 				StyleSetUnderline (Nr, (curType.fontstyle & mySTC_STYLE_UNDERL) > 0);
 				StyleSetVisible (Nr, (curType.fontstyle & mySTC_STYLE_HIDDEN) == 0);
 				StyleSetCase (Nr, curType.lettercase);
-				char[] pwords = curInfo.styles[Nr].words;
+				сим[] pwords = curInfo.styles[Nr].words;
 				if (pwords)
 				{
 					SetKeyWords (keywordnr, pwords);
@@ -500,14 +500,14 @@ public class Edit : StyledTextCtrl {
 		// set margin as unused
 		SetMarginType (m_DividerID, wxSTC_MARGIN_SYMBOL);
 		SetMarginWidth (m_DividerID, 0);
-		SetMarginSensitive (m_DividerID, false);
+		SetMarginSensitive (m_DividerID, нет);
 
 		// folding
 		SetMarginType (m_FoldingID, wxSTC_MARGIN_SYMBOL);
 		SetMarginMask (m_FoldingID, wxSTC_MASK_FOLDERS);
-		StyleSetBackground (m_FoldingID, Colour.wxWHITE);
+		StyleSetBackground (m_FoldingID, Цвет.wxWHITE);
 		SetMarginWidth (m_FoldingID, 0);
-		SetMarginSensitive (m_FoldingID, false);
+		SetMarginSensitive (m_FoldingID, нет);
 		if (g_CommonPrefs.foldEnable)
 		{
 			SetMarginWidth (m_FoldingID, curInfo.folds != 0? m_FoldingMargin: 0);
@@ -526,9 +526,9 @@ public class Edit : StyledTextCtrl {
 
 		// set spaces and indention
 		TabWidth = 4;
-		UseTabs = false;
-		TabIndents = true;
-		BackSpaceUnIndents = true;
+		UseTabs = нет;
+		TabIndents = да;
+		BackSpaceUnIndents = да;
 		Indent = (g_CommonPrefs.indentEnable? 4: 0);
 
 		// others
@@ -541,68 +541,68 @@ public class Edit : StyledTextCtrl {
 		ReadOnly = g_CommonPrefs.readOnlyInitial;
 		WrapMode = (g_CommonPrefs.wrapModeInitial ? wxSTC_WRAP_WORD: wxSTC_WRAP_NONE);
 
-		return true;
+		return да;
 	}
 
-	public bool LoadFile ()
+	public бул ЗагрузиФайл ()
 	{
 		// get filname
 		if (!m_filename)
 		{
-			FileDialog dlg = new FileDialog(this, "Open file", "", "",
+			FileDialog dlg = new FileDialog(this, "Открой file", "", "",
 					"Any file (*)|*", FileDialog.wxOPEN | FileDialog.wxFILE_MUST_EXIST | FileDialog.wxCHANGE_DIR);
-			if (dlg.ShowModal() != wxID_OK) return false;
+			if (dlg.ShowModal() != wxID_OK) return нет;
 			
-			m_filename = dlg.Path;
+			m_filename = dlg.Путь;
 		}
 
 		// load file
-		return LoadFile (m_filename);
+		return ЗагрузиФайл (m_filename);
 	}
 
-	public bool LoadFile (string filename)
+	public бул ЗагрузиФайл (ткст фимя)
 	{
 		// load file in edit and clear undo
-		if (!filename.length < 1) m_filename = filename;
+		if (!фимя.length < 1) m_filename = фимя;
 
 		ClearAll ();
-		StyledTextCtrl.LoadFile(m_filename);
+		StyledTextCtrl.ЗагрузиФайл(m_filename);
 		EmptyUndoBuffer();
 
 		// determine lexer language
 		InitializePrefs (DeterminePrefs(getBaseName(m_filename)));
 
-		return true;
+		return да;
 	}
 
-	public bool SaveFile ()
+	public бул СохраниФайл ()
 	{
 		// return if no change
-		if (!Modified()) return true;
+		if (!Modified()) return да;
 
 		// get filname
 		if (!m_filename)
 		{
 			FileDialog dlg = new FileDialog(this, "Save file", "", "", "Any file (*)|*",
 					FileDialog.wxSAVE | FileDialog.wxOVERWRITE_PROMPT);
-			if (dlg.ShowModal() != wxID_OK) return false;
+			if (dlg.ShowModal() != wxID_OK) return нет;
 			
-			m_filename = dlg.Path;
+			m_filename = dlg.Путь;
 		}
 
 		// save file
-		return SaveFile (m_filename);
+		return СохраниФайл (m_filename);
 	}
 
-	public bool SaveFile (string filename)
+	public бул СохраниФайл (ткст фимя)
 	{
 		// return if no change
-		if (!Modified()) return true;
+		if (!Modified()) return да;
 
-		return StyledTextCtrl.SaveFile(filename);
+		return StyledTextCtrl.СохраниФайл(фимя);
 	}
 
-	public bool Modified ()
+	public бул Modified ()
 	{
 		// return modified state
 		return (Modify && !ReadOnly);
@@ -610,8 +610,8 @@ public class Edit : StyledTextCtrl {
 
 	//Properties
 	public Prefs.LanguageInfo GetLanguageInfo () {return m_language;}
-	public string GetFilename () {return m_filename;}
-	public void SetFilename (string filename) {m_filename = filename;}
+	public ткст GetFilename () {return m_filename;}
+	public проц SetFilename (ткст фимя) {m_filename = фимя;}
 }
 
 //----------------------------------------------------------------------------
@@ -620,95 +620,95 @@ public class Edit : StyledTextCtrl {
 
 public class EditProperties : Dialog {
 
-	public this (Edit edit, long style)
+	public this (Edit edit, long стиль)
 	{
 		super(edit, wxID_ANY, "", wxDefaultPosition, wxDefaultSize,
-				style | Dialog.wxDEFAULT_DIALOG_STYLE | Dialog.wxRESIZE_BORDER);
+				стиль | Dialog.wxDEFAULT_DIALOG_STYLE | Dialog.wxRESIZE_BORDER);
 
 		// sets the application title
 		Title ("Properties");
-		string text;
+		ткст текст;
 
 		// fullname
-		BoxSizer fullname = new BoxSizer (Orientation.wxHORIZONTAL);
-		fullname.Add (10, 0);
-		fullname.Add (new StaticText (this, wxID_ANY, "Full filename", wxDefaultPosition, Size(80, -1)),
+		BoxSizer fullname = new BoxSizer (Ориентация.wxHORIZONTAL);
+		fullname.Добавь (10, 0);
+		fullname.Добавь (new StaticText (this, wxID_ANY, "Full фимя", wxDefaultPosition, Размер(80, -1)),
 					   0, Alignment.wxALIGN_LEFT|Alignment.wxALIGN_CENTER_VERTICAL);
-		fullname.Add (new StaticText (this, wxID_ANY, edit.GetFilename()),
+		fullname.Добавь (new StaticText (this, wxID_ANY, edit.GetFilename()),
 					   0, Alignment.wxALIGN_LEFT|Alignment.wxALIGN_CENTER_VERTICAL);
 
-		// text info
+		// текст info
 		GridSizer textinfo = new GridSizer (4, 0, 2);
-		textinfo.Add (new StaticText (this, wxID_ANY, "Language", wxDefaultPosition, Size(80, -1)),
+		textinfo.Добавь (new StaticText (this, wxID_ANY, "Language", wxDefaultPosition, Размер(80, -1)),
 					   0, Alignment.wxALIGN_LEFT|Alignment.wxALIGN_CENTER_VERTICAL|Direction.wxLEFT, 4);
-		textinfo.Add (new StaticText (this, wxID_ANY, edit.m_language.name),
+		textinfo.Добавь (new StaticText (this, wxID_ANY, edit.m_language.имя),
 					   0, Alignment.wxALIGN_LEFT|Alignment.wxALIGN_CENTER_VERTICAL|Direction.wxRIGHT, 4);
-		textinfo.Add (new StaticText (this, wxID_ANY, "Lexer-ID: ", wxDefaultPosition, Size(80, -1)),
+		textinfo.Добавь (new StaticText (this, wxID_ANY, "Lexer-ИД: ", wxDefaultPosition, Размер(80, -1)),
 					   0, Alignment.wxALIGN_LEFT|Alignment.wxALIGN_CENTER_VERTICAL|Direction.wxLEFT, 4);
-		text = format("%d", edit.Lexer());
-		textinfo.Add (new StaticText (this, wxID_ANY, text),
+		текст = format("%d", edit.Lexer());
+		textinfo.Добавь (new StaticText (this, wxID_ANY, текст),
 					   0, Alignment.wxALIGN_RIGHT|Alignment.wxALIGN_CENTER_VERTICAL|Direction.wxRIGHT, 4);
-		string EOLtype = "";
+		ткст EOLtype = "";
 		switch (edit.EOLMode) {
 			case StyledTextCtrl.wxSTC_EOL_CR: {EOLtype = "CR (Unix)"; break; }
 			case StyledTextCtrl.wxSTC_EOL_CRLF: {EOLtype = "CRLF (Windows)"; break; }
 			case StyledTextCtrl.wxSTC_EOL_LF: {EOLtype = "CR (Macintosh)"; break; }
 		}
-		textinfo.Add (new StaticText (this, wxID_ANY, "Line endings", wxDefaultPosition, Size(80, -1)),
+		textinfo.Добавь (new StaticText (this, wxID_ANY, "Line endings", wxDefaultPosition, Размер(80, -1)),
 					   0, Alignment.wxALIGN_LEFT|Alignment.wxALIGN_CENTER_VERTICAL|Direction.wxLEFT, 4);
-		textinfo.Add (new StaticText (this, wxID_ANY, EOLtype),
+		textinfo.Добавь (new StaticText (this, wxID_ANY, EOLtype),
 					   0, Alignment.wxALIGN_LEFT|Alignment.wxALIGN_CENTER_VERTICAL|Direction.wxRIGHT, 4);
 
-		// text info box
+		// текст info box
 		StaticBoxSizer textinfos = new StaticBoxSizer (
 						 new StaticBox (this, wxID_ANY, "Informations"),
-						 Orientation.wxVERTICAL);
-		textinfos.Add (textinfo, 0, Stretch.wxEXPAND);
-		textinfos.Add (0, 6);
+						 Ориентация.wxVERTICAL);
+		textinfos.Добавь (textinfo, 0, Stretch.wxEXPAND);
+		textinfos.Добавь (0, 6);
 
 		// statistic
 		GridSizer statistic = new GridSizer (4, 0, 2);
-		statistic.Add (new StaticText (this, wxID_ANY, "Total lines", wxDefaultPosition, Size(80, -1)),
+		statistic.Добавь (new StaticText (this, wxID_ANY, "Total lines", wxDefaultPosition, Размер(80, -1)),
 						0, Alignment.wxALIGN_LEFT|Alignment.wxALIGN_CENTER_VERTICAL|Direction.wxLEFT, 4);
-		text = format("%d", edit.LineCount);
-		statistic.Add (new StaticText (this, wxID_ANY, text),
+		текст = format("%d", edit.LineCount);
+		statistic.Добавь (new StaticText (this, wxID_ANY, текст),
 						0, Alignment.wxALIGN_RIGHT|Alignment.wxALIGN_CENTER_VERTICAL|Direction.wxRIGHT, 4);
-		statistic.Add (new StaticText (this, wxID_ANY, "Total chars", wxDefaultPosition, Size(80, -1)),
+		statistic.Добавь (new StaticText (this, wxID_ANY, "Total chars", wxDefaultPosition, Размер(80, -1)),
 						0, Alignment.wxALIGN_LEFT|Alignment.wxALIGN_CENTER_VERTICAL|Direction.wxLEFT, 4);
-		text = format("%d", edit.TextLength);
-		statistic.Add (new StaticText (this, wxID_ANY, text),
+		текст = format("%d", edit.ДлинаТекста);
+		statistic.Добавь (new StaticText (this, wxID_ANY, текст),
 						0, Alignment.wxALIGN_RIGHT|Alignment.wxALIGN_CENTER_VERTICAL|Direction.wxRIGHT, 4);
-		statistic.Add (new StaticText (this, wxID_ANY, "Current line", wxDefaultPosition, Size(80, -1)),
+		statistic.Добавь (new StaticText (this, wxID_ANY, "Current line", wxDefaultPosition, Размер(80, -1)),
 						0, Alignment.wxALIGN_LEFT|Alignment.wxALIGN_CENTER_VERTICAL|Direction.wxLEFT, 4);
-		text = format("%d", edit.CurrentLine);
-		statistic.Add (new StaticText (this, wxID_ANY, text),
+		текст = format("%d", edit.CurrentLine);
+		statistic.Добавь (new StaticText (this, wxID_ANY, текст),
 						0, Alignment.wxALIGN_RIGHT|Alignment.wxALIGN_CENTER_VERTICAL|Direction.wxRIGHT, 4);
-		statistic.Add (new StaticText (this, wxID_ANY, "Current pos", wxDefaultPosition, Size(80, -1)),
+		statistic.Добавь (new StaticText (this, wxID_ANY, "Current поз", wxDefaultPosition, Размер(80, -1)),
 						0, Alignment.wxALIGN_LEFT|Alignment.wxALIGN_CENTER_VERTICAL|Direction.wxLEFT, 4);
-		text = format("%d", edit.CurrentPos);
-		statistic.Add (new StaticText (this, wxID_ANY, text),
+		текст = format("%d", edit.CurrentPos);
+		statistic.Добавь (new StaticText (this, wxID_ANY, текст),
 						0, Alignment.wxALIGN_RIGHT|Alignment.wxALIGN_CENTER_VERTICAL|Direction.wxRIGHT, 4);
 
-		// char/line statistics
+		// сим/line statistics
 		StaticBoxSizer statistics = new StaticBoxSizer (
 						 new StaticBox (this, wxID_ANY, "Statistics"),
-						 Orientation.wxVERTICAL);
-		statistics.Add (statistic, 0, Stretch.wxEXPAND);
-		statistics.Add (0, 6);
+						 Ориентация.wxVERTICAL);
+		statistics.Добавь (statistic, 0, Stretch.wxEXPAND);
+		statistics.Добавь (0, 6);
 
 		// total pane
-		BoxSizer totalpane = new BoxSizer (Orientation.wxVERTICAL);
-		totalpane.Add (fullname, 0, Stretch.wxEXPAND | Direction.wxLEFT | Direction.wxRIGHT | Direction.wxTOP, 10);
-		totalpane.Add (0, 6);
-		totalpane.Add (textinfos, 0, Stretch.wxEXPAND | Direction.wxLEFT | Direction.wxRIGHT, 10);
-		totalpane.Add (0, 10);
-		totalpane.Add (statistics, 0, Stretch.wxEXPAND | Direction.wxLEFT | Direction.wxRIGHT, 10);
-		totalpane.Add (0, 6);
-		Button okButton = new Button (this, wxID_OK, "OK");
+		BoxSizer totalpane = new BoxSizer (Ориентация.wxVERTICAL);
+		totalpane.Добавь (fullname, 0, Stretch.wxEXPAND | Direction.wxLEFT | Direction.wxRIGHT | Direction.wxTOP, 10);
+		totalpane.Добавь (0, 6);
+		totalpane.Добавь (textinfos, 0, Stretch.wxEXPAND | Direction.wxLEFT | Direction.wxRIGHT, 10);
+		totalpane.Добавь (0, 10);
+		totalpane.Добавь (statistics, 0, Stretch.wxEXPAND | Direction.wxLEFT | Direction.wxRIGHT, 10);
+		totalpane.Добавь (0, 6);
+		Кнопка okButton = new Кнопка (this, wxID_OK, "OK");
 		okButton.SetDefault();
-		totalpane.Add (okButton, 0, Alignment.wxALIGN_CENTER | Direction.wxALL, 10);
+		totalpane.Добавь (okButton, 0, Alignment.wxALIGN_CENTER | Direction.wxALL, 10);
 
-		SetSizerAndFit (totalpane, true);
+		SetSizerAndFit (totalpane, да);
 
 		ShowModal();
 	}
@@ -722,11 +722,11 @@ public class EditProperties : Dialog {
 public class EditPrint : Printout {
 
 	private Edit edit;
-	private int printed;
-	private Rectangle pageRect;
-	private Rectangle printRect;
+	private цел printed;
+	private Прямоугольник pageRect;
+	private Прямоугольник printRect;
 
-	public this (Edit edit, string title = "")
+	public this (Edit edit, ткст title = "")
 	{
 		super(title);
 
@@ -734,10 +734,10 @@ public class EditPrint : Printout {
 	}
 
 	// event handlers
-	public bool OnPrintPage (int page)
+	public бул OnPrintPage (цел page)
 	{
 		DC dc = Dc;
-		if (!dc) return false;
+		if (!dc) return нет;
 
 		// scale DC
 		PrintScaling (dc);
@@ -747,21 +747,21 @@ public class EditPrint : Printout {
 		printed = edit.FormatRange (1, printed, edit.Length,
 				dc, dc, printRect, pageRect);
 
-		return true;
+		return да;
 	}
 
-	public bool OnBeginDocument (int startPage, int endPage)
+	public бул OnBeginDocument (цел startPage, цел endPage)
 	{
 		if (!Printout.OnBeginDocument (startPage, endPage))
 		{
-			return false;
+			return нет;
 		}
-		return true;
+		return да;
 	}
 
-	public void GetPageInfo (ref int minPage, ref int maxPage, ref int selPageFrom, ref int selPageTo)
+	public проц GetPageInfo (ref цел minPage, ref цел maxPage, ref цел selPageFrom, ref цел selPageTo)
 	{
-		// initialize values
+		// инициализуй values
 		minPage = 0;
 		maxPage = 0;
 		selPageFrom = 0;
@@ -773,35 +773,35 @@ public class EditPrint : Printout {
 		PrintScaling (dc);
 
 		// get print page informations and convert to printer pixels
-		Size ppiScr;
-		GetPPIScreen (ppiScr.Width, ppiScr.Height);
-		Size page = g_pageSetupData.paperSize;
-		page.Width = cast(int) (page.Width * ppiScr.Width / 25.4);
-		page.Height = cast(int) (page.Height * ppiScr.Height / 25.4);
-		pageRect = Rectangle (0,
+		Размер ppiScr;
+		GetPPIScreen (ppiScr.Ширина, ppiScr.Высота);
+		Размер page = g_pageSetupData.paperSize;
+		page.Ширина = cast(цел) (page.Ширина * ppiScr.Ширина / 25.4);
+		page.Высота = cast(цел) (page.Высота * ppiScr.Высота / 25.4);
+		pageRect = Прямоугольник (0,
 		                      0,
-		                      page.Width,
-		                      page.Height);
+		                      page.Ширина,
+		                      page.Высота);
 
 		// get margins informations and convert to printer pixels
-		Point pt = g_pageSetupData.MarginTopLeft;
-		int left = pt.X;
-		int top = pt.Y;
+		Точка pt = g_pageSetupData.MarginTopLeft;
+		цел left = pt.X;
+		цел top = pt.Y;
 		pt = g_pageSetupData.MarginBottomRight;
-		int right = pt.X;
-		int bottom = pt.Y;
+		цел right = pt.X;
+		цел bottom = pt.Y;
 
-		top = cast(int) (top * ppiScr.Height / 25.4);
-		bottom = cast(int) (bottom * ppiScr.Height / 25.4);
-		left = cast(int) (left * ppiScr.Width / 25.4);
-		right = cast(int) (right * ppiScr.Width / 25.4);
+		top = cast(цел) (top * ppiScr.Высота / 25.4);
+		bottom = cast(цел) (bottom * ppiScr.Высота / 25.4);
+		left = cast(цел) (left * ppiScr.Ширина / 25.4);
+		right = cast(цел) (right * ppiScr.Ширина / 25.4);
 
-		printRect = Rectangle (left,
+		printRect = Прямоугольник (left,
 		                       top,
-		                       page.Width - (left + right),
-		                       page.Height - (top + bottom));
+		                       page.Ширина - (left + right),
+		                       page.Высота - (top + bottom));
 
-		// count pages
+		// счёт pages
 		while (HasPage (maxPage))
 		{
 			printed = edit.FormatRange (0, printed, edit.Length,
@@ -814,44 +814,44 @@ public class EditPrint : Printout {
 	}
 
 	// print functions
-	public bool HasPage (int page)
+	public бул HasPage (цел page)
 	{
 		return (printed < edit.Length);
 	}
 
-	public bool PrintScaling (DC dc)
+	public бул PrintScaling (DC dc)
 	{
 		// check for dc, return if none
-		if (!dc) return false;
+		if (!dc) return нет;
 
 		// get printer and screen sizing values
-		Size ppiScr;
-		GetPPIScreen (ppiScr.Width, ppiScr.Height);
-		if (ppiScr.Width == 0) 
+		Размер ppiScr;
+		GetPPIScreen (ppiScr.Ширина, ppiScr.Высота);
+		if (ppiScr.Ширина == 0) 
 		{ 
 			// most possible guess 96 dpi
-			ppiScr.Width = 96;
-			ppiScr.Height = 96;
+			ppiScr.Ширина = 96;
+			ppiScr.Высота = 96;
 		}
-		Size ppiPrt;
-		GetPPIPrinter (ppiPrt.Width, ppiPrt.Height);
-		if (ppiPrt.Width == 0)
+		Размер ppiPrt;
+		GetPPIPrinter (ppiPrt.Ширина, ppiPrt.Высота);
+		if (ppiPrt.Ширина == 0)
 		{
 			// scaling factor to 1
-			ppiPrt.Width = ppiScr.Width;
-			ppiPrt.Height = ppiScr.Height;
+			ppiPrt.Ширина = ppiScr.Ширина;
+			ppiPrt.Высота = ppiScr.Высота;
 		}
-		Size dcSize = dc.size;
-		Size pageSize;
-		GetPageSizePixels (pageSize.Width, pageSize.Height);
+		Размер dcSize = dc.size;
+		Размер pageSize;
+		GetPageSizePixels (pageSize.Ширина, pageSize.Высота);
 
 		// set user scale
-		float scale_x = cast(float)(ppiPrt.Width * dcSize.Width) /
-						cast(float)(ppiScr.Width * pageSize.Width);
-		float scale_y = cast(float)(ppiPrt.Height * dcSize.Height) /
-						cast(float)(ppiScr.Height * pageSize.Height);
+		float scale_x = cast(float)(ppiPrt.Ширина * dcSize.Ширина) /
+						cast(float)(ppiScr.Ширина * pageSize.Ширина);
+		float scale_y = cast(float)(ppiPrt.Высота * dcSize.Высота) /
+						cast(float)(ppiScr.Высота * pageSize.Высота);
 		dc.SetUserScale (scale_x, scale_y);
 
-		return true;
+		return да;
 	}
 }

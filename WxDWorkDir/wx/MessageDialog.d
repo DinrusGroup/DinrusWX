@@ -10,7 +10,7 @@
 // (C) 2003 by 379, Inc.
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: MessageDialog.d,v 1.9 2006/11/17 15:21:00 afb Exp $
+// $Ид: MessageDialog.d,v 1.9 2006/11/17 15:21:00 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.MessageDialog;
@@ -23,46 +23,46 @@ public import wx.Dialog;
 		//! \cond EXTERN
 
 		// MessageBox function
-		static extern (C) int    wxMsgBox(IntPtr parent, string msg, string cap, uint style, inout Point pos);
+		static extern (C) цел    wxMsgBox(ЦУк родитель, ткст msg, ткст cap, бцел стиль, inout Точка поз);
 
 		// Message dialog methods
-		static extern (C) IntPtr wxMessageDialog_ctor(IntPtr parent, string message, string caption, uint style, inout Point pos);
-		static extern (C) int    wxMessageDialog_ShowModal(IntPtr self);
+		static extern (C) ЦУк wxMessageDialog_ctor(ЦУк родитель, ткст message, ткст caption, бцел стиль, inout Точка поз);
+		static extern (C) цел    wxMessageDialog_ShowModal(ЦУк сам);
 
 		//! \endcond
 
 	alias MessageDialog wxMessageDialog;
 	public class MessageDialog : Dialog
 	{
-		public const string wxMessageBoxCaptionStr = "Message";
+		public const ткст wxMessageBoxCaptionStr = "Message";
 		//---------------------------------------------------------------------
 	
-		private this(IntPtr wxobj) 
-			{ super(wxobj); }
+		private this(ЦУк шхобъ) 
+			{ super(шхобъ); }
 
-		public this(Window parent, string msg, string caption=wxMessageBoxCaptionStr, int style=wxOK | wxCENTRE, Point pos = wxDefaultPosition)
-			{ this(wxMessageDialog_ctor(wxObject.SafePtr(parent), msg, caption, cast(uint)style, pos)); }
+		public this(Окно родитель, ткст msg, ткст caption=wxMessageBoxCaptionStr, цел стиль=wxOK | wxCENTRE, Точка поз = wxDefaultPosition)
+			{ this(wxMessageDialog_ctor(wxObject.SafePtr(родитель), msg, caption, cast(бцел)стиль, поз)); }
 
 		//---------------------------------------------------------------------
 
-		public override int ShowModal()
+		public override цел ShowModal()
 		{
-			return wxMessageDialog_ShowModal(wxobj);
+			return wxMessageDialog_ShowModal(шхобъ);
 		}
 
 		//---------------------------------------------------------------------
 
 	}
 
-		static extern(C) int wxMessageBox_func(string msg, string cap, int style, IntPtr parent,int x, int y);
+		static extern(C) цел wxMessageBox_func(ткст msg, ткст cap, цел стиль, ЦУк родитель,цел x, цел y);
 
-		static int MessageBox(string msg,string caption=MessageDialog.wxMessageBoxCaptionStr,int style=Dialog.wxOK | Dialog.wxCENTRE , Window parent=null, int x=-1, int y=-1)
+		static цел MessageBox(ткст msg,ткст caption=MessageDialog.wxMessageBoxCaptionStr,цел стиль=Dialog.wxOK | Dialog.wxCENTRE , Окно родитель=пусто, цел x=-1, цел y=-1)
 		{
-			return wxMessageBox_func(msg,caption,style,wxObject.SafePtr(parent),x,y);
+			return wxMessageBox_func(msg,caption,стиль,wxObject.SafePtr(родитель),x,y);
 		}
 
 		/* wx.NET compat */
-		static int MessageBox(Window parent,string msg,string caption=MessageDialog.wxMessageBoxCaptionStr,int style=Dialog.wxOK | Dialog.wxCENTRE , Point pos=Dialog.wxDefaultPosition)
+		static цел MessageBox(Окно родитель,ткст msg,ткст caption=MessageDialog.wxMessageBoxCaptionStr,цел стиль=Dialog.wxOK | Dialog.wxCENTRE , Точка поз=Dialog.wxDefaultPosition)
 		{
-			return wxMessageBox_func(msg,caption,style,wxObject.SafePtr(parent),pos.X,pos.Y);
+			return wxMessageBox_func(msg,caption,стиль,wxObject.SafePtr(родитель),поз.X,поз.Y);
 		}

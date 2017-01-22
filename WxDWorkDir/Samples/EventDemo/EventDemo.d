@@ -11,30 +11,30 @@
 // (C) 2004 Alexander Olk
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: EventDemo.d,v 1.9 2006/11/17 15:20:57 afb Exp $
+// $Ид: EventDemo.d,v 1.9 2006/11/17 15:20:57 afb Exp $
 //-----------------------------------------------------------------------------
  
 import wx.wx;
 
 pragma(lib,"wxd.lib");
 
-	public class EventDemoApp : App 
+	public class EventDemoApp : Прил 
 	{
-		public override bool OnInit()
+		public override бул ПриИниц()
 		{
-			EventDemoFrame _eventdemoframe = new EventDemoFrame( null, -1, "" );
-			_eventdemoframe.Show( true );
+			EventDemoFrame _eventdemoframe = new EventDemoFrame( пусто, -1, "" );
+			_eventdemoframe.Show( да );
  
-			return true;
+			return да;
 		}
  
 		//---------------------------------------------------------------------
  
 		
-		static void Main()
+		static проц Main()
 		{
-			EventDemoApp app = new EventDemoApp();
-			app.Run();
+			EventDemoApp прил = new EventDemoApp();
+			прил.Пуск();
 		}
 	}
  
@@ -58,33 +58,33 @@ pragma(lib,"wxd.lib");
  
 		// Do not change the code between region and endregion ( incl. region and endregion )...
 		//#region Wxg2wxnet Objects: EventDemoFrame
-		protected Button mainbutton;
+		protected Кнопка mainbutton;
 		//#endregion
 		
-		protected MenuItem menuItemExit;
-		protected MenuItem menuItemAbout;
+		protected ЭлементМеню menuItemExit;
+		protected ЭлементМеню menuItemAbout;
 		
 		DummyClass1 dc1;
 		DummyClass2 dc2;
  
 		//---------------------------------------------------------------------
  
-		public this( Window parent, int id, string title )
+		public this( Окно родитель, цел ид, ткст title )
 		{
-			super( parent, id , "New Event Demo", wxDefaultPosition, wxDefaultSize, wxDEFAULT_FRAME_STYLE );
+			super( родитель, ид , "Нов Событие Demo", wxDefaultPosition, wxDefaultSize, wxDEFAULT_FRAME_STYLE );
 			dc1 = new DummyClass1();
 			dc2 = new DummyClass2();
  
 
 			// Do not change the code between region and endregion ( incl. region and endregion )...
 			//#region Wxg2wxnet CTOR: EventDemoFrame
-			mainbutton = new Button( this, Cmd.ID_MAINBUTTON, "Press Me" );
+			mainbutton = new Кнопка( this, Cmd.ID_MAINBUTTON, "Press Me" );
 			//#endregion
 			
-			Menu fileMenu = new Menu();
+			Меню fileMenu = new Меню();
 			
-			menuItemExit = new MenuItem( fileMenu, Cmd.ID_MENU_EXIT, "E&xit" );
-			menuItemAbout = new MenuItem( fileMenu, Cmd.ID_MENU_ABOUT, "&About..." );
+			menuItemExit = new ЭлементМеню( fileMenu, Cmd.ID_MENU_EXIT, "E&xit" );
+			menuItemAbout = new ЭлементМеню( fileMenu, Cmd.ID_MENU_ABOUT, "&About..." );
 			
 			fileMenu.Append( menuItemAbout );
 			
@@ -92,7 +92,7 @@ pragma(lib,"wxd.lib");
 			
 			fileMenu.Append( menuItemExit );     
 			
-			Menu eventMenu = new Menu();
+			Меню eventMenu = new Меню();
 			
 			eventMenu.AppendWL( Cmd.ID_MENU_EVENT_1, "&Remove 2. mainbutton handler", & OnMenuRemoveHandler ) ;
 			eventMenu.AppendWL( Cmd.ID_MENU_EVENT_2, "&Readd 2. mainbutton handler", & OnMenuReaddHandler ) ;
@@ -116,7 +116,7 @@ pragma(lib,"wxd.lib");
 		
 		//---------------------------------------------------------------------
 		
-		public void OnButtonClicked( Object sender, Event e )
+		public проц OnButtonClicked( Объект sender, Событие e )
 		{
 			MessageBox("I get called first", "Message dialog EventDemoFrame",
 							Dialog.wxOK | Dialog.wxICON_INFORMATION);
@@ -124,14 +124,14 @@ pragma(lib,"wxd.lib");
 		
 		//---------------------------------------------------------------------
 		
-		public void OnMenuExitClicked( Object sender, Event e )
+		public проц OnMenuExitClicked( Объект sender, Событие e )
 		{
-			Close();
+			Закрой();
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void OnMenuAboutClicked( Object sender, Event e )
+		public проц OnMenuAboutClicked( Объект sender, Событие e )
 		{
 			MessageBox("This is the about Box...", "EventDemoFrame About...",
 							Dialog.wxOK | Dialog.wxICON_INFORMATION);
@@ -139,41 +139,41 @@ pragma(lib,"wxd.lib");
 		
 		//---------------------------------------------------------------------
 		
-		public void OnMenuRemoveHandler( Object sender, Event e )
+		public проц OnMenuRemoveHandler( Объект sender, Событие e )
 		{
 			mainbutton.Click_Remove(&dc1.OnButtonClicked) ;
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void OnMenuReaddHandler( Object sender, Event e )
+		public проц OnMenuReaddHandler( Объект sender, Событие e )
 		{
 			mainbutton.Click_Add(& dc1.OnButtonClicked );
 		}
  
 		//---------------------------------------------------------------------
  
-		public void SetWxProperties()
+		public проц SetWxProperties()
 		{
 			// Do not change the code between region and endregion ( incl. region and endregion )...
 			//#region Wxg2wxnet PROPERTIES: EventDemoFrame
-			Title = "New Event Demo";
+			Title = "Нов Событие Demo";
 			mainbutton.SetDefault();
 			//#endregion
 		}
  
 		//---------------------------------------------------------------------
  
-		public void DoWxLayout()
+		public проц DoWxLayout()
 		{
 			// Do not change the code between region and endregion ( incl. region and endregion )...
 			//#region Wxg2wxnet LAYOUT: EventDemoFrame
  
-			BoxSizer sizer_1 = new BoxSizer( Orientation.wxVERTICAL );
-			sizer_1.Add( mainbutton, 1, Direction.wxALL|Stretch.wxEXPAND, 2 );
+			BoxSizer sizer_1 = new BoxSizer( Ориентация.wxVERTICAL );
+			sizer_1.Добавь( mainbutton, 1, Direction.wxALL|Stretch.wxEXPAND, 2 );
 			sizer_1.Fit( this );
 			sizer_1.SetSizeHints( this );
-			AutoLayout = true;
+			AutoLayout = да;
 			SetSizer( sizer_1 );
 			Layout();
 			//#endregion
@@ -184,7 +184,7 @@ pragma(lib,"wxd.lib");
 	
 	public class DummyClass1
 	{
-		public void OnButtonClicked( Object sender, Event e )
+		public проц OnButtonClicked( Объект sender, Событие e )
 		{
 			MessageBox("I am second", "Message dialog DummyClass1",
 							Dialog.wxOK | Dialog.wxICON_INFORMATION);
@@ -195,7 +195,7 @@ pragma(lib,"wxd.lib");
  
 	public class DummyClass2
 	{
-		public void OnButtonClicked( Object sender, Event e )
+		public проц OnButtonClicked( Объект sender, Событие e )
 		{
 			MessageBox("And I am the third", "Message dialog DummyClass2",
 							Dialog.wxOK | Dialog.wxICON_INFORMATION);
@@ -204,7 +204,7 @@ pragma(lib,"wxd.lib");
 
  
 
-void main()
+проц main()
 {
 	EventDemoApp.Main();
 }

@@ -10,7 +10,7 @@
 // (C) 2003 by 379, Inc.
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: RadioBox.d,v 1.13 2007/11/27 08:19:20 afb Exp $
+// $Ид: RadioBox.d,v 1.13 2007/11/27 08:19:20 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.RadioBox;
@@ -18,29 +18,29 @@ public import wx.common;
 public import wx.Control;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxRadioBox_ctor();
-		static extern (C) bool   wxRadioBox_Create(IntPtr self, IntPtr parent, int id,
-		                                                           string label, inout Point pos, inout Size size,
-		                                                           int n, string* choices, int majorDimension,
-		                                                           uint style, IntPtr val, string name);
+		static extern (C) ЦУк wxRadioBox_ctor();
+		static extern (C) бул   wxRadioBox_Create(ЦУк сам, ЦУк родитель, цел ид,
+		                                                           ткст надпись, inout Точка поз, inout Размер size,
+		                                                           цел n, ткст* choices, цел majorDimension,
+		                                                           бцел стиль, ЦУк val, ткст имя);
 
-		static extern (C) void   wxRadioBox_SetSelection(IntPtr self, int n);
-		static extern (C) int    wxRadioBox_GetSelection(IntPtr self);
+		static extern (C) проц   wxRadioBox_SetSelection(ЦУк сам, цел n);
+		static extern (C) цел    wxRadioBox_GetSelection(ЦУк сам);
 
-		static extern (C) IntPtr wxRadioBox_GetStringSelection(IntPtr self);
-		static extern (C) bool   wxRadioBox_SetStringSelection(IntPtr self, string s);
+		static extern (C) ЦУк wxRadioBox_GetStringSelection(ЦУк сам);
+		static extern (C) бул   wxRadioBox_SetStringSelection(ЦУк сам, ткст s);
 
-		static extern (C) int    wxRadioBox_GetCount(IntPtr self);
-		static extern (C) int    wxRadioBox_FindString(IntPtr self, string s);
+		static extern (C) цел    wxRadioBox_GetCount(ЦУк сам);
+		static extern (C) цел    wxRadioBox_FindString(ЦУк сам, ткст s);
 
-		static extern (C) IntPtr wxRadioBox_GetString(IntPtr self, int n);
-		static extern (C) void   wxRadioBox_SetString(IntPtr self, int n, string label);
+		static extern (C) ЦУк wxRadioBox_GetString(ЦУк сам, цел n);
+		static extern (C) проц   wxRadioBox_SetString(ЦУк сам, цел n, ткст надпись);
 
-		static extern (C) void   wxRadioBox_Enable(IntPtr self, int n, bool enable);
-		static extern (C) void   wxRadioBox_Show(IntPtr self, int n, bool show);
+		static extern (C) проц   wxRadioBox_Enable(ЦУк сам, цел n, бул enable);
+		static extern (C) проц   wxRadioBox_Show(ЦУк сам, цел n, бул show);
 		
-		static extern (C) IntPtr wxRadioBox_GetLabel(IntPtr self);
-		static extern (C) void   wxRadioBox_SetLabel(IntPtr self, string label);
+		static extern (C) ЦУк wxRadioBox_GetLabel(ЦУк сам);
+		static extern (C) проц   wxRadioBox_SetLabel(ЦУк сам, ткст надпись);
 		//! \endcond
 
 		//---------------------------------------------------------------------
@@ -51,86 +51,86 @@ public import wx.Control;
 		enum {
 			wxRA_LEFTTORIGHT    = 0x0001,
 			wxRA_TOPTOBOTTOM    = 0x0002,
-			wxRA_SPECIFY_COLS   = Orientation.wxHORIZONTAL,
-			wxRA_SPECIFY_ROWS   = Orientation.wxVERTICAL,
-			wxRA_HORIZONTAL     = Orientation.wxHORIZONTAL,
-			wxRA_VERTICAL       = Orientation.wxVERTICAL,
+			wxRA_SPECIFY_COLS   = Ориентация.wxHORIZONTAL,
+			wxRA_SPECIFY_ROWS   = Ориентация.wxVERTICAL,
+			wxRA_HORIZONTAL     = Ориентация.wxHORIZONTAL,
+			wxRA_VERTICAL       = Ориентация.wxVERTICAL,
 		}
 
-		public const string wxRadioBoxNameStr = "radioBox";
+		public const ткст wxRadioBoxNameStr = "radioBox";
 		//---------------------------------------------------------------------
         
-		public this(IntPtr wxobj)
-			{ super(wxobj);}
+		public this(ЦУк шхобъ)
+			{ super(шхобъ);}
 			
-		public this(Window parent, int id, string label, Point pos = wxDefaultPosition, Size size = wxDefaultSize, string[] choices = null, int majorDimension = 0, int style = wxRA_HORIZONTAL, Validator val = null, string name = wxRadioBoxNameStr)
+		public this(Окно родитель, цел ид, ткст надпись, Точка поз = wxDefaultPosition, Размер size = wxDefaultSize, ткст[] choices = пусто, цел majorDimension = 0, цел стиль = wxRA_HORIZONTAL, Validator val = пусто, ткст имя = wxRadioBoxNameStr)
 		{
 			super(wxRadioBox_ctor());
-			if (!wxRadioBox_Create(wxobj, wxObject.SafePtr(parent), id, label, pos, size,
-			                       choices.length, choices.ptr, majorDimension, cast(uint)style, wxObject.SafePtr(val), name))
+			if (!wxRadioBox_Create(шхобъ, wxObject.SafePtr(родитель), ид, надпись, поз, size,
+			                       choices.length, choices.ptr, majorDimension, cast(бцел)стиль, wxObject.SafePtr(val), имя))
 			{
 				throw new InvalidOperationException("failed to create checkbox");
 			}
 		}
 		
-		public static wxObject New(IntPtr wxobj) { return new RadioBox(wxobj); }
+		public static wxObject Нов(ЦУк шхобъ) { return new RadioBox(шхобъ); }
 	
 		//---------------------------------------------------------------------
-		// ctors with self created id
+		// ctors with сам created ид
 		
-		public this(Window parent, string label, Point pos = wxDefaultPosition, Size size = wxDefaultSize, string[] choices = null, int majorDimension = 0, int style = wxRA_HORIZONTAL, Validator val = null, string name = wxRadioBoxNameStr)
-			{ this(parent, Window.UniqueID, label, pos, size, choices, majorDimension, style, val, name);}
+		public this(Окно родитель, ткст надпись, Точка поз = wxDefaultPosition, Размер size = wxDefaultSize, ткст[] choices = пусто, цел majorDimension = 0, цел стиль = wxRA_HORIZONTAL, Validator val = пусто, ткст имя = wxRadioBoxNameStr)
+			{ this(родитель, Окно.UniqueID, надпись, поз, size, choices, majorDimension, стиль, val, имя);}
 
 		//---------------------------------------------------------------------
 
-		public void Selection(int value) { wxRadioBox_SetSelection(wxobj, value); }
-		public int Selection() { return wxRadioBox_GetSelection(wxobj); }
+		public проц Selection(цел значение) { wxRadioBox_SetSelection(шхобъ, значение); }
+		public цел Selection() { return wxRadioBox_GetSelection(шхобъ); }
 
-		public void StringSelection(string value) { wxRadioBox_SetStringSelection(wxobj, value); }
-		public string StringSelection() { return cast(string) new wxString(wxRadioBox_GetStringSelection(wxobj), true); }
-
-		//---------------------------------------------------------------------
-
-		public int Count() { return wxRadioBox_GetCount(wxobj); }
+		public проц StringSelection(ткст значение) { wxRadioBox_SetStringSelection(шхобъ, значение); }
+		public ткст StringSelection() { return cast(ткст) new wxString(wxRadioBox_GetStringSelection(шхобъ), да); }
 
 		//---------------------------------------------------------------------
 
-		public int FindString(string s)
+		public цел Счёт() { return wxRadioBox_GetCount(шхобъ); }
+
+		//---------------------------------------------------------------------
+
+		public цел FindString(ткст s)
 		{
-			return wxRadioBox_FindString(wxobj, s);
+			return wxRadioBox_FindString(шхобъ, s);
 		}
 
 		//---------------------------------------------------------------------
 
-		public string GetString(int n)
+		public ткст GetString(цел n)
 		{
-			return cast(string) new wxString(wxRadioBox_GetString(wxobj, n), true);
+			return cast(ткст) new wxString(wxRadioBox_GetString(шхобъ, n), да);
 		}
 
-		public void SetString(int n, string label)
+		public проц SetString(цел n, ткст надпись)
 		{
-			wxRadioBox_SetString(wxobj, n, label);
+			wxRadioBox_SetString(шхобъ, n, надпись);
 		}
 
 		//---------------------------------------------------------------------
 
-		public void Enable(int n, bool enable)
+		public проц Enable(цел n, бул enable)
 		{
-			wxRadioBox_Enable(wxobj, n, enable);
+			wxRadioBox_Enable(шхобъ, n, enable);
 		}
 
-		public void Show(int n, bool show)
+		public проц Show(цел n, бул show)
 		{
-			wxRadioBox_Show(wxobj, n , show);
+			wxRadioBox_Show(шхобъ, n , show);
 		}
 
 		//---------------------------------------------------------------------
 		
-		public override string Label() { return cast(string) new wxString(wxRadioBox_GetLabel(wxobj), true); }
-		public override void Label(string value) { wxRadioBox_SetLabel(wxobj, value); }
+		public override ткст Label() { return cast(ткст) new wxString(wxRadioBox_GetLabel(шхобъ), да); }
+		public override проц Label(ткст значение) { wxRadioBox_SetLabel(шхобъ, значение); }
 		
 		//---------------------------------------------------------------------
 
-		public void Select_Add(EventListener value) { AddCommandListener(Event.wxEVT_COMMAND_RADIOBOX_SELECTED, ID, value, this); }
-		public void Select_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц Select_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_COMMAND_RADIOBOX_SELECTED, ИД, значение, this); }
+		public проц Select_Remove(EventListener значение) { RemoveHandler(значение, this); }
 	}

@@ -1,63 +1,63 @@
-/// The wxArrayInt wrapper class
+﻿/// The wxArrayInt wrapper class
 module wx.ArrayInt;
 public import wx.common;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxArrayInt_ctor();
-		static extern (C) void   wxArrayInt_dtor(IntPtr self);
-		static extern (C) void   wxArrayInt_RegisterDisposable(IntPtr self, Virtual_Dispose onDispose);
-		static extern (C) void   wxArrayInt_Add(IntPtr self, int toadd);
-		static extern (C) int    wxArrayInt_Item(IntPtr self, int num);
-		static extern (C) int    wxArrayInt_GetCount(IntPtr self);
+		static extern (C) ЦУк wxArrayInt_ctor();
+		static extern (C) проц   wxArrayInt_dtor(ЦУк сам);
+		static extern (C) проц   wxArrayInt_RegisterDisposable(ЦУк сам, Virtual_Dispose onDispose);
+		static extern (C) проц   wxArrayInt_Add(ЦУк сам, цел добавка);
+		static extern (C) цел    wxArrayInt_Item(ЦУк сам, цел num);
+		static extern (C) цел    wxArrayInt_GetCount(ЦУк сам);
 		//! \endcond
 		
-	alias ArrayInt wxArrayInt;
-	public class ArrayInt : wxObject
+	alias МассивЦел wxArrayInt;
+	public class МассивЦел : wxObject
 	{
 		//---------------------------------------------------------------------
 
-		public this(IntPtr wxobj)
+		public this(ЦУк шхобъ)
 		{
-			super(wxobj);
+			super(шхобъ);
 		}
 			
-		public this(IntPtr wxobj, bool memOwn)
+		public this(ЦУк шхобъ, бул memOwn)
 		{
-			super(wxobj);
+			super(шхобъ);
 			this.memOwn = memOwn;
 		}
 
 		public this()
 		{
-			this(wxArrayInt_ctor(), true);
-			wxArrayInt_RegisterDisposable(wxobj, &VirtualDispose);
+			this(wxArrayInt_ctor(), да);
+			wxArrayInt_RegisterDisposable(шхобъ, &VirtualDispose);
 		}
 		
 		//---------------------------------------------------------------------
 
-		public int[] toArray()
+		public цел[] вМассив()
 		{
-			int count = this.Count;
-			int[] tmpi = new int[count];
-			for (int i = 0; i < count; i++)
-				tmpi[i] = this.Item(i);
+			цел счёт = this.Счёт;
+			цел[] tmpi = new цел[счёт];
+			for (цел i = 0; i < счёт; i++)
+				tmpi[i] = this.Элемент(i);
 			return tmpi;
 		}
 
-		public void Add(int toadd)
+		public проц Добавь(цел добавка)
 		{
-			wxArrayInt_Add(wxobj, toadd);
+			wxArrayInt_Add(шхобъ, добавка);
 		}
 
-		public int Item(int num)
+		public цел Элемент(цел num)
 		{
-			return wxArrayInt_Item(wxobj, num);
+			return wxArrayInt_Item(шхобъ, num);
 		}
 
-		public int Count() { return wxArrayInt_GetCount(wxobj); }
+		public цел Счёт() { return wxArrayInt_GetCount(шхобъ); }
                 
 		//---------------------------------------------------------------------
 
-		override protected void dtor() { wxArrayInt_dtor(wxobj); }
+		override protected проц dtor() { wxArrayInt_dtor(шхобъ); }
 	}
 	

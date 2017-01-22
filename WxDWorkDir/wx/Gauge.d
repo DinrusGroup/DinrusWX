@@ -1,4 +1,4 @@
-//-----------------------------------------------------------------------------
+﻿//-----------------------------------------------------------------------------
 // wxD - Gauge.d
 // (C) 2005 bero <berobero@users.sourceforge.net>
 // based on
@@ -10,7 +10,7 @@
 // (C) 2003 Bryan Bulten
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: Gauge.d,v 1.10 2007/03/13 17:02:41 afb Exp $
+// $Ид: Gauge.d,v 1.10 2007/03/13 17:02:41 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.Gauge;
@@ -18,19 +18,19 @@ public import wx.common;
 public import wx.Control;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxGauge_ctor();
-		static extern (C) void   wxGauge_dtor(IntPtr self);
-		static extern (C) bool   wxGauge_Create(IntPtr self, IntPtr parent, int id, int range, inout Point pos, inout Size size, uint style, IntPtr validator, string name);
-		static extern (C) void   wxGauge_SetRange(IntPtr self, int range);
-		static extern (C) int    wxGauge_GetRange(IntPtr self);
-		static extern (C) void   wxGauge_SetValue(IntPtr self, int pos);
-		static extern (C) int    wxGauge_GetValue(IntPtr self);
-		//static extern (C) void   wxGauge_SetShadowWidth(IntPtr self, int w);
-		//static extern (C) int    wxGauge_GetShadowWidth(IntPtr self);
-		//static extern (C) void   wxGauge_SetBezelFace(IntPtr self, int w);
-		//static extern (C) int    wxGauge_GetBezelFace(IntPtr self);
-		static extern (C) bool   wxGauge_AcceptsFocus(IntPtr self);
-		static extern (C) bool   wxGauge_IsVertical(IntPtr self);
+		static extern (C) ЦУк wxGauge_ctor();
+		static extern (C) проц   wxGauge_dtor(ЦУк сам);
+		static extern (C) бул   wxGauge_Create(ЦУк сам, ЦУк родитель, цел ид, цел range, inout Точка поз, inout Размер size, бцел стиль, ЦУк validator, ткст имя);
+		static extern (C) проц   wxGauge_SetRange(ЦУк сам, цел range);
+		static extern (C) цел    wxGauge_GetRange(ЦУк сам);
+		static extern (C) проц   wxGauge_SetValue(ЦУк сам, цел поз);
+		static extern (C) цел    wxGauge_GetValue(ЦУк сам);
+		//static extern (C) проц   wxGauge_SetShadowWidth(ЦУк сам, цел w);
+		//static extern (C) цел    wxGauge_GetShadowWidth(ЦУк сам);
+		//static extern (C) проц   wxGauge_SetBezelFace(ЦУк сам, цел w);
+		//static extern (C) цел    wxGauge_GetBezelFace(ЦУк сам);
+		static extern (C) бул   wxGauge_AcceptsFocus(ЦУк сам);
+		static extern (C) бул   wxGauge_IsVertical(ЦУк сам);
 		//! \endcond
 	
 		//---------------------------------------------------------------------
@@ -39,81 +39,81 @@ public import wx.Control;
 	public class Gauge :  Control
 	{
 		enum {
-			wxGA_HORIZONTAL       = Orientation.wxHORIZONTAL,
-			wxGA_VERTICAL         = Orientation.wxVERTICAL,
+			wxGA_HORIZONTAL       = Ориентация.wxHORIZONTAL,
+			wxGA_VERTICAL         = Ориентация.wxVERTICAL,
 			wxGA_PROGRESSBAR      = 0x0010,
 		}
 	
 		// Windows only
-		public const int wxGA_SMOOTH           = 0x0020;
+		public const цел wxGA_SMOOTH           = 0x0020;
 	
-		public const string wxGaugeNameStr = "gauge";
+		public const ткст wxGaugeNameStr = "gauge";
 		//---------------------------------------------------------------------
 		
-		public this(IntPtr wxobj) 
-			{ super(wxobj);}
+		public this(ЦУк шхобъ) 
+			{ super(шхобъ);}
 
 		public this()
 			{ super(wxGauge_ctor()); }
 
-		public this(Window parent, int id, int range, Point pos = wxDefaultPosition, Size size = wxDefaultSize, 
-				int style = wxGA_HORIZONTAL, Validator validator = null, string name = wxGaugeNameStr)
+		public this(Окно родитель, цел ид, цел range, Точка поз = wxDefaultPosition, Размер size = wxDefaultSize, 
+				цел стиль = wxGA_HORIZONTAL, Validator validator = пусто, ткст имя = wxGaugeNameStr)
 		{	
 			super(wxGauge_ctor());
-			if (!Create(parent, id, range, pos, size, style, validator, name)) 
+			if (!Create(родитель, ид, range, поз, size, стиль, validator, имя)) 
 			{
 				throw new InvalidOperationException("Failed to create Gauge");
 			}
 		}
 		
-		public static wxObject New(IntPtr wxobj) { return new Gauge(wxobj); }
+		public static wxObject Нов(ЦУк шхобъ) { return new Gauge(шхобъ); }
 	
 		//---------------------------------------------------------------------
-		// ctors with self created id
+		// ctors with сам created ид
 		
-		public this(Window parent, int range, Point pos = wxDefaultPosition, Size size = wxDefaultSize, 
-				int style = wxGA_HORIZONTAL, Validator validator = null, string name = wxGaugeNameStr)
-			{ this(parent, Window.UniqueID, range, pos, size, style, validator, name);}
+		public this(Окно родитель, цел range, Точка поз = wxDefaultPosition, Размер size = wxDefaultSize, 
+				цел стиль = wxGA_HORIZONTAL, Validator validator = пусто, ткст имя = wxGaugeNameStr)
+			{ this(родитель, Окно.UniqueID, range, поз, size, стиль, validator, имя);}
 		
 		//---------------------------------------------------------------------
 
-		public bool Create(Window parent, int id, int range, inout Point pos, 
-				inout Size size, int style, Validator validator, 
-				string name)
+		public бул Create(Окно родитель, цел ид, цел range, inout Точка поз, 
+				inout Размер size, цел стиль, Validator validator, 
+				ткст имя)
 		{
-			return wxGauge_Create(wxobj, wxObject.SafePtr(parent), id, range, 
-					pos, size, cast(uint)style, 
-					wxObject.SafePtr(validator), name);
+			return wxGauge_Create(шхобъ, wxObject.SafePtr(родитель), ид, range, 
+					поз, size, cast(бцел)стиль, 
+					wxObject.SafePtr(validator), имя);
 		}
 
 		//---------------------------------------------------------------------
 
-		public int Range() { return wxGauge_GetRange(wxobj); }
-		public void Range(int value) { wxGauge_SetRange(wxobj, value); }
+		public цел Range() { return wxGauge_GetRange(шхобъ); }
+		public проц Range(цел значение) { wxGauge_SetRange(шхобъ, значение); }
 
 		//---------------------------------------------------------------------
         
-		public int Value() { return wxGauge_GetValue(wxobj); }
-		public void Value(int value) { wxGauge_SetValue(wxobj, value); }
+		public цел Value() { return wxGauge_GetValue(шхобъ); }
+		public проц Value(цел значение) { wxGauge_SetValue(шхобъ, значение); }
 
 		//---------------------------------------------------------------------
 /+
-		public int ShadowWidth() { return wxGauge_GetShadowWidth(wxobj); }
-		public void ShadowWidth(int value) { wxGauge_SetShadowWidth(wxobj, value); }
+		public цел ShadowWidth() { return wxGauge_GetShadowWidth(шхобъ); }
+		public проц ShadowWidth(цел значение) { wxGauge_SetShadowWidth(шхобъ, значение); }
 +/
 		//---------------------------------------------------------------------
 /+
-		public int BezelFace() { return wxGauge_GetBezelFace(wxobj); }
-		public void BezelFace(int value) { wxGauge_SetBezelFace(wxobj, value); }
+		public цел BezelFace() { return wxGauge_GetBezelFace(шхобъ); }
+		public проц BezelFace(цел значение) { wxGauge_SetBezelFace(шхобъ, значение); }
 +/
 		//---------------------------------------------------------------------
 
-		public override bool AcceptsFocus()
+		public override бул AcceptsFocus()
 		{
-			return wxGauge_AcceptsFocus(wxobj);
+			return wxGauge_AcceptsFocus(шхобъ);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public bool IsVertical() { return wxGauge_IsVertical(wxobj); }
+		public бул IsVertical() { return wxGauge_IsVertical(шхобъ); }
 	}

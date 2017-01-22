@@ -10,7 +10,7 @@
 // (C) 2003 Bryan Bulten
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: wxDateTime.d,v 1.11 2007/04/19 19:44:05 afb Exp $
+// $Ид: wxDateTime.d,v 1.11 2007/04/19 19:44:05 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.wxDateTime;
@@ -26,18 +26,18 @@ public import wx.common;
 /* wxDateTime imprementation is class { longlong } */
 
 		//! \cond EXTERN
-        static extern (C) IntPtr wxDefaultDateTime_Get();
-        static extern (C) IntPtr wxDateTime_ctor();
-        static extern (C) IntPtr wxDateTime_Now();
-	static extern (C) void   wxDateTime_dtor(IntPtr self);
-        static extern (C) void   wxDateTime_Set(IntPtr self, ushort day, int month, int year, ushort hour, ushort minute, ushort second, ushort millisec);
-        static extern (C) ushort wxDateTime_GetYear(IntPtr self);
-        static extern (C) int    wxDateTime_GetMonth(IntPtr self);
-        static extern (C) ushort wxDateTime_GetDay(IntPtr self);
-        static extern (C) ushort wxDateTime_GetHour(IntPtr self);
-        static extern (C) ushort wxDateTime_GetMinute(IntPtr self);
-        static extern (C) ushort wxDateTime_GetSecond(IntPtr self);
-        static extern (C) ushort wxDateTime_GetMillisecond(IntPtr self);
+        static extern (C) ЦУк wxDefaultDateTime_Get();
+        static extern (C) ЦУк wxDateTime_ctor();
+        static extern (C) ЦУк wxDateTime_Now();
+	static extern (C) проц   wxDateTime_dtor(ЦУк сам);
+        static extern (C) проц   wxDateTime_Set(ЦУк сам, ushort day, цел month, цел year, ushort hour, ushort minute, ushort second, ushort millisec);
+        static extern (C) ushort wxDateTime_GetYear(ЦУк сам);
+        static extern (C) цел    wxDateTime_GetMonth(ЦУк сам);
+        static extern (C) ushort wxDateTime_GetDay(ЦУк сам);
+        static extern (C) ushort wxDateTime_GetHour(ЦУк сам);
+        static extern (C) ushort wxDateTime_GetMinute(ЦУк сам);
+        static extern (C) ushort wxDateTime_GetSecond(ЦУк сам);
+        static extern (C) ushort wxDateTime_GetMillisecond(ЦУк сам);
 		//! \endcond
 	
         //-----------------------------------------------------------------------------
@@ -51,62 +51,62 @@ public import wx.common;
 		wxDefaultDateTime = new wxDateTime(wxDefaultDateTime_Get());
 	}
 
-        public this(IntPtr wxobj)
+        public this(ЦУк шхобъ)
 	{ 
-		super(wxobj);
+		super(шхобъ);
 	}
 	
-	private this(IntPtr wxobj, bool memOwn)
+	private this(ЦУк шхобъ, бул memOwn)
 	{ 
-		super(wxobj);
+		super(шхобъ);
 		this.memOwn = memOwn;
 	}
 
         public this()
-            { this(wxDateTime_ctor(), true); }
+            { this(wxDateTime_ctor(), да); }
 	    
 	//---------------------------------------------------------------------
 	
-	override protected void dtor() { wxDateTime_dtor(wxobj); }
+	override protected проц dtor() { wxDateTime_dtor(шхобъ); }
 
         //-----------------------------------------------------------------------------
 
-        public void Set(ushort day, int month, int year, ushort hour, ushort minute, ushort second, ushort millisec)
+        public проц Установи(ushort day, цел month, цел year, ushort hour, ushort minute, ushort second, ushort millisec)
         {
-            wxDateTime_Set(wxobj, day, month, year, hour, minute, second, millisec);
+            wxDateTime_Set(шхобъ, day, month, year, hour, minute, second, millisec);
         }
 
         //-----------------------------------------------------------------------------
 
-        public ushort Year() { return wxDateTime_GetYear(wxobj); }
+        public ushort Year() { return wxDateTime_GetYear(шхобъ); }
 
-        public int Month() { return wxDateTime_GetMonth(wxobj); }
+        public цел Month() { return wxDateTime_GetMonth(шхобъ); }
 
-        public ushort Day() { return wxDateTime_GetDay(wxobj); }
+        public ushort Day() { return wxDateTime_GetDay(шхобъ); }
 
-        public ushort Hour() { return wxDateTime_GetHour(wxobj); }
+        public ushort Hour() { return wxDateTime_GetHour(шхобъ); }
 
-        public ushort Minute() { return wxDateTime_GetMinute(wxobj); }
+        public ushort Minute() { return wxDateTime_GetMinute(шхобъ); }
         
-        public ushort Second() { return wxDateTime_GetSecond(wxobj); }
+        public ushort Second() { return wxDateTime_GetSecond(шхобъ); }
 
-        public ushort Millisecond() { return wxDateTime_GetMillisecond(wxobj); }
+        public ushort Millisecond() { return wxDateTime_GetMillisecond(шхобъ); }
 
 	static wxDateTime Now() { return new wxDateTime(wxDateTime_Now()); }
         //-----------------------------------------------------------------------------
 /+
         public static implicit operator DateTime (wxDateTime wdt)
         {
-            DateTime dt = new DateTime(wdt.Year, cast(int)wdt.Month+1, cast(int)wdt.Day, 
-                                       cast(int)wdt.Hour, cast(int)wdt.Minute, 
-                                       cast(int)wdt.Second, cast(int)wdt.Millisecond);
+            DateTime dt = new DateTime(wdt.Year, cast(цел)wdt.Month+1, cast(цел)wdt.Day, 
+                                       cast(цел)wdt.Hour, cast(цел)wdt.Minute, 
+                                       cast(цел)wdt.Second, cast(цел)wdt.Millisecond);
             return dt;
         }
 
         public static implicit operator wxDateTime (DateTime dt)
         {
             wxDateTime wdt = new wxDateTime();
-            wdt.Set((ushort)dt.Day, dt.Month-1, dt.Year, (ushort)dt.Hour, 
+            wdt.Установи((ushort)dt.Day, dt.Month-1, dt.Year, (ushort)dt.Hour, 
                     (ushort)dt.Minute, (ushort)dt.Second, 
                     (ushort)dt.Millisecond);
             return wdt;

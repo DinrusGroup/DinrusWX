@@ -10,7 +10,7 @@
 // (C) 2003 Alexander Olk
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: TextDialog.d,v 1.10 2007/01/28 23:06:37 afb Exp $
+// $Ид: TextDialog.d,v 1.10 2007/01/28 23:06:37 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.TextDialog;
@@ -18,11 +18,11 @@ public import wx.common;
 public import wx.Dialog;
 
 		//! \cond EXTERN
-        static extern (C) IntPtr wxTextEntryDialog_ctor(IntPtr parent, string message, string caption, string value, uint style, inout Point pos);
-        static extern (C) void wxTextEntryDialog_dtor(IntPtr self);
-        static extern (C) void wxTextEntryDialog_SetValue(IntPtr self, string val);
-        static extern (C) IntPtr wxTextEntryDialog_GetValue(IntPtr self);
-        static extern (C) int wxTextEntryDialog_ShowModal(IntPtr self);
+        static extern (C) ЦУк wxTextEntryDialog_ctor(ЦУк родитель, ткст message, ткст caption, ткст значение, бцел стиль, inout Точка поз);
+        static extern (C) проц wxTextEntryDialog_dtor(ЦУк сам);
+        static extern (C) проц wxTextEntryDialog_SetValue(ЦУк сам, ткст val);
+        static extern (C) ЦУк wxTextEntryDialog_GetValue(ЦУк сам);
+        static extern (C) цел wxTextEntryDialog_ShowModal(ЦУк сам);
 		//! \endcond
 
         //-----------------------------------------------------------------------------
@@ -33,44 +33,44 @@ public import wx.Dialog;
     	enum {
         wxTextEntryDialogStyle = (wxOK | wxCANCEL | wxCENTRE),
 	}
-	public const string wxGetTextFromUserPromptStr = "Input Text";
+	public const ткст wxGetTextFromUserPromptStr = "Input Текст";
 
-        public this(IntPtr wxobj)
-            { super(wxobj);}
+        public this(ЦУк шхобъ)
+            { super(шхобъ);}
 
-        public  this(Window parent, string message=wxGetTextFromUserPromptStr, string caption="", string value="", int style=wxTextEntryDialogStyle, Point pos=wxDefaultPosition)
-            { this(wxTextEntryDialog_ctor(wxObject.SafePtr(parent), message, caption, value, cast(uint)style, pos)); }
+        public  this(Окно родитель, ткст message=wxGetTextFromUserPromptStr, ткст caption="", ткст значение="", цел стиль=wxTextEntryDialogStyle, Точка поз=wxDefaultPosition)
+            { this(wxTextEntryDialog_ctor(wxObject.SafePtr(родитель), message, caption, значение, cast(бцел)стиль, поз)); }
 
         //-----------------------------------------------------------------------------
 
-        public string Value() { return cast(string) new wxString(wxTextEntryDialog_GetValue(wxobj), true); }
-        public void Value(string value) { wxTextEntryDialog_SetValue(wxobj, value); }
+        public ткст Value() { return cast(ткст) new wxString(wxTextEntryDialog_GetValue(шхобъ), да); }
+        public проц Value(ткст значение) { wxTextEntryDialog_SetValue(шхобъ, значение); }
 
         //---------------------------------------------------------------------
 
-        public override int ShowModal()
+        public override цел ShowModal()
         {
-            return wxTextEntryDialog_ShowModal(wxobj);
+            return wxTextEntryDialog_ShowModal(шхобъ);
         }
     }
 
     //-----------------------------------------------------------------------------
 
 		//! \cond EXTERN
-        static extern (C) IntPtr wxGetPasswordFromUser_func(string message, string caption, string defaultValue, IntPtr parent);
-        static extern (C) IntPtr wxGetTextFromUser_func(string message, string caption, string defaultValue, IntPtr parent, int x, int y, bool centre);
+        static extern (C) ЦУк wxGetPasswordFromUser_func(ткст message, ткст caption, ткст defaultValue, ЦУк родитель);
+        static extern (C) ЦУк wxGetTextFromUser_func(ткст message, ткст caption, ткст defaultValue, ЦУк родитель, цел x, цел y, бул centre);
 		//! \endcond
 
         //-----------------------------------------------------------------------------
 
-        public string GetPasswordFromUser(string message, string caption=TextEntryDialog.wxGetTextFromUserPromptStr, string defaultValue="", Window parent=null)
+        public ткст GetPasswordFromUser(ткст message, ткст caption=TextEntryDialog.wxGetTextFromUserPromptStr, ткст defaultValue="", Окно родитель=пусто)
         {
-            return cast(string) new wxString(wxGetPasswordFromUser_func(message, caption, defaultValue, wxObject.SafePtr(parent)), true);
+            return cast(ткст) new wxString(wxGetPasswordFromUser_func(message, caption, defaultValue, wxObject.SafePtr(родитель)), да);
         }
 
         //-----------------------------------------------------------------------------
 
-        public string GetTextFromUser(string message, string caption=TextEntryDialog.wxGetTextFromUserPromptStr, string defaultValue="", Window parent=null, int x=-1, int y=-1, bool centre=true)
+        public ткст GetTextFromUser(ткст message, ткст caption=TextEntryDialog.wxGetTextFromUserPromptStr, ткст defaultValue="", Окно родитель=пусто, цел x=-1, цел y=-1, бул centre=да)
         {
-            return cast(string) new wxString(wxGetTextFromUser_func(message, caption, defaultValue, wxObject.SafePtr(parent), x, y, centre), true);
+            return cast(ткст) new wxString(wxGetTextFromUser_func(message, caption, defaultValue, wxObject.SafePtr(родитель), x, y, centre), да);
         }

@@ -10,7 +10,7 @@
 // (C) 2004 by Alexander Olk
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: WindowCreateEvent.d,v 1.9 2006/11/17 15:21:01 afb Exp $
+// $Ид: WindowCreateEvent.d,v 1.9 2006/11/17 15:21:01 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.WindowCreateEvent;
@@ -21,8 +21,8 @@ public import wx.CommandEvent;
 public import wx.Window;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxWindowCreateEvent_ctor(IntPtr type);
-		static extern (C) IntPtr wxWindowCreateEvent_GetWindow(IntPtr self);
+		static extern (C) ЦУк wxWindowCreateEvent_ctor(ЦУк тип);
+		static extern (C) ЦУк wxWindowCreateEvent_GetWindow(ЦУк сам);
 		//! \endcond
 		
 		//-----------------------------------------------------------------------------
@@ -30,20 +30,20 @@ public import wx.Window;
 	alias WindowCreateEvent wxWindowCreateEvent;
 	public class WindowCreateEvent : CommandEvent
 	{
-		public this(IntPtr wxobj) 
-			{ super(wxobj); }
+		public this(ЦУк шхобъ) 
+			{ super(шхобъ); }
 
-		public this(Window win = null)
-			{ this(wxWindowCreateEvent_ctor(wxObject.SafePtr(win))); }
+		public this(Окно окн = пусто)
+			{ this(wxWindowCreateEvent_ctor(wxObject.SafePtr(окн))); }
 
 		//-----------------------------------------------------------------------------	
 		
-		public Window Active() { return cast(Window)FindObject(wxWindowCreateEvent_GetWindow(wxobj), &Window.New); }
+		public Окно Активен() { return cast(Окно)FindObject(wxWindowCreateEvent_GetWindow(шхобъ), &Окно.Нов); }
 
-		private static Event New(IntPtr obj) { return new WindowCreateEvent(obj); }
+		private static Событие Нов(ЦУк объ) { return new WindowCreateEvent(объ); }
 
 		static this()
 		{
-			AddEventType(wxEVT_CREATE,				&WindowCreateEvent.New);
+			ДобавьТипСоб(wxEVT_CREATE,				&WindowCreateEvent.Нов);
 		}
 	}

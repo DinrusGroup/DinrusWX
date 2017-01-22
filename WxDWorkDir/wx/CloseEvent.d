@@ -1,4 +1,4 @@
-//-----------------------------------------------------------------------------
+﻿//-----------------------------------------------------------------------------
 // wxD - CloseEvent.d
 // (C) 2005 bero <berobero@users.sourceforge.net>
 // based on
@@ -10,7 +10,7 @@
 // (C) 2004 by Alexander Olk
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: CloseEvent.d,v 1.9 2006/11/17 15:20:59 afb Exp $
+// $Ид: CloseEvent.d,v 1.9 2006/11/17 15:20:59 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.CloseEvent;
@@ -18,52 +18,52 @@ public import wx.common;
 public import wx.Event;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxCloseEvent_ctor(int type,int winid);
-		static extern (C) void wxCloseEvent_SetLoggingOff(IntPtr self, bool logOff);
-		static extern (C) bool wxCloseEvent_GetLoggingOff(IntPtr self);
-		static extern (C) void wxCloseEvent_Veto(IntPtr self, bool veto);
-		static extern (C) void wxCloseEvent_SetCanVeto(IntPtr self, bool canVeto);
-		static extern (C) bool wxCloseEvent_CanVeto(IntPtr self);
-		static extern (C) bool wxCloseEvent_GetVeto(IntPtr self);
+		static extern (C) ЦУк wxCloseEvent_ctor(цел тип,цел winid);
+		static extern (C) проц wxCloseEvent_SetLoggingOff(ЦУк сам, бул logOff);
+		static extern (C) бул wxCloseEvent_GetLoggingOff(ЦУк сам);
+		static extern (C) проц wxCloseEvent_Veto(ЦУк сам, бул veto);
+		static extern (C) проц wxCloseEvent_SetCanVeto(ЦУк сам, бул canVeto);
+		static extern (C) бул wxCloseEvent_CanVeto(ЦУк сам);
+		static extern (C) бул wxCloseEvent_GetVeto(ЦУк сам);
 		//! \endcond
 		
 		//-----------------------------------------------------------------------------
 
 	alias CloseEvent wxCloseEvent;
-	public class CloseEvent : Event
+	public class CloseEvent : Событие
 	{
-		public this(IntPtr wxobj) 
-			{ super(wxobj); }
+		public this(ЦУк шхобъ) 
+			{ super(шхобъ); }
 
-		public this(EventType type = wxEVT_NULL, int winid = 0)
-			{ this(wxCloseEvent_ctor(type,winid)); }
+		public this(ТипСобытия тип = wxEVT_NULL, цел winid = 0)
+			{ this(wxCloseEvent_ctor(тип,winid)); }
 
 		//-----------------------------------------------------------------------------
 		
-		public bool LoggingOff() { return wxCloseEvent_GetLoggingOff(wxobj); }
-		public void LoggingOff(bool value) { wxCloseEvent_SetLoggingOff(wxobj, value); } 
+		public бул LoggingOff() { return wxCloseEvent_GetLoggingOff(шхобъ); }
+		public проц LoggingOff(бул значение) { wxCloseEvent_SetLoggingOff(шхобъ, значение); } 
 		
-		public void Veto()
+		public проц Veto()
 		{
-			Veto(true);
+			Veto(да);
 		}
 		
-		public void Veto(bool veto)
+		public проц Veto(бул veto)
 		{
-			wxCloseEvent_Veto(wxobj, veto);
+			wxCloseEvent_Veto(шхобъ, veto);
 		}
 		
-		public void CanVeto(bool value) { wxCloseEvent_SetCanVeto(wxobj, value); }
-		public bool CanVeto() { return wxCloseEvent_CanVeto(wxobj); }
+		public проц CanVeto(бул значение) { wxCloseEvent_SetCanVeto(шхобъ, значение); }
+		public бул CanVeto() { return wxCloseEvent_CanVeto(шхобъ); }
 		
-		public bool GetVeto() { return wxCloseEvent_GetVeto(wxobj); }
+		public бул GetVeto() { return wxCloseEvent_GetVeto(шхобъ); }
 
-		private static Event New(IntPtr obj) { return new CloseEvent(obj); }
+		private static Событие Нов(ЦУк объ) { return new CloseEvent(объ); }
 
 		static this()
 		{
-			AddEventType(wxEVT_CLOSE_WINDOW,                    &CloseEvent.New);
-			AddEventType(wxEVT_END_SESSION,                     &CloseEvent.New);
-			AddEventType(wxEVT_QUERY_END_SESSION,               &CloseEvent.New);
+			ДобавьТипСоб(wxEVT_CLOSE_WINDOW,                    &CloseEvent.Нов);
+			ДобавьТипСоб(wxEVT_END_SESSION,                     &CloseEvent.Нов);
+			ДобавьТипСоб(wxEVT_QUERY_END_SESSION,               &CloseEvent.Нов);
 		}
 	}

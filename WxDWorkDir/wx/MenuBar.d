@@ -10,7 +10,7 @@
 // (C) 2003 by 379, Inc.
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: MenuBar.d,v 1.10 2007/01/28 23:06:37 afb Exp $
+// $Ид: MenuBar.d,v 1.10 2007/01/28 23:06:37 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.MenuBar;
@@ -19,38 +19,38 @@ public import wx.EvtHandler;
 public import wx.Menu;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxMenuBar_ctor();
-		static extern (C) IntPtr wxMenuBar_ctor2(uint style);
-		static extern (C) bool   wxMenuBar_Append(IntPtr self, IntPtr menu, string title);
-		static extern (C) void   wxMenuBar_Check(IntPtr self, int id, bool check);
-		static extern (C) bool   wxMenuBar_IsChecked(IntPtr self, int id);
-        	static extern (C) bool   wxMenuBar_Insert(IntPtr self, int pos, IntPtr menu, string title);
-        	static extern (C) IntPtr wxMenuBar_FindItem(IntPtr self, int id, inout IntPtr menu);
+		static extern (C) ЦУк wxMenuBar_ctor();
+		static extern (C) ЦУк wxMenuBar_ctor2(бцел стиль);
+		static extern (C) бул   wxMenuBar_Append(ЦУк сам, ЦУк меню, ткст title);
+		static extern (C) проц   wxMenuBar_Check(ЦУк сам, цел ид, бул check);
+		static extern (C) бул   wxMenuBar_IsChecked(ЦУк сам, цел ид);
+        	static extern (C) бул   wxMenuBar_Insert(ЦУк сам, цел поз, ЦУк меню, ткст title);
+        	static extern (C) ЦУк wxMenuBar_FindItem(ЦУк сам, цел ид, inout ЦУк меню);
 		
-		static extern (C) int    wxMenuBar_GetMenuCount(IntPtr self);
-		static extern (C) IntPtr wxMenuBar_GetMenu(IntPtr self, int pos);
+		static extern (C) цел    wxMenuBar_GetMenuCount(ЦУк сам);
+		static extern (C) ЦУк wxMenuBar_GetMenu(ЦУк сам, цел поз);
 		
-		static extern (C) IntPtr wxMenuBar_Replace(IntPtr self, int pos, IntPtr menu, string title);
-		static extern (C) IntPtr wxMenuBar_Remove(IntPtr self, int pos);
+		static extern (C) ЦУк wxMenuBar_Replace(ЦУк сам, цел поз, ЦУк меню, ткст title);
+		static extern (C) ЦУк wxMenuBar_Remove(ЦУк сам, цел поз);
 		
-		static extern (C) void   wxMenuBar_EnableTop(IntPtr self, int pos, bool enable);
+		static extern (C) проц   wxMenuBar_EnableTop(ЦУк сам, цел поз, бул enable);
 		
-		static extern (C) void   wxMenuBar_Enable(IntPtr self, int id, bool enable);
+		static extern (C) проц   wxMenuBar_Enable(ЦУк сам, цел ид, бул enable);
 		
-		static extern (C) int    wxMenuBar_FindMenu(IntPtr self, string title);
-		static extern (C) int    wxMenuBar_FindMenuItem(IntPtr self, string menustring, string itemString);
+		static extern (C) цел    wxMenuBar_FindMenu(ЦУк сам, ткст title);
+		static extern (C) цел    wxMenuBar_FindMenuItem(ЦУк сам, ткст menustring, ткст itemString);
 		
-		static extern (C) IntPtr wxMenuBar_GetHelpString(IntPtr self, int id);
-		static extern (C) IntPtr wxMenuBar_GetLabel(IntPtr self, int id);
-		//static extern (C) IntPtr wxMenuBar_GetLabelTop(IntPtr self, int pos);
+		static extern (C) ЦУк wxMenuBar_GetHelpString(ЦУк сам, цел ид);
+		static extern (C) ЦУк wxMenuBar_GetLabel(ЦУк сам, цел ид);
+		//static extern (C) ЦУк wxMenuBar_GetLabelTop(ЦУк сам, цел поз);
 		
-		static extern (C) bool   wxMenuBar_IsEnabled(IntPtr self, int id);
+		static extern (C) бул   wxMenuBar_IsEnabled(ЦУк сам, цел ид);
 		
-		static extern (C) void   wxMenuBar_Refresh(IntPtr self);
+		static extern (C) проц   wxMenuBar_Refresh(ЦУк сам);
 		
-		static extern (C) void   wxMenuBar_SetHelpString(IntPtr self, int id, string helpstring);
-		static extern (C) void   wxMenuBar_SetLabel(IntPtr self, int id, string label);
-		//static extern (C) void   wxMenuBar_SetLabelTop(IntPtr self, int pos, string label);
+		static extern (C) проц   wxMenuBar_SetHelpString(ЦУк сам, цел ид, ткст helpstring);
+		static extern (C) проц   wxMenuBar_SetLabel(ЦУк сам, цел ид, ткст надпись);
+		//static extern (C) проц   wxMenuBar_SetLabelTop(ЦУк сам, цел поз, ткст надпись);
 		//! \endcond
 
 	alias MenuBar wxMenuBar;
@@ -61,169 +61,169 @@ public import wx.Menu;
 		public this()
 			{ this(wxMenuBar_ctor()); }
 			
-		public this(int style)
-			{ this(wxMenuBar_ctor2(cast(uint)style));}
+		public this(цел стиль)
+			{ this(wxMenuBar_ctor2(cast(бцел)стиль));}
 
-		public this(IntPtr wxobj)
-			{ super(wxobj); }
+		public this(ЦУк шхобъ)
+			{ super(шхобъ); }
 
-		public static wxObject New(IntPtr wxobj)
+		public static wxObject Нов(ЦУк шхобъ)
 		{
-			return new MenuBar(wxobj);
+			return new MenuBar(шхобъ);
 		}
 
 		//---------------------------------------------------------------------
 
-		public bool Append(Menu menu, string title)
+		public бул Append(Меню меню, ткст title)
 		{
-			return wxMenuBar_Append(wxobj, menu.wxobj, title);
+			return wxMenuBar_Append(шхобъ, меню.шхобъ, title);
 		}
 
 		//---------------------------------------------------------------------
 
-		public void Check(int id, bool check)
+		public проц Check(цел ид, бул check)
 		{
-			wxMenuBar_Check(wxobj, id, check);
+			wxMenuBar_Check(шхобъ, ид, check);
 		}
 
 		//---------------------------------------------------------------------
 
-		public bool IsChecked(int id)
+		public бул IsChecked(цел ид)
 		{
-			return wxMenuBar_IsChecked(wxobj, id); 
+			return wxMenuBar_IsChecked(шхобъ, ид); 
 		}
 
-		public bool Insert(int pos, Menu menu, string title)
+		public бул Insert(цел поз, Меню меню, ткст title)
 		{
-			return wxMenuBar_Insert(wxobj, pos, wxObject.SafePtr(menu), title);
+			return wxMenuBar_Insert(шхобъ, поз, wxObject.SafePtr(меню), title);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public MenuItem FindItem(int id)
+		public ЭлементМеню FindItem(цел ид)
 		{ 
-			Menu menu = null;
-			return FindItem(id, menu); 
+			Меню меню = пусто;
+			return FindItem(ид, меню); 
 		}
 		
-		public MenuItem FindItem(int id, inout Menu menu)
+		public ЭлементМеню FindItem(цел ид, inout Меню меню)
 		{
-			IntPtr menuRef = IntPtr.init;
-			if (menu) 
+			ЦУк menuRef = ЦУк.init;
+			if (меню) 
 			{
-				menuRef = wxObject.SafePtr(menu);
+				menuRef = wxObject.SafePtr(меню);
 			}
 		
-			return cast(MenuItem)FindObject(wxMenuBar_FindItem(wxobj, id, menuRef), &MenuItem.New2);
+			return cast(ЭлементМеню)FindObject(wxMenuBar_FindItem(шхобъ, ид, menuRef), &ЭлементМеню.New2);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public int MenuCount() { return wxMenuBar_GetMenuCount(wxobj); }
+		public цел MenuCount() { return wxMenuBar_GetMenuCount(шхобъ); }
 		
 		//-----------------------------------------------------------------------------
 		
-		public Menu GetMenu(int pos)
+		public Меню GetMenu(цел поз)
 		{
-			return cast(Menu)FindObject(wxMenuBar_GetMenu(wxobj, pos), &Menu.New);
+			return cast(Меню)FindObject(wxMenuBar_GetMenu(шхобъ, поз), &Меню.Нов);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public Menu Replace(int pos, Menu menu, string title)
+		public Меню Замени(цел поз, Меню меню, ткст title)
 		{
-			return cast(Menu)FindObject(wxMenuBar_Replace(wxobj, pos, wxObject.SafePtr(menu), title), &Menu.New);
+			return cast(Меню)FindObject(wxMenuBar_Replace(шхобъ, поз, wxObject.SafePtr(меню), title), &Меню.Нов);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public Menu Remove(int pos)
+		public Меню Remove(цел поз)
 		{
-			return cast(Menu)FindObject(wxMenuBar_Remove(wxobj, pos), &Menu.New);
+			return cast(Меню)FindObject(wxMenuBar_Remove(шхобъ, поз), &Меню.Нов);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public void EnableTop(int pos, bool enable)
+		public проц EnableTop(цел поз, бул enable)
 		{
-			wxMenuBar_EnableTop(wxobj, pos, enable);
+			wxMenuBar_EnableTop(шхобъ, поз, enable);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public void Enable(int id, bool enable)
+		public проц Enable(цел ид, бул enable)
 		{
-			wxMenuBar_Enable(wxobj, id, enable);
+			wxMenuBar_Enable(шхобъ, ид, enable);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public int FindMenu(string title)
+		public цел FindMenu(ткст title)
 		{
-			return wxMenuBar_FindMenu(wxobj, title);
+			return wxMenuBar_FindMenu(шхобъ, title);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public int FindMenuItem(string menustring, string itemString)
+		public цел FindMenuItem(ткст menustring, ткст itemString)
 		{
-			return wxMenuBar_FindMenuItem(wxobj, menustring, itemString);
+			return wxMenuBar_FindMenuItem(шхобъ, menustring, itemString);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public string GetHelpString(int id)
+		public ткст GetHelpString(цел ид)
 		{
-			return cast(string) new wxString(wxMenuBar_GetHelpString(wxobj, id), true);
+			return cast(ткст) new wxString(wxMenuBar_GetHelpString(шхобъ, ид), да);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public string GetLabel(int id)
+		public ткст GetLabel(цел ид)
 		{
-			return cast(string) new wxString(wxMenuBar_GetLabel(wxobj, id), true);
+			return cast(ткст) new wxString(wxMenuBar_GetLabel(шхобъ, ид), да);
 		}
 		
 		//-----------------------------------------------------------------------------
 	/+	
-		public string GetLabelTop(int pos)
+		public ткст GetLabelTop(цел поз)
 		{
-			return cast(string) new wxString(wxMenuBar_GetLabelTop(wxobj, pos), true);
+			return cast(ткст) new wxString(wxMenuBar_GetLabelTop(шхобъ, поз), да);
 		}
 		+/
 		//-----------------------------------------------------------------------------
 		
-		public bool IsEnabled(int id)
+		public бул IsEnabled(цел ид)
 		{
-			return wxMenuBar_IsEnabled(wxobj, id);
+			return wxMenuBar_IsEnabled(шхобъ, ид);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public void Refresh()
+		public проц Refresh()
 		{
-			wxMenuBar_Refresh(wxobj);
+			wxMenuBar_Refresh(шхобъ);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public void SetHelpString(int id, string helpstring)
+		public проц SetHelpString(цел ид, ткст helpstring)
 		{
-			wxMenuBar_SetHelpString(wxobj, id, helpstring);
+			wxMenuBar_SetHelpString(шхобъ, ид, helpstring);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public void SetLabel(int id, string label)
+		public проц SetLabel(цел ид, ткст надпись)
 		{
-			wxMenuBar_SetLabel(wxobj, id, label);
+			wxMenuBar_SetLabel(шхобъ, ид, надпись);
 		}
 		
 		//-----------------------------------------------------------------------------
 	/+	
-		public void SetLabelTop(int pos, string label)
+		public проц SetLabelTop(цел поз, ткст надпись)
 		{
-			wxMenuBar_SetLabelTop(wxobj, pos, label);
+			wxMenuBar_SetLabelTop(шхобъ, поз, надпись);
 		}
 		+/
 	}

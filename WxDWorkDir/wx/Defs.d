@@ -1,25 +1,11 @@
-//-----------------------------------------------------------------------------
-// wxD - Defs.d
-// (C) 2005 bero <berobero.sourceforge.net>
-// based on
-// wx.NET - Defs.cs
-//
-/// Symbol definitions that do not belong to any particular class.
-//
-// Written by Jason Perkins (jason@379.com)
-// (C) 2003 by 379, Inc.
-// Licensed under the wxWidgets license, see LICENSE.txt for details.
-//
-// $Id: Defs.d,v 1.12 2007/10/24 07:50:09 afb Exp $
-//-----------------------------------------------------------------------------
-
+﻿
 module wx.Defs;
 //public import wx.common;
 
 version(wx25) version = wx26;
 version(wx27) version = wx28;
 
-	public enum BitmapType {
+	public enum ТипБитмапа {
 		wxBITMAP_TYPE_INVALID               = 0,
 		wxBITMAP_TYPE_BMP,
 		wxBITMAP_TYPE_BMP_RESOURCE,
@@ -57,7 +43,7 @@ version(wx27) version = wx28;
 
 version(wx28) // -------------------------------------------- wxWidgets 2.8
 {
-	/*  Standard menu IDs */
+	/*  Standard ???? IDs */
 	public enum MenuIDs
 	{
 		wxID_LOWEST = 4999,
@@ -119,7 +105,7 @@ version(wx28) // -------------------------------------------- wxWidgets 2.8
 		wxID_FILE8,
 		wxID_FILE9,
 		
-		/*  Standard button and menu IDs */
+		/*  Standard button and ???? IDs */
 		wxID_OK = 5100,
 		wxID_CANCEL,
 		wxID_APPLY,
@@ -164,7 +150,7 @@ version(wx28) // -------------------------------------------- wxWidgets 2.8
 		wxID_UNDELETE,
 		wxID_REVERT_TO_SAVED,
 		
-		/*  System menu IDs (used by wxUniv): */
+		/*  System ???? IDs (used by wxUniv): */
 		wxID_SYSTEM_MENU = 5200,
 		wxID_CLOSE_FRAME,
 		wxID_MOVE_FRAME,
@@ -173,7 +159,7 @@ version(wx28) // -------------------------------------------- wxWidgets 2.8
 		wxID_ICONIZE_FRAME,
 		wxID_RESTORE_FRAME,
 		
-		/*  IDs used by generic file dialog (13 consecutive starting from this value) */
+		/*  IDs used by generic file dialog (13 consecutive starting from this ????????) */
 		wxID_FILEDLGG = 5900,
 		
 		wxID_HIGHEST = 5999
@@ -181,7 +167,7 @@ version(wx28) // -------------------------------------------- wxWidgets 2.8
 }
 else // version (wx26) // ----------------------------------- wxWidgets 2.6
 {
-	/*  Standard menu IDs */
+	/*  Standard ???? IDs */
 	public enum MenuIDs
 	{
 		wxID_LOWEST = 4999,
@@ -239,7 +225,7 @@ else // version (wx26) // ----------------------------------- wxWidgets 2.6
 		wxID_FILE8,
 		wxID_FILE9,
 		
-		/*  Standard button and menu IDs */
+		/*  Standard button and ???? IDs */
 		wxID_OK = 5100,
 		wxID_CANCEL,
 		wxID_APPLY,
@@ -284,7 +270,7 @@ else // version (wx26) // ----------------------------------- wxWidgets 2.6
 		wxID_UNDELETE,
 		wxID_REVERT_TO_SAVED,
 		
-		/*  System menu IDs (used by wxUniv): */
+		/*  System ???? IDs (used by wxUniv): */
 		wxID_SYSTEM_MENU = 5200,
 		wxID_CLOSE_FRAME,
 		wxID_MOVE_FRAME,
@@ -293,7 +279,7 @@ else // version (wx26) // ----------------------------------- wxWidgets 2.6
 		wxID_ICONIZE_FRAME,
 		wxID_RESTORE_FRAME,
 		
-		/*  IDs used by generic file dialog (13 consecutive starting from this value) */
+		/*  IDs used by generic file dialog (13 consecutive starting from this ????????) */
 		wxID_FILEDLGG = 5900,
 		
 		wxID_HIGHEST = 5999
@@ -302,8 +288,8 @@ else // version (wx26) // ----------------------------------- wxWidgets 2.6
 
 version(wx28) // -------------------------------------------- wxWidgets 2.8
 {
-	//[Flags]
-	public enum KeyCode 
+	//[?????]
+	public enum КодКлавиши
 	{
 		WXK_BACK    =    8,
 		WXK_TAB     =    9,
@@ -417,8 +403,8 @@ version(wx28) // -------------------------------------------- wxWidgets 2.8
 }
 else // version (wx26) // ----------------------------------- wxWidgets 2.6
 {
-	//[Flags]
-	public enum KeyCode 
+	//[?????]
+	public enum КодКлавиши
 	{
 		WXK_BACK    = 8,
 		WXK_TAB     = 9,
@@ -543,8 +529,8 @@ else // version (wx26) // ----------------------------------- wxWidgets 2.6
 		wxALL     = (wxUP | wxDOWN | wxRIGHT | wxLEFT),
 	}
 
-	//[Flags]
-	public enum FillStyle
+	//[?????]
+	public enum СтильЗаливки
 	{
 		wxDEFAULT = 70,
 		wxDECORATIVE,
@@ -589,13 +575,13 @@ else // version (wx26) // ----------------------------------- wxWidgets 2.6
 		wxCAP_PROJECTING,
 		wxCAP_BUTT,
 		
-		// Polygon fill style
+		// Polygon fill стиль
 		wxODDEVEN_RULE = 1,
 		wxWINDING_RULE
 	}
 
 	// Logical operations
-	//[Flags]
+	//[?????]
 	public enum Logic
 	{
 		wxCLEAR,        wxROP_BLACK = wxCLEAR,             wxBLIT_BLACKNESS = wxCLEAR,        // 0
@@ -616,7 +602,7 @@ else // version (wx26) // ----------------------------------- wxWidgets 2.6
 		wxSET,          wxROP_WHITE = wxSET,               wxBLIT_WHITENESS = wxSET           // 1
 	}
 
-	public enum Orientation
+	public enum Ориентация
 	{
 		wxVERTICAL     = 0x0008,
 		wxHORIZONTAL   = 0x0004,
@@ -658,7 +644,7 @@ else // version (wx26) // ----------------------------------- wxWidgets 2.6
 		wxALIGN_CENTRE            = wxALIGN_CENTER,
 	}
 
-	//[Flags]
+	//[?????]
 	public enum ItemKind
 	{
 		wxITEM_SEPARATOR = -1,
@@ -700,14 +686,14 @@ else // version (wx26) // ----------------------------------- wxWidgets 2.6
 	}
 
 	enum {
-    /** no id matches this one when compared to it */
+    /** no ?? matches this one when compared to it */
     wxID_NONE = -3,
 
-    /**  id for a separator line in the menu (invalid for normal item) */
+    /**  ?? for a separator line in the ???? (invalid for normal ???????) */
     wxID_SEPARATOR = -2,
 
-    /** any id: means that we don't care about the id, whether when installing
-      * an event handler or when creating a new window */
+    /** any ??: means that we don't care about the ??, whether when installing
+      * an event handler or when creating a new ???? */
     wxID_ANY = -1,
 
     /** all predefined ids are between wxID_LOWEST and wxID_HIGHEST */

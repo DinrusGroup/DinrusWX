@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------
-// $Id: CompareModesDialog.d,v 1.9 2006/11/17 15:20:57 afb Exp $
+// $Ид: CompareModesDialog.d,v 1.9 2006/11/17 15:20:57 afb Exp $
 // Michael S. Muegel mike _at_ muegel dot org
 //
 // Licensed	under the Widgets license, see LICENSE.txt for details.
@@ -13,11 +13,11 @@ import wx.Display;
 
 	{
 
-		public this( Window parent, int id, Display display )
+		public this( Окно родитель, цел ид, Display display )
 
 		{
 
-			super( parent, id , "VideoMode Euqlity/Match Results", 
+			super( родитель, ид , "VideoMode Euqlity/Match Results", 
 			wxDefaultPosition, wxDefaultSize, 
 
 			wxDEFAULT_DIALOG_STYLE | wxMAXIMIZE_BOX | wxRESIZE_BORDER);
@@ -26,12 +26,12 @@ import wx.Display;
 
 			HtmlWindow html_instr = new HtmlWindow(this);
 
-			// Force HTML font sizes to be same on all platforms
+			// Force HTML шрифт sizes to be same on all platforms
 
-			const int[] data = [ 7, 8, 10, 12, 16, 22, 30 ];
-			html_instr.SetFonts("", "", data);
+			const цел[] данные = [ 7, 8, 10, 12, 16, 22, 30 ];
+			html_instr.SetFonts("", "", данные);
 
-			html_instr.SetPage("Testing current display's video modes for equality and \"match\" (non-zero fields are equal except for refresh, which is allowed to have a greater value).");
+			html_instr.SetPage("Testing current display's video modes for equality and \"match\" (non-zero fields are equal except for refresh, which is allowed to have a greater значение).");
 
 			html_instr.SetSizeHints(-1,75);
 
@@ -55,13 +55,13 @@ import wx.Display;
 
 			Array.Sort(modes);
 
-			int row = 0;
+			цел row = 0;
 
-			for (int m1 = 0; m1 < modes.Length; m1++)
+			for (цел m1 = 0; m1 < modes.Length; m1++)
 
 			{
 
-				for (int m2 = 0; m2 < modes.Length; m2++)
+				for (цел m2 = 0; m2 < modes.Length; m2++)
 
 				{
 
@@ -87,25 +87,25 @@ import wx.Display;
 
 
 
-			// Ensure ListCtrl cast(wide)is as it's data
+			// Ensure ListCtrl cast(wide)is as it's данные
 
-			int width = 0;
+			цел ширина = 0;
 
-			for (int col = 0; col <= 3; col++)
+			for (цел col = 0; col <= 3; col++)
 
 			{
 
-				int sizing_mode = (col <= 1) ? ListCtrl.wxLIST_AUTOSIZE :
+				цел sizing_mode = (col <= 1) ? ListCtrl.wxLIST_AUTOSIZE :
 
 					ListCtrl.wxLIST_AUTOSIZE_USEHEADER;
 
 				list_results.SetColumnWidth(col, sizing_mode);
 
-				width += list_results.GetColumnWidth(col);
+				ширина += list_results.GetColumnWidth(col);
 
 			}
 
-			list_results.SetSizeHints(width + 25, 400);
+			list_results.SetSizeHints(ширина + 25, 400);
 
 
 
@@ -113,23 +113,23 @@ import wx.Display;
 
 			// button is clicked
 
-			Button btn_ok = new Button( this, wxID_OK, "OK" );
+			Кнопка btn_ok = new Кнопка( this, wxID_OK, "OK" );
 
 
 
-			BoxSizer sizer = new BoxSizer( Orientation.wxVERTICAL );
+			BoxSizer sizer = new BoxSizer( Ориентация.wxVERTICAL );
 
-			sizer.Add( html_instr, 0, Stretch.wxEXPAND|Direction.wxALL, 5 );
+			sizer.Добавь( html_instr, 0, Stretch.wxEXPAND|Direction.wxALL, 5 );
 
-			sizer.Add( list_results, 1, Stretch.wxEXPAND|Direction.wxALL, 5 );
+			sizer.Добавь( list_results, 1, Stretch.wxEXPAND|Direction.wxALL, 5 );
 
-			sizer.Add( btn_ok, 0, Alignment.wxALIGN_CENTER_HORIZONTAL|Direction.wxALL, 5 );
+			sizer.Добавь( btn_ok, 0, Alignment.wxALIGN_CENTER_HORIZONTAL|Direction.wxALL, 5 );
 
 
 
 			sizer.Fit(this);
 
-			AutoLayout = true;
+			AutoLayout = да;
 
 			this.sizer =  sizer;
 

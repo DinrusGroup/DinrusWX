@@ -8,7 +8,7 @@
 // (C) 2004 by Alexander Olk
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: HtmlHelp.d,v 1.9 2006/11/17 15:20:57 afb Exp $
+// $Ид: HtmlHelp.d,v 1.9 2006/11/17 15:20:57 afb Exp $
 //-----------------------------------------------------------------------------
 
 import wx.wx;
@@ -22,15 +22,15 @@ import wx.wx;
 			HtmlHelp_Help
 		}
 		
-		private HtmlHelpController help;
+		private HtmlHelpController справка;
 		
-		public this( Window parent, string title, Point pos, Size size ) 
+		public this( Окно родитель, ткст title, Точка поз, Размер size ) 
 		{
-			super( parent, -1, title, pos, size )
+			super( родитель, -1, title, поз, size )
 ;
-			Menu menuFile = new Menu();
+			Меню menuFile = new Меню();
 			
-			menuFile.AppendWL( Cmd.HtmlHelp_Help, "&Help", "Test Help...", & OnHelp ) ;
+			menuFile.AppendWL( Cmd.HtmlHelp_Help, "&Справка", "Test Справка...", & OnHelp ) ;
 			menuFile.AppendWL( Cmd.HtmlHelp_About, "&About", "About the sample...", & OnAbout ) ;
 			menuFile.AppendWL( Cmd.HtmlHelp_Quit, "E&xit\tAlt-X", "Quit this program", & OnQuit ) ;
 			
@@ -39,17 +39,17 @@ import wx.wx;
 			
 			this.menuBar = menuBar;
 			
-			help = new HtmlHelpController( HtmlHelpController.wxHF_DEFAULT_STYLE | HtmlHelpController.wxHF_OPEN_FILES) ;
+			справка = new HtmlHelpController( HtmlHelpController.wxHF_DEFAULT_STYLE | HtmlHelpController.wxHF_OPEN_FILES) ;
 			
-			help.UseConfig( Config.Get() );
+			справка.UseConfig( Config.Get() );
 			
-			help.TempDir = "." ;
+			справка.TempDir = "." ;
 			
-			bool ret = help.AddBook( "../Samples/HtmlHelp/helpfiles/testing.hhp" );
+			бул ret = справка.AddBook( "../Samples/HtmlHelp/helpfiles/testing.hhp" );
 			if ( !ret )
 				MessageBox( "Failed adding book ../Samples/HtmlHelp/helpfiles/testing.hhp" );
 				
-			ret = help.AddBook( "../Samples/HtmlHelp/helpfiles/another.hhp" );
+			ret = справка.AddBook( "../Samples/HtmlHelp/helpfiles/another.hhp" );
 			if ( !ret )
 				MessageBox( "Failed adding book ../Samples/HtmlHelp/helpfiles/another.hhp" );
 				
@@ -58,30 +58,30 @@ import wx.wx;
 		
 		//---------------------------------------------------------------------
 		
-		public void OnQuit( Object sender, Event e )
+		public проц OnQuit( Объект sender, Событие e )
 		{
-			Close();
+			Закрой();
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void OnHelp( Object sender, Event e )
+		public проц OnHelp( Объект sender, Событие e )
 		{
-			help.Display( "Test HELPFILE" );
+			справка.Display( "Test HELPFILE" );
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void OnClosing( Object sender, Event e )
+		public проц OnClosing( Объект sender, Событие e )
 		{
-			if ( help.frame )
-				help.frame.Close();
-			e.Skip();
+			if ( справка.frame )
+				справка.frame.Закрой();
+			e.Пропусти();
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void OnAbout( Object sender, Event e )
+		public проц OnAbout( Объект sender, Событие e )
 		{
 			MessageBox( this, "HtmlHelpController class sample.\n" 
 				"\n" 
@@ -91,29 +91,29 @@ import wx.wx;
 	
 	//---------------------------------------------------------------------
 
-	public class HtmlHelp : App
+	public class HtmlHelp : Прил
 	{
-		public override bool OnInit()
+		public override бул ПриИниц()
 		{
-			MyFrame frame = new MyFrame( null, "HtmlHelpController sample", Window.wxDefaultPosition, Window.wxDefaultSize );
-			frame.Show( true );
+			MyFrame frame = new MyFrame( пусто, "HtmlHelpController sample", Окно.wxDefaultPosition, Окно.wxDefaultSize );
+			frame.Show( да );
 
-			return true;
+			return да;
 		}
 
 		//---------------------------------------------------------------------
 
 		
-		static void Main()
+		static проц Main()
 		{
-			HtmlHelp app = new HtmlHelp();
-			app.Run();
+			HtmlHelp прил = new HtmlHelp();
+			прил.Пуск();
 		}
 	}		
 
 
 
-void main()
+проц main()
 {
 	HtmlHelp.Main();
 }

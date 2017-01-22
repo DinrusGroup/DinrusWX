@@ -7,70 +7,70 @@
 // Copyright (C) 2003 Bryan Bulten
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: HTML.d,v 1.9 2006/11/17 15:20:57 afb Exp $
+// $Ид: HTML.d,v 1.9 2006/11/17 15:20:57 afb Exp $
 //-----------------------------------------------------------------------------
 
 import wx.wx;
 
     public class MyFrame : Frame
     {
-        enum Cmd { Open, OpenURL, About, Quit, Dialog, Back, Forward }
+        enum Cmd { Открой, OpenURL, About, Quit, Dialog, Back, Forward }
 
 
         HtmlWindow m_html;
 
         //---------------------------------------------------------------------
 
-        public this(string title, Point pos, Size size)
+        public this(ткст title, Точка поз, Размер size)
         {
-            super(title, pos, size);
-            // Set the window icon
+            super(title, поз, size);
+            // Установи the окно иконка
 
-            this.icon = new Icon("../Samples/HTML/mondrian.png");
+            this.иконка = new Icon("../Samples/HTML/mondrian.png");
 
-            // Set up a menu
+            // Установи up a меню
 
-            Menu fileMenu = new Menu();
-            fileMenu.Append(Cmd.Open, "Open...\tCtrl+O",
-                            "Open a page");
-            fileMenu.Append(Cmd.OpenURL, "Open URL...\tCtrl+U",
-                            "Open a URL");
+            Меню fileMenu = new Меню();
+            fileMenu.Append(Cmd.Открой, "Открой...\tCtrl+O",
+                            "Открой a page");
+            fileMenu.Append(Cmd.OpenURL, "Открой URL...\tCtrl+U",
+                            "Открой a URL");
             fileMenu.AppendSeparator();
             fileMenu.Append(Cmd.Quit, "E&xit\tAlt-X", 
                             "Quit this program");
 
-            Menu goMenu = new Menu();
+            Меню goMenu = new Меню();
             goMenu.Append(Cmd.Back, "&Back\tCtrl+B", 
                           "Browse back one page");
             goMenu.Append(Cmd.Forward, "&Forward\tCtrl+F", 
                           "Browse forward one page");
 
-            Menu helpMenu = new Menu();
+            Меню helpMenu = new Меню();
             helpMenu.Append(Cmd.About, "&About...\tF1", 
                             "Show about dialog");
 
             MenuBar menuBar = new MenuBar();
             menuBar.Append(fileMenu, "&File");
             menuBar.Append(goMenu,   "&Browse");
-            menuBar.Append(helpMenu, "&Help");
+            menuBar.Append(helpMenu, "&Справка");
 
             this.menuBar = menuBar;
 
-            // Set up a status bar
+            // Установи up a status bar
 
             CreateStatusBar(2);
             StatusText = "Welcome to wxWidgets!";
 
-            // Create the HTML window
+            // Create the HTML окно
 
             m_html = new HtmlWindow(this);
             m_html.SetRelatedFrame(this, "HTML : %s");
             m_html.RelatedStatusBar = 1;
             m_html.LoadPage("../Samples/HTML/Data/test.htm");
 
-            // Set up the event table
+            // Установи up the event table
 
-            EVT_MENU(Cmd.Open,    &OnOpen);
+            EVT_MENU(Cmd.Открой,    &OnOpen);
             EVT_MENU(Cmd.OpenURL, &OnOpenURL);
             EVT_MENU(Cmd.Quit,    &OnQuit);
             EVT_MENU(Cmd.Back,    &OnBack);
@@ -80,9 +80,9 @@ import wx.wx;
 
         //---------------------------------------------------------------------
 
-        public void OnOpen(Object sender, Event e)
+        public проц OnOpen(Объект sender, Событие e)
         {
-            string page = FileSelector("Open HTML document", "", "", "", 
+            ткст page = FileSelector("Открой HTML document", "", "", "", 
                                            "HTML Files (*.htm)|*.htm|" ~ 
                                            "All Files (*.*)|*.*");
             if (page != "") {
@@ -90,10 +90,10 @@ import wx.wx;
             }
         }
 
-        public void OnOpenURL(Object sender, Event e)
+        public проц OnOpenURL(Объект sender, Событие e)
         {
             TextEntryDialog dlg = 
-                new TextEntryDialog(this, "Enter URL to open", "Open URL", 
+                new TextEntryDialog(this, "Enter URL to open", "Открой URL", 
                                     "http://wxnet.sourceforge.net/news.html", 
                                     Dialog.wxOK | Dialog.wxCANCEL);
             if (dlg.ShowModal() == Dialog.wxID_OK) {
@@ -101,14 +101,14 @@ import wx.wx;
             }
         }
 
-        public void OnQuit(Object sender, Event e)
+        public проц OnQuit(Объект sender, Событие e)
         {
-            Close();
+            Закрой();
         }
 
         //---------------------------------------------------------------------
 
-        public void OnAbout(Object sender, Event e)
+        public проц OnAbout(Объект sender, Событие e)
         {
             HtmlAboutDialog dlg = new HtmlAboutDialog(this);
             dlg.ShowModal();
@@ -116,7 +116,7 @@ import wx.wx;
 
         //---------------------------------------------------------------------
 
-        public void OnBack(Object sender, Event e)
+        public проц OnBack(Объект sender, Событие e)
         {
             if (!m_html.HistoryBack()) {
                 MessageDialog dlg = 
@@ -126,7 +126,7 @@ import wx.wx;
             }
         }
 
-        public void OnForward(Object sender, Event e)
+        public проц OnForward(Объект sender, Событие e)
         {
             if (!m_html.HistoryForward()) {
                 MessageDialog dlg = 
@@ -143,27 +143,27 @@ import wx.wx;
     {
         //---------------------------------------------------------------------
 
-        public this (Window parent)
+        public this (Окно родитель)
         {
-            super(parent, -1, "About HTML");
+            super(родитель, -1, "About HTML");
 
-            this.sizer = new BoxSizer(Orientation.wxVERTICAL);
+            this.sizer = new BoxSizer(Ориентация.wxVERTICAL);
 
-            // Create the about html window
+            // Create the about html окно
 
             HtmlWindow html = new HtmlWindow(this, -1, wxDefaultPosition,
-                                             Size(380,160), 
+                                             Размер(380,160), 
                                              HtmlWindow.wxHW_SCROLLBAR_NEVER);
             html.Borders = 0;
             html.LoadPage("../Samples/HTML/Data/about.htm");
 
             html.size = html.InternalRepresentation.size;
 
-            sizer.Add(html, 1, Direction.wxALL, 5);
+            sizer.Добавь(html, 1, Direction.wxALL, 5);
 
             // Create the OK button
 
-            sizer.Add(new Button(this, -1, "OK"), 0, 
+            sizer.Добавь(new Кнопка(this, -1, "OK"), 0, 
                       Alignment.wxALIGN_CENTER | Direction.wxALL, 5);
             sizer.Fit(this);
 
@@ -172,7 +172,7 @@ import wx.wx;
 
         //---------------------------------------------------------------------
 
-        public void OnOK(Object sender, Event e)
+        public проц OnOK(Объект sender, Событие e)
         {
             EndModal(wxID_OK);
         }
@@ -180,31 +180,31 @@ import wx.wx;
         //---------------------------------------------------------------------
     }
 
-    public class MyApp : App
+    public class MyApp : Прил
     {
         //---------------------------------------------------------------------
 
-        public override bool OnInit()
+        public override бул ПриИниц()
         {
-            MyFrame frame = new MyFrame("HTML Sample", Point(50,50), Size(450,340));
+            MyFrame frame = new MyFrame("HTML Sample", Точка(50,50), Размер(450,340));
 
-            frame.Show(true);
+            frame.Show(да);
 
-            return true;
+            return да;
         }
 
         //---------------------------------------------------------------------
 
-        static void Main()
+        static проц Main()
         {
-            MyApp app = new MyApp();
-            app.Run();
+            MyApp прил = new MyApp();
+            прил.Пуск();
         }
 
         //---------------------------------------------------------------------
     }
 
-void main()
+проц main()
 {
 	MyApp.Main();
 }

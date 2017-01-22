@@ -10,7 +10,7 @@
 // (C) 2003 Florian Fankhauser
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: ToggleButton.d,v 1.10 2007/03/13 17:02:42 afb Exp $
+// $Ид: ToggleButton.d,v 1.10 2007/03/13 17:02:42 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.ToggleButton;
@@ -18,12 +18,12 @@ public import wx.common;
 public import wx.Control;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxToggleButton_ctor();
-		static extern (C) bool   wxToggleButton_Create(IntPtr self, IntPtr parent,
-			int id, string label, inout Point pos, inout Size size, uint style,
-			IntPtr validator, string name);
-		static extern (C) bool wxToggleButton_GetValue(IntPtr self);
-		static extern (C) bool wxToggleButton_SetValue(IntPtr self, bool state);
+		static extern (C) ЦУк wxToggleButton_ctor();
+		static extern (C) бул   wxToggleButton_Create(ЦУк сам, ЦУк родитель,
+			цел ид, ткст надпись, inout Точка поз, inout Размер size, бцел стиль,
+			ЦУк validator, ткст имя);
+		static extern (C) бул wxToggleButton_GetValue(ЦУк сам);
+		static extern (C) бул wxToggleButton_SetValue(ЦУк сам, бул state);
 		//! \endcond
 
 		//---------------------------------------------------------------------
@@ -31,45 +31,45 @@ public import wx.Control;
 	alias ToggleButton wxToggleButton;
 	public class ToggleButton : Control
 	{
-		public this(IntPtr wxobj) 
-			{ super(wxobj); }
+		public this(ЦУк шхобъ) 
+			{ super(шхобъ); }
 
 		public this()
 			{ super(wxToggleButton_ctor()); }
 
-		public this(Window parent, int id, string label, Point pos = wxDefaultPosition, Size size = wxDefaultSize, int style = 0, Validator validator = null, string name = "checkbox")
+		public this(Окно родитель, цел ид, ткст надпись, Точка поз = wxDefaultPosition, Размер size = wxDefaultSize, цел стиль = 0, Validator validator = пусто, ткст имя = "checkbox")
 		{
 			super(wxToggleButton_ctor());
-			if (!Create(parent, id, label, pos, size, style, validator, name))
+			if (!Create(родитель, ид, надпись, поз, size, стиль, validator, имя))
 			{
 				throw new InvalidOperationException("Failed to create ToggleButton");
 			}
 		}
 		
-	public static wxObject New(IntPtr ptr) { return new ToggleButton(ptr); }
+	public static wxObject Нов(ЦУк ptr) { return new ToggleButton(ptr); }
 
 		//---------------------------------------------------------------------
 		
-		public this(Window parent, string label, Point pos = wxDefaultPosition, Size size = wxDefaultSize, int style = 0, Validator validator = null, string name = "checkbox")
-			{ this(parent, Window.UniqueID, label, pos, size, style, validator, name);}
+		public this(Окно родитель, ткст надпись, Точка поз = wxDefaultPosition, Размер size = wxDefaultSize, цел стиль = 0, Validator validator = пусто, ткст имя = "checkbox")
+			{ this(родитель, Окно.UniqueID, надпись, поз, size, стиль, validator, имя);}
 		
 		//---------------------------------------------------------------------
 
-		public bool Create(Window parent, int id, string label, inout Point pos, inout Size size,
-			int style, Validator validator, string name)
+		public бул Create(Окно родитель, цел ид, ткст надпись, inout Точка поз, inout Размер size,
+			цел стиль, Validator validator, ткст имя)
 		{
-			return wxToggleButton_Create(wxobj, wxObject.SafePtr(parent), id, label, pos, size,
-				cast(uint)style, wxObject.SafePtr(validator), name);
+			return wxToggleButton_Create(шхобъ, wxObject.SafePtr(родитель), ид, надпись, поз, size,
+				cast(бцел)стиль, wxObject.SafePtr(validator), имя);
 		}
 
 		//---------------------------------------------------------------------
 
-		public bool State() { return wxToggleButton_GetValue(wxobj); }
-		public void State(bool value) { wxToggleButton_SetValue(wxobj, value); }
+		public бул State() { return wxToggleButton_GetValue(шхобъ); }
+		public проц State(бул значение) { wxToggleButton_SetValue(шхобъ, значение); }
 
 		//---------------------------------------------------------------------
 
-		public void Click_Add(EventListener value) { AddCommandListener(Event.wxEVT_COMMAND_TOGGLEBUTTON_CLICKED, ID, value, this); }
-		public void Click_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц Click_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_COMMAND_TOGGLEBUTTON_CLICKED, ИД, значение, this); }
+		public проц Click_Remove(EventListener значение) { RemoveHandler(значение, this); }
 	}
 

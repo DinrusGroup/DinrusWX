@@ -16,10 +16,10 @@ public import wx.common;
 public import wx.Control;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxRadioButton_ctor();
-		static extern (C) bool   wxRadioButton_Create(IntPtr self, IntPtr parent, int id, string label, inout Point pos, inout Size size, uint style, IntPtr val, string name);
-		static extern (C) bool   wxRadioButton_GetValue(IntPtr self);
-		static extern (C) void   wxRadioButton_SetValue(IntPtr self, bool state);
+		static extern (C) ЦУк wxRadioButton_ctor();
+		static extern (C) бул   wxRadioButton_Create(ЦУк сам, ЦУк родитель, цел ид, ткст надпись, inout Точка поз, inout Размер size, бцел стиль, ЦУк val, ткст имя);
+		static extern (C) бул   wxRadioButton_GetValue(ЦУк сам);
+		static extern (C) проц   wxRadioButton_SetValue(ЦУк сам, бул state);
 		//! \endcond
 	
 		//---------------------------------------------------------------------
@@ -27,51 +27,51 @@ public import wx.Control;
 	alias RadioButton wxRadioButton;
 	public class RadioButton : Control 
 	{
-		public const int wxRB_GROUP     = 0x0004;
-		public const int wxRB_SINGLE    = 0x0008;
+		public const цел wxRB_GROUP     = 0x0004;
+		public const цел wxRB_SINGLE    = 0x0008;
 		
-		public const string wxRadioButtonNameStr = "radioButton";
+		public const ткст wxRadioButtonNameStr = "radioButton";
 		//---------------------------------------------------------------------
 	
-		public this(IntPtr wxobj) 
-			{ super(wxobj);}
+		public this(ЦУк шхобъ) 
+			{ super(шхобъ);}
 		
 		public this()
 			{ super (wxRadioButton_ctor()); }
 
-		public this(Window parent, int id, string label, Point pos = wxDefaultPosition, Size size = wxDefaultSize, int style = 0, Validator val = null, string name = wxRadioButtonNameStr)
+		public this(Окно родитель, цел ид, ткст надпись, Точка поз = wxDefaultPosition, Размер size = wxDefaultSize, цел стиль = 0, Validator val = пусто, ткст имя = wxRadioButtonNameStr)
 		{
 			super(wxRadioButton_ctor());
-			if (!wxRadioButton_Create(wxobj, wxObject.SafePtr(parent), id,
-					label, pos, size, cast(uint)style, wxObject.SafePtr(val), name))
+			if (!wxRadioButton_Create(шхобъ, wxObject.SafePtr(родитель), ид,
+					надпись, поз, size, cast(бцел)стиль, wxObject.SafePtr(val), имя))
 			{
 				throw new InvalidOperationException("Failed to create RadioButton");
 			}
 		}
 		
-		public static wxObject New(IntPtr wxobj) { return new RadioButton(wxobj); }
+		public static wxObject Нов(ЦУк шхобъ) { return new RadioButton(шхобъ); }
 	
 		//---------------------------------------------------------------------
-		// ctors with self created id
+		// ctors with сам created ид
 		
-		public this(Window parent, string label, Point pos = wxDefaultPosition, Size size = wxDefaultSize, int style = 0, Validator val = null, string name = wxRadioButtonNameStr)
-			{ this(parent, Window.UniqueID, label, pos, size, style, val, name);}
+		public this(Окно родитель, ткст надпись, Точка поз = wxDefaultPosition, Размер size = wxDefaultSize, цел стиль = 0, Validator val = пусто, ткст имя = wxRadioButtonNameStr)
+			{ this(родитель, Окно.UniqueID, надпись, поз, size, стиль, val, имя);}
 
 		//---------------------------------------------------------------------
 
-		public bool Create(Window parent, int id, string label, inout Point pos, inout Size size, int style, Validator val, string name)
+		public бул Create(Окно родитель, цел ид, ткст надпись, inout Точка поз, inout Размер size, цел стиль, Validator val, ткст имя)
 		{
-			return wxRadioButton_Create(wxobj, wxObject.SafePtr(parent), id,
-					label, pos, size, cast(uint)style, wxObject.SafePtr(val), name);
+			return wxRadioButton_Create(шхобъ, wxObject.SafePtr(родитель), ид,
+					надпись, поз, size, cast(бцел)стиль, wxObject.SafePtr(val), имя);
 		}
 
 		//---------------------------------------------------------------------
 
-		public bool Value() { return wxRadioButton_GetValue(wxobj); }
-		public void Value(bool value) { wxRadioButton_SetValue(wxobj, value); }
+		public бул Value() { return wxRadioButton_GetValue(шхобъ); }
+		public проц Value(бул значение) { wxRadioButton_SetValue(шхобъ, значение); }
 
 		//---------------------------------------------------------------------
 
-		public void Select_Add(EventListener value) { AddCommandListener(Event.wxEVT_COMMAND_RADIOBUTTON_SELECTED, ID, value, this); }
-		public void Select_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц Select_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_COMMAND_RADIOBUTTON_SELECTED, ИД, значение, this); }
+		public проц Select_Remove(EventListener значение) { RemoveHandler(значение, this); }
 	}

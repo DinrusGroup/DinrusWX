@@ -10,7 +10,7 @@
 // (C) 2003 Robert Roebling
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: StaticBitmap.d,v 1.10 2007/03/13 17:02:41 afb Exp $
+// $Ид: StaticBitmap.d,v 1.10 2007/03/13 17:02:41 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.StaticBitmap;
@@ -18,10 +18,10 @@ public import wx.common;
 public import wx.Control;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxStaticBitmap_ctor();
-		static extern (C) bool wxStaticBitmap_Create(IntPtr self, IntPtr parent, int id, IntPtr label, inout Point pos, inout Size size, uint style, string name);
-		static extern (C) void wxStaticBitmap_SetBitmap(IntPtr self, IntPtr bitmap);
-		static extern (C) IntPtr wxStaticBitmap_GetBitmap(IntPtr self);
+		static extern (C) ЦУк wxStaticBitmap_ctor();
+		static extern (C) бул wxStaticBitmap_Create(ЦУк сам, ЦУк родитель, цел ид, ЦУк надпись, inout Точка поз, inout Размер size, бцел стиль, ткст имя);
+		static extern (C) проц wxStaticBitmap_SetBitmap(ЦУк сам, ЦУк битмап);
+		static extern (C) ЦУк wxStaticBitmap_GetBitmap(ЦУк сам);
 		//! \endcond
 
 		//---------------------------------------------------------------------
@@ -29,40 +29,40 @@ public import wx.Control;
 	alias StaticBitmap wxStaticBitmap;
 	public class StaticBitmap : Control
 	{
-		public const string wxStaticBitmapNameStr = "message";
+		public const ткст wxStaticBitmapNameStr = "message";
 
 		public this()
 			{ super(wxStaticBitmap_ctor()); }
 
-		public this(IntPtr wxobj) 
-			{ super(wxobj); }
+		public this(ЦУк шхобъ) 
+			{ super(шхобъ); }
 
-		public this(Window parent, int id, Bitmap label, Point pos = wxDefaultPosition, Size size = wxDefaultSize, int style = 0, string name = wxStaticBitmapNameStr)
+		public this(Окно родитель, цел ид, Битмап надпись, Точка поз = wxDefaultPosition, Размер size = wxDefaultSize, цел стиль = 0, ткст имя = wxStaticBitmapNameStr)
 		{
 			super(wxStaticBitmap_ctor());
-			if (!Create(parent, id, label, pos, size, style, name))
+			if (!Create(родитель, ид, надпись, поз, size, стиль, имя))
 			{
 				throw new InvalidOperationException("Failed to create StaticBitmap");
 			}
 		}
 		
-		public static wxObject New(IntPtr wxobj) { return new StaticBitmap(wxobj); }
+		public static wxObject Нов(ЦУк шхобъ) { return new StaticBitmap(шхобъ); }
 	
 		//---------------------------------------------------------------------
-		// ctors with self created id
+		// ctors with сам created ид
 		
-		public this(Window parent, Bitmap label, Point pos = wxDefaultPosition, Size size = wxDefaultSize, int style = 0, string name = wxStaticBitmapNameStr)
-			{ this(parent, Window.UniqueID, label, pos, size, style, name);}
+		public this(Окно родитель, Битмап надпись, Точка поз = wxDefaultPosition, Размер size = wxDefaultSize, цел стиль = 0, ткст имя = wxStaticBitmapNameStr)
+			{ this(родитель, Окно.UniqueID, надпись, поз, size, стиль, имя);}
 		
 		//---------------------------------------------------------------------
 
-		public bool Create(Window parent, int id, Bitmap label, inout Point pos, inout Size size, int style, string name)
+		public бул Create(Окно родитель, цел ид, Битмап надпись, inout Точка поз, inout Размер size, цел стиль, ткст имя)
 		{
-			return wxStaticBitmap_Create(wxobj, wxObject.SafePtr(parent), id, wxObject.SafePtr(label), pos, size, cast(uint)style, name);
+			return wxStaticBitmap_Create(шхобъ, wxObject.SafePtr(родитель), ид, wxObject.SafePtr(надпись), поз, size, cast(бцел)стиль, имя);
 		}
 
 		//---------------------------------------------------------------------
 
-		public void bitmap(Bitmap value) { wxStaticBitmap_SetBitmap(wxobj, wxObject.SafePtr(value)); }
-		public Bitmap bitmap() { return cast(Bitmap)FindObject(wxStaticBitmap_GetBitmap(wxobj), &Bitmap.New); }
+		public проц битмап(Битмап значение) { wxStaticBitmap_SetBitmap(шхобъ, wxObject.SafePtr(значение)); }
+		public Битмап битмап() { return cast(Битмап)FindObject(wxStaticBitmap_GetBitmap(шхобъ), &Битмап.Нов); }
 	}

@@ -8,7 +8,7 @@
 //
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: StatusBar.d,v 1.11 2007/01/28 23:06:37 afb Exp $
+// $Ид: StatusBar.d,v 1.11 2007/01/28 23:06:37 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.StatusBar;
@@ -16,154 +16,154 @@ public import wx.common;
 public import wx.Window;
 
 
-		public const int wxST_SIZEGRIP         = 0x0010;
-		public const int wxST_NO_AUTORESIZE    = 0x0001;
+		public const цел wxST_SIZEGRIP         = 0x0010;
+		public const цел wxST_NO_AUTORESIZE    = 0x0001;
 		
-		public const int wxSB_NORMAL	= 0x000;
-		public const int wxSB_FLAT	= 0x001;
-		public const int wxSB_RAISED	= 0x002; 
+		public const цел wxSB_NORMAL	= 0x000;
+		public const цел wxSB_FLAT	= 0x001;
+		public const цел wxSB_RAISED	= 0x002; 
 	
 		//-----------------------------------------------------------------------------
 	
 		//! \cond EXTERN
-		static extern (C) IntPtr wxStatusBar_ctor();
-		static extern (C) bool   wxStatusBar_Create(IntPtr self, IntPtr parent, int id, uint style, string name);
+		static extern (C) ЦУк wxStatusBar_ctor();
+		static extern (C) бул   wxStatusBar_Create(ЦУк сам, ЦУк родитель, цел ид, бцел стиль, ткст имя);
 	
-		static extern (C) void   wxStatusBar_SetFieldsCount(IntPtr self, int number, int* widths);
-		static extern (C) bool   wxStatusBar_GetFieldRect(IntPtr self, int i, inout Rectangle rect);
-		static extern (C) int    wxStatusBar_GetBorderY(IntPtr self);
-		static extern (C) IntPtr wxStatusBar_GetStatusText(IntPtr self, int number);
-		static extern (C) int    wxStatusBar_GetBorderX(IntPtr self);
-		static extern (C) void   wxStatusBar_SetStatusText(IntPtr self, string text, int number);
-		static extern (C) void   wxStatusBar_SetStatusWidths(IntPtr self, int n, int* widths);
+		static extern (C) проц   wxStatusBar_SetFieldsCount(ЦУк сам, цел number, цел* widths);
+		static extern (C) бул   wxStatusBar_GetFieldRect(ЦУк сам, цел i, inout Прямоугольник прям);
+		static extern (C) цел    wxStatusBar_GetBorderY(ЦУк сам);
+		static extern (C) ЦУк wxStatusBar_GetStatusText(ЦУк сам, цел number);
+		static extern (C) цел    wxStatusBar_GetBorderX(ЦУк сам);
+		static extern (C) проц   wxStatusBar_SetStatusText(ЦУк сам, ткст текст, цел number);
+		static extern (C) проц   wxStatusBar_SetStatusWidths(ЦУк сам, цел n, цел* widths);
 		
-		static extern (C) int    wxStatusBar_GetFieldsCount(IntPtr self);
-		static extern (C) void   wxStatusBar_PopStatusText(IntPtr self, int field);
-		static extern (C) void   wxStatusBar_PushStatusText(IntPtr self, string xstring, int field);
-		static extern (C) void   wxStatusBar_SetMinHeight(IntPtr self, int height);
-		static extern (C) void   wxStatusBar_SetStatusStyles(IntPtr self, int n, int* styles);
+		static extern (C) цел    wxStatusBar_GetFieldsCount(ЦУк сам);
+		static extern (C) проц   wxStatusBar_PopStatusText(ЦУк сам, цел field);
+		static extern (C) проц   wxStatusBar_PushStatusText(ЦУк сам, ткст xstring, цел field);
+		static extern (C) проц   wxStatusBar_SetMinHeight(ЦУк сам, цел высота);
+		static extern (C) проц   wxStatusBar_SetStatusStyles(ЦУк сам, цел n, цел* styles);
 		//! \endcond
 	
 		//-----------------------------------------------------------------------------
 
 	alias StatusBar wxStatusBar;
-	public class StatusBar : Window
+	public class StatusBar : Окно
 	{
-		public this(IntPtr wxobj) 
-			{ super(wxobj); }
+		public this(ЦУк шхобъ) 
+			{ super(шхобъ); }
 
 		public this()
 			{ super(wxStatusBar_ctor()); }
 
-		public this(Window parent, int id /*= wxID_ANY*/, int style = wxST_SIZEGRIP, string name="")
+		public this(Окно родитель, цел ид /*= wxID_ANY*/, цел стиль = wxST_SIZEGRIP, ткст имя="")
 		{
 			this();
-			if (!Create(parent, id, style, name))
+			if (!Create(родитель, ид, стиль, имя))
 			{
 				throw new InvalidOperationException("Failed to create StatusBar");
 			}
 		}
 		
 		//---------------------------------------------------------------------
-		// ctors with self created id
+		// ctors with сам created ид
 		
-		public this(Window parent, int style = wxST_SIZEGRIP, string name="")
-			{ this(parent, Window.UniqueID, style, name);}
+		public this(Окно родитель, цел стиль = wxST_SIZEGRIP, ткст имя="")
+			{ this(родитель, Окно.UniqueID, стиль, имя);}
 		
 		//-----------------------------------------------------------------------------
 
-		public bool Create(Window parent, int id, int style, string name)
+		public бул Create(Окно родитель, цел ид, цел стиль, ткст имя)
 		{
-			return wxStatusBar_Create(wxobj, wxObject.SafePtr(parent), id, cast(uint)style, name);
+			return wxStatusBar_Create(шхобъ, wxObject.SafePtr(родитель), ид, cast(бцел)стиль, имя);
 		}
 
 		//-----------------------------------------------------------------------------
         
-		public void SetFieldsCount(int number, int[] widths)
+		public проц SetFieldsCount(цел number, цел[] widths)
 		{
-			wxStatusBar_SetFieldsCount(wxobj, number, widths.ptr);
+			wxStatusBar_SetFieldsCount(шхобъ, number, widths.ptr);
 		}
 		
-		public int FieldsCount() { return wxStatusBar_GetFieldsCount(wxobj); }
+		public цел FieldsCount() { return wxStatusBar_GetFieldsCount(шхобъ); }
 
 		//-----------------------------------------------------------------------------
 
-		public int BorderY() { return wxStatusBar_GetBorderY(wxobj); }
+		public цел BorderY() { return wxStatusBar_GetBorderY(шхобъ); }
 
-		public int BorderX() { return wxStatusBar_GetBorderX(wxobj); }
+		public цел BorderX() { return wxStatusBar_GetBorderX(шхобъ); }
 
 		//-----------------------------------------------------------------------------
 
-		public bool GetFieldRect(int i, inout Rectangle rect)
+		public бул GetFieldRect(цел i, inout Прямоугольник прям)
 		{
-			return wxStatusBar_GetFieldRect(wxobj, i, rect);
+			return wxStatusBar_GetFieldRect(шхобъ, i, прям);
 		}
 
 		//-----------------------------------------------------------------------------
 
-		public void StatusText(string value) { SetStatusText(value); }
-		public string StatusText() { return GetStatusText(0); }
+		public проц StatusText(ткст значение) { SetStatusText(значение); }
+		public ткст StatusText() { return GetStatusText(0); }
 
-		public void SetStatusText(string text) { SetStatusText(text, 0); }
+		public проц SetStatusText(ткст текст) { SetStatusText(текст, 0); }
 
-		public void SetStatusText(string text, int number)
+		public проц SetStatusText(ткст текст, цел number)
 		{
-			wxStatusBar_SetStatusText(wxobj, text, number);
+			wxStatusBar_SetStatusText(шхобъ, текст, number);
 		}
 
-		public string GetStatusText(int number)
+		public ткст GetStatusText(цел number)
 		{
-			return cast(string) new wxString(wxStatusBar_GetStatusText(wxobj, number), true);
+			return cast(ткст) new wxString(wxStatusBar_GetStatusText(шхобъ, number), да);
 		}
 
 		//-----------------------------------------------------------------------------
 
-		public void StatusWidths(int[] value)
+		public проц StatusWidths(цел[] значение)
 		{
-			SetStatusWidths(value.length, value.ptr);
+			SetStatusWidths(значение.length, значение.ptr);
 		}
 
-		public void SetStatusWidths(int n, int* widths)
+		public проц SetStatusWidths(цел n, цел* widths)
 		{
-			wxStatusBar_SetStatusWidths(wxobj, n, widths);
+			wxStatusBar_SetStatusWidths(шхобъ, n, widths);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public void PopStatusText()
+		public проц PopStatusText()
 		{
 			PopStatusText(0);
 		}
 		
-		public void PopStatusText(int field)
+		public проц PopStatusText(цел field)
 		{
-			wxStatusBar_PopStatusText(wxobj, field);
+			wxStatusBar_PopStatusText(шхобъ, field);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public void PushStatusText(string xstring)
+		public проц PushStatusText(ткст xstring)
 		{
 			PushStatusText(xstring, 0);
 		}
 		
-		public void PushStatusText(string xstring, int field)
+		public проц PushStatusText(ткст xstring, цел field)
 		{
-			wxStatusBar_PushStatusText(wxobj, xstring, field);
+			wxStatusBar_PushStatusText(шхобъ, xstring, field);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public void MinHeight(int value)
+		public проц MinHeight(цел значение)
 		{
-			wxStatusBar_SetMinHeight(wxobj, value); 
+			wxStatusBar_SetMinHeight(шхобъ, значение); 
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public void StatusStyles(int[] value)
+		public проц StatusStyles(цел[] значение)
 		{
-			wxStatusBar_SetStatusStyles(wxobj, value.length, value.ptr);
+			wxStatusBar_SetStatusStyles(шхобъ, значение.length, значение.ptr);
 		}
 
 	}

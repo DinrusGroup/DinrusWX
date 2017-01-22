@@ -1,4 +1,4 @@
-//-----------------------------------------------------------------------------
+﻿//-----------------------------------------------------------------------------
 // wxD - HtmlHelpController.d
 // (C) 2005 bero <berobero@users.sourceforge.net>
 // based on
@@ -10,7 +10,7 @@
 // (C) 2004 by Alexander Olk
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: HtmlHelpController.d,v 1.9 2006/11/17 15:20:59 afb Exp $
+// $Ид: HtmlHelpController.d,v 1.9 2006/11/17 15:20:59 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.HtmlHelpController;
@@ -20,19 +20,19 @@ public import wx.Config;
 public import wx.Frame;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxHtmlHelpController_ctor(int style);
-		static extern (C) void   wxHtmlHelpController_SetTitleFormat(IntPtr self, string format);
-		static extern (C) void   wxHtmlHelpController_SetTempDir(IntPtr self, string path);
-		static extern (C) bool   wxHtmlHelpController_AddBook(IntPtr self, string book_url);
-		static extern (C) bool   wxHtmlHelpController_Display(IntPtr self, string x);
-		static extern (C) bool   wxHtmlHelpController_DisplayInt(IntPtr self, int id);
-		static extern (C) bool   wxHtmlHelpController_DisplayContents(IntPtr self);
-		static extern (C) bool   wxHtmlHelpController_DisplayIndex(IntPtr self);
-		static extern (C) bool   wxHtmlHelpController_KeywordSearch(IntPtr self, string keyword, int mode);
-		static extern (C) void   wxHtmlHelpController_UseConfig(IntPtr self, IntPtr config, string rootpath);
-		static extern (C) void   wxHtmlHelpController_ReadCustomization(IntPtr self, IntPtr cfg, string path);
-		static extern (C) void   wxHtmlHelpController_WriteCustomization(IntPtr self, IntPtr cfg, string path);
-		static extern (C) IntPtr wxHtmlHelpController_GetFrame(IntPtr self);
+		static extern (C) ЦУк wxHtmlHelpController_ctor(цел стиль);
+		static extern (C) проц   wxHtmlHelpController_SetTitleFormat(ЦУк сам, ткст format);
+		static extern (C) проц   wxHtmlHelpController_SetTempDir(ЦУк сам, ткст путь);
+		static extern (C) бул   wxHtmlHelpController_AddBook(ЦУк сам, ткст book_url);
+		static extern (C) бул   wxHtmlHelpController_Display(ЦУк сам, ткст x);
+		static extern (C) бул   wxHtmlHelpController_DisplayInt(ЦУк сам, цел ид);
+		static extern (C) бул   wxHtmlHelpController_DisplayContents(ЦУк сам);
+		static extern (C) бул   wxHtmlHelpController_DisplayIndex(ЦУк сам);
+		static extern (C) бул   wxHtmlHelpController_KeywordSearch(ЦУк сам, ткст keyword, цел mode);
+		static extern (C) проц   wxHtmlHelpController_UseConfig(ЦУк сам, ЦУк config, ткст rootpath);
+		static extern (C) проц   wxHtmlHelpController_ReadCustomization(ЦУк сам, ЦУк cfg, ткст путь);
+		static extern (C) проц   wxHtmlHelpController_WriteCustomization(ЦУк сам, ЦУк cfg, ткст путь);
+		static extern (C) ЦУк wxHtmlHelpController_GetFrame(ЦУк сам);
 		//! \endcond
 		
 		//-----------------------------------------------------------------------------
@@ -62,110 +62,110 @@ public import wx.Frame;
 		}
 		//-----------------------------------------------------------------------------
 	
-		public this(IntPtr wxobj)
-			{ super(wxobj);}
+		public this(ЦУк шхобъ)
+			{ super(шхобъ);}
 			
-		public this(int style = wxHF_DEFAULT_STYLE)
-			{ super(wxHtmlHelpController_ctor(style));}
+		public this(цел стиль = wxHF_DEFAULT_STYLE)
+			{ super(wxHtmlHelpController_ctor(стиль));}
 			
 		//-----------------------------------------------------------------------------
 		
-		public void TitleFormat(string value) { wxHtmlHelpController_SetTitleFormat(wxobj, value); }
+		public проц TitleFormat(ткст значение) { wxHtmlHelpController_SetTitleFormat(шхобъ, значение); }
 		
 		//-----------------------------------------------------------------------------
 		
-		public void TempDir(string value) { wxHtmlHelpController_SetTempDir(wxobj, value); }
+		public проц TempDir(ткст значение) { wxHtmlHelpController_SetTempDir(шхобъ, значение); }
 		
 		//-----------------------------------------------------------------------------
 		
-		public bool AddBook(string book_url)
+		public бул AddBook(ткст book_url)
 		{
-			return wxHtmlHelpController_AddBook(wxobj, book_url);
+			return wxHtmlHelpController_AddBook(шхобъ, book_url);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public bool Display(string x)
+		public бул Display(ткст x)
 		{
-			return wxHtmlHelpController_Display(wxobj, x);
+			return wxHtmlHelpController_Display(шхобъ, x);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public bool Display(int id)
+		public бул Display(цел ид)
 		{
-			return wxHtmlHelpController_DisplayInt(wxobj, id); 
+			return wxHtmlHelpController_DisplayInt(шхобъ, ид); 
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public bool DisplayContents()
+		public бул DisplayContents()
 		{
-			return wxHtmlHelpController_DisplayContents(wxobj);
+			return wxHtmlHelpController_DisplayContents(шхобъ);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public bool DisplayIndex()
+		public бул DisplayIndex()
 		{
-			return wxHtmlHelpController_DisplayIndex(wxobj);
+			return wxHtmlHelpController_DisplayIndex(шхобъ);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public bool KeywordSearch(string keyword)
+		public бул KeywordSearch(ткст keyword)
 		{
 			return KeywordSearch(keyword, HelpSearchMode.wxHELP_SEARCH_ALL);
 		}
 		
-		public bool KeywordSearch(string keyword, HelpSearchMode mode)
+		public бул KeywordSearch(ткст keyword, HelpSearchMode mode)
 		{
-			return wxHtmlHelpController_KeywordSearch(wxobj, keyword, cast(int)mode);
+			return wxHtmlHelpController_KeywordSearch(шхобъ, keyword, cast(цел)mode);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public void UseConfig(Config config)
+		public проц UseConfig(Config config)
 		{
 			UseConfig(config, "");
 		}
 		
-		public void UseConfig(Config config, string rootpath)
+		public проц UseConfig(Config config, ткст rootpath)
 		{
-			wxHtmlHelpController_UseConfig(wxobj, wxObject.SafePtr(config), rootpath);
+			wxHtmlHelpController_UseConfig(шхобъ, wxObject.SafePtr(config), rootpath);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public void ReadCustomization(Config cfg)
+		public проц ReadCustomization(Config cfg)
 		{
 			ReadCustomization(cfg, "");
 		}
 		
-		public void ReadCustomization(Config cfg, string path)
+		public проц ReadCustomization(Config cfg, ткст путь)
 		{
-			wxHtmlHelpController_ReadCustomization(wxobj, wxObject.SafePtr(cfg), path);
+			wxHtmlHelpController_ReadCustomization(шхобъ, wxObject.SafePtr(cfg), путь);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public void WriteCustomization(Config cfg)
+		public проц WriteCustomization(Config cfg)
 		{
 			WriteCustomization(cfg, "");
 		}
 		
-		public void WriteCustomization(Config cfg, string path)
+		public проц WriteCustomization(Config cfg, ткст путь)
 		{
-			wxHtmlHelpController_WriteCustomization(wxobj, wxObject.SafePtr(cfg), path);
+			wxHtmlHelpController_WriteCustomization(шхобъ, wxObject.SafePtr(cfg), путь);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
 		public Frame frame() { 
-				IntPtr tmp = wxHtmlHelpController_GetFrame(wxobj); 
-				if ( tmp != IntPtr.init )
+				ЦУк tmp = wxHtmlHelpController_GetFrame(шхобъ); 
+				if ( tmp != ЦУк.init )
 					return new Frame(tmp);
 				else
-					return null;
+					return пусто;
 			}
 	}

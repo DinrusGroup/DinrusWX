@@ -9,7 +9,7 @@
 // Written by Bryan Bulten (bryan@bulten.ca)
 // (C) 2003 Bryan Bulten
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
-// $Id: StaticBox.d,v 1.10 2007/03/13 17:02:41 afb Exp $
+// $Ид: StaticBox.d,v 1.10 2007/03/13 17:02:41 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.StaticBox;
@@ -17,8 +17,8 @@ public import wx.common;
 public import wx.Control;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxStaticBox_ctor();
-		static extern (C) bool wxStaticBox_Create(IntPtr self, IntPtr parent, int id, string label, inout Point pos, inout Size size, uint style, string name);
+		static extern (C) ЦУк wxStaticBox_ctor();
+		static extern (C) бул wxStaticBox_Create(ЦУк сам, ЦУк родитель, цел ид, ткст надпись, inout Точка поз, inout Размер size, бцел стиль, ткст имя);
 		//! \endcond
 	
 		//---------------------------------------------------------------------
@@ -26,37 +26,37 @@ public import wx.Control;
 	alias StaticBox wxStaticBox;
 	public class StaticBox : Control
 	{
-		public const string wxStaticBoxNameStr = "groupBox";
+		public const ткст wxStaticBoxNameStr = "groupBox";
 
 		public this()
 			{ super(wxStaticBox_ctor()); }
 
-		public this(IntPtr wxobj)
-			{ super(wxobj); }
+		public this(ЦУк шхобъ)
+			{ super(шхобъ); }
 			
-		public this(Window window, int id, string label, Point pos = wxDefaultPosition, Size size = wxDefaultSize, int style = 0, string name = wxStaticBoxNameStr)
+		public this(Окно окно, цел ид, ткст надпись, Точка поз = wxDefaultPosition, Размер size = wxDefaultSize, цел стиль = 0, ткст имя = wxStaticBoxNameStr)
 		{
 			this();
-			if (!Create(window, id, label, pos, size, style, name))
+			if (!Create(окно, ид, надпись, поз, size, стиль, имя))
 			{
 				throw new InvalidOperationException("Failed to create StaticBox");
 			}
 		}
 		
-		public static wxObject New(IntPtr wxobj) { return new StaticBox(wxobj); }
+		public static wxObject Нов(ЦУк шхобъ) { return new StaticBox(шхобъ); }
 	
 		//---------------------------------------------------------------------
-		// ctors with self created id
+		// ctors with сам created ид
 		
-		public this(Window window, string label, Point pos = wxDefaultPosition, Size size = wxDefaultSize, int style = 0, string name = wxStaticBoxNameStr)
-			{ this(window, Window.UniqueID, label, pos, size, style, name);}
+		public this(Окно окно, ткст надпись, Точка поз = wxDefaultPosition, Размер size = wxDefaultSize, цел стиль = 0, ткст имя = wxStaticBoxNameStr)
+			{ this(окно, Окно.UniqueID, надпись, поз, size, стиль, имя);}
 
 		//---------------------------------------------------------------------
 
-		public bool Create(Window window, int id, string label, inout Point pos, inout Size size, int style, string name)
+		public бул Create(Окно окно, цел ид, ткст надпись, inout Точка поз, inout Размер size, цел стиль, ткст имя)
 		{
-			return wxStaticBox_Create(wxobj, wxObject.SafePtr(window), 
-					id, label, pos, size, 
-					cast(uint)style, name);
+			return wxStaticBox_Create(шхобъ, wxObject.SafePtr(окно), 
+					ид, надпись, поз, size, 
+					cast(бцел)стиль, имя);
 		}
 	}

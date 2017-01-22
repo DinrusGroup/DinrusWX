@@ -10,7 +10,7 @@
 // (C) 2003 Bryan Bulten
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: Printer.d,v 1.11 2007/01/29 21:37:32 afb Exp $
+// $Ид: Printer.d,v 1.11 2007/01/29 21:37:32 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.Printer;
@@ -26,15 +26,15 @@ public import wx.PrintData;
     }
 
 		//! \cond EXTERN
-        static extern (C) IntPtr wxPrinter_ctor(IntPtr data);
-        static extern (C) IntPtr wxPrinter_CreateAbortWindow(IntPtr self, IntPtr parent, IntPtr printout);
-        static extern (C) void   wxPrinter_ReportError(IntPtr self, IntPtr parent, IntPtr printout, string message);
-        static extern (C) IntPtr wxPrinter_GetPrintDialogData(IntPtr self);
-        static extern (C) bool   wxPrinter_GetAbort(IntPtr self);
-        static extern (C) int    wxPrinter_GetLastError(IntPtr self);
-        static extern (C) bool   wxPrinter_Setup(IntPtr self, IntPtr parent);
-        static extern (C) bool   wxPrinter_Print(IntPtr self, IntPtr parent, IntPtr printout, bool prompt);
-        static extern (C) IntPtr wxPrinter_PrintDialog(IntPtr self, IntPtr parent);
+        static extern (C) ЦУк wxPrinter_ctor(ЦУк данные);
+        static extern (C) ЦУк wxPrinter_CreateAbortWindow(ЦУк сам, ЦУк родитель, ЦУк printout);
+        static extern (C) проц   wxPrinter_ReportError(ЦУк сам, ЦУк родитель, ЦУк printout, ткст message);
+        static extern (C) ЦУк wxPrinter_GetPrintDialogData(ЦУк сам);
+        static extern (C) бул   wxPrinter_GetAbort(ЦУк сам);
+        static extern (C) цел    wxPrinter_GetLastError(ЦУк сам);
+        static extern (C) бул   wxPrinter_Setup(ЦУк сам, ЦУк родитель);
+        static extern (C) бул   wxPrinter_Print(ЦУк сам, ЦУк родитель, ЦУк printout, бул prompt);
+        static extern (C) ЦУк wxPrinter_PrintDialog(ЦУк сам, ЦУк родитель);
 		//! \endcond
 
         //-----------------------------------------------------------------------------
@@ -42,59 +42,59 @@ public import wx.PrintData;
     alias Printer wxPrinter;
     public class Printer : wxObject
     {
-        private this(IntPtr wxobj) 
-            { super(wxobj); }
+        private this(ЦУк шхобъ) 
+            { super(шхобъ); }
 
         public this()
-            { this(cast(PrintDialogData)null); }
-        public this(PrintDialogData data)
-            { this(wxPrinter_ctor(wxObject.SafePtr(data))); }
+            { this(cast(PrintDialogData)пусто); }
+        public this(PrintDialogData данные)
+            { this(wxPrinter_ctor(wxObject.SafePtr(данные))); }
 
         //-----------------------------------------------------------------------------
 
-        public Window CreateAbortWindow(Window parent, Printout printout)
+        public Окно CreateAbortWindow(Окно родитель, Printout printout)
         {
-            return cast(Window)FindObject(wxPrinter_CreateAbortWindow(wxobj, wxObject.SafePtr(parent), wxObject.SafePtr(printout)), &Window.New);
+            return cast(Окно)FindObject(wxPrinter_CreateAbortWindow(шхобъ, wxObject.SafePtr(родитель), wxObject.SafePtr(printout)), &Окно.Нов);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void ReportError(Window parent, Printout printout, string message)
+        public проц ReportError(Окно родитель, Printout printout, ткст message)
         {
-            wxPrinter_ReportError(wxobj, wxObject.SafePtr(parent), wxObject.SafePtr(printout), message);
+            wxPrinter_ReportError(шхобъ, wxObject.SafePtr(родитель), wxObject.SafePtr(printout), message);
         }
 
         //-----------------------------------------------------------------------------
 
-        public PrintDialogData printDialogData() { return cast(PrintDialogData)FindObject(wxPrinter_GetPrintDialogData(wxobj), &PrintDialogData.New); }
+        public PrintDialogData printDialogData() { return cast(PrintDialogData)FindObject(wxPrinter_GetPrintDialogData(шхобъ), &PrintDialogData.Нов); }
 
         //-----------------------------------------------------------------------------
 
-        public bool Abort() { return wxPrinter_GetAbort(wxobj); }
+        public бул Abort() { return wxPrinter_GetAbort(шхобъ); }
 
         //-----------------------------------------------------------------------------
 
-        public PrinterError LastError() { return cast(PrinterError)wxPrinter_GetLastError(wxobj); }
+        public PrinterError LastError() { return cast(PrinterError)wxPrinter_GetLastError(шхобъ); }
 
         //-----------------------------------------------------------------------------
 
-        public bool Setup(Window parent)
+        public бул Setup(Окно родитель)
         {
-            return wxPrinter_Setup(wxobj, wxObject.SafePtr(parent));
+            return wxPrinter_Setup(шхобъ, wxObject.SafePtr(родитель));
         }
 
         //-----------------------------------------------------------------------------
 
-        public bool Print(Window parent, Printout printout, bool prompt)
+        public бул Print(Окно родитель, Printout printout, бул prompt)
         {
-            return wxPrinter_Print(wxobj, wxObject.SafePtr(parent), wxObject.SafePtr(printout), prompt);
+            return wxPrinter_Print(шхобъ, wxObject.SafePtr(родитель), wxObject.SafePtr(printout), prompt);
         }
 
         //-----------------------------------------------------------------------------
 
-        public DC PrintDialog(Window parent)
+        public DC PrintDialog(Окно родитель)
         {
-            return cast(DC)FindObject(wxPrinter_PrintDialog(wxobj, wxObject.SafePtr(parent)), &DC.New);
+            return cast(DC)FindObject(wxPrinter_PrintDialog(шхобъ, wxObject.SafePtr(родитель)), &DC.Нов);
         }
     }
 
@@ -103,35 +103,35 @@ public import wx.PrintData;
 
 		//! \cond EXTERN
 	extern (C) {
-        alias void function(Printout obj) Virtual_NoParams;
-        alias bool function(Printout obj, int i) Virtual_ParamsInt;
-        alias bool function(Printout obj, int startPage, int endPage) Virtual_OnBeginDocument;
-        alias void function(Printout obj, inout int minPage, inout int maxPage, inout int pageFrom, inout int pageTo) Virtual_GetPageInfo;
+        alias проц function(Printout объ) Virtual_NoParams;
+        alias бул function(Printout объ, цел i) Virtual_ParamsInt;
+        alias бул function(Printout объ, цел startPage, цел endPage) Virtual_OnBeginDocument;
+        alias проц function(Printout объ, inout цел minPage, inout цел maxPage, inout цел pageFrom, inout цел pageTo) Virtual_GetPageInfo;
 	}
 
-        static extern (C) IntPtr wxPrintout_ctor(string title);
-        static extern (C) bool   wxPrintout_OnBeginDocument(IntPtr self, int startPage, int endPage);
-        static extern (C) void   wxPrintout_OnEndDocument(IntPtr self);
-        static extern (C) void   wxPrintout_OnBeginPrinting(IntPtr self);
-        static extern (C) void   wxPrintout_OnEndPrinting(IntPtr self);
-        static extern (C) void   wxPrintout_OnPreparePrinting(IntPtr self);
-        static extern (C) bool   wxPrintout_HasPage(IntPtr self, int page);
-        static extern (C) void   wxPrintout_GetPageInfo(IntPtr self, inout int minPage, inout int maxPage, inout int pageFrom, inout int pageTo);
-        static extern (C) IntPtr wxPrintout_GetTitle(IntPtr self);
-        static extern (C) IntPtr wxPrintout_GetDC(IntPtr self);
-        static extern (C) void   wxPrintout_SetDC(IntPtr self, IntPtr dc);
-        static extern (C) void   wxPrintout_SetPageSizePixels(IntPtr self, int w, int h);
-        static extern (C) void   wxPrintout_GetPageSizePixels(IntPtr self, inout int w, inout int h);
-        static extern (C) void   wxPrintout_SetPageSizeMM(IntPtr self, int w, int h);
-        static extern (C) void   wxPrintout_GetPageSizeMM(IntPtr self, inout int w, inout int h);
-        static extern (C) void   wxPrintout_SetPPIScreen(IntPtr self, int x, int y);
-        static extern (C) void   wxPrintout_GetPPIScreen(IntPtr self, inout int x, inout int y);
-        static extern (C) void   wxPrintout_SetPPIPrinter(IntPtr self, int x, int y);
-        static extern (C) void   wxPrintout_GetPPIPrinter(IntPtr self, inout int x, inout int y);
-        static extern (C) bool   wxPrintout_IsPreview(IntPtr self);
-      //  static extern (C) void   wxPrintout_SetIsPreview(IntPtr self, bool p);
+        static extern (C) ЦУк wxPrintout_ctor(ткст title);
+        static extern (C) бул   wxPrintout_OnBeginDocument(ЦУк сам, цел startPage, цел endPage);
+        static extern (C) проц   wxPrintout_OnEndDocument(ЦУк сам);
+        static extern (C) проц   wxPrintout_OnBeginPrinting(ЦУк сам);
+        static extern (C) проц   wxPrintout_OnEndPrinting(ЦУк сам);
+        static extern (C) проц   wxPrintout_OnPreparePrinting(ЦУк сам);
+        static extern (C) бул   wxPrintout_HasPage(ЦУк сам, цел page);
+        static extern (C) проц   wxPrintout_GetPageInfo(ЦУк сам, inout цел minPage, inout цел maxPage, inout цел pageFrom, inout цел pageTo);
+        static extern (C) ЦУк wxPrintout_GetTitle(ЦУк сам);
+        static extern (C) ЦУк wxPrintout_GetDC(ЦУк сам);
+        static extern (C) проц   wxPrintout_SetDC(ЦУк сам, ЦУк dc);
+        static extern (C) проц   wxPrintout_SetPageSizePixels(ЦУк сам, цел w, цел h);
+        static extern (C) проц   wxPrintout_GetPageSizePixels(ЦУк сам, inout цел w, inout цел h);
+        static extern (C) проц   wxPrintout_SetPageSizeMM(ЦУк сам, цел w, цел h);
+        static extern (C) проц   wxPrintout_GetPageSizeMM(ЦУк сам, inout цел w, inout цел h);
+        static extern (C) проц   wxPrintout_SetPPIScreen(ЦУк сам, цел x, цел y);
+        static extern (C) проц   wxPrintout_GetPPIScreen(ЦУк сам, inout цел x, inout цел y);
+        static extern (C) проц   wxPrintout_SetPPIPrinter(ЦУк сам, цел x, цел y);
+        static extern (C) проц   wxPrintout_GetPPIPrinter(ЦУк сам, inout цел x, inout цел y);
+        static extern (C) бул   wxPrintout_IsPreview(ЦУк сам);
+      //  static extern (C) проц   wxPrintout_SetIsPreview(ЦУк сам, бул p);
 
-        static extern (C) void   wxPrintout_RegisterVirtual(IntPtr self, Printout obj, Virtual_OnBeginDocument onBeginDocument, Virtual_NoParams onEndDocument, Virtual_NoParams onBeginPrinting, Virtual_NoParams onEndPrinting, Virtual_NoParams onPreparePrinting, Virtual_ParamsInt hasPage, Virtual_ParamsInt onPrintPage, Virtual_GetPageInfo getPageInfo);
+        static extern (C) проц   wxPrintout_RegisterVirtual(ЦУк сам, Printout объ, Virtual_OnBeginDocument onBeginDocument, Virtual_NoParams onEndDocument, Virtual_NoParams onBeginPrinting, Virtual_NoParams onEndPrinting, Virtual_NoParams onPreparePrinting, Virtual_ParamsInt hasPage, Virtual_ParamsInt onPrintPage, Virtual_GetPageInfo getPageInfo);
 		//! \endcond
 
         //-----------------------------------------------------------------------------
@@ -139,11 +139,11 @@ public import wx.PrintData;
     alias Printout wxPrintout;
     public abstract class Printout : wxObject
     {
-        private this(IntPtr wxobj) 
+        private this(ЦУк шхобъ) 
         { 
-        	super(wxobj);
+        	super(шхобъ);
 
-            wxPrintout_RegisterVirtual(wxobj,this,
+            wxPrintout_RegisterVirtual(шхобъ,this,
                     &staticOnBeginDocument,
                     &staticOnEndDocument,
                     &staticOnBeginPrinting,
@@ -154,157 +154,157 @@ public import wx.PrintData;
                     &staticGetPageInfo);
         }
 
-        public this(string title)
+        public this(ткст title)
             { this(wxPrintout_ctor(title)); }
 
-//	public static wxObject New(IntPtr ptr) { return new Printout(ptr); }
+//	public static wxObject Нов(ЦУк ptr) { return new Printout(ptr); }
         //-----------------------------------------------------------------------------
 
-        static extern(C) private bool staticOnBeginDocument(Printout obj, int startPage, int endPage)
+        static extern(C) private бул staticOnBeginDocument(Printout объ, цел startPage, цел endPage)
         {
-            return obj.OnBeginDocument(startPage, endPage);
+            return объ.OnBeginDocument(startPage, endPage);
         }
-        public /+virtual+/ bool OnBeginDocument(int startPage, int endPage)
+        public /+virtual+/ бул OnBeginDocument(цел startPage, цел endPage)
         {
-            return wxPrintout_OnBeginDocument(wxobj, startPage, endPage);
-        }
-
-        static extern(C) private void staticOnEndDocument(Printout obj)
-        {
-            obj.OnEndDocument();
-        }
-        public /+virtual+/ void OnEndDocument()
-        {
-            wxPrintout_OnEndDocument(wxobj);
+            return wxPrintout_OnBeginDocument(шхобъ, startPage, endPage);
         }
 
-        //-----------------------------------------------------------------------------
-
-        static extern(C) private void staticOnBeginPrinting(Printout obj)
+        static extern(C) private проц staticOnEndDocument(Printout объ)
         {
-            obj.OnBeginPrinting();
+            объ.OnEndDocument();
         }
-        public /+virtual+/ void OnBeginPrinting()
+        public /+virtual+/ проц OnEndDocument()
         {
-            wxPrintout_OnBeginPrinting(wxobj);
-        }
-
-        static extern(C) private void staticOnEndPrinting(Printout obj)
-        {
-            obj.OnEndPrinting();
-        }
-        public /+virtual+/ void OnEndPrinting()
-        {
-            wxPrintout_OnEndPrinting(wxobj);
-        }
-
-        static extern(C) private void staticOnPreparePrinting(Printout obj)
-        {
-            obj.OnPreparePrinting();
-        }
-        public /+virtual+/ void OnPreparePrinting()
-        {
-            wxPrintout_OnPreparePrinting(wxobj);
+            wxPrintout_OnEndDocument(шхобъ);
         }
 
         //-----------------------------------------------------------------------------
 
-        static extern(C) private bool staticHasPage(Printout obj, int page)
+        static extern(C) private проц staticOnBeginPrinting(Printout объ)
         {
-            return obj.HasPage(page);
+            объ.OnBeginPrinting();
         }
-        public /+virtual+/ bool HasPage(int page)
+        public /+virtual+/ проц OnBeginPrinting()
         {
-            return wxPrintout_HasPage(wxobj, page);
+            wxPrintout_OnBeginPrinting(шхобъ);
+        }
+
+        static extern(C) private проц staticOnEndPrinting(Printout объ)
+        {
+            объ.OnEndPrinting();
+        }
+        public /+virtual+/ проц OnEndPrinting()
+        {
+            wxPrintout_OnEndPrinting(шхобъ);
+        }
+
+        static extern(C) private проц staticOnPreparePrinting(Printout объ)
+        {
+            объ.OnPreparePrinting();
+        }
+        public /+virtual+/ проц OnPreparePrinting()
+        {
+            wxPrintout_OnPreparePrinting(шхобъ);
         }
 
         //-----------------------------------------------------------------------------
 
-        static extern(C) private bool staticOnPrintPage(Printout obj,int page)
+        static extern(C) private бул staticHasPage(Printout объ, цел page)
         {
-            return obj.OnPrintPage(page);
+            return объ.HasPage(page);
         }
-        public abstract bool OnPrintPage(int page);
-
-        //-----------------------------------------------------------------------------
-
-        static extern(C) private void staticGetPageInfo(Printout obj, inout int minPage, inout int maxPage, inout int pageFrom, inout int pageTo)
+        public /+virtual+/ бул HasPage(цел page)
         {
-            obj.GetPageInfo(minPage, maxPage, pageFrom, pageTo);
-        }
-        public /+virtual+/ void GetPageInfo(inout int minPage, inout int maxPage, inout int pageFrom, inout int pageTo)
-        {
-            wxPrintout_GetPageInfo(wxobj, minPage, maxPage, pageFrom, pageTo);
+            return wxPrintout_HasPage(шхобъ, page);
         }
 
         //-----------------------------------------------------------------------------
 
-        public string Title() { return cast(string) new wxString(wxPrintout_GetTitle(wxobj), true); }
-
-        //-----------------------------------------------------------------------------
-
-        public DC Dc() { return cast(DC)FindObject(wxPrintout_GetDC(wxobj), &DC.New); }
-        public void Dc(DC value) { wxPrintout_SetDC(wxobj, wxObject.SafePtr(value)); }
-
-        //-----------------------------------------------------------------------------
-
-        public void SetPageSizePixels(int w, int h)
+        static extern(C) private бул staticOnPrintPage(Printout объ,цел page)
         {
-            wxPrintout_SetPageSizePixels(wxobj, w, h);
+            return объ.OnPrintPage(page);
+        }
+        public abstract бул OnPrintPage(цел page);
+
+        //-----------------------------------------------------------------------------
+
+        static extern(C) private проц staticGetPageInfo(Printout объ, inout цел minPage, inout цел maxPage, inout цел pageFrom, inout цел pageTo)
+        {
+            объ.GetPageInfo(minPage, maxPage, pageFrom, pageTo);
+        }
+        public /+virtual+/ проц GetPageInfo(inout цел minPage, inout цел maxPage, inout цел pageFrom, inout цел pageTo)
+        {
+            wxPrintout_GetPageInfo(шхобъ, minPage, maxPage, pageFrom, pageTo);
         }
 
-        public void GetPageSizePixels(out int w, out int h)
+        //-----------------------------------------------------------------------------
+
+        public ткст Title() { return cast(ткст) new wxString(wxPrintout_GetTitle(шхобъ), да); }
+
+        //-----------------------------------------------------------------------------
+
+        public DC Dc() { return cast(DC)FindObject(wxPrintout_GetDC(шхобъ), &DC.Нов); }
+        public проц Dc(DC значение) { wxPrintout_SetDC(шхобъ, wxObject.SafePtr(значение)); }
+
+        //-----------------------------------------------------------------------------
+
+        public проц SetPageSizePixels(цел w, цел h)
+        {
+            wxPrintout_SetPageSizePixels(шхобъ, w, h);
+        }
+
+        public проц GetPageSizePixels(out цел w, out цел h)
         {
             w = h = 0;
-            wxPrintout_GetPageSizePixels(wxobj, w, h);
+            wxPrintout_GetPageSizePixels(шхобъ, w, h);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void SetPageSizeMM(int w, int h)
+        public проц SetPageSizeMM(цел w, цел h)
         {
-            wxPrintout_SetPageSizeMM(wxobj, w, h);
+            wxPrintout_SetPageSizeMM(шхобъ, w, h);
         }
 
-        public void GetPageSizeMM(out int w, out int h)
+        public проц GetPageSizeMM(out цел w, out цел h)
         {
             w = h = 0;
-            wxPrintout_GetPageSizeMM(wxobj, w, h);
+            wxPrintout_GetPageSizeMM(шхобъ, w, h);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void SetPPIScreen(int x, int y)
+        public проц SetPPIScreen(цел x, цел y)
         {
-            wxPrintout_SetPPIScreen(wxobj, x, y);
+            wxPrintout_SetPPIScreen(шхобъ, x, y);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void GetPPIScreen(out int x, out int y)
-        {
-            x = y = 0;
-            wxPrintout_GetPPIScreen(wxobj, x, y);
-        }
-
-        //-----------------------------------------------------------------------------
-
-        public void SetPPIPrinter(int x, int y)
-        {
-            wxPrintout_SetPPIPrinter(wxobj, x, y);
-        }
-
-        //-----------------------------------------------------------------------------
-
-        public void GetPPIPrinter(out int x, out int y)
+        public проц GetPPIScreen(out цел x, out цел y)
         {
             x = y = 0;
-            wxPrintout_GetPPIPrinter(wxobj, x, y);
+            wxPrintout_GetPPIScreen(шхобъ, x, y);
         }
 
         //-----------------------------------------------------------------------------
 
-        public bool IsPreview() { return wxPrintout_IsPreview(wxobj); }
-       // public void IsPreview(bool value) { wxPrintout_SetIsPreview(wxobj, value); }
+        public проц SetPPIPrinter(цел x, цел y)
+        {
+            wxPrintout_SetPPIPrinter(шхобъ, x, y);
+        }
+
+        //-----------------------------------------------------------------------------
+
+        public проц GetPPIPrinter(out цел x, out цел y)
+        {
+            x = y = 0;
+            wxPrintout_GetPPIPrinter(шхобъ, x, y);
+        }
+
+        //-----------------------------------------------------------------------------
+
+        public бул IsPreview() { return wxPrintout_IsPreview(шхобъ); }
+       // public проц IsPreview(бул значение) { wxPrintout_SetIsPreview(шхобъ, значение); }
     }
 

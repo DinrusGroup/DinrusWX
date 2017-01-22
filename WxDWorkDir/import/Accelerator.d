@@ -1,4 +1,4 @@
-﻿module wx.Accelerator;
+module wx.Accelerator;
 public import wx.common;
 public import wx.MenuItem;
 

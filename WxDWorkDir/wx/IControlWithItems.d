@@ -1,4 +1,4 @@
-//-----------------------------------------------------------------------------
+﻿//-----------------------------------------------------------------------------
 // wxD - IControlWithItems.d
 // (C) 2005 bero <berobero@users.sourceforge.net>
 // based on
@@ -10,7 +10,7 @@
 // (C) 2004 Alexander Olk
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: IControlWithItems.d,v 1.9 2006/11/17 15:20:59 afb Exp $
+// $Ид: IControlWithItems.d,v 1.9 2006/11/17 15:20:59 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.IControlWithItems;
@@ -18,82 +18,82 @@ public import wx.ClientData;
 
 	public interface IControlWithItems 
 	{
-		int Append(string item);
+		цел Append(ткст элемент);
 		
-		int Append(string item, ClientData clientData);
-		
-		//-----------------------------------------------------------------------------
-		
-		void AppendString(string item);
+		цел Append(ткст элемент, ClientData clientData);
 		
 		//-----------------------------------------------------------------------------
 		
-		void Append(string[] strings);
+		проц AppendString(ткст элемент);
 		
 		//-----------------------------------------------------------------------------
 		
-		int Insert(string item, int pos);
-		
-		int Insert(string item, int pos, ClientData clientData);
+		проц Append(ткст[] strings);
 		
 		//-----------------------------------------------------------------------------
 		
-		void Clear();
+		цел Insert(ткст элемент, цел поз);
+		
+		цел Insert(ткст элемент, цел поз, ClientData clientData);
 		
 		//-----------------------------------------------------------------------------
 		
-		void Delete(int n);
+		проц Очисть();
 		
 		//-----------------------------------------------------------------------------
 		
-		int Count();
+		проц Delete(цел n);
 		
 		//-----------------------------------------------------------------------------
 		
-		bool Empty();
+		цел Счёт();
 		
 		//-----------------------------------------------------------------------------
 		
-		string GetString(int n);
+		бул Empty();
 		
 		//-----------------------------------------------------------------------------
 		
-		string[] GetStrings();
+		ткст GetString(цел n);
 		
 		//-----------------------------------------------------------------------------
 		
-		void SetString(int n, string s);
+		ткст[] GetStrings();
 		
 		//-----------------------------------------------------------------------------
 		
-		int FindString(string s);
+		проц SetString(цел n, ткст s);
 		
 		//-----------------------------------------------------------------------------
 		
-		void Select(int n);
-		
-		int GetSelection();
+		цел FindString(ткст s);
 		
 		//-----------------------------------------------------------------------------
 		
-		string StringSelection();
+		проц Select(цел n);
+		
+		цел GetSelection();
 		
 		//-----------------------------------------------------------------------------
 		
-		void SetClientObject(int n, ClientData clientData);
-		
-		ClientData GetClientObject(int n);
+		ткст StringSelection();
 		
 		//-----------------------------------------------------------------------------
 		
-		bool HasClientObjectData();
+		проц SetClientObject(цел n, ClientData clientData);
+		
+		ClientData GetClientObject(цел n);
 		
 		//-----------------------------------------------------------------------------
 		
-		bool HasClientUntypedData();
+		бул HasClientObjectData();
 		
 		//-----------------------------------------------------------------------------
 		
-		bool ShouldInheritColours();
+		бул HasClientUntypedData();
+		
+		//-----------------------------------------------------------------------------
+		
+		бул ShouldInheritColours();
 	}
 

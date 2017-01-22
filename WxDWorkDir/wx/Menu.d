@@ -1,8 +1,8 @@
 //-----------------------------------------------------------------------------
-// wxD - Menu.d
+// wxD - Меню.d
 // (C) 2005 bero <berobero@users.sourceforge.net>
 // based on
-// wx.NET - Menu.cs
+// wx.NET - Меню.cs
 //
 /// The wxMenu wrapper class.
 //
@@ -10,7 +10,7 @@
 // (C) 2003 by 379, Inc.
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: Menu.d,v 1.10 2007/01/28 23:06:37 afb Exp $
+// $Ид: Меню.d,v 1.10 2007/01/28 23:06:37 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.Menu;
@@ -21,501 +21,501 @@ public import wx.MenuItem;
 public import wx.MenuBar;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxMenuBase_ctor1(string titel, uint style);
-		static extern (C) IntPtr wxMenuBase_ctor2(uint style);
+		static extern (C) ЦУк wxMenuBase_ctor1(ткст titel, бцел стиль);
+		static extern (C) ЦУк wxMenuBase_ctor2(бцел стиль);
 		
-		static extern (C) IntPtr wxMenuBase_Append(IntPtr self, int id, string item, string help, ItemKind kind);
-		static extern (C) IntPtr wxMenuBase_AppendSubMenu(IntPtr self, int id, string item, IntPtr subMenu, string help);
-		static extern (C) IntPtr wxMenuBase_AppendItem(IntPtr self, IntPtr item);
-		static extern (C) IntPtr wxMenuBase_AppendSeparator(IntPtr self);
-		static extern (C) IntPtr wxMenuBase_AppendCheckItem(IntPtr self, int itemid, string text, string help);
-		static extern (C) IntPtr wxMenuBase_AppendRadioItem(IntPtr self, int itemid, string text, string help);
-		static extern (C) int    wxMenuBase_GetMenuItemCount(IntPtr self);
-		static extern (C) IntPtr wxMenuBase_GetMenuItem(IntPtr self, int index);
-		static extern (C) void   wxMenuBase_Break(IntPtr self);
+		static extern (C) ЦУк wxMenuBase_Append(ЦУк сам, цел ид, ткст элемент, ткст справка, ItemKind вид);
+		static extern (C) ЦУк wxMenuBase_AppendSubMenu(ЦУк сам, цел ид, ткст элемент, ЦУк подменю, ткст справка);
+		static extern (C) ЦУк wxMenuBase_AppendItem(ЦУк сам, ЦУк элемент);
+		static extern (C) ЦУк wxMenuBase_AppendSeparator(ЦУк сам);
+		static extern (C) ЦУк wxMenuBase_AppendCheckItem(ЦУк сам, цел itemid, ткст текст, ткст справка);
+		static extern (C) ЦУк wxMenuBase_AppendRadioItem(ЦУк сам, цел itemid, ткст текст, ткст справка);
+		static extern (C) цел    wxMenuBase_GetMenuItemCount(ЦУк сам);
+		static extern (C) ЦУк wxMenuBase_GetMenuItem(ЦУк сам, цел индекс);
+		static extern (C) проц   wxMenuBase_Break(ЦУк сам);
 		
-		static extern (C) IntPtr wxMenuBase_Insert(IntPtr self, int pos, IntPtr item);
-		static extern (C) IntPtr wxMenuBase_Insert2(IntPtr self, int pos, int itemid, string text, string help, ItemKind kind);
-		static extern (C) IntPtr wxMenuBase_InsertSeparator(IntPtr self, int pos);
-		static extern (C) IntPtr wxMenuBase_InsertCheckItem(IntPtr self, int pos, int itemid, string text, string help);
-		static extern (C) IntPtr wxMenuBase_InsertRadioItem(IntPtr self, int pos, int itemid, string text, string help);
-		static extern (C) IntPtr wxMenuBase_InsertSubMenu(IntPtr self, int pos, int itemid, string text, IntPtr submenu, string help);
+		static extern (C) ЦУк wxMenuBase_Insert(ЦУк сам, цел поз, ЦУк элемент);
+		static extern (C) ЦУк wxMenuBase_Insert2(ЦУк сам, цел поз, цел itemid, ткст текст, ткст справка, ItemKind вид);
+		static extern (C) ЦУк wxMenuBase_InsertSeparator(ЦУк сам, цел поз);
+		static extern (C) ЦУк wxMenuBase_InsertCheckItem(ЦУк сам, цел поз, цел itemid, ткст текст, ткст справка);
+		static extern (C) ЦУк wxMenuBase_InsertRadioItem(ЦУк сам, цел поз, цел itemid, ткст текст, ткст справка);
+		static extern (C) ЦУк wxMenuBase_InsertSubMenu(ЦУк сам, цел поз, цел itemid, ткст текст, ЦУк submenu, ткст справка);
 		
-		static extern (C) IntPtr wxMenuBase_Prepend(IntPtr self, IntPtr item);
-		static extern (C) IntPtr wxMenuBase_Prepend2(IntPtr self, int itemid, string text, string help, ItemKind kind);
-		static extern (C) IntPtr wxMenuBase_PrependSeparator(IntPtr self);
-		static extern (C) IntPtr wxMenuBase_PrependCheckItem(IntPtr self, int itemid, string text, string help);
-		static extern (C) IntPtr wxMenuBase_PrependRadioItem(IntPtr self, int itemid, string text, string help);
-		static extern (C) IntPtr wxMenuBase_PrependSubMenu(IntPtr self, int itemid, string text, IntPtr submenu, string help);
+		static extern (C) ЦУк wxMenuBase_Prepend(ЦУк сам, ЦУк элемент);
+		static extern (C) ЦУк wxMenuBase_Prepend2(ЦУк сам, цел itemid, ткст текст, ткст справка, ItemKind вид);
+		static extern (C) ЦУк wxMenuBase_PrependSeparator(ЦУк сам);
+		static extern (C) ЦУк wxMenuBase_PrependCheckItem(ЦУк сам, цел itemid, ткст текст, ткст справка);
+		static extern (C) ЦУк wxMenuBase_PrependRadioItem(ЦУк сам, цел itemid, ткст текст, ткст справка);
+		static extern (C) ЦУк wxMenuBase_PrependSubMenu(ЦУк сам, цел itemid, ткст текст, ЦУк submenu, ткст справка);
 		
-		static extern (C) IntPtr wxMenuBase_Remove(IntPtr self, int itemid);
-		static extern (C) IntPtr wxMenuBase_Remove2(IntPtr self, IntPtr item);
+		static extern (C) ЦУк wxMenuBase_Remove(ЦУк сам, цел itemid);
+		static extern (C) ЦУк wxMenuBase_Remove2(ЦУк сам, ЦУк элемент);
 		
-		static extern (C) bool   wxMenuBase_Delete(IntPtr self, int itemid);
-		static extern (C) bool   wxMenuBase_Delete2(IntPtr self, IntPtr item);
+		static extern (C) бул   wxMenuBase_Delete(ЦУк сам, цел itemid);
+		static extern (C) бул   wxMenuBase_Delete2(ЦУк сам, ЦУк элемент);
 		
-		static extern (C) bool   wxMenuBase_Destroy(IntPtr self, int itemid);
-		static extern (C) bool   wxMenuBase_Destroy2(IntPtr self, IntPtr item);
+		static extern (C) бул   wxMenuBase_Destroy(ЦУк сам, цел itemid);
+		static extern (C) бул   wxMenuBase_Destroy2(ЦУк сам, ЦУк элемент);
 		
-		static extern (C) int    wxMenuBase_FindItem(IntPtr self, string item);
-		static extern (C) IntPtr wxMenuBase_FindItem2(IntPtr self, int itemid, inout IntPtr menu); 
-		static extern (C) IntPtr wxMenuBase_FindItemByPosition(IntPtr self, int position);
+		static extern (C) цел    wxMenuBase_FindItem(ЦУк сам, ткст элемент);
+		static extern (C) ЦУк wxMenuBase_FindItem2(ЦУк сам, цел itemid, inout ЦУк меню); 
+		static extern (C) ЦУк wxMenuBase_FindItemByPosition(ЦУк сам, цел position);
 		
-		static extern (C) void   wxMenuBase_Enable(IntPtr self, int itemid, bool enable);
-		static extern (C) bool   wxMenuBase_IsEnabled(IntPtr self, int itemid);
+		static extern (C) проц   wxMenuBase_Enable(ЦУк сам, цел itemid, бул enable);
+		static extern (C) бул   wxMenuBase_IsEnabled(ЦУк сам, цел itemid);
 		
-		static extern (C) void   wxMenuBase_Check(IntPtr self, int id, bool check);
-		static extern (C) bool   wxMenuBase_IsChecked(IntPtr self, int itemid);
+		static extern (C) проц   wxMenuBase_Check(ЦУк сам, цел ид, бул check);
+		static extern (C) бул   wxMenuBase_IsChecked(ЦУк сам, цел itemid);
 		
-		static extern (C) void   wxMenuBase_SetLabel(IntPtr self, int itemid, string label);
-		static extern (C) IntPtr wxMenuBase_GetLabel(IntPtr self, int itemid);
+		static extern (C) проц   wxMenuBase_SetLabel(ЦУк сам, цел itemid, ткст надпись);
+		static extern (C) ЦУк wxMenuBase_GetLabel(ЦУк сам, цел itemid);
 		
-		static extern (C) void   wxMenuBase_SetHelpString(IntPtr self, int itemid, string helpString);
-		static extern (C) IntPtr wxMenuBase_GetHelpString(IntPtr self, int itemid);		
+		static extern (C) проц   wxMenuBase_SetHelpString(ЦУк сам, цел itemid, ткст helpString);
+		static extern (C) ЦУк wxMenuBase_GetHelpString(ЦУк сам, цел itemid);		
 		
-		static extern (C) void   wxMenuBase_SetTitle(IntPtr self, string title);
-		static extern (C) IntPtr wxMenuBase_GetTitle(IntPtr self);		
+		static extern (C) проц   wxMenuBase_SetTitle(ЦУк сам, ткст title);
+		static extern (C) ЦУк wxMenuBase_GetTitle(ЦУк сам);		
 		
-		static extern (C) void   wxMenuBase_SetInvokingWindow(IntPtr self, IntPtr win);
-		static extern (C) IntPtr wxMenuBase_GetInvokingWindow(IntPtr self);
+		static extern (C) проц   wxMenuBase_SetInvokingWindow(ЦУк сам, ЦУк окн);
+		static extern (C) ЦУк wxMenuBase_GetInvokingWindow(ЦУк сам);
 		
-		static extern (C) uint   wxMenuBase_GetStyle(IntPtr self);
+		static extern (C) бцел   wxMenuBase_GetStyle(ЦУк сам);
 		
-		static extern (C) void   wxMenuBase_SetEventHandler(IntPtr self, IntPtr handler);
-		static extern (C) IntPtr wxMenuBase_GetEventHandler(IntPtr self);
+		static extern (C) проц   wxMenuBase_SetEventHandler(ЦУк сам, ЦУк handler);
+		static extern (C) ЦУк wxMenuBase_GetEventHandler(ЦУк сам);
 		
-		static extern (C) void   wxMenuBase_UpdateUI(IntPtr self, IntPtr source);
+		static extern (C) проц   wxMenuBase_UpdateUI(ЦУк сам, ЦУк source);
 		
-		static extern (C) IntPtr wxMenuBase_GetMenuBar(IntPtr self);
+		static extern (C) ЦУк wxMenuBase_GetMenuBar(ЦУк сам);
 		
-		static extern (C) bool   wxMenuBase_IsAttached(IntPtr self);
+		static extern (C) бул   wxMenuBase_IsAttached(ЦУк сам);
 		
-		static extern (C) void   wxMenuBase_SetParent(IntPtr self, IntPtr parent);
-		static extern (C) IntPtr wxMenuBase_GetParent(IntPtr self);
+		static extern (C) проц   wxMenuBase_SetParent(ЦУк сам, ЦУк родитель);
+		static extern (C) ЦУк wxMenuBase_GetParent(ЦУк сам);
 		
-		static extern (C) IntPtr wxMenuBase_FindChildItem(IntPtr self, int itemid, out int pos);
-		static extern (C) IntPtr wxMenuBase_FindChildItem2(IntPtr self, int itemid);
-		static extern (C) bool   wxMenuBase_SendEvent(IntPtr self, int itemid, int xchecked);
+		static extern (C) ЦУк wxMenuBase_FindChildItem(ЦУк сам, цел itemid, out цел поз);
+		static extern (C) ЦУк wxMenuBase_FindChildItem2(ЦУк сам, цел itemid);
+		static extern (C) бул   wxMenuBase_SendEvent(ЦУк сам, цел itemid, цел xchecked);
 		//! \endcond
 	
 	alias MenuBase wxMenuBase;
 	public class MenuBase : EvtHandler
 	{
-		public this(IntPtr wxobj)
-			{ super(wxobj); }
+		public this(ЦУк шхобъ)
+			{ super(шхобъ); }
 			
-		public this(int style = 0)
-			{ this(wxMenuBase_ctor2(cast(uint)style));}
+		public this(цел стиль = 0)
+			{ this(wxMenuBase_ctor2(cast(бцел)стиль));}
 		
-		public this(string titel, int style = 0)
-			{ this(wxMenuBase_ctor1(titel, cast(uint)style)); }
+		public this(ткст titel, цел стиль = 0)
+			{ this(wxMenuBase_ctor1(titel, cast(бцел)стиль)); }
 			
 		//---------------------------------------------------------------------
 		
-		public MenuItem Append(int id, string item)
+		public ЭлементМеню Append(цел ид, ткст элемент)
 		{
-			return this.Append(id, item, "");
+			return this.Append(ид, элемент, "");
 		}
 		
-		public MenuItem Append(int id, string item, string help)
+		public ЭлементМеню Append(цел ид, ткст элемент, ткст справка)
 		{
-			return Append(id, item, help, ItemKind.wxITEM_NORMAL);
+			return Append(ид, элемент, справка, ItemKind.wxITEM_NORMAL);
 		}		
 
-		public MenuItem Append(int id, string item, string help, ItemKind kind)
+		public ЭлементМеню Append(цел ид, ткст элемент, ткст справка, ItemKind вид)
 		{
-			return cast(MenuItem)FindObject(wxMenuBase_Append(wxobj, id, item, help, kind), &MenuItem.New2);
+			return cast(ЭлементМеню)FindObject(wxMenuBase_Append(шхобъ, ид, элемент, справка, вид), &ЭлементМеню.New2);
 		}
 		
-		public MenuItem Append(int id, string item, Menu subMenu)
+		public ЭлементМеню Append(цел ид, ткст элемент, Меню подменю)
 		{
-			return Append(id, item, subMenu, "");
+			return Append(ид, элемент, подменю, "");
 		}
 
-		public MenuItem Append(int id, string item, Menu subMenu, string help)
+		public ЭлементМеню Append(цел ид, ткст элемент, Меню подменю, ткст справка)
 		{
-			return cast(MenuItem)FindObject(wxMenuBase_AppendSubMenu(wxobj, id, item, wxObject.SafePtr(subMenu), help), &MenuItem.New2);
+			return cast(ЭлементМеню)FindObject(wxMenuBase_AppendSubMenu(шхобъ, ид, элемент, wxObject.SafePtr(подменю), справка), &ЭлементМеню.New2);
 		}
 
-		public MenuItem Append(MenuItem item) 
+		public ЭлементМеню Append(ЭлементМеню элемент) 
 		{
-			return cast(MenuItem)FindObject(wxMenuBase_AppendItem(wxobj, wxObject.SafePtr(item)), &MenuItem.New2);
-		}
-
-		//---------------------------------------------------------------------
-		
-		public MenuItem AppendCheckItem(int id, string item)
-		{
-			return AppendCheckItem(id, item, "");
-		}
-
-		public MenuItem AppendCheckItem(int id, string item, string help)
-		{
-			return cast(MenuItem)FindObject(wxMenuBase_AppendCheckItem(wxobj, id, item, help), &MenuItem.New2);
-		}
-
-		//---------------------------------------------------------------------
-
-		public MenuItem AppendSeparator()
-		{
-			return cast(MenuItem)FindObject(wxMenuBase_AppendSeparator(wxobj), &MenuItem.New2);
-		}
-		
-		//---------------------------------------------------------------------
-		
-		public MenuItem AppendRadioItem(int itemid, string text)
-		{
-			return AppendRadioItem(itemid, text, "");
-		}
-		
-		public MenuItem AppendRadioItem(int itemid, string text, string help)
-		{
-			return cast(MenuItem)FindObject(wxMenuBase_AppendRadioItem(wxobj, itemid, text, help), &MenuItem.New2);
-		}
-
-		//---------------------------------------------------------------------
-
-		public void Check(int id, bool check)
-		{
-			wxMenuBase_Check(wxobj, id, check);
-		}
-
-		//---------------------------------------------------------------------
-
-		public int GetMenuItemCount()
-		{
-			return wxMenuBase_GetMenuItemCount(wxobj);
-		}
-
-		public MenuItem GetMenuItem(int index)
-		{
-			return cast(MenuItem)FindObject(wxMenuBase_GetMenuItem(wxobj, index), &MenuItem.New2);
+			return cast(ЭлементМеню)FindObject(wxMenuBase_AppendItem(шхобъ, wxObject.SafePtr(элемент)), &ЭлементМеню.New2);
 		}
 
 		//---------------------------------------------------------------------
 		
-		public /+virtual+/ void Break()
+		public ЭлементМеню AppendCheckItem(цел ид, ткст элемент)
 		{
-			wxMenuBase_Break(wxobj);
+			return AppendCheckItem(ид, элемент, "");
+		}
+
+		public ЭлементМеню AppendCheckItem(цел ид, ткст элемент, ткст справка)
+		{
+			return cast(ЭлементМеню)FindObject(wxMenuBase_AppendCheckItem(шхобъ, ид, элемент, справка), &ЭлементМеню.New2);
+		}
+
+		//---------------------------------------------------------------------
+
+		public ЭлементМеню AppendSeparator()
+		{
+			return cast(ЭлементМеню)FindObject(wxMenuBase_AppendSeparator(шхобъ), &ЭлементМеню.New2);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public MenuItem Insert(int pos, MenuItem item)
+		public ЭлементМеню AppendRadioItem(цел itemid, ткст текст)
 		{
-			return cast(MenuItem)FindObject(wxMenuBase_Insert(wxobj, pos, wxObject.SafePtr(item)), &MenuItem.New2);
+			return AppendRadioItem(itemid, текст, "");
+		}
+		
+		public ЭлементМеню AppendRadioItem(цел itemid, ткст текст, ткст справка)
+		{
+			return cast(ЭлементМеню)FindObject(wxMenuBase_AppendRadioItem(шхобъ, itemid, текст, справка), &ЭлементМеню.New2);
+		}
+
+		//---------------------------------------------------------------------
+
+		public проц Check(цел ид, бул check)
+		{
+			wxMenuBase_Check(шхобъ, ид, check);
+		}
+
+		//---------------------------------------------------------------------
+
+		public цел GetMenuItemCount()
+		{
+			return wxMenuBase_GetMenuItemCount(шхобъ);
+		}
+
+		public ЭлементМеню GetMenuItem(цел индекс)
+		{
+			return cast(ЭлементМеню)FindObject(wxMenuBase_GetMenuItem(шхобъ, индекс), &ЭлементМеню.New2);
+		}
+
+		//---------------------------------------------------------------------
+		
+		public /+virtual+/ проц Break()
+		{
+			wxMenuBase_Break(шхобъ);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public MenuItem Insert(int pos, int itemid, string text)
+		public ЭлементМеню Insert(цел поз, ЭлементМеню элемент)
 		{
-			return Insert(pos, itemid, text, "", ItemKind.wxITEM_NORMAL);
-		}
-		
-		public MenuItem Insert(int pos, int itemid, string text, string help)
-		{
-			return Insert(pos, itemid, text, help, ItemKind.wxITEM_NORMAL);
-		}
-		
-		public MenuItem Insert(int pos, int itemid, string text, string help, ItemKind kind)
-		{
-			return cast(MenuItem)FindObject(wxMenuBase_Insert2(wxobj, pos, itemid, text, help, kind), &MenuItem.New2);
+			return cast(ЭлементМеню)FindObject(wxMenuBase_Insert(шхобъ, поз, wxObject.SafePtr(элемент)), &ЭлементМеню.New2);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public MenuItem InsertSeparator(int pos)
+		public ЭлементМеню Insert(цел поз, цел itemid, ткст текст)
 		{
-			return cast(MenuItem)FindObject(wxMenuBase_InsertSeparator(wxobj, pos), &MenuItem.New2);
+			return Insert(поз, itemid, текст, "", ItemKind.wxITEM_NORMAL);
+		}
+		
+		public ЭлементМеню Insert(цел поз, цел itemid, ткст текст, ткст справка)
+		{
+			return Insert(поз, itemid, текст, справка, ItemKind.wxITEM_NORMAL);
+		}
+		
+		public ЭлементМеню Insert(цел поз, цел itemid, ткст текст, ткст справка, ItemKind вид)
+		{
+			return cast(ЭлементМеню)FindObject(wxMenuBase_Insert2(шхобъ, поз, itemid, текст, справка, вид), &ЭлементМеню.New2);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public MenuItem InsertCheckItem(int pos, int itemid, string text)
+		public ЭлементМеню InsertSeparator(цел поз)
 		{
-			return InsertCheckItem(pos, itemid, text, "");
+			return cast(ЭлементМеню)FindObject(wxMenuBase_InsertSeparator(шхобъ, поз), &ЭлементМеню.New2);
 		}
 		
-		public MenuItem InsertCheckItem(int pos, int itemid, string text, string help)
+		//---------------------------------------------------------------------
+		
+		public ЭлементМеню InsertCheckItem(цел поз, цел itemid, ткст текст)
 		{
-			return cast(MenuItem)FindObject(wxMenuBase_InsertCheckItem(wxobj, pos, itemid, text, help), &MenuItem.New2);
+			return InsertCheckItem(поз, itemid, текст, "");
+		}
+		
+		public ЭлементМеню InsertCheckItem(цел поз, цел itemid, ткст текст, ткст справка)
+		{
+			return cast(ЭлементМеню)FindObject(wxMenuBase_InsertCheckItem(шхобъ, поз, itemid, текст, справка), &ЭлементМеню.New2);
 		}		
 		
 		//---------------------------------------------------------------------
 		
-		public MenuItem InsertRadioItem(int pos, int itemid, string text)
+		public ЭлементМеню InsertRadioItem(цел поз, цел itemid, ткст текст)
 		{
-			return InsertCheckItem(pos, itemid, text, "");
+			return InsertCheckItem(поз, itemid, текст, "");
 		}
 		
-		public MenuItem InsertRadioItem(int pos, int itemid, string text, string help)
+		public ЭлементМеню InsertRadioItem(цел поз, цел itemid, ткст текст, ткст справка)
 		{
-			return cast(MenuItem)FindObject(wxMenuBase_InsertRadioItem(wxobj, pos, itemid, text, help), &MenuItem.New2);
+			return cast(ЭлементМеню)FindObject(wxMenuBase_InsertRadioItem(шхобъ, поз, itemid, текст, справка), &ЭлементМеню.New2);
 		}				
 		
 		//---------------------------------------------------------------------
 
-		public MenuItem Insert(int pos, int itemid, string text, Menu submenu)
+		public ЭлементМеню Insert(цел поз, цел itemid, ткст текст, Меню submenu)
 		{
-			return Insert(pos, itemid, text, submenu, "");
+			return Insert(поз, itemid, текст, submenu, "");
 		}
 		
-		public MenuItem Insert(int pos, int itemid, string text, Menu submenu, string help)
+		public ЭлементМеню Insert(цел поз, цел itemid, ткст текст, Меню submenu, ткст справка)
 		{
-			return cast(MenuItem)FindObject(wxMenuBase_InsertSubMenu(wxobj, pos, itemid, text, wxObject.SafePtr(submenu), help), &MenuItem.New2);
-		}
-		
-		//---------------------------------------------------------------------
-		
-		public MenuItem Prepend(MenuItem item)
-		{
-			return cast(MenuItem)FindObject(wxMenuBase_Prepend(wxobj, wxObject.SafePtr(item)), &MenuItem.New2);
+			return cast(ЭлементМеню)FindObject(wxMenuBase_InsertSubMenu(шхобъ, поз, itemid, текст, wxObject.SafePtr(submenu), справка), &ЭлементМеню.New2);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public MenuItem Prepend(int itemid, string text)
+		public ЭлементМеню Prepend(ЭлементМеню элемент)
 		{
-			return Prepend(itemid, text, "", ItemKind.wxITEM_NORMAL);
-		}
-		
-		public MenuItem Prepend(int itemid, string text, string help)
-		{
-			return Prepend(itemid, text, help, ItemKind.wxITEM_NORMAL);
-		}
-		
-		public MenuItem Prepend(int itemid, string text, string help, ItemKind kind)
-		{
-			return cast(MenuItem)FindObject(wxMenuBase_Prepend2(wxobj, itemid, text, help, kind), &MenuItem.New2);
+			return cast(ЭлементМеню)FindObject(wxMenuBase_Prepend(шхобъ, wxObject.SafePtr(элемент)), &ЭлементМеню.New2);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public MenuItem PrependSeparator()
+		public ЭлементМеню Prepend(цел itemid, ткст текст)
 		{
-			return cast(MenuItem)FindObject(wxMenuBase_PrependSeparator(wxobj));
+			return Prepend(itemid, текст, "", ItemKind.wxITEM_NORMAL);
+		}
+		
+		public ЭлементМеню Prepend(цел itemid, ткст текст, ткст справка)
+		{
+			return Prepend(itemid, текст, справка, ItemKind.wxITEM_NORMAL);
+		}
+		
+		public ЭлементМеню Prepend(цел itemid, ткст текст, ткст справка, ItemKind вид)
+		{
+			return cast(ЭлементМеню)FindObject(wxMenuBase_Prepend2(шхобъ, itemid, текст, справка, вид), &ЭлементМеню.New2);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public MenuItem PrependCheckItem(int itemid, string text)
+		public ЭлементМеню PrependSeparator()
 		{
-			return PrependCheckItem(itemid, text, "");
-		}
-		
-		public MenuItem PrependCheckItem(int itemid, string text, string help)
-		{
-			return cast(MenuItem)FindObject(wxMenuBase_PrependCheckItem(wxobj, itemid, text, help), &MenuItem.New2);
+			return cast(ЭлементМеню)FindObject(wxMenuBase_PrependSeparator(шхобъ));
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public MenuItem PrependRadioItem(int itemid, string text)
+		public ЭлементМеню PrependCheckItem(цел itemid, ткст текст)
 		{
-			return PrependRadioItem(itemid, text, "");
+			return PrependCheckItem(itemid, текст, "");
 		}
 		
-		public MenuItem PrependRadioItem(int itemid, string text, string help)
+		public ЭлементМеню PrependCheckItem(цел itemid, ткст текст, ткст справка)
 		{
-			return cast(MenuItem)FindObject(wxMenuBase_PrependRadioItem(wxobj, itemid, text, help), &MenuItem.New2);
+			return cast(ЭлементМеню)FindObject(wxMenuBase_PrependCheckItem(шхобъ, itemid, текст, справка), &ЭлементМеню.New2);
+		}
+		
+		//---------------------------------------------------------------------
+		
+		public ЭлементМеню PrependRadioItem(цел itemid, ткст текст)
+		{
+			return PrependRadioItem(itemid, текст, "");
+		}
+		
+		public ЭлементМеню PrependRadioItem(цел itemid, ткст текст, ткст справка)
+		{
+			return cast(ЭлементМеню)FindObject(wxMenuBase_PrependRadioItem(шхобъ, itemid, текст, справка), &ЭлементМеню.New2);
 		}		
 		
 		//---------------------------------------------------------------------
 		
-		public MenuItem Prepend(int itemid, string text, Menu submenu)
+		public ЭлементМеню Prepend(цел itemid, ткст текст, Меню submenu)
 		{
-			return Prepend(itemid, text, submenu, "");
+			return Prepend(itemid, текст, submenu, "");
 		}
 		
-		public MenuItem Prepend(int itemid, string text, Menu submenu, string help)
+		public ЭлементМеню Prepend(цел itemid, ткст текст, Меню submenu, ткст справка)
 		{
-			return cast(MenuItem)FindObject(wxMenuBase_PrependSubMenu(wxobj, itemid, text, wxObject.SafePtr(submenu), help), &MenuItem.New2);
+			return cast(ЭлементМеню)FindObject(wxMenuBase_PrependSubMenu(шхобъ, itemid, текст, wxObject.SafePtr(submenu), справка), &ЭлементМеню.New2);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public MenuItem Remove(int itemid)
+		public ЭлементМеню Remove(цел itemid)
 		{
-			return cast(MenuItem)FindObject(wxMenuBase_Remove(wxobj, itemid), &MenuItem.New2);
+			return cast(ЭлементМеню)FindObject(wxMenuBase_Remove(шхобъ, itemid), &ЭлементМеню.New2);
 		}
 		
-		public MenuItem Remove(MenuItem item)
+		public ЭлементМеню Remove(ЭлементМеню элемент)
 		{
-			return cast(MenuItem)FindObject(wxMenuBase_Remove2(wxobj, wxObject.SafePtr(item)), &MenuItem.New2);
+			return cast(ЭлементМеню)FindObject(wxMenuBase_Remove2(шхобъ, wxObject.SafePtr(элемент)), &ЭлементМеню.New2);
 		}		
 		
 		//---------------------------------------------------------------------
 		
-		public bool Delete(int itemid)
+		public бул Delete(цел itemid)
 		{
-			return wxMenuBase_Delete(wxobj, itemid);
+			return wxMenuBase_Delete(шхобъ, itemid);
 		}
 		
-		public bool Delete(MenuItem item)
+		public бул Delete(ЭлементМеню элемент)
 		{
-			return wxMenuBase_Delete2(wxobj, wxObject.SafePtr(item));
-		}
-		
-		//---------------------------------------------------------------------
-		
-		public bool Destroy(int itemid)
-		{
-			return wxMenuBase_Destroy(wxobj, itemid);
-		}
-		
-		public bool Destroy(MenuItem item)
-		{
-			return wxMenuBase_Destroy2(wxobj, wxObject.SafePtr(item));
+			return wxMenuBase_Delete2(шхобъ, wxObject.SafePtr(элемент));
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public /+virtual+/ int FindItem(string item)
+		public бул Разрушь(цел itemid)
 		{
-			return wxMenuBase_FindItem(wxobj, item);
+			return wxMenuBase_Destroy(шхобъ, itemid);
+		}
+		
+		public бул Разрушь(ЭлементМеню элемент)
+		{
+			return wxMenuBase_Destroy2(шхобъ, wxObject.SafePtr(элемент));
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public MenuItem FindItem(int itemid)
+		public /+virtual+/ цел FindItem(ткст элемент)
 		{
-			Menu menuRef = null;
+			return wxMenuBase_FindItem(шхобъ, элемент);
+		}
+		
+		//---------------------------------------------------------------------
+		
+		public ЭлементМеню FindItem(цел itemid)
+		{
+			Меню menuRef = пусто;
 			return FindItem(itemid, menuRef);
 		}
 		
-		public MenuItem FindItem(int itemid, inout Menu menu)
+		public ЭлементМеню FindItem(цел itemid, inout Меню меню)
 		{
-			IntPtr menuRef = IntPtr.init;
-			if (menu) 
+			ЦУк menuRef = ЦУк.init;
+			if (меню) 
 			{
-				menuRef = wxObject.SafePtr(menu);
+				menuRef = wxObject.SafePtr(меню);
 			}
-			return cast(MenuItem)FindObject(wxMenuBase_FindItem2(wxobj, itemid, menuRef), &MenuItem.New2);
+			return cast(ЭлементМеню)FindObject(wxMenuBase_FindItem2(шхобъ, itemid, menuRef), &ЭлементМеню.New2);
 		}
 		
 		//---------------------------------------------------------------------
 		 
-		public MenuItem FindItemByPosition(int position)
+		public ЭлементМеню FindItemByPosition(цел position)
 		{
-			return cast(MenuItem)FindObject(wxMenuBase_FindItemByPosition(wxobj, position), &MenuItem.New2);
+			return cast(ЭлементМеню)FindObject(wxMenuBase_FindItemByPosition(шхобъ, position), &ЭлементМеню.New2);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void Enable(int itemid, bool enable)
+		public проц Enable(цел itemid, бул enable)
 		{
-			wxMenuBase_Enable(wxobj, itemid, enable);
+			wxMenuBase_Enable(шхобъ, itemid, enable);
 		}
 		
-		public bool IsEnabled(int itemid)
+		public бул IsEnabled(цел itemid)
 		{
-			return wxMenuBase_IsEnabled(wxobj, itemid);
-		}
-		
-		//---------------------------------------------------------------------
-		
-		public bool IsChecked(int itemid)
-		{
-			return wxMenuBase_IsChecked(wxobj, itemid);
+			return wxMenuBase_IsEnabled(шхобъ, itemid);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void SetLabel(int itemid, string label)
+		public бул IsChecked(цел itemid)
 		{
-			wxMenuBase_SetLabel(wxobj, itemid, label);
-		}
-		
-		public string GetLabel(int itemid)
-		{
-			return cast(string) new wxString(wxMenuBase_GetLabel(wxobj, itemid), true);
+			return wxMenuBase_IsChecked(шхобъ, itemid);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void SetHelpString(int itemid, string helpString)
+		public проц SetLabel(цел itemid, ткст надпись)
 		{
-			wxMenuBase_SetHelpString(wxobj, itemid, helpString);
+			wxMenuBase_SetLabel(шхобъ, itemid, надпись);
 		}
 		
-		public string GetHelpString(int itemid)
+		public ткст GetLabel(цел itemid)
 		{
-			return cast(string) new wxString(wxMenuBase_GetHelpString(wxobj, itemid), true);
+			return cast(ткст) new wxString(wxMenuBase_GetLabel(шхобъ, itemid), да);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public string Title() { return cast(string) new wxString(wxMenuBase_GetTitle(wxobj), true); }
-		public void Title(string value) { wxMenuBase_SetTitle(wxobj, value); }
+		public проц SetHelpString(цел itemid, ткст helpString)
+		{
+			wxMenuBase_SetHelpString(шхобъ, itemid, helpString);
+		}
+		
+		public ткст GetHelpString(цел itemid)
+		{
+			return cast(ткст) new wxString(wxMenuBase_GetHelpString(шхобъ, itemid), да);
+		}
+		
+		//---------------------------------------------------------------------
+		
+		public ткст Title() { return cast(ткст) new wxString(wxMenuBase_GetTitle(шхобъ), да); }
+		public проц Title(ткст значение) { wxMenuBase_SetTitle(шхобъ, значение); }
 		
 		//---------------------------------------------------------------------
 		
 		public EvtHandler EventHandler() {
-		//	return cast(EvtHandler)FindObject(wxMenuBase_GetEventHandler(wxobj), &EvtHandler.New);
-			IntPtr ptr = wxMenuBase_GetEventHandler(wxobj);
+		//	return cast(EvtHandler)FindObject(wxMenuBase_GetEventHandler(шхобъ), &EvtHandler.Нов);
+			ЦУк ptr = wxMenuBase_GetEventHandler(шхобъ);
 			wxObject o = FindObject(ptr);
 			if (o) return cast(EvtHandler)o;
 			else return new EvtHandler(ptr);
 		}
-		public void EventHandler(EvtHandler value) { wxMenuBase_SetEventHandler(wxobj, wxObject.SafePtr(value)); }
+		public проц EventHandler(EvtHandler значение) { wxMenuBase_SetEventHandler(шхобъ, wxObject.SafePtr(значение)); }
 		
 		//---------------------------------------------------------------------
 		
-		public Window InvokingWindow() { return cast(Window)FindObject(wxMenuBase_GetInvokingWindow(wxobj), &Window.New); }
-		public void InvokingWindow(Window value) { wxMenuBase_SetInvokingWindow(wxobj, wxObject.SafePtr(value)); }
+		public Окно InvokingWindow() { return cast(Окно)FindObject(wxMenuBase_GetInvokingWindow(шхобъ), &Окно.Нов); }
+		public проц InvokingWindow(Окно значение) { wxMenuBase_SetInvokingWindow(шхобъ, wxObject.SafePtr(значение)); }
 		
 		//---------------------------------------------------------------------
 		
-		public int Style() { return cast(int)wxMenuBase_GetStyle(wxobj); }
+		public цел Style() { return cast(цел)wxMenuBase_GetStyle(шхобъ); }
 		
 		//---------------------------------------------------------------------
 		
-		public void UpdateUI()
+		public проц UpdateUI()
 		{
-			UpdateUI(null);
+			UpdateUI(пусто);
 		}
 		
-		public void UpdateUI(EvtHandler source)
+		public проц UpdateUI(EvtHandler source)
 		{
-			wxMenuBase_UpdateUI(wxobj, wxObject.SafePtr(source));
-		}
-		
-		//---------------------------------------------------------------------
-		
-		public MenuBar menuBar() { return cast(MenuBar)FindObject(wxMenuBase_GetMenuBar(wxobj), &MenuBar.New); }
-		
-		//---------------------------------------------------------------------
-		
-		public bool Attached() { return wxMenuBase_IsAttached(wxobj); }
-		
-		//---------------------------------------------------------------------
-		
-		public Menu Parent() { return cast(Menu)FindObject(wxMenuBase_GetParent(wxobj), &Menu.New); }
-		public void Parent(Menu value) { wxMenuBase_SetParent(wxobj, wxObject.SafePtr(value)); }
-		
-		//---------------------------------------------------------------------
-		
-		public MenuItem FindChildItem(int itemid)
-		{
-			return cast(MenuItem)FindObject(wxMenuBase_FindChildItem2(wxobj, itemid), &MenuItem.New2);
-		}
-		
-		public MenuItem FindChildItem(int itemid, out int pos)
-		{
-			return cast(MenuItem)FindObject(wxMenuBase_FindChildItem(wxobj, itemid, pos), &MenuItem.New2);
+			wxMenuBase_UpdateUI(шхобъ, wxObject.SafePtr(source));
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public bool SendEvent(int itemid)
+		public MenuBar menuBar() { return cast(MenuBar)FindObject(wxMenuBase_GetMenuBar(шхобъ), &MenuBar.Нов); }
+		
+		//---------------------------------------------------------------------
+		
+		public бул Attached() { return wxMenuBase_IsAttached(шхобъ); }
+		
+		//---------------------------------------------------------------------
+		
+		public Меню Parent() { return cast(Меню)FindObject(wxMenuBase_GetParent(шхобъ), &Меню.Нов); }
+		public проц Parent(Меню значение) { wxMenuBase_SetParent(шхобъ, wxObject.SafePtr(значение)); }
+		
+		//---------------------------------------------------------------------
+		
+		public ЭлементМеню FindChildItem(цел itemid)
+		{
+			return cast(ЭлементМеню)FindObject(wxMenuBase_FindChildItem2(шхобъ, itemid), &ЭлементМеню.New2);
+		}
+		
+		public ЭлементМеню FindChildItem(цел itemid, out цел поз)
+		{
+			return cast(ЭлементМеню)FindObject(wxMenuBase_FindChildItem(шхобъ, itemid, поз), &ЭлементМеню.New2);
+		}
+		
+		//---------------------------------------------------------------------
+		
+		public бул SendEvent(цел itemid)
 		{
 			return SendEvent(itemid, -1);
 		}
 		
-		public bool SendEvent(int itemid, int xchecked)
+		public бул SendEvent(цел itemid, цел xchecked)
 		{
-			return wxMenuBase_SendEvent(wxobj, itemid, xchecked);
+			return wxMenuBase_SendEvent(шхобъ, itemid, xchecked);
 		}		
 	}
 	
@@ -527,150 +527,150 @@ public import wx.MenuBar;
 	{
 		public EventListener listener;
 		public wxObject owner;
-		public int id;
+		public цел ид;
 		
-		public this( int id, EventListener listener, wxObject owner )
+		public this( цел ид, EventListener listener, wxObject owner )
 		{
 			this.listener = listener;
 			this.owner = owner;
-			this.id = id;
+			this.ид = ид;
 		}
 	}
 	
 	//---------------------------------------------------------------------
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxMenu_ctor(string titel, uint style);
-		static extern (C) IntPtr wxMenu_ctor2(uint style);
+		static extern (C) ЦУк wxMenu_ctor(ткст titel, бцел стиль);
+		static extern (C) ЦУк wxMenu_ctor2(бцел стиль);
 		//! \endcond
 		
 		//---------------------------------------------------------------------
 		
-	alias Menu wxMenu;
-	public class Menu : MenuBase
+	alias Меню wxMenu;
+	public class Меню : MenuBase
 	{
 		public MenuListener[] eventListeners;
 
 		// InvokingWindow does not work on Windows, so we 
 		// need this...
-		private Window parent = null;
+		private Окно родитель = пусто;
 
-		// if events were connected with Frame.MenuBar or Window.PopupMenu
-		// that means with ConnectEvents(), we have a Invoking Window and can add 
+		// if events were connected with Frame.MenuBar or Окно.PopupMenu
+		// that means with ConnectEvents(), we have a Invoking Окно and can add 
 		// the event directly to the EventHandler
-		private bool eventsconnected = false; 
+		private бул eventsconnected = нет; 
 		
 		//---------------------------------------------------------------------
 		 
 		public this()
 			{ this(0);}
 			
-		public this(int style)
-			{ this(wxMenu_ctor2(cast(uint)style));}
+		public this(цел стиль)
+			{ this(wxMenu_ctor2(cast(бцел)стиль));}
 		
-		public this(string titel)
+		public this(ткст titel)
 			{ this(titel, 0);}
 		
-		public this(string titel, int style)
-			{ this(wxMenu_ctor(titel, cast(uint)style)); }
+		public this(ткст titel, цел стиль)
+			{ this(wxMenu_ctor(titel, cast(бцел)стиль)); }
 
-		public this(IntPtr wxobj)
-			{ super(wxobj); }
+		public this(ЦУк шхобъ)
+			{ super(шхобъ); }
 
-		public static wxObject New(IntPtr wxobj)
+		public static wxObject Нов(ЦУк шхобъ)
 		{
-			return new Menu(wxobj);
+			return new Меню(шхобъ);
 		}
 			
 		//---------------------------------------------------------------------
 			
-		public void AddEvent(int inId, EventListener el, wxObject owner)
+		public проц AddEvent(цел inId, EventListener el, wxObject owner)
 		{
-			// This is the only way of handling menu selection events (maybe there is an other solution)
-			// But for now we have to add the EventListener to the EventHandler of the invoking window,
+			// This is the only way of handling меню selection events (maybe there is an other solution)
+			// But for now we have to add the EventListener to the EventHandler of the invoking окно,
 			// otherwise nothing happens.
-			// As int as we do not have an invoking window, which means, that for example the
-			// MenuBar of this Menu isn't connected to a Frame, the EventListener gets only
+			// As цел as we do not have an invoking окно, which means, that for example the
+			// MenuBar of this Меню isn't connected to a Frame, the EventListener gets only
 			// added to the ArrayList, otherwise it gets directly added to the EventHandler of
-			// the invoking window. When Frame.MenuBar is set, it will call ConnectEvents() 
-			// for each Menu ; MenuBar
+			// the invoking окно. When Frame.MenuBar is set, it will call ConnectEvents() 
+			// for each Меню ; MenuBar
 			eventListeners ~=  new MenuListener( inId, el, owner );
 			
 			if ( eventsconnected )
-				parent.AddCommandListener(Event.wxEVT_COMMAND_MENU_SELECTED, inId, el, owner);
+				родитель.AddCommandListener(Событие.wxEVT_COMMAND_MENU_SELECTED, inId, el, owner);
 		}	
 		
 		//---------------------------------------------------------------------
-		// ConnectEvents gets only called from Window and Frame
+		// ConnectEvents gets only called from Окно and Frame
 		
-		public void ConnectEvents(Window parent)
+		public проц ConnectEvents(Окно родитель)
 		{
-			this.parent = parent;
+			this.родитель = родитель;
 
 			if ( eventListeners.length > 0 )
 			{
 				foreach( MenuListener ml ; eventListeners )
 				{
-					parent.AddCommandListener(Event.wxEVT_COMMAND_MENU_SELECTED, ml.id, ml.listener, ml.owner);
+					родитель.AddCommandListener(Событие.wxEVT_COMMAND_MENU_SELECTED, ml.ид, ml.listener, ml.owner);
 				}
 			}
 			
-			eventsconnected = true;
+			eventsconnected = да;
 		}
 		
 		//---------------------------------------------------------------------
 		
 		// This is for faster coding ;) and closes request on SourceForge ;))))
 		// WL stands for with listener
-		public MenuItem AppendWL(int id, string item, EventListener listener)
+		public ЭлементМеню AppendWL(цел ид, ткст элемент, EventListener listener)
 		{
-			MenuItem tmpitem = Append(id, item, "");
+			ЭлементМеню tmpitem = Append(ид, элемент, "");
 			
-			AddEvent( id, listener, tmpitem );
+			AddEvent( ид, listener, tmpitem );
 			
 			return tmpitem;
 		}
 		
-		public MenuItem AppendWL(int id, string item, string help, EventListener listener)
+		public ЭлементМеню AppendWL(цел ид, ткст элемент, ткст справка, EventListener listener)
 		{
-			MenuItem tmpitem = Append(id, item, help, ItemKind.wxITEM_NORMAL);
+			ЭлементМеню tmpitem = Append(ид, элемент, справка, ItemKind.wxITEM_NORMAL);
 			
-			AddEvent( id, listener, tmpitem );
+			AddEvent( ид, listener, tmpitem );
 			
 			return tmpitem;
 		}
 		
-		public MenuItem AppendWL(int id, string item, string help, ItemKind kind, EventListener listener)
+		public ЭлементМеню AppendWL(цел ид, ткст элемент, ткст справка, ItemKind вид, EventListener listener)
 		{
-			MenuItem tmpitem = Append(id, item, help, kind);
+			ЭлементМеню tmpitem = Append(ид, элемент, справка, вид);
 			
-			AddEvent( id, listener, tmpitem );
+			AddEvent( ид, listener, tmpitem );
 			
 			return tmpitem;
 		}
 		
-		public MenuItem AppendWL(int id, string item, Menu subMenu, EventListener listener)
+		public ЭлементМеню AppendWL(цел ид, ткст элемент, Меню подменю, EventListener listener)
 		{
-			MenuItem tmpitem = Append(id, item, subMenu, "");
+			ЭлементМеню tmpitem = Append(ид, элемент, подменю, "");
 			
-			AddEvent( id, listener, tmpitem );
+			AddEvent( ид, listener, tmpitem );
 			
 			return tmpitem;
 		}
 
-		public MenuItem AppendWL(int id, string item, Menu subMenu, string help, EventListener listener)
+		public ЭлементМеню AppendWL(цел ид, ткст элемент, Меню подменю, ткст справка, EventListener listener)
 		{
-			MenuItem tmpitem = Append(id, item, subMenu, help);
+			ЭлементМеню tmpitem = Append(ид, элемент, подменю, справка);
 			
-			AddEvent( id, listener, tmpitem );
+			AddEvent( ид, listener, tmpitem );
 			
 			return tmpitem;
 		}
 
-		public MenuItem AppendWL(MenuItem item, EventListener listener) 
+		public ЭлементМеню AppendWL(ЭлементМеню элемент, EventListener listener) 
 		{
-			MenuItem tmpitem = Append(item);
-			AddEvent(item.ID, listener, tmpitem);
+			ЭлементМеню tmpitem = Append(элемент);
+			AddEvent(элемент.ИД, listener, tmpitem);
 			return tmpitem;
 		}
 	}

@@ -10,7 +10,7 @@
 // (C) 2004 by Alexander Olk
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: VScroll.d,v 1.10 2007/11/27 08:19:20 afb Exp $
+// $Ид: VScroll.d,v 1.10 2007/11/27 08:19:20 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.VScroll;
@@ -22,124 +22,124 @@ public import wx.SizeEvent;
 		
 		//! \cond EXTERN
 		extern (C) {
-		alias int function(VScrolledWindow obj, int n) Virtual_IntInt;
+		alias цел function(VScrolledWindow объ, цел n) Virtual_IntInt;
 		}
 
-		static extern (C) IntPtr wxVScrolledWindow_ctor();
-		static extern (C) IntPtr wxVScrolledWindow_ctor2(IntPtr parent, int id, inout Point pos, inout Size size, uint style, string name);
-		static extern (C) void wxVScrolledWindow_RegisterVirtual(IntPtr self, VScrolledWindow obj, Virtual_IntInt onGetLineHeight);
-		static extern (C) bool wxVScrolledWindow_Create(IntPtr self,IntPtr parent, int id, inout Point pos, inout Size size, int style, string name);
-		static extern (C) void wxVScrolledWindow_SetLineCount(IntPtr self, int count);
-		static extern (C) bool wxVScrolledWindow_ScrollToLine(IntPtr self, int line);
-		static extern (C) bool wxVScrolledWindow_ScrollLines(IntPtr self, int lines);
-		static extern (C) bool wxVScrolledWindow_ScrollPages(IntPtr self, int pages);
-		static extern (C) void wxVScrolledWindow_RefreshLine(IntPtr self, int line);
-		static extern (C) void wxVScrolledWindow_RefreshLines(IntPtr self, int from, int to);
-		static extern (C) int wxVScrolledWindow_HitTest(IntPtr self, int x, int y);
-		static extern (C) int wxVScrolledWindow_HitTest2(IntPtr self, inout Point pt);
-		static extern (C) void wxVScrolledWindow_RefreshAll(IntPtr self);
-		static extern (C) int wxVScrolledWindow_GetLineCount(IntPtr self);
-		static extern (C) int wxVScrolledWindow_GetFirstVisibleLine(IntPtr self);
-		static extern (C) int wxVScrolledWindow_GetLastVisibleLine(IntPtr self);
-		static extern (C) bool wxVScrolledWindow_IsVisible(IntPtr self, int line);
+		static extern (C) ЦУк wxVScrolledWindow_ctor();
+		static extern (C) ЦУк wxVScrolledWindow_ctor2(ЦУк родитель, цел ид, inout Точка поз, inout Размер size, бцел стиль, ткст имя);
+		static extern (C) проц wxVScrolledWindow_RegisterVirtual(ЦУк сам, VScrolledWindow объ, Virtual_IntInt onGetLineHeight);
+		static extern (C) бул wxVScrolledWindow_Create(ЦУк сам,ЦУк родитель, цел ид, inout Точка поз, inout Размер size, цел стиль, ткст имя);
+		static extern (C) проц wxVScrolledWindow_SetLineCount(ЦУк сам, цел счёт);
+		static extern (C) бул wxVScrolledWindow_ScrollToLine(ЦУк сам, цел line);
+		static extern (C) бул wxVScrolledWindow_ScrollLines(ЦУк сам, цел lines);
+		static extern (C) бул wxVScrolledWindow_ScrollPages(ЦУк сам, цел pages);
+		static extern (C) проц wxVScrolledWindow_RefreshLine(ЦУк сам, цел line);
+		static extern (C) проц wxVScrolledWindow_RefreshLines(ЦУк сам, цел from, цел to);
+		static extern (C) цел wxVScrolledWindow_HitTest(ЦУк сам, цел x, цел y);
+		static extern (C) цел wxVScrolledWindow_HitTest2(ЦУк сам, inout Точка pt);
+		static extern (C) проц wxVScrolledWindow_RefreshAll(ЦУк сам);
+		static extern (C) цел wxVScrolledWindow_GetLineCount(ЦУк сам);
+		static extern (C) цел wxVScrolledWindow_GetFirstVisibleLine(ЦУк сам);
+		static extern (C) цел wxVScrolledWindow_GetLastVisibleLine(ЦУк сам);
+		static extern (C) бул wxVScrolledWindow_IsVisible(ЦУк сам, цел line);
 		//! \endcond
 		
 		//-----------------------------------------------------------------------------
 		
 	public abstract class VScrolledWindow : Panel
 	{
-		public this(IntPtr wxobj)
-			{ super(wxobj); }
+		public this(ЦУк шхобъ)
+			{ super(шхобъ); }
 			
 		public this() {
 			this(wxVScrolledWindow_ctor());
-			wxVScrolledWindow_RegisterVirtual(wxobj, this, &staticOnGetLineHeight);
+			wxVScrolledWindow_RegisterVirtual(шхобъ, this, &staticOnGetLineHeight);
 		}
 			
-		public this(Window parent, int id /*= wxID_ANY*/, Point pos = wxDefaultPosition, Size size = wxDefaultSize, int style=0, string name = wxPanelNameStr)
+		public this(Окно родитель, цел ид /*= wxID_ANY*/, Точка поз = wxDefaultPosition, Размер size = wxDefaultSize, цел стиль=0, ткст имя = wxPanelNameStr)
 		{
-			this(wxVScrolledWindow_ctor2(wxObject.SafePtr(parent), id, pos, size, style, name));
-			wxVScrolledWindow_RegisterVirtual(wxobj, this, &staticOnGetLineHeight);
+			this(wxVScrolledWindow_ctor2(wxObject.SafePtr(родитель), ид, поз, size, стиль, имя));
+			wxVScrolledWindow_RegisterVirtual(шхобъ, this, &staticOnGetLineHeight);
 		}
 		
 		//---------------------------------------------------------------------
-		// ctors with self created id
+		// ctors with сам created ид
 		
-		public this(Window parent, Point pos = wxDefaultPosition, Size size = wxDefaultSize, int style=0, string name = wxPanelNameStr)
-			{ this(parent, Window.UniqueID, pos, size, style, name);}
-		
-		//-----------------------------------------------------------------------------
-		
-		public override bool Create(Window parent, int id, inout Point pos, inout Size size, int style, string name)
-		{
-			return wxVScrolledWindow_Create(wxobj, wxObject.SafePtr(parent), id, pos, size, style, name); 
-		//	return super.Create(parent, id, pos, size, style | wxVSCROLL, name);
-		}
+		public this(Окно родитель, Точка поз = wxDefaultPosition, Размер size = wxDefaultSize, цел стиль=0, ткст имя = wxPanelNameStr)
+			{ this(родитель, Окно.UniqueID, поз, size, стиль, имя);}
 		
 		//-----------------------------------------------------------------------------
 		
-		static extern(C) private int staticOnGetLineHeight(VScrolledWindow obj, int n)
+		public override бул Create(Окно родитель, цел ид, inout Точка поз, inout Размер size, цел стиль, ткст имя)
 		{
-			return obj.OnGetLineHeight(n);
-		}
-		protected abstract int OnGetLineHeight(int n);
-		
-		public void LineCount(int value) { wxVScrolledWindow_SetLineCount(wxobj, value); }
-		public int LineCount() { return wxVScrolledWindow_GetLineCount(wxobj); }
-		
-		public void ScrollToLine(int line)
-		{
-			wxVScrolledWindow_ScrollToLine(wxobj, line);
+			return wxVScrolledWindow_Create(шхобъ, wxObject.SafePtr(родитель), ид, поз, size, стиль, имя); 
+		//	return super.Create(родитель, ид, поз, size, стиль | wxVSCROLL, имя);
 		}
 		
-		public override bool ScrollLines(int lines)
+		//-----------------------------------------------------------------------------
+		
+		static extern(C) private цел staticOnGetLineHeight(VScrolledWindow объ, цел n)
 		{
-			return wxVScrolledWindow_ScrollLines(wxobj, lines);
+			return объ.OnGetLineHeight(n);
+		}
+		protected abstract цел OnGetLineHeight(цел n);
+		
+		public проц LineCount(цел значение) { wxVScrolledWindow_SetLineCount(шхобъ, значение); }
+		public цел LineCount() { return wxVScrolledWindow_GetLineCount(шхобъ); }
+		
+		public проц ScrollToLine(цел line)
+		{
+			wxVScrolledWindow_ScrollToLine(шхобъ, line);
 		}
 		
-		public override bool ScrollPages(int pages)
+		public override бул ScrollLines(цел lines)
 		{
-			return wxVScrolledWindow_ScrollPages(wxobj, pages);
+			return wxVScrolledWindow_ScrollLines(шхобъ, lines);
 		}
 		
-		public void RefreshLine(int line)
+		public override бул ScrollPages(цел pages)
 		{
-			wxVScrolledWindow_RefreshLine(wxobj, line);
+			return wxVScrolledWindow_ScrollPages(шхобъ, pages);
 		}
 		
-		public void RefreshLines(int from, int to)
+		public проц RefreshLine(цел line)
 		{
-			wxVScrolledWindow_RefreshLines(wxobj, from, to);
+			wxVScrolledWindow_RefreshLine(шхобъ, line);
 		}
 		
-		public int HitTest(int x, int y)
+		public проц RefreshLines(цел from, цел to)
 		{
-			return wxVScrolledWindow_HitTest(wxobj, x, y);
+			wxVScrolledWindow_RefreshLines(шхобъ, from, to);
 		}
 		
-		public int HitTest(Point pt)
+		public цел HitTest(цел x, цел y)
 		{
-			return wxVScrolledWindow_HitTest2(wxobj, pt);
+			return wxVScrolledWindow_HitTest(шхобъ, x, y);
 		}
 		
-		public /+virtual+/ void RefreshAll()
+		public цел HitTest(Точка pt)
 		{
-			wxVScrolledWindow_RefreshAll(wxobj);
+			return wxVScrolledWindow_HitTest2(шхобъ, pt);
 		}
 		
-		public int GetFirstVisibleLine()
+		public /+virtual+/ проц RefreshAll()
 		{
-			return wxVScrolledWindow_GetFirstVisibleLine(wxobj);
+			wxVScrolledWindow_RefreshAll(шхобъ);
 		}
 		
-		public int GetLastVisibleLine()
+		public цел GetFirstVisibleLine()
 		{
-			return wxVScrolledWindow_GetLastVisibleLine(wxobj);
+			return wxVScrolledWindow_GetFirstVisibleLine(шхобъ);
+		}
+		
+		public цел GetLastVisibleLine()
+		{
+			return wxVScrolledWindow_GetLastVisibleLine(шхобъ);
 		}	
 		
-		public bool IsVisible(int line)
+		public бул IsVisible(цел line)
 		{
-			return wxVScrolledWindow_IsVisible(wxobj, line);
+			return wxVScrolledWindow_IsVisible(шхобъ, line);
 		}
 	}
 +/

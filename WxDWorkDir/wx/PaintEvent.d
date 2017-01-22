@@ -10,7 +10,7 @@
 // (C) 2004 by Alexander Olk
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: PaintEvent.d,v 1.9 2006/11/17 15:21:00 afb Exp $
+// $Ид: PaintEvent.d,v 1.9 2006/11/17 15:21:00 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.PaintEvent;
@@ -19,17 +19,17 @@ public import wx.common;
 public import wx.Event;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxPaintEvent_ctor(int Id);
+		static extern (C) ЦУк wxPaintEvent_ctor(цел Ид);
 		//! \endcond
 		
 		//-----------------------------------------------------------------------------
 
 	alias PaintEvent wxPaintEvent;
-	public class PaintEvent : Event
+	public class PaintEvent : Событие
 	{
-		public this(IntPtr wxobj) 
-			{ super(wxobj); }
+		public this(ЦУк шхобъ) 
+			{ super(шхобъ); }
 
-		public this(int Id=0)
-			{ this(wxPaintEvent_ctor(Id)); }
+		public this(цел Ид=0)
+			{ this(wxPaintEvent_ctor(Ид)); }
 	}

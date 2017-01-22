@@ -15,17 +15,17 @@
 //    + ToString() method for simple formatting of display properties
 //    + Implemented IComparable to allow for simple sorting of modes
 //    + Did not implement IsOK -- maybee I did not understand it but
-//      it seems impossible to not be true.
+//      it seems impossible to not be да.
 //
 // Note that == and the Matches method differ in how they work. == is
-// true equality of all properties. Matches implements the wxWidgets
+// да equality of all properties. Matches implements the wxWidgets
 // concept of display equivalence.
 //
 // VideoMode is immutable: it can not be modified once created, either manually
 // via it's constructor or more likely by calling a method in Display.
 //
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
-// $Id: VideoMode.d,v 1.15 2009/04/28 11:11:50 afb Exp $
+// $Ид: VideoMode.d,v 1.15 2009/04/28 11:11:50 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.VideoMode;
@@ -35,12 +35,12 @@ public import wx.common;
 version (Tango)
 {
 import tango.core.Version;
-import tango.text.convert.Integer;
+import tango.текст.convert.Integer;
 }
 
 version(Phobos)
 {
-private import std.string;
+private import std.ткст;
 private import std.conv;
 }
 
@@ -53,27 +53,27 @@ alias вТкст toString;
 
 //    [StructLayout(LayoutKind.Sequential)]
 
-        deprecated public VideoMode new_VideoMode(int width, int height, int depth, int freq)
+        deprecated public VideoMode new_VideoMode(цел ширина, цел высота, цел глубина, цел freq)
         {
-            return VideoMode(width, height, depth, freq);
+            return VideoMode(ширина, высота, глубина, freq);
         }
 
     public struct VideoMode // : IComparable
     {
         /** struct constructor */
-        public static VideoMode opCall(int width, int height, int depth, int freq)
+        public static VideoMode opCall(цел ширина, цел высота, цел глубина, цел freq)
         {
             VideoMode v;
-            v.w = width;
-            v.h = height;
-            v.bpp = depth;
+            v.w = ширина;
+            v.h = высота;
+            v.bpp = глубина;
             v.refresh = freq;
             return v;
         }
 /+
-		public int opCmp(VideoMode other)
+		public цел opCmp(VideoMode other)
 		{
-		//	VideoMode other = cast(VideoMode) obj;
+		//	VideoMode other = cast(VideoMode) объ;
 			if (other.w > w)
 				return -1;
 			else if (other.w < w)
@@ -94,23 +94,23 @@ alias вТкст toString;
 				return 0;
 		}
 
-        public override int opEquals(Object obj)
+        public override цел opEquals(Объект объ)
         {
-            if (obj === null) return false;
-            VideoMode other = cast(VideoMode) obj;
+            if (объ === пусто) return нет;
+            VideoMode other = cast(VideoMode) объ;
             return (w == other.w) && (h == other.h) && 
                 (bpp == other.bpp) && (refresh == other.refresh);
         }
 
-        public override uint toHash()
+        public override бцел toHash()
         {
             return w ^ h ^ bpp ^ refresh;
         }
 +/
-        // returns true if this mode matches the other one in the sense that all
-        // non zero fields of the other mode have the same value in this one
-        // (except for refresh which is allowed to have a greater value)
-        public bool Matches(VideoMode other)
+        // returns да if this mode matches the other one in the sense that all
+        // non zero fields of the other mode have the same значение in this one
+        // (except for refresh which is allowed to have a greater значение)
+        public бул Matches(VideoMode other)
         {
             return (other.w == 0 || w == other.w) &&
                 (other.h == 0 || h == other.h) &&
@@ -119,46 +119,46 @@ alias вТкст toString;
         }
 
         // trivial accessors
-        public int Width() { return w; }
+        public цел Ширина() { return w; }
 
-        public int Height() { return h; }
+        public цел Высота() { return h; }
 
-        public int Depth() { return bpp; }
+        public цел Depth() { return bpp; }
 
         // This is not defined in vidmode.h
-        public int RefreshFrequency() { return refresh; }
+        public цел RefreshFrequency() { return refresh; }
 
 
-        // returns true if the object has been initialized
+        // returns да if the object has been initialized
         // not implemented -- seems impossible
-        // bool IsOk() const { return w && h; }
+        // бул IsOk() const { return w && h; }
 
 	version (Tango)
 	{
 	  static if (Tango.Major == 0 && Tango.Minor < 994)
 	  {
-		public char[] toUtf8()
+		public сим[] toUtf8()
 		{
-			char[] s;
-			s = tango.text.convert.Integer.toUtf8(w) ~ "x" ~ tango.text.convert.Integer.toUtf8(h);
+			сим[] s;
+			s = tango.текст.convert.Integer.toUtf8(w) ~ "x" ~ tango.текст.convert.Integer.toUtf8(h);
 			if ( bpp > 0 )
-				s ~= ", " ~ tango.text.convert.Integer.toUtf8(bpp) ~ "bpp";
+				s ~= ", " ~ tango.текст.convert.Integer.toUtf8(bpp) ~ "bpp";
 			if ( refresh > 0 )
-				s ~= ", " ~ tango.text.convert.Integer.toUtf8(refresh) ~ "Hz";
+				s ~= ", " ~ tango.текст.convert.Integer.toUtf8(refresh) ~ "Hz";
 			return s;
 		}
 	  }
 	  else
 	  {
-		public string toString()
+		public ткст toString()
 		{
-			string s;
-			s = tango.text.convert.Integer.toString(w) ~ "x" ~ tango.text.convert.Integer.toString(h);
+			ткст s;
+			s = tango.текст.convert.Integer.toString(w) ~ "x" ~ tango.текст.convert.Integer.toString(h);
 			if ( bpp > 0 )
-				s ~= ", " ~ tango.text.convert.Integer.toString(bpp) ~ "bpp";
+				s ~= ", " ~ tango.текст.convert.Integer.toString(bpp) ~ "bpp";
 
 			if ( refresh > 0 )
-				s ~= ", " ~ tango.text.convert.Integer.toString(refresh) ~ "Hz";
+				s ~= ", " ~ tango.текст.convert.Integer.toString(refresh) ~ "Hz";
 
 			return s;
 		}
@@ -166,17 +166,17 @@ alias вТкст toString;
 	}
 	else // Phobos
 	{
-		public string toString()
+		public ткст toString()
 		{
-			string s;
+			ткст s;
 			version (D_Version2)
 			{
-			s = to!(string)(w) ~ "x" ~ to!(string)(h);
+			s = to!(ткст)(w) ~ "x" ~ to!(ткст)(h);
 			if ( bpp > 0 )
-				s ~= ", " ~ to!(string)(bpp) ~ "bpp";
+				s ~= ", " ~ to!(ткст)(bpp) ~ "bpp";
 
 			if ( refresh > 0 )
-				s ~= ", " ~ to!(string)(refresh) ~ "Hz";
+				s ~= ", " ~ to!(ткст)(refresh) ~ "Hz";
 			}
 			else
 			{
@@ -192,12 +192,12 @@ alias вТкст toString;
 		}
 	}
 
-        // the screen size in pixels (e.g. 640*480), 0 means unspecified
-        private int w, h;
+        // the screen size in pixels (e.з. 640*480), 0 means unspecified
+        private цел w, h;
 
-        // bits per pixel (e.g. 32), 1 is monochrome and 0 means unspecified/known
-        private int bpp;
+        // bits per pixel (e.з. 32), 1 is monochrome and 0 means unspecified/known
+        private цел bpp;
 
         // refresh frequency in Hz, 0 means unspecified/unknown
-        private int refresh;
+        private цел refresh;
     }

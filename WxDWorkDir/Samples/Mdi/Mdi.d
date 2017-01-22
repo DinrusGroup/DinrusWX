@@ -8,24 +8,24 @@
 // (C) 2004 by Alexander Olk
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: Mdi.d,v 1.10 2008/04/24 07:23:54 afb Exp $
+// $Ид: Mdi.d,v 1.10 2008/04/24 07:23:54 afb Exp $
 //-----------------------------------------------------------------------------
 
 import wx.wx;
 private import std.stdio;
-private import std.string;
+private import std.ткст;
 
 struct ArrayList /* for .NET compatibility */
 {
-	Object[] array;
+	Объект[] array;
 
-	void Add(Object o)
+	проц Добавь(Объект o)
 	{
 		array ~= o;
 	}
-	void Remove(Object o)
+	проц Remove(Объект o)
 	{
-		uint i;
+		бцел i;
 		for(i=0;i<array.length;i++) {
 			if (array[i] is o) break;
 		}
@@ -46,40 +46,40 @@ struct ArrayList /* for .NET compatibility */
 		   MDI_ABOUT
 		}
 		
-		public static int gs_nFrames;
-		public static int xpos = -1;
-		public static int ypos = -1;		
+		public static цел gs_nFrames;
+		public static цел xpos = -1;
+		public static цел ypos = -1;		
 		
 		private TextCtrl textWindow;
 		
-		public static MyFrame frame = null;
+		public static MyFrame frame = пусто;
 
 		public static ArrayList my_children;
 
 		//---------------------------------------------------------------------
 
-		public this( Window parent, string title, Point pos, Size size )
+		public this( Окно родитель, ткст title, Точка поз, Размер size )
 		{
-			super( parent, -1, title, pos, size );
-			icon = new Icon( "../Samples/Mdi/mondrian.png" );
+			super( родитель, -1, title, поз, size );
+			иконка = new Icon( "../Samples/Mdi/mondrian.png" );
 
 			// Make a menubar
-			Menu file_menu = new Menu();
+			Меню file_menu = new Меню();
 
-			file_menu.Append( Cmd.MDI_NEW_WINDOW, "&New window\tCtrl-N", "Create a new child window" );
+			file_menu.Append( Cmd.MDI_NEW_WINDOW, "&Нов окно\tCtrl-N", "Create a new child окно" );
 			file_menu.Append( Cmd.MDI_QUIT, "&Exit\tAlt-X", "Quit the program" );
 
-			Menu help_menu = new Menu();
+			Меню help_menu = new Меню();
 			help_menu.Append( Cmd.MDI_ABOUT, "&About\tF1" );
 
 			MenuBar menu_bar = new MenuBar();
 
 			menu_bar.Append( file_menu, "&File" );
-			menu_bar.Append( help_menu, "&Help" );
+			menu_bar.Append( help_menu, "&Справка" );
 
 			this.menuBar = menu_bar;
 			
-			textWindow = new TextCtrl( this, -1, "A help window", wxDefaultPosition, wxDefaultSize, TextCtrl.wxTE_MULTILINE | TextCtrl.wxSUNKEN_BORDER );
+			textWindow = new TextCtrl( this, -1, "A справка окно", wxDefaultPosition, wxDefaultSize, TextCtrl.wxTE_MULTILINE | TextCtrl.wxSUNKEN_BORDER );
 			
 			ToolBar toolBar = CreateToolBar(ToolBar.wxTB_FLAT | ToolBar.wxTB_HORIZONTAL);
 			InitToolBar(this.toolBar);	
@@ -99,7 +99,7 @@ struct ArrayList /* for .NET compatibility */
 
 		//---------------------------------------------------------------------
 		
-		public void OnAbout( Object sender, Event e )
+		public проц OnAbout( Объект sender, Событие e )
 		{
 			MessageDialog md = new MessageDialog( this, "wxWidgets 2.0 MDI Demo\nPorted to wxD by Alexander Olk 2004\n", "About MDI Demo" );
 			md.ShowModal();
@@ -107,33 +107,33 @@ struct ArrayList /* for .NET compatibility */
 
 		//---------------------------------------------------------------------
 		
-		public void OnNewWindow( Object sender, Event e )
+		public проц OnNewWindow( Объект sender, Событие e )
 		{
 			writefln( "MyFrame: OnNewWindow");
-			MyChild subframe = new MyChild( this, "Canvas Frame", Point( -1, -1 ),
-					Size( -1, -1 ), wxDEFAULT_FRAME_STYLE );
+			MyChild subframe = new MyChild( this, "Canvas Frame", Точка( -1, -1 ),
+					Размер( -1, -1 ), wxDEFAULT_FRAME_STYLE );
 
-			subframe.Show( true );	
+			subframe.Show( да );	
 		}
 
 		//---------------------------------------------------------------------
 
-		public void OnQuit( Object sender, Event e )
+		public проц OnQuit( Объект sender, Событие e )
 		{
 			writefln( "MyFrame: OnQuit" );
-			Close();
+			Закрой();
 		}
 
 		//---------------------------------------------------------------------
 
-		public void OnClose( Object sender, Event e )
+		public проц OnClose( Объект sender, Событие e )
 		{
 			writefln( "MyFrame: OnClose" );
 			CloseEvent ce = cast(CloseEvent) e;
 			
 			if ( ce.CanVeto && MyFrame.gs_nFrames > 0 )
 			{
-				string msg = .toString(gs_nFrames) ~ " windows still open, close anyhow?";
+				ткст msg = .toString(gs_nFrames) ~ " windows still open, close anyhow?";
 				MessageDialog md = new MessageDialog( this, msg, "Please confirm", Dialog.wxICON_QUESTION | Dialog.wxYES_NO );
 				if ( md.ShowModal() != wxID_YES )
 				{
@@ -141,52 +141,52 @@ struct ArrayList /* for .NET compatibility */
 					return;
 				}
 			}
-			ce.Skip();
+			ce.Пропусти();
 		}
 
 		//---------------------------------------------------------------------
 		
-		public void OnSize( Object sender, Event e )
+		public проц OnSize( Объект sender, Событие e )
 		{
-			Size cs = ClientSize;
+			Размер cs = ClientSize;
 			
-			textWindow.SetSize( 0, 0, 200, cs.Height );
-			GetClientWindow().SetSize( 200, 0, cs.Width - 200, cs.Height );
+			textWindow.УстРазм( 0, 0, 200, cs.Высота );
+			GetClientWindow().УстРазм( 200, 0, cs.Ширина - 200, cs.Высота );
 		}
 
 		//---------------------------------------------------------------------
 		
-		public void InitToolBar( ToolBar toolBar )
+		public проц InitToolBar( ToolBar toolBar )
 		{
-			Bitmap[] bitmaps = new Bitmap[8];
+			Битмап[] bitmaps = new Битмап[8];
 			
-			bitmaps[0] = new Bitmap( "../Samples/Mdi/bitmaps/new.xpm" );
-			bitmaps[1] = new Bitmap( "../Samples/Mdi/bitmaps/open.xpm" );
-			bitmaps[2] = new Bitmap( "../Samples/Mdi/bitmaps/save.xpm" );
-			bitmaps[3] = new Bitmap( "../Samples/Mdi/bitmaps/copy.xpm" );
-			bitmaps[4] = new Bitmap( "../Samples/Mdi/bitmaps/cut.xpm" );
-			bitmaps[5] = new Bitmap( "../Samples/Mdi/bitmaps/paste.xpm" );
-			bitmaps[6] = new Bitmap( "../Samples/Mdi/bitmaps/print.xpm" );
-			bitmaps[7] = new Bitmap( "../Samples/Mdi/bitmaps/help.xpm" );
+			bitmaps[0] = new Битмап( "../Samples/Mdi/bitmaps/new.xpm" );
+			bitmaps[1] = new Битмап( "../Samples/Mdi/bitmaps/open.xpm" );
+			bitmaps[2] = new Битмап( "../Samples/Mdi/bitmaps/save.xpm" );
+			bitmaps[3] = new Битмап( "../Samples/Mdi/bitmaps/copy.xpm" );
+			bitmaps[4] = new Битмап( "../Samples/Mdi/bitmaps/cut.xpm" );
+			bitmaps[5] = new Битмап( "../Samples/Mdi/bitmaps/paste.xpm" );
+			bitmaps[6] = new Битмап( "../Samples/Mdi/bitmaps/print.xpm" );
+			bitmaps[7] = new Битмап( "../Samples/Mdi/bitmaps/справка.xpm" );
 			
-			int width = 24;
-			int currentX = 5;
+			цел ширина = 24;
+			цел currentX = 5;
 			
-			toolBar.AddTool( Cmd.MDI_NEW_WINDOW, bitmaps[0], Bitmap.wxNullBitmap, false, currentX, -1, null, "New File", "" );
-			currentX += width + 5;
-			toolBar.AddTool( 100, bitmaps[1], Bitmap.wxNullBitmap, false, currentX, -1, null, "Open file", "" );
-			currentX += width + 5;
-			toolBar.AddTool( 200, bitmaps[2], Bitmap.wxNullBitmap, false, currentX, -1, null, "Save file", "" );
-			currentX += width + 5;
-			toolBar.AddTool( 300, bitmaps[3], Bitmap.wxNullBitmap, false, currentX, -1, null, "Copy", "" );
-			currentX += width + 5;
-			toolBar.AddTool( 400, bitmaps[4], Bitmap.wxNullBitmap, false, currentX, -1, null, "Cut", "" );
-			currentX += width + 5;
-			toolBar.AddTool( 500, bitmaps[5], Bitmap.wxNullBitmap, false, currentX, -1, null, "Paste", "" );
-			currentX += width + 5;
-			toolBar.AddTool( 600, bitmaps[6], Bitmap.wxNullBitmap, false, currentX, -1, null, "Print", "" );
-			currentX += width + 5;
-			toolBar.AddTool( 700, bitmaps[7], Bitmap.wxNullBitmap, false, currentX, -1, null, "Help", "" );
+			toolBar.AddTool( Cmd.MDI_NEW_WINDOW, bitmaps[0], Битмап.wxNullBitmap, нет, currentX, -1, пусто, "Нов File", "" );
+			currentX += ширина + 5;
+			toolBar.AddTool( 100, bitmaps[1], Битмап.wxNullBitmap, нет, currentX, -1, пусто, "Открой file", "" );
+			currentX += ширина + 5;
+			toolBar.AddTool( 200, bitmaps[2], Битмап.wxNullBitmap, нет, currentX, -1, пусто, "Save file", "" );
+			currentX += ширина + 5;
+			toolBar.AddTool( 300, bitmaps[3], Битмап.wxNullBitmap, нет, currentX, -1, пусто, "Копируй", "" );
+			currentX += ширина + 5;
+			toolBar.AddTool( 400, bitmaps[4], Битмап.wxNullBitmap, нет, currentX, -1, пусто, "Cut", "" );
+			currentX += ширина + 5;
+			toolBar.AddTool( 500, bitmaps[5], Битмап.wxNullBitmap, нет, currentX, -1, пусто, "Вставь", "" );
+			currentX += ширина + 5;
+			toolBar.AddTool( 600, bitmaps[6], Битмап.wxNullBitmap, нет, currentX, -1, пусто, "Print", "" );
+			currentX += ширина + 5;
+			toolBar.AddTool( 700, bitmaps[7], Битмап.wxNullBitmap, нет, currentX, -1, пусто, "Справка", "" );
 			
 			toolBar.Realize();
 		}
@@ -196,62 +196,62 @@ struct ArrayList /* for .NET compatibility */
 	
 	public class MyCanvas : ScrolledWindow
 	{
-		private bool m_dirty = false;
-		private bool drawing = false;
+		private бул m_dirty = нет;
+		private бул drawing = нет;
 		
 		//---------------------------------------------------------------------
 		
-		public this( Window parent, Point pos, Size size )
+		public this( Окно родитель, Точка поз, Размер size )
 		{
-			super( parent, -1, pos, size,  /*Border.*/wxSUNKEN_BORDER | wxNO_FULL_REPAINT_ON_RESIZE | wxVSCROLL | wxHSCROLL );
-			BackgroundColour = new Colour( "WHITE" );
+			super( родитель, -1, поз, size,  /*Border.*/wxSUNKEN_BORDER | wxNO_FULL_REPAINT_ON_RESIZE | wxVSCROLL | wxHSCROLL );
+			ЦветЗП = new Цвет( "WHITE" );
 			
 			this.EVT_MOUSE_EVENTS( & OnEvent ) ;
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public override void OnDraw( DC dc )
+		public override проц OnDraw( DC dc )
 		{
-			dc.font = Font.wxSWISS_FONT;
-			dc.pen = Pen.wxGREEN_PEN;
+			dc.шрифт = Шрифт.wxSWISS_FONT;
+			dc.перо = Перо.wxGREEN_PEN;
 			
-			dc.DrawLine( 0, 0, 200, 200 );
-			dc.DrawLine( 200, 0, 0, 200 );
+			dc.РисуйЛинию( 0, 0, 200, 200 );
+			dc.РисуйЛинию( 200, 0, 0, 200 );
 			
-			dc.brush = Brush.wxCYAN_BRUSH;
-			dc.pen = Pen.wxRED_PEN;
-			dc.DrawRectangle( 100, 100, 100, 50 );
-			dc.DrawRoundedRectangle( 150, 150, 100, 50, 20 );
+			dc.кисть = Кисть.wxCYAN_BRUSH;
+			dc.перо = Перо.wxRED_PEN;
+			dc.РисуйПрям( 100, 100, 100, 50 );
+			dc.РисуйОкруглыйПрям( 150, 150, 100, 50, 20 );
 			
-			dc.DrawEllipse( 250, 250, 100, 50 );
+			dc.РисуйЭллипс( 250, 250, 100, 50 );
 			//dc.DrawSpline( 50, 200, 50, 100, 200, 10 );
-			dc.DrawLine( 50, 230, 200, 230 );
-			dc.DrawText( "This is a test string", 50, 230 );
+			dc.РисуйЛинию( 50, 230, 200, 230 );
+			dc.РисуйТекст( "This is a test ткст", 50, 230 );
 			
-			Point[3] points;
+			Точка[3] points;
 			points[0].X = 200; points[0].Y = 300;
 			points[1].X = 100; points[1].Y = 400;
 			points[2].X = 300; points[2].Y = 400;
 			
-			dc.DrawPolygon( 3, points );
+			dc.РисуйМногоуг( 3, points );
 			dc.Dispose();
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void OnEvent( Object sender, Event e)
+		public проц OnEvent( Объект sender, Событие e)
 		{
 			MouseEvent me = cast(MouseEvent) e;
 
-			if ( e.eventType == Event.wxEVT_LEFT_DOWN )
+			if ( e.ТипСоб == Событие.wxEVT_LEFT_DOWN )
 			{
-				drawing = true;
+				drawing = да;
 			}
 
-			if ( e.eventType == Event.wxEVT_LEFT_UP )
+			if ( e.ТипСоб == Событие.wxEVT_LEFT_UP )
 			{
-				drawing = false;
+				drawing = нет;
 			}
 
 			if ( drawing )
@@ -259,14 +259,14 @@ struct ArrayList /* for .NET compatibility */
 				ClientDC dc = new ClientDC( this );
 				PrepareDC( dc );
 			
-				Point pt = me.LogicalPosition( dc );
+				Точка pt = me.LogicalPosition( dc );
 
 				if ( MyFrame.xpos > -1 && MyFrame.ypos > -1 && me.Dragging )
 				{
-					dc.pen = Pen.wxBLACK_PEN;
-					dc.DrawLine( MyFrame.xpos, MyFrame.ypos, pt.X, pt.Y );
+					dc.перо = Перо.wxBLACK_PEN;
+					dc.РисуйЛинию( MyFrame.xpos, MyFrame.ypos, pt.X, pt.Y );
 
-					m_dirty = true;
+					m_dirty = да;
 				}
 
 				dc.Dispose();
@@ -278,7 +278,7 @@ struct ArrayList /* for .NET compatibility */
 
 		//---------------------------------------------------------------------
 		
-		public bool IsDirty()
+		public бул IsDirty()
 		{
 			return m_dirty;
 		}
@@ -290,32 +290,32 @@ struct ArrayList /* for .NET compatibility */
 	{
 		enum Cmd { MDI_ABOUT = 100, MDI_QUIT, MDI_NEW_WINDOW, MDI_CHILD_QUIT, MDI_REFRESH, MDI_CHANGE_TITLE, MDI_CHANGE_POSITION, MDI_CHANGE_SIZE }
 		
-		private MyCanvas canvas = null;
+		private MyCanvas canvas = пусто;
 		
-		public static string s_title = "Canvas Frame";
+		public static ткст s_title = "Canvas Frame";
 		
 		//---------------------------------------------------------------------
 		
-		public this( MDIParentFrame parent, string title, Point pos, Size size, long style )
+		public this( MDIParentFrame родитель, ткст title, Точка поз, Размер size, long стиль )
 		{
-			super( parent, -1, title, pos, size, style | wxNO_FULL_REPAINT_ON_RESIZE );
-			MyFrame.my_children.Add( this );
+			super( родитель, -1, title, поз, size, стиль | wxNO_FULL_REPAINT_ON_RESIZE );
+			MyFrame.my_children.Добавь( this );
 
-			icon = new Icon( "../Samples/Mdi/mondrian.png" );
+			иконка = new Icon( "../Samples/Mdi/mondrian.png" );
 			
 			SetSizeHints( 100, 100 );
 			
-			string atitle = "Canvas Frame " ~ .toString( ++MyFrame.gs_nFrames );
+			ткст atitle = "Canvas Frame " ~ .toString( ++MyFrame.gs_nFrames );
 			
 			Title = atitle;
 			
-			Menu file_menu = new Menu();
+			Меню file_menu = new Меню();
 
-			file_menu.Append( Cmd.MDI_NEW_WINDOW, "&New window" );
-			file_menu.Append( Cmd.MDI_CHILD_QUIT, "&Close child", "Close this window" );
+			file_menu.Append( Cmd.MDI_NEW_WINDOW, "&Нов окно" );
+			file_menu.Append( Cmd.MDI_CHILD_QUIT, "&Закрой child", "Закрой this окно" );
 			file_menu.Append( Cmd.MDI_QUIT, "&Exit" );
 
-			Menu option_menu = new Menu();
+			Меню option_menu = new Меню();
 
 			option_menu.Append( Cmd.MDI_REFRESH, "&Refresh picture" );
 			option_menu.Append( Cmd.MDI_CHANGE_TITLE, "Change &title...\tCtrl-T" );
@@ -323,22 +323,22 @@ struct ArrayList /* for .NET compatibility */
 			option_menu.Append( Cmd.MDI_CHANGE_POSITION, "Move frame\tCtrl-M" );
 			option_menu.Append( Cmd.MDI_CHANGE_SIZE, "Resize frame\tCtrl-S" );
 
-			Menu help_menu = new Menu();
+			Меню help_menu = new Меню();
 			help_menu.Append( Cmd.MDI_ABOUT, "&About" );
 
 			MenuBar menu_bar = new MenuBar();
 
 			menu_bar.Append( file_menu, "&File" );
 			menu_bar.Append( option_menu, "&Child" );
-			menu_bar.Append( help_menu, "&Help" );
+			menu_bar.Append( help_menu, "&Справка" );
 
 			this.menuBar = menu_bar;
 
 			//CreateStatusBar();
 			MyFrame.frame.StatusText = title;
 
-			Size cs = ClientSize;
-			canvas = new MyCanvas( this, Point( 0, 0 ), Size( cs.Width, cs.Height ) );
+			Размер cs = ClientSize;
+			canvas = new MyCanvas( this, Точка( 0, 0 ), Размер( cs.Ширина, cs.Высота ) );
 			canvas.cursor = new Cursor( StockCursor.wxCURSOR_PENCIL );
 
 			canvas.SetScrollbars(20, 20, 50, 50);
@@ -361,16 +361,16 @@ struct ArrayList /* for .NET compatibility */
 
 		//---------------------------------------------------------------------
 		
-		public void OnQuit( Object sender, Event e )
+		public проц OnQuit( Объект sender, Событие e )
 		{
 			writefln( "MyChild: OnQuit" );
 			MyFrame.my_children.Remove( this );
-			Close( true );
+			Закрой( да );
 		}
 
 		//---------------------------------------------------------------------
 		
-		public void OnRefresh( Object sender, Event e )
+		public проц OnRefresh( Объект sender, Событие e )
 		{
 			if ( canvas ) 
 				canvas.Refresh();
@@ -378,9 +378,9 @@ struct ArrayList /* for .NET compatibility */
 
 		//---------------------------------------------------------------------
 		
-		public void OnChangeTitle( Object sender, Event e )
+		public проц OnChangeTitle( Объект sender, Событие e )
 		{
-			string title = GetTextFromUser( "Enter the new title for MDI child", "MDI sample question", s_title, Parent.Parent );
+			ткст title = GetTextFromUser( "Enter the new title for MDI child", "MDI sample question", s_title, Parent.Parent );
 			
 			if ( title.length == 0 )
 				return;
@@ -391,56 +391,56 @@ struct ArrayList /* for .NET compatibility */
 
 		//---------------------------------------------------------------------
 		
-		public void OnChangePosition( Object sender, Event e )
+		public проц OnChangePosition( Объект sender, Событие e )
 		{
 			Move( 10, 10, 0 );
 		}
 
 		//---------------------------------------------------------------------
 
-		public void OnChangeSize( Object sender, Event e )
+		public проц OnChangeSize( Объект sender, Событие e )
 		{
-			ClientSize = Size( 100, 100 );
+			ClientSize = Размер( 100, 100 );
 		}
 
 		//---------------------------------------------------------------------
 		
-		public void OnSize( Object sender, Event e )
+		public проц OnSize( Объект sender, Событие e )
 		{
 			SizeEvent se = cast(SizeEvent) e;
-			Size size1 = se.size;
-			Size size2 = size;
-			Size size3 = ClientSize;
+			Размер size1 = se.size;
+			Размер size2 = size;
+			Размер size3 = ClientSize;
 			
 			Log.LogStatus( "size from event: %dx%d, from frame %dx%d, client %dx%d",
-					size1.Width, size1.Height, size2.Width, size2.Height, size3.Width, size3.Height );
-			se.Skip();
+					size1.Ширина, size1.Высота, size2.Ширина, size2.Высота, size3.Ширина, size3.Высота );
+			se.Пропусти();
 		}
 
 		//---------------------------------------------------------------------
 		
-		public void OnMove( Object sender, Event e )
+		public проц OnMove( Объект sender, Событие e )
 		{
 			MoveEvent me = cast(MoveEvent) e;
-			Point pos1 = me.Position;
-			Point pos2 = Position;
+			Точка pos1 = me.Положение;
+			Точка pos2 = Положение;
 
 			Log.LogStatus( "position from event: ({0}, {1}), from frame ({2}, {3})",
 					pos1.X, pos1.Y, pos2.X, pos2.Y );
 			
-			me.Skip();
+			me.Пропусти();
 		}
 
 		//---------------------------------------------------------------------
 		
-		public void OnClose( Object sender, Event e )
+		public проц OnClose( Объект sender, Событие e )
 		{
 			writefln( "MyChild: OnClose" );
 			CloseEvent ce = cast(CloseEvent) e;
 
 			if ( canvas && canvas.IsDirty )
 			{
-				MessageDialog md = new MessageDialog( null, "Really close ?", "Please confirm", 
+				MessageDialog md = new MessageDialog( пусто, "Really close ?", "Please confirm", 
 						Dialog.wxICON_QUESTION | Dialog.wxYES_NO );
 				if ( md.ShowModal() != wxID_YES )
 				{
@@ -451,43 +451,43 @@ struct ArrayList /* for .NET compatibility */
 			
 			MyFrame.gs_nFrames--;
 			
-			e.Skip();
+			e.Пропусти();
 		}
 	
 		//---------------------------------------------------------------------
 		
-		public override void OnActivate( Object sender, Event e )
+		public override проц OnActivate( Объект sender, Событие e )
 		{
-			ActivateEvent ae = cast(ActivateEvent) e;
-			if ( ae.Active && canvas )
+			СобАктивирования ae = cast(СобАктивирования) e;
+			if ( ae.Активен && canvas )
 				canvas.SetFocus();
 		}
 	}
 	
 	//---------------------------------------------------------------------
 
-	public class MDI : App
+	public class MDI : Прил
 	{
-		public override bool OnInit()
+		public override бул ПриИниц()
 		{
-			MyFrame.frame = new MyFrame( null, "MDI Demo", Point( -1, -1 ), Size( 500, 400 ) );
-			MyFrame.frame.Show( true );
+			MyFrame.frame = new MyFrame( пусто, "MDI Demo", Точка( -1, -1 ), Размер( 500, 400 ) );
+			MyFrame.frame.Show( да );
 
-			return true;
+			return да;
 		}
 
 		//---------------------------------------------------------------------
 
 		
-		static void Main()
+		static проц Main()
 		{
-			MDI app = new MDI();
-			app.Run();
+			MDI прил = new MDI();
+			прил.Пуск();
 		}
 	}	
 
 
-void main()
+проц main()
 {
 	MDI.Main();
 }

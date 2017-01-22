@@ -1,4 +1,4 @@
-//-----------------------------------------------------------------------------
+﻿//-----------------------------------------------------------------------------
 // wxD - HelpEvent.d
 // (C) 2005 bero <berobero@users.sourceforge.net>
 // based on
@@ -10,7 +10,7 @@
 // (C) 2004 by Alexander Olk
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: HelpEvent.d,v 1.10 2007/01/28 23:06:36 afb Exp $
+// $Ид: HelpEvent.d,v 1.10 2007/01/28 23:06:36 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.HelpEvent;
@@ -19,13 +19,13 @@ public import wx.CommandEvent;
 public import wx.Window;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxHelpEvent_ctor(int type,int winid, inout Point pos);
-		static extern (C) void   wxHelpEvent_GetPosition(IntPtr self, inout Point pos);
-		static extern (C) void   wxHelpEvent_SetPosition(IntPtr self, inout Point pos);
-		static extern (C) IntPtr wxHelpEvent_GetLink(IntPtr self);
-		static extern (C) void   wxHelpEvent_SetLink(IntPtr self, string link);
-		static extern (C) IntPtr wxHelpEvent_GetTarget(IntPtr self);
-		static extern (C) void   wxHelpEvent_SetTarget(IntPtr self, string target);
+		static extern (C) ЦУк wxHelpEvent_ctor(цел тип,цел winid, inout Точка поз);
+		static extern (C) проц   wxHelpEvent_GetPosition(ЦУк сам, inout Точка поз);
+		static extern (C) проц   wxHelpEvent_SetPosition(ЦУк сам, inout Точка поз);
+		static extern (C) ЦУк wxHelpEvent_GetLink(ЦУк сам);
+		static extern (C) проц   wxHelpEvent_SetLink(ЦУк сам, ткст link);
+		static extern (C) ЦУк wxHelpEvent_GetTarget(ЦУк сам);
+		static extern (C) проц   wxHelpEvent_SetTarget(ЦУк сам, ткст target);
 		//! \endcond
 		
 		//-----------------------------------------------------------------------------
@@ -33,38 +33,38 @@ public import wx.Window;
 	alias HelpEvent wxHelpEvent;
 	public class HelpEvent : CommandEvent
 	{
-		public this(IntPtr wxobj) 
-			{ super(wxobj); }
+		public this(ЦУк шхобъ) 
+			{ super(шхобъ); }
 
-		public this(EventType type = wxEVT_NULL, int winid = 0, Point pos = Window.wxDefaultPosition)
-			{ this(wxHelpEvent_ctor(type,winid,pos)); }
+		public this(ТипСобытия тип = wxEVT_NULL, цел winid = 0, Точка поз = Окно.wxDefaultPosition)
+			{ this(wxHelpEvent_ctor(тип,winid,поз)); }
 
 		//-----------------------------------------------------------------------------	
 		
-		public Point Position() { 
-				Point p;
-				wxHelpEvent_GetPosition(wxobj, p); 
+		public Точка Положение() { 
+				Точка p;
+				wxHelpEvent_GetPosition(шхобъ, p); 
 				return p;
 			}
 			
-		public void Position(Point value) { wxHelpEvent_SetPosition(wxobj, value); }
+		public проц Положение(Точка значение) { wxHelpEvent_SetPosition(шхобъ, значение); }
 		
 		//-----------------------------------------------------------------------------	
 		
-		public string Link() { return cast(string) new wxString(wxHelpEvent_GetLink(wxobj), true); }
-		public void Link(string value) { wxHelpEvent_SetLink(wxobj, value); }
+		public ткст Link() { return cast(ткст) new wxString(wxHelpEvent_GetLink(шхобъ), да); }
+		public проц Link(ткст значение) { wxHelpEvent_SetLink(шхобъ, значение); }
 		
 		//-----------------------------------------------------------------------------	
 		
-		public string Target() { return cast(string) new wxString(wxHelpEvent_GetTarget(wxobj), true); }
-		public void Target(string value) { wxHelpEvent_SetTarget(wxobj, value); }
+		public ткст Target() { return cast(ткст) new wxString(wxHelpEvent_GetTarget(шхобъ), да); }
+		public проц Target(ткст значение) { wxHelpEvent_SetTarget(шхобъ, значение); }
 
 
-		private static Event New(IntPtr obj) { return new HelpEvent(obj); }
+		private static Событие Нов(ЦУк объ) { return new HelpEvent(объ); }
 
 		static this()
 		{
-			AddEventType(wxEVT_HELP,				&HelpEvent.New);
-			AddEventType(wxEVT_DETAILED_HELP,			&HelpEvent.New);
+			ДобавьТипСоб(wxEVT_HELP,				&HelpEvent.Нов);
+			ДобавьТипСоб(wxEVT_DETAILED_HELP,			&HelpEvent.Нов);
 		}
 	}

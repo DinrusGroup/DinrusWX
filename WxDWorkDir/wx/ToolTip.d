@@ -10,7 +10,7 @@
 // (C) 2003 Bryan Bulten
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: ToolTip.d,v 1.10 2007/01/28 23:06:37 afb Exp $
+// $Ид: ToolTip.d,v 1.10 2007/01/28 23:06:37 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.ToolTip;
@@ -18,13 +18,13 @@ public import wx.common;
 public import wx.Window;
 
 		//! \cond EXTERN
-		static extern (C) void   wxToolTip_Enable(bool flag);
-		static extern (C) void   wxToolTip_SetDelay(uint msecs);
-		static extern (C) IntPtr wxToolTip_ctor(string tip);
-		static extern (C) void   wxToolTip_SetTip(IntPtr self, string tip);
-		static extern (C) IntPtr wxToolTip_GetTip(IntPtr self);
-		static extern (C) IntPtr wxToolTip_GetWindow(IntPtr self);
-		static extern (C) void   wxToolTip_SetWindow(IntPtr self,IntPtr win);
+		static extern (C) проц   wxToolTip_Enable(бул flag);
+		static extern (C) проц   wxToolTip_SetDelay(бцел msecs);
+		static extern (C) ЦУк wxToolTip_ctor(ткст tip);
+		static extern (C) проц   wxToolTip_SetTip(ЦУк сам, ткст tip);
+		static extern (C) ЦУк wxToolTip_GetTip(ЦУк сам);
+		static extern (C) ЦУк wxToolTip_GetWindow(ЦУк сам);
+		static extern (C) проц   wxToolTip_SetWindow(ЦУк сам,ЦУк окн);
 		//! \endcond
 
         //---------------------------------------------------------------------
@@ -32,46 +32,46 @@ public import wx.Window;
 	alias ToolTip wxToolTip;
 	public class ToolTip : wxObject
 	{
-        public this(IntPtr wxobj)
-            { super(wxobj); }
+        public this(ЦУк шхобъ)
+            { super(шхобъ); }
 
-        public this(string tip)
+        public this(ткст tip)
             { super(wxToolTip_ctor(tip)); }
 
         //---------------------------------------------------------------------
 
-        static void Enabled(bool value) 
+        static проц Enabled(бул значение) 
             {
-                wxToolTip_Enable(value);
+                wxToolTip_Enable(значение);
             }
 
         //---------------------------------------------------------------------
         
-        static void Delay(int value) 
+        static проц Delay(цел значение) 
             {
-                wxToolTip_SetDelay(cast(uint)value);
+                wxToolTip_SetDelay(cast(бцел)значение);
             }
 
         //---------------------------------------------------------------------
 
-        public string Tip() 
+        public ткст Tip() 
             {
-                return cast(string) new wxString(wxToolTip_GetTip(wxobj), true);
+                return cast(ткст) new wxString(wxToolTip_GetTip(шхобъ), да);
             }
-        public void Tip(string value) 
+        public проц Tip(ткст значение) 
             {
-                wxToolTip_SetTip(wxobj, value);
+                wxToolTip_SetTip(шхобъ, значение);
             }
 
         //---------------------------------------------------------------------
 
-        public Window window() 
+        public Окно окно() 
             {
-                return cast(Window)FindObject(wxToolTip_GetWindow(wxobj));
+                return cast(Окно)FindObject(wxToolTip_GetWindow(шхобъ));
             }
-        public void window(Window win) 
+        public проц окно(Окно окн) 
             {
-                return wxToolTip_SetWindow(wxobj,wxObject.SafePtr(win));
+                return wxToolTip_SetWindow(шхобъ,wxObject.SafePtr(окн));
             }
 
         //---------------------------------------------------------------------

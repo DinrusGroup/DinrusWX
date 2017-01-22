@@ -9,7 +9,7 @@
 // Written by Bryan Bulten (bryan@bulten.ca)
 // (C) 2003 Bryan Bulten
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
-// $Id: TextCtrl.d,v 1.11 2007/11/27 08:19:20 afb Exp $
+// $Ид: TextCtrl.d,v 1.11 2007/11/27 08:19:20 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.TextCtrl;
@@ -42,37 +42,37 @@ public import wx.KeyEvent;
 	//---------------------------------------------------------------------
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxTextAttr_ctor(IntPtr colText, IntPtr colBack, IntPtr font, int alignment);
-		static extern (C) IntPtr wxTextAttr_ctor2();
-		static extern (C) void   wxTextAttr_dtor(IntPtr self);
-		static extern (C) void   wxTextAttr_Init(IntPtr self);
-		static extern (C) void   wxTextAttr_SetTextColour(IntPtr self, IntPtr colText);
-		static extern (C) IntPtr wxTextAttr_GetTextColour(IntPtr self);
-		static extern (C) void   wxTextAttr_SetBackgroundColour(IntPtr self, IntPtr colBack);
-		static extern (C) IntPtr wxTextAttr_GetBackgroundColour(IntPtr self);
-		static extern (C) void   wxTextAttr_SetFont(IntPtr self, IntPtr font);
-		static extern (C) IntPtr wxTextAttr_GetFont(IntPtr self);
-		static extern (C) bool   wxTextAttr_HasTextColour(IntPtr self);
-		static extern (C) bool   wxTextAttr_HasBackgroundColour(IntPtr self);
-		static extern (C) bool   wxTextAttr_HasFont(IntPtr self);
-		static extern (C) bool   wxTextAttr_IsDefault(IntPtr self);
+		static extern (C) ЦУк wxTextAttr_ctor(ЦУк colText, ЦУк colBack, ЦУк шрифт, цел alignment);
+		static extern (C) ЦУк wxTextAttr_ctor2();
+		static extern (C) проц   wxTextAttr_dtor(ЦУк сам);
+		static extern (C) проц   wxTextAttr_Init(ЦУк сам);
+		static extern (C) проц   wxTextAttr_SetTextColour(ЦУк сам, ЦУк colText);
+		static extern (C) ЦУк wxTextAttr_GetTextColour(ЦУк сам);
+		static extern (C) проц   wxTextAttr_SetBackgroundColour(ЦУк сам, ЦУк colBack);
+		static extern (C) ЦУк wxTextAttr_GetBackgroundColour(ЦУк сам);
+		static extern (C) проц   wxTextAttr_SetFont(ЦУк сам, ЦУк шрифт);
+		static extern (C) ЦУк wxTextAttr_GetFont(ЦУк сам);
+		static extern (C) бул   wxTextAttr_HasTextColour(ЦУк сам);
+		static extern (C) бул   wxTextAttr_HasBackgroundColour(ЦУк сам);
+		static extern (C) бул   wxTextAttr_HasFont(ЦУк сам);
+		static extern (C) бул   wxTextAttr_IsDefault(ЦУк сам);
 		
-		static extern (C) void   wxTextAttr_SetAlignment(IntPtr self, int alignment);
-		static extern (C) int    wxTextAttr_GetAlignment(IntPtr self);
-		static extern (C) void   wxTextAttr_SetTabs(IntPtr self, IntPtr tabs);
-		static extern (C) IntPtr wxTextAttr_GetTabs(IntPtr self);
-		static extern (C) void   wxTextAttr_SetLeftIndent(IntPtr self, int indent, int subIndent);
-		static extern (C) int    wxTextAttr_GetLeftIndent(IntPtr self);
-		static extern (C) int    wxTextAttr_GetLeftSubIndent(IntPtr self);
-		static extern (C) void   wxTextAttr_SetRightIndent(IntPtr self, int indent);
-		static extern (C) int    wxTextAttr_GetRightIndent(IntPtr self);
-		static extern (C) void   wxTextAttr_SetFlags(IntPtr self, uint flags);
-		static extern (C) uint   wxTextAttr_GetFlags(IntPtr self);
-		static extern (C) bool   wxTextAttr_HasAlignment(IntPtr self);
-		static extern (C) bool   wxTextAttr_HasTabs(IntPtr self);
-		static extern (C) bool   wxTextAttr_HasLeftIndent(IntPtr self);
-		static extern (C) bool   wxTextAttr_HasRightIndent(IntPtr self);
-		static extern (C) bool   wxTextAttr_HasFlag(IntPtr self, uint flag);
+		static extern (C) проц   wxTextAttr_SetAlignment(ЦУк сам, цел alignment);
+		static extern (C) цел    wxTextAttr_GetAlignment(ЦУк сам);
+		static extern (C) проц   wxTextAttr_SetTabs(ЦУк сам, ЦУк tabs);
+		static extern (C) ЦУк wxTextAttr_GetTabs(ЦУк сам);
+		static extern (C) проц   wxTextAttr_SetLeftIndent(ЦУк сам, цел indent, цел subIndent);
+		static extern (C) цел    wxTextAttr_GetLeftIndent(ЦУк сам);
+		static extern (C) цел    wxTextAttr_GetLeftSubIndent(ЦУк сам);
+		static extern (C) проц   wxTextAttr_SetRightIndent(ЦУк сам, цел indent);
+		static extern (C) цел    wxTextAttr_GetRightIndent(ЦУк сам);
+		static extern (C) проц   wxTextAttr_SetFlags(ЦУк сам, бцел флаги);
+		static extern (C) бцел   wxTextAttr_GetFlags(ЦУк сам);
+		static extern (C) бул   wxTextAttr_HasAlignment(ЦУк сам);
+		static extern (C) бул   wxTextAttr_HasTabs(ЦУк сам);
+		static extern (C) бул   wxTextAttr_HasLeftIndent(ЦУк сам);
+		static extern (C) бул   wxTextAttr_HasRightIndent(ЦУк сам);
+		static extern (C) бул   wxTextAttr_HasFlag(ЦУк сам, бцел flag);
 		//! \endcond
 		
 		//---------------------------------------------------------------------
@@ -80,207 +80,207 @@ public import wx.KeyEvent;
 	alias TextAttr wxTextAttr;
 	public class TextAttr : wxObject
 	{
-		public const int wxTEXT_ATTR_TEXT_COLOUR =		0x0001;
-		public const int wxTEXT_ATTR_BACKGROUND_COLOUR =	0x0002;
-		public const int wxTEXT_ATTR_FONT_FACE =		0x0004;
-		public const int wxTEXT_ATTR_FONT_SIZE = 		0x0008;
-		public const int wxTEXT_ATTR_FONT_WEIGHT =		0x0010;
-		public const int wxTEXT_ATTR_FONT_ITALIC =		0x0020;
-		public const int wxTEXT_ATTR_FONT_UNDERLINE =		0x0040;
-		public const int wxTEXT_ATTR_FONT = wxTEXT_ATTR_FONT_FACE | wxTEXT_ATTR_FONT_SIZE | 
+		public const цел wxTEXT_ATTR_TEXT_COLOUR =		0x0001;
+		public const цел wxTEXT_ATTR_BACKGROUND_COLOUR =	0x0002;
+		public const цел wxTEXT_ATTR_FONT_FACE =		0x0004;
+		public const цел wxTEXT_ATTR_FONT_SIZE = 		0x0008;
+		public const цел wxTEXT_ATTR_FONT_WEIGHT =		0x0010;
+		public const цел wxTEXT_ATTR_FONT_ITALIC =		0x0020;
+		public const цел wxTEXT_ATTR_FONT_UNDERLINE =		0x0040;
+		public const цел wxTEXT_ATTR_FONT = wxTEXT_ATTR_FONT_FACE | wxTEXT_ATTR_FONT_SIZE | 
 							wxTEXT_ATTR_FONT_WEIGHT | wxTEXT_ATTR_FONT_ITALIC | 
 							wxTEXT_ATTR_FONT_UNDERLINE;
-		public const int wxTEXT_ATTR_ALIGNMENT =		0x0080;
-		public const int wxTEXT_ATTR_LEFT_INDENT =		0x0100;
-		public const int wxTEXT_ATTR_RIGHT_INDENT =		0x0200;
-		public const int wxTEXT_ATTR_TABS =			0x0400;
+		public const цел wxTEXT_ATTR_ALIGNMENT =		0x0080;
+		public const цел wxTEXT_ATTR_LEFT_INDENT =		0x0100;
+		public const цел wxTEXT_ATTR_RIGHT_INDENT =		0x0200;
+		public const цел wxTEXT_ATTR_TABS =			0x0400;
 
 	
 		//---------------------------------------------------------------------
 	
-		public this(IntPtr wxobj)
+		public this(ЦУк шхобъ)
 		{
-			super(wxobj);
+			super(шхобъ);
 		}
 		
-		private this(IntPtr wxobj, bool memOwn)
+		private this(ЦУк шхобъ, бул memOwn)
 		{ 
-			super(wxobj);
+			super(шхобъ);
 			this.memOwn = memOwn;
 		}
 
-	        public this(Colour colText, Colour colBack=null, Font font=null, TextAttrAlignment alignment = TextAttrAlignment.wxTEXT_ALIGNMENT_DEFAULT)
-        		{ this(wxTextAttr_ctor(wxObject.SafePtr(colText), wxObject.SafePtr(colBack), wxObject.SafePtr(font), cast(int)alignment), true); }
+	        public this(Цвет colText, Цвет colBack=пусто, Шрифт шрифт=пусто, TextAttrAlignment alignment = TextAttrAlignment.wxTEXT_ALIGNMENT_DEFAULT)
+        		{ this(wxTextAttr_ctor(wxObject.SafePtr(colText), wxObject.SafePtr(colBack), wxObject.SafePtr(шрифт), cast(цел)alignment), да); }
 			
 		//---------------------------------------------------------------------
 		
-		override protected void dtor() { wxTextAttr_dtor(wxobj); }
+		override protected проц dtor() { wxTextAttr_dtor(шхобъ); }
 			    
 		//---------------------------------------------------------------------
 		
-		public void TextColour(Colour value) { wxTextAttr_SetTextColour(wxobj, wxObject.SafePtr(value)); }
-		public Colour TextColour() { return new Colour(wxTextAttr_GetTextColour(wxobj), true); }
+		public проц TextColour(Цвет значение) { wxTextAttr_SetTextColour(шхобъ, wxObject.SafePtr(значение)); }
+		public Цвет TextColour() { return new Цвет(wxTextAttr_GetTextColour(шхобъ), да); }
 		
 		//---------------------------------------------------------------------
 		
-		public void BackgroundColour(Colour value) { wxTextAttr_SetBackgroundColour(wxobj, wxObject.SafePtr(value)); }
-		public Colour BackgroundColour() { return new Colour(wxTextAttr_GetBackgroundColour(wxobj), true); }
+		public проц ЦветЗП(Цвет значение) { wxTextAttr_SetBackgroundColour(шхобъ, wxObject.SafePtr(значение)); }
+		public Цвет ЦветЗП() { return new Цвет(wxTextAttr_GetBackgroundColour(шхобъ), да); }
 		
 		//---------------------------------------------------------------------
 		
-		public void font(Font value) { wxTextAttr_SetFont(wxobj, wxObject.SafePtr(value)); }
-		public Font font() { return new Font(wxTextAttr_GetFont(wxobj)); }
+		public проц шрифт(Шрифт значение) { wxTextAttr_SetFont(шхобъ, wxObject.SafePtr(значение)); }
+		public Шрифт шрифт() { return new Шрифт(wxTextAttr_GetFont(шхобъ)); }
 		
 		//---------------------------------------------------------------------
 		
-		public void Alignment(TextAttrAlignment value) { wxTextAttr_SetAlignment(wxobj, cast(int)value); }
-		public TextAttrAlignment Alignment() { return cast(TextAttrAlignment)wxTextAttr_GetAlignment(wxobj); }
+		public проц Alignment(TextAttrAlignment значение) { wxTextAttr_SetAlignment(шхобъ, cast(цел)значение); }
+		public TextAttrAlignment Alignment() { return cast(TextAttrAlignment)wxTextAttr_GetAlignment(шхобъ); }
 		
 		//---------------------------------------------------------------------
 		
-		public void Tabs(int[] value)
+		public проц Tabs(цел[] значение)
 		{
-			ArrayInt ai = new ArrayInt();
+			МассивЦел ai = new МассивЦел();
 			
-			for(int i = 0; i < value.length; ++i)
-				ai.Add(value[i]);
+			for(цел i = 0; i < значение.length; ++i)
+				ai.Добавь(значение[i]);
 				
-			wxTextAttr_SetTabs(wxobj, ArrayInt.SafePtr(ai));
+			wxTextAttr_SetTabs(шхобъ, МассивЦел.SafePtr(ai));
 		}
-		public int[] Tabs()
+		public цел[] Tabs()
 		{
-			return (new ArrayInt(wxTextAttr_GetTabs(wxobj), true)).toArray();
+			return (new МассивЦел(wxTextAttr_GetTabs(шхобъ), да)).вМассив();
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void SetLeftIndent(int indent)
+		public проц SetLeftIndent(цел indent)
 		{
 			SetLeftIndent(indent, 0);
 		}
 		
-		public void SetLeftIndent(int indent, int subIndent)
+		public проц SetLeftIndent(цел indent, цел subIndent)
 		{
-			wxTextAttr_SetLeftIndent(wxobj, indent, subIndent);
+			wxTextAttr_SetLeftIndent(шхобъ, indent, subIndent);
 		}
 		
-		public int LeftIndent() { return wxTextAttr_GetLeftIndent(wxobj); }
+		public цел LeftIndent() { return wxTextAttr_GetLeftIndent(шхобъ); }
 		
-		public int LeftSubIndent() { return wxTextAttr_GetLeftSubIndent(wxobj); }
-		
-		//---------------------------------------------------------------------
-		
-		public void RightIndent(int value) { wxTextAttr_SetRightIndent(wxobj, value); }
-		public int RightIndent() { return wxTextAttr_GetRightIndent(wxobj); }
+		public цел LeftSubIndent() { return wxTextAttr_GetLeftSubIndent(шхобъ); }
 		
 		//---------------------------------------------------------------------
 		
-		public void Flags(int value) { wxTextAttr_SetFlags(wxobj, cast(uint)value); }
-		public int Flags() { return cast(int)wxTextAttr_GetFlags(wxobj); }
+		public проц RightIndent(цел значение) { wxTextAttr_SetRightIndent(шхобъ, значение); }
+		public цел RightIndent() { return wxTextAttr_GetRightIndent(шхобъ); }
 		
 		//---------------------------------------------------------------------
 		
-		public bool HasTextColour() { return wxTextAttr_HasTextColour(wxobj); }
+		public проц Флаги(цел значение) { wxTextAttr_SetFlags(шхобъ, cast(бцел)значение); }
+		public цел Флаги() { return cast(цел)wxTextAttr_GetFlags(шхобъ); }
 		
 		//---------------------------------------------------------------------
 		
-		public bool HasBackgroundColour() { return wxTextAttr_HasBackgroundColour(wxobj); }
+		public бул HasTextColour() { return wxTextAttr_HasTextColour(шхобъ); }
 		
 		//---------------------------------------------------------------------
 		
-		public bool HasFont() { return wxTextAttr_HasFont(wxobj); }
+		public бул HasBackgroundColour() { return wxTextAttr_HasBackgroundColour(шхобъ); }
 		
 		//---------------------------------------------------------------------
 		
-		public bool HasAlignment() { return wxTextAttr_HasAlignment(wxobj); }
+		public бул HasFont() { return wxTextAttr_HasFont(шхобъ); }
 		
 		//---------------------------------------------------------------------
 		
-		public bool HasTabs() { return wxTextAttr_HasTabs(wxobj); }
+		public бул HasAlignment() { return wxTextAttr_HasAlignment(шхобъ); }
 		
 		//---------------------------------------------------------------------
 		
-		public bool HasLeftIndent() { return wxTextAttr_HasLeftIndent(wxobj); }
+		public бул HasTabs() { return wxTextAttr_HasTabs(шхобъ); }
 		
 		//---------------------------------------------------------------------
 		
-		public bool HasRightIndent() { return wxTextAttr_HasRightIndent(wxobj); }
+		public бул HasLeftIndent() { return wxTextAttr_HasLeftIndent(шхобъ); }
 		
 		//---------------------------------------------------------------------
 		
-		public bool HasFlag(int flag)
+		public бул HasRightIndent() { return wxTextAttr_HasRightIndent(шхобъ); }
+		
+		//---------------------------------------------------------------------
+		
+		public бул HasFlag(цел flag)
 		{
-			return wxTextAttr_HasFlag(wxobj, cast(uint)flag); 
+			return wxTextAttr_HasFlag(шхобъ, cast(бцел)flag); 
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public bool IsDefault() { return wxTextAttr_IsDefault(wxobj); }
+		public бул IsDefault() { return wxTextAttr_IsDefault(шхобъ); }
 	}
 	
 	//---------------------------------------------------------------------
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxTextCtrl_GetValue(IntPtr self);
-		static extern (C) void   wxTextCtrl_SetValue(IntPtr self, string value);
-		static extern (C) IntPtr wxTextCtrl_GetRange(IntPtr self, uint from, uint to);
-		static extern (C) int    wxTextCtrl_GetLineLength(IntPtr self, uint lineNo);
-		static extern (C) IntPtr wxTextCtrl_GetLineText(IntPtr self, uint lineNo);
-		static extern (C) int    wxTextCtrl_GetNumberOfLines(IntPtr self);
-		static extern (C) bool   wxTextCtrl_IsModified(IntPtr self);
-		static extern (C) bool   wxTextCtrl_IsEditable(IntPtr self);
-		static extern (C) bool   wxTextCtrl_IsSingleLine(IntPtr self);
-		static extern (C) bool   wxTextCtrl_IsMultiLine(IntPtr self);
-		static extern (C) void   wxTextCtrl_GetSelection(IntPtr self, out int from, out int to);
-		static extern (C) IntPtr wxTextCtrl_GetStringSelection(IntPtr self);
-		static extern (C) void   wxTextCtrl_Clear(IntPtr self);
-		static extern (C) void   wxTextCtrl_Replace(IntPtr self, uint from, uint to, string value);
-		static extern (C) void   wxTextCtrl_Remove(IntPtr self, uint from, uint to);
-		static extern (C) bool   wxTextCtrl_LoadFile(IntPtr self, string file);
-		static extern (C) bool   wxTextCtrl_SaveFile(IntPtr self, string file);
-		static extern (C) void   wxTextCtrl_MarkDirty(IntPtr self);
-		static extern (C) void   wxTextCtrl_DiscardEdits(IntPtr self);
-		static extern (C) void   wxTextCtrl_SetMaxLength(IntPtr self, uint len);
-		static extern (C) void   wxTextCtrl_WriteText(IntPtr self, string text);
-		static extern (C) void   wxTextCtrl_AppendText(IntPtr self, string text);
-		static extern (C) bool   wxTextCtrl_EmulateKeyPress(IntPtr self, IntPtr evt);
-		static extern (C) bool   wxTextCtrl_SetStyle(IntPtr self, uint start, uint end, IntPtr style);
-		static extern (C) bool   wxTextCtrl_GetStyle(IntPtr self, uint position, inout IntPtr style);
-		static extern (C) bool   wxTextCtrl_SetDefaultStyle(IntPtr self, IntPtr style);
-		static extern (C) IntPtr wxTextCtrl_GetDefaultStyle(IntPtr self);
-		static extern (C) uint   wxTextCtrl_XYToPosition(IntPtr self, uint x, uint y);
-		static extern (C) bool   wxTextCtrl_PositionToXY(IntPtr self, uint pos, out int x, out int y);
-		static extern (C) void   wxTextCtrl_ShowPosition(IntPtr self, uint pos);
-		static extern (C) int    wxTextCtrl_HitTest(IntPtr self, inout Point pt, out int pos);
-		static extern (C) int    wxTextCtrl_HitTest2(IntPtr self, inout Point pt, out int col, out int row);
-		static extern (C) void   wxTextCtrl_Copy(IntPtr self);
-		static extern (C) void   wxTextCtrl_Cut(IntPtr self);
-		static extern (C) void   wxTextCtrl_Paste(IntPtr self);
-		static extern (C) bool   wxTextCtrl_CanCopy(IntPtr self);
-		static extern (C) bool   wxTextCtrl_CanCut(IntPtr self);
-		static extern (C) bool   wxTextCtrl_CanPaste(IntPtr self);
-		static extern (C) void   wxTextCtrl_Undo(IntPtr self);
-		static extern (C) void   wxTextCtrl_Redo(IntPtr self);
-		static extern (C) bool   wxTextCtrl_CanUndo(IntPtr self);
-		static extern (C) bool   wxTextCtrl_CanRedo(IntPtr self);
-		static extern (C) void   wxTextCtrl_SetInsertionPoint(IntPtr self, uint pos);
-		static extern (C) void   wxTextCtrl_SetInsertionPointEnd(IntPtr self);
-		static extern (C) uint   wxTextCtrl_GetInsertionPoint(IntPtr self);
-		static extern (C) uint   wxTextCtrl_GetLastPosition(IntPtr self);
-		static extern (C) void   wxTextCtrl_SetSelection(IntPtr self, uint from, uint to);
-		static extern (C) void   wxTextCtrl_SelectAll(IntPtr self);
-		static extern (C) void   wxTextCtrl_SetEditable(IntPtr self, bool editable);
-		static extern (C)        IntPtr wxTextCtrl_ctor();
-		static extern (C) bool   wxTextCtrl_Create(IntPtr self, IntPtr parent, int id, string value, inout Point pos, inout Size size, uint style, IntPtr validator, string name);
-		static extern (C) bool   wxTextCtrl_Enable(IntPtr self, bool enable);
-		static extern (C) void   wxTextCtrl_OnDropFiles(IntPtr self, IntPtr evt);
-		static extern (C) bool   wxTextCtrl_SetFont(IntPtr self, IntPtr font);
-		static extern (C) bool   wxTextCtrl_SetForegroundColour(IntPtr self, IntPtr colour);
-		static extern (C) bool   wxTextCtrl_SetBackgroundColour(IntPtr self, IntPtr colour);
-		static extern (C) void   wxTextCtrl_Freeze(IntPtr self);
-		static extern (C) void   wxTextCtrl_Thaw(IntPtr self);
-		static extern (C) bool   wxTextCtrl_ScrollLines(IntPtr self, int lines);
-		static extern (C) bool   wxTextCtrl_ScrollPages(IntPtr self, int pages);
+		static extern (C) ЦУк wxTextCtrl_GetValue(ЦУк сам);
+		static extern (C) проц   wxTextCtrl_SetValue(ЦУк сам, ткст значение);
+		static extern (C) ЦУк wxTextCtrl_GetRange(ЦУк сам, бцел from, бцел to);
+		static extern (C) цел    wxTextCtrl_GetLineLength(ЦУк сам, бцел lineNo);
+		static extern (C) ЦУк wxTextCtrl_GetLineText(ЦУк сам, бцел lineNo);
+		static extern (C) цел    wxTextCtrl_GetNumberOfLines(ЦУк сам);
+		static extern (C) бул   wxTextCtrl_IsModified(ЦУк сам);
+		static extern (C) бул   wxTextCtrl_IsEditable(ЦУк сам);
+		static extern (C) бул   wxTextCtrl_IsSingleLine(ЦУк сам);
+		static extern (C) бул   wxTextCtrl_IsMultiLine(ЦУк сам);
+		static extern (C) проц   wxTextCtrl_GetSelection(ЦУк сам, out цел from, out цел to);
+		static extern (C) ЦУк wxTextCtrl_GetStringSelection(ЦУк сам);
+		static extern (C) проц   wxTextCtrl_Clear(ЦУк сам);
+		static extern (C) проц   wxTextCtrl_Replace(ЦУк сам, бцел from, бцел to, ткст значение);
+		static extern (C) проц   wxTextCtrl_Remove(ЦУк сам, бцел from, бцел to);
+		static extern (C) бул   wxTextCtrl_LoadFile(ЦУк сам, ткст file);
+		static extern (C) бул   wxTextCtrl_SaveFile(ЦУк сам, ткст file);
+		static extern (C) проц   wxTextCtrl_MarkDirty(ЦУк сам);
+		static extern (C) проц   wxTextCtrl_DiscardEdits(ЦУк сам);
+		static extern (C) проц   wxTextCtrl_SetMaxLength(ЦУк сам, бцел len);
+		static extern (C) проц   wxTextCtrl_WriteText(ЦУк сам, ткст текст);
+		static extern (C) проц   wxTextCtrl_AppendText(ЦУк сам, ткст текст);
+		static extern (C) бул   wxTextCtrl_EmulateKeyPress(ЦУк сам, ЦУк evt);
+		static extern (C) бул   wxTextCtrl_SetStyle(ЦУк сам, бцел start, бцел end, ЦУк стиль);
+		static extern (C) бул   wxTextCtrl_GetStyle(ЦУк сам, бцел position, inout ЦУк стиль);
+		static extern (C) бул   wxTextCtrl_SetDefaultStyle(ЦУк сам, ЦУк стиль);
+		static extern (C) ЦУк wxTextCtrl_GetDefaultStyle(ЦУк сам);
+		static extern (C) бцел   wxTextCtrl_XYToPosition(ЦУк сам, бцел x, бцел y);
+		static extern (C) бул   wxTextCtrl_PositionToXY(ЦУк сам, бцел поз, out цел x, out цел y);
+		static extern (C) проц   wxTextCtrl_ShowPosition(ЦУк сам, бцел поз);
+		static extern (C) цел    wxTextCtrl_HitTest(ЦУк сам, inout Точка pt, out цел поз);
+		static extern (C) цел    wxTextCtrl_HitTest2(ЦУк сам, inout Точка pt, out цел col, out цел row);
+		static extern (C) проц   wxTextCtrl_Copy(ЦУк сам);
+		static extern (C) проц   wxTextCtrl_Cut(ЦУк сам);
+		static extern (C) проц   wxTextCtrl_Paste(ЦУк сам);
+		static extern (C) бул   wxTextCtrl_CanCopy(ЦУк сам);
+		static extern (C) бул   wxTextCtrl_CanCut(ЦУк сам);
+		static extern (C) бул   wxTextCtrl_CanPaste(ЦУк сам);
+		static extern (C) проц   wxTextCtrl_Undo(ЦУк сам);
+		static extern (C) проц   wxTextCtrl_Redo(ЦУк сам);
+		static extern (C) бул   wxTextCtrl_CanUndo(ЦУк сам);
+		static extern (C) бул   wxTextCtrl_CanRedo(ЦУк сам);
+		static extern (C) проц   wxTextCtrl_SetInsertionPoint(ЦУк сам, бцел поз);
+		static extern (C) проц   wxTextCtrl_SetInsertionPointEnd(ЦУк сам);
+		static extern (C) бцел   wxTextCtrl_GetInsertionPoint(ЦУк сам);
+		static extern (C) бцел   wxTextCtrl_GetLastPosition(ЦУк сам);
+		static extern (C) проц   wxTextCtrl_SetSelection(ЦУк сам, бцел from, бцел to);
+		static extern (C) проц   wxTextCtrl_SelectAll(ЦУк сам);
+		static extern (C) проц   wxTextCtrl_SetEditable(ЦУк сам, бул editable);
+		static extern (C)        ЦУк wxTextCtrl_ctor();
+		static extern (C) бул   wxTextCtrl_Create(ЦУк сам, ЦУк родитель, цел ид, ткст значение, inout Точка поз, inout Размер size, бцел стиль, ЦУк validator, ткст имя);
+		static extern (C) бул   wxTextCtrl_Enable(ЦУк сам, бул enable);
+		static extern (C) проц   wxTextCtrl_OnDropFiles(ЦУк сам, ЦУк evt);
+		static extern (C) бул   wxTextCtrl_SetFont(ЦУк сам, ЦУк шрифт);
+		static extern (C) бул   wxTextCtrl_SetForegroundColour(ЦУк сам, ЦУк colour);
+		static extern (C) бул   wxTextCtrl_SetBackgroundColour(ЦУк сам, ЦУк colour);
+		static extern (C) проц   wxTextCtrl_Freeze(ЦУк сам);
+		static extern (C) проц   wxTextCtrl_Thaw(ЦУк сам);
+		static extern (C) бул   wxTextCtrl_ScrollLines(ЦУк сам, цел lines);
+		static extern (C) бул   wxTextCtrl_ScrollPages(ЦУк сам, цел pages);
 		//! \endcond
 
 		//---------------------------------------------------------------------
@@ -288,442 +288,442 @@ public import wx.KeyEvent;
 	alias TextCtrl wxTextCtrl;
 	public class TextCtrl : Control
 	{
-		public const int wxTE_NO_VSCROLL       = 0x0002;
-		public const int wxTE_AUTO_SCROLL      = 0x0008;
+		public const цел wxTE_NO_VSCROLL       = 0x0002;
+		public const цел wxTE_AUTO_SCROLL      = 0x0008;
 	
-		public const int wxTE_READONLY         = 0x0010;
-		public const int wxTE_MULTILINE        = 0x0020;
-		public const int wxTE_PROCESS_TAB      = 0x0040;
+		public const цел wxTE_READONLY         = 0x0010;
+		public const цел wxTE_MULTILINE        = 0x0020;
+		public const цел wxTE_PROCESS_TAB      = 0x0040;
 	
-		public const int wxTE_LEFT             = 0x0000;
-		public const int wxTE_CENTER           = Alignment.wxALIGN_CENTER;
-		public const int wxTE_RIGHT            = Alignment.wxALIGN_RIGHT;
+		public const цел wxTE_LEFT             = 0x0000;
+		public const цел wxTE_CENTER           = Alignment.wxALIGN_CENTER;
+		public const цел wxTE_RIGHT            = Alignment.wxALIGN_RIGHT;
 	
-		public const int wxTE_RICH             = 0x0080;
-		public const int wxTE_PROCESS_ENTER    = 0x0400;
-		public const int wxTE_PASSWORD         = 0x0800;
+		public const цел wxTE_RICH             = 0x0080;
+		public const цел wxTE_PROCESS_ENTER    = 0x0400;
+		public const цел wxTE_PASSWORD         = 0x0800;
 	
-		public const int wxTE_AUTO_URL         = 0x1000;
-		public const int wxTE_NOHIDESEL        = 0x2000;
-		public const int wxTE_DONTWRAP         = Window.wxHSCROLL;
-		public const int wxTE_LINEWRAP         = 0x4000;
-		public const int wxTE_WORDWRAP         = 0x0000;
-		public const int wxTE_RICH2            = 0x8000;
+		public const цел wxTE_AUTO_URL         = 0x1000;
+		public const цел wxTE_NOHIDESEL        = 0x2000;
+		public const цел wxTE_DONTWRAP         = Окно.wxHSCROLL;
+		public const цел wxTE_LINEWRAP         = 0x4000;
+		public const цел wxTE_WORDWRAP         = 0x0000;
+		public const цел wxTE_RICH2            = 0x8000;
 
 
-		public const string wxTextCtrlNameStr = "text";
+		public const ткст wxTextCtrlNameStr = "текст";
 		//---------------------------------------------------------------------
 
-		public this(IntPtr wxobj)
-			{ super(wxobj); }
+		public this(ЦУк шхобъ)
+			{ super(шхобъ); }
 
-		public this(Window parent, int id, string value="", Point pos = wxDefaultPosition, Size size = wxDefaultSize, int style = 0, Validator validator = null, string name = wxTextCtrlNameStr)
+		public this(Окно родитель, цел ид, ткст значение="", Точка поз = wxDefaultPosition, Размер size = wxDefaultSize, цел стиль = 0, Validator validator = пусто, ткст имя = wxTextCtrlNameStr)
 		{
 			this(wxTextCtrl_ctor());
-			if (!wxTextCtrl_Create(wxobj, wxObject.SafePtr(parent), id, value, pos, size, cast(uint)style, wxObject.SafePtr(validator), name))
+			if (!wxTextCtrl_Create(шхобъ, wxObject.SafePtr(родитель), ид, значение, поз, size, cast(бцел)стиль, wxObject.SafePtr(validator), имя))
 			{
 				throw new InvalidOperationException("Failed to create TextCtrl");
 			}
 		}
 
-		public static wxObject New(IntPtr wxobj)
+		public static wxObject Нов(ЦУк шхобъ)
 		{
-			return new TextCtrl(wxobj);
+			return new TextCtrl(шхобъ);
 		}
 	
 		//---------------------------------------------------------------------
-		// ctors with self created id
+		// ctors with сам created ид
 		
-		public this(Window parent, string value="", Point pos = wxDefaultPosition, Size size = wxDefaultSize, int style = 0, Validator validator = null, string name = wxTextCtrlNameStr)
-			{ this(parent, Window.UniqueID, value, pos, size, 0, validator, name);}
+		public this(Окно родитель, ткст значение="", Точка поз = wxDefaultPosition, Размер size = wxDefaultSize, цел стиль = 0, Validator validator = пусто, ткст имя = wxTextCtrlNameStr)
+			{ this(родитель, Окно.UniqueID, значение, поз, size, 0, validator, имя);}
 	
 		//---------------------------------------------------------------------
 
-		public void Clear()
+		public проц Очисть()
 		{
-			wxTextCtrl_Clear(wxobj);
+			wxTextCtrl_Clear(шхобъ);
 		}
 	
 		//---------------------------------------------------------------------
 	
-		public override void BackgroundColour(Colour value)
+		public override проц ЦветЗП(Цвет значение)
 		{
-			wxTextCtrl_SetBackgroundColour(wxobj, wxObject.SafePtr(value));
+			wxTextCtrl_SetBackgroundColour(шхобъ, wxObject.SafePtr(значение));
 		}
 	
-		public override void ForegroundColour(Colour value)
+		public override проц ЦветПП(Цвет значение)
 		{
-			wxTextCtrl_SetForegroundColour(wxobj, wxObject.SafePtr(value));
+			wxTextCtrl_SetForegroundColour(шхобъ, wxObject.SafePtr(значение));
 		}
 	
 		//---------------------------------------------------------------------
 	
-		public string Value() 
+		public ткст Value() 
 			{
-				return cast(string) new wxString(wxTextCtrl_GetValue(wxobj), true);
+				return cast(ткст) new wxString(wxTextCtrl_GetValue(шхобъ), да);
 			}
-		public void Value(string value) 
+		public проц Value(ткст значение) 
 			{
-				wxTextCtrl_SetValue(wxobj, value);
+				wxTextCtrl_SetValue(шхобъ, значение);
 			}
 	
 		//---------------------------------------------------------------------
 	
-		public string GetRange(int from, int to)
+		public ткст GetRange(цел from, цел to)
 		{
-			return cast(string) new wxString(wxTextCtrl_GetRange(wxobj, cast(uint)from, cast(uint)to), true);
+			return cast(ткст) new wxString(wxTextCtrl_GetRange(шхобъ, cast(бцел)from, cast(бцел)to), да);
 		}
 	
 		//---------------------------------------------------------------------
 	
-		public int LineLength(int lineNo)
+		public цел LineLength(цел lineNo)
 		{
-			return wxTextCtrl_GetLineLength(wxobj, cast(uint)lineNo);
+			return wxTextCtrl_GetLineLength(шхобъ, cast(бцел)lineNo);
 		}
 	
-		public string GetLineText(int lineNo)
+		public ткст GetLineText(цел lineNo)
 		{
-			return cast(string) new wxString(wxTextCtrl_GetLineText(wxobj, cast(uint)lineNo), true);
+			return cast(ткст) new wxString(wxTextCtrl_GetLineText(шхобъ, cast(бцел)lineNo), да);
 		}
 	
-		public int GetNumberOfLines()
+		public цел GetNumberOfLines()
 		{
-			return wxTextCtrl_GetNumberOfLines(wxobj);
-		}
-	
-		//---------------------------------------------------------------------
-	
-		public bool IsModified() { return wxTextCtrl_IsModified(wxobj); }
-	
-		public bool IsEditable() { return wxTextCtrl_IsEditable(wxobj); }
-	
-		public bool IsSingleLine() { return wxTextCtrl_IsSingleLine(wxobj); }
-	
-		public bool IsMultiLine() { return wxTextCtrl_IsMultiLine(wxobj); }
-	
-		//---------------------------------------------------------------------
-	
-		public void GetSelection(out int from, out int to)
-		{
-			wxTextCtrl_GetSelection(wxobj, from, to);
+			return wxTextCtrl_GetNumberOfLines(шхобъ);
 		}
 	
 		//---------------------------------------------------------------------
 	
-		public void Replace(int from, int to, string value)
-		{
-			wxTextCtrl_Replace(wxobj, cast(uint)from, cast(uint)to, value);
-		}
+		public бул IsModified() { return wxTextCtrl_IsModified(шхобъ); }
 	
-		public void Remove(int from, int to)
+		public бул IsEditable() { return wxTextCtrl_IsEditable(шхобъ); }
+	
+		public бул IsSingleLine() { return wxTextCtrl_IsSingleLine(шхобъ); }
+	
+		public бул IsMultiLine() { return wxTextCtrl_IsMultiLine(шхобъ); }
+	
+		//---------------------------------------------------------------------
+	
+		public проц GetSelection(out цел from, out цел to)
 		{
-			wxTextCtrl_Remove(wxobj, cast(uint)from, cast(uint)to);
+			wxTextCtrl_GetSelection(шхобъ, from, to);
 		}
 	
 		//---------------------------------------------------------------------
 	
-		public bool LoadFile(string file)
+		public проц Замени(цел from, цел to, ткст значение)
 		{
-			return wxTextCtrl_LoadFile(wxobj, file);
+			wxTextCtrl_Replace(шхобъ, cast(бцел)from, cast(бцел)to, значение);
+		}
+	
+		public проц Remove(цел from, цел to)
+		{
+			wxTextCtrl_Remove(шхобъ, cast(бцел)from, cast(бцел)to);
+		}
+	
+		//---------------------------------------------------------------------
+	
+		public бул ЗагрузиФайл(ткст file)
+		{
+			return wxTextCtrl_LoadFile(шхобъ, file);
 		}
 		
 		// using wx.NET with wxGTK wxTextCtrl_LoadFile didn't work
 		// LoadFileNET uses StreamReader
 		// this should also handle encoding problems...
 /+
-		public bool LoadFileNET(string file)
+		public бул LoadFileNET(ткст file)
 		{
 			try
 			{
 				System.IO.StreamReader sr = new System.IO.StreamReader(file);
-				string s = sr.ReadToEnd();
-				sr.Close();
+				ткст s = sr.ReadToEnd();
+				sr.Закрой();
 				AppendText(s);
 				
-				return true;
+				return да;
 				
 			} catch ( Exception e )
 			{
-				return false;
+				return нет;
 			}
 		}
 +/
 	
-		public bool SaveFile(string file)
+		public бул СохраниФайл(ткст file)
 		{
-			return wxTextCtrl_SaveFile(wxobj, file);
+			return wxTextCtrl_SaveFile(шхобъ, file);
 		}
 		
 		// counterpart of LoadFileNET
 /+
-		public bool SaveFileNET(string file)
+		public бул SaveFileNET(ткст file)
 		{
 			try
 			{
 				System.IO.StreamWriter sw = new System.IO.StreamWriter(file);
 				sw.Write(Value);
-				sw.Close();
+				sw.Закрой();
 				
-				return true;
+				return да;
 			} catch ( Exception e )
 			{
-				return false;
+				return нет;
 			}
 		}
 +/
 	
 		//---------------------------------------------------------------------
 	
-		public void DiscardEdits()
+		public проц DiscardEdits()
 		{
-			wxTextCtrl_DiscardEdits(wxobj);
+			wxTextCtrl_DiscardEdits(шхобъ);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void MarkDirty()
+		public проц MarkDirty()
 		{
-			wxTextCtrl_MarkDirty(wxobj);
+			wxTextCtrl_MarkDirty(шхобъ);
 		}
 	
 		//---------------------------------------------------------------------
 	
-		public void MaxLength(int value) { wxTextCtrl_SetMaxLength(wxobj, cast(uint)value); }
+		public проц MaxLength(цел значение) { wxTextCtrl_SetMaxLength(шхобъ, cast(бцел)значение); }
 	
 		//---------------------------------------------------------------------
 	
-		public void WriteText(string text)
+		public проц WriteText(ткст текст)
 		{
-			wxTextCtrl_WriteText(wxobj, text);
-		}
-		
-		//---------------------------------------------------------------------
-	
-		public void AppendText(string text)
-		{
-			wxTextCtrl_AppendText(wxobj, text);
+			wxTextCtrl_WriteText(шхобъ, текст);
 		}
 		
 		//---------------------------------------------------------------------
-		
-		public bool EmulateKeyPress(KeyEvent evt)
+	
+		public проц AppendText(ткст текст)
 		{
-			return wxTextCtrl_EmulateKeyPress(wxobj, wxObject.SafePtr(evt));
+			wxTextCtrl_AppendText(шхобъ, текст);
+		}
+		
+		//---------------------------------------------------------------------
+		
+		public бул EmulateKeyPress(СобКлавиши evt)
+		{
+			return wxTextCtrl_EmulateKeyPress(шхобъ, wxObject.SafePtr(evt));
 		}
 	
 		//---------------------------------------------------------------------
 	
-		public bool SetStyle(int start, int end, TextAttr style)
+		public бул SetStyle(цел start, цел end, TextAttr стиль)
 		{
-			return wxTextCtrl_SetStyle(wxobj, cast(uint)start, cast(uint)end, wxObject.SafePtr(style));
+			return wxTextCtrl_SetStyle(шхобъ, cast(бцел)start, cast(бцел)end, wxObject.SafePtr(стиль));
 		}
 		
-		public bool GetStyle(int position, inout TextAttr style)
+		public бул GetStyle(цел position, inout TextAttr стиль)
 		{
-			IntPtr tmp = wxObject.SafePtr(style);
-			bool retval = wxTextCtrl_GetStyle(wxobj, cast(uint)position, tmp);
-			style.wxobj = tmp;
+			ЦУк tmp = wxObject.SafePtr(стиль);
+			бул retval = wxTextCtrl_GetStyle(шхобъ, cast(бцел)position, tmp);
+			стиль.шхобъ = tmp;
 			return retval;
 		}
 		
 		//---------------------------------------------------------------------
 	
-		public bool SetDefaultStyle(TextAttr style)
+		public бул SetDefaultStyle(TextAttr стиль)
 		{
-			return wxTextCtrl_SetDefaultStyle(wxobj, wxObject.SafePtr(style));
+			return wxTextCtrl_SetDefaultStyle(шхобъ, wxObject.SafePtr(стиль));
 		}
 		
 		public TextAttr GetDefaultStyle()
 		{
-			return cast(TextAttr)FindObject(wxTextCtrl_GetDefaultStyle(wxobj));
+			return cast(TextAttr)FindObject(wxTextCtrl_GetDefaultStyle(шхобъ));
 		}
 	
 		//---------------------------------------------------------------------
 	
-		public int XYToPosition(int x, int y)
+		public цел XYToPosition(цел x, цел y)
 		{
-			return wxTextCtrl_XYToPosition(wxobj, cast(uint)x, cast(uint)y);
+			return wxTextCtrl_XYToPosition(шхобъ, cast(бцел)x, cast(бцел)y);
 		}
 	
-		public bool PositionToXY(int pos, out int x, out int y)
+		public бул PositionToXY(цел поз, out цел x, out цел y)
 		{
-			return wxTextCtrl_PositionToXY(wxobj, cast(uint)pos, x, y);
+			return wxTextCtrl_PositionToXY(шхобъ, cast(бцел)поз, x, y);
 		}
 	
-		public void ShowPosition(int pos)
+		public проц ShowPosition(цел поз)
 		{
-			wxTextCtrl_ShowPosition(wxobj, cast(uint)pos);
+			wxTextCtrl_ShowPosition(шхобъ, cast(бцел)поз);
 		}
 	
 		//---------------------------------------------------------------------
 		
-		public TextCtrlHitTestResult HitTest(Point pt, out int pos)
+		public TextCtrlHitTestResult HitTest(Точка pt, out цел поз)
 		{
-			return cast(TextCtrlHitTestResult)wxTextCtrl_HitTest(wxobj, pt, pos);
+			return cast(TextCtrlHitTestResult)wxTextCtrl_HitTest(шхобъ, pt, поз);
 		}
 		
-		public TextCtrlHitTestResult HitTest(Point pt, out int col, out int row)
+		public TextCtrlHitTestResult HitTest(Точка pt, out цел col, out цел row)
 		{
-			return cast(TextCtrlHitTestResult)wxTextCtrl_HitTest2(wxobj, pt, col, row);
+			return cast(TextCtrlHitTestResult)wxTextCtrl_HitTest2(шхобъ, pt, col, row);
 		}
 		
 		//---------------------------------------------------------------------
 	
-		public void Copy()
+		public проц Копируй()
 		{
-			wxTextCtrl_Copy(wxobj);
+			wxTextCtrl_Copy(шхобъ);
 		}
 	
-		public void Cut()
+		public проц Cut()
 		{
-			wxTextCtrl_Cut(wxobj);
+			wxTextCtrl_Cut(шхобъ);
 		}
 	
-		public void Paste()
+		public проц Вставь()
 		{
-			wxTextCtrl_Paste(wxobj);
-		}
-	
-		//---------------------------------------------------------------------
-	
-		public bool CanCopy()
-		{
-			return wxTextCtrl_CanCopy(wxobj);
-		}
-	
-		public bool CanCut()
-		{
-			return wxTextCtrl_CanCut(wxobj);
-		}
-	
-		public bool CanPaste()
-		{
-			return wxTextCtrl_CanPaste(wxobj);
+			wxTextCtrl_Paste(шхобъ);
 		}
 	
 		//---------------------------------------------------------------------
 	
-		public void Undo()
+		public бул CanCopy()
 		{
-			wxTextCtrl_Undo(wxobj);
+			return wxTextCtrl_CanCopy(шхобъ);
 		}
 	
-		public void Redo()
+		public бул CanCut()
 		{
-			wxTextCtrl_Redo(wxobj);
+			return wxTextCtrl_CanCut(шхобъ);
 		}
 	
-		//---------------------------------------------------------------------
-	
-		public bool CanUndo()
+		public бул CanPaste()
 		{
-			return wxTextCtrl_CanUndo(wxobj);
-		}
-	
-		public bool CanRedo()
-		{
-			return wxTextCtrl_CanRedo(wxobj);
+			return wxTextCtrl_CanPaste(шхобъ);
 		}
 	
 		//---------------------------------------------------------------------
 	
-		public void InsertionPoint(int value) 
+		public проц Undo()
+		{
+			wxTextCtrl_Undo(шхобъ);
+		}
+	
+		public проц Redo()
+		{
+			wxTextCtrl_Redo(шхобъ);
+		}
+	
+		//---------------------------------------------------------------------
+	
+		public бул CanUndo()
+		{
+			return wxTextCtrl_CanUndo(шхобъ);
+		}
+	
+		public бул CanRedo()
+		{
+			return wxTextCtrl_CanRedo(шхобъ);
+		}
+	
+		//---------------------------------------------------------------------
+	
+		public проц InsertionPoint(цел значение) 
 			{
-				wxTextCtrl_SetInsertionPoint(wxobj, cast(uint)value);
+				wxTextCtrl_SetInsertionPoint(шхобъ, cast(бцел)значение);
 			}
-		public int InsertionPoint() 
+		public цел InsertionPoint() 
 			{
-				return wxTextCtrl_GetInsertionPoint(wxobj);
+				return wxTextCtrl_GetInsertionPoint(шхобъ);
 			}
 	
-		public void SetInsertionPointEnd()
+		public проц SetInsertionPointEnd()
 		{
-			wxTextCtrl_SetInsertionPointEnd(wxobj);
+			wxTextCtrl_SetInsertionPointEnd(шхобъ);
 		}
 	
-		public int GetLastPosition()
+		public цел GetLastPosition()
 		{
-			return cast(int)wxTextCtrl_GetLastPosition(wxobj);
-		}
-	
-		//---------------------------------------------------------------------
-	
-		public void SetSelection(int from, int to)
-		{
-			wxTextCtrl_SetSelection(wxobj, cast(uint)from, cast(uint)to);
-		}
-	
-		public void SelectAll()
-		{
-			wxTextCtrl_SelectAll(wxobj);
+			return cast(цел)wxTextCtrl_GetLastPosition(шхобъ);
 		}
 	
 		//---------------------------------------------------------------------
 	
-		public void SetEditable(bool editable)
+		public проц SetSelection(цел from, цел to)
 		{
-			wxTextCtrl_SetEditable(wxobj, editable);
+			wxTextCtrl_SetSelection(шхобъ, cast(бцел)from, cast(бцел)to);
+		}
+	
+		public проц SelectAll()
+		{
+			wxTextCtrl_SelectAll(шхобъ);
 		}
 	
 		//---------------------------------------------------------------------
 	
-		public bool Enable(bool enable)
+		public проц SetEditable(бул editable)
 		{
-			return wxTextCtrl_Enable(wxobj, enable);
+			wxTextCtrl_SetEditable(шхобъ, editable);
 		}
 	
 		//---------------------------------------------------------------------
 	
-		public /+virtual+/ void OnDropFiles(Event evt)
+		public бул Enable(бул enable)
 		{
-			wxTextCtrl_OnDropFiles(wxobj, wxObject.SafePtr(evt));
+			return wxTextCtrl_Enable(шхобъ, enable);
 		}
 	
 		//---------------------------------------------------------------------
 	
-		public override void Freeze()
+		public /+virtual+/ проц OnDropFiles(Событие evt)
 		{
-			wxTextCtrl_Freeze(wxobj);
-		}
-	
-		public override void Thaw()
-		{
-			wxTextCtrl_Thaw(wxobj);
+			wxTextCtrl_OnDropFiles(шхобъ, wxObject.SafePtr(evt));
 		}
 	
 		//---------------------------------------------------------------------
 	
-		public override bool ScrollLines(int lines)
+		public override проц Freeze()
 		{
-			return wxTextCtrl_ScrollLines(wxobj, lines);
+			wxTextCtrl_Freeze(шхобъ);
 		}
 	
-		public override bool ScrollPages(int pages)
+		public override проц Thaw()
 		{
-			return wxTextCtrl_ScrollPages(wxobj, pages);
+			wxTextCtrl_Thaw(шхобъ);
 		}
 	
 		//---------------------------------------------------------------------
 	
-		public override void UpdateUI_Add(EventListener value) { AddCommandListener(Event.wxEVT_COMMAND_TEXT_UPDATED, ID, value, this); }
-		public override void UpdateUI_Remove(EventListener value)	{ RemoveHandler(value, this); }
+		public override бул ScrollLines(цел lines)
+		{
+			return wxTextCtrl_ScrollLines(шхобъ, lines);
+		}
+	
+		public override бул ScrollPages(цел pages)
+		{
+			return wxTextCtrl_ScrollPages(шхобъ, pages);
+		}
+	
+		//---------------------------------------------------------------------
+	
+		public override проц UpdateUI_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_COMMAND_TEXT_UPDATED, ИД, значение, this); }
+		public override проц UpdateUI_Remove(EventListener значение)	{ RemoveHandler(значение, this); }
 
-		public void Enter_Add(EventListener value) { AddCommandListener(Event.wxEVT_COMMAND_TEXT_ENTER, ID, value, this); }
-		public void Enter_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц Enter_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_COMMAND_TEXT_ENTER, ИД, значение, this); }
+		public проц Enter_Remove(EventListener значение) { RemoveHandler(значение, this); }
 	}
 	
 	//---------------------------------------------------------------------
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxTextUrlEvent_ctor(int id, IntPtr evtMouse, uint start, uint end);
-		static extern (C) uint   wxTextUrlEvent_GetURLStart(IntPtr self);
-		static extern (C) uint   wxTextUrlEvent_GetURLEnd(IntPtr self);
+		static extern (C) ЦУк wxTextUrlEvent_ctor(цел ид, ЦУк evtMouse, бцел start, бцел end);
+		static extern (C) бцел   wxTextUrlEvent_GetURLStart(ЦУк сам);
+		static extern (C) бцел   wxTextUrlEvent_GetURLEnd(ЦУк сам);
 		//! \endcond
 	
 	alias TextUrlEvent wxTextUrlEvent;
 	public class TextUrlEvent : CommandEvent
     	{
-		// TODO: Replace Event with EventMouse
-		public this(int id, Event evtMouse, int start, int end)
-		{ super(wxTextUrlEvent_ctor(id, wxObject.SafePtr(evtMouse), cast(uint)start, cast(uint)end));}
+		// TODO: Замени Событие with EventMouse
+		public this(цел ид, Событие evtMouse, цел start, цел end)
+		{ super(wxTextUrlEvent_ctor(ид, wxObject.SafePtr(evtMouse), cast(бцел)start, cast(бцел)end));}
 	}

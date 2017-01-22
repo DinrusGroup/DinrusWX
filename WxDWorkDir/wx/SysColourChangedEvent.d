@@ -10,7 +10,7 @@
 // (C) 2004 by Alexander Olk
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: SysColourChangedEvent.d,v 1.9 2006/11/17 15:21:01 afb Exp $
+// $Ид: SysColourChangedEvent.d,v 1.9 2006/11/17 15:21:01 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.SysColourChangedEvent;
@@ -19,24 +19,24 @@ public import wx.common;
 public import wx.Event;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxSysColourChangedEvent_ctor();
+		static extern (C) ЦУк wxSysColourChangedEvent_ctor();
 		//! \endcond
 		
 		//-----------------------------------------------------------------------------
 
 	alias SysColourChangedEvent wxSysColourChangedEvent;
-	public class SysColourChangedEvent : Event
+	public class SysColourChangedEvent : Событие
 	{
-		public this(IntPtr wxobj) 
-			{ super(wxobj); }
+		public this(ЦУк шхобъ) 
+			{ super(шхобъ); }
 
 		public this()
 			{ this(wxSysColourChangedEvent_ctor()); }
 
-		private static Event New(IntPtr obj) { return new SysColourChangedEvent(obj); }
+		private static Событие Нов(ЦУк объ) { return new SysColourChangedEvent(объ); }
 
 		static this()
 		{
-			AddEventType(wxEVT_SYS_COLOUR_CHANGED,			&SysColourChangedEvent.New);
+			ДобавьТипСоб(wxEVT_SYS_COLOUR_CHANGED,			&SysColourChangedEvent.Нов);
 		}
 	}

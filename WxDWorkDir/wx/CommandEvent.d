@@ -1,4 +1,4 @@
-//-----------------------------------------------------------------------------
+﻿//-----------------------------------------------------------------------------
 // wxD - CommandEvent.d
 // (C) 2005 bero <berobero@users.sourceforge.net>
 // based on
@@ -10,7 +10,7 @@
 // (C) 2003 by 379, Inc.
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: CommandEvent.d,v 1.10 2007/01/28 23:06:36 afb Exp $
+// $Ид: CommandEvent.d,v 1.10 2007/01/28 23:06:36 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.CommandEvent;
@@ -20,88 +20,88 @@ public import wx.Event;
 public import wx.ClientData;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxCommandEvent_ctor(int type,int winid);
-		static extern (C) int    wxCommandEvent_GetSelection(IntPtr self);
-		static extern (C) IntPtr wxCommandEvent_GetString(IntPtr self);
-		static extern (C) void wxCommandEvent_SetString(IntPtr self, string s);
-		static extern (C) bool   wxCommandEvent_IsChecked(IntPtr self);
-		static extern (C) bool   wxCommandEvent_IsSelection(IntPtr self);
-		static extern (C) int    wxCommandEvent_GetInt(IntPtr self);
-		static extern (C) void wxCommandEvent_SetInt(IntPtr self, int i);
+		static extern (C) ЦУк wxCommandEvent_ctor(цел тип,цел winid);
+		static extern (C) цел    wxCommandEvent_GetSelection(ЦУк сам);
+		static extern (C) ЦУк wxCommandEvent_GetString(ЦУк сам);
+		static extern (C) проц wxCommandEvent_SetString(ЦУк сам, ткст s);
+		static extern (C) бул   wxCommandEvent_IsChecked(ЦУк сам);
+		static extern (C) бул   wxCommandEvent_IsSelection(ЦУк сам);
+		static extern (C) цел    wxCommandEvent_GetInt(ЦУк сам);
+		static extern (C) проц wxCommandEvent_SetInt(ЦУк сам, цел i);
 
-		static extern (C) IntPtr wxCommandEvent_GetClientObject(IntPtr self);
-		static extern (C) void   wxCommandEvent_SetClientObject(IntPtr self, IntPtr data);
+		static extern (C) ЦУк wxCommandEvent_GetClientObject(ЦУк сам);
+		static extern (C) проц   wxCommandEvent_SetClientObject(ЦУк сам, ЦУк данные);
 		
-		static extern (C) void wxCommandEvent_SetExtraLong(IntPtr self, uint extralong);
-		static extern (C) uint wxCommandEvent_GetExtraLong(IntPtr self);
+		static extern (C) проц wxCommandEvent_SetExtraLong(ЦУк сам, бцел extralong);
+		static extern (C) бцел wxCommandEvent_GetExtraLong(ЦУк сам);
 		//! \endcond
 
 		//-----------------------------------------------------------------------------
 
 	alias CommandEvent wxCommandEvent;
-	public class CommandEvent : Event
+	public class CommandEvent : Событие
 	{
 
-		public this(IntPtr wxobj) 
-			{ super(wxobj); }
+		public this(ЦУк шхобъ) 
+			{ super(шхобъ); }
 
-		public this(EventType commandType = wxEVT_NULL, int winid = 0)
+		public this(ТипСобытия commandType = wxEVT_NULL, цел winid = 0)
 			{ super(wxCommandEvent_ctor(commandType,winid)); }
 
 		//-----------------------------------------------------------------------------
 
-		public int Selection() { return wxCommandEvent_GetSelection(wxobj); }
+		public цел Selection() { return wxCommandEvent_GetSelection(шхобъ); }
 
 		//-----------------------------------------------------------------------------
 
-		public string String() { return cast(string) new wxString(wxCommandEvent_GetString(wxobj), true); }
-		public void String(string value) { wxCommandEvent_SetString(wxobj, value); }
+		public ткст String() { return cast(ткст) new wxString(wxCommandEvent_GetString(шхобъ), да); }
+		public проц String(ткст значение) { wxCommandEvent_SetString(шхобъ, значение); }
 
 		//-----------------------------------------------------------------------------
 
-		public bool IsChecked() { return wxCommandEvent_IsChecked(wxobj); }
+		public бул IsChecked() { return wxCommandEvent_IsChecked(шхобъ); }
 
 		//-----------------------------------------------------------------------------
 
-		public bool IsSelection() { return wxCommandEvent_IsSelection(wxobj); }
+		public бул IsSelection() { return wxCommandEvent_IsSelection(шхобъ); }
 
 		//-----------------------------------------------------------------------------
 
-		public int Int() { return wxCommandEvent_GetInt(wxobj); }
-		public void Int(int value) { wxCommandEvent_SetInt(wxobj, value); }
+		public цел Int() { return wxCommandEvent_GetInt(шхобъ); }
+		public проц Int(цел значение) { wxCommandEvent_SetInt(шхобъ, значение); }
 
 		//-----------------------------------------------------------------------------
 
-		public ClientData ClientObject() { return cast(ClientData)FindObject(wxCommandEvent_GetClientObject(wxobj)); }
-		public void ClientObject(ClientData value) { wxCommandEvent_SetClientObject(wxobj, wxObject.SafePtr(value)); }
+		public ClientData ClientObject() { return cast(ClientData)FindObject(wxCommandEvent_GetClientObject(шхобъ)); }
+		public проц ClientObject(ClientData значение) { wxCommandEvent_SetClientObject(шхобъ, wxObject.SafePtr(значение)); }
 		
 		//-----------------------------------------------------------------------------
 		
-		public int ExtraLong() { return cast(int)wxCommandEvent_GetExtraLong(wxobj); }
-		public void ExtraLong(int value) { wxCommandEvent_SetExtraLong(wxobj, cast(uint)value); }
+		public цел ExtraLong() { return cast(цел)wxCommandEvent_GetExtraLong(шхобъ); }
+		public проц ExtraLong(цел значение) { wxCommandEvent_SetExtraLong(шхобъ, cast(бцел)значение); }
 
-		private static Event New(IntPtr obj) { return new CommandEvent(obj); }
+		private static Событие Нов(ЦУк объ) { return new CommandEvent(объ); }
 
 		static this()
 		{
-			AddEventType(wxEVT_COMMAND_BUTTON_CLICKED,          &CommandEvent.New);
-			AddEventType(wxEVT_COMMAND_MENU_SELECTED,           &CommandEvent.New);
+			ДобавьТипСоб(wxEVT_COMMAND_BUTTON_CLICKED,          &CommandEvent.Нов);
+			ДобавьТипСоб(wxEVT_COMMAND_MENU_SELECTED,           &CommandEvent.Нов);
 		
-			AddEventType(wxEVT_COMMAND_CHECKBOX_CLICKED,        &CommandEvent.New);
+			ДобавьТипСоб(wxEVT_COMMAND_CHECKBOX_CLICKED,        &CommandEvent.Нов);
 		
-			AddEventType(wxEVT_COMMAND_LISTBOX_SELECTED,        &CommandEvent.New);
-			AddEventType(wxEVT_COMMAND_LISTBOX_DOUBLECLICKED,   &CommandEvent.New);
-			AddEventType(wxEVT_COMMAND_CHOICE_SELECTED,         &CommandEvent.New);
-			AddEventType(wxEVT_COMMAND_COMBOBOX_SELECTED,       &CommandEvent.New);
-			AddEventType(wxEVT_COMMAND_TEXT_UPDATED,            &CommandEvent.New);
-			AddEventType(wxEVT_COMMAND_TEXT_ENTER,              &CommandEvent.New);
-			AddEventType(wxEVT_COMMAND_RADIOBOX_SELECTED,       &CommandEvent.New);
-			AddEventType(wxEVT_COMMAND_RADIOBUTTON_SELECTED,    &CommandEvent.New);
-			AddEventType(wxEVT_COMMAND_SLIDER_UPDATED,          &CommandEvent.New);
-			AddEventType(wxEVT_COMMAND_SPINCTRL_UPDATED,        &CommandEvent.New);
+			ДобавьТипСоб(wxEVT_COMMAND_LISTBOX_SELECTED,        &CommandEvent.Нов);
+			ДобавьТипСоб(wxEVT_COMMAND_LISTBOX_DOUBLECLICKED,   &CommandEvent.Нов);
+			ДобавьТипСоб(wxEVT_COMMAND_CHOICE_SELECTED,         &CommandEvent.Нов);
+			ДобавьТипСоб(wxEVT_COMMAND_COMBOBOX_SELECTED,       &CommandEvent.Нов);
+			ДобавьТипСоб(wxEVT_COMMAND_TEXT_UPDATED,            &CommandEvent.Нов);
+			ДобавьТипСоб(wxEVT_COMMAND_TEXT_ENTER,              &CommandEvent.Нов);
+			ДобавьТипСоб(wxEVT_COMMAND_RADIOBOX_SELECTED,       &CommandEvent.Нов);
+			ДобавьТипСоб(wxEVT_COMMAND_RADIOBUTTON_SELECTED,    &CommandEvent.Нов);
+			ДобавьТипСоб(wxEVT_COMMAND_SLIDER_UPDATED,          &CommandEvent.Нов);
+			ДобавьТипСоб(wxEVT_COMMAND_SPINCTRL_UPDATED,        &CommandEvent.Нов);
 
-			AddEventType(wxEVT_COMMAND_TOGGLEBUTTON_CLICKED,    &CommandEvent.New);
+			ДобавьТипСоб(wxEVT_COMMAND_TOGGLEBUTTON_CLICKED,    &CommandEvent.Нов);
 			
-			AddEventType(wxEVT_COMMAND_CHECKLISTBOX_TOGGLED,    &CommandEvent.New);
+			ДобавьТипСоб(wxEVT_COMMAND_CHECKLISTBOX_TOGGLED,    &CommandEvent.Нов);
 		}
 	}

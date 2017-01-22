@@ -7,21 +7,21 @@
 // (c) 2004 Vaclav Salvik
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: Sound.d,v 1.5 2008/03/03 15:53:19 afb Exp $
+// $Ид: Sound.d,v 1.5 2008/03/03 15:53:19 afb Exp $
 //-----------------------------------------------------------------------------
 
 import wx.wx;
 
 import wx.Sound;
 
-string WAV_FILE = "doggrowl.wav";
+ткст WAV_FILE = "doggrowl.wav";
 
 	public class MyFrame : Frame
 	{
-		// IDs for the controls and the menu commands
+		// IDs for the controls and the меню commands
 		enum
 		{
-			// menu items
+			// меню items
 			Sound_Quit = MenuIDs.wxID_EXIT,
 			Sound_About = MenuIDs.wxID_ABOUT,
 			Sound_PlaySync = MenuIDs.wxID_HIGHEST + 1,
@@ -33,36 +33,36 @@ string WAV_FILE = "doggrowl.wav";
 
 		//---------------------------------------------------------------------
 
-		public this(string title)
+		public this(ткст title)
 		{
 			super(title);
 
-		    m_sound = null;
+		    m_sound = пусто;
     		m_soundFile = WAV_FILE;
 
-			// Set up a menu
+			// Установи up a меню
 
-			Menu helpMenu = new Menu();
+			Меню helpMenu = new Меню();
 			helpMenu.Append(Sound_About, "&About...\tF1", "Show about dialog");
 
-			Menu fileMenu = new Menu();
+			Меню fileMenu = new Меню();
 			fileMenu.Append(Sound_SelectFile, "&Select WAV file\tCtrl+O", "Select a new wav file to play");
 			fileMenu.Append(Sound_Quit, "E&xit\tAlt-X", "Quit this program");
 
-			Menu playMenu = new Menu();
+			Меню playMenu = new Меню();
 			playMenu.Append(Sound_PlaySync, "Play sound &synchronously\tCtrl+S");
 			playMenu.Append(Sound_PlayAsync, "Play sound &asynchronously\tCtrl+A");
 			playMenu.Append(Sound_PlayLoop, "&Loop sound\tCtrl+L");
 
-			// now append the freshly created menu to the menu bar...
+			// now append the freshly created меню to the меню bar...
 			MenuBar menuBar = new MenuBar();
 			menuBar.Append(fileMenu, "&File");
 			menuBar.Append(playMenu, "&Play");
-			menuBar.Append(helpMenu, "&Help");
+			menuBar.Append(helpMenu, "&Справка");
 
-			// ... and attach this menu bar to the frame
+			// ... and attach this меню bar to the frame
 			this.menuBar = menuBar;
-			// Set up the event table
+			// Установи up the event table
 
 			EVT_MENU(Sound_SelectFile,	&OnSelectFile);
 			EVT_MENU(Sound_Quit,    	&OnQuit);
@@ -79,44 +79,44 @@ string WAV_FILE = "doggrowl.wav";
 
 		private:
 			Sound     m_sound;
-			string    m_soundFile;
+			ткст    m_soundFile;
 			TextCtrl  m_tc;
 
 		//---------------------------------------------------------------------
 
-		void NotifyUsingFile(string name)
+		проц NotifyUsingFile(ткст имя)
 		{
-			string msg;
-			msg = "Using sound file: " ~ name ~ "\n";
+			ткст msg;
+			msg = "Using sound file: " ~ имя ~ "\n";
 			m_tc.AppendText(msg);
 		}
 
 		//---------------------------------------------------------------------
 
-		public void OnSelectFile(Object sender, Event e)
+		public проц OnSelectFile(Объект sender, Событие e)
 		{
 			FileDialog dlg = new FileDialog (this, "Choose a sound file",
 							 "", "", "WAV files (*.wav)|*.wav", FileDialog.wxOPEN|FileDialog.wxCHANGE_DIR);
 			if ( dlg.ShowModal() == wxID_OK )
 			{
-				m_soundFile = dlg.Path;
+				m_soundFile = dlg.Путь;
 				if (m_sound) delete m_sound;
-				m_sound = null;
+				m_sound = пусто;
 				NotifyUsingFile(m_soundFile);
 			}
 		}
 
 		//---------------------------------------------------------------------
 
-		public void OnQuit(Object sender, Event e)
+		public проц OnQuit(Объект sender, Событие e)
 		{
-			// true is to force the frame to close
-			Close(true);
+			// да is to force the frame to close
+			Закрой(да);
 		}
 
 		//---------------------------------------------------------------------
 
-		public void OnPlaySync(Object sender, Event e)
+		public проц OnPlaySync(Объект sender, Событие e)
 		{
 			BusyCursor busy = new BusyCursor;
 			if (!m_sound)
@@ -128,7 +128,7 @@ string WAV_FILE = "doggrowl.wav";
 
 		//---------------------------------------------------------------------
 
-		public void OnPlayAsync(Object sender, Event e)
+		public проц OnPlayAsync(Объект sender, Событие e)
 		{
 			BusyCursor busy = new BusyCursor;
 			if (!m_sound)
@@ -140,7 +140,7 @@ string WAV_FILE = "doggrowl.wav";
 
 		//---------------------------------------------------------------------
 
-		public void OnPlayLoop(Object sender, Event e)
+		public проц OnPlayLoop(Объект sender, Событие e)
 		{
 			BusyCursor busy = new BusyCursor;
 			if (!m_sound)
@@ -152,9 +152,9 @@ string WAV_FILE = "doggrowl.wav";
 
 		//---------------------------------------------------------------------
 
-		public void OnAbout(Object sender, Event e)
+		public проц OnAbout(Объект sender, Событие e)
 		{
-			string msg = "This is the About dialog of the sound sample.\nWelcome to " ~ wxVERSION_STRING;
+			ткст msg = "This is the About dialog of the sound sample.\nWelcome to " ~ wxVERSION_STRING;
 			MessageBox(this, msg, "About", Dialog.wxOK | Dialog.wxICON_INFORMATION);
 		}
 
@@ -163,29 +163,29 @@ string WAV_FILE = "doggrowl.wav";
 
 
 
-	public class MyApp : App
+	public class MyApp : Прил
 	{
 		//---------------------------------------------------------------------
 
-		public override bool OnInit()
+		public override бул ПриИниц()
 		{
-			// create the main application window
+			// create the main application окно
 			MyFrame frame = new MyFrame("wxWidgets Sound Sample");
 
 			// and show it (the frames, unlike simple controls, are not shown when
 			// created initially)
-			frame.Show(true);
+			frame.Show(да);
 
 			// success
-    		return true;
+    		return да;
 		}
 
 		//---------------------------------------------------------------------
 	}
 
-int main()
+цел main()
 {
-	MyApp app = new MyApp();
-	app.Run();
+	MyApp прил = new MyApp();
+	прил.Пуск();
 	return 0;
 }

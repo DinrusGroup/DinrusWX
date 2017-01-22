@@ -1,4 +1,4 @@
-//-----------------------------------------------------------------------------
+﻿//-----------------------------------------------------------------------------
 // wxD - Listbook.d
 // (C) 2005 bero <berobero@users.sourceforge.net>
 // based on
@@ -10,7 +10,7 @@
 // (C) 2004 by Alexander Olk
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: Listbook.d,v 1.11 2007/03/13 17:02:41 afb Exp $
+// $Ид: Listbook.d,v 1.11 2007/03/13 17:02:41 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.Listbook;
@@ -19,91 +19,91 @@ public import wx.Control;
 public import wx.ImageList;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxListbookEvent_ctor(int commandType, int id, int nSel, int nOldSel);
-		static extern (C) int    wxListbookEvent_GetSelection(IntPtr self);
-		static extern (C) void   wxListbookEvent_SetSelection(IntPtr self, int nSel);
-		static extern (C) int    wxListbookEvent_GetOldSelection(IntPtr self);
-		static extern (C) void   wxListbookEvent_SetOldSelection(IntPtr self, int nOldSel);
-		static extern (C) void wxListbookEvent_Veto(IntPtr self);
-		static extern (C) void wxListbookEvent_Allow(IntPtr self);
-		static extern (C) bool wxListbookEvent_IsAllowed(IntPtr self);		
+		static extern (C) ЦУк wxListbookEvent_ctor(цел commandType, цел ид, цел nSel, цел nOldSel);
+		static extern (C) цел    wxListbookEvent_GetSelection(ЦУк сам);
+		static extern (C) проц   wxListbookEvent_SetSelection(ЦУк сам, цел nSel);
+		static extern (C) цел    wxListbookEvent_GetOldSelection(ЦУк сам);
+		static extern (C) проц   wxListbookEvent_SetOldSelection(ЦУк сам, цел nOldSel);
+		static extern (C) проц wxListbookEvent_Veto(ЦУк сам);
+		static extern (C) проц wxListbookEvent_Allow(ЦУк сам);
+		static extern (C) бул wxListbookEvent_IsAllowed(ЦУк сам);		
 		//! \endcond
 
 		//-----------------------------------------------------------------------------
 
 	alias ListbookEvent wxListbookEvent;
-	public class ListbookEvent : Event
+	public class ListbookEvent : Событие
 	{
-		public this(IntPtr wxobj)
-			{ super(wxobj); }
+		public this(ЦУк шхобъ)
+			{ super(шхобъ); }
 
-		public this(EventType commandType, int id, int nSel, int nOldSel)
-			{ super(wxListbookEvent_ctor(commandType, id, nSel, nOldSel)); }
+		public this(ТипСобытия commandType, цел ид, цел nSel, цел nOldSel)
+			{ super(wxListbookEvent_ctor(commandType, ид, nSel, nOldSel)); }
 
-		static Event New(IntPtr ptr) { return new ListbookEvent(ptr); }
+		static Событие Нов(ЦУк ptr) { return new ListbookEvent(ptr); }
 		//-----------------------------------------------------------------------------
 
-		public int Selection() { return wxListbookEvent_GetSelection(wxobj); }
-		public void Selection(int value) { wxListbookEvent_SetSelection(wxobj, value); }
+		public цел Selection() { return wxListbookEvent_GetSelection(шхобъ); }
+		public проц Selection(цел значение) { wxListbookEvent_SetSelection(шхобъ, значение); }
 
 		//-----------------------------------------------------------------------------
 
-		public int OldSelection() { return wxListbookEvent_GetOldSelection(wxobj); }
-		public void OldSelection(int value) { wxListbookEvent_SetOldSelection(wxobj, value); }
+		public цел OldSelection() { return wxListbookEvent_GetOldSelection(шхобъ); }
+		public проц OldSelection(цел значение) { wxListbookEvent_SetOldSelection(шхобъ, значение); }
 		
 		//-----------------------------------------------------------------------------		
 		
-		public void Veto()
+		public проц Veto()
 		{
-			wxListbookEvent_Veto(wxobj);
+			wxListbookEvent_Veto(шхобъ);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public void Allow()
+		public проц Allow()
 		{
-			wxListbookEvent_Allow(wxobj);
+			wxListbookEvent_Allow(шхобъ);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public bool Allowed() { return wxListbookEvent_IsAllowed(wxobj); }
+		public бул Allowed() { return wxListbookEvent_IsAllowed(шхобъ); }
 
 		static this()
 		{
 			wxEVT_COMMAND_LISTBOOK_PAGE_CHANGED = wxEvent_EVT_COMMAND_LISTBOOK_PAGE_CHANGED();
 			wxEVT_COMMAND_LISTBOOK_PAGE_CHANGING = wxEvent_EVT_COMMAND_LISTBOOK_PAGE_CHANGING();
 
-			AddEventType(wxEVT_COMMAND_LISTBOOK_PAGE_CHANGED,   &ListbookEvent.New);
-			AddEventType(wxEVT_COMMAND_LISTBOOK_PAGE_CHANGING,  &ListbookEvent.New);
+			ДобавьТипСоб(wxEVT_COMMAND_LISTBOOK_PAGE_CHANGED,   &ListbookEvent.Нов);
+			ДобавьТипСоб(wxEVT_COMMAND_LISTBOOK_PAGE_CHANGING,  &ListbookEvent.Нов);
 		}
 	}
 	
 	//-----------------------------------------------------------------------------
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxListbook_ctor();
-		static extern (C) bool wxListbook_Create(IntPtr self, IntPtr parent, int id, inout Point pos, inout Size size, uint style, string name);
-		static extern (C) int wxListbook_GetSelection(IntPtr self);
-		static extern (C) bool wxListbook_SetPageText(IntPtr self, int n, string strText);
-		static extern (C) IntPtr wxListbook_GetPageText(IntPtr self, int n);
-		static extern (C) int wxListbook_GetPageImage(IntPtr self, int n);
-		static extern (C) bool wxListbook_SetPageImage(IntPtr self, int n, int imageId);
-		static extern (C) void wxListbook_CalcSizeFromPage(IntPtr self, inout Size sizePage, out Size outSize);
-		static extern (C) bool wxListbook_InsertPage(IntPtr self, int n, IntPtr page, string text, bool bSelect, int imageId);
-		static extern (C) int wxListbook_SetSelection(IntPtr self, int n);
-		static extern (C) void wxListbook_SetImageList(IntPtr self, IntPtr imageList);
-		static extern (C) bool wxListbook_IsVertical(IntPtr self);
-		static extern (C) int wxListbook_GetPageCount(IntPtr self);
-		static extern (C) IntPtr wxListbook_GetPage(IntPtr self, int n);
-		static extern (C) void wxListbook_AssignImageList(IntPtr self, IntPtr imageList);
-		static extern (C) IntPtr wxListbook_GetImageList(IntPtr self);
-		static extern (C) void wxListbook_SetPageSize(IntPtr self, inout Size size);
-		static extern (C) bool wxListbook_DeletePage(IntPtr self, int nPage);
-		static extern (C) bool wxListbook_RemovePage(IntPtr self, int nPage);
-		static extern (C) bool wxListbook_DeleteAllPages(IntPtr self);
-		static extern (C) bool wxListbook_AddPage(IntPtr self, IntPtr page, string text, bool bselect, int imageId);
-		static extern (C) void wxListbook_AdvanceSelection(IntPtr self, bool forward);
+		static extern (C) ЦУк wxListbook_ctor();
+		static extern (C) бул wxListbook_Create(ЦУк сам, ЦУк родитель, цел ид, inout Точка поз, inout Размер size, бцел стиль, ткст имя);
+		static extern (C) цел wxListbook_GetSelection(ЦУк сам);
+		static extern (C) бул wxListbook_SetPageText(ЦУк сам, цел n, ткст strText);
+		static extern (C) ЦУк wxListbook_GetPageText(ЦУк сам, цел n);
+		static extern (C) цел wxListbook_GetPageImage(ЦУк сам, цел n);
+		static extern (C) бул wxListbook_SetPageImage(ЦУк сам, цел n, цел imageId);
+		static extern (C) проц wxListbook_CalcSizeFromPage(ЦУк сам, inout Размер sizePage, out Размер outSize);
+		static extern (C) бул wxListbook_InsertPage(ЦУк сам, цел n, ЦУк page, ткст текст, бул bSelect, цел imageId);
+		static extern (C) цел wxListbook_SetSelection(ЦУк сам, цел n);
+		static extern (C) проц wxListbook_SetImageList(ЦУк сам, ЦУк imageList);
+		static extern (C) бул wxListbook_IsVertical(ЦУк сам);
+		static extern (C) цел wxListbook_GetPageCount(ЦУк сам);
+		static extern (C) ЦУк wxListbook_GetPage(ЦУк сам, цел n);
+		static extern (C) проц wxListbook_AssignImageList(ЦУк сам, ЦУк imageList);
+		static extern (C) ЦУк wxListbook_GetImageList(ЦУк сам);
+		static extern (C) проц wxListbook_SetPageSize(ЦУк сам, inout Размер size);
+		static extern (C) бул wxListbook_DeletePage(ЦУк сам, цел nPage);
+		static extern (C) бул wxListbook_RemovePage(ЦУк сам, цел nPage);
+		static extern (C) бул wxListbook_DeleteAllPages(ЦУк сам);
+		static extern (C) бул wxListbook_AddPage(ЦУк сам, ЦУк page, ткст текст, бул bselect, цел imageId);
+		static extern (C) проц wxListbook_AdvanceSelection(ЦУк сам, бул forward);
 		//! \endcond
 		
 		//-----------------------------------------------------------------------------
@@ -111,172 +111,172 @@ public import wx.ImageList;
 	alias Listbook wxListbook;
 	public class Listbook : Control
 	{
-		public const int wxLB_DEFAULT		= 0;
-		public const int wxLB_TOP		= 0x1;
-		public const int wxLB_BOTTOM		= 0x2;
-		public const int wxLB_LEFT		= 0x4;
-		public const int wxLB_RIGHT		= 0x8;
-		public const int wxLB_ALIGN_MASK	= 0xf;
+		public const цел wxLB_DEFAULT		= 0;
+		public const цел wxLB_TOP		= 0x1;
+		public const цел wxLB_BOTTOM		= 0x2;
+		public const цел wxLB_LEFT		= 0x4;
+		public const цел wxLB_RIGHT		= 0x8;
+		public const цел wxLB_ALIGN_MASK	= 0xf;
 		
 		//-----------------------------------------------------------------------------
 
-		public this(IntPtr wxobj) 
-			{ super(wxobj); }
+		public this(ЦУк шхобъ) 
+			{ super(шхобъ); }
 
 		public this()
 			{ super(wxListbook_ctor());}
 
-		public this(Window parent, int id, Point pos = wxDefaultPosition, Size size = wxDefaultSize, int style = 0, string name = "")
+		public this(Окно родитель, цел ид, Точка поз = wxDefaultPosition, Размер size = wxDefaultSize, цел стиль = 0, ткст имя = "")
 		{
 			super(wxListbook_ctor());
-			wxListbook_Create(wxobj, wxObject.SafePtr(parent), id, pos, size, cast(uint)style, name);
+			wxListbook_Create(шхобъ, wxObject.SafePtr(родитель), ид, поз, size, cast(бцел)стиль, имя);
 		}
 		
-		public static wxObject New(IntPtr wxobj) { return new Listbook(wxobj); }
+		public static wxObject Нов(ЦУк шхобъ) { return new Listbook(шхобъ); }
 	
 		//---------------------------------------------------------------------
-		// ctors with self created id
+		// ctors with сам created ид
 		
-		public this(Window parent, Point pos = wxDefaultPosition, Size size = wxDefaultSize, int style = 0, string name = "")
-			{ this(parent, Window.UniqueID, pos, size, style, name);}
-		
-		//-----------------------------------------------------------------------------
-
-		public int Selection() { return wxListbook_GetSelection(wxobj); }
-		public void Selection(int value) { wxListbook_SetSelection(wxobj, value); }
+		public this(Окно родитель, Точка поз = wxDefaultPosition, Размер size = wxDefaultSize, цел стиль = 0, ткст имя = "")
+			{ this(родитель, Окно.UniqueID, поз, size, стиль, имя);}
 		
 		//-----------------------------------------------------------------------------
 
-		public bool SetPageText(int n, string strText)
+		public цел Selection() { return wxListbook_GetSelection(шхобъ); }
+		public проц Selection(цел значение) { wxListbook_SetSelection(шхобъ, значение); }
+		
+		//-----------------------------------------------------------------------------
+
+		public бул SetPageText(цел n, ткст strText)
 		{
-			return wxListbook_SetPageText(wxobj, n, strText);
+			return wxListbook_SetPageText(шхобъ, n, strText);
 		}
 		
 		//-----------------------------------------------------------------------------
 
-		public string GetPageText(int n)
+		public ткст GetPageText(цел n)
 		{
-			return cast(string) new wxString(wxListbook_GetPageText(wxobj, n), true);
+			return cast(ткст) new wxString(wxListbook_GetPageText(шхобъ, n), да);
 		}
 		
 		//-----------------------------------------------------------------------------
 
-		public int GetPageImage(int n)
+		public цел GetPageImage(цел n)
 		{
-			return wxListbook_GetPageImage(wxobj, n);
+			return wxListbook_GetPageImage(шхобъ, n);
 		}
 		
 		//-----------------------------------------------------------------------------
 
-		public bool SetPageImage(int n, int imageId)
+		public бул SetPageImage(цел n, цел imageId)
 		{
-			return wxListbook_SetPageImage(wxobj, n, imageId);
+			return wxListbook_SetPageImage(шхобъ, n, imageId);
 		}
 		
 		//-----------------------------------------------------------------------------
 
-		public Size CalcSizeFromPage(Size sizePage)
+		public Размер CalcSizeFromPage(Размер sizePage)
 		{
-			Size s;
-			wxListbook_CalcSizeFromPage(wxobj, sizePage, s);
+			Размер s;
+			wxListbook_CalcSizeFromPage(шхобъ, sizePage, s);
 			return s;
 		}
 		
 		//-----------------------------------------------------------------------------
 
 		
-		public bool InsertPage(int n, Window page, string text)
+		public бул InsertPage(цел n, Окно page, ткст текст)
 		{
-			return InsertPage(n, page, text, false, -1);
+			return InsertPage(n, page, текст, нет, -1);
 		}
 		
 
-		public bool InsertPage(int n, Window page, string text, bool bSelect)
+		public бул InsertPage(цел n, Окно page, ткст текст, бул bSelect)
 		{
-			return InsertPage(n, page, text, bSelect, -1);
+			return InsertPage(n, page, текст, bSelect, -1);
 		}
 		
-		public bool InsertPage(int n, Window page, string text, bool bSelect, int imageId)
+		public бул InsertPage(цел n, Окно page, ткст текст, бул bSelect, цел imageId)
 		{
-			return wxListbook_InsertPage(wxobj, n, wxObject.SafePtr(page), text, bSelect, imageId);
+			return wxListbook_InsertPage(шхобъ, n, wxObject.SafePtr(page), текст, bSelect, imageId);
 		}
 		
 		//-----------------------------------------------------------------------------
 
-		public void imageList(ImageList value) { wxListbook_SetImageList(wxobj, wxObject.SafePtr(value)); }
-		public ImageList imageList() { return cast(ImageList)FindObject(wxListbook_GetImageList(wxobj), &ImageList.New); }
+		public проц imageList(ImageList значение) { wxListbook_SetImageList(шхобъ, wxObject.SafePtr(значение)); }
+		public ImageList imageList() { return cast(ImageList)FindObject(wxListbook_GetImageList(шхобъ), &ImageList.Нов); }
 		
 		//-----------------------------------------------------------------------------
 
-		public bool Vertical() { return wxListbook_IsVertical(wxobj); }
+		public бул Vertical() { return wxListbook_IsVertical(шхобъ); }
 		
 		//-----------------------------------------------------------------------------
 
-		public int PageCount() { return wxListbook_GetPageCount(wxobj); }
+		public цел PageCount() { return wxListbook_GetPageCount(шхобъ); }
 		
 		//-----------------------------------------------------------------------------
 
-		public Window GetPage(int n)
+		public Окно GetPage(цел n)
 		{
-		//	return cast(Window)FindObject(wxListbook_GetPage(wxobj, n), &Window.New);
-			IntPtr ptr = wxListbook_GetPage(wxobj, n);
+		//	return cast(Окно)FindObject(wxListbook_GetPage(шхобъ, n), &Окно.Нов);
+			ЦУк ptr = wxListbook_GetPage(шхобъ, n);
 			wxObject o = FindObject(ptr);
-			if (o) return cast(Window)o;
-			else return new Window(ptr);
+			if (o) return cast(Окно)o;
+			else return new Окно(ptr);
 		}
 		
 		//-----------------------------------------------------------------------------
 
-		public void AssignImageList(ImageList imageList)
+		public проц AssignImageList(ImageList imageList)
 		{
-			wxListbook_AssignImageList(wxobj, wxObject.SafePtr(imageList));
+			wxListbook_AssignImageList(шхобъ, wxObject.SafePtr(imageList));
 		}
 		
 		//-----------------------------------------------------------------------------
 
-		public void PageSize(Size value) { wxListbook_SetPageSize(wxobj, value); }
+		public проц PageSize(Размер значение) { wxListbook_SetPageSize(шхобъ, значение); }
 		
 		//-----------------------------------------------------------------------------
 
-		public bool DeletePage(int nPage)
+		public бул DeletePage(цел nPage)
 		{
-			return wxListbook_DeletePage(wxobj, nPage);
+			return wxListbook_DeletePage(шхобъ, nPage);
 		}
 		
 		//-----------------------------------------------------------------------------
 
-		public bool RemovePage(int nPage)
+		public бул RemovePage(цел nPage)
 		{
-			return wxListbook_RemovePage(wxobj, nPage);
+			return wxListbook_RemovePage(шхобъ, nPage);
 		}
 		
 		//-----------------------------------------------------------------------------
 
-		public bool DeleteAllPages()
+		public бул DeleteAllPages()
 		{
-			return wxListbook_DeleteAllPages(wxobj);
+			return wxListbook_DeleteAllPages(шхобъ);
 		}
 		
 		//-----------------------------------------------------------------------------
 
-		public bool AddPage(Window page, string text, bool bSelect, int imageId)
+		public бул AddPage(Окно page, ткст текст, бул bSelect, цел imageId)
 		{
-			return wxListbook_AddPage(wxobj, wxObject.SafePtr(page), text, bSelect, imageId);
+			return wxListbook_AddPage(шхобъ, wxObject.SafePtr(page), текст, bSelect, imageId);
 		}
 		
 		//-----------------------------------------------------------------------------
 
-		public void AdvanceSelection(bool forward)
+		public проц AdvanceSelection(бул forward)
 		{
-			wxListbook_AdvanceSelection(wxobj, forward);
+			wxListbook_AdvanceSelection(шхобъ, forward);
 		}
 
 		//-----------------------------------------------------------------------------
 
-		public void PageChange_Add(EventListener value) { AddCommandListener(Event.wxEVT_COMMAND_LISTBOOK_PAGE_CHANGED, ID, value, this); }
-		public void PageChange_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц PageChange_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_COMMAND_LISTBOOK_PAGE_CHANGED, ИД, значение, this); }
+		public проц PageChange_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void PageChanging_Add(EventListener value) { AddCommandListener(Event.wxEVT_COMMAND_LISTBOOK_PAGE_CHANGING, ID, value, this); }
-		public void PageChanging_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц PageChanging_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_COMMAND_LISTBOOK_PAGE_CHANGING, ИД, значение, this); }
+		public проц PageChanging_Remove(EventListener значение) { RemoveHandler(значение, this); }
 	}
 		

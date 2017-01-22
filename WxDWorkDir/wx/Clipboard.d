@@ -1,9 +1,9 @@
-//-----------------------------------------------------------------------------
-// wxD - Clipboard.d
+﻿//-----------------------------------------------------------------------------
+// wxD - БуферОбмена.d
 // (C) 2005 bero <berobero@users.sourceforge.net>
 // (C) 2005 afb <afb@users.sourceforge.net>
 // based on
-// wx.NET - Clipboard.cs
+// wx.NET - БуферОбмена.cs
 //
 /// The wxClipboard wrapper class.
 //
@@ -11,119 +11,119 @@
 // (C) 2003 Bryan Bulten
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: Clipboard.d,v 1.9 2006/11/17 15:20:59 afb Exp $
+// $Ид: БуферОбмена.d,v 1.9 2006/11/17 15:20:59 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.Clipboard;
 public import wx.common;
-public import wx.DataFormat;
-public import wx.DataObject;
+public import wx.ФорматДанных;
+public import wx.ОбъектДанных;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxClipboard_ctor();
-		static extern (C) bool   wxClipboard_Open(IntPtr self);
-		static extern (C) void   wxClipboard_Close(IntPtr self);
-		static extern (C) bool   wxClipboard_IsOpened(IntPtr self);
-		static extern (C) bool   wxClipboard_AddData(IntPtr self, IntPtr data);
-		static extern (C) bool   wxClipboard_SetData(IntPtr self, IntPtr data);
-		static extern (C) bool   wxClipboard_IsSupported(IntPtr self, IntPtr format);
-		static extern (C) bool   wxClipboard_GetData(IntPtr self, IntPtr data);
-		static extern (C) void   wxClipboard_Clear(IntPtr self);
-		static extern (C) bool   wxClipboard_Flush(IntPtr self);
-		static extern (C) void   wxClipboard_UsePrimarySelection(IntPtr self, bool primary);
-		static extern (C) IntPtr wxClipboard_Get();
+		static extern (C) ЦУк wxClipboard_ctor();
+		static extern (C) бул   wxClipboard_Open(ЦУк сам);
+		static extern (C) проц   wxClipboard_Close(ЦУк сам);
+		static extern (C) бул   wxClipboard_IsOpened(ЦУк сам);
+		static extern (C) бул   wxClipboard_AddData(ЦУк сам, ЦУк данные);
+		static extern (C) бул   wxClipboard_SetData(ЦУк сам, ЦУк данные);
+		static extern (C) бул   wxClipboard_IsSupported(ЦУк сам, ЦУк format);
+		static extern (C) бул   wxClipboard_GetData(ЦУк сам, ЦУк данные);
+		static extern (C) проц   wxClipboard_Clear(ЦУк сам);
+		static extern (C) бул   wxClipboard_Flush(ЦУк сам);
+		static extern (C) проц   wxClipboard_UsePrimarySelection(ЦУк сам, бул primary);
+		static extern (C) ЦУк wxClipboard_Get();
 		//! \endcond
 
 		//-----------------------------------------------------------------------------
 		
-	alias Clipboard wxClipboard;
-	public class Clipboard : wxObject
+	alias БуферОбмена wxClipboard;
+	public class БуферОбмена : wxObject
 	{
-		static Clipboard TheClipboard = null;
+		static БуферОбмена TheClipboard = пусто;
 
 		// this crashed in GTK+, since it needs a valid context first
-		// so it's called by App in the OnInit() handler now
-		static void initialize()
+		// so it's called by Прил in the ПриИниц() handler now
+		static проц инициализуй()
 		{
 			if(!TheClipboard)
-				TheClipboard = new Clipboard(wxClipboard_Get());
+				TheClipboard = new БуферОбмена(wxClipboard_Get());
 		}
 
-		public this(IntPtr wxobj)
-			{ super(wxobj);}
+		public this(ЦУк шхобъ)
+			{ super(шхобъ);}
 
 		public  this()
 			{ super(wxClipboard_ctor()); }
 		
 		//-----------------------------------------------------------------------------
 
-		public bool Open()
+		public бул Открой()
 		{
-			return wxClipboard_Open(wxobj);
+			return wxClipboard_Open(шхобъ);
 		}
 
-		public void Close()
+		public проц Закрой()
 		{
-			wxClipboard_Close(wxobj);
-		}
-
-		//-----------------------------------------------------------------------------
-
-		public bool IsOpened()
-		{
-			return wxClipboard_IsOpened(wxobj);
+			wxClipboard_Close(шхобъ);
 		}
 
 		//-----------------------------------------------------------------------------
 
-		public bool AddData(DataObject data)
+		public бул Открыт()
 		{
-			return wxClipboard_AddData(wxobj, wxObject.SafePtr(data));
-		}
-
-		public bool SetData(DataObject data)
-		{
-			return wxClipboard_SetData(wxobj, wxObject.SafePtr(data));
-		}
-
-		public bool GetData(DataObject data)
-		{
-			return wxClipboard_GetData(wxobj, wxObject.SafePtr(data));
+			return wxClipboard_IsOpened(шхобъ);
 		}
 
 		//-----------------------------------------------------------------------------
 
-		public bool IsSupported(DataFormat format)
+		public бул ДобавьДанные(ОбъектДанных данные)
 		{
-			return wxClipboard_IsSupported(wxobj, wxObject.SafePtr(format));
+			return wxClipboard_AddData(шхобъ, wxObject.SafePtr(данные));
+		}
+
+		public бул УстДанные(ОбъектДанных данные)
+		{
+			return wxClipboard_SetData(шхобъ, wxObject.SafePtr(данные));
+		}
+
+		public бул ДайДанные(ОбъектДанных данные)
+		{
+			return wxClipboard_GetData(шхобъ, wxObject.SafePtr(данные));
 		}
 
 		//-----------------------------------------------------------------------------
 
-		public void Clear()
+		public бул Поддерживается(ФорматДанных format)
 		{
-			wxClipboard_Clear(wxobj);
+			return wxClipboard_IsSupported(шхобъ, wxObject.SafePtr(format));
 		}
 
-		public bool Flush()
+		//-----------------------------------------------------------------------------
+
+		public проц Очисть()
 		{
-			return wxClipboard_Flush(wxobj);
+			wxClipboard_Clear(шхобъ);
+		}
+
+		public бул Flush()
+		{
+			return wxClipboard_Flush(шхобъ);
 		}
 		
 		//-----------------------------------------------------------------------------
 	
-		public /+virtual+/ void UsePrimarySelection(bool primary)
+		public /+virtual+/ проц UsePrimarySelection(бул primary)
 		{
-			wxClipboard_UsePrimarySelection(wxobj, primary);
+			wxClipboard_UsePrimarySelection(шхобъ, primary);
 		}
 	}
 		
 	//-----------------------------------------------------------------------------
 	
 		//! \cond EXTERN
-		static extern (C) IntPtr wxClipboardLocker_ctor(IntPtr clipboard);
-		static extern (C) void   wxClipboardLocker_dtor(IntPtr self);
-		static extern (C) bool   wxClipboardLocker_IsOpen(IntPtr self);
+		static extern (C) ЦУк wxClipboardLocker_ctor(ЦУк clipboard);
+		static extern (C) проц   wxClipboardLocker_dtor(ЦУк сам);
+		static extern (C) бул   wxClipboardLocker_IsOpen(ЦУк сам);
 		//! \endcond
 		
 		//-----------------------------------------------------------------------------
@@ -131,49 +131,49 @@ public import wx.DataObject;
 	/* re-implement using D */
 	public scope class ClipboardLocker // not wxObject
 	{
-		public this(Clipboard clipboard = null)
+		public this(БуферОбмена clipboard = пусто)
 		{
-			if (clipboard is null)
+			if (clipboard is пусто)
 			{
-				if (Clipboard.TheClipboard is null)
-					Clipboard.TheClipboard = new Clipboard(wxClipboard_Get());
+				if (БуферОбмена.TheClipboard is пусто)
+					БуферОбмена.TheClipboard = new БуферОбмена(wxClipboard_Get());
 			
-				m_clipboard = Clipboard.TheClipboard;
+				m_clipboard = БуферОбмена.TheClipboard;
 			}
 			else
 			{
 			    m_clipboard = clipboard;
 			}
 			if (m_clipboard) {
-				m_clipboard.Open();
+				m_clipboard.Открой();
 			}
 		}
 		
 		public ~this()
 		{
 			if (m_clipboard) {
-				m_clipboard.Close();
+				m_clipboard.Закрой();
 			}
 		}
 		
-		private Clipboard m_clipboard;
+		private БуферОбмена m_clipboard;
 /*
-		private IntPtr wxobj;
+		private ЦУк шхобъ;
 	
 		public this()
-			{ this(null);}
+			{ this(пусто);}
 			
-		public this(Clipboard clipboard)
-			{ wxobj = wxClipboardLocker_ctor(wxObject.SafePtr(clipboard)); }
+		public this(БуферОбмена clipboard)
+			{ шхобъ = wxClipboardLocker_ctor(wxObject.SafePtr(clipboard)); }
 			
 
 		public ~this()
 		{
-			wxClipBoardLocker_dtor(wxobj);
+			wxClipBoardLocker_dtor(шхобъ);
 		}
 			
 		//-----------------------------------------------------------------------------
 			
-		public bool IsOpen() { return wxClipboardLocker_IsOpen(wxobj); }
+		public бул IsOpen() { return wxClipboardLocker_IsOpen(шхобъ); }
 */
 	}

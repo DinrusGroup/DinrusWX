@@ -10,7 +10,7 @@
 // (C) 2004 by Alexander Olk
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: WindowDestroyEvent.d,v 1.9 2006/11/17 15:21:01 afb Exp $
+// $Ид: WindowDestroyEvent.d,v 1.9 2006/11/17 15:21:01 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.WindowDestroyEvent;
@@ -21,8 +21,8 @@ public import wx.CommandEvent;
 public import wx.Window;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxWindowDestroyEvent_ctor(IntPtr type);
-		static extern (C) IntPtr wxWindowDestroyEvent_GetWindow(IntPtr self);
+		static extern (C) ЦУк wxWindowDestroyEvent_ctor(ЦУк тип);
+		static extern (C) ЦУк wxWindowDestroyEvent_GetWindow(ЦУк сам);
 		//! \endcond
 		
 		//-----------------------------------------------------------------------------
@@ -30,20 +30,20 @@ public import wx.Window;
 	alias WindowDestroyEvent wxWindowDestroyEvent;
 	public class WindowDestroyEvent : CommandEvent
 	{
-		public this(IntPtr wxobj) 
-			{ super(wxobj); }
+		public this(ЦУк шхобъ) 
+			{ super(шхобъ); }
 
-		public this(Window win = null)
-			{ this(wxWindowDestroyEvent_ctor(wxObject.SafePtr(win))); }
+		public this(Окно окн = пусто)
+			{ this(wxWindowDestroyEvent_ctor(wxObject.SafePtr(окн))); }
 
 		//-----------------------------------------------------------------------------	
 		
-		public Window Active() { return cast(Window)FindObject(wxWindowDestroyEvent_GetWindow(wxobj), &Window.New); }
+		public Окно Активен() { return cast(Окно)FindObject(wxWindowDestroyEvent_GetWindow(шхобъ), &Окно.Нов); }
 
-		private static Event New(IntPtr obj) { return new WindowDestroyEvent(obj); }
+		private static Событие Нов(ЦУк объ) { return new WindowDestroyEvent(объ); }
 
 		static this()
 		{
-			AddEventType(wxEVT_DESTROY,				&WindowDestroyEvent.New);
+			ДобавьТипСоб(wxEVT_DESTROY,				&WindowDestroyEvent.Нов);
 		}
 	}

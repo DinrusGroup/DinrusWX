@@ -1,5 +1,5 @@
-//-----------------------------------------------------------------------------
-// wxD - DataObject.d
+﻿//-----------------------------------------------------------------------------
+// wxD - ОбъектДанных.d
 // (C) 2005 bero <berobero@users.sourceforge.net>
 // based on
 // wx.NET - Dataobj.cs
@@ -10,172 +10,172 @@
 // (C) 2003 by Bryan Bulten
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: DataObject.d,v 1.10 2007/01/28 23:06:36 afb Exp $
+// $Ид: ОбъектДанных.d,v 1.10 2007/01/28 23:06:36 afb Exp $
 //-----------------------------------------------------------------------------
 
-module wx.DataObject;
+module wx.ОбъектДанных;
 public import wx.common;
 public import wx.ArrayString;
 
-	public abstract class DataObject : wxObject
+	public abstract class ОбъектДанных : wxObject
 	{
 		public enum DataDirection
 		{
 			Get = 0x01,
-			Set = 0x02,
+			Установи = 0x02,
 			Both = 0x03
 		}
 		
 		//---------------------------------------------------------------------
 
-		public this(IntPtr wxobj)
+		public this(ЦУк шхобъ)
 		{
-			super(wxobj);
+			super(шхобъ);
 		}
 		
-		private this(IntPtr wxobj, bool memOwn)
+		private this(ЦУк шхобъ, бул memOwn)
 		{ 
-			super(wxobj);
+			super(шхобъ);
 			this.memOwn = memOwn;
 		}
 		
 		//---------------------------------------------------------------------
 				
-		override protected void dtor() {  }
+		override protected проц dtor() {  }
 	}
 	
 	//---------------------------------------------------------------------
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxDataObjectSimple_ctor(IntPtr format);
-		static extern (C) void wxDataObjectSimple_dtor(IntPtr self);
-		static extern (C) void wxDataObjectSimple_SetFormat(IntPtr self, IntPtr format);
-		static extern (C) uint wxDataObjectSimple_GetDataSize(IntPtr self);
-		static extern (C) bool wxDataObjectSimple_GetDataHere(IntPtr self, IntPtr buf);
-		static extern (C) bool wxDataObjectSimple_SetData(IntPtr self, uint len, IntPtr buf);
+		static extern (C) ЦУк wxDataObjectSimple_ctor(ЦУк format);
+		static extern (C) проц wxDataObjectSimple_dtor(ЦУк сам);
+		static extern (C) проц wxDataObjectSimple_SetFormat(ЦУк сам, ЦУк format);
+		static extern (C) бцел wxDataObjectSimple_GetDataSize(ЦУк сам);
+		static extern (C) бул wxDataObjectSimple_GetDataHere(ЦУк сам, ЦУк buf);
+		static extern (C) бул wxDataObjectSimple_SetData(ЦУк сам, бцел len, ЦУк buf);
 		//! \endcond
 		
 		//---------------------------------------------------------------------
 
-	alias DataObjectSimple wxDataObjectSimple;
-	public class DataObjectSimple : DataObject
+	alias ПростойОбъектДанных wxDataObjectSimple;
+	public class ПростойОбъектДанных : ОбъектДанных
 	{
-		public this(IntPtr wxobj)
+		public this(ЦУк шхобъ)
 		{
-			super(wxobj);
+			super(шхобъ);
 		}
 		
-		private this(IntPtr wxobj, bool memOwn)
+		private this(ЦУк шхобъ, бул memOwn)
 		{ 
-			super(wxobj);
+			super(шхобъ);
 			this.memOwn = memOwn;
 		}
 		
 		//---------------------------------------------------------------------
 				
-		override protected void dtor() { wxDataObjectSimple_dtor(wxobj); }
+		override protected проц dtor() { wxDataObjectSimple_dtor(шхобъ); }
 	}
 	
 	//---------------------------------------------------------------------
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxTextDataObject_ctor(string text);
-		static extern (C) void wxTextDataObject_dtor(IntPtr self);
-		static extern (C) void wxTextDataObject_RegisterDisposable(IntPtr self, Virtual_Dispose onDispose);
-		static extern (C) int wxTextDataObject_GetTextLength(IntPtr self);
-		static extern (C) IntPtr wxTextDataObject_GetText(IntPtr self);
-		static extern (C) void wxTextDataObject_SetText(IntPtr self, string text);
+		static extern (C) ЦУк wxTextDataObject_ctor(ткст текст);
+		static extern (C) проц wxTextDataObject_dtor(ЦУк сам);
+		static extern (C) проц wxTextDataObject_RegisterDisposable(ЦУк сам, Virtual_Dispose onDispose);
+		static extern (C) цел wxTextDataObject_GetTextLength(ЦУк сам);
+		static extern (C) ЦУк wxTextDataObject_GetText(ЦУк сам);
+		static extern (C) проц wxTextDataObject_SetText(ЦУк сам, ткст текст);
 		//! \endcond
 		
 		//---------------------------------------------------------------------
 
-	alias TextDataObject wxTextDataObject;
-	public class TextDataObject : DataObjectSimple
+	alias ОбъектТекстовыхДанных wxTextDataObject;
+	public class ОбъектТекстовыхДанных : ПростойОбъектДанных
 	{
-		public this(IntPtr wxobj)
+		public this(ЦУк шхобъ)
 		{
-			super(wxobj);
+			super(шхобъ);
 		}
 			
-		private this(IntPtr wxobj, bool memOwn)
+		private this(ЦУк шхобъ, бул memOwn)
 		{ 
-			super(wxobj);
+			super(шхобъ);
 			this.memOwn = memOwn;
 		}
 
 		public this()
 			{ this("");}
 
-		public this(string text)
+		public this(ткст текст)
 		{
-			this(wxTextDataObject_ctor(text), true);
-			wxTextDataObject_RegisterDisposable(wxobj, &VirtualDispose);
+			this(wxTextDataObject_ctor(текст), да);
+			wxTextDataObject_RegisterDisposable(шхобъ, &VirtualDispose);
 		}
 			
 		//---------------------------------------------------------------------
 				
-		override protected void dtor() { wxTextDataObject_dtor(wxobj); }
+		override protected проц dtor() { wxTextDataObject_dtor(шхобъ); }
 			
 		//---------------------------------------------------------------------
 
-		public int TextLength() { return wxTextDataObject_GetTextLength(wxobj); }
+		public цел ДлинаТекста() { return wxTextDataObject_GetTextLength(шхобъ); }
 		
 		//---------------------------------------------------------------------
 
-		public string Text() { return cast(string) new wxString(wxTextDataObject_GetText(wxobj), true); }
-		public void Text(string value) { wxTextDataObject_SetText(wxobj, value); }
+		public ткст Текст() { return cast(ткст) new wxString(wxTextDataObject_GetText(шхобъ), да); }
+		public проц Текст(ткст значение) { wxTextDataObject_SetText(шхобъ, значение); }
 	}
 	
 	//---------------------------------------------------------------------
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxFileDataObject_ctor();
-		static extern (C) void wxFileDataObject_dtor(IntPtr self);
-		static extern (C) void wxFileDataObject_RegisterDisposable(IntPtr self, Virtual_Dispose onDispose);
-		static extern (C) void wxFileDataObject_AddFile(IntPtr self, string filename);
-		static extern (C) IntPtr wxFileDataObject_GetFilenames(IntPtr self);
+		static extern (C) ЦУк wxFileDataObject_ctor();
+		static extern (C) проц wxFileDataObject_dtor(ЦУк сам);
+		static extern (C) проц wxFileDataObject_RegisterDisposable(ЦУк сам, Virtual_Dispose onDispose);
+		static extern (C) проц wxFileDataObject_AddFile(ЦУк сам, ткст фимя);
+		static extern (C) ЦУк wxFileDataObject_GetFilenames(ЦУк сам);
 		//! \endcond
 		
 		//---------------------------------------------------------------------
 		
-	alias FileDataObject wxFileDataObject;
-	public class FileDataObject : DataObjectSimple
+	alias ОбъектФайловыхДанных wxFileDataObject;
+	public class ОбъектФайловыхДанных : ПростойОбъектДанных
 	{
-		public this(IntPtr wxobj)
+		public this(ЦУк шхобъ)
 		{
-			super(wxobj);
+			super(шхобъ);
 		}
 			
-		private this(IntPtr wxobj, bool memOwn)
+		private this(ЦУк шхобъ, бул memOwn)
 		{ 
-			super(wxobj);
+			super(шхобъ);
 			this.memOwn = memOwn;
 		}
 			
 		public this()
 		{
-			this(wxFileDataObject_ctor(), true);
-			wxFileDataObject_RegisterDisposable(wxobj, &VirtualDispose);
+			this(wxFileDataObject_ctor(), да);
+			wxFileDataObject_RegisterDisposable(шхобъ, &VirtualDispose);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		override protected void dtor() { wxFileDataObject_dtor(wxobj); }
+		override protected проц dtor() { wxFileDataObject_dtor(шхобъ); }
 			
 		//---------------------------------------------------------------------
 			
-		public void AddFile(string filename)
+		public проц ДобавьФайл(ткст фимя)
 		{
-			wxFileDataObject_AddFile(wxobj, filename);
+			wxFileDataObject_AddFile(шхобъ, фимя);
 		}
 		
-		public string[] Filenames()
+		public ткст[] Именаф()
 		{
-			ArrayString a=new ArrayString(wxFileDataObject_GetFilenames(wxobj), true);
-			string[] res;
-			res.length=a.Count;
-			for(uint i=0; i<a.Count; ++i)
-				res[i]=a.Item(i);
+			МасТкст a=new МасТкст(wxFileDataObject_GetFilenames(шхобъ), да);
+			ткст[] res;
+			res.length=a.Счёт;
+			for(бцел i=0; i<a.Счёт; ++i)
+				res[i]=a.Элемент(i);
 			
 			return res;
 		}

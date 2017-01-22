@@ -1,20 +1,20 @@
-//-----------------------------------------------------------------------------
-// wxD - DataFormat.d
+﻿//-----------------------------------------------------------------------------
+// wxD - ФорматДанных.d
 // (C) 2005 bero <berobero@users.sourceforge.net>
 // based on
-// wx.NET - DataFormat.cs
+// wx.NET - ФорматДанных.cs
 // 
 /// The wxDataFormat wrapper class
 //
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: DataFormat.d,v 1.10 2007/01/28 23:06:36 afb Exp $
+// $Ид: ФорматДанных.d,v 1.10 2007/01/28 23:06:36 afb Exp $
 //-----------------------------------------------------------------------------
 
-module wx.DataFormat;
+module wx.ФорматДанных;
 public import wx.common;
 
-    public enum DataFormatId
+    public enum ИдФорматаДанных
     {
         wxDF_INVALID =          0,
         wxDF_TEXT =             1,
@@ -39,55 +39,55 @@ public import wx.common;
     }
  
 		//! \cond EXTERN
-        static extern (C) IntPtr wxDataFormat_ctor();
-	static extern (C) void   wxDataFormat_dtor(IntPtr self);
-        static extern (C) IntPtr wxDataFormat_ctorByType(int type);
-        static extern (C) IntPtr wxDataFormat_ctorById(string id);
+        static extern (C) ЦУк wxDataFormat_ctor();
+	static extern (C) проц   wxDataFormat_dtor(ЦУк сам);
+        static extern (C) ЦУк wxDataFormat_ctorByType(цел тип);
+        static extern (C) ЦУк wxDataFormat_ctorById(ткст ид);
 
-        static extern (C) IntPtr wxDataFormat_GetId(IntPtr self);
-        static extern (C) void   wxDataFormat_SetId(IntPtr self, string id);
+        static extern (C) ЦУк wxDataFormat_GetId(ЦУк сам);
+        static extern (C) проц   wxDataFormat_SetId(ЦУк сам, ткст ид);
 
-        static extern (C) int    wxDataFormat_GetType(IntPtr self);
-        static extern (C) void   wxDataFormat_SetType(IntPtr self, int type);
+        static extern (C) цел    wxDataFormat_GetType(ЦУк сам);
+        static extern (C) проц   wxDataFormat_SetType(ЦУк сам, цел тип);
 		//! \endcond
 	
         //-----------------------------------------------------------------------------
 	
-    alias DataFormat wxDataFormat;
-    public class DataFormat : wxObject
+    alias ФорматДанных wxDataFormat;
+    public class ФорматДанных : wxObject
     {
-	public this(IntPtr wxobj)
+	public this(ЦУк шхобъ)
 	{ 
-		super(wxobj);
+		super(шхобъ);
 	}
 			
-	private this(IntPtr wxobj, bool memOwn)
+	private this(ЦУк шхобъ, бул memOwn)
 	{ 
-		super(wxobj);
+		super(шхобъ);
 		this.memOwn = memOwn;
 	}
 
         public  this()
-            { this(wxDataFormat_ctor(), true); }
+            { this(wxDataFormat_ctor(), да); }
 
-        public this(DataFormatId type)
-            { this(wxDataFormat_ctorByType(cast(int)type), true); }
+        public this(ИдФорматаДанных тип)
+            { this(wxDataFormat_ctorByType(cast(цел)тип), да); }
 
-        public this(string id)
-            { this(wxDataFormat_ctorById(id), true); }
+        public this(ткст ид)
+            { this(wxDataFormat_ctorById(ид), да); }
 	    
 	//---------------------------------------------------------------------
 	
-	override protected void dtor() { wxDataFormat_dtor(wxobj); }
+	override protected проц dtor() { wxDataFormat_dtor(шхобъ); }
 
         //-----------------------------------------------------------------------------
 
-        public string Id() { return cast(string) new wxString(wxDataFormat_GetId(wxobj), true); }
-        public void Id(string value) { wxDataFormat_SetId(wxobj, value); }
+        public ткст Ид() { return cast(ткст) new wxString(wxDataFormat_GetId(шхобъ), да); }
+        public проц Ид(ткст значение) { wxDataFormat_SetId(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public DataFormatId Type() { return cast(DataFormatId)wxDataFormat_GetType(wxobj); }
-        public void Type(DataFormatId value) { wxDataFormat_SetType(wxobj, cast(int)value); }
+        public ИдФорматаДанных Тип() { return cast(ИдФорматаДанных)wxDataFormat_GetType(шхобъ); }
+        public проц Тип(ИдФорматаДанных значение) { wxDataFormat_SetType(шхобъ, cast(цел)значение); }
     }
 

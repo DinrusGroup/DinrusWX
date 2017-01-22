@@ -1,26 +1,11 @@
-//-----------------------------------------------------------------------------
-// wxD - MemoryDC.d
-// (C) 2005 bero <berobero@users.sourceforge.net>
-// based on
-// wx.NET - MemoryDC.cs
-//
-/// The wxBufferedDC and wxMemoryDC wrapper classes.
-//
-// Written by Bryan Bulten (bryan@bulten.ca)
-// (C) 2003 by Bryan Bulten
-// Licensed under the wxWidgets license, see LICENSE.txt for details.
-//
-// $Id: MemoryDC.d,v 1.9 2006/11/17 15:21:00 afb Exp $
-//-----------------------------------------------------------------------------
-
-module wx.MemoryDC;
+﻿module wx.MemoryDC;
 public import wx.common;
 public import wx.DC;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxMemoryDC_ctor();
-		static extern (C) IntPtr wxMemoryDC_ctorByDC(IntPtr dc);
-		static extern (C) void   wxMemoryDC_SelectObject(IntPtr self, IntPtr bitmap);
+		static extern (C) ЦУк wxMemoryDC_ctor();
+		static extern (C) ЦУк wxMemoryDC_ctorByDC(ЦУк dc);
+		static extern (C) проц   wxMemoryDC_SelectObject(ЦУк сам, ЦУк битмап);
 		//! \endcond
 
 		//---------------------------------------------------------------------
@@ -28,8 +13,8 @@ public import wx.DC;
 	alias MemoryDC wxMemoryDC;
 	public class MemoryDC : WindowDC
 	{
-        public this(IntPtr wxobj) 
-            { super(wxobj); }
+        public this(ЦУк шхобъ) 
+            { super(шхобъ); }
 
         public this()
             { this(wxMemoryDC_ctor()); }
@@ -39,22 +24,22 @@ public import wx.DC;
 
 		//---------------------------------------------------------------------
 
-        public void SelectObject(Bitmap bitmap)
+        public проц SelectObject(Битмап битмап)
         {
-            wxMemoryDC_SelectObject(wxobj, wxObject.SafePtr(bitmap));
+            wxMemoryDC_SelectObject(шхобъ, wxObject.SafePtr(битмап));
         }
 
 		//---------------------------------------------------------------------
 	}
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxBufferedDC_ctor();
-		static extern (C) IntPtr wxBufferedDC_ctorByBitmap(IntPtr dc, IntPtr buffer);
-		static extern (C) IntPtr wxBufferedDC_ctorBySize(IntPtr dc, inout Size area);
+		static extern (C) ЦУк wxBufferedDC_ctor();
+		static extern (C) ЦУк wxBufferedDC_ctorByBitmap(ЦУк dc, ЦУк buffer);
+		static extern (C) ЦУк wxBufferedDC_ctorBySize(ЦУк dc, inout Размер area);
 		
-		static extern (C) void   wxBufferedDC_InitByBitmap(IntPtr self, IntPtr dc, IntPtr bitmap);
-		static extern (C) void   wxBufferedDC_InitBySize(IntPtr self, IntPtr dc, inout Size area);
-		static extern (C) void   wxBufferedDC_UnMask(IntPtr self);
+		static extern (C) проц   wxBufferedDC_InitByBitmap(ЦУк сам, ЦУк dc, ЦУк битмап);
+		static extern (C) проц   wxBufferedDC_InitBySize(ЦУк сам, ЦУк dc, inout Размер area);
+		static extern (C) проц   wxBufferedDC_UnMask(ЦУк сам);
 		//! \endcond
 
 		//---------------------------------------------------------------------
@@ -62,48 +47,48 @@ public import wx.DC;
 	alias BufferedDC wxBufferedDC;
 	public class BufferedDC : MemoryDC
 	{
-        public this(IntPtr wxobj) 
-            { super(wxobj); }
+        public this(ЦУк шхобъ) 
+            { super(шхобъ); }
 
- 		private this(IntPtr wxobj, bool memOwn)
+ 		private this(ЦУк шхобъ, бул memOwn)
 		{ 
-			super(wxobj);
+			super(шхобъ);
 			this.memOwn = memOwn;
 		}
 
         public this()
-            { this(wxBufferedDC_ctor(), true); }
+            { this(wxBufferedDC_ctor(), да); }
 
-        public this(DC dc, Bitmap bitmap) 
-            { this(wxBufferedDC_ctorByBitmap(wxObject.SafePtr(dc), wxObject.SafePtr(bitmap)), true); }
+        public this(DC dc, Битмап битмап) 
+            { this(wxBufferedDC_ctorByBitmap(wxObject.SafePtr(dc), wxObject.SafePtr(битмап)), да); }
 
-        public this(DC dc, Size size)
-            { this(wxBufferedDC_ctorBySize(wxObject.SafePtr(dc), size), true); }
-
-		//---------------------------------------------------------------------
-
-		public void InitByBitmap(DC dc, Bitmap bitmap)
-        {
-            wxBufferedDC_InitByBitmap(wxobj, wxObject.SafePtr(dc), wxObject.SafePtr(bitmap));
-        }
-
-		public void InitBySize(DC dc, Size area)
-        {
-            wxBufferedDC_InitBySize(wxobj, wxObject.SafePtr(dc), area);
-        }
+        public this(DC dc, Размер size)
+            { this(wxBufferedDC_ctorBySize(wxObject.SafePtr(dc), size), да); }
 
 		//---------------------------------------------------------------------
 
-        public void UnMask()
+		public проц InitByBitmap(DC dc, Битмап битмап)
         {
-            wxBufferedDC_UnMask(wxobj);
+            wxBufferedDC_InitByBitmap(шхобъ, wxObject.SafePtr(dc), wxObject.SafePtr(битмап));
+        }
+
+		public проц InitBySize(DC dc, Размер area)
+        {
+            wxBufferedDC_InitBySize(шхобъ, wxObject.SafePtr(dc), area);
+        }
+
+		//---------------------------------------------------------------------
+
+        public проц UnMask()
+        {
+            wxBufferedDC_UnMask(шхобъ);
         }
 
 		//---------------------------------------------------------------------
 	}
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxBufferedPaintDC_ctor(IntPtr window, IntPtr buffer);
+		static extern (C) ЦУк wxBufferedPaintDC_ctor(ЦУк окно, ЦУк buffer);
 		//! \endcond
 
 		//---------------------------------------------------------------------
@@ -111,17 +96,17 @@ public import wx.DC;
 	alias BufferedPaintDC wxBufferedPaintDC;
 	public class BufferedPaintDC : BufferedDC
 	{
-        public this(IntPtr wxobj) 
-            { super(wxobj); }
+        public this(ЦУк шхобъ) 
+            { super(шхобъ); }
 
- 		private this(IntPtr wxobj, bool memOwn)
+ 		private this(ЦУк шхобъ, бул memOwn)
 		{ 
-			super(wxobj);
+			super(шхобъ);
 			this.memOwn = memOwn;
 		}
 
-       public this(Window window, Bitmap buffer)
-            { this(wxBufferedPaintDC_ctor(wxObject.SafePtr(window), wxObject.SafePtr(buffer)), true); }
+       public this(Окно окно, Битмап buffer)
+            { this(wxBufferedPaintDC_ctor(wxObject.SafePtr(окно), wxObject.SafePtr(buffer)), да); }
 
 		//---------------------------------------------------------------------
 	}

@@ -21,11 +21,11 @@
 // along with wx-sdl; if not, write to the Free Software Foundation, Inc.,
 // 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 //
-// $Id: SDLPanel.d,v 1.2 2007/04/18 19:27:17 afb Exp $
+// $Ид: SDLPanel.d,v 1.2 2007/04/18 19:27:17 afb Exp $
 //-----------------------------------------------------------------------------
 
 private import std.stdio;
-private import std.string;
+private import std.ткст;
 
 import wx.wx;
 
@@ -59,10 +59,10 @@ private:
      *
      * @param event The triggering wxPaintEvent (unused).
      */
-    void onPaint(Object sender, Event event)
+    проц onPaint(Объект sender, Событие event)
     {
      // can't draw if the screen doesn't exist yet
-    if (screen == null) {
+    if (screen == пусто) {
         return;
     }
     
@@ -73,9 +73,9 @@ private:
         }
     }
     
-    // create a bitmap from our pixel data
-    wxBitmap bmp = new wxBitmap(new Image(screen.w, screen.h, 
-                    cast(ubyte *)(screen.pixels), true));
+    // create a битмап from our pixel данные
+    wxBitmap bmp = new wxBitmap(new Рисунок(screen.w, screen.h, 
+                    cast(ббайт *)(screen.pixels), да));
     
     // unlock the screen
     if (SDL_MUSTLOCK(screen)) {
@@ -91,14 +91,14 @@ private:
      *
      * @param event The triggering wxEraseEvent (unused).
      */
-    void onEraseBackground(Object sender, Event event) {}
+    проц onEraseBackground(Объект sender, Событие event) {}
     
     /**
      * Called to update the panel.
      *
      * @param event The triggering wxIdleEvent (unused).
      */
-    void onIdle(Object sender, Event event)
+    проц onIdle(Объект sender, Событие event)
     {
     // create the SDL_Surface
     createScreen();
@@ -111,12 +111,12 @@ private:
     }
     
     // Ask SDL for the time in milliseconds
-    int tick = SDL_GetTicks();
+    цел tick = SDL_GetTicks();
     
-    for (int y = 0; y < 480; y++) {
-        for (int x = 0; x < 640; x++) {
-            uint color = (y * y) + (x * x) + tick;
-            ubyte *pixels = cast(ubyte *)(screen.pixels) + 
+    for (цел y = 0; y < 480; y++) {
+        for (цел x = 0; x < 640; x++) {
+            бцел color = (y * y) + (x * x) + tick;
+            ббайт *pixels = cast(ббайт *)(screen.pixels) + 
                               (y * screen.pitch) +
                               (x * screen.format.BytesPerPixel);
 
@@ -141,7 +141,7 @@ private:
     }
     
     // refresh the panel
-    Refresh(false);
+    Refresh(нет);
     
     // throttle to keep from flooding the event queue
     wxMilliSleep(33);
@@ -150,12 +150,12 @@ private:
     /**
      * Creates the SDL_Surface used by this SDLPanel.
      */
-    void createScreen()
+    проц createScreen()
     {
-    if (screen == null) {
-        Size size = size();
+    if (screen == пусто) {
+        Размер size = size();
         
-        screen = SDL_CreateRGBSurface(SDL_SWSURFACE, size.Width, size.Height, 
+        screen = SDL_CreateRGBSurface(SDL_SWSURFACE, size.Ширина, size.Высота, 
                                       24, 0, 0, 0, 0);     
     }
     }
@@ -164,12 +164,12 @@ public:
     /**
      * Creates a new SDLPanel.
      *
-     * @param parent The wxWindow parent.
+     * @param родитель The wxWindow родитель.
      */
-    this(wxWindow parent)
+    this(wxWindow родитель)
     {
-    super(parent, ID_PANEL);
-    screen = null;
+    super(родитель, ID_PANEL);
+    screen = пусто;
     
     // ensure the size of the wxPanel
     wxSize size = wxSize(640, 480);
@@ -187,7 +187,7 @@ public:
      */
     ~this()
     {
-    if (screen != null) {
+    if (screen != пусто) {
         SDL_FreeSurface(screen);
     }
  	}
@@ -203,18 +203,18 @@ private:
     SDLPanel panel;
     
     /**
-     * Called when exit from the file menu is selected.
+     * Called when exit from the file меню is selected.
      *
      * @param event The associated wxCommandEvent (unused).
      */
-    void onFileExit(Object sender, Event event) { Close(); }
+    проц onFileExit(Объект sender, Событие event) { Закрой(); }
     
     /**
-     * Called when about from the help menu is selected.
+     * Called when about from the справка меню is selected.
      *
      * @param event The associated wxCommandEvent (unused).
      */
-    void onHelpAbout(Object sender, Event event)
+    проц onHelpAbout(Объект sender, Событие event)
     {
     MessageBox("wx-sdl tutorial\nCopyright (C) 2005 John Ratliff",
                  "about wx-sdl tutorial", Dialog.wxOK | Dialog.wxICON_INFORMATION);
@@ -224,35 +224,35 @@ public:
     /**
      * Creates a new SDLFrame.
      */
-//    this(Point pos=wxDefaultPosition, Size size=wxDefaultSize)
+//    this(Точка поз=wxDefaultPosition, Размер size=wxDefaultSize)
     this()
     {
-    Point pos=wxDefaultPosition;
-    Size size=wxDefaultSize;
+    Точка поз=wxDefaultPosition;
+    Размер size=wxDefaultSize;
  
          // Create the SDLFrame
-    Create(null, ID_FRAME, "Frame Title", pos,
+    Create(пусто, ID_FRAME, "Frame Title", поз,
            size, wxCAPTION | wxSYSTEM_MENU | 
            wxMINIMIZE_BOX | wxCLOSE_BOX, "");
 
     // create the main menubar
     wxMenuBar mb = new wxMenuBar;
     
-    // create the file menu
+    // create the file меню
     wxMenu fileMenu = new wxMenu;
     fileMenu.Append(IDM_FILE_EXIT, "E&xit");
     
-    // add the file menu to the menu bar
+    // add the file меню to the меню bar
     mb.Append(fileMenu, "&File");
     
-    // create the help menu
+    // create the справка меню
     wxMenu helpMenu = new wxMenu;
     helpMenu.Append(IDM_HELP_ABOUT, "About");
     
-    // add the help menu to the menu bar
-    mb.Append(helpMenu, "&Help");
+    // add the справка меню to the меню bar
+    mb.Append(helpMenu, "&Справка");
     
-    // add the menu bar to the SDLFrame
+    // add the меню bar to the SDLFrame
     this.menuBar = mb;
     
     // create the SDLPanel
@@ -281,20 +281,20 @@ private:
     
 public:
     /**
-     * Called to initialize this SDLApp.
+     * Called to инициализуй this SDLApp.
      *
-     * @return true if initialization succeeded; false otherwise.
+     * @return да if initialization succeeded; нет otherwise.
      */
-    public override bool OnInit()
+    public override бул ПриИниц()
     {
      // create the SDLFrame
     frame = new SDLFrame;
-    frame.ClientSize = Size(640, 480);
+    frame.ClientSize = Размер(640, 480);
     frame.Centre();
     frame.Show();
     
     // initialization should always succeed
-    return true;
+    return да;
     }
    
     /**
@@ -302,27 +302,27 @@ public:
      *
      * @return The status code (0 if good, non-0 if bad).
      */
-    public override int OnRun()
+    public override цел ПриПуске()
     {
-        // initialize SDL
+        // инициализуй SDL
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
-        fwritefln(stderr, "unable to init SDL: ", std.string.toString(SDL_GetError()));
+        fwritefln(stderr, "unable to init SDL: ", std.ткст.toString(SDL_GetError()));
         
         return -1;
     }
     
 version (__WXMAC__) {} else {
-    // Setup video mode, but don't create a window
+    // Setup video mode, but don't create a окно
     SDL_SetVideoMode(0, 0, 0, SDL_SWSURFACE);
 }
     
     // generate an initial idle event to start things
     wxIdleEvent event = new wxIdleEvent;
-    event.EventObject = frame.getPanel();
+    event.ОбъСоб = frame.getPanel();
     frame.getPanel().AddPendingEvent(event);
  
     // start the main loop
-    return super.OnRun();
+    return super.ПриПуске();
     }
     
     /**
@@ -330,24 +330,24 @@ version (__WXMAC__) {} else {
      *
      * @return The exit code.
      */
-    public override int OnExit()
+    public override цел ПриВыходе()
     {
     // cleanup SDL
     SDL_Quit();
     
     // return the standard exit code
-    return super.OnExit();
+    return super.ПриВыходе();
 	}
 
-	static void Main(char[][] args)
+	static проц Main(сим[][] args)
 	{
-		SDLApp app = new SDLApp();
-		app.Run(args);
+		SDLApp прил = new SDLApp();
+		прил.Пуск(args);
 	}
 
 }
 
-int main(char[][] args)
+цел main(сим[][] args)
 {
 	SDLApp.Main(args);
 	return 0;

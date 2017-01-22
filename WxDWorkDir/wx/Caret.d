@@ -1,4 +1,4 @@
-//-----------------------------------------------------------------------------
+﻿//-----------------------------------------------------------------------------
 // wxD - Caret.d
 // (C) 2005 bero <berobero.sourceforge.net>
 // based on
@@ -10,7 +10,7 @@
 // (C) 2003 by Bryan Bulten
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: Caret.d,v 1.9 2006/11/17 15:20:59 afb Exp $
+// $Ид: Caret.d,v 1.9 2006/11/17 15:20:59 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.Caret;
@@ -18,20 +18,20 @@ public import wx.common;
 public import wx.Window;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxCaret_ctor();
-		static extern (C) void wxCaret_dtor(IntPtr self);
-		static extern (C) bool wxCaret_Create(IntPtr self, IntPtr window, int width, int height);
-		static extern (C) bool wxCaret_IsOk(IntPtr self);
-		static extern (C) bool wxCaret_IsVisible(IntPtr self);
-		static extern (C) void wxCaret_GetPosition(IntPtr self, out int x, out int y);
-		static extern (C) void wxCaret_GetSize(IntPtr self, out int width, out int height);
-		static extern (C) IntPtr wxCaret_GetWindow(IntPtr self);
-		static extern (C) void wxCaret_SetSize(IntPtr self, int width, int height);
-		static extern (C) void wxCaret_Move(IntPtr self, int x, int y);
-		static extern (C) void wxCaret_Show(IntPtr self, bool show);
-		static extern (C) void wxCaret_Hide(IntPtr self);
-		static extern (C) int wxCaret_GetBlinkTime();
-		static extern (C) void wxCaret_SetBlinkTime(int milliseconds);
+		static extern (C) ЦУк wxCaret_ctor();
+		static extern (C) проц wxCaret_dtor(ЦУк сам);
+		static extern (C) бул wxCaret_Create(ЦУк сам, ЦУк окно, цел ширина, цел высота);
+		static extern (C) бул wxCaret_IsOk(ЦУк сам);
+		static extern (C) бул wxCaret_IsVisible(ЦУк сам);
+		static extern (C) проц wxCaret_GetPosition(ЦУк сам, out цел x, out цел y);
+		static extern (C) проц wxCaret_GetSize(ЦУк сам, out цел ширина, out цел высота);
+		static extern (C) ЦУк wxCaret_GetWindow(ЦУк сам);
+		static extern (C) проц wxCaret_SetSize(ЦУк сам, цел ширина, цел высота);
+		static extern (C) проц wxCaret_Move(ЦУк сам, цел x, цел y);
+		static extern (C) проц wxCaret_Show(ЦУк сам, бул show);
+		static extern (C) проц wxCaret_Hide(ЦУк сам);
+		static extern (C) цел wxCaret_GetBlinkTime();
+		static extern (C) проц wxCaret_SetBlinkTime(цел milliseconds);
 		//! \endcond
 		
 		//---------------------------------------------------------------------
@@ -40,26 +40,26 @@ public import wx.Window;
 	public class Caret : wxObject
 	{
 		public this()
-			{ this(wxCaret_ctor(), true);}
+			{ this(wxCaret_ctor(), да);}
 
-		public this(IntPtr wxobj)
+		public this(ЦУк шхобъ)
 		{
-			super(wxobj);
+			super(шхобъ);
 		}
 		
-		private this(IntPtr wxobj, bool memOwn)
+		private this(ЦУк шхобъ, бул memOwn)
 		{ 
-			super(wxobj);
+			super(шхобъ);
 			this.memOwn = memOwn;
 		}
 
-		public this(Window window, Size size)
-			{ this(window, size.Width, size.Height);}
+		public this(Окно окно, Размер size)
+			{ this(окно, size.Ширина, size.Высота);}
 
-		public this(Window window, int width, int height)
+		public this(Окно окно, цел ширина, цел высота)
 		{
-			this(wxCaret_ctor(), true);
-			if (!wxCaret_Create(wxobj, wxObject.SafePtr(window), width, height))
+			this(wxCaret_ctor(), да);
+			if (!wxCaret_Create(шхобъ, wxObject.SafePtr(окно), ширина, высота))
 			{
 				throw new InvalidOperationException("Failed to create Caret");
 			}
@@ -67,84 +67,84 @@ public import wx.Window;
 		
 		//---------------------------------------------------------------------
 				
-		override protected void dtor() { wxCaret_dtor(wxobj); }
+		override protected проц dtor() { wxCaret_dtor(шхобъ); }
 		
 		//---------------------------------------------------------------------
 
-		public bool Create(Window window, int width, int height)
+		public бул Create(Окно окно, цел ширина, цел высота)
 		{
-			return wxCaret_Create(wxobj, wxObject.SafePtr(window), width, height);
+			return wxCaret_Create(шхобъ, wxObject.SafePtr(окно), ширина, высота);
 		}
 
 		//---------------------------------------------------------------------
 
-		public bool IsOk() { return wxCaret_IsOk(wxobj); }
+		public бул IsOk() { return wxCaret_IsOk(шхобъ); }
 
-		public bool IsVisible() { return wxCaret_IsVisible(wxobj); }
+		public бул IsVisible() { return wxCaret_IsVisible(шхобъ); }
 
 		//---------------------------------------------------------------------
 
-		public Point Position() 
+		public Точка Положение() 
 			{
-				Point point;
-				wxCaret_GetPosition(wxobj, point.X, point.Y);
+				Точка point;
+				wxCaret_GetPosition(шхобъ, point.X, point.Y);
 				return point;
 			}
-		public void Position(Point value) 
+		public проц Положение(Точка значение) 
 			{
-				wxCaret_Move(wxobj, value.X, value.Y);
+				wxCaret_Move(шхобъ, значение.X, значение.Y);
 			}
 
 		//---------------------------------------------------------------------
 
-		public Size size() 
+		public Размер size() 
 		{
-			Size sz;
-			wxCaret_GetSize(wxobj, sz.Width, sz.Height);
+			Размер sz;
+			wxCaret_GetSize(шхобъ, sz.Ширина, sz.Высота);
 			return sz;
 		}
-		public void size(Size value) 
+		public проц size(Размер значение) 
 		{
-			wxCaret_SetSize(wxobj, value.Width, value.Height);
+			wxCaret_SetSize(шхобъ, значение.Ширина, значение.Высота);
 		}
 
 		//---------------------------------------------------------------------
 
-		public Window window() 
+		public Окно окно() 
 		{
-			return cast(Window)FindObject(wxCaret_GetWindow(wxobj));
+			return cast(Окно)FindObject(wxCaret_GetWindow(шхобъ));
 		}
 
 		//---------------------------------------------------------------------
 
-		public void Show(bool show)
+		public проц Show(бул show)
 		{
-			wxCaret_Show(wxobj, show);
+			wxCaret_Show(шхобъ, show);
 		}
 
-		public void Hide()
+		public проц Hide()
 		{
-			wxCaret_Hide(wxobj);
+			wxCaret_Hide(шхобъ);
 		}
 
 		//---------------------------------------------------------------------
 
-		static int BlinkTime()
+		static цел BlinkTime()
 		{
 			return wxCaret_GetBlinkTime();
 		}
-		static void BlinkTime(int value) 
+		static проц BlinkTime(цел значение) 
 		{
-			wxCaret_SetBlinkTime(value);
+			wxCaret_SetBlinkTime(значение);
 		}
 
-		public static wxObject New(IntPtr ptr) { return new Caret(ptr); }
+		public static wxObject Нов(ЦУк ptr) { return new Caret(ptr); }
 		//---------------------------------------------------------------------
 	}
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxCaretSuspend_ctor(IntPtr win);
-		static extern (C) void wxCaretSuspend_dtor(IntPtr self);
+		static extern (C) ЦУк wxCaretSuspend_ctor(ЦУк окн);
+		static extern (C) проц wxCaretSuspend_dtor(ЦУк сам);
 		//! \endcond
 		
 		//---------------------------------------------------------------------
@@ -152,21 +152,21 @@ public import wx.Window;
 	alias CaretSuspend wxCaretSuspend;
 	public class CaretSuspend : wxObject
 	{
-		public this(Window win)
-			{ this(wxCaretSuspend_ctor(wxObject.SafePtr(win)), true);}
+		public this(Окно окн)
+			{ this(wxCaretSuspend_ctor(wxObject.SafePtr(окн)), да);}
 		
-		public this(IntPtr wxobj)
+		public this(ЦУк шхобъ)
 		{ 
-			super(wxobj);
+			super(шхобъ);
 		}
 		
-		private this(IntPtr wxobj, bool memOwn)
+		private this(ЦУк шхобъ, бул memOwn)
 		{ 
-			super(wxobj);
+			super(шхобъ);
 			this.memOwn = memOwn;
 		}
 		
 		//---------------------------------------------------------------------
 				
-		override protected void dtor() { wxCaretSuspend_dtor(wxobj); }
+		override protected проц dtor() { wxCaretSuspend_dtor(шхобъ); }
 	}

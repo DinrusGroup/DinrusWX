@@ -10,7 +10,7 @@
 // (C) 2004 by Alexander Olk
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: NcPaintEvent.d,v 1.9 2006/11/17 15:21:00 afb Exp $
+// $Ид: NcPaintEvent.d,v 1.9 2006/11/17 15:21:00 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.NcPaintEvent;
@@ -19,24 +19,24 @@ public import wx.common;
 public import wx.Event;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxNcPaintEvent_ctor(int Id);
+		static extern (C) ЦУк wxNcPaintEvent_ctor(цел Ид);
 		//! \endcond
 		
 		//-----------------------------------------------------------------------------
 
 	alias NCPaintEvent wxNCPaintEvent;
-	public class NCPaintEvent : Event
+	public class NCPaintEvent : Событие
 	{
-		public this(IntPtr wxobj) 
-			{ super(wxobj); }
+		public this(ЦУк шхобъ) 
+			{ super(шхобъ); }
 
-		public this(int Id=0)
-			{ this(wxNcPaintEvent_ctor(Id)); }
+		public this(цел Ид=0)
+			{ this(wxNcPaintEvent_ctor(Ид)); }
 
-		private static Event New(IntPtr obj) { return new NCPaintEvent(obj); }
+		private static Событие Нов(ЦУк объ) { return new NCPaintEvent(объ); }
 
 		static this()
 		{
-			AddEventType(wxEVT_NC_PAINT,				&NCPaintEvent.New);
+			ДобавьТипСоб(wxEVT_NC_PAINT,				&NCPaintEvent.Нов);
 		}
 	}

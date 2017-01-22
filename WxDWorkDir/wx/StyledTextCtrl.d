@@ -10,7 +10,7 @@
 // (C) 2003 Bryan Bulten
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: StyledTextCtrl.d,v 1.12 2007/08/20 09:06:44 afb Exp $
+// $Ид: StyledTextCtrl.d,v 1.12 2007/08/20 09:06:44 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.StyledTextCtrl;
@@ -24,364 +24,364 @@ public import wx.Control;
 public import wx.CommandEvent;
 
 		//! \cond EXTERN
-        static extern (C) EventType wxStyledTextCtrl_EVT_STC_CHANGE();
-        static extern (C) EventType wxStyledTextCtrl_EVT_STC_STYLENEEDED();
-        static extern (C) EventType wxStyledTextCtrl_EVT_STC_CHARADDED();
-        static extern (C) EventType wxStyledTextCtrl_EVT_STC_SAVEPOINTREACHED();
-        static extern (C) EventType wxStyledTextCtrl_EVT_STC_SAVEPOINTLEFT();  
-        static extern (C) EventType wxStyledTextCtrl_EVT_STC_ROMODIFYATTEMPT();
-        static extern (C) EventType wxStyledTextCtrl_EVT_STC_KEY();
-        static extern (C) EventType wxStyledTextCtrl_EVT_STC_DOUBLECLICK();
-        static extern (C) EventType wxStyledTextCtrl_EVT_STC_UPDATEUI();
-        static extern (C) EventType wxStyledTextCtrl_EVT_STC_MODIFIED();
-        static extern (C) EventType wxStyledTextCtrl_EVT_STC_MACRORECORD();
-        static extern (C) EventType wxStyledTextCtrl_EVT_STC_MARGINCLICK();
-        static extern (C) EventType wxStyledTextCtrl_EVT_STC_NEEDSHOWN();
-        static extern (C) EventType wxStyledTextCtrl_EVT_STC_POSCHANGED();
-        static extern (C) EventType wxStyledTextCtrl_EVT_STC_PAINTED();
-        static extern (C) EventType wxStyledTextCtrl_EVT_STC_USERLISTSELECTION();
-        static extern (C) EventType wxStyledTextCtrl_EVT_STC_URIDROPPED();
-        static extern (C) EventType wxStyledTextCtrl_EVT_STC_DWELLSTART();
-        static extern (C) EventType wxStyledTextCtrl_EVT_STC_DWELLEND();
-        static extern (C) EventType wxStyledTextCtrl_EVT_STC_START_DRAG();
-        static extern (C) EventType wxStyledTextCtrl_EVT_STC_DRAG_OVER();
-        static extern (C) EventType wxStyledTextCtrl_EVT_STC_DO_DROP();
-        static extern (C) EventType wxStyledTextCtrl_EVT_STC_ZOOM();
-        static extern (C) EventType wxStyledTextCtrl_EVT_STC_HOTSPOT_CLICK();
-        static extern (C) EventType wxStyledTextCtrl_EVT_STC_HOTSPOT_DCLICK();
-        static extern (C) EventType wxStyledTextCtrl_EVT_STC_CALLTIP_CLICK();
+        static extern (C) ТипСобытия wxStyledTextCtrl_EVT_STC_CHANGE();
+        static extern (C) ТипСобытия wxStyledTextCtrl_EVT_STC_STYLENEEDED();
+        static extern (C) ТипСобытия wxStyledTextCtrl_EVT_STC_CHARADDED();
+        static extern (C) ТипСобытия wxStyledTextCtrl_EVT_STC_SAVEPOINTREACHED();
+        static extern (C) ТипСобытия wxStyledTextCtrl_EVT_STC_SAVEPOINTLEFT();  
+        static extern (C) ТипСобытия wxStyledTextCtrl_EVT_STC_ROMODIFYATTEMPT();
+        static extern (C) ТипСобытия wxStyledTextCtrl_EVT_STC_KEY();
+        static extern (C) ТипСобытия wxStyledTextCtrl_EVT_STC_DOUBLECLICK();
+        static extern (C) ТипСобытия wxStyledTextCtrl_EVT_STC_UPDATEUI();
+        static extern (C) ТипСобытия wxStyledTextCtrl_EVT_STC_MODIFIED();
+        static extern (C) ТипСобытия wxStyledTextCtrl_EVT_STC_MACRORECORD();
+        static extern (C) ТипСобытия wxStyledTextCtrl_EVT_STC_MARGINCLICK();
+        static extern (C) ТипСобытия wxStyledTextCtrl_EVT_STC_NEEDSHOWN();
+        static extern (C) ТипСобытия wxStyledTextCtrl_EVT_STC_POSCHANGED();
+        static extern (C) ТипСобытия wxStyledTextCtrl_EVT_STC_PAINTED();
+        static extern (C) ТипСобытия wxStyledTextCtrl_EVT_STC_USERLISTSELECTION();
+        static extern (C) ТипСобытия wxStyledTextCtrl_EVT_STC_URIDROPPED();
+        static extern (C) ТипСобытия wxStyledTextCtrl_EVT_STC_DWELLSTART();
+        static extern (C) ТипСобытия wxStyledTextCtrl_EVT_STC_DWELLEND();
+        static extern (C) ТипСобытия wxStyledTextCtrl_EVT_STC_START_DRAG();
+        static extern (C) ТипСобытия wxStyledTextCtrl_EVT_STC_DRAG_OVER();
+        static extern (C) ТипСобытия wxStyledTextCtrl_EVT_STC_DO_DROP();
+        static extern (C) ТипСобытия wxStyledTextCtrl_EVT_STC_ZOOM();
+        static extern (C) ТипСобытия wxStyledTextCtrl_EVT_STC_HOTSPOT_CLICK();
+        static extern (C) ТипСобытия wxStyledTextCtrl_EVT_STC_HOTSPOT_DCLICK();
+        static extern (C) ТипСобытия wxStyledTextCtrl_EVT_STC_CALLTIP_CLICK();
 
-        static extern (C) IntPtr wxStyledTextCtrl_ctor(IntPtr parent, int id, inout Point pos, inout Size size, uint style, string name);
-        static extern (C) void   wxStyledTextCtrl_AddText(IntPtr self, string text);
-        //static extern (C) void   wxStyledTextCtrl_AddStyledText(IntPtr self, IntPtr data);
-        static extern (C) void   wxStyledTextCtrl_InsertText(IntPtr self, int pos, string text);
-        static extern (C) void   wxStyledTextCtrl_ClearAll(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_ClearDocumentStyle(IntPtr self);
-        static extern (C) int    wxStyledTextCtrl_GetLength(IntPtr self);
-        static extern (C) int    wxStyledTextCtrl_GetCharAt(IntPtr self, int pos);
-        static extern (C) int    wxStyledTextCtrl_GetCurrentPos(IntPtr self);
-        static extern (C) int    wxStyledTextCtrl_GetAnchor(IntPtr self);
-        static extern (C) int    wxStyledTextCtrl_GetStyleAt(IntPtr self, int pos);
-        static extern (C) void   wxStyledTextCtrl_Redo(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_SetUndoCollection(IntPtr self, bool collectUndo);
-        static extern (C) void   wxStyledTextCtrl_SelectAll(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_SetSavePoint(IntPtr self);
-        //static extern (C) IntPtr wxStyledTextCtrl_GetStyledText(IntPtr self, int startPos, int endPos);
-        static extern (C) bool   wxStyledTextCtrl_CanRedo(IntPtr self);
-        static extern (C) int    wxStyledTextCtrl_MarkerLineFromHandle(IntPtr self, int handle);
-        static extern (C) void   wxStyledTextCtrl_MarkerDeleteHandle(IntPtr self, int handle);
-        static extern (C) bool   wxStyledTextCtrl_GetUndoCollection(IntPtr self);
-        static extern (C) int    wxStyledTextCtrl_GetViewWhiteSpace(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_SetViewWhiteSpace(IntPtr self, int viewWS);
-        static extern (C) int    wxStyledTextCtrl_PositionFromPoint(IntPtr self, inout Point pt);
-        static extern (C) int    wxStyledTextCtrl_PositionFromPointClose(IntPtr self, int x, int y);
-        static extern (C) void   wxStyledTextCtrl_GotoLine(IntPtr self, int line);
-        static extern (C) void   wxStyledTextCtrl_GotoPos(IntPtr self, int pos);
-        static extern (C) void   wxStyledTextCtrl_SetAnchor(IntPtr self, int posAnchor);
-        static extern (C) IntPtr wxStyledTextCtrl_GetCurLine(IntPtr self, inout int linePos);
-        static extern (C) int    wxStyledTextCtrl_GetEndStyled(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_ConvertEOLs(IntPtr self, int eolMode);
-        static extern (C) int    wxStyledTextCtrl_GetEOLMode(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_SetEOLMode(IntPtr self, int eolMode);
-        static extern (C) void   wxStyledTextCtrl_StartStyling(IntPtr self, int pos, int mask);
-        static extern (C) void   wxStyledTextCtrl_SetStyling(IntPtr self, int length, int style);
-        static extern (C) bool   wxStyledTextCtrl_GetBufferedDraw(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_SetBufferedDraw(IntPtr self, bool buffered);
-        static extern (C) void   wxStyledTextCtrl_SetTabWidth(IntPtr self, int tabWidth);
-        static extern (C) int    wxStyledTextCtrl_GetTabWidth(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_SetCodePage(IntPtr self, int codePage);
-        static extern (C) void   wxStyledTextCtrl_MarkerDefine(IntPtr self, int markerNumber, int markerSymbol, IntPtr foreground, IntPtr background);
-        static extern (C) void   wxStyledTextCtrl_MarkerSetForeground(IntPtr self, int markerNumber, IntPtr fore);
-        static extern (C) void   wxStyledTextCtrl_MarkerSetBackground(IntPtr self, int markerNumber, IntPtr back);
-        static extern (C) int    wxStyledTextCtrl_MarkerAdd(IntPtr self, int line, int markerNumber);
-        static extern (C) void   wxStyledTextCtrl_MarkerDelete(IntPtr self, int line, int markerNumber);
-        static extern (C) void   wxStyledTextCtrl_MarkerDeleteAll(IntPtr self, int markerNumber);
-        static extern (C) int    wxStyledTextCtrl_MarkerGet(IntPtr self, int line);
-        static extern (C) int    wxStyledTextCtrl_MarkerNext(IntPtr self, int lineStart, int markerMask);
-        static extern (C) int    wxStyledTextCtrl_MarkerPrevious(IntPtr self, int lineStart, int markerMask);
-        static extern (C) void   wxStyledTextCtrl_MarkerDefineBitmap(IntPtr self, int markerNumber, IntPtr bmp);
-        static extern (C) void   wxStyledTextCtrl_SetMarginType(IntPtr self, int margin, int marginType);
-        static extern (C) int    wxStyledTextCtrl_GetMarginType(IntPtr self, int margin);
-        static extern (C) void   wxStyledTextCtrl_SetMarginWidth(IntPtr self, int margin, int pixelWidth);
-        static extern (C) int    wxStyledTextCtrl_GetMarginWidth(IntPtr self, int margin);
-        static extern (C) void   wxStyledTextCtrl_SetMarginMask(IntPtr self, int margin, int mask);
-        static extern (C) int    wxStyledTextCtrl_GetMarginMask(IntPtr self, int margin);
-        static extern (C) void   wxStyledTextCtrl_SetMarginSensitive(IntPtr self, int margin, bool sensitive);
-        static extern (C) bool   wxStyledTextCtrl_GetMarginSensitive(IntPtr self, int margin);
-        static extern (C) void   wxStyledTextCtrl_StyleClearAll(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_StyleSetForeground(IntPtr self, int style, IntPtr fore);
-        static extern (C) void   wxStyledTextCtrl_StyleSetBackground(IntPtr self, int style, IntPtr back);
-        static extern (C) void   wxStyledTextCtrl_StyleSetBold(IntPtr self, int style, bool bold);
-        static extern (C) void   wxStyledTextCtrl_StyleSetItalic(IntPtr self, int style, bool italic);
-        static extern (C) void   wxStyledTextCtrl_StyleSetSize(IntPtr self, int style, int sizePoints);
-        static extern (C) void   wxStyledTextCtrl_StyleSetFaceName(IntPtr self, int style, string fontName);
-        static extern (C) void   wxStyledTextCtrl_StyleSetEOLFilled(IntPtr self, int style, bool filled);
-        static extern (C) void   wxStyledTextCtrl_StyleResetDefault(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_StyleSetUnderline(IntPtr self, int style, bool underline);
-        static extern (C) void   wxStyledTextCtrl_StyleSetCase(IntPtr self, int style, int caseForce);
-        static extern (C) void   wxStyledTextCtrl_StyleSetCharacterSet(IntPtr self, int style, int characterSet);
-        static extern (C) void   wxStyledTextCtrl_StyleSetHotSpot(IntPtr self, int style, bool hotspot);
-        static extern (C) void   wxStyledTextCtrl_SetSelForeground(IntPtr self, bool useSetting, IntPtr fore);
-        static extern (C) void   wxStyledTextCtrl_SetSelBackground(IntPtr self, bool useSetting, IntPtr back);
-        static extern (C) void   wxStyledTextCtrl_SetCaretForeground(IntPtr self, IntPtr fore);
-        static extern (C) void   wxStyledTextCtrl_CmdKeyAssign(IntPtr self, int key, int modifiers, int cmd);
-        static extern (C) void   wxStyledTextCtrl_CmdKeyClear(IntPtr self, int key, int modifiers);
-        static extern (C) void   wxStyledTextCtrl_CmdKeyClearAll(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_SetStyleBytes(IntPtr self, int length, ubyte* styleBytes);
-        static extern (C) void   wxStyledTextCtrl_StyleSetVisible(IntPtr self, int style, bool visible);
-        static extern (C) int    wxStyledTextCtrl_GetCaretPeriod(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_SetCaretPeriod(IntPtr self, int periodMilliseconds);
-        static extern (C) void   wxStyledTextCtrl_SetWordChars(IntPtr self, string characters);
-        static extern (C) void   wxStyledTextCtrl_BeginUndoAction(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_EndUndoAction(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_IndicatorSetStyle(IntPtr self, int indic, int style);
-        static extern (C) int    wxStyledTextCtrl_IndicatorGetStyle(IntPtr self, int indic);
-        static extern (C) void   wxStyledTextCtrl_IndicatorSetForeground(IntPtr self, int indic, IntPtr fore);
-        static extern (C) IntPtr wxStyledTextCtrl_IndicatorGetForeground(IntPtr self, int indic);
-        static extern (C) void   wxStyledTextCtrl_SetWhitespaceForeground(IntPtr self, bool useSetting, IntPtr fore);
-        static extern (C) void   wxStyledTextCtrl_SetWhitespaceBackground(IntPtr self, bool useSetting, IntPtr back);
-        static extern (C) void   wxStyledTextCtrl_SetStyleBits(IntPtr self, int bits);
-        static extern (C) int    wxStyledTextCtrl_GetStyleBits(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_SetLineState(IntPtr self, int line, int state);
-        static extern (C) int    wxStyledTextCtrl_GetLineState(IntPtr self, int line);
-        static extern (C) int    wxStyledTextCtrl_GetMaxLineState(IntPtr self);
-        static extern (C) bool   wxStyledTextCtrl_GetCaretLineVisible(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_SetCaretLineVisible(IntPtr self, bool show);
-        static extern (C) IntPtr wxStyledTextCtrl_GetCaretLineBack(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_SetCaretLineBack(IntPtr self, IntPtr back);
-        static extern (C) void   wxStyledTextCtrl_StyleSetChangeable(IntPtr self, int style, bool changeable);
-        static extern (C) void   wxStyledTextCtrl_AutoCompShow(IntPtr self, int lenEntered, string itemList);
-        static extern (C) void   wxStyledTextCtrl_AutoCompCancel(IntPtr self);
-        static extern (C) bool   wxStyledTextCtrl_AutoCompActive(IntPtr self);
-        static extern (C) int    wxStyledTextCtrl_AutoCompPosStart(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_AutoCompComplete(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_AutoCompStops(IntPtr self, string characterSet);
-        static extern (C) void   wxStyledTextCtrl_AutoCompSetSeparator(IntPtr self, int separatorCharacter);
-        static extern (C) int    wxStyledTextCtrl_AutoCompGetSeparator(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_AutoCompSelect(IntPtr self, string text);
-        static extern (C) void   wxStyledTextCtrl_AutoCompSetCancelAtStart(IntPtr self, bool cancel);
-        static extern (C) bool   wxStyledTextCtrl_AutoCompGetCancelAtStart(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_AutoCompSetFillUps(IntPtr self, string characterSet);
-        static extern (C) void   wxStyledTextCtrl_AutoCompSetChooseSingle(IntPtr self, bool chooseSingle);
-        static extern (C) bool   wxStyledTextCtrl_AutoCompGetChooseSingle(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_AutoCompSetIgnoreCase(IntPtr self, bool ignoreCase);
-        static extern (C) bool   wxStyledTextCtrl_AutoCompGetIgnoreCase(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_UserListShow(IntPtr self, int listType, string itemList);
-        static extern (C) void   wxStyledTextCtrl_AutoCompSetAutoHide(IntPtr self, bool autoHide);
-        static extern (C) bool   wxStyledTextCtrl_AutoCompGetAutoHide(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_AutoCompSetDropRestOfWord(IntPtr self, bool dropRestOfWord);
-        static extern (C) bool   wxStyledTextCtrl_AutoCompGetDropRestOfWord(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_RegisterImage(IntPtr self, int type, IntPtr bmp);
-        static extern (C) void   wxStyledTextCtrl_ClearRegisteredImages(IntPtr self);
-        static extern (C) int    wxStyledTextCtrl_AutoCompGetTypeSeparator(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_AutoCompSetTypeSeparator(IntPtr self, int separatorCharacter);
-        static extern (C) void   wxStyledTextCtrl_SetIndent(IntPtr self, int indentSize);
-        static extern (C) int    wxStyledTextCtrl_GetIndent(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_SetUseTabs(IntPtr self, bool useTabs);
-        static extern (C) bool   wxStyledTextCtrl_GetUseTabs(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_SetLineIndentation(IntPtr self, int line, int indentSize);
-        static extern (C) int    wxStyledTextCtrl_GetLineIndentation(IntPtr self, int line);
-        static extern (C) int    wxStyledTextCtrl_GetLineIndentPosition(IntPtr self, int line);
-        static extern (C) int    wxStyledTextCtrl_GetColumn(IntPtr self, int pos);
-        static extern (C) void   wxStyledTextCtrl_SetUseHorizontalScrollBar(IntPtr self, bool show);
-        static extern (C) bool   wxStyledTextCtrl_GetUseHorizontalScrollBar(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_SetIndentationGuides(IntPtr self, bool show);
-        static extern (C) bool   wxStyledTextCtrl_GetIndentationGuides(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_SetHighlightGuide(IntPtr self, int column);
-        static extern (C) int    wxStyledTextCtrl_GetHighlightGuide(IntPtr self);
-        static extern (C) int    wxStyledTextCtrl_GetLineEndPosition(IntPtr self, int line);
-        static extern (C) int    wxStyledTextCtrl_GetCodePage(IntPtr self);
-        static extern (C) IntPtr wxStyledTextCtrl_GetCaretForeground(IntPtr self);
-        static extern (C) bool   wxStyledTextCtrl_GetReadOnly(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_SetCurrentPos(IntPtr self, int pos);
-        static extern (C) void   wxStyledTextCtrl_SetSelectionStart(IntPtr self, int pos);
-        static extern (C) int    wxStyledTextCtrl_GetSelectionStart(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_SetSelectionEnd(IntPtr self, int pos);
-        static extern (C) int    wxStyledTextCtrl_GetSelectionEnd(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_SetPrintMagnification(IntPtr self, int magnification);
-        static extern (C) int    wxStyledTextCtrl_GetPrintMagnification(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_SetPrintColourMode(IntPtr self, int mode);
-        static extern (C) int    wxStyledTextCtrl_GetPrintColourMode(IntPtr self);
-        static extern (C) int    wxStyledTextCtrl_FindText(IntPtr self, int minPos, int maxPos, string text, int flags);
-        static extern (C) int    wxStyledTextCtrl_FormatRange(IntPtr self, bool doDraw, int startPos, int endPos, IntPtr draw, IntPtr target, inout Rectangle renderRect, inout Rectangle pageRect);
-        static extern (C) int    wxStyledTextCtrl_GetFirstVisibleLine(IntPtr self);
-        static extern (C) IntPtr wxStyledTextCtrl_GetLine(IntPtr self, int line);
-        static extern (C) int    wxStyledTextCtrl_GetLineCount(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_SetMarginLeft(IntPtr self, int pixelWidth);
-        static extern (C) int    wxStyledTextCtrl_GetMarginLeft(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_SetMarginRight(IntPtr self, int pixelWidth);
-        static extern (C) int    wxStyledTextCtrl_GetMarginRight(IntPtr self);
-        static extern (C) bool   wxStyledTextCtrl_GetModify(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_SetSelection(IntPtr self, int start, int end);
-        static extern (C) IntPtr wxStyledTextCtrl_GetSelectedText(IntPtr self);
-        static extern (C) IntPtr wxStyledTextCtrl_GetTextRange(IntPtr self, int startPos, int endPos);
-        static extern (C) void   wxStyledTextCtrl_HideSelection(IntPtr self, bool normal);
-        static extern (C) int    wxStyledTextCtrl_LineFromPosition(IntPtr self, int pos);
-        static extern (C) int    wxStyledTextCtrl_PositionFromLine(IntPtr self, int line);
-        static extern (C) void   wxStyledTextCtrl_LineScroll(IntPtr self, int columns, int lines);
-        static extern (C) void   wxStyledTextCtrl_EnsureCaretVisible(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_ReplaceSelection(IntPtr self, string text);
-        static extern (C) void   wxStyledTextCtrl_SetReadOnly(IntPtr self, bool readOnly);
-        static extern (C) bool   wxStyledTextCtrl_CanPaste(IntPtr self);
-        static extern (C) bool   wxStyledTextCtrl_CanUndo(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_EmptyUndoBuffer(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_Undo(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_Cut(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_Copy(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_Paste(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_Clear(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_SetText(IntPtr self, string text);
-        static extern (C) IntPtr wxStyledTextCtrl_GetText(IntPtr self);
-        static extern (C) int    wxStyledTextCtrl_GetTextLength(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_SetOvertype(IntPtr self, bool overtype);
-        static extern (C) bool   wxStyledTextCtrl_GetOvertype(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_SetCaretWidth(IntPtr self, int pixelWidth);
-        static extern (C) int    wxStyledTextCtrl_GetCaretWidth(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_SetTargetStart(IntPtr self, int pos);
-        static extern (C) int    wxStyledTextCtrl_GetTargetStart(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_SetTargetEnd(IntPtr self, int pos);
-        static extern (C) int    wxStyledTextCtrl_GetTargetEnd(IntPtr self);
-        static extern (C) int    wxStyledTextCtrl_ReplaceTarget(IntPtr self, string text);
-        static extern (C) int    wxStyledTextCtrl_ReplaceTargetRE(IntPtr self, string text);
-        static extern (C) int    wxStyledTextCtrl_SearchInTarget(IntPtr self, string text);
-        static extern (C) void   wxStyledTextCtrl_SetSearchFlags(IntPtr self, int flags);
-        static extern (C) int    wxStyledTextCtrl_GetSearchFlags(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_CallTipShow(IntPtr self, int pos, string definition);
-        static extern (C) void   wxStyledTextCtrl_CallTipCancel(IntPtr self);
-        static extern (C) bool   wxStyledTextCtrl_CallTipActive(IntPtr self);
-        static extern (C) int    wxStyledTextCtrl_CallTipPosAtStart(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_CallTipSetHighlight(IntPtr self, int start, int end);
-        static extern (C) void   wxStyledTextCtrl_CallTipSetBackground(IntPtr self, IntPtr back);
-        static extern (C) void   wxStyledTextCtrl_CallTipSetForeground(IntPtr self, IntPtr fore);
-        static extern (C) void   wxStyledTextCtrl_CallTipSetForegroundHighlight(IntPtr self, IntPtr fore);
-        static extern (C) int    wxStyledTextCtrl_VisibleFromDocLine(IntPtr self, int line);
-        static extern (C) int    wxStyledTextCtrl_DocLineFromVisible(IntPtr self, int lineDisplay);
-        static extern (C) void   wxStyledTextCtrl_SetFoldLevel(IntPtr self, int line, int level);
-        static extern (C) int    wxStyledTextCtrl_GetFoldLevel(IntPtr self, int line);
-        static extern (C) int    wxStyledTextCtrl_GetLastChild(IntPtr self, int line, int level);
-        static extern (C) int    wxStyledTextCtrl_GetFoldParent(IntPtr self, int line);
-        static extern (C) void   wxStyledTextCtrl_ShowLines(IntPtr self, int lineStart, int lineEnd);
-        static extern (C) void   wxStyledTextCtrl_HideLines(IntPtr self, int lineStart, int lineEnd);
-        static extern (C) bool   wxStyledTextCtrl_GetLineVisible(IntPtr self, int line);
-        static extern (C) void   wxStyledTextCtrl_SetFoldExpanded(IntPtr self, int line, bool expanded);
-        static extern (C) bool   wxStyledTextCtrl_GetFoldExpanded(IntPtr self, int line);
-        static extern (C) void   wxStyledTextCtrl_ToggleFold(IntPtr self, int line);
-        static extern (C) void   wxStyledTextCtrl_EnsureVisible(IntPtr self, int line);
-        static extern (C) void   wxStyledTextCtrl_SetFoldFlags(IntPtr self, int flags);
-        static extern (C) void   wxStyledTextCtrl_EnsureVisibleEnforcePolicy(IntPtr self, int line);
-        static extern (C) void   wxStyledTextCtrl_SetTabIndents(IntPtr self, bool tabIndents);
-        static extern (C) bool   wxStyledTextCtrl_GetTabIndents(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_SetBackSpaceUnIndents(IntPtr self, bool bsUnIndents);
-        static extern (C) bool   wxStyledTextCtrl_GetBackSpaceUnIndents(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_SetMouseDwellTime(IntPtr self, int periodMilliseconds);
-        static extern (C) int    wxStyledTextCtrl_GetMouseDwellTime(IntPtr self);
-        static extern (C) int    wxStyledTextCtrl_WordStartPosition(IntPtr self, int pos, bool onlyWordCharacters);
-        static extern (C) int    wxStyledTextCtrl_WordEndPosition(IntPtr self, int pos, bool onlyWordCharacters);
-        static extern (C) void   wxStyledTextCtrl_SetWrapMode(IntPtr self, int mode);
-        static extern (C) int    wxStyledTextCtrl_GetWrapMode(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_SetLayoutCache(IntPtr self, int mode);
-        static extern (C) int    wxStyledTextCtrl_GetLayoutCache(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_SetScrollWidth(IntPtr self, int pixelWidth);
-        static extern (C) int    wxStyledTextCtrl_GetScrollWidth(IntPtr self);
-        static extern (C) int    wxStyledTextCtrl_TextWidth(IntPtr self, int style, string text);
-        static extern (C) void   wxStyledTextCtrl_SetEndAtLastLine(IntPtr self, bool endAtLastLine);
-        static extern (C) bool   wxStyledTextCtrl_GetEndAtLastLine(IntPtr self);
-        static extern (C) int    wxStyledTextCtrl_TextHeight(IntPtr self, int line);
-        static extern (C) void   wxStyledTextCtrl_SetUseVerticalScrollBar(IntPtr self, bool show);
-        static extern (C) bool   wxStyledTextCtrl_GetUseVerticalScrollBar(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_AppendText(IntPtr self, int length, string text);
-        static extern (C) bool   wxStyledTextCtrl_GetTwoPhaseDraw(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_SetTwoPhaseDraw(IntPtr self, bool twoPhase);
-        static extern (C) void   wxStyledTextCtrl_TargetFromSelection(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_LinesJoin(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_LinesSplit(IntPtr self, int pixelWidth);
-        static extern (C) void   wxStyledTextCtrl_SetFoldMarginColour(IntPtr self, bool useSetting, IntPtr back);
-        static extern (C) void   wxStyledTextCtrl_SetFoldMarginHiColour(IntPtr self, bool useSetting, IntPtr fore);
-        static extern (C) void   wxStyledTextCtrl_LineDuplicate(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_HomeDisplay(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_HomeDisplayExtend(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_LineEndDisplay(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_LineEndDisplayExtend(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_MoveCaretInsideView(IntPtr self);
-        static extern (C) int    wxStyledTextCtrl_LineLength(IntPtr self, int line);
-        static extern (C) void   wxStyledTextCtrl_BraceHighlight(IntPtr self, int pos1, int pos2);
-        static extern (C) void   wxStyledTextCtrl_BraceBadLight(IntPtr self, int pos);
-        static extern (C) int    wxStyledTextCtrl_BraceMatch(IntPtr self, int pos);
-        static extern (C) bool   wxStyledTextCtrl_GetViewEOL(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_SetViewEOL(IntPtr self, bool visible);
-        static extern (C) IntPtr wxStyledTextCtrl_GetDocPointer(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_SetDocPointer(IntPtr self, IntPtr docPointer);
-        static extern (C) void   wxStyledTextCtrl_SetModEventMask(IntPtr self, int mask);
-        static extern (C) int    wxStyledTextCtrl_GetEdgeColumn(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_SetEdgeColumn(IntPtr self, int column);
-        static extern (C) int    wxStyledTextCtrl_GetEdgeMode(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_SetEdgeMode(IntPtr self, int mode);
-        static extern (C) IntPtr wxStyledTextCtrl_GetEdgeColour(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_SetEdgeColour(IntPtr self, IntPtr edgeColour);
-        static extern (C) void   wxStyledTextCtrl_SearchAnchor(IntPtr self);
-        static extern (C) int    wxStyledTextCtrl_SearchNext(IntPtr self, int flags, string text);
-        static extern (C) int    wxStyledTextCtrl_SearchPrev(IntPtr self, int flags, string text);
-        static extern (C) int    wxStyledTextCtrl_LinesOnScreen(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_UsePopUp(IntPtr self, bool allowPopUp);
-        static extern (C) bool   wxStyledTextCtrl_SelectionIsRectangle(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_SetZoom(IntPtr self, int zoom);
-        static extern (C) int    wxStyledTextCtrl_GetZoom(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_CreateDocument(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_AddRefDocument(IntPtr self, IntPtr docPointer);
-        static extern (C) void   wxStyledTextCtrl_ReleaseDocument(IntPtr self, IntPtr docPointer);
-        static extern (C) int    wxStyledTextCtrl_GetModEventMask(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_SetSTCFocus(IntPtr self, bool focus);
-        static extern (C) bool   wxStyledTextCtrl_GetSTCFocus(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_SetStatus(IntPtr self, int statusCode);
-        static extern (C) int    wxStyledTextCtrl_GetStatus(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_SetMouseDownCaptures(IntPtr self, bool captures);
-        static extern (C) bool   wxStyledTextCtrl_GetMouseDownCaptures(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_SetSTCCursor(IntPtr self, int cursorType);
-        static extern (C) int    wxStyledTextCtrl_GetSTCCursor(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_SetControlCharSymbol(IntPtr self, int symbol);
-        static extern (C) int    wxStyledTextCtrl_GetControlCharSymbol(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_WordPartLeft(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_WordPartLeftExtend(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_WordPartRight(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_WordPartRightExtend(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_SetVisiblePolicy(IntPtr self, int visiblePolicy, int visibleSlop);
-        static extern (C) void   wxStyledTextCtrl_DelLineLeft(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_DelLineRight(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_SetXOffset(IntPtr self, int newOffset);
-        static extern (C) int    wxStyledTextCtrl_GetXOffset(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_ChooseCaretX(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_SetXCaretPolicy(IntPtr self, int caretPolicy, int caretSlop);
-        static extern (C) void   wxStyledTextCtrl_SetYCaretPolicy(IntPtr self, int caretPolicy, int caretSlop);
-        static extern (C) void   wxStyledTextCtrl_SetPrintWrapMode(IntPtr self, int mode);
-        static extern (C) int    wxStyledTextCtrl_GetPrintWrapMode(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_SetHotspotActiveForeground(IntPtr self, bool useSetting, IntPtr fore);
-        static extern (C) void   wxStyledTextCtrl_SetHotspotActiveBackground(IntPtr self, bool useSetting, IntPtr back);
-        static extern (C) void   wxStyledTextCtrl_SetHotspotActiveUnderline(IntPtr self, bool underline);
-        static extern (C) void   wxStyledTextCtrl_StartRecord(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_StopRecord(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_SetLexer(IntPtr self, int lexer);
-        static extern (C) int    wxStyledTextCtrl_GetLexer(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_Colourise(IntPtr self, int start, int end);
-        static extern (C) void   wxStyledTextCtrl_SetProperty(IntPtr self, string key, string value);
-        static extern (C) void   wxStyledTextCtrl_SetKeyWords(IntPtr self, int keywordSet, string keyWords);
-        static extern (C) void   wxStyledTextCtrl_SetLexerLanguage(IntPtr self, string language);
-        static extern (C) int    wxStyledTextCtrl_GetCurrentLine(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_StyleSetSpec(IntPtr self, int styleNum, string spec);
-        static extern (C) void   wxStyledTextCtrl_StyleSetFont(IntPtr self, int styleNum, IntPtr font);
-        static extern (C) void   wxStyledTextCtrl_StyleSetFontAttr(IntPtr self, int styleNum, int size, string faceName, bool bold, bool italic, bool underline);
-        static extern (C) void   wxStyledTextCtrl_CmdKeyExecute(IntPtr self, int cmd);
-        static extern (C) void   wxStyledTextCtrl_SetMargins(IntPtr self, int left, int right);
-        static extern (C) void   wxStyledTextCtrl_GetSelection(IntPtr self, inout int startPos, inout int endPos);
-        static extern (C) void   wxStyledTextCtrl_PointFromPosition(IntPtr self, int pos, inout Point pt);
-        static extern (C) void   wxStyledTextCtrl_ScrollToLine(IntPtr self, int line);
-        static extern (C) void   wxStyledTextCtrl_ScrollToColumn(IntPtr self, int column);
-        static extern (C) int    wxStyledTextCtrl_SendMsg(IntPtr self, int msg, int wp, int lp);
-        //static extern (C) void   wxStyledTextCtrl_SetVScrollBar(IntPtr self, IntPtr bar);
-        //static extern (C) void   wxStyledTextCtrl_SetHScrollBar(IntPtr self, IntPtr bar);
-        static extern (C) bool   wxStyledTextCtrl_GetLastKeydownProcessed(IntPtr self);
-        static extern (C) void   wxStyledTextCtrl_SetLastKeydownProcessed(IntPtr self, bool val);
-        static extern (C) bool   wxStyledTextCtrl_SaveFile(IntPtr self, string filename);
-        static extern (C) bool   wxStyledTextCtrl_LoadFile(IntPtr self, string filename);
+        static extern (C) ЦУк wxStyledTextCtrl_ctor(ЦУк родитель, цел ид, inout Точка поз, inout Размер size, бцел стиль, ткст имя);
+        static extern (C) проц   wxStyledTextCtrl_AddText(ЦУк сам, ткст текст);
+        //static extern (C) проц   wxStyledTextCtrl_AddStyledText(ЦУк сам, ЦУк данные);
+        static extern (C) проц   wxStyledTextCtrl_InsertText(ЦУк сам, цел поз, ткст текст);
+        static extern (C) проц   wxStyledTextCtrl_ClearAll(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_ClearDocumentStyle(ЦУк сам);
+        static extern (C) цел    wxStyledTextCtrl_GetLength(ЦУк сам);
+        static extern (C) цел    wxStyledTextCtrl_GetCharAt(ЦУк сам, цел поз);
+        static extern (C) цел    wxStyledTextCtrl_GetCurrentPos(ЦУк сам);
+        static extern (C) цел    wxStyledTextCtrl_GetAnchor(ЦУк сам);
+        static extern (C) цел    wxStyledTextCtrl_GetStyleAt(ЦУк сам, цел поз);
+        static extern (C) проц   wxStyledTextCtrl_Redo(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_SetUndoCollection(ЦУк сам, бул collectUndo);
+        static extern (C) проц   wxStyledTextCtrl_SelectAll(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_SetSavePoint(ЦУк сам);
+        //static extern (C) ЦУк wxStyledTextCtrl_GetStyledText(ЦУк сам, цел startPos, цел endPos);
+        static extern (C) бул   wxStyledTextCtrl_CanRedo(ЦУк сам);
+        static extern (C) цел    wxStyledTextCtrl_MarkerLineFromHandle(ЦУк сам, цел handle);
+        static extern (C) проц   wxStyledTextCtrl_MarkerDeleteHandle(ЦУк сам, цел handle);
+        static extern (C) бул   wxStyledTextCtrl_GetUndoCollection(ЦУк сам);
+        static extern (C) цел    wxStyledTextCtrl_GetViewWhiteSpace(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_SetViewWhiteSpace(ЦУк сам, цел viewWS);
+        static extern (C) цел    wxStyledTextCtrl_PositionFromPoint(ЦУк сам, inout Точка pt);
+        static extern (C) цел    wxStyledTextCtrl_PositionFromPointClose(ЦУк сам, цел x, цел y);
+        static extern (C) проц   wxStyledTextCtrl_GotoLine(ЦУк сам, цел line);
+        static extern (C) проц   wxStyledTextCtrl_GotoPos(ЦУк сам, цел поз);
+        static extern (C) проц   wxStyledTextCtrl_SetAnchor(ЦУк сам, цел posAnchor);
+        static extern (C) ЦУк wxStyledTextCtrl_GetCurLine(ЦУк сам, inout цел linePos);
+        static extern (C) цел    wxStyledTextCtrl_GetEndStyled(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_ConvertEOLs(ЦУк сам, цел eolMode);
+        static extern (C) цел    wxStyledTextCtrl_GetEOLMode(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_SetEOLMode(ЦУк сам, цел eolMode);
+        static extern (C) проц   wxStyledTextCtrl_StartStyling(ЦУк сам, цел поз, цел маска);
+        static extern (C) проц   wxStyledTextCtrl_SetStyling(ЦУк сам, цел length, цел стиль);
+        static extern (C) бул   wxStyledTextCtrl_GetBufferedDraw(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_SetBufferedDraw(ЦУк сам, бул buffered);
+        static extern (C) проц   wxStyledTextCtrl_SetTabWidth(ЦУк сам, цел tabWidth);
+        static extern (C) цел    wxStyledTextCtrl_GetTabWidth(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_SetCodePage(ЦУк сам, цел codePage);
+        static extern (C) проц   wxStyledTextCtrl_MarkerDefine(ЦУк сам, цел markerNumber, цел markerSymbol, ЦУк foreground, ЦУк background);
+        static extern (C) проц   wxStyledTextCtrl_MarkerSetForeground(ЦУк сам, цел markerNumber, ЦУк fore);
+        static extern (C) проц   wxStyledTextCtrl_MarkerSetBackground(ЦУк сам, цел markerNumber, ЦУк back);
+        static extern (C) цел    wxStyledTextCtrl_MarkerAdd(ЦУк сам, цел line, цел markerNumber);
+        static extern (C) проц   wxStyledTextCtrl_MarkerDelete(ЦУк сам, цел line, цел markerNumber);
+        static extern (C) проц   wxStyledTextCtrl_MarkerDeleteAll(ЦУк сам, цел markerNumber);
+        static extern (C) цел    wxStyledTextCtrl_MarkerGet(ЦУк сам, цел line);
+        static extern (C) цел    wxStyledTextCtrl_MarkerNext(ЦУк сам, цел lineStart, цел markerMask);
+        static extern (C) цел    wxStyledTextCtrl_MarkerPrevious(ЦУк сам, цел lineStart, цел markerMask);
+        static extern (C) проц   wxStyledTextCtrl_MarkerDefineBitmap(ЦУк сам, цел markerNumber, ЦУк bmp);
+        static extern (C) проц   wxStyledTextCtrl_SetMarginType(ЦУк сам, цел margin, цел marginType);
+        static extern (C) цел    wxStyledTextCtrl_GetMarginType(ЦУк сам, цел margin);
+        static extern (C) проц   wxStyledTextCtrl_SetMarginWidth(ЦУк сам, цел margin, цел pixelWidth);
+        static extern (C) цел    wxStyledTextCtrl_GetMarginWidth(ЦУк сам, цел margin);
+        static extern (C) проц   wxStyledTextCtrl_SetMarginMask(ЦУк сам, цел margin, цел маска);
+        static extern (C) цел    wxStyledTextCtrl_GetMarginMask(ЦУк сам, цел margin);
+        static extern (C) проц   wxStyledTextCtrl_SetMarginSensitive(ЦУк сам, цел margin, бул sensitive);
+        static extern (C) бул   wxStyledTextCtrl_GetMarginSensitive(ЦУк сам, цел margin);
+        static extern (C) проц   wxStyledTextCtrl_StyleClearAll(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_StyleSetForeground(ЦУк сам, цел стиль, ЦУк fore);
+        static extern (C) проц   wxStyledTextCtrl_StyleSetBackground(ЦУк сам, цел стиль, ЦУк back);
+        static extern (C) проц   wxStyledTextCtrl_StyleSetBold(ЦУк сам, цел стиль, бул bold);
+        static extern (C) проц   wxStyledTextCtrl_StyleSetItalic(ЦУк сам, цел стиль, бул italic);
+        static extern (C) проц   wxStyledTextCtrl_StyleSetSize(ЦУк сам, цел стиль, цел sizePoints);
+        static extern (C) проц   wxStyledTextCtrl_StyleSetFaceName(ЦУк сам, цел стиль, ткст fontName);
+        static extern (C) проц   wxStyledTextCtrl_StyleSetEOLFilled(ЦУк сам, цел стиль, бул filled);
+        static extern (C) проц   wxStyledTextCtrl_StyleResetDefault(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_StyleSetUnderline(ЦУк сам, цел стиль, бул underline);
+        static extern (C) проц   wxStyledTextCtrl_StyleSetCase(ЦУк сам, цел стиль, цел caseForce);
+        static extern (C) проц   wxStyledTextCtrl_StyleSetCharacterSet(ЦУк сам, цел стиль, цел characterSet);
+        static extern (C) проц   wxStyledTextCtrl_StyleSetHotSpot(ЦУк сам, цел стиль, бул hotspot);
+        static extern (C) проц   wxStyledTextCtrl_SetSelForeground(ЦУк сам, бул useSetting, ЦУк fore);
+        static extern (C) проц   wxStyledTextCtrl_SetSelBackground(ЦУк сам, бул useSetting, ЦУк back);
+        static extern (C) проц   wxStyledTextCtrl_SetCaretForeground(ЦУк сам, ЦУк fore);
+        static extern (C) проц   wxStyledTextCtrl_CmdKeyAssign(ЦУк сам, цел key, цел modifiers, цел команда);
+        static extern (C) проц   wxStyledTextCtrl_CmdKeyClear(ЦУк сам, цел key, цел modifiers);
+        static extern (C) проц   wxStyledTextCtrl_CmdKeyClearAll(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_SetStyleBytes(ЦУк сам, цел length, ббайт* styleBytes);
+        static extern (C) проц   wxStyledTextCtrl_StyleSetVisible(ЦУк сам, цел стиль, бул visible);
+        static extern (C) цел    wxStyledTextCtrl_GetCaretPeriod(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_SetCaretPeriod(ЦУк сам, цел periodMilliseconds);
+        static extern (C) проц   wxStyledTextCtrl_SetWordChars(ЦУк сам, ткст characters);
+        static extern (C) проц   wxStyledTextCtrl_BeginUndoAction(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_EndUndoAction(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_IndicatorSetStyle(ЦУк сам, цел indic, цел стиль);
+        static extern (C) цел    wxStyledTextCtrl_IndicatorGetStyle(ЦУк сам, цел indic);
+        static extern (C) проц   wxStyledTextCtrl_IndicatorSetForeground(ЦУк сам, цел indic, ЦУк fore);
+        static extern (C) ЦУк wxStyledTextCtrl_IndicatorGetForeground(ЦУк сам, цел indic);
+        static extern (C) проц   wxStyledTextCtrl_SetWhitespaceForeground(ЦУк сам, бул useSetting, ЦУк fore);
+        static extern (C) проц   wxStyledTextCtrl_SetWhitespaceBackground(ЦУк сам, бул useSetting, ЦУк back);
+        static extern (C) проц   wxStyledTextCtrl_SetStyleBits(ЦУк сам, цел bits);
+        static extern (C) цел    wxStyledTextCtrl_GetStyleBits(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_SetLineState(ЦУк сам, цел line, цел state);
+        static extern (C) цел    wxStyledTextCtrl_GetLineState(ЦУк сам, цел line);
+        static extern (C) цел    wxStyledTextCtrl_GetMaxLineState(ЦУк сам);
+        static extern (C) бул   wxStyledTextCtrl_GetCaretLineVisible(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_SetCaretLineVisible(ЦУк сам, бул show);
+        static extern (C) ЦУк wxStyledTextCtrl_GetCaretLineBack(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_SetCaretLineBack(ЦУк сам, ЦУк back);
+        static extern (C) проц   wxStyledTextCtrl_StyleSetChangeable(ЦУк сам, цел стиль, бул changeable);
+        static extern (C) проц   wxStyledTextCtrl_AutoCompShow(ЦУк сам, цел lenEntered, ткст itemList);
+        static extern (C) проц   wxStyledTextCtrl_AutoCompCancel(ЦУк сам);
+        static extern (C) бул   wxStyledTextCtrl_AutoCompActive(ЦУк сам);
+        static extern (C) цел    wxStyledTextCtrl_AutoCompPosStart(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_AutoCompComplete(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_AutoCompStops(ЦУк сам, ткст characterSet);
+        static extern (C) проц   wxStyledTextCtrl_AutoCompSetSeparator(ЦУк сам, цел separatorCharacter);
+        static extern (C) цел    wxStyledTextCtrl_AutoCompGetSeparator(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_AutoCompSelect(ЦУк сам, ткст текст);
+        static extern (C) проц   wxStyledTextCtrl_AutoCompSetCancelAtStart(ЦУк сам, бул cancel);
+        static extern (C) бул   wxStyledTextCtrl_AutoCompGetCancelAtStart(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_AutoCompSetFillUps(ЦУк сам, ткст characterSet);
+        static extern (C) проц   wxStyledTextCtrl_AutoCompSetChooseSingle(ЦУк сам, бул chooseSingle);
+        static extern (C) бул   wxStyledTextCtrl_AutoCompGetChooseSingle(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_AutoCompSetIgnoreCase(ЦУк сам, бул ignoreCase);
+        static extern (C) бул   wxStyledTextCtrl_AutoCompGetIgnoreCase(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_UserListShow(ЦУк сам, цел listType, ткст itemList);
+        static extern (C) проц   wxStyledTextCtrl_AutoCompSetAutoHide(ЦУк сам, бул autoHide);
+        static extern (C) бул   wxStyledTextCtrl_AutoCompGetAutoHide(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_AutoCompSetDropRestOfWord(ЦУк сам, бул dropRestOfWord);
+        static extern (C) бул   wxStyledTextCtrl_AutoCompGetDropRestOfWord(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_RegisterImage(ЦУк сам, цел тип, ЦУк bmp);
+        static extern (C) проц   wxStyledTextCtrl_ClearRegisteredImages(ЦУк сам);
+        static extern (C) цел    wxStyledTextCtrl_AutoCompGetTypeSeparator(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_AutoCompSetTypeSeparator(ЦУк сам, цел separatorCharacter);
+        static extern (C) проц   wxStyledTextCtrl_SetIndent(ЦУк сам, цел indentSize);
+        static extern (C) цел    wxStyledTextCtrl_GetIndent(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_SetUseTabs(ЦУк сам, бул useTabs);
+        static extern (C) бул   wxStyledTextCtrl_GetUseTabs(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_SetLineIndentation(ЦУк сам, цел line, цел indentSize);
+        static extern (C) цел    wxStyledTextCtrl_GetLineIndentation(ЦУк сам, цел line);
+        static extern (C) цел    wxStyledTextCtrl_GetLineIndentPosition(ЦУк сам, цел line);
+        static extern (C) цел    wxStyledTextCtrl_GetColumn(ЦУк сам, цел поз);
+        static extern (C) проц   wxStyledTextCtrl_SetUseHorizontalScrollBar(ЦУк сам, бул show);
+        static extern (C) бул   wxStyledTextCtrl_GetUseHorizontalScrollBar(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_SetIndentationGuides(ЦУк сам, бул show);
+        static extern (C) бул   wxStyledTextCtrl_GetIndentationGuides(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_SetHighlightGuide(ЦУк сам, цел column);
+        static extern (C) цел    wxStyledTextCtrl_GetHighlightGuide(ЦУк сам);
+        static extern (C) цел    wxStyledTextCtrl_GetLineEndPosition(ЦУк сам, цел line);
+        static extern (C) цел    wxStyledTextCtrl_GetCodePage(ЦУк сам);
+        static extern (C) ЦУк wxStyledTextCtrl_GetCaretForeground(ЦУк сам);
+        static extern (C) бул   wxStyledTextCtrl_GetReadOnly(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_SetCurrentPos(ЦУк сам, цел поз);
+        static extern (C) проц   wxStyledTextCtrl_SetSelectionStart(ЦУк сам, цел поз);
+        static extern (C) цел    wxStyledTextCtrl_GetSelectionStart(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_SetSelectionEnd(ЦУк сам, цел поз);
+        static extern (C) цел    wxStyledTextCtrl_GetSelectionEnd(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_SetPrintMagnification(ЦУк сам, цел magnification);
+        static extern (C) цел    wxStyledTextCtrl_GetPrintMagnification(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_SetPrintColourMode(ЦУк сам, цел mode);
+        static extern (C) цел    wxStyledTextCtrl_GetPrintColourMode(ЦУк сам);
+        static extern (C) цел    wxStyledTextCtrl_FindText(ЦУк сам, цел minPos, цел maxPos, ткст текст, цел флаги);
+        static extern (C) цел    wxStyledTextCtrl_FormatRange(ЦУк сам, бул doDraw, цел startPos, цел endPos, ЦУк draw, ЦУк target, inout Прямоугольник renderRect, inout Прямоугольник pageRect);
+        static extern (C) цел    wxStyledTextCtrl_GetFirstVisibleLine(ЦУк сам);
+        static extern (C) ЦУк wxStyledTextCtrl_GetLine(ЦУк сам, цел line);
+        static extern (C) цел    wxStyledTextCtrl_GetLineCount(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_SetMarginLeft(ЦУк сам, цел pixelWidth);
+        static extern (C) цел    wxStyledTextCtrl_GetMarginLeft(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_SetMarginRight(ЦУк сам, цел pixelWidth);
+        static extern (C) цел    wxStyledTextCtrl_GetMarginRight(ЦУк сам);
+        static extern (C) бул   wxStyledTextCtrl_GetModify(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_SetSelection(ЦУк сам, цел start, цел end);
+        static extern (C) ЦУк wxStyledTextCtrl_GetSelectedText(ЦУк сам);
+        static extern (C) ЦУк wxStyledTextCtrl_GetTextRange(ЦУк сам, цел startPos, цел endPos);
+        static extern (C) проц   wxStyledTextCtrl_HideSelection(ЦУк сам, бул normal);
+        static extern (C) цел    wxStyledTextCtrl_LineFromPosition(ЦУк сам, цел поз);
+        static extern (C) цел    wxStyledTextCtrl_PositionFromLine(ЦУк сам, цел line);
+        static extern (C) проц   wxStyledTextCtrl_LineScroll(ЦУк сам, цел columns, цел lines);
+        static extern (C) проц   wxStyledTextCtrl_EnsureCaretVisible(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_ReplaceSelection(ЦУк сам, ткст текст);
+        static extern (C) проц   wxStyledTextCtrl_SetReadOnly(ЦУк сам, бул readOnly);
+        static extern (C) бул   wxStyledTextCtrl_CanPaste(ЦУк сам);
+        static extern (C) бул   wxStyledTextCtrl_CanUndo(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_EmptyUndoBuffer(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_Undo(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_Cut(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_Copy(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_Paste(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_Clear(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_SetText(ЦУк сам, ткст текст);
+        static extern (C) ЦУк wxStyledTextCtrl_GetText(ЦУк сам);
+        static extern (C) цел    wxStyledTextCtrl_GetTextLength(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_SetOvertype(ЦУк сам, бул overtype);
+        static extern (C) бул   wxStyledTextCtrl_GetOvertype(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_SetCaretWidth(ЦУк сам, цел pixelWidth);
+        static extern (C) цел    wxStyledTextCtrl_GetCaretWidth(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_SetTargetStart(ЦУк сам, цел поз);
+        static extern (C) цел    wxStyledTextCtrl_GetTargetStart(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_SetTargetEnd(ЦУк сам, цел поз);
+        static extern (C) цел    wxStyledTextCtrl_GetTargetEnd(ЦУк сам);
+        static extern (C) цел    wxStyledTextCtrl_ReplaceTarget(ЦУк сам, ткст текст);
+        static extern (C) цел    wxStyledTextCtrl_ReplaceTargetRE(ЦУк сам, ткст текст);
+        static extern (C) цел    wxStyledTextCtrl_SearchInTarget(ЦУк сам, ткст текст);
+        static extern (C) проц   wxStyledTextCtrl_SetSearchFlags(ЦУк сам, цел флаги);
+        static extern (C) цел    wxStyledTextCtrl_GetSearchFlags(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_CallTipShow(ЦУк сам, цел поз, ткст definition);
+        static extern (C) проц   wxStyledTextCtrl_CallTipCancel(ЦУк сам);
+        static extern (C) бул   wxStyledTextCtrl_CallTipActive(ЦУк сам);
+        static extern (C) цел    wxStyledTextCtrl_CallTipPosAtStart(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_CallTipSetHighlight(ЦУк сам, цел start, цел end);
+        static extern (C) проц   wxStyledTextCtrl_CallTipSetBackground(ЦУк сам, ЦУк back);
+        static extern (C) проц   wxStyledTextCtrl_CallTipSetForeground(ЦУк сам, ЦУк fore);
+        static extern (C) проц   wxStyledTextCtrl_CallTipSetForegroundHighlight(ЦУк сам, ЦУк fore);
+        static extern (C) цел    wxStyledTextCtrl_VisibleFromDocLine(ЦУк сам, цел line);
+        static extern (C) цел    wxStyledTextCtrl_DocLineFromVisible(ЦУк сам, цел lineDisplay);
+        static extern (C) проц   wxStyledTextCtrl_SetFoldLevel(ЦУк сам, цел line, цел level);
+        static extern (C) цел    wxStyledTextCtrl_GetFoldLevel(ЦУк сам, цел line);
+        static extern (C) цел    wxStyledTextCtrl_GetLastChild(ЦУк сам, цел line, цел level);
+        static extern (C) цел    wxStyledTextCtrl_GetFoldParent(ЦУк сам, цел line);
+        static extern (C) проц   wxStyledTextCtrl_ShowLines(ЦУк сам, цел lineStart, цел lineEnd);
+        static extern (C) проц   wxStyledTextCtrl_HideLines(ЦУк сам, цел lineStart, цел lineEnd);
+        static extern (C) бул   wxStyledTextCtrl_GetLineVisible(ЦУк сам, цел line);
+        static extern (C) проц   wxStyledTextCtrl_SetFoldExpanded(ЦУк сам, цел line, бул expanded);
+        static extern (C) бул   wxStyledTextCtrl_GetFoldExpanded(ЦУк сам, цел line);
+        static extern (C) проц   wxStyledTextCtrl_ToggleFold(ЦУк сам, цел line);
+        static extern (C) проц   wxStyledTextCtrl_EnsureVisible(ЦУк сам, цел line);
+        static extern (C) проц   wxStyledTextCtrl_SetFoldFlags(ЦУк сам, цел флаги);
+        static extern (C) проц   wxStyledTextCtrl_EnsureVisibleEnforcePolicy(ЦУк сам, цел line);
+        static extern (C) проц   wxStyledTextCtrl_SetTabIndents(ЦУк сам, бул tabIndents);
+        static extern (C) бул   wxStyledTextCtrl_GetTabIndents(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_SetBackSpaceUnIndents(ЦУк сам, бул bsUnIndents);
+        static extern (C) бул   wxStyledTextCtrl_GetBackSpaceUnIndents(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_SetMouseDwellTime(ЦУк сам, цел periodMilliseconds);
+        static extern (C) цел    wxStyledTextCtrl_GetMouseDwellTime(ЦУк сам);
+        static extern (C) цел    wxStyledTextCtrl_WordStartPosition(ЦУк сам, цел поз, бул onlyWordCharacters);
+        static extern (C) цел    wxStyledTextCtrl_WordEndPosition(ЦУк сам, цел поз, бул onlyWordCharacters);
+        static extern (C) проц   wxStyledTextCtrl_SetWrapMode(ЦУк сам, цел mode);
+        static extern (C) цел    wxStyledTextCtrl_GetWrapMode(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_SetLayoutCache(ЦУк сам, цел mode);
+        static extern (C) цел    wxStyledTextCtrl_GetLayoutCache(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_SetScrollWidth(ЦУк сам, цел pixelWidth);
+        static extern (C) цел    wxStyledTextCtrl_GetScrollWidth(ЦУк сам);
+        static extern (C) цел    wxStyledTextCtrl_TextWidth(ЦУк сам, цел стиль, ткст текст);
+        static extern (C) проц   wxStyledTextCtrl_SetEndAtLastLine(ЦУк сам, бул endAtLastLine);
+        static extern (C) бул   wxStyledTextCtrl_GetEndAtLastLine(ЦУк сам);
+        static extern (C) цел    wxStyledTextCtrl_TextHeight(ЦУк сам, цел line);
+        static extern (C) проц   wxStyledTextCtrl_SetUseVerticalScrollBar(ЦУк сам, бул show);
+        static extern (C) бул   wxStyledTextCtrl_GetUseVerticalScrollBar(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_AppendText(ЦУк сам, цел length, ткст текст);
+        static extern (C) бул   wxStyledTextCtrl_GetTwoPhaseDraw(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_SetTwoPhaseDraw(ЦУк сам, бул twoPhase);
+        static extern (C) проц   wxStyledTextCtrl_TargetFromSelection(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_LinesJoin(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_LinesSplit(ЦУк сам, цел pixelWidth);
+        static extern (C) проц   wxStyledTextCtrl_SetFoldMarginColour(ЦУк сам, бул useSetting, ЦУк back);
+        static extern (C) проц   wxStyledTextCtrl_SetFoldMarginHiColour(ЦУк сам, бул useSetting, ЦУк fore);
+        static extern (C) проц   wxStyledTextCtrl_LineDuplicate(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_HomeDisplay(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_HomeDisplayExtend(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_LineEndDisplay(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_LineEndDisplayExtend(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_MoveCaretInsideView(ЦУк сам);
+        static extern (C) цел    wxStyledTextCtrl_LineLength(ЦУк сам, цел line);
+        static extern (C) проц   wxStyledTextCtrl_BraceHighlight(ЦУк сам, цел pos1, цел pos2);
+        static extern (C) проц   wxStyledTextCtrl_BraceBadLight(ЦУк сам, цел поз);
+        static extern (C) цел    wxStyledTextCtrl_BraceMatch(ЦУк сам, цел поз);
+        static extern (C) бул   wxStyledTextCtrl_GetViewEOL(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_SetViewEOL(ЦУк сам, бул visible);
+        static extern (C) ЦУк wxStyledTextCtrl_GetDocPointer(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_SetDocPointer(ЦУк сам, ЦУк docPointer);
+        static extern (C) проц   wxStyledTextCtrl_SetModEventMask(ЦУк сам, цел маска);
+        static extern (C) цел    wxStyledTextCtrl_GetEdgeColumn(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_SetEdgeColumn(ЦУк сам, цел column);
+        static extern (C) цел    wxStyledTextCtrl_GetEdgeMode(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_SetEdgeMode(ЦУк сам, цел mode);
+        static extern (C) ЦУк wxStyledTextCtrl_GetEdgeColour(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_SetEdgeColour(ЦУк сам, ЦУк edgeColour);
+        static extern (C) проц   wxStyledTextCtrl_SearchAnchor(ЦУк сам);
+        static extern (C) цел    wxStyledTextCtrl_SearchNext(ЦУк сам, цел флаги, ткст текст);
+        static extern (C) цел    wxStyledTextCtrl_SearchPrev(ЦУк сам, цел флаги, ткст текст);
+        static extern (C) цел    wxStyledTextCtrl_LinesOnScreen(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_UsePopUp(ЦУк сам, бул allowPopUp);
+        static extern (C) бул   wxStyledTextCtrl_SelectionIsRectangle(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_SetZoom(ЦУк сам, цел zoom);
+        static extern (C) цел    wxStyledTextCtrl_GetZoom(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_CreateDocument(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_AddRefDocument(ЦУк сам, ЦУк docPointer);
+        static extern (C) проц   wxStyledTextCtrl_ReleaseDocument(ЦУк сам, ЦУк docPointer);
+        static extern (C) цел    wxStyledTextCtrl_GetModEventMask(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_SetSTCFocus(ЦУк сам, бул focus);
+        static extern (C) бул   wxStyledTextCtrl_GetSTCFocus(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_SetStatus(ЦУк сам, цел statusCode);
+        static extern (C) цел    wxStyledTextCtrl_GetStatus(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_SetMouseDownCaptures(ЦУк сам, бул captures);
+        static extern (C) бул   wxStyledTextCtrl_GetMouseDownCaptures(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_SetSTCCursor(ЦУк сам, цел cursorType);
+        static extern (C) цел    wxStyledTextCtrl_GetSTCCursor(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_SetControlCharSymbol(ЦУк сам, цел symbol);
+        static extern (C) цел    wxStyledTextCtrl_GetControlCharSymbol(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_WordPartLeft(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_WordPartLeftExtend(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_WordPartRight(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_WordPartRightExtend(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_SetVisiblePolicy(ЦУк сам, цел visiblePolicy, цел visibleSlop);
+        static extern (C) проц   wxStyledTextCtrl_DelLineLeft(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_DelLineRight(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_SetXOffset(ЦУк сам, цел newOffset);
+        static extern (C) цел    wxStyledTextCtrl_GetXOffset(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_ChooseCaretX(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_SetXCaretPolicy(ЦУк сам, цел caretPolicy, цел caretSlop);
+        static extern (C) проц   wxStyledTextCtrl_SetYCaretPolicy(ЦУк сам, цел caretPolicy, цел caretSlop);
+        static extern (C) проц   wxStyledTextCtrl_SetPrintWrapMode(ЦУк сам, цел mode);
+        static extern (C) цел    wxStyledTextCtrl_GetPrintWrapMode(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_SetHotspotActiveForeground(ЦУк сам, бул useSetting, ЦУк fore);
+        static extern (C) проц   wxStyledTextCtrl_SetHotspotActiveBackground(ЦУк сам, бул useSetting, ЦУк back);
+        static extern (C) проц   wxStyledTextCtrl_SetHotspotActiveUnderline(ЦУк сам, бул underline);
+        static extern (C) проц   wxStyledTextCtrl_StartRecord(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_StopRecord(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_SetLexer(ЦУк сам, цел lexer);
+        static extern (C) цел    wxStyledTextCtrl_GetLexer(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_Colourise(ЦУк сам, цел start, цел end);
+        static extern (C) проц   wxStyledTextCtrl_SetProperty(ЦУк сам, ткст key, ткст значение);
+        static extern (C) проц   wxStyledTextCtrl_SetKeyWords(ЦУк сам, цел keywordSet, ткст keyWords);
+        static extern (C) проц   wxStyledTextCtrl_SetLexerLanguage(ЦУк сам, ткст language);
+        static extern (C) цел    wxStyledTextCtrl_GetCurrentLine(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_StyleSetSpec(ЦУк сам, цел styleNum, ткст spec);
+        static extern (C) проц   wxStyledTextCtrl_StyleSetFont(ЦУк сам, цел styleNum, ЦУк шрифт);
+        static extern (C) проц   wxStyledTextCtrl_StyleSetFontAttr(ЦУк сам, цел styleNum, цел size, ткст faceName, бул bold, бул italic, бул underline);
+        static extern (C) проц   wxStyledTextCtrl_CmdKeyExecute(ЦУк сам, цел команда);
+        static extern (C) проц   wxStyledTextCtrl_SetMargins(ЦУк сам, цел left, цел right);
+        static extern (C) проц   wxStyledTextCtrl_GetSelection(ЦУк сам, inout цел startPos, inout цел endPos);
+        static extern (C) проц   wxStyledTextCtrl_PointFromPosition(ЦУк сам, цел поз, inout Точка pt);
+        static extern (C) проц   wxStyledTextCtrl_ScrollToLine(ЦУк сам, цел line);
+        static extern (C) проц   wxStyledTextCtrl_ScrollToColumn(ЦУк сам, цел column);
+        static extern (C) цел    wxStyledTextCtrl_SendMsg(ЦУк сам, цел msg, цел wp, цел lp);
+        //static extern (C) проц   wxStyledTextCtrl_SetVScrollBar(ЦУк сам, ЦУк bar);
+        //static extern (C) проц   wxStyledTextCtrl_SetHScrollBar(ЦУк сам, ЦУк bar);
+        static extern (C) бул   wxStyledTextCtrl_GetLastKeydownProcessed(ЦУк сам);
+        static extern (C) проц   wxStyledTextCtrl_SetLastKeydownProcessed(ЦУк сам, бул val);
+        static extern (C) бул   wxStyledTextCtrl_SaveFile(ЦУк сам, ткст фимя);
+        static extern (C) бул   wxStyledTextCtrl_LoadFile(ЦУк сам, ткст фимя);
 		//! \endcond
 
         //-----------------------------------------------------------------------------
@@ -393,1003 +393,1003 @@ public import wx.CommandEvent;
 
         // StyledTextCtrl Events
  
-        public static /*readonly*/ EventType wxEVT_STC_CHANGE;
-        public static /*readonly*/ EventType wxEVT_STC_STYLENEEDED;
-        public static /*readonly*/ EventType wxEVT_STC_CHARADDED;
-        public static /*readonly*/ EventType wxEVT_STC_SAVEPOINTREACHED;
-        public static /*readonly*/ EventType wxEVT_STC_SAVEPOINTLEFT;  
-        public static /*readonly*/ EventType wxEVT_STC_ROMODIFYATTEMPT;
-        public static /*readonly*/ EventType wxEVT_STC_KEY;
-        public static /*readonly*/ EventType wxEVT_STC_DOUBLECLICK;
-        public static /*readonly*/ EventType wxEVT_STC_UPDATEUI;
-        public static /*readonly*/ EventType wxEVT_STC_MODIFIED;
-        public static /*readonly*/ EventType wxEVT_STC_MACRORECORD;
-        public static /*readonly*/ EventType wxEVT_STC_MARGINCLICK;
-        public static /*readonly*/ EventType wxEVT_STC_NEEDSHOWN;
-        //public static /*readonly*/ EventType wxEVT_STC_POSCHANGED;
-        public static /*readonly*/ EventType wxEVT_STC_PAINTED;
-        public static /*readonly*/ EventType wxEVT_STC_USERLISTSELECTION;
-        public static /*readonly*/ EventType wxEVT_STC_URIDROPPED;
-        public static /*readonly*/ EventType wxEVT_STC_DWELLSTART;
-        public static /*readonly*/ EventType wxEVT_STC_DWELLEND;
-        public static /*readonly*/ EventType wxEVT_STC_START_DRAG;
-        public static /*readonly*/ EventType wxEVT_STC_DRAG_OVER;
-        public static /*readonly*/ EventType wxEVT_STC_DO_DROP;
-        public static /*readonly*/ EventType wxEVT_STC_ZOOM;
-        public static /*readonly*/ EventType wxEVT_STC_HOTSPOT_CLICK;
-        public static /*readonly*/ EventType wxEVT_STC_HOTSPOT_DCLICK;
-        public static /*readonly*/ EventType wxEVT_STC_CALLTIP_CLICK;
+        public static /*readonly*/ ТипСобытия wxEVT_STC_CHANGE;
+        public static /*readonly*/ ТипСобытия wxEVT_STC_STYLENEEDED;
+        public static /*readonly*/ ТипСобытия wxEVT_STC_CHARADDED;
+        public static /*readonly*/ ТипСобытия wxEVT_STC_SAVEPOINTREACHED;
+        public static /*readonly*/ ТипСобытия wxEVT_STC_SAVEPOINTLEFT;  
+        public static /*readonly*/ ТипСобытия wxEVT_STC_ROMODIFYATTEMPT;
+        public static /*readonly*/ ТипСобытия wxEVT_STC_KEY;
+        public static /*readonly*/ ТипСобытия wxEVT_STC_DOUBLECLICK;
+        public static /*readonly*/ ТипСобытия wxEVT_STC_UPDATEUI;
+        public static /*readonly*/ ТипСобытия wxEVT_STC_MODIFIED;
+        public static /*readonly*/ ТипСобытия wxEVT_STC_MACRORECORD;
+        public static /*readonly*/ ТипСобытия wxEVT_STC_MARGINCLICK;
+        public static /*readonly*/ ТипСобытия wxEVT_STC_NEEDSHOWN;
+        //public static /*readonly*/ ТипСобытия wxEVT_STC_POSCHANGED;
+        public static /*readonly*/ ТипСобытия wxEVT_STC_PAINTED;
+        public static /*readonly*/ ТипСобытия wxEVT_STC_USERLISTSELECTION;
+        public static /*readonly*/ ТипСобытия wxEVT_STC_URIDROPPED;
+        public static /*readonly*/ ТипСобытия wxEVT_STC_DWELLSTART;
+        public static /*readonly*/ ТипСобытия wxEVT_STC_DWELLEND;
+        public static /*readonly*/ ТипСобытия wxEVT_STC_START_DRAG;
+        public static /*readonly*/ ТипСобытия wxEVT_STC_DRAG_OVER;
+        public static /*readonly*/ ТипСобытия wxEVT_STC_DO_DROP;
+        public static /*readonly*/ ТипСобытия wxEVT_STC_ZOOM;
+        public static /*readonly*/ ТипСобытия wxEVT_STC_HOTSPOT_CLICK;
+        public static /*readonly*/ ТипСобытия wxEVT_STC_HOTSPOT_DCLICK;
+        public static /*readonly*/ ТипСобытия wxEVT_STC_CALLTIP_CLICK;
 
         //-----------------------------------------------------------------------------
 
-        public const int wxSTC_INVALID_POSITION = -1;
+        public const цел wxSTC_INVALID_POSITION = -1;
 
         // Define start of Scintilla messages to be greater than all edit (EM_*) messages
         // as many EM_ messages can be used although that use is deprecated.
-        public const int wxSTC_START = 2000;
-        public const int wxSTC_OPTIONAL_START = 3000;
-        public const int wxSTC_LEXER_START = 4000;
-        public const int wxSTC_WS_INVISIBLE = 0;
-        public const int wxSTC_WS_VISIBLEALWAYS = 1;
-        public const int wxSTC_WS_VISIBLEAFTERINDENT = 2;
-        public const int wxSTC_EOL_CRLF = 0;
-        public const int wxSTC_EOL_CR = 1;
-        public const int wxSTC_EOL_LF = 2;
+        public const цел wxSTC_START = 2000;
+        public const цел wxSTC_OPTIONAL_START = 3000;
+        public const цел wxSTC_LEXER_START = 4000;
+        public const цел wxSTC_WS_INVISIBLE = 0;
+        public const цел wxSTC_WS_VISIBLEALWAYS = 1;
+        public const цел wxSTC_WS_VISIBLEAFTERINDENT = 2;
+        public const цел wxSTC_EOL_CRLF = 0;
+        public const цел wxSTC_EOL_CR = 1;
+        public const цел wxSTC_EOL_LF = 2;
 
-        // The SC_CP_UTF8 value can be used to enter Unicode mode.
-        // This is the same value as CP_UTF8 in Windows
-        public const int wxSTC_CP_UTF8 = 65001;
+        // The SC_CP_UTF8 значение can be used to enter Unicode mode.
+        // This is the same значение as CP_UTF8 in Windows
+        public const цел wxSTC_CP_UTF8 = 65001;
 
-        // The SC_CP_DBCS value can be used to indicate a DBCS mode for GTK+.
-        public const int wxSTC_CP_DBCS = 1;
-        public const int wxSTC_MARKER_MAX = 31;
-        public const int wxSTC_MARK_CIRCLE = 0;
-        public const int wxSTC_MARK_ROUNDRECT = 1;
-        public const int wxSTC_MARK_ARROW = 2;
-        public const int wxSTC_MARK_SMALLRECT = 3;
-        public const int wxSTC_MARK_SHORTARROW = 4;
-        public const int wxSTC_MARK_EMPTY = 5;
-        public const int wxSTC_MARK_ARROWDOWN = 6;
-        public const int wxSTC_MARK_MINUS = 7;
-        public const int wxSTC_MARK_PLUS = 8;
+        // The SC_CP_DBCS значение can be used to indicate a DBCS mode for GTK+.
+        public const цел wxSTC_CP_DBCS = 1;
+        public const цел wxSTC_MARKER_MAX = 31;
+        public const цел wxSTC_MARK_CIRCLE = 0;
+        public const цел wxSTC_MARK_ROUNDRECT = 1;
+        public const цел wxSTC_MARK_ARROW = 2;
+        public const цел wxSTC_MARK_SMALLRECT = 3;
+        public const цел wxSTC_MARK_SHORTARROW = 4;
+        public const цел wxSTC_MARK_EMPTY = 5;
+        public const цел wxSTC_MARK_ARROWDOWN = 6;
+        public const цел wxSTC_MARK_MINUS = 7;
+        public const цел wxSTC_MARK_PLUS = 8;
 
         // Shapes used for outlining column.
-        public const int wxSTC_MARK_VLINE = 9;
-        public const int wxSTC_MARK_LCORNER = 10;
-        public const int wxSTC_MARK_TCORNER = 11;
-        public const int wxSTC_MARK_BOXPLUS = 12;
-        public const int wxSTC_MARK_BOXPLUSCONNECTED = 13;
-        public const int wxSTC_MARK_BOXMINUS = 14;
-        public const int wxSTC_MARK_BOXMINUSCONNECTED = 15;
-        public const int wxSTC_MARK_LCORNERCURVE = 16;
-        public const int wxSTC_MARK_TCORNERCURVE = 17;
-        public const int wxSTC_MARK_CIRCLEPLUS = 18;
-        public const int wxSTC_MARK_CIRCLEPLUSCONNECTED = 19;
-        public const int wxSTC_MARK_CIRCLEMINUS = 20;
-        public const int wxSTC_MARK_CIRCLEMINUSCONNECTED = 21;
+        public const цел wxSTC_MARK_VLINE = 9;
+        public const цел wxSTC_MARK_LCORNER = 10;
+        public const цел wxSTC_MARK_TCORNER = 11;
+        public const цел wxSTC_MARK_BOXPLUS = 12;
+        public const цел wxSTC_MARK_BOXPLUSCONNECTED = 13;
+        public const цел wxSTC_MARK_BOXMINUS = 14;
+        public const цел wxSTC_MARK_BOXMINUSCONNECTED = 15;
+        public const цел wxSTC_MARK_LCORNERCURVE = 16;
+        public const цел wxSTC_MARK_TCORNERCURVE = 17;
+        public const цел wxSTC_MARK_CIRCLEPLUS = 18;
+        public const цел wxSTC_MARK_CIRCLEPLUSCONNECTED = 19;
+        public const цел wxSTC_MARK_CIRCLEMINUS = 20;
+        public const цел wxSTC_MARK_CIRCLEMINUSCONNECTED = 21;
 
         // Invisible mark that only sets the line background color.
-        public const int wxSTC_MARK_BACKGROUND = 22;
-        public const int wxSTC_MARK_DOTDOTDOT = 23;
-        public const int wxSTC_MARK_ARROWS = 24;
-        public const int wxSTC_MARK_PIXMAP = 25;
-        public const int wxSTC_MARK_CHARACTER = 10000;
+        public const цел wxSTC_MARK_BACKGROUND = 22;
+        public const цел wxSTC_MARK_DOTDOTDOT = 23;
+        public const цел wxSTC_MARK_ARROWS = 24;
+        public const цел wxSTC_MARK_PIXMAP = 25;
+        public const цел wxSTC_MARK_CHARACTER = 10000;
 
         // Markers used for outlining column.
-        public const int wxSTC_MARKNUM_FOLDEREND = 25;
-        public const int wxSTC_MARKNUM_FOLDEROPENMID = 26;
-        public const int wxSTC_MARKNUM_FOLDERMIDTAIL = 27;
-        public const int wxSTC_MARKNUM_FOLDERTAIL = 28;
-        public const int wxSTC_MARKNUM_FOLDERSUB = 29;
-        public const int wxSTC_MARKNUM_FOLDER = 30;
-        public const int wxSTC_MARKNUM_FOLDEROPEN = 31;
-        public const int wxSTC_MASK_FOLDERS = -1;
-        public const int wxSTC_MARGIN_SYMBOL = 0;
-        public const int wxSTC_MARGIN_NUMBER = 1;
+        public const цел wxSTC_MARKNUM_FOLDEREND = 25;
+        public const цел wxSTC_MARKNUM_FOLDEROPENMID = 26;
+        public const цел wxSTC_MARKNUM_FOLDERMIDTAIL = 27;
+        public const цел wxSTC_MARKNUM_FOLDERTAIL = 28;
+        public const цел wxSTC_MARKNUM_FOLDERSUB = 29;
+        public const цел wxSTC_MARKNUM_FOLDER = 30;
+        public const цел wxSTC_MARKNUM_FOLDEROPEN = 31;
+        public const цел wxSTC_MASK_FOLDERS = -1;
+        public const цел wxSTC_MARGIN_SYMBOL = 0;
+        public const цел wxSTC_MARGIN_NUMBER = 1;
 
         // Styles in range 32..37 are predefined for parts of the UI and are not used as normal styles.
         // Styles 38 and 39 are for future use.
-        public const int wxSTC_STYLE_DEFAULT = 32;
-        public const int wxSTC_STYLE_LINENUMBER = 33;
-        public const int wxSTC_STYLE_BRACELIGHT = 34;
-        public const int wxSTC_STYLE_BRACEBAD = 35;
-        public const int wxSTC_STYLE_CONTROLCHAR = 36;
-        public const int wxSTC_STYLE_INDENTGUIDE = 37;
-        public const int wxSTC_STYLE_LASTPREDEFINED = 39;
-        public const int wxSTC_STYLE_MAX = 127;
+        public const цел wxSTC_STYLE_DEFAULT = 32;
+        public const цел wxSTC_STYLE_LINENUMBER = 33;
+        public const цел wxSTC_STYLE_BRACELIGHT = 34;
+        public const цел wxSTC_STYLE_BRACEBAD = 35;
+        public const цел wxSTC_STYLE_CONTROLCHAR = 36;
+        public const цел wxSTC_STYLE_INDENTGUIDE = 37;
+        public const цел wxSTC_STYLE_LASTPREDEFINED = 39;
+        public const цел wxSTC_STYLE_MAX = 127;
 
         // Character set identifiers are used in StyleSetCharacterSet.
         // The values are the same as the Windows *_CHARSET values.
-        public const int wxSTC_CHARSET_ANSI = 0;
-        public const int wxSTC_CHARSET_DEFAULT = 1;
-        public const int wxSTC_CHARSET_BALTIC = 186;
-        public const int wxSTC_CHARSET_CHINESEBIG5 = 136;
-        public const int wxSTC_CHARSET_EASTEUROPE = 238;
-        public const int wxSTC_CHARSET_GB2312 = 134;
-        public const int wxSTC_CHARSET_GREEK = 161;
-        public const int wxSTC_CHARSET_HANGUL = 129;
-        public const int wxSTC_CHARSET_MAC = 77;
-        public const int wxSTC_CHARSET_OEM = 255;
-        public const int wxSTC_CHARSET_RUSSIAN = 204;
-        public const int wxSTC_CHARSET_SHIFTJIS = 128;
-        public const int wxSTC_CHARSET_SYMBOL = 2;
-        public const int wxSTC_CHARSET_TURKISH = 162;
-        public const int wxSTC_CHARSET_JOHAB = 130;
-        public const int wxSTC_CHARSET_HEBREW = 177;
-        public const int wxSTC_CHARSET_ARABIC = 178;
-        public const int wxSTC_CHARSET_VIETNAMESE = 163;
-        public const int wxSTC_CHARSET_THAI = 222;
-        public const int wxSTC_CASE_MIXED = 0;
-        public const int wxSTC_CASE_UPPER = 1;
-        public const int wxSTC_CASE_LOWER = 2;
-        public const int wxSTC_INDIC_MAX = 7;
-        public const int wxSTC_INDIC_PLAIN = 0;
-        public const int wxSTC_INDIC_SQUIGGLE = 1;
-        public const int wxSTC_INDIC_TT = 2;
-        public const int wxSTC_INDIC_DIAGONAL = 3;
-        public const int wxSTC_INDIC_STRIKE = 4;
-        public const int wxSTC_INDIC0_MASK = 0x20;
-        public const int wxSTC_INDIC1_MASK = 0x40;
-        public const int wxSTC_INDIC2_MASK = 0x80;
-        public const int wxSTC_INDICS_MASK = 0xE0;
+        public const цел wxSTC_CHARSET_ANSI = 0;
+        public const цел wxSTC_CHARSET_DEFAULT = 1;
+        public const цел wxSTC_CHARSET_BALTIC = 186;
+        public const цел wxSTC_CHARSET_CHINESEBIG5 = 136;
+        public const цел wxSTC_CHARSET_EASTEUROPE = 238;
+        public const цел wxSTC_CHARSET_GB2312 = 134;
+        public const цел wxSTC_CHARSET_GREEK = 161;
+        public const цел wxSTC_CHARSET_HANGUL = 129;
+        public const цел wxSTC_CHARSET_MAC = 77;
+        public const цел wxSTC_CHARSET_OEM = 255;
+        public const цел wxSTC_CHARSET_RUSSIAN = 204;
+        public const цел wxSTC_CHARSET_SHIFTJIS = 128;
+        public const цел wxSTC_CHARSET_SYMBOL = 2;
+        public const цел wxSTC_CHARSET_TURKISH = 162;
+        public const цел wxSTC_CHARSET_JOHAB = 130;
+        public const цел wxSTC_CHARSET_HEBREW = 177;
+        public const цел wxSTC_CHARSET_ARABIC = 178;
+        public const цел wxSTC_CHARSET_VIETNAMESE = 163;
+        public const цел wxSTC_CHARSET_THAI = 222;
+        public const цел wxSTC_CASE_MIXED = 0;
+        public const цел wxSTC_CASE_UPPER = 1;
+        public const цел wxSTC_CASE_LOWER = 2;
+        public const цел wxSTC_INDIC_MAX = 7;
+        public const цел wxSTC_INDIC_PLAIN = 0;
+        public const цел wxSTC_INDIC_SQUIGGLE = 1;
+        public const цел wxSTC_INDIC_TT = 2;
+        public const цел wxSTC_INDIC_DIAGONAL = 3;
+        public const цел wxSTC_INDIC_STRIKE = 4;
+        public const цел wxSTC_INDIC0_MASK = 0x20;
+        public const цел wxSTC_INDIC1_MASK = 0x40;
+        public const цел wxSTC_INDIC2_MASK = 0x80;
+        public const цел wxSTC_INDICS_MASK = 0xE0;
 
         // PrintColourMode - use same colours as screen.
-        public const int wxSTC_PRINT_NORMAL = 0;
+        public const цел wxSTC_PRINT_NORMAL = 0;
 
-        // PrintColourMode - invert the light value of each style for printing.
-        public const int wxSTC_PRINT_INVERTLIGHT = 1;
+        // PrintColourMode - invert the light значение of each стиль for printing.
+        public const цел wxSTC_PRINT_INVERTLIGHT = 1;
 
-        // PrintColourMode - force black text on white background for printing.
-        public const int wxSTC_PRINT_BLACKONWHITE = 2;
+        // PrintColourMode - force black текст on white background for printing.
+        public const цел wxSTC_PRINT_BLACKONWHITE = 2;
 
-        // PrintColourMode - text stays coloured, but all background is forced to be white for printing.
-        public const int wxSTC_PRINT_COLOURONWHITE = 3;
+        // PrintColourMode - текст stays coloured, but all background is forced to be white for printing.
+        public const цел wxSTC_PRINT_COLOURONWHITE = 3;
 
         // PrintColourMode - only the default-background is forced to be white for printing.
-        public const int wxSTC_PRINT_COLOURONWHITEDEFAULTBG = 4;
-        public const int wxSTC_FIND_WHOLEWORD = 2;
-        public const int wxSTC_FIND_MATCHCASE = 4;
-        public const int wxSTC_FIND_WORDSTART = 0x00100000;
-        public const int wxSTC_FIND_REGEXP = 0x00200000;
-        public const int wxSTC_FIND_POSIX = 0x00400000;
-        public const int wxSTC_FOLDLEVELBASE = 0x400;
-        public const int wxSTC_FOLDLEVELWHITEFLAG = 0x1000;
-        public const int wxSTC_FOLDLEVELHEADERFLAG = 0x2000;
-        public const int wxSTC_FOLDLEVELBOXHEADERFLAG = 0x4000;
-        public const int wxSTC_FOLDLEVELBOXFOOTERFLAG = 0x8000;
-        public const int wxSTC_FOLDLEVELCONTRACTED = 0x10000;
-        public const int wxSTC_FOLDLEVELUNINDENT = 0x20000;
-        public const int wxSTC_FOLDLEVELNUMBERMASK = 0x0FFF;
-        public const int wxSTC_FOLDFLAG_LINEBEFORE_EXPANDED = 0x0002;
-        public const int wxSTC_FOLDFLAG_LINEBEFORE_CONTRACTED = 0x0004;
-        public const int wxSTC_FOLDFLAG_LINEAFTER_EXPANDED = 0x0008;
-        public const int wxSTC_FOLDFLAG_LINEAFTER_CONTRACTED = 0x0010;
-        public const int wxSTC_FOLDFLAG_LEVELNUMBERS = 0x0040;
-        public const int wxSTC_FOLDFLAG_BOX = 0x0001;
-        public const int wxSTC_TIME_FOREVER = 10000000;
-        public const int wxSTC_WRAP_NONE = 0;
-        public const int wxSTC_WRAP_WORD = 1;
-        public const int wxSTC_CACHE_NONE = 0;
-        public const int wxSTC_CACHE_CARET = 1;
-        public const int wxSTC_CACHE_PAGE = 2;
-        public const int wxSTC_CACHE_DOCUMENT = 3;
-        public const int wxSTC_EDGE_NONE = 0;
-        public const int wxSTC_EDGE_LINE = 1;
-        public const int wxSTC_EDGE_BACKGROUND = 2;
-        public const int wxSTC_CURSORNORMAL = -1;
-        public const int wxSTC_CURSORWAIT = 4;
+        public const цел wxSTC_PRINT_COLOURONWHITEDEFAULTBG = 4;
+        public const цел wxSTC_FIND_WHOLEWORD = 2;
+        public const цел wxSTC_FIND_MATCHCASE = 4;
+        public const цел wxSTC_FIND_WORDSTART = 0x00100000;
+        public const цел wxSTC_FIND_REGEXP = 0x00200000;
+        public const цел wxSTC_FIND_POSIX = 0x00400000;
+        public const цел wxSTC_FOLDLEVELBASE = 0x400;
+        public const цел wxSTC_FOLDLEVELWHITEFLAG = 0x1000;
+        public const цел wxSTC_FOLDLEVELHEADERFLAG = 0x2000;
+        public const цел wxSTC_FOLDLEVELBOXHEADERFLAG = 0x4000;
+        public const цел wxSTC_FOLDLEVELBOXFOOTERFLAG = 0x8000;
+        public const цел wxSTC_FOLDLEVELCONTRACTED = 0x10000;
+        public const цел wxSTC_FOLDLEVELUNINDENT = 0x20000;
+        public const цел wxSTC_FOLDLEVELNUMBERMASK = 0x0FFF;
+        public const цел wxSTC_FOLDFLAG_LINEBEFORE_EXPANDED = 0x0002;
+        public const цел wxSTC_FOLDFLAG_LINEBEFORE_CONTRACTED = 0x0004;
+        public const цел wxSTC_FOLDFLAG_LINEAFTER_EXPANDED = 0x0008;
+        public const цел wxSTC_FOLDFLAG_LINEAFTER_CONTRACTED = 0x0010;
+        public const цел wxSTC_FOLDFLAG_LEVELNUMBERS = 0x0040;
+        public const цел wxSTC_FOLDFLAG_BOX = 0x0001;
+        public const цел wxSTC_TIME_FOREVER = 10000000;
+        public const цел wxSTC_WRAP_NONE = 0;
+        public const цел wxSTC_WRAP_WORD = 1;
+        public const цел wxSTC_CACHE_NONE = 0;
+        public const цел wxSTC_CACHE_CARET = 1;
+        public const цел wxSTC_CACHE_PAGE = 2;
+        public const цел wxSTC_CACHE_DOCUMENT = 3;
+        public const цел wxSTC_EDGE_NONE = 0;
+        public const цел wxSTC_EDGE_LINE = 1;
+        public const цел wxSTC_EDGE_BACKGROUND = 2;
+        public const цел wxSTC_CURSORNORMAL = -1;
+        public const цел wxSTC_CURSORWAIT = 4;
 
         // Constants for use with SetVisiblePolicy, similar to SetCaretPolicy.
-        public const int wxSTC_VISIBLE_SLOP = 0x01;
-        public const int wxSTC_VISIBLE_STRICT = 0x04;
+        public const цел wxSTC_VISIBLE_SLOP = 0x01;
+        public const цел wxSTC_VISIBLE_STRICT = 0x04;
 
         // Caret policy, used by SetXCaretPolicy and SetYCaretPolicy.
-        // If CARET_SLOP is set, we can define a slop value: caretSlop.
-        // This value defines an unwanted zone (UZ) where the caret is... unwanted.
+        // If CARET_SLOP is set, we can define a slop значение: caretSlop.
+        // This значение defines an unwanted zone (UZ) where the caret is... unwanted.
         // This zone is defined as a number of pixels near the vertical margins,
         // and as a number of lines near the horizontal margins.
         // By keeping the caret away from the edges, it is seen within its context,
         // so it is likely that the identifier that the caret is on can be completely seen,
         // and that the current line is seen with some of the lines following it which are
         // often dependent on that line.
-        public const int wxSTC_CARET_SLOP = 0x01;
+        public const цел wxSTC_CARET_SLOP = 0x01;
 
         // If CARET_STRICT is set, the policy is enforced... strictly.
         // The caret is centred on the display if slop is not set,
         // and cannot go in the UZ if slop is set.
-        public const int wxSTC_CARET_STRICT = 0x04;
+        public const цел wxSTC_CARET_STRICT = 0x04;
 
         // If CARET_JUMPS is set, the display is moved more energetically
         // so the caret can move in the same direction longer before the policy is applied again.
-        public const int wxSTC_CARET_JUMPS = 0x10;
+        public const цел wxSTC_CARET_JUMPS = 0x10;
 
         // If CARET_EVEN is not set, instead of having symmetrical UZs,
         // the left and bottom UZs are extended up to right and top UZs respectively.
         // This way, we favour the displaying of useful information: the begining of lines,
         // where most code reside, and the lines after the caret, eg. the body of a function.
-        public const int wxSTC_CARET_EVEN = 0x08;
+        public const цел wxSTC_CARET_EVEN = 0x08;
 
         // Notifications
-        // Type of modification and the action which caused the modification.
-        // These are defined as a bit mask to make it easy to specify which notifications are wanted.
+        // Тип of modification and the action which caused the modification.
+        // These are defined as a bit маска to make it easy to specify which notifications are wanted.
         // One bit is set from each of SC_MOD_* and SC_PERFORMED_*.
-        public const int wxSTC_MOD_INSERTTEXT = 0x1;
-        public const int wxSTC_MOD_DELETETEXT = 0x2;
-        public const int wxSTC_MOD_CHANGESTYLE = 0x4;
-        public const int wxSTC_MOD_CHANGEFOLD = 0x8;
-        public const int wxSTC_PERFORMED_USER = 0x10;
-        public const int wxSTC_PERFORMED_UNDO = 0x20;
-        public const int wxSTC_PERFORMED_REDO = 0x40;
-        public const int wxSTC_LASTSTEPINUNDOREDO = 0x100;
-        public const int wxSTC_MOD_CHANGEMARKER = 0x200;
-        public const int wxSTC_MOD_BEFOREINSERT = 0x400;
-        public const int wxSTC_MOD_BEFOREDELETE = 0x800;
-        public const int wxSTC_MODEVENTMASKALL = 0xF77;
+        public const цел wxSTC_MOD_INSERTTEXT = 0x1;
+        public const цел wxSTC_MOD_DELETETEXT = 0x2;
+        public const цел wxSTC_MOD_CHANGESTYLE = 0x4;
+        public const цел wxSTC_MOD_CHANGEFOLD = 0x8;
+        public const цел wxSTC_PERFORMED_USER = 0x10;
+        public const цел wxSTC_PERFORMED_UNDO = 0x20;
+        public const цел wxSTC_PERFORMED_REDO = 0x40;
+        public const цел wxSTC_LASTSTEPINUNDOREDO = 0x100;
+        public const цел wxSTC_MOD_CHANGEMARKER = 0x200;
+        public const цел wxSTC_MOD_BEFOREINSERT = 0x400;
+        public const цел wxSTC_MOD_BEFOREDELETE = 0x800;
+        public const цел wxSTC_MODEVENTMASKALL = 0xF77;
 
-        // Symbolic key codes and modifier flags.
+        // Symbolic key codes and modifier флаги.
         // ASCII and other printable characters below 256.
         // Extended keys above 300.
-        public const int wxSTC_KEY_DOWN = 300;
-        public const int wxSTC_KEY_UP = 301;
-        public const int wxSTC_KEY_LEFT = 302;
-        public const int wxSTC_KEY_RIGHT = 303;
-        public const int wxSTC_KEY_HOME = 304;
-        public const int wxSTC_KEY_END = 305;
-        public const int wxSTC_KEY_PRIOR = 306;
-        public const int wxSTC_KEY_NEXT = 307;
-        public const int wxSTC_KEY_DELETE = 308;
-        public const int wxSTC_KEY_INSERT = 309;
-        public const int wxSTC_KEY_ESCAPE = 7;
-        public const int wxSTC_KEY_BACK = 8;
-        public const int wxSTC_KEY_TAB = 9;
-        public const int wxSTC_KEY_RETURN = 13;
-        public const int wxSTC_KEY_ADD = 310;
-        public const int wxSTC_KEY_SUBTRACT = 311;
-        public const int wxSTC_KEY_DIVIDE = 312;
-        public const int wxSTC_SCMOD_SHIFT = 1;
-        public const int wxSTC_SCMOD_CTRL = 2;
-        public const int wxSTC_SCMOD_ALT = 4;
+        public const цел wxSTC_KEY_DOWN = 300;
+        public const цел wxSTC_KEY_UP = 301;
+        public const цел wxSTC_KEY_LEFT = 302;
+        public const цел wxSTC_KEY_RIGHT = 303;
+        public const цел wxSTC_KEY_HOME = 304;
+        public const цел wxSTC_KEY_END = 305;
+        public const цел wxSTC_KEY_PRIOR = 306;
+        public const цел wxSTC_KEY_NEXT = 307;
+        public const цел wxSTC_KEY_DELETE = 308;
+        public const цел wxSTC_KEY_INSERT = 309;
+        public const цел wxSTC_KEY_ESCAPE = 7;
+        public const цел wxSTC_KEY_BACK = 8;
+        public const цел wxSTC_KEY_TAB = 9;
+        public const цел wxSTC_KEY_RETURN = 13;
+        public const цел wxSTC_KEY_ADD = 310;
+        public const цел wxSTC_KEY_SUBTRACT = 311;
+        public const цел wxSTC_KEY_DIVIDE = 312;
+        public const цел wxSTC_SCMOD_SHIFT = 1;
+        public const цел wxSTC_SCMOD_CTRL = 2;
+        public const цел wxSTC_SCMOD_ALT = 4;
 
         // For SciLexer.h
-        public const int wxSTC_LEX_CONTAINER = 0;
-        public const int wxSTC_LEX_NULL = 1;
-        public const int wxSTC_LEX_PYTHON = 2;
-        public const int wxSTC_LEX_CPP = 3;
-        public const int wxSTC_LEX_HTML = 4;
-        public const int wxSTC_LEX_XML = 5;
-        public const int wxSTC_LEX_PERL = 6;
-        public const int wxSTC_LEX_SQL = 7;
-        public const int wxSTC_LEX_VB = 8;
-        public const int wxSTC_LEX_PROPERTIES = 9;
-        public const int wxSTC_LEX_ERRORLIST = 10;
-        public const int wxSTC_LEX_MAKEFILE = 11;
-        public const int wxSTC_LEX_BATCH = 12;
-        public const int wxSTC_LEX_XCODE = 13;
-        public const int wxSTC_LEX_LATEX = 14;
-        public const int wxSTC_LEX_LUA = 15;
-        public const int wxSTC_LEX_DIFF = 16;
-        public const int wxSTC_LEX_CONF = 17;
-        public const int wxSTC_LEX_PASCAL = 18;
-        public const int wxSTC_LEX_AVE = 19;
-        public const int wxSTC_LEX_ADA = 20;
-        public const int wxSTC_LEX_LISP = 21;
-        public const int wxSTC_LEX_RUBY = 22;
-        public const int wxSTC_LEX_EIFFEL = 23;
-        public const int wxSTC_LEX_EIFFELKW = 24;
-        public const int wxSTC_LEX_TCL = 25;
-        public const int wxSTC_LEX_NNCRONTAB = 26;
-        public const int wxSTC_LEX_BULLANT = 27;
-        public const int wxSTC_LEX_VBSCRIPT = 28;
-        public const int wxSTC_LEX_ASP = 29;
-        public const int wxSTC_LEX_PHP = 30;
-        public const int wxSTC_LEX_BAAN = 31;
-        public const int wxSTC_LEX_MATLAB = 32;
-        public const int wxSTC_LEX_SCRIPTOL = 33;
-        public const int wxSTC_LEX_ASM = 34;
-        public const int wxSTC_LEX_CPPNOCASE = 35;
-        public const int wxSTC_LEX_FORTRAN = 36;
-        public const int wxSTC_LEX_F77 = 37;
-        public const int wxSTC_LEX_CSS = 38;
-        public const int wxSTC_LEX_POV = 39;
+        public const цел wxSTC_LEX_CONTAINER = 0;
+        public const цел wxSTC_LEX_NULL = 1;
+        public const цел wxSTC_LEX_PYTHON = 2;
+        public const цел wxSTC_LEX_CPP = 3;
+        public const цел wxSTC_LEX_HTML = 4;
+        public const цел wxSTC_LEX_XML = 5;
+        public const цел wxSTC_LEX_PERL = 6;
+        public const цел wxSTC_LEX_SQL = 7;
+        public const цел wxSTC_LEX_VB = 8;
+        public const цел wxSTC_LEX_PROPERTIES = 9;
+        public const цел wxSTC_LEX_ERRORLIST = 10;
+        public const цел wxSTC_LEX_MAKEFILE = 11;
+        public const цел wxSTC_LEX_BATCH = 12;
+        public const цел wxSTC_LEX_XCODE = 13;
+        public const цел wxSTC_LEX_LATEX = 14;
+        public const цел wxSTC_LEX_LUA = 15;
+        public const цел wxSTC_LEX_DIFF = 16;
+        public const цел wxSTC_LEX_CONF = 17;
+        public const цел wxSTC_LEX_PASCAL = 18;
+        public const цел wxSTC_LEX_AVE = 19;
+        public const цел wxSTC_LEX_ADA = 20;
+        public const цел wxSTC_LEX_LISP = 21;
+        public const цел wxSTC_LEX_RUBY = 22;
+        public const цел wxSTC_LEX_EIFFEL = 23;
+        public const цел wxSTC_LEX_EIFFELKW = 24;
+        public const цел wxSTC_LEX_TCL = 25;
+        public const цел wxSTC_LEX_NNCRONTAB = 26;
+        public const цел wxSTC_LEX_BULLANT = 27;
+        public const цел wxSTC_LEX_VBSCRIPT = 28;
+        public const цел wxSTC_LEX_ASP = 29;
+        public const цел wxSTC_LEX_PHP = 30;
+        public const цел wxSTC_LEX_BAAN = 31;
+        public const цел wxSTC_LEX_MATLAB = 32;
+        public const цел wxSTC_LEX_SCRIPTOL = 33;
+        public const цел wxSTC_LEX_ASM = 34;
+        public const цел wxSTC_LEX_CPPNOCASE = 35;
+        public const цел wxSTC_LEX_FORTRAN = 36;
+        public const цел wxSTC_LEX_F77 = 37;
+        public const цел wxSTC_LEX_CSS = 38;
+        public const цел wxSTC_LEX_POV = 39;
 
         // When a lexer specifies its language as SCLEX_AUTOMATIC it receives a
-        // value assigned in sequence from SCLEX_AUTOMATIC+1.
-        public const int wxSTC_LEX_AUTOMATIC = 1000;
+        // значение assigned in sequence from SCLEX_AUTOMATIC+1.
+        public const цел wxSTC_LEX_AUTOMATIC = 1000;
 
         // Lexical states for SCLEX_PYTHON
-        public const int wxSTC_P_DEFAULT = 0;
-        public const int wxSTC_P_COMMENTLINE = 1;
-        public const int wxSTC_P_NUMBER = 2;
-        public const int wxSTC_P_STRING = 3;
-        public const int wxSTC_P_CHARACTER = 4;
-        public const int wxSTC_P_WORD = 5;
-        public const int wxSTC_P_TRIPLE = 6;
-        public const int wxSTC_P_TRIPLEDOUBLE = 7;
-        public const int wxSTC_P_CLASSNAME = 8;
-        public const int wxSTC_P_DEFNAME = 9;
-        public const int wxSTC_P_OPERATOR = 10;
-        public const int wxSTC_P_IDENTIFIER = 11;
-        public const int wxSTC_P_COMMENTBLOCK = 12;
-        public const int wxSTC_P_STRINGEOL = 13;
+        public const цел wxSTC_P_DEFAULT = 0;
+        public const цел wxSTC_P_COMMENTLINE = 1;
+        public const цел wxSTC_P_NUMBER = 2;
+        public const цел wxSTC_P_STRING = 3;
+        public const цел wxSTC_P_CHARACTER = 4;
+        public const цел wxSTC_P_WORD = 5;
+        public const цел wxSTC_P_TRIPLE = 6;
+        public const цел wxSTC_P_TRIPLEDOUBLE = 7;
+        public const цел wxSTC_P_CLASSNAME = 8;
+        public const цел wxSTC_P_DEFNAME = 9;
+        public const цел wxSTC_P_OPERATOR = 10;
+        public const цел wxSTC_P_IDENTIFIER = 11;
+        public const цел wxSTC_P_COMMENTBLOCK = 12;
+        public const цел wxSTC_P_STRINGEOL = 13;
 
         // Lexical states for SCLEX_CPP
-        public const int wxSTC_C_DEFAULT = 0;
-        public const int wxSTC_C_COMMENT = 1;
-        public const int wxSTC_C_COMMENTLINE = 2;
-        public const int wxSTC_C_COMMENTDOC = 3;
-        public const int wxSTC_C_NUMBER = 4;
-        public const int wxSTC_C_WORD = 5;
-        public const int wxSTC_C_STRING = 6;
-        public const int wxSTC_C_CHARACTER = 7;
-        public const int wxSTC_C_UUID = 8;
-        public const int wxSTC_C_PREPROCESSOR = 9;
-        public const int wxSTC_C_OPERATOR = 10;
-        public const int wxSTC_C_IDENTIFIER = 11;
-        public const int wxSTC_C_STRINGEOL = 12;
-        public const int wxSTC_C_VERBATIM = 13;
-        public const int wxSTC_C_REGEX = 14;
-        public const int wxSTC_C_COMMENTLINEDOC = 15;
-        public const int wxSTC_C_WORD2 = 16;
-        public const int wxSTC_C_COMMENTDOCKEYWORD = 17;
-        public const int wxSTC_C_COMMENTDOCKEYWORDERROR = 18;
+        public const цел wxSTC_C_DEFAULT = 0;
+        public const цел wxSTC_C_COMMENT = 1;
+        public const цел wxSTC_C_COMMENTLINE = 2;
+        public const цел wxSTC_C_COMMENTDOC = 3;
+        public const цел wxSTC_C_NUMBER = 4;
+        public const цел wxSTC_C_WORD = 5;
+        public const цел wxSTC_C_STRING = 6;
+        public const цел wxSTC_C_CHARACTER = 7;
+        public const цел wxSTC_C_UUID = 8;
+        public const цел wxSTC_C_PREPROCESSOR = 9;
+        public const цел wxSTC_C_OPERATOR = 10;
+        public const цел wxSTC_C_IDENTIFIER = 11;
+        public const цел wxSTC_C_STRINGEOL = 12;
+        public const цел wxSTC_C_VERBATIM = 13;
+        public const цел wxSTC_C_REGEX = 14;
+        public const цел wxSTC_C_COMMENTLINEDOC = 15;
+        public const цел wxSTC_C_WORD2 = 16;
+        public const цел wxSTC_C_COMMENTDOCKEYWORD = 17;
+        public const цел wxSTC_C_COMMENTDOCKEYWORDERROR = 18;
 
         // Lexical states for SCLEX_HTML, SCLEX_XML
-        public const int wxSTC_H_DEFAULT = 0;
-        public const int wxSTC_H_TAG = 1;
-        public const int wxSTC_H_TAGUNKNOWN = 2;
-        public const int wxSTC_H_ATTRIBUTE = 3;
-        public const int wxSTC_H_ATTRIBUTEUNKNOWN = 4;
-        public const int wxSTC_H_NUMBER = 5;
-        public const int wxSTC_H_DOUBLESTRING = 6;
-        public const int wxSTC_H_SINGLESTRING = 7;
-        public const int wxSTC_H_OTHER = 8;
-        public const int wxSTC_H_COMMENT = 9;
-        public const int wxSTC_H_ENTITY = 10;
+        public const цел wxSTC_H_DEFAULT = 0;
+        public const цел wxSTC_H_TAG = 1;
+        public const цел wxSTC_H_TAGUNKNOWN = 2;
+        public const цел wxSTC_H_ATTRIBUTE = 3;
+        public const цел wxSTC_H_ATTRIBUTEUNKNOWN = 4;
+        public const цел wxSTC_H_NUMBER = 5;
+        public const цел wxSTC_H_DOUBLESTRING = 6;
+        public const цел wxSTC_H_SINGLESTRING = 7;
+        public const цел wxSTC_H_OTHER = 8;
+        public const цел wxSTC_H_COMMENT = 9;
+        public const цел wxSTC_H_ENTITY = 10;
 
         // XML and ASP
-        public const int wxSTC_H_TAGEND = 11;
-        public const int wxSTC_H_XMLSTART = 12;
-        public const int wxSTC_H_XMLEND = 13;
-        public const int wxSTC_H_SCRIPT = 14;
-        public const int wxSTC_H_ASP = 15;
-        public const int wxSTC_H_ASPAT = 16;
-        public const int wxSTC_H_CDATA = 17;
-        public const int wxSTC_H_QUESTION = 18;
+        public const цел wxSTC_H_TAGEND = 11;
+        public const цел wxSTC_H_XMLSTART = 12;
+        public const цел wxSTC_H_XMLEND = 13;
+        public const цел wxSTC_H_SCRIPT = 14;
+        public const цел wxSTC_H_ASP = 15;
+        public const цел wxSTC_H_ASPAT = 16;
+        public const цел wxSTC_H_CDATA = 17;
+        public const цел wxSTC_H_QUESTION = 18;
 
         // More HTML
-        public const int wxSTC_H_VALUE = 19;
+        public const цел wxSTC_H_VALUE = 19;
 
         // X-Code
-        public const int wxSTC_H_XCCOMMENT = 20;
+        public const цел wxSTC_H_XCCOMMENT = 20;
 
         // SGML
-        public const int wxSTC_H_SGML_DEFAULT = 21;
-        public const int wxSTC_H_SGML_COMMAND = 22;
-        public const int wxSTC_H_SGML_1ST_PARAM = 23;
-        public const int wxSTC_H_SGML_DOUBLESTRING = 24;
-        public const int wxSTC_H_SGML_SIMPLESTRING = 25;
-        public const int wxSTC_H_SGML_ERROR = 26;
-        public const int wxSTC_H_SGML_SPECIAL = 27;
-        public const int wxSTC_H_SGML_ENTITY = 28;
-        public const int wxSTC_H_SGML_COMMENT = 29;
-        public const int wxSTC_H_SGML_1ST_PARAM_COMMENT = 30;
-        public const int wxSTC_H_SGML_BLOCK_DEFAULT = 31;
+        public const цел wxSTC_H_SGML_DEFAULT = 21;
+        public const цел wxSTC_H_SGML_COMMAND = 22;
+        public const цел wxSTC_H_SGML_1ST_PARAM = 23;
+        public const цел wxSTC_H_SGML_DOUBLESTRING = 24;
+        public const цел wxSTC_H_SGML_SIMPLESTRING = 25;
+        public const цел wxSTC_H_SGML_ERROR = 26;
+        public const цел wxSTC_H_SGML_SPECIAL = 27;
+        public const цел wxSTC_H_SGML_ENTITY = 28;
+        public const цел wxSTC_H_SGML_COMMENT = 29;
+        public const цел wxSTC_H_SGML_1ST_PARAM_COMMENT = 30;
+        public const цел wxSTC_H_SGML_BLOCK_DEFAULT = 31;
 
         // Embedded Javascript
-        public const int wxSTC_HJ_START = 40;
-        public const int wxSTC_HJ_DEFAULT = 41;
-        public const int wxSTC_HJ_COMMENT = 42;
-        public const int wxSTC_HJ_COMMENTLINE = 43;
-        public const int wxSTC_HJ_COMMENTDOC = 44;
-        public const int wxSTC_HJ_NUMBER = 45;
-        public const int wxSTC_HJ_WORD = 46;
-        public const int wxSTC_HJ_KEYWORD = 47;
-        public const int wxSTC_HJ_DOUBLESTRING = 48;
-        public const int wxSTC_HJ_SINGLESTRING = 49;
-        public const int wxSTC_HJ_SYMBOLS = 50;
-        public const int wxSTC_HJ_STRINGEOL = 51;
-        public const int wxSTC_HJ_REGEX = 52;
+        public const цел wxSTC_HJ_START = 40;
+        public const цел wxSTC_HJ_DEFAULT = 41;
+        public const цел wxSTC_HJ_COMMENT = 42;
+        public const цел wxSTC_HJ_COMMENTLINE = 43;
+        public const цел wxSTC_HJ_COMMENTDOC = 44;
+        public const цел wxSTC_HJ_NUMBER = 45;
+        public const цел wxSTC_HJ_WORD = 46;
+        public const цел wxSTC_HJ_KEYWORD = 47;
+        public const цел wxSTC_HJ_DOUBLESTRING = 48;
+        public const цел wxSTC_HJ_SINGLESTRING = 49;
+        public const цел wxSTC_HJ_SYMBOLS = 50;
+        public const цел wxSTC_HJ_STRINGEOL = 51;
+        public const цел wxSTC_HJ_REGEX = 52;
 
         // ASP Javascript
-        public const int wxSTC_HJA_START = 55;
-        public const int wxSTC_HJA_DEFAULT = 56;
-        public const int wxSTC_HJA_COMMENT = 57;
-        public const int wxSTC_HJA_COMMENTLINE = 58;
-        public const int wxSTC_HJA_COMMENTDOC = 59;
-        public const int wxSTC_HJA_NUMBER = 60;
-        public const int wxSTC_HJA_WORD = 61;
-        public const int wxSTC_HJA_KEYWORD = 62;
-        public const int wxSTC_HJA_DOUBLESTRING = 63;
-        public const int wxSTC_HJA_SINGLESTRING = 64;
-        public const int wxSTC_HJA_SYMBOLS = 65;
-        public const int wxSTC_HJA_STRINGEOL = 66;
-        public const int wxSTC_HJA_REGEX = 67;
+        public const цел wxSTC_HJA_START = 55;
+        public const цел wxSTC_HJA_DEFAULT = 56;
+        public const цел wxSTC_HJA_COMMENT = 57;
+        public const цел wxSTC_HJA_COMMENTLINE = 58;
+        public const цел wxSTC_HJA_COMMENTDOC = 59;
+        public const цел wxSTC_HJA_NUMBER = 60;
+        public const цел wxSTC_HJA_WORD = 61;
+        public const цел wxSTC_HJA_KEYWORD = 62;
+        public const цел wxSTC_HJA_DOUBLESTRING = 63;
+        public const цел wxSTC_HJA_SINGLESTRING = 64;
+        public const цел wxSTC_HJA_SYMBOLS = 65;
+        public const цел wxSTC_HJA_STRINGEOL = 66;
+        public const цел wxSTC_HJA_REGEX = 67;
 
         // Embedded VBScript
-        public const int wxSTC_HB_START = 70;
-        public const int wxSTC_HB_DEFAULT = 71;
-        public const int wxSTC_HB_COMMENTLINE = 72;
-        public const int wxSTC_HB_NUMBER = 73;
-        public const int wxSTC_HB_WORD = 74;
-        public const int wxSTC_HB_STRING = 75;
-        public const int wxSTC_HB_IDENTIFIER = 76;
-        public const int wxSTC_HB_STRINGEOL = 77;
+        public const цел wxSTC_HB_START = 70;
+        public const цел wxSTC_HB_DEFAULT = 71;
+        public const цел wxSTC_HB_COMMENTLINE = 72;
+        public const цел wxSTC_HB_NUMBER = 73;
+        public const цел wxSTC_HB_WORD = 74;
+        public const цел wxSTC_HB_STRING = 75;
+        public const цел wxSTC_HB_IDENTIFIER = 76;
+        public const цел wxSTC_HB_STRINGEOL = 77;
 
         // ASP VBScript
-        public const int wxSTC_HBA_START = 80;
-        public const int wxSTC_HBA_DEFAULT = 81;
-        public const int wxSTC_HBA_COMMENTLINE = 82;
-        public const int wxSTC_HBA_NUMBER = 83;
-        public const int wxSTC_HBA_WORD = 84;
-        public const int wxSTC_HBA_STRING = 85;
-        public const int wxSTC_HBA_IDENTIFIER = 86;
-        public const int wxSTC_HBA_STRINGEOL = 87;
+        public const цел wxSTC_HBA_START = 80;
+        public const цел wxSTC_HBA_DEFAULT = 81;
+        public const цел wxSTC_HBA_COMMENTLINE = 82;
+        public const цел wxSTC_HBA_NUMBER = 83;
+        public const цел wxSTC_HBA_WORD = 84;
+        public const цел wxSTC_HBA_STRING = 85;
+        public const цел wxSTC_HBA_IDENTIFIER = 86;
+        public const цел wxSTC_HBA_STRINGEOL = 87;
 
         // Embedded Python
-        public const int wxSTC_HP_START = 90;
-        public const int wxSTC_HP_DEFAULT = 91;
-        public const int wxSTC_HP_COMMENTLINE = 92;
-        public const int wxSTC_HP_NUMBER = 93;
-        public const int wxSTC_HP_STRING = 94;
-        public const int wxSTC_HP_CHARACTER = 95;
-        public const int wxSTC_HP_WORD = 96;
-        public const int wxSTC_HP_TRIPLE = 97;
-        public const int wxSTC_HP_TRIPLEDOUBLE = 98;
-        public const int wxSTC_HP_CLASSNAME = 99;
-        public const int wxSTC_HP_DEFNAME = 100;
-        public const int wxSTC_HP_OPERATOR = 101;
-        public const int wxSTC_HP_IDENTIFIER = 102;
+        public const цел wxSTC_HP_START = 90;
+        public const цел wxSTC_HP_DEFAULT = 91;
+        public const цел wxSTC_HP_COMMENTLINE = 92;
+        public const цел wxSTC_HP_NUMBER = 93;
+        public const цел wxSTC_HP_STRING = 94;
+        public const цел wxSTC_HP_CHARACTER = 95;
+        public const цел wxSTC_HP_WORD = 96;
+        public const цел wxSTC_HP_TRIPLE = 97;
+        public const цел wxSTC_HP_TRIPLEDOUBLE = 98;
+        public const цел wxSTC_HP_CLASSNAME = 99;
+        public const цел wxSTC_HP_DEFNAME = 100;
+        public const цел wxSTC_HP_OPERATOR = 101;
+        public const цел wxSTC_HP_IDENTIFIER = 102;
 
         // ASP Python
-        public const int wxSTC_HPA_START = 105;
-        public const int wxSTC_HPA_DEFAULT = 106;
-        public const int wxSTC_HPA_COMMENTLINE = 107;
-        public const int wxSTC_HPA_NUMBER = 108;
-        public const int wxSTC_HPA_STRING = 109;
-        public const int wxSTC_HPA_CHARACTER = 110;
-        public const int wxSTC_HPA_WORD = 111;
-        public const int wxSTC_HPA_TRIPLE = 112;
-        public const int wxSTC_HPA_TRIPLEDOUBLE = 113;
-        public const int wxSTC_HPA_CLASSNAME = 114;
-        public const int wxSTC_HPA_DEFNAME = 115;
-        public const int wxSTC_HPA_OPERATOR = 116;
-        public const int wxSTC_HPA_IDENTIFIER = 117;
+        public const цел wxSTC_HPA_START = 105;
+        public const цел wxSTC_HPA_DEFAULT = 106;
+        public const цел wxSTC_HPA_COMMENTLINE = 107;
+        public const цел wxSTC_HPA_NUMBER = 108;
+        public const цел wxSTC_HPA_STRING = 109;
+        public const цел wxSTC_HPA_CHARACTER = 110;
+        public const цел wxSTC_HPA_WORD = 111;
+        public const цел wxSTC_HPA_TRIPLE = 112;
+        public const цел wxSTC_HPA_TRIPLEDOUBLE = 113;
+        public const цел wxSTC_HPA_CLASSNAME = 114;
+        public const цел wxSTC_HPA_DEFNAME = 115;
+        public const цел wxSTC_HPA_OPERATOR = 116;
+        public const цел wxSTC_HPA_IDENTIFIER = 117;
 
         // PHP
-        public const int wxSTC_HPHP_DEFAULT = 118;
-        public const int wxSTC_HPHP_HSTRING = 119;
-        public const int wxSTC_HPHP_SIMPLESTRING = 120;
-        public const int wxSTC_HPHP_WORD = 121;
-        public const int wxSTC_HPHP_NUMBER = 122;
-        public const int wxSTC_HPHP_VARIABLE = 123;
-        public const int wxSTC_HPHP_COMMENT = 124;
-        public const int wxSTC_HPHP_COMMENTLINE = 125;
-        public const int wxSTC_HPHP_HSTRING_VARIABLE = 126;
-        public const int wxSTC_HPHP_OPERATOR = 127;
+        public const цел wxSTC_HPHP_DEFAULT = 118;
+        public const цел wxSTC_HPHP_HSTRING = 119;
+        public const цел wxSTC_HPHP_SIMPLESTRING = 120;
+        public const цел wxSTC_HPHP_WORD = 121;
+        public const цел wxSTC_HPHP_NUMBER = 122;
+        public const цел wxSTC_HPHP_VARIABLE = 123;
+        public const цел wxSTC_HPHP_COMMENT = 124;
+        public const цел wxSTC_HPHP_COMMENTLINE = 125;
+        public const цел wxSTC_HPHP_HSTRING_VARIABLE = 126;
+        public const цел wxSTC_HPHP_OPERATOR = 127;
 
         // Lexical states for SCLEX_PERL
-        public const int wxSTC_PL_DEFAULT = 0;
-        public const int wxSTC_PL_ERROR = 1;
-        public const int wxSTC_PL_COMMENTLINE = 2;
-        public const int wxSTC_PL_POD = 3;
-        public const int wxSTC_PL_NUMBER = 4;
-        public const int wxSTC_PL_WORD = 5;
-        public const int wxSTC_PL_STRING = 6;
-        public const int wxSTC_PL_CHARACTER = 7;
-        public const int wxSTC_PL_PUNCTUATION = 8;
-        public const int wxSTC_PL_PREPROCESSOR = 9;
-        public const int wxSTC_PL_OPERATOR = 10;
-        public const int wxSTC_PL_IDENTIFIER = 11;
-        public const int wxSTC_PL_SCALAR = 12;
-        public const int wxSTC_PL_ARRAY = 13;
-        public const int wxSTC_PL_HASH = 14;
-        public const int wxSTC_PL_SYMBOLTABLE = 15;
-        public const int wxSTC_PL_REGEX = 17;
-        public const int wxSTC_PL_REGSUBST = 18;
-        public const int wxSTC_PL_LONGQUOTE = 19;
-        public const int wxSTC_PL_BACKTICKS = 20;
-        public const int wxSTC_PL_DATASECTION = 21;
-        public const int wxSTC_PL_HERE_DELIM = 22;
-        public const int wxSTC_PL_HERE_Q = 23;
-        public const int wxSTC_PL_HERE_QQ = 24;
-        public const int wxSTC_PL_HERE_QX = 25;
-        public const int wxSTC_PL_STRING_Q = 26;
-        public const int wxSTC_PL_STRING_QQ = 27;
-        public const int wxSTC_PL_STRING_QX = 28;
-        public const int wxSTC_PL_STRING_QR = 29;
-        public const int wxSTC_PL_STRING_QW = 30;
+        public const цел wxSTC_PL_DEFAULT = 0;
+        public const цел wxSTC_PL_ERROR = 1;
+        public const цел wxSTC_PL_COMMENTLINE = 2;
+        public const цел wxSTC_PL_POD = 3;
+        public const цел wxSTC_PL_NUMBER = 4;
+        public const цел wxSTC_PL_WORD = 5;
+        public const цел wxSTC_PL_STRING = 6;
+        public const цел wxSTC_PL_CHARACTER = 7;
+        public const цел wxSTC_PL_PUNCTUATION = 8;
+        public const цел wxSTC_PL_PREPROCESSOR = 9;
+        public const цел wxSTC_PL_OPERATOR = 10;
+        public const цел wxSTC_PL_IDENTIFIER = 11;
+        public const цел wxSTC_PL_SCALAR = 12;
+        public const цел wxSTC_PL_ARRAY = 13;
+        public const цел wxSTC_PL_HASH = 14;
+        public const цел wxSTC_PL_SYMBOLTABLE = 15;
+        public const цел wxSTC_PL_REGEX = 17;
+        public const цел wxSTC_PL_REGSUBST = 18;
+        public const цел wxSTC_PL_LONGQUOTE = 19;
+        public const цел wxSTC_PL_BACKTICKS = 20;
+        public const цел wxSTC_PL_DATASECTION = 21;
+        public const цел wxSTC_PL_HERE_DELIM = 22;
+        public const цел wxSTC_PL_HERE_Q = 23;
+        public const цел wxSTC_PL_HERE_QQ = 24;
+        public const цел wxSTC_PL_HERE_QX = 25;
+        public const цел wxSTC_PL_STRING_Q = 26;
+        public const цел wxSTC_PL_STRING_QQ = 27;
+        public const цел wxSTC_PL_STRING_QX = 28;
+        public const цел wxSTC_PL_STRING_QR = 29;
+        public const цел wxSTC_PL_STRING_QW = 30;
 
         // Lexical states for SCLEX_VB, SCLEX_VBSCRIPT
-        public const int wxSTC_B_DEFAULT = 0;
-        public const int wxSTC_B_COMMENT = 1;
-        public const int wxSTC_B_NUMBER = 2;
-        public const int wxSTC_B_KEYWORD = 3;
-        public const int wxSTC_B_STRING = 4;
-        public const int wxSTC_B_PREPROCESSOR = 5;
-        public const int wxSTC_B_OPERATOR = 6;
-        public const int wxSTC_B_IDENTIFIER = 7;
-        public const int wxSTC_B_DATE = 8;
+        public const цел wxSTC_B_DEFAULT = 0;
+        public const цел wxSTC_B_COMMENT = 1;
+        public const цел wxSTC_B_NUMBER = 2;
+        public const цел wxSTC_B_KEYWORD = 3;
+        public const цел wxSTC_B_STRING = 4;
+        public const цел wxSTC_B_PREPROCESSOR = 5;
+        public const цел wxSTC_B_OPERATOR = 6;
+        public const цел wxSTC_B_IDENTIFIER = 7;
+        public const цел wxSTC_B_DATE = 8;
 
         // Lexical states for SCLEX_PROPERTIES
-        public const int wxSTC_PROPS_DEFAULT = 0;
-        public const int wxSTC_PROPS_COMMENT = 1;
-        public const int wxSTC_PROPS_SECTION = 2;
-        public const int wxSTC_PROPS_ASSIGNMENT = 3;
-        public const int wxSTC_PROPS_DEFVAL = 4;
+        public const цел wxSTC_PROPS_DEFAULT = 0;
+        public const цел wxSTC_PROPS_COMMENT = 1;
+        public const цел wxSTC_PROPS_SECTION = 2;
+        public const цел wxSTC_PROPS_ASSIGNMENT = 3;
+        public const цел wxSTC_PROPS_DEFVAL = 4;
 
         // Lexical states for SCLEX_LATEX
-        public const int wxSTC_L_DEFAULT = 0;
-        public const int wxSTC_L_COMMAND = 1;
-        public const int wxSTC_L_TAG = 2;
-        public const int wxSTC_L_MATH = 3;
-        public const int wxSTC_L_COMMENT = 4;
+        public const цел wxSTC_L_DEFAULT = 0;
+        public const цел wxSTC_L_COMMAND = 1;
+        public const цел wxSTC_L_TAG = 2;
+        public const цел wxSTC_L_MATH = 3;
+        public const цел wxSTC_L_COMMENT = 4;
 
         // Lexical states for SCLEX_LUA
-        public const int wxSTC_LUA_DEFAULT = 0;
-        public const int wxSTC_LUA_COMMENT = 1;
-        public const int wxSTC_LUA_COMMENTLINE = 2;
-        public const int wxSTC_LUA_COMMENTDOC = 3;
-        public const int wxSTC_LUA_NUMBER = 4;
-        public const int wxSTC_LUA_WORD = 5;
-        public const int wxSTC_LUA_STRING = 6;
-        public const int wxSTC_LUA_CHARACTER = 7;
-        public const int wxSTC_LUA_LITERALSTRING = 8;
-        public const int wxSTC_LUA_PREPROCESSOR = 9;
-        public const int wxSTC_LUA_OPERATOR = 10;
-        public const int wxSTC_LUA_IDENTIFIER = 11;
-        public const int wxSTC_LUA_STRINGEOL = 12;
-        public const int wxSTC_LUA_WORD2 = 13;
-        public const int wxSTC_LUA_WORD3 = 14;
-        public const int wxSTC_LUA_WORD4 = 15;
-        public const int wxSTC_LUA_WORD5 = 16;
-        public const int wxSTC_LUA_WORD6 = 17;
+        public const цел wxSTC_LUA_DEFAULT = 0;
+        public const цел wxSTC_LUA_COMMENT = 1;
+        public const цел wxSTC_LUA_COMMENTLINE = 2;
+        public const цел wxSTC_LUA_COMMENTDOC = 3;
+        public const цел wxSTC_LUA_NUMBER = 4;
+        public const цел wxSTC_LUA_WORD = 5;
+        public const цел wxSTC_LUA_STRING = 6;
+        public const цел wxSTC_LUA_CHARACTER = 7;
+        public const цел wxSTC_LUA_LITERALSTRING = 8;
+        public const цел wxSTC_LUA_PREPROCESSOR = 9;
+        public const цел wxSTC_LUA_OPERATOR = 10;
+        public const цел wxSTC_LUA_IDENTIFIER = 11;
+        public const цел wxSTC_LUA_STRINGEOL = 12;
+        public const цел wxSTC_LUA_WORD2 = 13;
+        public const цел wxSTC_LUA_WORD3 = 14;
+        public const цел wxSTC_LUA_WORD4 = 15;
+        public const цел wxSTC_LUA_WORD5 = 16;
+        public const цел wxSTC_LUA_WORD6 = 17;
 
         // Lexical states for SCLEX_ERRORLIST
-        public const int wxSTC_ERR_DEFAULT = 0;
-        public const int wxSTC_ERR_PYTHON = 1;
-        public const int wxSTC_ERR_GCC = 2;
-        public const int wxSTC_ERR_MS = 3;
-        public const int wxSTC_ERR_CMD = 4;
-        public const int wxSTC_ERR_BORLAND = 5;
-        public const int wxSTC_ERR_PERL = 6;
-        public const int wxSTC_ERR_NET = 7;
-        public const int wxSTC_ERR_LUA = 8;
-        public const int wxSTC_ERR_CTAG = 9;
-        public const int wxSTC_ERR_DIFF_CHANGED = 10;
-        public const int wxSTC_ERR_DIFF_ADDITION = 11;
-        public const int wxSTC_ERR_DIFF_DELETION = 12;
-        public const int wxSTC_ERR_DIFF_MESSAGE = 13;
-        public const int wxSTC_ERR_PHP = 14;
-        public const int wxSTC_ERR_ELF = 15;
-        public const int wxSTC_ERR_IFC = 16;
+        public const цел wxSTC_ERR_DEFAULT = 0;
+        public const цел wxSTC_ERR_PYTHON = 1;
+        public const цел wxSTC_ERR_GCC = 2;
+        public const цел wxSTC_ERR_MS = 3;
+        public const цел wxSTC_ERR_CMD = 4;
+        public const цел wxSTC_ERR_BORLAND = 5;
+        public const цел wxSTC_ERR_PERL = 6;
+        public const цел wxSTC_ERR_NET = 7;
+        public const цел wxSTC_ERR_LUA = 8;
+        public const цел wxSTC_ERR_CTAG = 9;
+        public const цел wxSTC_ERR_DIFF_CHANGED = 10;
+        public const цел wxSTC_ERR_DIFF_ADDITION = 11;
+        public const цел wxSTC_ERR_DIFF_DELETION = 12;
+        public const цел wxSTC_ERR_DIFF_MESSAGE = 13;
+        public const цел wxSTC_ERR_PHP = 14;
+        public const цел wxSTC_ERR_ELF = 15;
+        public const цел wxSTC_ERR_IFC = 16;
 
         // Lexical states for SCLEX_BATCH
-        public const int wxSTC_BAT_DEFAULT = 0;
-        public const int wxSTC_BAT_COMMENT = 1;
-        public const int wxSTC_BAT_WORD = 2;
-        public const int wxSTC_BAT_LABEL = 3;
-        public const int wxSTC_BAT_HIDE = 4;
-        public const int wxSTC_BAT_COMMAND = 5;
-        public const int wxSTC_BAT_IDENTIFIER = 6;
-        public const int wxSTC_BAT_OPERATOR = 7;
+        public const цел wxSTC_BAT_DEFAULT = 0;
+        public const цел wxSTC_BAT_COMMENT = 1;
+        public const цел wxSTC_BAT_WORD = 2;
+        public const цел wxSTC_BAT_LABEL = 3;
+        public const цел wxSTC_BAT_HIDE = 4;
+        public const цел wxSTC_BAT_COMMAND = 5;
+        public const цел wxSTC_BAT_IDENTIFIER = 6;
+        public const цел wxSTC_BAT_OPERATOR = 7;
 
         // Lexical states for SCLEX_MAKEFILE
-        public const int wxSTC_MAKE_DEFAULT = 0;
-        public const int wxSTC_MAKE_COMMENT = 1;
-        public const int wxSTC_MAKE_PREPROCESSOR = 2;
-        public const int wxSTC_MAKE_IDENTIFIER = 3;
-        public const int wxSTC_MAKE_OPERATOR = 4;
-        public const int wxSTC_MAKE_TARGET = 5;
-        public const int wxSTC_MAKE_IDEOL = 9;
+        public const цел wxSTC_MAKE_DEFAULT = 0;
+        public const цел wxSTC_MAKE_COMMENT = 1;
+        public const цел wxSTC_MAKE_PREPROCESSOR = 2;
+        public const цел wxSTC_MAKE_IDENTIFIER = 3;
+        public const цел wxSTC_MAKE_OPERATOR = 4;
+        public const цел wxSTC_MAKE_TARGET = 5;
+        public const цел wxSTC_MAKE_IDEOL = 9;
 
         // Lexical states for SCLEX_DIFF
-        public const int wxSTC_DIFF_DEFAULT = 0;
-        public const int wxSTC_DIFF_COMMENT = 1;
-        public const int wxSTC_DIFF_COMMAND = 2;
-        public const int wxSTC_DIFF_HEADER = 3;
-        public const int wxSTC_DIFF_POSITION = 4;
-        public const int wxSTC_DIFF_DELETED = 5;
-        public const int wxSTC_DIFF_ADDED = 6;
+        public const цел wxSTC_DIFF_DEFAULT = 0;
+        public const цел wxSTC_DIFF_COMMENT = 1;
+        public const цел wxSTC_DIFF_COMMAND = 2;
+        public const цел wxSTC_DIFF_HEADER = 3;
+        public const цел wxSTC_DIFF_POSITION = 4;
+        public const цел wxSTC_DIFF_DELETED = 5;
+        public const цел wxSTC_DIFF_ADDED = 6;
 
         // Lexical states for SCLEX_CONF (Apache Configuration Files Lexer)
-        public const int wxSTC_CONF_DEFAULT = 0;
-        public const int wxSTC_CONF_COMMENT = 1;
-        public const int wxSTC_CONF_NUMBER = 2;
-        public const int wxSTC_CONF_IDENTIFIER = 3;
-        public const int wxSTC_CONF_EXTENSION = 4;
-        public const int wxSTC_CONF_PARAMETER = 5;
-        public const int wxSTC_CONF_STRING = 6;
-        public const int wxSTC_CONF_OPERATOR = 7;
-        public const int wxSTC_CONF_IP = 8;
-        public const int wxSTC_CONF_DIRECTIVE = 9;
+        public const цел wxSTC_CONF_DEFAULT = 0;
+        public const цел wxSTC_CONF_COMMENT = 1;
+        public const цел wxSTC_CONF_NUMBER = 2;
+        public const цел wxSTC_CONF_IDENTIFIER = 3;
+        public const цел wxSTC_CONF_EXTENSION = 4;
+        public const цел wxSTC_CONF_PARAMETER = 5;
+        public const цел wxSTC_CONF_STRING = 6;
+        public const цел wxSTC_CONF_OPERATOR = 7;
+        public const цел wxSTC_CONF_IP = 8;
+        public const цел wxSTC_CONF_DIRECTIVE = 9;
 
         // Lexical states for SCLEX_AVE, Avenue
-        public const int wxSTC_AVE_DEFAULT = 0;
-        public const int wxSTC_AVE_COMMENT = 1;
-        public const int wxSTC_AVE_NUMBER = 2;
-        public const int wxSTC_AVE_WORD = 3;
-        public const int wxSTC_AVE_STRING = 6;
-        public const int wxSTC_AVE_ENUM = 7;
-        public const int wxSTC_AVE_STRINGEOL = 8;
-        public const int wxSTC_AVE_IDENTIFIER = 9;
-        public const int wxSTC_AVE_OPERATOR = 10;
-        public const int wxSTC_AVE_WORD1 = 11;
-        public const int wxSTC_AVE_WORD2 = 12;
-        public const int wxSTC_AVE_WORD3 = 13;
-        public const int wxSTC_AVE_WORD4 = 14;
-        public const int wxSTC_AVE_WORD5 = 15;
-        public const int wxSTC_AVE_WORD6 = 16;
+        public const цел wxSTC_AVE_DEFAULT = 0;
+        public const цел wxSTC_AVE_COMMENT = 1;
+        public const цел wxSTC_AVE_NUMBER = 2;
+        public const цел wxSTC_AVE_WORD = 3;
+        public const цел wxSTC_AVE_STRING = 6;
+        public const цел wxSTC_AVE_ENUM = 7;
+        public const цел wxSTC_AVE_STRINGEOL = 8;
+        public const цел wxSTC_AVE_IDENTIFIER = 9;
+        public const цел wxSTC_AVE_OPERATOR = 10;
+        public const цел wxSTC_AVE_WORD1 = 11;
+        public const цел wxSTC_AVE_WORD2 = 12;
+        public const цел wxSTC_AVE_WORD3 = 13;
+        public const цел wxSTC_AVE_WORD4 = 14;
+        public const цел wxSTC_AVE_WORD5 = 15;
+        public const цел wxSTC_AVE_WORD6 = 16;
 
         // Lexical states for SCLEX_ADA
-        public const int wxSTC_ADA_DEFAULT = 0;
-        public const int wxSTC_ADA_WORD = 1;
-        public const int wxSTC_ADA_IDENTIFIER = 2;
-        public const int wxSTC_ADA_NUMBER = 3;
-        public const int wxSTC_ADA_DELIMITER = 4;
-        public const int wxSTC_ADA_CHARACTER = 5;
-        public const int wxSTC_ADA_CHARACTEREOL = 6;
-        public const int wxSTC_ADA_STRING = 7;
-        public const int wxSTC_ADA_STRINGEOL = 8;
-        public const int wxSTC_ADA_LABEL = 9;
-        public const int wxSTC_ADA_COMMENTLINE = 10;
-        public const int wxSTC_ADA_ILLEGAL = 11;
+        public const цел wxSTC_ADA_DEFAULT = 0;
+        public const цел wxSTC_ADA_WORD = 1;
+        public const цел wxSTC_ADA_IDENTIFIER = 2;
+        public const цел wxSTC_ADA_NUMBER = 3;
+        public const цел wxSTC_ADA_DELIMITER = 4;
+        public const цел wxSTC_ADA_CHARACTER = 5;
+        public const цел wxSTC_ADA_CHARACTEREOL = 6;
+        public const цел wxSTC_ADA_STRING = 7;
+        public const цел wxSTC_ADA_STRINGEOL = 8;
+        public const цел wxSTC_ADA_LABEL = 9;
+        public const цел wxSTC_ADA_COMMENTLINE = 10;
+        public const цел wxSTC_ADA_ILLEGAL = 11;
 
         // Lexical states for SCLEX_BAAN
-        public const int wxSTC_BAAN_DEFAULT = 0;
-        public const int wxSTC_BAAN_COMMENT = 1;
-        public const int wxSTC_BAAN_COMMENTDOC = 2;
-        public const int wxSTC_BAAN_NUMBER = 3;
-        public const int wxSTC_BAAN_WORD = 4;
-        public const int wxSTC_BAAN_STRING = 5;
-        public const int wxSTC_BAAN_PREPROCESSOR = 6;
-        public const int wxSTC_BAAN_OPERATOR = 7;
-        public const int wxSTC_BAAN_IDENTIFIER = 8;
-        public const int wxSTC_BAAN_STRINGEOL = 9;
-        public const int wxSTC_BAAN_WORD2 = 10;
+        public const цел wxSTC_BAAN_DEFAULT = 0;
+        public const цел wxSTC_BAAN_COMMENT = 1;
+        public const цел wxSTC_BAAN_COMMENTDOC = 2;
+        public const цел wxSTC_BAAN_NUMBER = 3;
+        public const цел wxSTC_BAAN_WORD = 4;
+        public const цел wxSTC_BAAN_STRING = 5;
+        public const цел wxSTC_BAAN_PREPROCESSOR = 6;
+        public const цел wxSTC_BAAN_OPERATOR = 7;
+        public const цел wxSTC_BAAN_IDENTIFIER = 8;
+        public const цел wxSTC_BAAN_STRINGEOL = 9;
+        public const цел wxSTC_BAAN_WORD2 = 10;
 
         // Lexical states for SCLEX_LISP
-        public const int wxSTC_LISP_DEFAULT = 0;
-        public const int wxSTC_LISP_COMMENT = 1;
-        public const int wxSTC_LISP_NUMBER = 2;
-        public const int wxSTC_LISP_KEYWORD = 3;
-        public const int wxSTC_LISP_STRING = 6;
-        public const int wxSTC_LISP_STRINGEOL = 8;
-        public const int wxSTC_LISP_IDENTIFIER = 9;
-        public const int wxSTC_LISP_OPERATOR = 10;
+        public const цел wxSTC_LISP_DEFAULT = 0;
+        public const цел wxSTC_LISP_COMMENT = 1;
+        public const цел wxSTC_LISP_NUMBER = 2;
+        public const цел wxSTC_LISP_KEYWORD = 3;
+        public const цел wxSTC_LISP_STRING = 6;
+        public const цел wxSTC_LISP_STRINGEOL = 8;
+        public const цел wxSTC_LISP_IDENTIFIER = 9;
+        public const цел wxSTC_LISP_OPERATOR = 10;
 
         // Lexical states for SCLEX_EIFFEL and SCLEX_EIFFELKW
-        public const int wxSTC_EIFFEL_DEFAULT = 0;
-        public const int wxSTC_EIFFEL_COMMENTLINE = 1;
-        public const int wxSTC_EIFFEL_NUMBER = 2;
-        public const int wxSTC_EIFFEL_WORD = 3;
-        public const int wxSTC_EIFFEL_STRING = 4;
-        public const int wxSTC_EIFFEL_CHARACTER = 5;
-        public const int wxSTC_EIFFEL_OPERATOR = 6;
-        public const int wxSTC_EIFFEL_IDENTIFIER = 7;
-        public const int wxSTC_EIFFEL_STRINGEOL = 8;
+        public const цел wxSTC_EIFFEL_DEFAULT = 0;
+        public const цел wxSTC_EIFFEL_COMMENTLINE = 1;
+        public const цел wxSTC_EIFFEL_NUMBER = 2;
+        public const цел wxSTC_EIFFEL_WORD = 3;
+        public const цел wxSTC_EIFFEL_STRING = 4;
+        public const цел wxSTC_EIFFEL_CHARACTER = 5;
+        public const цел wxSTC_EIFFEL_OPERATOR = 6;
+        public const цел wxSTC_EIFFEL_IDENTIFIER = 7;
+        public const цел wxSTC_EIFFEL_STRINGEOL = 8;
 
         // Lexical states for SCLEX_NNCRONTAB (nnCron crontab Lexer)
-        public const int wxSTC_NNCRONTAB_DEFAULT = 0;
-        public const int wxSTC_NNCRONTAB_COMMENT = 1;
-        public const int wxSTC_NNCRONTAB_TASK = 2;
-        public const int wxSTC_NNCRONTAB_SECTION = 3;
-        public const int wxSTC_NNCRONTAB_KEYWORD = 4;
-        public const int wxSTC_NNCRONTAB_MODIFIER = 5;
-        public const int wxSTC_NNCRONTAB_ASTERISK = 6;
-        public const int wxSTC_NNCRONTAB_NUMBER = 7;
-        public const int wxSTC_NNCRONTAB_STRING = 8;
-        public const int wxSTC_NNCRONTAB_ENVIRONMENT = 9;
-        public const int wxSTC_NNCRONTAB_IDENTIFIER = 10;
+        public const цел wxSTC_NNCRONTAB_DEFAULT = 0;
+        public const цел wxSTC_NNCRONTAB_COMMENT = 1;
+        public const цел wxSTC_NNCRONTAB_TASK = 2;
+        public const цел wxSTC_NNCRONTAB_SECTION = 3;
+        public const цел wxSTC_NNCRONTAB_KEYWORD = 4;
+        public const цел wxSTC_NNCRONTAB_MODIFIER = 5;
+        public const цел wxSTC_NNCRONTAB_ASTERISK = 6;
+        public const цел wxSTC_NNCRONTAB_NUMBER = 7;
+        public const цел wxSTC_NNCRONTAB_STRING = 8;
+        public const цел wxSTC_NNCRONTAB_ENVIRONMENT = 9;
+        public const цел wxSTC_NNCRONTAB_IDENTIFIER = 10;
 
         // Lexical states for SCLEX_MATLAB
-        public const int wxSTC_MATLAB_DEFAULT = 0;
-        public const int wxSTC_MATLAB_COMMENT = 1;
-        public const int wxSTC_MATLAB_COMMAND = 2;
-        public const int wxSTC_MATLAB_NUMBER = 3;
-        public const int wxSTC_MATLAB_KEYWORD = 4;
-        public const int wxSTC_MATLAB_STRING = 5;
-        public const int wxSTC_MATLAB_OPERATOR = 6;
-        public const int wxSTC_MATLAB_IDENTIFIER = 7;
+        public const цел wxSTC_MATLAB_DEFAULT = 0;
+        public const цел wxSTC_MATLAB_COMMENT = 1;
+        public const цел wxSTC_MATLAB_COMMAND = 2;
+        public const цел wxSTC_MATLAB_NUMBER = 3;
+        public const цел wxSTC_MATLAB_KEYWORD = 4;
+        public const цел wxSTC_MATLAB_STRING = 5;
+        public const цел wxSTC_MATLAB_OPERATOR = 6;
+        public const цел wxSTC_MATLAB_IDENTIFIER = 7;
 
         // Lexical states for SCLEX_SCRIPTOL
-        public const int wxSTC_SCRIPTOL_DEFAULT = 0;
-        public const int wxSTC_SCRIPTOL_COMMENT = 1;
-        public const int wxSTC_SCRIPTOL_COMMENTLINE = 2;
-        public const int wxSTC_SCRIPTOL_COMMENTDOC = 3;
-        public const int wxSTC_SCRIPTOL_NUMBER = 4;
-        public const int wxSTC_SCRIPTOL_WORD = 5;
-        public const int wxSTC_SCRIPTOL_STRING = 6;
-        public const int wxSTC_SCRIPTOL_CHARACTER = 7;
-        public const int wxSTC_SCRIPTOL_UUID = 8;
-        public const int wxSTC_SCRIPTOL_PREPROCESSOR = 9;
-        public const int wxSTC_SCRIPTOL_OPERATOR = 10;
-        public const int wxSTC_SCRIPTOL_IDENTIFIER = 11;
-        public const int wxSTC_SCRIPTOL_STRINGEOL = 12;
-        public const int wxSTC_SCRIPTOL_VERBATIM = 13;
-        public const int wxSTC_SCRIPTOL_REGEX = 14;
-        public const int wxSTC_SCRIPTOL_COMMENTLINEDOC = 15;
-        public const int wxSTC_SCRIPTOL_WORD2 = 16;
-        public const int wxSTC_SCRIPTOL_COMMENTDOCKEYWORD = 17;
-        public const int wxSTC_SCRIPTOL_COMMENTDOCKEYWORDERROR = 18;
-        public const int wxSTC_SCRIPTOL_COMMENTBASIC = 19;
+        public const цел wxSTC_SCRIPTOL_DEFAULT = 0;
+        public const цел wxSTC_SCRIPTOL_COMMENT = 1;
+        public const цел wxSTC_SCRIPTOL_COMMENTLINE = 2;
+        public const цел wxSTC_SCRIPTOL_COMMENTDOC = 3;
+        public const цел wxSTC_SCRIPTOL_NUMBER = 4;
+        public const цел wxSTC_SCRIPTOL_WORD = 5;
+        public const цел wxSTC_SCRIPTOL_STRING = 6;
+        public const цел wxSTC_SCRIPTOL_CHARACTER = 7;
+        public const цел wxSTC_SCRIPTOL_UUID = 8;
+        public const цел wxSTC_SCRIPTOL_PREPROCESSOR = 9;
+        public const цел wxSTC_SCRIPTOL_OPERATOR = 10;
+        public const цел wxSTC_SCRIPTOL_IDENTIFIER = 11;
+        public const цел wxSTC_SCRIPTOL_STRINGEOL = 12;
+        public const цел wxSTC_SCRIPTOL_VERBATIM = 13;
+        public const цел wxSTC_SCRIPTOL_REGEX = 14;
+        public const цел wxSTC_SCRIPTOL_COMMENTLINEDOC = 15;
+        public const цел wxSTC_SCRIPTOL_WORD2 = 16;
+        public const цел wxSTC_SCRIPTOL_COMMENTDOCKEYWORD = 17;
+        public const цел wxSTC_SCRIPTOL_COMMENTDOCKEYWORDERROR = 18;
+        public const цел wxSTC_SCRIPTOL_COMMENTBASIC = 19;
 
         // Lexical states for SCLEX_ASM
-        public const int wxSTC_ASM_DEFAULT = 0;
-        public const int wxSTC_ASM_COMMENT = 1;
-        public const int wxSTC_ASM_NUMBER = 2;
-        public const int wxSTC_ASM_STRING = 3;
-        public const int wxSTC_ASM_OPERATOR = 4;
-        public const int wxSTC_ASM_IDENTIFIER = 5;
-        public const int wxSTC_ASM_CPUINSTRUCTION = 6;
-        public const int wxSTC_ASM_MATHINSTRUCTION = 7;
-        public const int wxSTC_ASM_REGISTER = 8;
-        public const int wxSTC_ASM_DIRECTIVE = 9;
-        public const int wxSTC_ASM_DIRECTIVEOPERAND = 10;
+        public const цел wxSTC_ASM_DEFAULT = 0;
+        public const цел wxSTC_ASM_COMMENT = 1;
+        public const цел wxSTC_ASM_NUMBER = 2;
+        public const цел wxSTC_ASM_STRING = 3;
+        public const цел wxSTC_ASM_OPERATOR = 4;
+        public const цел wxSTC_ASM_IDENTIFIER = 5;
+        public const цел wxSTC_ASM_CPUINSTRUCTION = 6;
+        public const цел wxSTC_ASM_MATHINSTRUCTION = 7;
+        public const цел wxSTC_ASM_REGISTER = 8;
+        public const цел wxSTC_ASM_DIRECTIVE = 9;
+        public const цел wxSTC_ASM_DIRECTIVEOPERAND = 10;
 
         // Lexical states for SCLEX_FORTRAN
-        public const int wxSTC_F_DEFAULT = 0;
-        public const int wxSTC_F_COMMENT = 1;
-        public const int wxSTC_F_NUMBER = 2;
-        public const int wxSTC_F_STRING1 = 3;
-        public const int wxSTC_F_STRING2 = 4;
-        public const int wxSTC_F_STRINGEOL = 5;
-        public const int wxSTC_F_OPERATOR = 6;
-        public const int wxSTC_F_IDENTIFIER = 7;
-        public const int wxSTC_F_WORD = 8;
-        public const int wxSTC_F_WORD2 = 9;
-        public const int wxSTC_F_WORD3 = 10;
-        public const int wxSTC_F_PREPROCESSOR = 11;
-        public const int wxSTC_F_OPERATOR2 = 12;
-        public const int wxSTC_F_LABEL = 13;
-        public const int wxSTC_F_CONTINUATION = 14;
+        public const цел wxSTC_F_DEFAULT = 0;
+        public const цел wxSTC_F_COMMENT = 1;
+        public const цел wxSTC_F_NUMBER = 2;
+        public const цел wxSTC_F_STRING1 = 3;
+        public const цел wxSTC_F_STRING2 = 4;
+        public const цел wxSTC_F_STRINGEOL = 5;
+        public const цел wxSTC_F_OPERATOR = 6;
+        public const цел wxSTC_F_IDENTIFIER = 7;
+        public const цел wxSTC_F_WORD = 8;
+        public const цел wxSTC_F_WORD2 = 9;
+        public const цел wxSTC_F_WORD3 = 10;
+        public const цел wxSTC_F_PREPROCESSOR = 11;
+        public const цел wxSTC_F_OPERATOR2 = 12;
+        public const цел wxSTC_F_LABEL = 13;
+        public const цел wxSTC_F_CONTINUATION = 14;
 
         // Lexical states for SCLEX_CSS
-        public const int wxSTC_CSS_DEFAULT = 0;
-        public const int wxSTC_CSS_TAG = 1;
-        public const int wxSTC_CSS_CLASS = 2;
-        public const int wxSTC_CSS_PSEUDOCLASS = 3;
-        public const int wxSTC_CSS_UNKNOWN_PSEUDOCLASS = 4;
-        public const int wxSTC_CSS_OPERATOR = 5;
-        public const int wxSTC_CSS_IDENTIFIER = 6;
-        public const int wxSTC_CSS_UNKNOWN_IDENTIFIER = 7;
-        public const int wxSTC_CSS_VALUE = 8;
-        public const int wxSTC_CSS_COMMENT = 9;
-        public const int wxSTC_CSS_ID = 10;
-        public const int wxSTC_CSS_IMPORTANT = 11;
-        public const int wxSTC_CSS_DIRECTIVE = 12;
-        public const int wxSTC_CSS_DOUBLESTRING = 13;
-        public const int wxSTC_CSS_SINGLESTRING = 14;
+        public const цел wxSTC_CSS_DEFAULT = 0;
+        public const цел wxSTC_CSS_TAG = 1;
+        public const цел wxSTC_CSS_CLASS = 2;
+        public const цел wxSTC_CSS_PSEUDOCLASS = 3;
+        public const цел wxSTC_CSS_UNKNOWN_PSEUDOCLASS = 4;
+        public const цел wxSTC_CSS_OPERATOR = 5;
+        public const цел wxSTC_CSS_IDENTIFIER = 6;
+        public const цел wxSTC_CSS_UNKNOWN_IDENTIFIER = 7;
+        public const цел wxSTC_CSS_VALUE = 8;
+        public const цел wxSTC_CSS_COMMENT = 9;
+        public const цел wxSTC_CSS_ID = 10;
+        public const цел wxSTC_CSS_IMPORTANT = 11;
+        public const цел wxSTC_CSS_DIRECTIVE = 12;
+        public const цел wxSTC_CSS_DOUBLESTRING = 13;
+        public const цел wxSTC_CSS_SINGLESTRING = 14;
 
         // Lexical states for SCLEX_POV
-        public const int wxSTC_POV_DEFAULT = 0;
-        public const int wxSTC_POV_COMMENT = 1;
-        public const int wxSTC_POV_COMMENTLINE = 2;
-        public const int wxSTC_POV_COMMENTDOC = 3;
-        public const int wxSTC_POV_NUMBER = 4;
-        public const int wxSTC_POV_WORD = 5;
-        public const int wxSTC_POV_STRING = 6;
-        public const int wxSTC_POV_OPERATOR = 7;
-        public const int wxSTC_POV_IDENTIFIER = 8;
-        public const int wxSTC_POV_BRACE = 9;
-        public const int wxSTC_POV_WORD2 = 10;
+        public const цел wxSTC_POV_DEFAULT = 0;
+        public const цел wxSTC_POV_COMMENT = 1;
+        public const цел wxSTC_POV_COMMENTLINE = 2;
+        public const цел wxSTC_POV_COMMENTDOC = 3;
+        public const цел wxSTC_POV_NUMBER = 4;
+        public const цел wxSTC_POV_WORD = 5;
+        public const цел wxSTC_POV_STRING = 6;
+        public const цел wxSTC_POV_OPERATOR = 7;
+        public const цел wxSTC_POV_IDENTIFIER = 8;
+        public const цел wxSTC_POV_BRACE = 9;
+        public const цел wxSTC_POV_WORD2 = 10;
 
 
         //-----------------------------------------
         // Commands that can be bound to keystrokes
 
         // Redoes the next action on the undo history.
-        public const int wxSTC_CMD_REDO = 2011;
+        public const цел wxSTC_CMD_REDO = 2011;
 
-        // Select all the text in the document.
-        public const int wxSTC_CMD_SELECTALL = 2013;
+        // Select all the текст in the document.
+        public const цел wxSTC_CMD_SELECTALL = 2013;
 
         // Undo one action in the undo history.
-        public const int wxSTC_CMD_UNDO = 2176;
+        public const цел wxSTC_CMD_UNDO = 2176;
 
         // Cut the selection to the clipboard.
-        public const int wxSTC_CMD_CUT = 2177;
+        public const цел wxSTC_CMD_CUT = 2177;
 
-        // Copy the selection to the clipboard.
-        public const int wxSTC_CMD_COPY = 2178;
+        // Копируй the selection to the clipboard.
+        public const цел wxSTC_CMD_COPY = 2178;
 
-        // Paste the contents of the clipboard into the document replacing the selection.
-        public const int wxSTC_CMD_PASTE = 2179;
+        // Вставь the contents of the clipboard into the document replacing the selection.
+        public const цел wxSTC_CMD_PASTE = 2179;
 
-        // Clear the selection.
-        public const int wxSTC_CMD_CLEAR = 2180;
+        // Очисть the selection.
+        public const цел wxSTC_CMD_CLEAR = 2180;
 
         // Move caret down one line.
-        public const int wxSTC_CMD_LINEDOWN = 2300;
+        public const цел wxSTC_CMD_LINEDOWN = 2300;
 
         // Move caret down one line extending selection to new caret position.
-        public const int wxSTC_CMD_LINEDOWNEXTEND = 2301;
+        public const цел wxSTC_CMD_LINEDOWNEXTEND = 2301;
 
         // Move caret up one line.
-        public const int wxSTC_CMD_LINEUP = 2302;
+        public const цел wxSTC_CMD_LINEUP = 2302;
 
         // Move caret up one line extending selection to new caret position.
-        public const int wxSTC_CMD_LINEUPEXTEND = 2303;
+        public const цел wxSTC_CMD_LINEUPEXTEND = 2303;
 
         // Move caret left one character.
-        public const int wxSTC_CMD_CHARLEFT = 2304;
+        public const цел wxSTC_CMD_CHARLEFT = 2304;
 
         // Move caret left one character extending selection to new caret position.
-        public const int wxSTC_CMD_CHARLEFTEXTEND = 2305;
+        public const цел wxSTC_CMD_CHARLEFTEXTEND = 2305;
 
         // Move caret right one character.
-        public const int wxSTC_CMD_CHARRIGHT = 2306;
+        public const цел wxSTC_CMD_CHARRIGHT = 2306;
 
         // Move caret right one character extending selection to new caret position.
-        public const int wxSTC_CMD_CHARRIGHTEXTEND = 2307;
+        public const цел wxSTC_CMD_CHARRIGHTEXTEND = 2307;
 
         // Move caret left one word.
-        public const int wxSTC_CMD_WORDLEFT = 2308;
+        public const цел wxSTC_CMD_WORDLEFT = 2308;
 
         // Move caret left one word extending selection to new caret position.
-        public const int wxSTC_CMD_WORDLEFTEXTEND = 2309;
+        public const цел wxSTC_CMD_WORDLEFTEXTEND = 2309;
 
         // Move caret right one word.
-        public const int wxSTC_CMD_WORDRIGHT = 2310;
+        public const цел wxSTC_CMD_WORDRIGHT = 2310;
 
         // Move caret right one word extending selection to new caret position.
-        public const int wxSTC_CMD_WORDRIGHTEXTEND = 2311;
+        public const цел wxSTC_CMD_WORDRIGHTEXTEND = 2311;
 
         // Move caret to first position on line.
-        public const int wxSTC_CMD_HOME = 2312;
+        public const цел wxSTC_CMD_HOME = 2312;
 
         // Move caret to first position on line extending selection to new caret position.
-        public const int wxSTC_CMD_HOMEEXTEND = 2313;
+        public const цел wxSTC_CMD_HOMEEXTEND = 2313;
 
         // Move caret to last position on line.
-        public const int wxSTC_CMD_LINEEND = 2314;
+        public const цел wxSTC_CMD_LINEEND = 2314;
 
         // Move caret to last position on line extending selection to new caret position.
-        public const int wxSTC_CMD_LINEENDEXTEND = 2315;
+        public const цел wxSTC_CMD_LINEENDEXTEND = 2315;
 
         // Move caret to first position in document.
-        public const int wxSTC_CMD_DOCUMENTSTART = 2316;
+        public const цел wxSTC_CMD_DOCUMENTSTART = 2316;
 
         // Move caret to first position in document extending selection to new caret position.
-        public const int wxSTC_CMD_DOCUMENTSTARTEXTEND = 2317;
+        public const цел wxSTC_CMD_DOCUMENTSTARTEXTEND = 2317;
 
         // Move caret to last position in document.
-        public const int wxSTC_CMD_DOCUMENTEND = 2318;
+        public const цел wxSTC_CMD_DOCUMENTEND = 2318;
 
         // Move caret to last position in document extending selection to new caret position.
-        public const int wxSTC_CMD_DOCUMENTENDEXTEND = 2319;
+        public const цел wxSTC_CMD_DOCUMENTENDEXTEND = 2319;
 
         // Move caret one page up.
-        public const int wxSTC_CMD_PAGEUP = 2320;
+        public const цел wxSTC_CMD_PAGEUP = 2320;
 
         // Move caret one page up extending selection to new caret position.
-        public const int wxSTC_CMD_PAGEUPEXTEND = 2321;
+        public const цел wxSTC_CMD_PAGEUPEXTEND = 2321;
 
         // Move caret one page down.
-        public const int wxSTC_CMD_PAGEDOWN = 2322;
+        public const цел wxSTC_CMD_PAGEDOWN = 2322;
 
         // Move caret one page down extending selection to new caret position.
-        public const int wxSTC_CMD_PAGEDOWNEXTEND = 2323;
+        public const цел wxSTC_CMD_PAGEDOWNEXTEND = 2323;
 
         // Switch from insert to overtype mode or the reverse.
-        public const int wxSTC_CMD_EDITTOGGLEOVERTYPE = 2324;
+        public const цел wxSTC_CMD_EDITTOGGLEOVERTYPE = 2324;
 
         // Cancel any modes such as call tip or auto-completion list display.
-        public const int wxSTC_CMD_CANCEL = 2325;
+        public const цел wxSTC_CMD_CANCEL = 2325;
 
         // Delete the selection or if no selection, the character before the caret.
-        public const int wxSTC_CMD_DELETEBACK = 2326;
+        public const цел wxSTC_CMD_DELETEBACK = 2326;
 
         // If selection is empty or all on one line replace the selection with a tab character.
         // If more than one line selected, indent the lines.
-        public const int wxSTC_CMD_TAB = 2327;
+        public const цел wxSTC_CMD_TAB = 2327;
 
         // Dedent the selected lines.
-        public const int wxSTC_CMD_BACKTAB = 2328;
+        public const цел wxSTC_CMD_BACKTAB = 2328;
 
         // Insert a new line, may use a CRLF, CR or LF depending on EOL mode.
-        public const int wxSTC_CMD_NEWLINE = 2329;
+        public const цел wxSTC_CMD_NEWLINE = 2329;
 
         // Insert a Form Feed character.
-        public const int wxSTC_CMD_FORMFEED = 2330;
+        public const цел wxSTC_CMD_FORMFEED = 2330;
 
         // Move caret to before first visible character on line.
         // If already there move to first character on line.
-        public const int wxSTC_CMD_VCHOME = 2331;
+        public const цел wxSTC_CMD_VCHOME = 2331;
 
         // Like VCHome but extending selection to new caret position.
-        public const int wxSTC_CMD_VCHOMEEXTEND = 2332;
+        public const цел wxSTC_CMD_VCHOMEEXTEND = 2332;
 
-        // Magnify the displayed text by increasing the sizes by 1 point.
-        public const int wxSTC_CMD_ZOOMIN = 2333;
+        // Magnify the displayed текст by increasing the sizes by 1 point.
+        public const цел wxSTC_CMD_ZOOMIN = 2333;
 
-        // Make the displayed text smaller by decreasing the sizes by 1 point.
-        public const int wxSTC_CMD_ZOOMOUT = 2334;
+        // Make the displayed текст smaller by decreasing the sizes by 1 point.
+        public const цел wxSTC_CMD_ZOOMOUT = 2334;
 
         // Delete the word to the left of the caret.
-        public const int wxSTC_CMD_DELWORDLEFT = 2335;
+        public const цел wxSTC_CMD_DELWORDLEFT = 2335;
 
         // Delete the word to the right of the caret.
-        public const int wxSTC_CMD_DELWORDRIGHT = 2336;
+        public const цел wxSTC_CMD_DELWORDRIGHT = 2336;
 
         // Cut the line containing the caret.
-        public const int wxSTC_CMD_LINECUT = 2337;
+        public const цел wxSTC_CMD_LINECUT = 2337;
 
         // Delete the line containing the caret.
-        public const int wxSTC_CMD_LINEDELETE = 2338;
+        public const цел wxSTC_CMD_LINEDELETE = 2338;
 
         // Switch the current line with the previous.
-        public const int wxSTC_CMD_LINETRANSPOSE = 2339;
+        public const цел wxSTC_CMD_LINETRANSPOSE = 2339;
 
         // Duplicate the current line.
-        public const int wxSTC_CMD_LINEDUPLICATE = 2404;
+        public const цел wxSTC_CMD_LINEDUPLICATE = 2404;
 
         // Transform the selection to lower case.
-        public const int wxSTC_CMD_LOWERCASE = 2340;
+        public const цел wxSTC_CMD_LOWERCASE = 2340;
 
         // Transform the selection to upper case.
-        public const int wxSTC_CMD_UPPERCASE = 2341;
+        public const цел wxSTC_CMD_UPPERCASE = 2341;
 
         // Scroll the document down, keeping the caret visible.
-        public const int wxSTC_CMD_LINESCROLLDOWN = 2342;
+        public const цел wxSTC_CMD_LINESCROLLDOWN = 2342;
 
         // Scroll the document up, keeping the caret visible.
-        public const int wxSTC_CMD_LINESCROLLUP = 2343;
+        public const цел wxSTC_CMD_LINESCROLLUP = 2343;
 
         // Delete the selection or if no selection, the character before the caret.
         // Will not delete the character before at the start of a line.
-        public const int wxSTC_CMD_DELETEBACKNOTLINE = 2344;
+        public const цел wxSTC_CMD_DELETEBACKNOTLINE = 2344;
 
         // Move caret to first position on display line.
-        public const int wxSTC_CMD_HOMEDISPLAY = 2345;
+        public const цел wxSTC_CMD_HOMEDISPLAY = 2345;
 
         // Move caret to first position on display line extending selection to
         // new caret position.
-        public const int wxSTC_CMD_HOMEDISPLAYEXTEND = 2346;
+        public const цел wxSTC_CMD_HOMEDISPLAYEXTEND = 2346;
 
         // Move caret to last position on display line.
-        public const int wxSTC_CMD_LINEENDDISPLAY = 2347;
+        public const цел wxSTC_CMD_LINEENDDISPLAY = 2347;
 
         // Move caret to last position on display line extending selection to new
         // caret position.
-        public const int wxSTC_CMD_LINEENDDISPLAYEXTEND = 2348;
+        public const цел wxSTC_CMD_LINEENDDISPLAYEXTEND = 2348;
 
         // These are like their namesakes Home(Extend)?, LineEnd(Extend)?, VCHome(Extend)?
         // except they behave differently when word-wrap is enabled:
         // They go first to the start / end of the display line, like (Home|LineEnd)Display
         // The difference is that, the cursor is already at the point, it goes on to the start
         // or end of the document line, as appropriate for (Home|LineEnd|VCHome)Extend.
-        public const int wxSTC_CMD_HOMEWRAP = 2349;
-        public const int wxSTC_CMD_HOMEWRAPEXTEND = 2450;
-        public const int wxSTC_CMD_LINEENDWRAP = 2451;
-        public const int wxSTC_CMD_LINEENDWRAPEXTEND = 2452;
-        public const int wxSTC_CMD_VCHOMEWRAP = 2453;
-        public const int wxSTC_CMD_VCHOMEWRAPEXTEND = 2454;
+        public const цел wxSTC_CMD_HOMEWRAP = 2349;
+        public const цел wxSTC_CMD_HOMEWRAPEXTEND = 2450;
+        public const цел wxSTC_CMD_LINEENDWRAP = 2451;
+        public const цел wxSTC_CMD_LINEENDWRAPEXTEND = 2452;
+        public const цел wxSTC_CMD_VCHOMEWRAP = 2453;
+        public const цел wxSTC_CMD_VCHOMEWRAPEXTEND = 2454;
 
         // Move to the previous change in capitalisation.
-        public const int wxSTC_CMD_WORDPARTLEFT = 2390;
+        public const цел wxSTC_CMD_WORDPARTLEFT = 2390;
 
         // Move to the previous change in capitalisation extending selection
         // to new caret position.
-        public const int wxSTC_CMD_WORDPARTLEFTEXTEND = 2391;
+        public const цел wxSTC_CMD_WORDPARTLEFTEXTEND = 2391;
 
         // Move to the change next in capitalisation.
-        public const int wxSTC_CMD_WORDPARTRIGHT = 2392;
+        public const цел wxSTC_CMD_WORDPARTRIGHT = 2392;
 
         // Move to the next change in capitalisation extending selection
         // to new caret position.
-        public const int wxSTC_CMD_WORDPARTRIGHTEXTEND = 2393;
+        public const цел wxSTC_CMD_WORDPARTRIGHTEXTEND = 2393;
 
         // Delete back from the current position to the start of the line.
-        public const int wxSTC_CMD_DELLINELEFT = 2395;
+        public const цел wxSTC_CMD_DELLINELEFT = 2395;
 
         // Delete forwards from the current position to the end of the line.
-        public const int wxSTC_CMD_DELLINERIGHT = 2396;
+        public const цел wxSTC_CMD_DELLINERIGHT = 2396;
 
         // Move caret between paragraphs (delimited by empty lines)
-        public const int wxSTC_CMD_PARADOWN = 2413;
-        public const int wxSTC_CMD_PARADOWNEXTEND = 2414;
-        public const int wxSTC_CMD_PARAUP = 2415;
-        public const int wxSTC_CMD_PARAUPEXTEND = 2416;
+        public const цел wxSTC_CMD_PARADOWN = 2413;
+        public const цел wxSTC_CMD_PARADOWNEXTEND = 2414;
+        public const цел wxSTC_CMD_PARAUP = 2415;
+        public const цел wxSTC_CMD_PARAUPEXTEND = 2416;
 
         //-----------------------------------------------------------------------------
 
@@ -1422,1634 +1422,1634 @@ public import wx.CommandEvent;
         	 wxEVT_STC_HOTSPOT_DCLICK = wxStyledTextCtrl_EVT_STC_HOTSPOT_DCLICK();
         	 wxEVT_STC_CALLTIP_CLICK = wxStyledTextCtrl_EVT_STC_CALLTIP_CLICK();
 
-            Event.AddEventType(wxEVT_STC_CHANGE,               &StyledTextEvent.New);
-            Event.AddEventType(wxEVT_STC_STYLENEEDED,          &StyledTextEvent.New);
-            Event.AddEventType(wxEVT_STC_CHARADDED,            &StyledTextEvent.New);
-            Event.AddEventType(wxEVT_STC_SAVEPOINTREACHED,     &StyledTextEvent.New);
-            Event.AddEventType(wxEVT_STC_SAVEPOINTLEFT,        &StyledTextEvent.New);
-            Event.AddEventType(wxEVT_STC_ROMODIFYATTEMPT,      &StyledTextEvent.New);
-            Event.AddEventType(wxEVT_STC_KEY,                  &StyledTextEvent.New);
-            Event.AddEventType(wxEVT_STC_DOUBLECLICK,          &StyledTextEvent.New);
-            Event.AddEventType(wxEVT_STC_UPDATEUI,             &StyledTextEvent.New);
-            Event.AddEventType(wxEVT_STC_MODIFIED,             &StyledTextEvent.New);
-            Event.AddEventType(wxEVT_STC_MACRORECORD,          &StyledTextEvent.New);
-            Event.AddEventType(wxEVT_STC_MARGINCLICK,          &StyledTextEvent.New);
-            Event.AddEventType(wxEVT_STC_NEEDSHOWN,            &StyledTextEvent.New);
-            //Event.AddEventType(wxEVT_STC_POSCHANGED,           &StyledTextEvent.New);
-            Event.AddEventType(wxEVT_STC_PAINTED,              &StyledTextEvent.New);
-            Event.AddEventType(wxEVT_STC_USERLISTSELECTION,    &StyledTextEvent.New);
-            Event.AddEventType(wxEVT_STC_URIDROPPED,           &StyledTextEvent.New);
-            Event.AddEventType(wxEVT_STC_DWELLSTART,           &StyledTextEvent.New);
-            Event.AddEventType(wxEVT_STC_DWELLEND,             &StyledTextEvent.New);
-            Event.AddEventType(wxEVT_STC_START_DRAG,           &StyledTextEvent.New);
-            Event.AddEventType(wxEVT_STC_DRAG_OVER,            &StyledTextEvent.New);
-            Event.AddEventType(wxEVT_STC_DO_DROP,              &StyledTextEvent.New);
-            Event.AddEventType(wxEVT_STC_ZOOM,                 &StyledTextEvent.New);
-            Event.AddEventType(wxEVT_STC_HOTSPOT_CLICK,        &StyledTextEvent.New);
-            Event.AddEventType(wxEVT_STC_HOTSPOT_DCLICK,       &StyledTextEvent.New);
-            Event.AddEventType(wxEVT_STC_CALLTIP_CLICK,        &StyledTextEvent.New);
+            Событие.ДобавьТипСоб(wxEVT_STC_CHANGE,               &StyledTextEvent.Нов);
+            Событие.ДобавьТипСоб(wxEVT_STC_STYLENEEDED,          &StyledTextEvent.Нов);
+            Событие.ДобавьТипСоб(wxEVT_STC_CHARADDED,            &StyledTextEvent.Нов);
+            Событие.ДобавьТипСоб(wxEVT_STC_SAVEPOINTREACHED,     &StyledTextEvent.Нов);
+            Событие.ДобавьТипСоб(wxEVT_STC_SAVEPOINTLEFT,        &StyledTextEvent.Нов);
+            Событие.ДобавьТипСоб(wxEVT_STC_ROMODIFYATTEMPT,      &StyledTextEvent.Нов);
+            Событие.ДобавьТипСоб(wxEVT_STC_KEY,                  &StyledTextEvent.Нов);
+            Событие.ДобавьТипСоб(wxEVT_STC_DOUBLECLICK,          &StyledTextEvent.Нов);
+            Событие.ДобавьТипСоб(wxEVT_STC_UPDATEUI,             &StyledTextEvent.Нов);
+            Событие.ДобавьТипСоб(wxEVT_STC_MODIFIED,             &StyledTextEvent.Нов);
+            Событие.ДобавьТипСоб(wxEVT_STC_MACRORECORD,          &StyledTextEvent.Нов);
+            Событие.ДобавьТипСоб(wxEVT_STC_MARGINCLICK,          &StyledTextEvent.Нов);
+            Событие.ДобавьТипСоб(wxEVT_STC_NEEDSHOWN,            &StyledTextEvent.Нов);
+            //Событие.ДобавьТипСоб(wxEVT_STC_POSCHANGED,           &StyledTextEvent.Нов);
+            Событие.ДобавьТипСоб(wxEVT_STC_PAINTED,              &StyledTextEvent.Нов);
+            Событие.ДобавьТипСоб(wxEVT_STC_USERLISTSELECTION,    &StyledTextEvent.Нов);
+            Событие.ДобавьТипСоб(wxEVT_STC_URIDROPPED,           &StyledTextEvent.Нов);
+            Событие.ДобавьТипСоб(wxEVT_STC_DWELLSTART,           &StyledTextEvent.Нов);
+            Событие.ДобавьТипСоб(wxEVT_STC_DWELLEND,             &StyledTextEvent.Нов);
+            Событие.ДобавьТипСоб(wxEVT_STC_START_DRAG,           &StyledTextEvent.Нов);
+            Событие.ДобавьТипСоб(wxEVT_STC_DRAG_OVER,            &StyledTextEvent.Нов);
+            Событие.ДобавьТипСоб(wxEVT_STC_DO_DROP,              &StyledTextEvent.Нов);
+            Событие.ДобавьТипСоб(wxEVT_STC_ZOOM,                 &StyledTextEvent.Нов);
+            Событие.ДобавьТипСоб(wxEVT_STC_HOTSPOT_CLICK,        &StyledTextEvent.Нов);
+            Событие.ДобавьТипСоб(wxEVT_STC_HOTSPOT_DCLICK,       &StyledTextEvent.Нов);
+            Событие.ДобавьТипСоб(wxEVT_STC_CALLTIP_CLICK,        &StyledTextEvent.Нов);
         }
 
         //-----------------------------------------------------------------------------
-	public const string wxSTCNameStr = "stcwindow";
+	public const ткст wxSTCNameStr = "stcwindow";
 
-        public this(IntPtr wxobj) 
-            { super (wxobj); }
+        public this(ЦУк шхобъ) 
+            { super (шхобъ); }
 
-        public  this(Window parent, int id /*= wxID_ANY*/, Point pos = wxDefaultPosition, Size size = wxDefaultSize, int style =0, string name = wxSTCNameStr)
-            { this(wxStyledTextCtrl_ctor(wxObject.SafePtr(parent), id, pos, size, cast(uint)style, name)); }
+        public  this(Окно родитель, цел ид /*= wxID_ANY*/, Точка поз = wxDefaultPosition, Размер size = wxDefaultSize, цел стиль =0, ткст имя = wxSTCNameStr)
+            { this(wxStyledTextCtrl_ctor(wxObject.SafePtr(родитель), ид, поз, size, cast(бцел)стиль, имя)); }
 	    
-		public static wxObject New(IntPtr wxobj) { return new StyledTextCtrl(wxobj); }
+		public static wxObject Нов(ЦУк шхобъ) { return new StyledTextCtrl(шхобъ); }
 	
 	//---------------------------------------------------------------------
-	// ctors with self created id
+	// ctors with сам created ид
 	    
-        public  this(Window parent, Point pos = wxDefaultPosition, Size size = wxDefaultSize, int style =0, string name = wxSTCNameStr)
-	    { this(parent, Window.UniqueID, pos, size, style, name);}
+        public  this(Окно родитель, Точка поз = wxDefaultPosition, Размер size = wxDefaultSize, цел стиль =0, ткст имя = wxSTCNameStr)
+	    { this(родитель, Окно.UniqueID, поз, size, стиль, имя);}
 
         //-----------------------------------------------------------------------------
 
-        public void AddText(string text)
+        public проц AddText(ткст текст)
         {
-            wxStyledTextCtrl_AddText(wxobj, text);
+            wxStyledTextCtrl_AddText(шхобъ, текст);
         }
 
-        /*public void AddStyledText(MemoryBuffer data)
+        /*public проц AddStyledText(MemoryBuffer данные)
         {
-            wxStyledTextCtrl_AddStyledText(wxobj, wxObject.SafePtr(data));
+            wxStyledTextCtrl_AddStyledText(шхобъ, wxObject.SafePtr(данные));
         }*/
 
-        public void InsertText(int pos, string text)
+        public проц InsertText(цел поз, ткст текст)
         {
-            wxStyledTextCtrl_InsertText(wxobj, pos, text);
+            wxStyledTextCtrl_InsertText(шхобъ, поз, текст);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void ClearAll()
+        public проц ClearAll()
         {
-            wxStyledTextCtrl_ClearAll(wxobj);
+            wxStyledTextCtrl_ClearAll(шхобъ);
         }
 
-        public void ClearDocumentStyle()
+        public проц ClearDocumentStyle()
         {
-            wxStyledTextCtrl_ClearDocumentStyle(wxobj);
-        }
-
-        //-----------------------------------------------------------------------------
-
-        public int Length() { return wxStyledTextCtrl_GetLength(wxobj); }
-
-        //-----------------------------------------------------------------------------
-
-        public int GetCharAt(int pos)
-        {
-            return wxStyledTextCtrl_GetCharAt(wxobj, pos);
+            wxStyledTextCtrl_ClearDocumentStyle(шхобъ);
         }
 
         //-----------------------------------------------------------------------------
 
-        public int CurrentPos() { return wxStyledTextCtrl_GetCurrentPos(wxobj); }
-        public void CurrentPos(int value) { wxStyledTextCtrl_SetCurrentPos(wxobj, value); }
+        public цел Length() { return wxStyledTextCtrl_GetLength(шхобъ); }
 
         //-----------------------------------------------------------------------------
 
-        public int Anchor() { return wxStyledTextCtrl_GetAnchor(wxobj); }
-        public void Anchor(int value) { wxStyledTextCtrl_SetAnchor(wxobj, value); }
-
-        //-----------------------------------------------------------------------------
-
-        public int GetStyleAt(int pos)
+        public цел GetCharAt(цел поз)
         {
-            return wxStyledTextCtrl_GetStyleAt(wxobj, pos);
+            return wxStyledTextCtrl_GetCharAt(шхобъ, поз);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void Redo()
+        public цел CurrentPos() { return wxStyledTextCtrl_GetCurrentPos(шхобъ); }
+        public проц CurrentPos(цел значение) { wxStyledTextCtrl_SetCurrentPos(шхобъ, значение); }
+
+        //-----------------------------------------------------------------------------
+
+        public цел Anchor() { return wxStyledTextCtrl_GetAnchor(шхобъ); }
+        public проц Anchor(цел значение) { wxStyledTextCtrl_SetAnchor(шхобъ, значение); }
+
+        //-----------------------------------------------------------------------------
+
+        public цел GetStyleAt(цел поз)
         {
-            wxStyledTextCtrl_Redo(wxobj);
+            return wxStyledTextCtrl_GetStyleAt(шхобъ, поз);
         }
 
         //-----------------------------------------------------------------------------
 
-        public bool UndoCollection() { return wxStyledTextCtrl_GetUndoCollection(wxobj); }
-        public void UndoCollection(bool value) { wxStyledTextCtrl_SetUndoCollection(wxobj, value); }
-
-        //-----------------------------------------------------------------------------
-
-        public void SelectAll()
+        public проц Redo()
         {
-            wxStyledTextCtrl_SelectAll(wxobj);
+            wxStyledTextCtrl_Redo(шхобъ);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void SetSavePoint()
+        public бул UndoCollection() { return wxStyledTextCtrl_GetUndoCollection(шхобъ); }
+        public проц UndoCollection(бул значение) { wxStyledTextCtrl_SetUndoCollection(шхобъ, значение); }
+
+        //-----------------------------------------------------------------------------
+
+        public проц SelectAll()
         {
-            wxStyledTextCtrl_SetSavePoint(wxobj);
+            wxStyledTextCtrl_SelectAll(шхобъ);
         }
 
         //-----------------------------------------------------------------------------
 
-        /*public MemoryBuffer GetStyledText(int startPos, int endPos)
+        public проц SetSavePoint()
         {
-            return wxStyledTextCtrl_GetStyledText(wxobj, startPos, endPos);
+            wxStyledTextCtrl_SetSavePoint(шхобъ);
+        }
+
+        //-----------------------------------------------------------------------------
+
+        /*public MemoryBuffer GetStyledText(цел startPos, цел endPos)
+        {
+            return wxStyledTextCtrl_GetStyledText(шхобъ, startPos, endPos);
         }*/
 
         //-----------------------------------------------------------------------------
 
-        public bool CanRedo() { return wxStyledTextCtrl_CanRedo(wxobj); }
+        public бул CanRedo() { return wxStyledTextCtrl_CanRedo(шхобъ); }
 
         //-----------------------------------------------------------------------------
 
-        public int MarkerLineFromHandle(int handle)
+        public цел MarkerLineFromHandle(цел handle)
         {
-            return wxStyledTextCtrl_MarkerLineFromHandle(wxobj, handle);
+            return wxStyledTextCtrl_MarkerLineFromHandle(шхобъ, handle);
         }
 
-        public void MarkerDeleteHandle(int handle)
+        public проц MarkerDeleteHandle(цел handle)
         {
-            wxStyledTextCtrl_MarkerDeleteHandle(wxobj, handle);
-        }
-
-        //-----------------------------------------------------------------------------
-
-        public int ViewWhiteSpace() { return wxStyledTextCtrl_GetViewWhiteSpace(wxobj); }
-        public void ViewWhiteSpace(int value) { wxStyledTextCtrl_SetViewWhiteSpace(wxobj, value); }
-
-        //-----------------------------------------------------------------------------
-
-        public int PositionFromPoint(Point pt)
-        {
-            return wxStyledTextCtrl_PositionFromPoint(wxobj, pt);
-        }
-
-        public int PositionFromPointClose(int x, int y)
-        {
-            return wxStyledTextCtrl_PositionFromPointClose(wxobj, x, y);
+            wxStyledTextCtrl_MarkerDeleteHandle(шхобъ, handle);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void GotoLine(int line)
+        public цел ViewWhiteSpace() { return wxStyledTextCtrl_GetViewWhiteSpace(шхобъ); }
+        public проц ViewWhiteSpace(цел значение) { wxStyledTextCtrl_SetViewWhiteSpace(шхобъ, значение); }
+
+        //-----------------------------------------------------------------------------
+
+        public цел PositionFromPoint(Точка pt)
         {
-            wxStyledTextCtrl_GotoLine(wxobj, line);
+            return wxStyledTextCtrl_PositionFromPoint(шхобъ, pt);
+        }
+
+        public цел PositionFromPointClose(цел x, цел y)
+        {
+            return wxStyledTextCtrl_PositionFromPointClose(шхобъ, x, y);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void GotoPos(int pos)
+        public проц GotoLine(цел line)
         {
-            wxStyledTextCtrl_GotoPos(wxobj, pos);
+            wxStyledTextCtrl_GotoLine(шхобъ, line);
         }
 
         //-----------------------------------------------------------------------------
 
-        public string CurLine() {
-                int i;
+        public проц GotoPos(цел поз)
+        {
+            wxStyledTextCtrl_GotoPos(шхобъ, поз);
+        }
+
+        //-----------------------------------------------------------------------------
+
+        public ткст CurLine() {
+                цел i;
                 return GetCurLine(i);
             }
 
-        public string GetCurLine(out int linePos)
+        public ткст GetCurLine(out цел linePos)
         {
-            return cast(string) new wxString(wxStyledTextCtrl_GetCurLine(wxobj, linePos), true);
+            return cast(ткст) new wxString(wxStyledTextCtrl_GetCurLine(шхобъ, linePos), да);
         }
 
         //-----------------------------------------------------------------------------
 
-        public int EndStyled() { return wxStyledTextCtrl_GetEndStyled(wxobj); }
+        public цел EndStyled() { return wxStyledTextCtrl_GetEndStyled(шхобъ); }
 
         //-----------------------------------------------------------------------------
 
-        public void ConvertEOLs(int eolMode)
+        public проц ConvertEOLs(цел eolMode)
         {
-            wxStyledTextCtrl_ConvertEOLs(wxobj, eolMode);
+            wxStyledTextCtrl_ConvertEOLs(шхобъ, eolMode);
         }
 
         //-----------------------------------------------------------------------------
 
-        public int EOLMode() { return wxStyledTextCtrl_GetEOLMode(wxobj); }
-        public void EOLMode(int value) { wxStyledTextCtrl_SetEOLMode(wxobj, value); }
+        public цел EOLMode() { return wxStyledTextCtrl_GetEOLMode(шхобъ); }
+        public проц EOLMode(цел значение) { wxStyledTextCtrl_SetEOLMode(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public void StartStyling(int pos, int mask)
+        public проц StartStyling(цел поз, цел маска)
         {
-            wxStyledTextCtrl_StartStyling(wxobj, pos, mask);
+            wxStyledTextCtrl_StartStyling(шхобъ, поз, маска);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void SetStyling(int length, int style)
+        public проц SetStyling(цел length, цел стиль)
         {
-            wxStyledTextCtrl_SetStyling(wxobj, length, style);
+            wxStyledTextCtrl_SetStyling(шхобъ, length, стиль);
         }
 
         //-----------------------------------------------------------------------------
 
-        public bool BufferedDraw() { return wxStyledTextCtrl_GetBufferedDraw(wxobj); }
-        public void BufferedDraw(bool value) { wxStyledTextCtrl_SetBufferedDraw(wxobj, value); }
+        public бул BufferedDraw() { return wxStyledTextCtrl_GetBufferedDraw(шхобъ); }
+        public проц BufferedDraw(бул значение) { wxStyledTextCtrl_SetBufferedDraw(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public int TabWidth() { return wxStyledTextCtrl_GetTabWidth(wxobj); }
-        public void TabWidth(int value) { wxStyledTextCtrl_SetTabWidth(wxobj, value); }
+        public цел TabWidth() { return wxStyledTextCtrl_GetTabWidth(шхобъ); }
+        public проц TabWidth(цел значение) { wxStyledTextCtrl_SetTabWidth(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public int CodePage() { return wxStyledTextCtrl_GetCodePage(wxobj); } 
-        public void CodePage(int value) { wxStyledTextCtrl_SetCodePage(wxobj, value); } 
+        public цел CodePage() { return wxStyledTextCtrl_GetCodePage(шхобъ); } 
+        public проц CodePage(цел значение) { wxStyledTextCtrl_SetCodePage(шхобъ, значение); } 
 
         //-----------------------------------------------------------------------------
 
-        public void MarkerDefine(int markerNumber, int markerSymbol, Colour foreground, Colour background)
+        public проц MarkerDefine(цел markerNumber, цел markerSymbol, Цвет foreground, Цвет background)
         {
-            wxStyledTextCtrl_MarkerDefine(wxobj, markerNumber, markerSymbol, wxObject.SafePtr(foreground), wxObject.SafePtr(background));
+            wxStyledTextCtrl_MarkerDefine(шхобъ, markerNumber, markerSymbol, wxObject.SafePtr(foreground), wxObject.SafePtr(background));
         }
 
-        public void MarkerSetForeground(int markerNumber, Colour fore)
+        public проц MarkerSetForeground(цел markerNumber, Цвет fore)
         {
-            wxStyledTextCtrl_MarkerSetForeground(wxobj, markerNumber, wxObject.SafePtr(fore));
+            wxStyledTextCtrl_MarkerSetForeground(шхобъ, markerNumber, wxObject.SafePtr(fore));
         }
 
-        public void MarkerSetBackground(int markerNumber, Colour back)
+        public проц MarkerSetBackground(цел markerNumber, Цвет back)
         {
-            wxStyledTextCtrl_MarkerSetBackground(wxobj, markerNumber, wxObject.SafePtr(back));
+            wxStyledTextCtrl_MarkerSetBackground(шхобъ, markerNumber, wxObject.SafePtr(back));
         }
 
-        public int MarkerAdd(int line, int markerNumber)
+        public цел MarkerAdd(цел line, цел markerNumber)
         {
-            return wxStyledTextCtrl_MarkerAdd(wxobj, line, markerNumber);
+            return wxStyledTextCtrl_MarkerAdd(шхобъ, line, markerNumber);
         }
 
-        public void MarkerDelete(int line, int markerNumber)
+        public проц MarkerDelete(цел line, цел markerNumber)
         {
-            wxStyledTextCtrl_MarkerDelete(wxobj, line, markerNumber);
+            wxStyledTextCtrl_MarkerDelete(шхобъ, line, markerNumber);
         }
 
-        public void MarkerDeleteAll(int markerNumber)
+        public проц MarkerDeleteAll(цел markerNumber)
         {
-            wxStyledTextCtrl_MarkerDeleteAll(wxobj, markerNumber);
+            wxStyledTextCtrl_MarkerDeleteAll(шхобъ, markerNumber);
         }
 
-        public int MarkerGet(int line)
+        public цел MarkerGet(цел line)
         {
-            return wxStyledTextCtrl_MarkerGet(wxobj, line);
+            return wxStyledTextCtrl_MarkerGet(шхобъ, line);
         }
 
-        public int MarkerNext(int lineStart, int markerMask)
+        public цел MarkerNext(цел lineStart, цел markerMask)
         {
-            return wxStyledTextCtrl_MarkerNext(wxobj, lineStart, markerMask);
+            return wxStyledTextCtrl_MarkerNext(шхобъ, lineStart, markerMask);
         }
 
-        public int MarkerPrevious(int lineStart, int markerMask)
+        public цел MarkerPrevious(цел lineStart, цел markerMask)
         {
-            return wxStyledTextCtrl_MarkerPrevious(wxobj, lineStart, markerMask);
+            return wxStyledTextCtrl_MarkerPrevious(шхобъ, lineStart, markerMask);
         }
 
-        public void MarkerDefineBitmap(int markerNumber, Bitmap bmp)
+        public проц MarkerDefineBitmap(цел markerNumber, Битмап bmp)
         {
-            wxStyledTextCtrl_MarkerDefineBitmap(wxobj, markerNumber, wxObject.SafePtr(bmp));
+            wxStyledTextCtrl_MarkerDefineBitmap(шхобъ, markerNumber, wxObject.SafePtr(bmp));
         }
 
         //-----------------------------------------------------------------------------
 
-        public void SetMarginType(int margin, int marginType)
+        public проц SetMarginType(цел margin, цел marginType)
         {
-            wxStyledTextCtrl_SetMarginType(wxobj, margin, marginType);
+            wxStyledTextCtrl_SetMarginType(шхобъ, margin, marginType);
         }
 
-        public int GetMarginType(int margin)
+        public цел GetMarginType(цел margin)
         {
-            return wxStyledTextCtrl_GetMarginType(wxobj, margin);
+            return wxStyledTextCtrl_GetMarginType(шхобъ, margin);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void SetMarginWidth(int margin, int pixelWidth)
+        public проц SetMarginWidth(цел margin, цел pixelWidth)
         {
-            wxStyledTextCtrl_SetMarginWidth(wxobj, margin, pixelWidth);
+            wxStyledTextCtrl_SetMarginWidth(шхобъ, margin, pixelWidth);
         }
 
-        public int GetMarginWidth(int margin)
+        public цел GetMarginWidth(цел margin)
         {
-            return wxStyledTextCtrl_GetMarginWidth(wxobj, margin);
+            return wxStyledTextCtrl_GetMarginWidth(шхобъ, margin);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void SetMarginMask(int margin, int mask)
+        public проц SetMarginMask(цел margin, цел маска)
         {
-            wxStyledTextCtrl_SetMarginMask(wxobj, margin, mask);
+            wxStyledTextCtrl_SetMarginMask(шхобъ, margin, маска);
         }
 
-        public int GetMarginMask(int margin)
+        public цел GetMarginMask(цел margin)
         {
-            return wxStyledTextCtrl_GetMarginMask(wxobj, margin);
+            return wxStyledTextCtrl_GetMarginMask(шхобъ, margin);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void SetMarginSensitive(int margin, bool sensitive)
+        public проц SetMarginSensitive(цел margin, бул sensitive)
         {
-            wxStyledTextCtrl_SetMarginSensitive(wxobj, margin, sensitive);
+            wxStyledTextCtrl_SetMarginSensitive(шхобъ, margin, sensitive);
         }
 
-        public bool GetMarginSensitive(int margin)
+        public бул GetMarginSensitive(цел margin)
         {
-            return wxStyledTextCtrl_GetMarginSensitive(wxobj, margin);
+            return wxStyledTextCtrl_GetMarginSensitive(шхобъ, margin);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void StyleClearAll()
+        public проц StyleClearAll()
         {
-            wxStyledTextCtrl_StyleClearAll(wxobj);
+            wxStyledTextCtrl_StyleClearAll(шхобъ);
         }
 
-        public void StyleSetForeground(int style, Colour fore)
+        public проц StyleSetForeground(цел стиль, Цвет fore)
         {
-            wxStyledTextCtrl_StyleSetForeground(wxobj, style, wxObject.SafePtr(fore));
+            wxStyledTextCtrl_StyleSetForeground(шхобъ, стиль, wxObject.SafePtr(fore));
         }
 
-        public void StyleSetBackground(int style, Colour back)
+        public проц StyleSetBackground(цел стиль, Цвет back)
         {
-            wxStyledTextCtrl_StyleSetBackground(wxobj, style, wxObject.SafePtr(back));
+            wxStyledTextCtrl_StyleSetBackground(шхобъ, стиль, wxObject.SafePtr(back));
         }
 
-        public void StyleSetBold(int style, bool bold)
+        public проц StyleSetBold(цел стиль, бул bold)
         {
-            wxStyledTextCtrl_StyleSetBold(wxobj, style, bold);
+            wxStyledTextCtrl_StyleSetBold(шхобъ, стиль, bold);
         }
 
-        public void StyleSetItalic(int style, bool italic)
+        public проц StyleSetItalic(цел стиль, бул italic)
         {
-            wxStyledTextCtrl_StyleSetItalic(wxobj, style, italic);
+            wxStyledTextCtrl_StyleSetItalic(шхобъ, стиль, italic);
         }
 
-        public void StyleSetSize(int style, int sizePoints)
+        public проц StyleSetSize(цел стиль, цел sizePoints)
         {
-            wxStyledTextCtrl_StyleSetSize(wxobj, style, sizePoints);
+            wxStyledTextCtrl_StyleSetSize(шхобъ, стиль, sizePoints);
         }
 
-        public void StyleSetFaceName(int style, string fontName)
+        public проц StyleSetFaceName(цел стиль, ткст fontName)
         {
-            wxStyledTextCtrl_StyleSetFaceName(wxobj, style, fontName);
+            wxStyledTextCtrl_StyleSetFaceName(шхобъ, стиль, fontName);
         }
 
-        public void StyleSetEOLFilled(int style, bool filled)
+        public проц StyleSetEOLFilled(цел стиль, бул filled)
         {
-            wxStyledTextCtrl_StyleSetEOLFilled(wxobj, style, filled);
+            wxStyledTextCtrl_StyleSetEOLFilled(шхобъ, стиль, filled);
         }
 
-        public void StyleResetDefault()
+        public проц StyleResetDefault()
         {
-            wxStyledTextCtrl_StyleResetDefault(wxobj);
+            wxStyledTextCtrl_StyleResetDefault(шхобъ);
         }
 
-        public void StyleSetUnderline(int style, bool underline)
+        public проц StyleSetUnderline(цел стиль, бул underline)
         {
-            wxStyledTextCtrl_StyleSetUnderline(wxobj, style, underline);
+            wxStyledTextCtrl_StyleSetUnderline(шхобъ, стиль, underline);
         }
 
-        public void StyleSetCase(int style, int caseForce)
+        public проц StyleSetCase(цел стиль, цел caseForce)
         {
-            wxStyledTextCtrl_StyleSetCase(wxobj, style, caseForce);
+            wxStyledTextCtrl_StyleSetCase(шхобъ, стиль, caseForce);
         }
 
-        public void StyleSetCharacterSet(int style, int characterSet)
+        public проц StyleSetCharacterSet(цел стиль, цел characterSet)
         {
-            wxStyledTextCtrl_StyleSetCharacterSet(wxobj, style, characterSet);
+            wxStyledTextCtrl_StyleSetCharacterSet(шхобъ, стиль, characterSet);
         }
 
-        public void StyleSetHotSpot(int style, bool hotspot)
+        public проц StyleSetHotSpot(цел стиль, бул hotspot)
         {
-            wxStyledTextCtrl_StyleSetHotSpot(wxobj, style, hotspot);
+            wxStyledTextCtrl_StyleSetHotSpot(шхобъ, стиль, hotspot);
         }
 
-        public void StyleSetVisible(int style, bool visible)
+        public проц StyleSetVisible(цел стиль, бул visible)
         {
-            wxStyledTextCtrl_StyleSetVisible(wxobj, style, visible);
+            wxStyledTextCtrl_StyleSetVisible(шхобъ, стиль, visible);
         }
 
-        public void StyleSetChangeable(int style, bool changeable)
+        public проц StyleSetChangeable(цел стиль, бул changeable)
         {
-            wxStyledTextCtrl_StyleSetChangeable(wxobj, style, changeable);
+            wxStyledTextCtrl_StyleSetChangeable(шхобъ, стиль, changeable);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void SetSelForeground(bool useSetting, Colour fore)
+        public проц SetSelForeground(бул useSetting, Цвет fore)
         {
-            wxStyledTextCtrl_SetSelForeground(wxobj, useSetting, wxObject.SafePtr(fore));
+            wxStyledTextCtrl_SetSelForeground(шхобъ, useSetting, wxObject.SafePtr(fore));
         }
 
-        public void SetSelBackground(bool useSetting, Colour back)
+        public проц SetSelBackground(бул useSetting, Цвет back)
         {
-            wxStyledTextCtrl_SetSelBackground(wxobj, useSetting, wxObject.SafePtr(back));
+            wxStyledTextCtrl_SetSelBackground(шхобъ, useSetting, wxObject.SafePtr(back));
         }
 
         //-----------------------------------------------------------------------------
 
-        public Colour CaretForeground() { return new Colour(wxStyledTextCtrl_GetCaretForeground(wxobj), true); }
-        public void CaretForeground(Colour value) { wxStyledTextCtrl_SetCaretForeground(wxobj, wxObject.SafePtr(value)); } 
+        public Цвет CaretForeground() { return new Цвет(wxStyledTextCtrl_GetCaretForeground(шхобъ), да); }
+        public проц CaretForeground(Цвет значение) { wxStyledTextCtrl_SetCaretForeground(шхобъ, wxObject.SafePtr(значение)); } 
 
         //-----------------------------------------------------------------------------
 
-        public void CmdKeyAssign(int key, int modifiers, int cmd)
+        public проц CmdKeyAssign(цел key, цел modifiers, цел команда)
         {
-            wxStyledTextCtrl_CmdKeyAssign(wxobj, key, modifiers, cmd);
+            wxStyledTextCtrl_CmdKeyAssign(шхобъ, key, modifiers, команда);
         }
 
-        public void CmdKeyClear(int key, int modifiers)
+        public проц CmdKeyClear(цел key, цел modifiers)
         {
-            wxStyledTextCtrl_CmdKeyClear(wxobj, key, modifiers);
+            wxStyledTextCtrl_CmdKeyClear(шхобъ, key, modifiers);
         }
 
-        public void CmdKeyClearAll()
+        public проц CmdKeyClearAll()
         {
-            wxStyledTextCtrl_CmdKeyClearAll(wxobj);
+            wxStyledTextCtrl_CmdKeyClearAll(шхобъ);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void SetStyleBytes(ubyte[] styleBytes)
+        public проц SetStyleBytes(ббайт[] styleBytes)
         {
-            wxStyledTextCtrl_SetStyleBytes(wxobj, styleBytes.length, styleBytes.ptr);
+            wxStyledTextCtrl_SetStyleBytes(шхобъ, styleBytes.length, styleBytes.ptr);
         }
 
         //-----------------------------------------------------------------------------
 
-        public int CaretPeriod() { return wxStyledTextCtrl_GetCaretPeriod(wxobj); }
-        public void CaretPeriod(int value) { wxStyledTextCtrl_SetCaretPeriod(wxobj, value); } 
+        public цел CaretPeriod() { return wxStyledTextCtrl_GetCaretPeriod(шхобъ); }
+        public проц CaretPeriod(цел значение) { wxStyledTextCtrl_SetCaretPeriod(шхобъ, значение); } 
 
         //-----------------------------------------------------------------------------
 
-        public void SetWordChars(string characters)
+        public проц SetWordChars(ткст characters)
         {
-            wxStyledTextCtrl_SetWordChars(wxobj, characters);
+            wxStyledTextCtrl_SetWordChars(шхобъ, characters);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void BeginUndoAction()
+        public проц BeginUndoAction()
         {
-            wxStyledTextCtrl_BeginUndoAction(wxobj);
+            wxStyledTextCtrl_BeginUndoAction(шхобъ);
         }
 
-        public void EndUndoAction()
+        public проц EndUndoAction()
         {
-            wxStyledTextCtrl_EndUndoAction(wxobj);
+            wxStyledTextCtrl_EndUndoAction(шхобъ);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void IndicatorSetStyle(int indic, int style)
+        public проц IndicatorSetStyle(цел indic, цел стиль)
         {
-            wxStyledTextCtrl_IndicatorSetStyle(wxobj, indic, style);
+            wxStyledTextCtrl_IndicatorSetStyle(шхобъ, indic, стиль);
         }
 
-        public int IndicatorGetStyle(int indic)
+        public цел IndicatorGetStyle(цел indic)
         {
-            return wxStyledTextCtrl_IndicatorGetStyle(wxobj, indic);
+            return wxStyledTextCtrl_IndicatorGetStyle(шхобъ, indic);
         }
 
-        public void IndicatorSetForeground(int indic, Colour fore)
+        public проц IndicatorSetForeground(цел indic, Цвет fore)
         {
-            wxStyledTextCtrl_IndicatorSetForeground(wxobj, indic, wxObject.SafePtr(fore));
+            wxStyledTextCtrl_IndicatorSetForeground(шхобъ, indic, wxObject.SafePtr(fore));
         }
 
-        public Colour IndicatorGetForeground(int indic)
+        public Цвет IndicatorGetForeground(цел indic)
         {
-            return new Colour(wxStyledTextCtrl_IndicatorGetForeground(wxobj, indic), true);
+            return new Цвет(wxStyledTextCtrl_IndicatorGetForeground(шхобъ, indic), да);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void SetWhitespaceForeground(bool useSetting, Colour fore)
+        public проц SetWhitespaceForeground(бул useSetting, Цвет fore)
         {
-            wxStyledTextCtrl_SetWhitespaceForeground(wxobj, useSetting, wxObject.SafePtr(fore));
+            wxStyledTextCtrl_SetWhitespaceForeground(шхобъ, useSetting, wxObject.SafePtr(fore));
         }
 
-        public void SetWhitespaceBackground(bool useSetting, Colour back)
+        public проц SetWhitespaceBackground(бул useSetting, Цвет back)
         {
-            wxStyledTextCtrl_SetWhitespaceBackground(wxobj, useSetting, wxObject.SafePtr(back));
+            wxStyledTextCtrl_SetWhitespaceBackground(шхобъ, useSetting, wxObject.SafePtr(back));
         }
 
         //-----------------------------------------------------------------------------
 
-        public int StyleBits() { return wxStyledTextCtrl_GetStyleBits(wxobj); }
-        public void StyleBits(int value) { wxStyledTextCtrl_SetStyleBits(wxobj, value); }
+        public цел StyleBits() { return wxStyledTextCtrl_GetStyleBits(шхобъ); }
+        public проц StyleBits(цел значение) { wxStyledTextCtrl_SetStyleBits(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public void SetLineState(int line, int state)
+        public проц SetLineState(цел line, цел state)
         {
-            wxStyledTextCtrl_SetLineState(wxobj, line, state);
+            wxStyledTextCtrl_SetLineState(шхобъ, line, state);
         }
 
-        public int GetLineState(int line)
+        public цел GetLineState(цел line)
         {
-            return wxStyledTextCtrl_GetLineState(wxobj, line);
+            return wxStyledTextCtrl_GetLineState(шхобъ, line);
         }
 
         //-----------------------------------------------------------------------------
 
-        public int MaxLineState() { return wxStyledTextCtrl_GetMaxLineState(wxobj); }
+        public цел MaxLineState() { return wxStyledTextCtrl_GetMaxLineState(шхобъ); }
 
         //-----------------------------------------------------------------------------
 
-        public bool CaretLineVisible() { return wxStyledTextCtrl_GetCaretLineVisible(wxobj); }
-        public void CaretLineVisible(bool value) { wxStyledTextCtrl_SetCaretLineVisible(wxobj, value); }
+        public бул CaretLineVisible() { return wxStyledTextCtrl_GetCaretLineVisible(шхобъ); }
+        public проц CaretLineVisible(бул значение) { wxStyledTextCtrl_SetCaretLineVisible(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public Colour CaretLineBack() { return new Colour(wxStyledTextCtrl_GetCaretLineBack(wxobj), true); } 
-        public void CaretLineBack(Colour value) { wxStyledTextCtrl_SetCaretLineBack(wxobj, wxObject.SafePtr(value)); }
+        public Цвет CaretLineBack() { return new Цвет(wxStyledTextCtrl_GetCaretLineBack(шхобъ), да); } 
+        public проц CaretLineBack(Цвет значение) { wxStyledTextCtrl_SetCaretLineBack(шхобъ, wxObject.SafePtr(значение)); }
 
         //-----------------------------------------------------------------------------
 
-        public void AutoCompShow(int lenEntered, string itemList)
+        public проц AutoCompShow(цел lenEntered, ткст itemList)
         {
-            wxStyledTextCtrl_AutoCompShow(wxobj, lenEntered, itemList);
+            wxStyledTextCtrl_AutoCompShow(шхобъ, lenEntered, itemList);
         }
 
-        public void AutoCompCancel()
+        public проц AutoCompCancel()
         {
-            wxStyledTextCtrl_AutoCompCancel(wxobj);
+            wxStyledTextCtrl_AutoCompCancel(шхобъ);
         }
 
-        public bool AutoCompActive() { return wxStyledTextCtrl_AutoCompActive(wxobj); }
+        public бул AutoCompActive() { return wxStyledTextCtrl_AutoCompActive(шхобъ); }
 
-        public int AutoCompPosStart() { return wxStyledTextCtrl_AutoCompPosStart(wxobj); } 
+        public цел AutoCompPosStart() { return wxStyledTextCtrl_AutoCompPosStart(шхобъ); } 
 
-        public void AutoCompComplete()
+        public проц AutoCompComplete()
         {
-            wxStyledTextCtrl_AutoCompComplete(wxobj);
+            wxStyledTextCtrl_AutoCompComplete(шхобъ);
         }
 
-        public void AutoCompStops(string value) { wxStyledTextCtrl_AutoCompStops(wxobj, value); }
+        public проц AutoCompStops(ткст значение) { wxStyledTextCtrl_AutoCompStops(шхобъ, значение); }
 
-        public char AutoCompSeparator() { return cast(char)wxStyledTextCtrl_AutoCompGetSeparator(wxobj); }
-        public void AutoCompSeparator(char value) { wxStyledTextCtrl_AutoCompSetSeparator(wxobj, cast(int)value); } 
+        public сим AutoCompSeparator() { return cast(сим)wxStyledTextCtrl_AutoCompGetSeparator(шхобъ); }
+        public проц AutoCompSeparator(сим значение) { wxStyledTextCtrl_AutoCompSetSeparator(шхобъ, cast(цел)значение); } 
 
-        public void AutoCompSelect(string text)
+        public проц AutoCompSelect(ткст текст)
         {
-            wxStyledTextCtrl_AutoCompSelect(wxobj, text);
+            wxStyledTextCtrl_AutoCompSelect(шхобъ, текст);
         }
 
-        public bool AutoCompCancelAtStart() { return wxStyledTextCtrl_AutoCompGetCancelAtStart(wxobj); }
-        public void AutoCompCancelAtStart(bool value) { wxStyledTextCtrl_AutoCompSetCancelAtStart(wxobj, value); } 
+        public бул AutoCompCancelAtStart() { return wxStyledTextCtrl_AutoCompGetCancelAtStart(шхобъ); }
+        public проц AutoCompCancelAtStart(бул значение) { wxStyledTextCtrl_AutoCompSetCancelAtStart(шхобъ, значение); } 
 
-        public void AutoCompFillUps(string value) { wxStyledTextCtrl_AutoCompSetFillUps(wxobj, value); }
+        public проц AutoCompFillUps(ткст значение) { wxStyledTextCtrl_AutoCompSetFillUps(шхобъ, значение); }
 
-        public bool AutoCompChooseSingle() { return wxStyledTextCtrl_AutoCompGetChooseSingle(wxobj); }
-        public void AutoCompChooseSingle(bool value) { wxStyledTextCtrl_AutoCompSetChooseSingle(wxobj, value); }
+        public бул AutoCompChooseSingle() { return wxStyledTextCtrl_AutoCompGetChooseSingle(шхобъ); }
+        public проц AutoCompChooseSingle(бул значение) { wxStyledTextCtrl_AutoCompSetChooseSingle(шхобъ, значение); }
 
-        public bool AutoCompIgnoreCase() { return wxStyledTextCtrl_AutoCompGetIgnoreCase(wxobj); }
-        public void AutoCompIgnoreCase(bool value) { wxStyledTextCtrl_AutoCompSetIgnoreCase(wxobj, value); } 
+        public бул AutoCompIgnoreCase() { return wxStyledTextCtrl_AutoCompGetIgnoreCase(шхобъ); }
+        public проц AutoCompIgnoreCase(бул значение) { wxStyledTextCtrl_AutoCompSetIgnoreCase(шхобъ, значение); } 
 
-        public void AutoCompAutoHide(bool value) { wxStyledTextCtrl_AutoCompSetAutoHide(wxobj, value); }
-        public bool AutoCompAutoHide() { return wxStyledTextCtrl_AutoCompGetAutoHide(wxobj); }
+        public проц AutoCompAutoHide(бул значение) { wxStyledTextCtrl_AutoCompSetAutoHide(шхобъ, значение); }
+        public бул AutoCompAutoHide() { return wxStyledTextCtrl_AutoCompGetAutoHide(шхобъ); }
 
-        public void AutoCompDropRestOfWord(bool value) { wxStyledTextCtrl_AutoCompSetDropRestOfWord(wxobj, value); }
-        public bool AutoCompDropRestOfWord() { return wxStyledTextCtrl_AutoCompGetDropRestOfWord(wxobj); } 
+        public проц AutoCompDropRestOfWord(бул значение) { wxStyledTextCtrl_AutoCompSetDropRestOfWord(шхобъ, значение); }
+        public бул AutoCompDropRestOfWord() { return wxStyledTextCtrl_AutoCompGetDropRestOfWord(шхобъ); } 
 
-        public int AutoCompTypeSeparator() { return wxStyledTextCtrl_AutoCompGetTypeSeparator(wxobj); }
-        public void AutoCompTypeSeparator(int value) { wxStyledTextCtrl_AutoCompSetTypeSeparator(wxobj, value); }
+        public цел AutoCompTypeSeparator() { return wxStyledTextCtrl_AutoCompGetTypeSeparator(шхобъ); }
+        public проц AutoCompTypeSeparator(цел значение) { wxStyledTextCtrl_AutoCompSetTypeSeparator(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public void UserListShow(int listType, string itemList)
+        public проц UserListShow(цел listType, ткст itemList)
         {
-            wxStyledTextCtrl_UserListShow(wxobj, listType, itemList);
+            wxStyledTextCtrl_UserListShow(шхобъ, listType, itemList);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void RegisterImage(int type, Bitmap bmp)
+        public проц RegisterImage(цел тип, Битмап bmp)
         {
-            wxStyledTextCtrl_RegisterImage(wxobj, type, wxObject.SafePtr(bmp));
+            wxStyledTextCtrl_RegisterImage(шхобъ, тип, wxObject.SafePtr(bmp));
         }
 
-        public void ClearRegisteredImages()
+        public проц ClearRegisteredImages()
         {
-            wxStyledTextCtrl_ClearRegisteredImages(wxobj);
+            wxStyledTextCtrl_ClearRegisteredImages(шхобъ);
         }
 
         //-----------------------------------------------------------------------------
 
-        public int Indent() { return wxStyledTextCtrl_GetIndent(wxobj); }
-        public void Indent(int value) { wxStyledTextCtrl_SetIndent(wxobj, value); }
+        public цел Indent() { return wxStyledTextCtrl_GetIndent(шхобъ); }
+        public проц Indent(цел значение) { wxStyledTextCtrl_SetIndent(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public bool UseTabs() { return wxStyledTextCtrl_GetUseTabs(wxobj); }
-        public void UseTabs(bool value) { wxStyledTextCtrl_SetUseTabs(wxobj, value); }
+        public бул UseTabs() { return wxStyledTextCtrl_GetUseTabs(шхобъ); }
+        public проц UseTabs(бул значение) { wxStyledTextCtrl_SetUseTabs(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public void SetLineIndentation(int line, int indentSize)
+        public проц SetLineIndentation(цел line, цел indentSize)
         {
-            wxStyledTextCtrl_SetLineIndentation(wxobj, line, indentSize);
+            wxStyledTextCtrl_SetLineIndentation(шхобъ, line, indentSize);
         }
 
-        public int GetLineIndentation(int line)
+        public цел GetLineIndentation(цел line)
         {
-            return wxStyledTextCtrl_GetLineIndentation(wxobj, line);
+            return wxStyledTextCtrl_GetLineIndentation(шхобъ, line);
         }
 
         //-----------------------------------------------------------------------------
 
-        public int GetLineIndentPosition(int line)
+        public цел GetLineIndentPosition(цел line)
         {
-            return wxStyledTextCtrl_GetLineIndentPosition(wxobj, line);
+            return wxStyledTextCtrl_GetLineIndentPosition(шхобъ, line);
         }
 
         //-----------------------------------------------------------------------------
 
-        public int GetColumn(int pos)
+        public цел GetColumn(цел поз)
         {
-            return wxStyledTextCtrl_GetColumn(wxobj, pos);
+            return wxStyledTextCtrl_GetColumn(шхобъ, поз);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void UseHorizontalScrollBar(bool value) { wxStyledTextCtrl_SetUseHorizontalScrollBar(wxobj, value); }
-        public bool UseHorizontalScrollBar() { return wxStyledTextCtrl_GetUseHorizontalScrollBar(wxobj); }
+        public проц UseHorizontalScrollBar(бул значение) { wxStyledTextCtrl_SetUseHorizontalScrollBar(шхобъ, значение); }
+        public бул UseHorizontalScrollBar() { return wxStyledTextCtrl_GetUseHorizontalScrollBar(шхобъ); }
 
         //-----------------------------------------------------------------------------
 
-        public void IndentationGuides(bool value) { wxStyledTextCtrl_SetIndentationGuides(wxobj, value); }
-        public bool IndentationGuides() { return wxStyledTextCtrl_GetIndentationGuides(wxobj); }
+        public проц IndentationGuides(бул значение) { wxStyledTextCtrl_SetIndentationGuides(шхобъ, значение); }
+        public бул IndentationGuides() { return wxStyledTextCtrl_GetIndentationGuides(шхобъ); }
 
         //-----------------------------------------------------------------------------
 
-        public int HighlightGuide() { return wxStyledTextCtrl_GetHighlightGuide(wxobj); }
-        public void HighlightGuide(int value) { wxStyledTextCtrl_SetHighlightGuide(wxobj, value); }
+        public цел HighlightGuide() { return wxStyledTextCtrl_GetHighlightGuide(шхобъ); }
+        public проц HighlightGuide(цел значение) { wxStyledTextCtrl_SetHighlightGuide(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public int GetLineEndPosition(int line)
+        public цел GetLineEndPosition(цел line)
         {
-            return wxStyledTextCtrl_GetLineEndPosition(wxobj, line);
+            return wxStyledTextCtrl_GetLineEndPosition(шхобъ, line);
         }
 
         //-----------------------------------------------------------------------------
 
-        public bool ReadOnly() { return wxStyledTextCtrl_GetReadOnly(wxobj); }
-        public void ReadOnly(bool value) { wxStyledTextCtrl_SetReadOnly(wxobj, value); }
+        public бул ReadOnly() { return wxStyledTextCtrl_GetReadOnly(шхобъ); }
+        public проц ReadOnly(бул значение) { wxStyledTextCtrl_SetReadOnly(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public int SelectionStart() { return wxStyledTextCtrl_GetSelectionStart(wxobj); } 
-        public void SelectionStart(int value) { wxStyledTextCtrl_SetSelectionStart(wxobj, value); }
+        public цел SelectionStart() { return wxStyledTextCtrl_GetSelectionStart(шхобъ); } 
+        public проц SelectionStart(цел значение) { wxStyledTextCtrl_SetSelectionStart(шхобъ, значение); }
 
-        public int SelectionEnd() { return wxStyledTextCtrl_GetSelectionEnd(wxobj); }
-        public void SelectionEnd(int value) { wxStyledTextCtrl_SetSelectionEnd(wxobj, value); }
+        public цел SelectionEnd() { return wxStyledTextCtrl_GetSelectionEnd(шхобъ); }
+        public проц SelectionEnd(цел значение) { wxStyledTextCtrl_SetSelectionEnd(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public int PrintMagnification() { return wxStyledTextCtrl_GetPrintMagnification(wxobj); }
-        public void PrintMagnification(int value) { wxStyledTextCtrl_SetPrintMagnification(wxobj, value); }
+        public цел PrintMagnification() { return wxStyledTextCtrl_GetPrintMagnification(шхобъ); }
+        public проц PrintMagnification(цел значение) { wxStyledTextCtrl_SetPrintMagnification(шхобъ, значение); }
 
-        public int PrintColourMode() { return wxStyledTextCtrl_GetPrintColourMode(wxobj); }
-        public void PrintColourMode(int value) { wxStyledTextCtrl_SetPrintColourMode(wxobj, value); } 
+        public цел PrintColourMode() { return wxStyledTextCtrl_GetPrintColourMode(шхобъ); }
+        public проц PrintColourMode(цел значение) { wxStyledTextCtrl_SetPrintColourMode(шхобъ, значение); } 
 
         //-----------------------------------------------------------------------------
 
-        public int FindText(int minPos, int maxPos, string text, int flags)
+        public цел FindText(цел minPos, цел maxPos, ткст текст, цел флаги)
         {
-            return wxStyledTextCtrl_FindText(wxobj, minPos, maxPos, text, flags);
+            return wxStyledTextCtrl_FindText(шхобъ, minPos, maxPos, текст, флаги);
         }
 
         //-----------------------------------------------------------------------------
 
-        public int FormatRange(bool doDraw, int startPos, int endPos, DC draw, DC target, Rectangle renderRect, Rectangle pageRect)
+        public цел FormatRange(бул doDraw, цел startPos, цел endPos, DC draw, DC target, Прямоугольник renderRect, Прямоугольник pageRect)
         {
-            return wxStyledTextCtrl_FormatRange(wxobj, doDraw, startPos, endPos, wxObject.SafePtr(draw), wxObject.SafePtr(target), renderRect, pageRect);
+            return wxStyledTextCtrl_FormatRange(шхобъ, doDraw, startPos, endPos, wxObject.SafePtr(draw), wxObject.SafePtr(target), renderRect, pageRect);
         }
 
         //-----------------------------------------------------------------------------
 
-        public int FirstVisibleLine() { return wxStyledTextCtrl_GetFirstVisibleLine(wxobj); }
+        public цел FirstVisibleLine() { return wxStyledTextCtrl_GetFirstVisibleLine(шхобъ); }
 
         //-----------------------------------------------------------------------------
 
-        public string GetLine(int line)
+        public ткст GetLine(цел line)
         {
-            return cast(string) new wxString(wxStyledTextCtrl_GetLine(wxobj, line), true);
+            return cast(ткст) new wxString(wxStyledTextCtrl_GetLine(шхобъ, line), да);
         }
 
         //-----------------------------------------------------------------------------
 
-        public int LineCount() { return wxStyledTextCtrl_GetLineCount(wxobj); }
+        public цел LineCount() { return wxStyledTextCtrl_GetLineCount(шхобъ); }
 
         //-----------------------------------------------------------------------------
 
-        public int MarginLeft() { return wxStyledTextCtrl_GetMarginLeft(wxobj); }
-        public void MarginLeft(int value) { wxStyledTextCtrl_SetMarginLeft(wxobj, value); }
+        public цел MarginLeft() { return wxStyledTextCtrl_GetMarginLeft(шхобъ); }
+        public проц MarginLeft(цел значение) { wxStyledTextCtrl_SetMarginLeft(шхобъ, значение); }
 
-        public int MarginRight() { return wxStyledTextCtrl_GetMarginRight(wxobj); }
-        public void MarginRight(int value) { wxStyledTextCtrl_SetMarginRight(wxobj, value); }
+        public цел MarginRight() { return wxStyledTextCtrl_GetMarginRight(шхобъ); }
+        public проц MarginRight(цел значение) { wxStyledTextCtrl_SetMarginRight(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public bool Modify() { return wxStyledTextCtrl_GetModify(wxobj); }
+        public бул Modify() { return wxStyledTextCtrl_GetModify(шхобъ); }
 
         //-----------------------------------------------------------------------------
 
-        public void SetSelection(int start, int end)
+        public проц SetSelection(цел start, цел end)
         {
-            wxStyledTextCtrl_SetSelection(wxobj, start, end);
+            wxStyledTextCtrl_SetSelection(шхобъ, start, end);
         }
 
-        public string SelectedText() { return cast(string) new wxString(wxStyledTextCtrl_GetSelectedText(wxobj), true); }
+        public ткст SelectedText() { return cast(ткст) new wxString(wxStyledTextCtrl_GetSelectedText(шхобъ), да); }
 
         //-----------------------------------------------------------------------------
 
-        public string GetTextRange(int startPos, int endPos)
+        public ткст GetTextRange(цел startPos, цел endPos)
         {
-            return cast(string) new wxString(wxStyledTextCtrl_GetTextRange(wxobj, startPos, endPos), true);
+            return cast(ткст) new wxString(wxStyledTextCtrl_GetTextRange(шхобъ, startPos, endPos), да);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void HideSelection(bool value) { wxStyledTextCtrl_HideSelection(wxobj, value); } 
+        public проц HideSelection(бул значение) { wxStyledTextCtrl_HideSelection(шхобъ, значение); } 
 
         //-----------------------------------------------------------------------------
 
-        public int LineFromPosition(int pos)
+        public цел LineFromPosition(цел поз)
         {
-            return wxStyledTextCtrl_LineFromPosition(wxobj, pos);
+            return wxStyledTextCtrl_LineFromPosition(шхобъ, поз);
         }
 
-        public int PositionFromLine(int line)
+        public цел PositionFromLine(цел line)
         {
-            return wxStyledTextCtrl_PositionFromLine(wxobj, line);
+            return wxStyledTextCtrl_PositionFromLine(шхобъ, line);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void LineScroll(int columns, int lines)
+        public проц LineScroll(цел columns, цел lines)
         {
-            wxStyledTextCtrl_LineScroll(wxobj, columns, lines);
+            wxStyledTextCtrl_LineScroll(шхобъ, columns, lines);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void EnsureCaretVisible()
+        public проц EnsureCaretVisible()
         {
-            wxStyledTextCtrl_EnsureCaretVisible(wxobj);
+            wxStyledTextCtrl_EnsureCaretVisible(шхобъ);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void ReplaceSelection(string text)
+        public проц ReplaceSelection(ткст текст)
         {
-            wxStyledTextCtrl_ReplaceSelection(wxobj, text);
+            wxStyledTextCtrl_ReplaceSelection(шхобъ, текст);
         }
 
         //-----------------------------------------------------------------------------
 
-        public bool CanPaste() { return wxStyledTextCtrl_CanPaste(wxobj); } 
+        public бул CanPaste() { return wxStyledTextCtrl_CanPaste(шхобъ); } 
 
-        public bool CanUndo() { return wxStyledTextCtrl_CanUndo(wxobj); }
+        public бул CanUndo() { return wxStyledTextCtrl_CanUndo(шхобъ); }
 
         //-----------------------------------------------------------------------------
 
-        public void EmptyUndoBuffer()
+        public проц EmptyUndoBuffer()
         {
-            wxStyledTextCtrl_EmptyUndoBuffer(wxobj);
+            wxStyledTextCtrl_EmptyUndoBuffer(шхобъ);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void Undo()
+        public проц Undo()
         {
-            wxStyledTextCtrl_Undo(wxobj);
+            wxStyledTextCtrl_Undo(шхобъ);
         }
 
-        public void Cut()
+        public проц Cut()
         {
-            wxStyledTextCtrl_Cut(wxobj);
+            wxStyledTextCtrl_Cut(шхобъ);
         }
 
-        public void Copy()
+        public проц Копируй()
         {
-            wxStyledTextCtrl_Copy(wxobj);
+            wxStyledTextCtrl_Copy(шхобъ);
         }
 
-        public void Paste()
+        public проц Вставь()
         {
-            wxStyledTextCtrl_Paste(wxobj);
+            wxStyledTextCtrl_Paste(шхобъ);
         }
 
-        public void Clear()
+        public проц Очисть()
         {
-            wxStyledTextCtrl_Clear(wxobj);
+            wxStyledTextCtrl_Clear(шхобъ);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void Text(string value) { wxStyledTextCtrl_SetText(wxobj, value); } 
-        public string Text() { return cast(string) new wxString(wxStyledTextCtrl_GetText(wxobj), true); }
+        public проц Текст(ткст значение) { wxStyledTextCtrl_SetText(шхобъ, значение); } 
+        public ткст Текст() { return cast(ткст) new wxString(wxStyledTextCtrl_GetText(шхобъ), да); }
 
         //-----------------------------------------------------------------------------
 
-        public int TextLength() { return wxStyledTextCtrl_GetTextLength(wxobj); }
+        public цел ДлинаТекста() { return wxStyledTextCtrl_GetTextLength(шхобъ); }
 
         //-----------------------------------------------------------------------------
 
-        public bool Overtype() { return wxStyledTextCtrl_GetOvertype(wxobj); }
-        public void Overtype(bool value) { wxStyledTextCtrl_SetOvertype(wxobj, value); }
+        public бул Overtype() { return wxStyledTextCtrl_GetOvertype(шхобъ); }
+        public проц Overtype(бул значение) { wxStyledTextCtrl_SetOvertype(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public int CaretWidth() { return wxStyledTextCtrl_GetCaretWidth(wxobj); } 
-        public void CaretWidth(int value) { wxStyledTextCtrl_SetCaretWidth(wxobj, value); }
+        public цел CaretWidth() { return wxStyledTextCtrl_GetCaretWidth(шхобъ); } 
+        public проц CaretWidth(цел значение) { wxStyledTextCtrl_SetCaretWidth(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public int TargetStart() { return wxStyledTextCtrl_GetTargetStart(wxobj); }
-        public void TargetStart(int value) { wxStyledTextCtrl_SetTargetStart(wxobj, value); }
+        public цел TargetStart() { return wxStyledTextCtrl_GetTargetStart(шхобъ); }
+        public проц TargetStart(цел значение) { wxStyledTextCtrl_SetTargetStart(шхобъ, значение); }
 
-        public int TargetEnd() { return wxStyledTextCtrl_GetTargetEnd(wxobj); }
-        public void TargetEnd(int value) { wxStyledTextCtrl_SetTargetEnd(wxobj, value); } 
+        public цел TargetEnd() { return wxStyledTextCtrl_GetTargetEnd(шхобъ); }
+        public проц TargetEnd(цел значение) { wxStyledTextCtrl_SetTargetEnd(шхобъ, значение); } 
 
-        public int ReplaceTarget(string text)
+        public цел ReplaceTarget(ткст текст)
         {
-            return wxStyledTextCtrl_ReplaceTarget(wxobj, text);
+            return wxStyledTextCtrl_ReplaceTarget(шхобъ, текст);
         }
 
-        public int ReplaceTargetRE(string text)
+        public цел ReplaceTargetRE(ткст текст)
         {
-            return wxStyledTextCtrl_ReplaceTargetRE(wxobj, text);
+            return wxStyledTextCtrl_ReplaceTargetRE(шхобъ, текст);
         }
 
-        public int SearchInTarget(string text)
+        public цел SearchInTarget(ткст текст)
         {
-            return wxStyledTextCtrl_SearchInTarget(wxobj, text);
+            return wxStyledTextCtrl_SearchInTarget(шхобъ, текст);
         }
 
         //-----------------------------------------------------------------------------
 
-        public int SetSearchFlags() { return wxStyledTextCtrl_GetSearchFlags(wxobj); }
-        public void SetSearchFlags(int value) { wxStyledTextCtrl_SetSearchFlags(wxobj, value); }
+        public цел SetSearchFlags() { return wxStyledTextCtrl_GetSearchFlags(шхобъ); }
+        public проц SetSearchFlags(цел значение) { wxStyledTextCtrl_SetSearchFlags(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public void CallTipShow(int pos, string definition)
+        public проц CallTipShow(цел поз, ткст definition)
         {
-            wxStyledTextCtrl_CallTipShow(wxobj, pos, definition);
+            wxStyledTextCtrl_CallTipShow(шхобъ, поз, definition);
         }
 
-        public void CallTipCancel()
+        public проц CallTipCancel()
         {
-            wxStyledTextCtrl_CallTipCancel(wxobj);
+            wxStyledTextCtrl_CallTipCancel(шхобъ);
         }
 
-        public bool CallTipActive() { return wxStyledTextCtrl_CallTipActive(wxobj); }
+        public бул CallTipActive() { return wxStyledTextCtrl_CallTipActive(шхобъ); }
 
-        public int CallTipPosAtStart() { return wxStyledTextCtrl_CallTipPosAtStart(wxobj); }
+        public цел CallTipPosAtStart() { return wxStyledTextCtrl_CallTipPosAtStart(шхобъ); }
 
-        public void CallTipSetHighlight(int start, int end)
+        public проц CallTipSetHighlight(цел start, цел end)
         {
-            wxStyledTextCtrl_CallTipSetHighlight(wxobj, start, end);
+            wxStyledTextCtrl_CallTipSetHighlight(шхобъ, start, end);
         }
 
-        public void CallTipBackground(Colour value) { wxStyledTextCtrl_CallTipSetBackground(wxobj, wxObject.SafePtr(value)); }
+        public проц CallTipBackground(Цвет значение) { wxStyledTextCtrl_CallTipSetBackground(шхобъ, wxObject.SafePtr(значение)); }
 
-        public void CallTipForeground(Colour value) { wxStyledTextCtrl_CallTipSetForeground(wxobj, wxObject.SafePtr(value)); } 
+        public проц CallTipForeground(Цвет значение) { wxStyledTextCtrl_CallTipSetForeground(шхобъ, wxObject.SafePtr(значение)); } 
 
-        public void CallTipForegroundHighlight(Colour value) { wxStyledTextCtrl_CallTipSetForegroundHighlight(wxobj, wxObject.SafePtr(value)); }
+        public проц CallTipForegroundHighlight(Цвет значение) { wxStyledTextCtrl_CallTipSetForegroundHighlight(шхобъ, wxObject.SafePtr(значение)); }
 
         //-----------------------------------------------------------------------------
 
-        public int VisibleFromDocLine(int line)
+        public цел VisibleFromDocLine(цел line)
         {
-            return wxStyledTextCtrl_VisibleFromDocLine(wxobj, line);
+            return wxStyledTextCtrl_VisibleFromDocLine(шхобъ, line);
         }
 
-        public int DocLineFromVisible(int lineDisplay)
+        public цел DocLineFromVisible(цел lineDisplay)
         {
-            return wxStyledTextCtrl_DocLineFromVisible(wxobj, lineDisplay);
+            return wxStyledTextCtrl_DocLineFromVisible(шхобъ, lineDisplay);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void SetFoldLevel(int line, int level)
+        public проц SetFoldLevel(цел line, цел level)
         {
-            wxStyledTextCtrl_SetFoldLevel(wxobj, line, level);
+            wxStyledTextCtrl_SetFoldLevel(шхобъ, line, level);
         }
 
-        public int GetFoldLevel(int line)
+        public цел GetFoldLevel(цел line)
         {
-            return wxStyledTextCtrl_GetFoldLevel(wxobj, line);
+            return wxStyledTextCtrl_GetFoldLevel(шхобъ, line);
         }
 
-        public int GetLastChild(int line, int level)
+        public цел GetLastChild(цел line, цел level)
         {
-            return wxStyledTextCtrl_GetLastChild(wxobj, line, level);
+            return wxStyledTextCtrl_GetLastChild(шхобъ, line, level);
         }
 
-        public int GetFoldParent(int line)
+        public цел GetFoldParent(цел line)
         {
-            return wxStyledTextCtrl_GetFoldParent(wxobj, line);
+            return wxStyledTextCtrl_GetFoldParent(шхобъ, line);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void ShowLines(int lineStart, int lineEnd)
+        public проц ShowLines(цел lineStart, цел lineEnd)
         {
-            wxStyledTextCtrl_ShowLines(wxobj, lineStart, lineEnd);
+            wxStyledTextCtrl_ShowLines(шхобъ, lineStart, lineEnd);
         }
 
-        public void HideLines(int lineStart, int lineEnd)
+        public проц HideLines(цел lineStart, цел lineEnd)
         {
-            wxStyledTextCtrl_HideLines(wxobj, lineStart, lineEnd);
+            wxStyledTextCtrl_HideLines(шхобъ, lineStart, lineEnd);
         }
 
-        public bool GetLineVisible(int line)
+        public бул GetLineVisible(цел line)
         {
-            return wxStyledTextCtrl_GetLineVisible(wxobj, line);
+            return wxStyledTextCtrl_GetLineVisible(шхобъ, line);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void SetFoldExpanded(int line, bool expanded)
+        public проц SetFoldExpanded(цел line, бул expanded)
         {
-            wxStyledTextCtrl_SetFoldExpanded(wxobj, line, expanded);
+            wxStyledTextCtrl_SetFoldExpanded(шхобъ, line, expanded);
         }
 
-        public bool GetFoldExpanded(int line)
+        public бул GetFoldExpanded(цел line)
         {
-            return wxStyledTextCtrl_GetFoldExpanded(wxobj, line);
+            return wxStyledTextCtrl_GetFoldExpanded(шхобъ, line);
         }
 
-        public void ToggleFold(int line)
+        public проц ToggleFold(цел line)
         {
-            wxStyledTextCtrl_ToggleFold(wxobj, line);
+            wxStyledTextCtrl_ToggleFold(шхобъ, line);
         }
 
-        public void EnsureVisible(int line)
+        public проц EnsureVisible(цел line)
         {
-            wxStyledTextCtrl_EnsureVisible(wxobj, line);
+            wxStyledTextCtrl_EnsureVisible(шхобъ, line);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void FoldFlags(int value) { wxStyledTextCtrl_SetFoldFlags(wxobj, value); }
+        public проц FoldFlags(цел значение) { wxStyledTextCtrl_SetFoldFlags(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public void EnsureVisibleEnforcePolicy(int line)
+        public проц EnsureVisibleEnforcePolicy(цел line)
         {
-            wxStyledTextCtrl_EnsureVisibleEnforcePolicy(wxobj, line);
+            wxStyledTextCtrl_EnsureVisibleEnforcePolicy(шхобъ, line);
         }
 
         //-----------------------------------------------------------------------------
 
-        public bool TabIndents() { return wxStyledTextCtrl_GetTabIndents(wxobj); }
-        public void TabIndents(bool value) { wxStyledTextCtrl_SetTabIndents(wxobj, value); }
+        public бул TabIndents() { return wxStyledTextCtrl_GetTabIndents(шхобъ); }
+        public проц TabIndents(бул значение) { wxStyledTextCtrl_SetTabIndents(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public bool BackSpaceUnIndents() { return wxStyledTextCtrl_GetBackSpaceUnIndents(wxobj); }
-        public void BackSpaceUnIndents(bool value) { wxStyledTextCtrl_SetBackSpaceUnIndents(wxobj, value); }
+        public бул BackSpaceUnIndents() { return wxStyledTextCtrl_GetBackSpaceUnIndents(шхобъ); }
+        public проц BackSpaceUnIndents(бул значение) { wxStyledTextCtrl_SetBackSpaceUnIndents(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public void MouseDwellTime(int value) { wxStyledTextCtrl_SetMouseDwellTime(wxobj, value); }
-        public int MouseDwellTime() { return wxStyledTextCtrl_GetMouseDwellTime(wxobj); }
+        public проц MouseDwellTime(цел значение) { wxStyledTextCtrl_SetMouseDwellTime(шхобъ, значение); }
+        public цел MouseDwellTime() { return wxStyledTextCtrl_GetMouseDwellTime(шхобъ); }
 
         //-----------------------------------------------------------------------------
 
-        public int WordStartPosition(int pos, bool onlyWordCharacters)
+        public цел WordStartPosition(цел поз, бул onlyWordCharacters)
         {
-            return wxStyledTextCtrl_WordStartPosition(wxobj, pos, onlyWordCharacters);
+            return wxStyledTextCtrl_WordStartPosition(шхобъ, поз, onlyWordCharacters);
         }
 
-        public int WordEndPosition(int pos, bool onlyWordCharacters)
+        public цел WordEndPosition(цел поз, бул onlyWordCharacters)
         {
-            return wxStyledTextCtrl_WordEndPosition(wxobj, pos, onlyWordCharacters);
+            return wxStyledTextCtrl_WordEndPosition(шхобъ, поз, onlyWordCharacters);
         }
 
         //-----------------------------------------------------------------------------
 
-        public int WrapMode() { return wxStyledTextCtrl_GetWrapMode(wxobj); }
-        public void WrapMode(int value) { wxStyledTextCtrl_SetWrapMode(wxobj, value); }
+        public цел WrapMode() { return wxStyledTextCtrl_GetWrapMode(шхобъ); }
+        public проц WrapMode(цел значение) { wxStyledTextCtrl_SetWrapMode(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public void LayoutCache(int value) { wxStyledTextCtrl_SetLayoutCache(wxobj, value); }
-        public int LayoutCache() { return wxStyledTextCtrl_GetLayoutCache(wxobj); }
+        public проц LayoutCache(цел значение) { wxStyledTextCtrl_SetLayoutCache(шхобъ, значение); }
+        public цел LayoutCache() { return wxStyledTextCtrl_GetLayoutCache(шхобъ); }
 
         //-----------------------------------------------------------------------------
 
-        public int ScrollWidth() { return wxStyledTextCtrl_GetScrollWidth(wxobj); }
-        public void ScrollWidth(int value) { wxStyledTextCtrl_SetScrollWidth(wxobj, value); }
+        public цел ScrollWidth() { return wxStyledTextCtrl_GetScrollWidth(шхобъ); }
+        public проц ScrollWidth(цел значение) { wxStyledTextCtrl_SetScrollWidth(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public int TextWidth(int style, string text)
+        public цел TextWidth(цел стиль, ткст текст)
         {
-            return wxStyledTextCtrl_TextWidth(wxobj, style, text);
+            return wxStyledTextCtrl_TextWidth(шхобъ, стиль, текст);
         }
 
         //-----------------------------------------------------------------------------
 
-        public bool EndAtLastLine() { return cast(bool)wxStyledTextCtrl_GetEndAtLastLine(wxobj); }
-        public void EndAtLastLine(bool value) { wxStyledTextCtrl_SetEndAtLastLine(wxobj, value); }
+        public бул EndAtLastLine() { return cast(бул)wxStyledTextCtrl_GetEndAtLastLine(шхобъ); }
+        public проц EndAtLastLine(бул значение) { wxStyledTextCtrl_SetEndAtLastLine(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public int TextHeight(int line)
+        public цел TextHeight(цел line)
         {
-            return wxStyledTextCtrl_TextHeight(wxobj, line);
+            return wxStyledTextCtrl_TextHeight(шхобъ, line);
         }
 
         //-----------------------------------------------------------------------------
 
-        public bool UseVerticalScrollBar() { return wxStyledTextCtrl_GetUseVerticalScrollBar(wxobj); }
-        public void UseVerticalScrollBar(bool value) { wxStyledTextCtrl_SetUseVerticalScrollBar(wxobj, value); }
+        public бул UseVerticalScrollBar() { return wxStyledTextCtrl_GetUseVerticalScrollBar(шхобъ); }
+        public проц UseVerticalScrollBar(бул значение) { wxStyledTextCtrl_SetUseVerticalScrollBar(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public void AppendText(int length, string text)
+        public проц AppendText(цел length, ткст текст)
         {
-            wxStyledTextCtrl_AppendText(wxobj, length, text);
+            wxStyledTextCtrl_AppendText(шхобъ, length, текст);
         }
 
         //-----------------------------------------------------------------------------
 
-        public bool TwoPhaseDraw() { return wxStyledTextCtrl_GetTwoPhaseDraw(wxobj); } 
-        public void TwoPhaseDraw(bool value) { wxStyledTextCtrl_SetTwoPhaseDraw(wxobj, value); }
+        public бул TwoPhaseDraw() { return wxStyledTextCtrl_GetTwoPhaseDraw(шхобъ); } 
+        public проц TwoPhaseDraw(бул значение) { wxStyledTextCtrl_SetTwoPhaseDraw(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public void TargetFromSelection()
+        public проц TargetFromSelection()
         {
-            wxStyledTextCtrl_TargetFromSelection(wxobj);
+            wxStyledTextCtrl_TargetFromSelection(шхобъ);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void LinesJoin()
+        public проц LinesJoin()
         {
-            wxStyledTextCtrl_LinesJoin(wxobj);
+            wxStyledTextCtrl_LinesJoin(шхобъ);
         }
 
-        public void LinesSplit(int pixelWidth)
+        public проц LinesSplit(цел pixelWidth)
         {
-            wxStyledTextCtrl_LinesSplit(wxobj, pixelWidth);
+            wxStyledTextCtrl_LinesSplit(шхобъ, pixelWidth);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void SetFoldMarginColour(bool useSetting, Colour back)
+        public проц SetFoldMarginColour(бул useSetting, Цвет back)
         {
-            wxStyledTextCtrl_SetFoldMarginColour(wxobj, useSetting, wxObject.SafePtr(back));
+            wxStyledTextCtrl_SetFoldMarginColour(шхобъ, useSetting, wxObject.SafePtr(back));
         }
 
-        public void SetFoldMarginHiColour(bool useSetting, Colour fore)
+        public проц SetFoldMarginHiColour(бул useSetting, Цвет fore)
         {
-            wxStyledTextCtrl_SetFoldMarginHiColour(wxobj, useSetting, wxObject.SafePtr(fore));
+            wxStyledTextCtrl_SetFoldMarginHiColour(шхобъ, useSetting, wxObject.SafePtr(fore));
         }
 
         //-----------------------------------------------------------------------------
 
-        public void LineDuplicate()
+        public проц LineDuplicate()
         {
-            wxStyledTextCtrl_LineDuplicate(wxobj);
+            wxStyledTextCtrl_LineDuplicate(шхобъ);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void HomeDisplay()
+        public проц HomeDisplay()
         {
-            wxStyledTextCtrl_HomeDisplay(wxobj);
+            wxStyledTextCtrl_HomeDisplay(шхобъ);
         }
 
-        public void HomeDisplayExtend()
+        public проц HomeDisplayExtend()
         {
-            wxStyledTextCtrl_HomeDisplayExtend(wxobj);
+            wxStyledTextCtrl_HomeDisplayExtend(шхобъ);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void LineEndDisplay()
+        public проц LineEndDisplay()
         {
-            wxStyledTextCtrl_LineEndDisplay(wxobj);
+            wxStyledTextCtrl_LineEndDisplay(шхобъ);
         }
 
-        public void LineEndDisplayExtend()
+        public проц LineEndDisplayExtend()
         {
-            wxStyledTextCtrl_LineEndDisplayExtend(wxobj);
+            wxStyledTextCtrl_LineEndDisplayExtend(шхобъ);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void MoveCaretInsideView()
+        public проц MoveCaretInsideView()
         {
-            wxStyledTextCtrl_MoveCaretInsideView(wxobj);
+            wxStyledTextCtrl_MoveCaretInsideView(шхобъ);
         }
 
         //-----------------------------------------------------------------------------
 
-        public int LineLength(int line)
+        public цел LineLength(цел line)
         {
-            return wxStyledTextCtrl_LineLength(wxobj, line);
+            return wxStyledTextCtrl_LineLength(шхобъ, line);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void BraceHighlight(int pos1, int pos2)
+        public проц BraceHighlight(цел pos1, цел pos2)
         {
-            wxStyledTextCtrl_BraceHighlight(wxobj, pos1, pos2);
+            wxStyledTextCtrl_BraceHighlight(шхобъ, pos1, pos2);
         }
 
-        public void BraceBadLight(int pos)
+        public проц BraceBadLight(цел поз)
         {
-            wxStyledTextCtrl_BraceBadLight(wxobj, pos);
+            wxStyledTextCtrl_BraceBadLight(шхобъ, поз);
         }
 
-        public int BraceMatch(int pos)
+        public цел BraceMatch(цел поз)
         {
-            return wxStyledTextCtrl_BraceMatch(wxobj, pos);
+            return wxStyledTextCtrl_BraceMatch(шхобъ, поз);
         }
 
         //-----------------------------------------------------------------------------
 
-        public bool ViewEOL() { return wxStyledTextCtrl_GetViewEOL(wxobj); }
-        public void ViewEOL(bool value) { wxStyledTextCtrl_SetViewEOL(wxobj, value); } 
+        public бул ViewEOL() { return wxStyledTextCtrl_GetViewEOL(шхобъ); }
+        public проц ViewEOL(бул значение) { wxStyledTextCtrl_SetViewEOL(шхобъ, значение); } 
 
         //-----------------------------------------------------------------------------
 
         // Not really usable yet, unless sharing documents between styled
-        // text controls (?)
+        // текст controls (?)
 
-        public wxObject DocPointer() { return FindObject(wxStyledTextCtrl_GetDocPointer(wxobj)); }
-        public void DocPointer(wxObject value) { wxStyledTextCtrl_SetDocPointer(wxobj, wxObject.SafePtr(value)); }
-
-        //-----------------------------------------------------------------------------
-
-        public int ModEventMask() { return wxStyledTextCtrl_GetModEventMask(wxobj); } 
-        public void ModEventMask(int value) { wxStyledTextCtrl_SetModEventMask(wxobj, value); }
+        public wxObject DocPointer() { return FindObject(wxStyledTextCtrl_GetDocPointer(шхобъ)); }
+        public проц DocPointer(wxObject значение) { wxStyledTextCtrl_SetDocPointer(шхобъ, wxObject.SafePtr(значение)); }
 
         //-----------------------------------------------------------------------------
 
-        public int EdgeColumn() { return wxStyledTextCtrl_GetEdgeColumn(wxobj); }
-        public void EdgeColumn(int value) { wxStyledTextCtrl_SetEdgeColumn(wxobj, value); }
+        public цел ModEventMask() { return wxStyledTextCtrl_GetModEventMask(шхобъ); } 
+        public проц ModEventMask(цел значение) { wxStyledTextCtrl_SetModEventMask(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public int EdgeMode() { return wxStyledTextCtrl_GetEdgeMode(wxobj); } 
-        public void EdgeMode(int value) { wxStyledTextCtrl_SetEdgeMode(wxobj, value); }
+        public цел EdgeColumn() { return wxStyledTextCtrl_GetEdgeColumn(шхобъ); }
+        public проц EdgeColumn(цел значение) { wxStyledTextCtrl_SetEdgeColumn(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public Colour EdgeColour() { return new Colour(wxStyledTextCtrl_GetEdgeColour(wxobj), true); } 
-        public void EdgeColour(Colour value) { wxStyledTextCtrl_SetEdgeColour(wxobj, wxObject.SafePtr(value)); }
+        public цел EdgeMode() { return wxStyledTextCtrl_GetEdgeMode(шхобъ); } 
+        public проц EdgeMode(цел значение) { wxStyledTextCtrl_SetEdgeMode(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public void SearchAnchor()
+        public Цвет EdgeColour() { return new Цвет(wxStyledTextCtrl_GetEdgeColour(шхобъ), да); } 
+        public проц EdgeColour(Цвет значение) { wxStyledTextCtrl_SetEdgeColour(шхобъ, wxObject.SafePtr(значение)); }
+
+        //-----------------------------------------------------------------------------
+
+        public проц SearchAnchor()
         {
-            wxStyledTextCtrl_SearchAnchor(wxobj);
+            wxStyledTextCtrl_SearchAnchor(шхобъ);
         }
 
-        public int SearchNext(int flags, string text)
+        public цел SearchNext(цел флаги, ткст текст)
         {
-            return wxStyledTextCtrl_SearchNext(wxobj, flags, text);
+            return wxStyledTextCtrl_SearchNext(шхобъ, флаги, текст);
         }
 
-        public int SearchPrev(int flags, string text)
+        public цел SearchPrev(цел флаги, ткст текст)
         {
-            return wxStyledTextCtrl_SearchPrev(wxobj, flags, text);
-        }
-
-        //-----------------------------------------------------------------------------
-
-        public int LinesOnScreen() { return wxStyledTextCtrl_LinesOnScreen(wxobj); }
-
-        //-----------------------------------------------------------------------------
-
-        public void UsePopUp(bool value) { wxStyledTextCtrl_UsePopUp(wxobj, value); }
-
-        //-----------------------------------------------------------------------------
-
-        public bool SelectionIsRectangle() { return wxStyledTextCtrl_SelectionIsRectangle(wxobj); }
-
-        //-----------------------------------------------------------------------------
-
-        public int Zoom() { return wxStyledTextCtrl_GetZoom(wxobj); }
-        public void Zoom(int value) { wxStyledTextCtrl_SetZoom(wxobj, value); }
-
-        //-----------------------------------------------------------------------------
-
-        public void CreateDocument()
-        {
-            wxStyledTextCtrl_CreateDocument(wxobj);
-        }
-
-        public void AddRefDocument(wxObject docPointer)
-        {
-            wxStyledTextCtrl_AddRefDocument(wxobj, wxObject.SafePtr(docPointer));
-        }
-
-        public void ReleaseDocument(wxObject docPointer)
-        {
-            wxStyledTextCtrl_ReleaseDocument(wxobj, wxObject.SafePtr(docPointer));
+            return wxStyledTextCtrl_SearchPrev(шхобъ, флаги, текст);
         }
 
         //-----------------------------------------------------------------------------
 
-        public bool STCFocus() { return wxStyledTextCtrl_GetSTCFocus(wxobj); } 
-        public void STCFocus(bool value) { wxStyledTextCtrl_SetSTCFocus(wxobj, value); }
+        public цел LinesOnScreen() { return wxStyledTextCtrl_LinesOnScreen(шхобъ); }
 
         //-----------------------------------------------------------------------------
 
-        public int Status() { return wxStyledTextCtrl_GetStatus(wxobj); }
-        public void Status(int value) { wxStyledTextCtrl_SetStatus(wxobj, value); }
+        public проц UsePopUp(бул значение) { wxStyledTextCtrl_UsePopUp(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public bool MouseDownCaptures() { return wxStyledTextCtrl_GetMouseDownCaptures(wxobj); }
-        public void MouseDownCaptures(bool value) { wxStyledTextCtrl_SetMouseDownCaptures(wxobj, value); }
+        public бул SelectionIsRectangle() { return wxStyledTextCtrl_SelectionIsRectangle(шхобъ); }
 
         //-----------------------------------------------------------------------------
 
-        public void STCCursor(int value) { wxStyledTextCtrl_SetSTCCursor(wxobj, value); }
-        public int STCCursor() { return wxStyledTextCtrl_GetSTCCursor(wxobj); }
+        public цел Zoom() { return wxStyledTextCtrl_GetZoom(шхобъ); }
+        public проц Zoom(цел значение) { wxStyledTextCtrl_SetZoom(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public void ControlCharSymbol(int value) { wxStyledTextCtrl_SetControlCharSymbol(wxobj, value); }
-        public int ControlCharSymbol() { return wxStyledTextCtrl_GetControlCharSymbol(wxobj); }
-
-        //-----------------------------------------------------------------------------
-
-        public void WordPartLeft()
+        public проц CreateDocument()
         {
-            wxStyledTextCtrl_WordPartLeft(wxobj);
+            wxStyledTextCtrl_CreateDocument(шхобъ);
         }
 
-        public void WordPartLeftExtend()
+        public проц AddRefDocument(wxObject docPointer)
         {
-            wxStyledTextCtrl_WordPartLeftExtend(wxobj);
+            wxStyledTextCtrl_AddRefDocument(шхобъ, wxObject.SafePtr(docPointer));
         }
 
-        public void WordPartRight()
+        public проц ReleaseDocument(wxObject docPointer)
         {
-            wxStyledTextCtrl_WordPartRight(wxobj);
-        }
-
-        public void WordPartRightExtend()
-        {
-            wxStyledTextCtrl_WordPartRightExtend(wxobj);
+            wxStyledTextCtrl_ReleaseDocument(шхобъ, wxObject.SafePtr(docPointer));
         }
 
         //-----------------------------------------------------------------------------
 
-        public void SetVisiblePolicy(int visiblePolicy, int visibleSlop)
+        public бул STCFocus() { return wxStyledTextCtrl_GetSTCFocus(шхобъ); } 
+        public проц STCFocus(бул значение) { wxStyledTextCtrl_SetSTCFocus(шхобъ, значение); }
+
+        //-----------------------------------------------------------------------------
+
+        public цел Status() { return wxStyledTextCtrl_GetStatus(шхобъ); }
+        public проц Status(цел значение) { wxStyledTextCtrl_SetStatus(шхобъ, значение); }
+
+        //-----------------------------------------------------------------------------
+
+        public бул MouseDownCaptures() { return wxStyledTextCtrl_GetMouseDownCaptures(шхобъ); }
+        public проц MouseDownCaptures(бул значение) { wxStyledTextCtrl_SetMouseDownCaptures(шхобъ, значение); }
+
+        //-----------------------------------------------------------------------------
+
+        public проц STCCursor(цел значение) { wxStyledTextCtrl_SetSTCCursor(шхобъ, значение); }
+        public цел STCCursor() { return wxStyledTextCtrl_GetSTCCursor(шхобъ); }
+
+        //-----------------------------------------------------------------------------
+
+        public проц ControlCharSymbol(цел значение) { wxStyledTextCtrl_SetControlCharSymbol(шхобъ, значение); }
+        public цел ControlCharSymbol() { return wxStyledTextCtrl_GetControlCharSymbol(шхобъ); }
+
+        //-----------------------------------------------------------------------------
+
+        public проц WordPartLeft()
         {
-            wxStyledTextCtrl_SetVisiblePolicy(wxobj, visiblePolicy, visibleSlop);
+            wxStyledTextCtrl_WordPartLeft(шхобъ);
+        }
+
+        public проц WordPartLeftExtend()
+        {
+            wxStyledTextCtrl_WordPartLeftExtend(шхобъ);
+        }
+
+        public проц WordPartRight()
+        {
+            wxStyledTextCtrl_WordPartRight(шхобъ);
+        }
+
+        public проц WordPartRightExtend()
+        {
+            wxStyledTextCtrl_WordPartRightExtend(шхобъ);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void DelLineLeft()
+        public проц SetVisiblePolicy(цел visiblePolicy, цел visibleSlop)
         {
-            wxStyledTextCtrl_DelLineLeft(wxobj);
-        }
-
-        public void DelLineRight()
-        {
-            wxStyledTextCtrl_DelLineRight(wxobj);
+            wxStyledTextCtrl_SetVisiblePolicy(шхобъ, visiblePolicy, visibleSlop);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void XOffset(int value) { wxStyledTextCtrl_SetXOffset(wxobj, value); }
-        public int XOffset() { return wxStyledTextCtrl_GetXOffset(wxobj); }
-
-        //-----------------------------------------------------------------------------
-
-        public void ChooseCaretX()
+        public проц DelLineLeft()
         {
-            wxStyledTextCtrl_ChooseCaretX(wxobj);
+            wxStyledTextCtrl_DelLineLeft(шхобъ);
+        }
+
+        public проц DelLineRight()
+        {
+            wxStyledTextCtrl_DelLineRight(шхобъ);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void SetXCaretPolicy(int caretPolicy, int caretSlop)
-        {
-            wxStyledTextCtrl_SetXCaretPolicy(wxobj, caretPolicy, caretSlop);
-        }
+        public проц XOffset(цел значение) { wxStyledTextCtrl_SetXOffset(шхобъ, значение); }
+        public цел XOffset() { return wxStyledTextCtrl_GetXOffset(шхобъ); }
 
-        public void SetYCaretPolicy(int caretPolicy, int caretSlop)
+        //-----------------------------------------------------------------------------
+
+        public проц ChooseCaretX()
         {
-            wxStyledTextCtrl_SetYCaretPolicy(wxobj, caretPolicy, caretSlop);
+            wxStyledTextCtrl_ChooseCaretX(шхобъ);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void PrintWrapMode(int value) { wxStyledTextCtrl_SetPrintWrapMode(wxobj, value); }
-        public int PrintWrapMode() { return wxStyledTextCtrl_GetPrintWrapMode(wxobj); }
-
-        //-----------------------------------------------------------------------------
-
-        public void SetHotspotActiveForeground(bool useSetting, Colour fore)
+        public проц SetXCaretPolicy(цел caretPolicy, цел caretSlop)
         {
-            wxStyledTextCtrl_SetHotspotActiveForeground(wxobj, useSetting, wxObject.SafePtr(fore));
+            wxStyledTextCtrl_SetXCaretPolicy(шхобъ, caretPolicy, caretSlop);
         }
 
-        public void SetHotspotActiveBackground(bool useSetting, Colour back)
+        public проц SetYCaretPolicy(цел caretPolicy, цел caretSlop)
         {
-            wxStyledTextCtrl_SetHotspotActiveBackground(wxobj, useSetting, wxObject.SafePtr(back));
-        }
-
-        public void SetHotspotActiveUnderline(bool underline)
-        {
-            wxStyledTextCtrl_SetHotspotActiveUnderline(wxobj, underline);
+            wxStyledTextCtrl_SetYCaretPolicy(шхобъ, caretPolicy, caretSlop);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void StartRecord()
-        {
-            wxStyledTextCtrl_StartRecord(wxobj);
-        }
-
-        public void StopRecord()
-        {
-            wxStyledTextCtrl_StopRecord(wxobj);
-        }
+        public проц PrintWrapMode(цел значение) { wxStyledTextCtrl_SetPrintWrapMode(шхобъ, значение); }
+        public цел PrintWrapMode() { return wxStyledTextCtrl_GetPrintWrapMode(шхобъ); }
 
         //-----------------------------------------------------------------------------
 
-        public void Lexer(int value) { wxStyledTextCtrl_SetLexer(wxobj, value); }
-        public int Lexer() { return wxStyledTextCtrl_GetLexer(wxobj); }
-
-        //-----------------------------------------------------------------------------
-
-        public void Colourise(int start, int end)
+        public проц SetHotspotActiveForeground(бул useSetting, Цвет fore)
         {
-            wxStyledTextCtrl_Colourise(wxobj, start, end);
+            wxStyledTextCtrl_SetHotspotActiveForeground(шхобъ, useSetting, wxObject.SafePtr(fore));
         }
 
-        //-----------------------------------------------------------------------------
-
-        public void SetProperty(string key, string value)
+        public проц SetHotspotActiveBackground(бул useSetting, Цвет back)
         {
-            wxStyledTextCtrl_SetProperty(wxobj, key, value);
+            wxStyledTextCtrl_SetHotspotActiveBackground(шхобъ, useSetting, wxObject.SafePtr(back));
+        }
+
+        public проц SetHotspotActiveUnderline(бул underline)
+        {
+            wxStyledTextCtrl_SetHotspotActiveUnderline(шхобъ, underline);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void SetKeyWords(int keywordSet, string keyWords)
+        public проц StartRecord()
         {
-            wxStyledTextCtrl_SetKeyWords(wxobj, keywordSet, keyWords);
+            wxStyledTextCtrl_StartRecord(шхобъ);
+        }
+
+        public проц StopRecord()
+        {
+            wxStyledTextCtrl_StopRecord(шхобъ);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void LexerLanguage(string value) { wxStyledTextCtrl_SetLexerLanguage(wxobj, value); }
+        public проц Lexer(цел значение) { wxStyledTextCtrl_SetLexer(шхобъ, значение); }
+        public цел Lexer() { return wxStyledTextCtrl_GetLexer(шхобъ); }
 
         //-----------------------------------------------------------------------------
 
-        public int CurrentLine() { return wxStyledTextCtrl_GetCurrentLine(wxobj); } 
-
-        //-----------------------------------------------------------------------------
-
-        public void StyleSetSpec(int styleNum, string spec)
+        public проц Colourise(цел start, цел end)
         {
-            wxStyledTextCtrl_StyleSetSpec(wxobj, styleNum, spec);
-        }
-
-        public void StyleSetFont(int styleNum, Font font)
-        {
-            wxStyledTextCtrl_StyleSetFont(wxobj, styleNum, wxObject.SafePtr(font));
-        }
-
-        public void StyleSetFontAttr(int styleNum, int size, string faceName, bool bold, bool italic, bool underline)
-        {
-            wxStyledTextCtrl_StyleSetFontAttr(wxobj, styleNum, size, faceName, bold, italic, underline);
+            wxStyledTextCtrl_Colourise(шхобъ, start, end);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void CmdKeyExecute(int cmd)
+        public проц SetProperty(ткст key, ткст значение)
         {
-            wxStyledTextCtrl_CmdKeyExecute(wxobj, cmd);
+            wxStyledTextCtrl_SetProperty(шхобъ, key, значение);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void SetMargins(int left, int right)
+        public проц SetKeyWords(цел keywordSet, ткст keyWords)
         {
-            wxStyledTextCtrl_SetMargins(wxobj, left, right);
+            wxStyledTextCtrl_SetKeyWords(шхобъ, keywordSet, keyWords);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void GetSelection(out int startPos, out int endPos)
+        public проц LexerLanguage(ткст значение) { wxStyledTextCtrl_SetLexerLanguage(шхобъ, значение); }
+
+        //-----------------------------------------------------------------------------
+
+        public цел CurrentLine() { return wxStyledTextCtrl_GetCurrentLine(шхобъ); } 
+
+        //-----------------------------------------------------------------------------
+
+        public проц StyleSetSpec(цел styleNum, ткст spec)
         {
-            wxStyledTextCtrl_GetSelection(wxobj, startPos, endPos);
+            wxStyledTextCtrl_StyleSetSpec(шхобъ, styleNum, spec);
+        }
+
+        public проц StyleSetFont(цел styleNum, Шрифт шрифт)
+        {
+            wxStyledTextCtrl_StyleSetFont(шхобъ, styleNum, wxObject.SafePtr(шрифт));
+        }
+
+        public проц StyleSetFontAttr(цел styleNum, цел size, ткст faceName, бул bold, бул italic, бул underline)
+        {
+            wxStyledTextCtrl_StyleSetFontAttr(шхобъ, styleNum, size, faceName, bold, italic, underline);
         }
 
         //-----------------------------------------------------------------------------
 
-        public Point PointFromPosition(int pos)
+        public проц CmdKeyExecute(цел команда)
         {
-            Point pt;
-            wxStyledTextCtrl_PointFromPosition(wxobj, pos, pt);
+            wxStyledTextCtrl_CmdKeyExecute(шхобъ, команда);
+        }
+
+        //-----------------------------------------------------------------------------
+
+        public проц SetMargins(цел left, цел right)
+        {
+            wxStyledTextCtrl_SetMargins(шхобъ, left, right);
+        }
+
+        //-----------------------------------------------------------------------------
+
+        public проц GetSelection(out цел startPos, out цел endPos)
+        {
+            wxStyledTextCtrl_GetSelection(шхобъ, startPos, endPos);
+        }
+
+        //-----------------------------------------------------------------------------
+
+        public Точка PointFromPosition(цел поз)
+        {
+            Точка pt;
+            wxStyledTextCtrl_PointFromPosition(шхобъ, поз, pt);
             return pt;
         }
 
         //-----------------------------------------------------------------------------
 
-        public void ScrollToLine(int line)
+        public проц ScrollToLine(цел line)
         {
-            wxStyledTextCtrl_ScrollToLine(wxobj, line);
+            wxStyledTextCtrl_ScrollToLine(шхобъ, line);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void ScrollToColumn(int column)
+        public проц ScrollToColumn(цел column)
         {
-            wxStyledTextCtrl_ScrollToColumn(wxobj, column);
+            wxStyledTextCtrl_ScrollToColumn(шхобъ, column);
         }
 
         //-----------------------------------------------------------------------------
 
-        /*public int SendMsg(int msg, int wp, int lp)
+        /*public цел SendMsg(цел msg, цел wp, цел lp)
         {
-            return wxStyledTextCtrl_SendMsg(wxobj, msg, wp, lp);
+            return wxStyledTextCtrl_SendMsg(шхобъ, msg, wp, lp);
         }*/
 
         //-----------------------------------------------------------------------------
 
         /*public ScrollBar VScrollBar
         {
-            set { wxStyledTextCtrl_SetVScrollBar(wxobj, wxObject.SafePtr(value)); }
+            set { wxStyledTextCtrl_SetVScrollBar(шхобъ, wxObject.SafePtr(значение)); }
         }*/
 
         //-----------------------------------------------------------------------------
 
         /*public ScrollBar SetHScrollBar
         {
-            set { wxStyledTextCtrl_SetHScrollBar(wxobj, wxObject.SafePtr(value)); }
+            set { wxStyledTextCtrl_SetHScrollBar(шхобъ, wxObject.SafePtr(значение)); }
         }*/
 
         //-----------------------------------------------------------------------------
 
-        public bool LastKeydownProcessed() { return wxStyledTextCtrl_GetLastKeydownProcessed(wxobj); }
-        public void LastKeydownProcessed(bool value) { wxStyledTextCtrl_SetLastKeydownProcessed(wxobj, value); }
+        public бул LastKeydownProcessed() { return wxStyledTextCtrl_GetLastKeydownProcessed(шхобъ); }
+        public проц LastKeydownProcessed(бул значение) { wxStyledTextCtrl_SetLastKeydownProcessed(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public bool SaveFile(string filename)
+        public бул СохраниФайл(ткст фимя)
         {
-            return wxStyledTextCtrl_SaveFile(wxobj, filename);
+            return wxStyledTextCtrl_SaveFile(шхобъ, фимя);
         }
 
-        public bool LoadFile(string filename)
+        public бул ЗагрузиФайл(ткст фимя)
         {
-            return wxStyledTextCtrl_LoadFile(wxobj, filename);
+            return wxStyledTextCtrl_LoadFile(шхобъ, фимя);
         }
 
         //-----------------------------------------------------------------------------
 
-		public void Change_Add(EventListener value) { AddCommandListener(wxEVT_STC_CHANGE, ID, value, this); }
-		public void Change_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц Change_Add(EventListener значение) { AddCommandListener(wxEVT_STC_CHANGE, ИД, значение, this); }
+		public проц Change_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void StyleNeeded_Add(EventListener value) { AddCommandListener(wxEVT_STC_STYLENEEDED, ID, value, this); }
-		public void StyleNeeded_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц StyleNeeded_Add(EventListener значение) { AddCommandListener(wxEVT_STC_STYLENEEDED, ИД, значение, this); }
+		public проц StyleNeeded_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void CharAdded_Add(EventListener value) { AddCommandListener(wxEVT_STC_CHARADDED, ID, value, this); }
-		public void CharAdded_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц CharAdded_Add(EventListener значение) { AddCommandListener(wxEVT_STC_CHARADDED, ИД, значение, this); }
+		public проц CharAdded_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void SavePointReached_Add(EventListener value) { AddCommandListener(wxEVT_STC_SAVEPOINTREACHED, ID, value, this); }
-		public void SavePointReached_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц SavePointReached_Add(EventListener значение) { AddCommandListener(wxEVT_STC_SAVEPOINTREACHED, ИД, значение, this); }
+		public проц SavePointReached_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void SavePointLeft_Add(EventListener value) { AddCommandListener(wxEVT_STC_SAVEPOINTLEFT, ID, value, this); }
-		public void SavePointLeft_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц SavePointLeft_Add(EventListener значение) { AddCommandListener(wxEVT_STC_SAVEPOINTLEFT, ИД, значение, this); }
+		public проц SavePointLeft_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void ROModifyAttempt_Add(EventListener value) { AddCommandListener(wxEVT_STC_ROMODIFYATTEMPT, ID, value, this); }
-		public void ROModifyAttempt_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц ROModifyAttempt_Add(EventListener значение) { AddCommandListener(wxEVT_STC_ROMODIFYATTEMPT, ИД, значение, this); }
+		public проц ROModifyAttempt_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void Key_Add(EventListener value) { AddCommandListener(wxEVT_STC_KEY, ID, value, this); }
-		public void Key_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц Key_Add(EventListener значение) { AddCommandListener(wxEVT_STC_KEY, ИД, значение, this); }
+		public проц Key_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void DoubleClick_Add(EventListener value) { AddCommandListener(wxEVT_STC_DOUBLECLICK, ID, value, this); }
-		public void DoubleClick_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц DoubleClick_Add(EventListener значение) { AddCommandListener(wxEVT_STC_DOUBLECLICK, ИД, значение, this); }
+		public проц DoubleClick_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void UpdateUI_Add(EventListener value) { AddCommandListener(wxEVT_STC_UPDATEUI, ID, value, this); }
-		public void UpdateUI_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц UpdateUI_Add(EventListener значение) { AddCommandListener(wxEVT_STC_UPDATEUI, ИД, значение, this); }
+		public проц UpdateUI_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void Modified_Add(EventListener value) { AddCommandListener(wxEVT_STC_MODIFIED, ID, value, this); }
-		public void Modified_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц Modified_Add(EventListener значение) { AddCommandListener(wxEVT_STC_MODIFIED, ИД, значение, this); }
+		public проц Modified_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void MacroRecord_Add(EventListener value) { AddCommandListener(wxEVT_STC_MACRORECORD, ID, value, this); }
-		public void MacroRecord_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц MacroRecord_Add(EventListener значение) { AddCommandListener(wxEVT_STC_MACRORECORD, ИД, значение, this); }
+		public проц MacroRecord_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void MarginClick_Add(EventListener value) { AddCommandListener(wxEVT_STC_MARGINCLICK, ID, value, this); }
-		public void MarginClick_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц MarginClick_Add(EventListener значение) { AddCommandListener(wxEVT_STC_MARGINCLICK, ИД, значение, this); }
+		public проц MarginClick_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void NeedShown_Add(EventListener value) { AddCommandListener(wxEVT_STC_NEEDSHOWN, ID, value, this); }
-		public void NeedShown_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц NeedShown_Add(EventListener значение) { AddCommandListener(wxEVT_STC_NEEDSHOWN, ИД, значение, this); }
+		public проц NeedShown_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
 		/*public event EventListener PositionChanged
 		{
-			add { AddCommandListener(wxEVT_STC_POSCHANGED, ID, value, this); }
-			remove { RemoveHandler(value, this); }
+			add { AddCommandListener(wxEVT_STC_POSCHANGED, ИД, значение, this); }
+			remove { RemoveHandler(значение, this); }
 		}*/
 
-		public void Paint_Add(EventListener value) { AddCommandListener(wxEVT_STC_PAINTED, ID, value, this); }
-		public void Paint_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц Paint_Add(EventListener значение) { AddCommandListener(wxEVT_STC_PAINTED, ИД, значение, this); }
+		public проц Paint_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void UserListSelection_Add(EventListener value) { AddCommandListener(wxEVT_STC_USERLISTSELECTION, ID, value, this); }
-		public void UserListSelection_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц UserListSelection_Add(EventListener значение) { AddCommandListener(wxEVT_STC_USERLISTSELECTION, ИД, значение, this); }
+		public проц UserListSelection_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void URIDropped_Add(EventListener value) { AddCommandListener(wxEVT_STC_URIDROPPED, ID, value, this); }
-		public void URIDropped_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц URIDropped_Add(EventListener значение) { AddCommandListener(wxEVT_STC_URIDROPPED, ИД, значение, this); }
+		public проц URIDropped_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void DwellStart_Add(EventListener value) { AddCommandListener(wxEVT_STC_DWELLSTART, ID, value, this); }
-		public void DwellStart_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц DwellStart_Add(EventListener значение) { AddCommandListener(wxEVT_STC_DWELLSTART, ИД, значение, this); }
+		public проц DwellStart_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void DwellEnd_Add(EventListener value) { AddCommandListener(wxEVT_STC_DWELLEND, ID, value, this); }
-		public void DwellEnd_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц DwellEnd_Add(EventListener значение) { AddCommandListener(wxEVT_STC_DWELLEND, ИД, значение, this); }
+		public проц DwellEnd_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void StartDrag_Add(EventListener value) { AddCommandListener(wxEVT_STC_START_DRAG, ID, value, this); }
-		public void StartDrag_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц StartDrag_Add(EventListener значение) { AddCommandListener(wxEVT_STC_START_DRAG, ИД, значение, this); }
+		public проц StartDrag_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void DragOver_Add(EventListener value) { AddCommandListener(wxEVT_STC_DRAG_OVER, ID, value, this); }
-		public void DragOver_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц DragOver_Add(EventListener значение) { AddCommandListener(wxEVT_STC_DRAG_OVER, ИД, значение, this); }
+		public проц DragOver_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void DoDrop_Add(EventListener value) { AddCommandListener(wxEVT_STC_DO_DROP, ID, value, this); }
-		public void DoDrop_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц DoDrop_Add(EventListener значение) { AddCommandListener(wxEVT_STC_DO_DROP, ИД, значение, this); }
+		public проц DoDrop_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void Zoomed_Add(EventListener value) { AddCommandListener(wxEVT_STC_ZOOM, ID, value, this); }
-		public void Zoomed_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц Zoomed_Add(EventListener значение) { AddCommandListener(wxEVT_STC_ZOOM, ИД, значение, this); }
+		public проц Zoomed_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void HotspotClick_Add(EventListener value) { AddCommandListener(wxEVT_STC_HOTSPOT_CLICK, ID, value, this); }
-		public void HotspotClick_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц HotspotClick_Add(EventListener значение) { AddCommandListener(wxEVT_STC_HOTSPOT_CLICK, ИД, значение, this); }
+		public проц HotspotClick_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void HotspotDoubleClick_Add(EventListener value) { AddCommandListener(wxEVT_STC_HOTSPOT_DCLICK, ID, value, this); }
-		public void HotspotDoubleClick_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц HotspotDoubleClick_Add(EventListener значение) { AddCommandListener(wxEVT_STC_HOTSPOT_DCLICK, ИД, значение, this); }
+		public проц HotspotDoubleClick_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void CalltipClick_Add(EventListener value) { AddCommandListener(wxEVT_STC_CALLTIP_CLICK, ID, value, this); }
-		public void CalltipClick_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц CalltipClick_Add(EventListener значение) { AddCommandListener(wxEVT_STC_CALLTIP_CLICK, ИД, значение, this); }
+		public проц CalltipClick_Remove(EventListener значение) { RemoveHandler(значение, this); }
     }
 
         //! \cond EXTERN
-        static extern (C) IntPtr wxStyledTextEvent_ctor(int commandType, int id);
-        static extern (C) void   wxStyledTextEvent_SetPosition(IntPtr self, int pos);
-        static extern (C) void   wxStyledTextEvent_SetKey(IntPtr self, int k);
-        static extern (C) void   wxStyledTextEvent_SetModifiers(IntPtr self, int m);
-        static extern (C) void   wxStyledTextEvent_SetModificationType(IntPtr self, int t);
-        static extern (C) void   wxStyledTextEvent_SetText(IntPtr self, string t);
-        static extern (C) void   wxStyledTextEvent_SetLength(IntPtr self, int len);
-        static extern (C) void   wxStyledTextEvent_SetLinesAdded(IntPtr self, int num);
-        static extern (C) void   wxStyledTextEvent_SetLine(IntPtr self, int val);
-        static extern (C) void   wxStyledTextEvent_SetFoldLevelNow(IntPtr self, int val);
-        static extern (C) void   wxStyledTextEvent_SetFoldLevelPrev(IntPtr self, int val);
-        static extern (C) void   wxStyledTextEvent_SetMargin(IntPtr self, int val);
-        static extern (C) void   wxStyledTextEvent_SetMessage(IntPtr self, int val);
-        static extern (C) void   wxStyledTextEvent_SetWParam(IntPtr self, int val);
-        static extern (C) void   wxStyledTextEvent_SetLParam(IntPtr self, int val);
-        static extern (C) void   wxStyledTextEvent_SetListType(IntPtr self, int val);
-        static extern (C) void   wxStyledTextEvent_SetX(IntPtr self, int val);
-        static extern (C) void   wxStyledTextEvent_SetY(IntPtr self, int val);
-        static extern (C) void   wxStyledTextEvent_SetDragText(IntPtr self, string val);
-        static extern (C) void   wxStyledTextEvent_SetDragAllowMove(IntPtr self, bool val);
-        //static extern (C) void   wxStyledTextEvent_SetDragResult(IntPtr self, wxDragResult val);
-        static extern (C) int    wxStyledTextEvent_GetPosition(IntPtr self);
-        static extern (C) int    wxStyledTextEvent_GetKey(IntPtr self);
-        static extern (C) int    wxStyledTextEvent_GetModifiers(IntPtr self);
-        static extern (C) int    wxStyledTextEvent_GetModificationType(IntPtr self);
-        static extern (C) IntPtr wxStyledTextEvent_GetText(IntPtr self);
-        static extern (C) int    wxStyledTextEvent_GetLength(IntPtr self);
-        static extern (C) int    wxStyledTextEvent_GetLinesAdded(IntPtr self);
-        static extern (C) int    wxStyledTextEvent_GetLine(IntPtr self);
-        static extern (C) int    wxStyledTextEvent_GetFoldLevelNow(IntPtr self);
-        static extern (C) int    wxStyledTextEvent_GetFoldLevelPrev(IntPtr self);
-        static extern (C) int    wxStyledTextEvent_GetMargin(IntPtr self);
-        static extern (C) int    wxStyledTextEvent_GetMessage(IntPtr self);
-        static extern (C) int    wxStyledTextEvent_GetWParam(IntPtr self);
-        static extern (C) int    wxStyledTextEvent_GetLParam(IntPtr self);
-        static extern (C) int    wxStyledTextEvent_GetListType(IntPtr self);
-        static extern (C) int    wxStyledTextEvent_GetX(IntPtr self);
-        static extern (C) int    wxStyledTextEvent_GetY(IntPtr self);
-        static extern (C) IntPtr wxStyledTextEvent_GetDragText(IntPtr self);
-        static extern (C) bool   wxStyledTextEvent_GetDragAllowMove(IntPtr self);
-        //static extern (C) IntPtr wxStyledTextEvent_GetDragResult(IntPtr self);
-        static extern (C) bool   wxStyledTextEvent_GetShift(IntPtr self);
-        static extern (C) bool   wxStyledTextEvent_GetControl(IntPtr self);
-        static extern (C) bool   wxStyledTextEvent_GetAlt(IntPtr self);
+        static extern (C) ЦУк wxStyledTextEvent_ctor(цел commandType, цел ид);
+        static extern (C) проц   wxStyledTextEvent_SetPosition(ЦУк сам, цел поз);
+        static extern (C) проц   wxStyledTextEvent_SetKey(ЦУк сам, цел k);
+        static extern (C) проц   wxStyledTextEvent_SetModifiers(ЦУк сам, цел m);
+        static extern (C) проц   wxStyledTextEvent_SetModificationType(ЦУк сам, цел t);
+        static extern (C) проц   wxStyledTextEvent_SetText(ЦУк сам, ткст t);
+        static extern (C) проц   wxStyledTextEvent_SetLength(ЦУк сам, цел len);
+        static extern (C) проц   wxStyledTextEvent_SetLinesAdded(ЦУк сам, цел num);
+        static extern (C) проц   wxStyledTextEvent_SetLine(ЦУк сам, цел val);
+        static extern (C) проц   wxStyledTextEvent_SetFoldLevelNow(ЦУк сам, цел val);
+        static extern (C) проц   wxStyledTextEvent_SetFoldLevelPrev(ЦУк сам, цел val);
+        static extern (C) проц   wxStyledTextEvent_SetMargin(ЦУк сам, цел val);
+        static extern (C) проц   wxStyledTextEvent_SetMessage(ЦУк сам, цел val);
+        static extern (C) проц   wxStyledTextEvent_SetWParam(ЦУк сам, цел val);
+        static extern (C) проц   wxStyledTextEvent_SetLParam(ЦУк сам, цел val);
+        static extern (C) проц   wxStyledTextEvent_SetListType(ЦУк сам, цел val);
+        static extern (C) проц   wxStyledTextEvent_SetX(ЦУк сам, цел val);
+        static extern (C) проц   wxStyledTextEvent_SetY(ЦУк сам, цел val);
+        static extern (C) проц   wxStyledTextEvent_SetDragText(ЦУк сам, ткст val);
+        static extern (C) проц   wxStyledTextEvent_SetDragAllowMove(ЦУк сам, бул val);
+        //static extern (C) проц   wxStyledTextEvent_SetDragResult(ЦУк сам, wxDragResult val);
+        static extern (C) цел    wxStyledTextEvent_GetPosition(ЦУк сам);
+        static extern (C) цел    wxStyledTextEvent_GetKey(ЦУк сам);
+        static extern (C) цел    wxStyledTextEvent_GetModifiers(ЦУк сам);
+        static extern (C) цел    wxStyledTextEvent_GetModificationType(ЦУк сам);
+        static extern (C) ЦУк wxStyledTextEvent_GetText(ЦУк сам);
+        static extern (C) цел    wxStyledTextEvent_GetLength(ЦУк сам);
+        static extern (C) цел    wxStyledTextEvent_GetLinesAdded(ЦУк сам);
+        static extern (C) цел    wxStyledTextEvent_GetLine(ЦУк сам);
+        static extern (C) цел    wxStyledTextEvent_GetFoldLevelNow(ЦУк сам);
+        static extern (C) цел    wxStyledTextEvent_GetFoldLevelPrev(ЦУк сам);
+        static extern (C) цел    wxStyledTextEvent_GetMargin(ЦУк сам);
+        static extern (C) цел    wxStyledTextEvent_GetMessage(ЦУк сам);
+        static extern (C) цел    wxStyledTextEvent_GetWParam(ЦУк сам);
+        static extern (C) цел    wxStyledTextEvent_GetLParam(ЦУк сам);
+        static extern (C) цел    wxStyledTextEvent_GetListType(ЦУк сам);
+        static extern (C) цел    wxStyledTextEvent_GetX(ЦУк сам);
+        static extern (C) цел    wxStyledTextEvent_GetY(ЦУк сам);
+        static extern (C) ЦУк wxStyledTextEvent_GetDragText(ЦУк сам);
+        static extern (C) бул   wxStyledTextEvent_GetDragAllowMove(ЦУк сам);
+        //static extern (C) ЦУк wxStyledTextEvent_GetDragResult(ЦУк сам);
+        static extern (C) бул   wxStyledTextEvent_GetShift(ЦУк сам);
+        static extern (C) бул   wxStyledTextEvent_GetControl(ЦУк сам);
+        static extern (C) бул   wxStyledTextEvent_GetAlt(ЦУк сам);
         //! \endcond
 
         //-----------------------------------------------------------------------------
@@ -3057,122 +3057,122 @@ public import wx.CommandEvent;
     alias StyledTextEvent wxStyledTextEvent;
     public class StyledTextEvent : CommandEvent 
     {
-		public this(IntPtr wxobj) 
-            { super(wxobj); }
+		public this(ЦУк шхобъ) 
+            { super(шхобъ); }
 
-        public  this(int commandType, int id)
-            { super(wxStyledTextEvent_ctor(commandType, id)); }
-
-        //-----------------------------------------------------------------------------
-
-        public int Position() { return wxStyledTextEvent_GetPosition(wxobj); }
-        public void Position(int value) { wxStyledTextEvent_SetPosition(wxobj, value); }
+        public  this(цел commandType, цел ид)
+            { super(wxStyledTextEvent_ctor(commandType, ид)); }
 
         //-----------------------------------------------------------------------------
 
-        public int Key() { return wxStyledTextEvent_GetKey(wxobj); }
-        public void Key(int value) { wxStyledTextEvent_SetKey(wxobj, value); }
+        public цел Положение() { return wxStyledTextEvent_GetPosition(шхобъ); }
+        public проц Положение(цел значение) { wxStyledTextEvent_SetPosition(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public void Modifiers(int value) { wxStyledTextEvent_SetModifiers(wxobj, value); }
-        public int Modifiers() { return wxStyledTextEvent_GetModifiers(wxobj); } 
+        public цел Key() { return wxStyledTextEvent_GetKey(шхобъ); }
+        public проц Key(цел значение) { wxStyledTextEvent_SetKey(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public void ModificationType(int value) { wxStyledTextEvent_SetModificationType(wxobj, value); }
-        public int ModificationType() { return wxStyledTextEvent_GetModificationType(wxobj); }
+        public проц Modifiers(цел значение) { wxStyledTextEvent_SetModifiers(шхобъ, значение); }
+        public цел Modifiers() { return wxStyledTextEvent_GetModifiers(шхобъ); } 
 
         //-----------------------------------------------------------------------------
 
-        public void Text(string value) { wxStyledTextEvent_SetText(wxobj, value); } 
-        public string Text() { return cast(string) new wxString(wxStyledTextEvent_GetText(wxobj), true); }
+        public проц ModificationType(цел значение) { wxStyledTextEvent_SetModificationType(шхобъ, значение); }
+        public цел ModificationType() { return wxStyledTextEvent_GetModificationType(шхобъ); }
 
         //-----------------------------------------------------------------------------
 
-        public void Length(int value) { wxStyledTextEvent_SetLength(wxobj, value); }
-        public int Length() { return wxStyledTextEvent_GetLength(wxobj); }
+        public проц Текст(ткст значение) { wxStyledTextEvent_SetText(шхобъ, значение); } 
+        public ткст Текст() { return cast(ткст) new wxString(wxStyledTextEvent_GetText(шхобъ), да); }
 
         //-----------------------------------------------------------------------------
 
-        public void LinesAdded(int value) { wxStyledTextEvent_SetLinesAdded(wxobj, value); } 
-        public int LinesAdded() { return wxStyledTextEvent_GetLinesAdded(wxobj); }
+        public проц Length(цел значение) { wxStyledTextEvent_SetLength(шхобъ, значение); }
+        public цел Length() { return wxStyledTextEvent_GetLength(шхобъ); }
 
         //-----------------------------------------------------------------------------
 
-        public void Line(int value) { wxStyledTextEvent_SetLine(wxobj, value); } 
-        public int Line() { return wxStyledTextEvent_GetLine(wxobj); }
+        public проц LinesAdded(цел значение) { wxStyledTextEvent_SetLinesAdded(шхобъ, значение); } 
+        public цел LinesAdded() { return wxStyledTextEvent_GetLinesAdded(шхобъ); }
 
         //-----------------------------------------------------------------------------
 
-        public void FoldLevelNow(int value) { wxStyledTextEvent_SetFoldLevelNow(wxobj, value); }
-        public int FoldLevelNow() { return wxStyledTextEvent_GetFoldLevelNow(wxobj); }
-
-        public void FoldLevelPrev(int value) { wxStyledTextEvent_SetFoldLevelPrev(wxobj, value); }
-        public int FoldLevelPrev() { return wxStyledTextEvent_GetFoldLevelPrev(wxobj); }
+        public проц Line(цел значение) { wxStyledTextEvent_SetLine(шхобъ, значение); } 
+        public цел Line() { return wxStyledTextEvent_GetLine(шхобъ); }
 
         //-----------------------------------------------------------------------------
 
-        public void Margin(int value) { wxStyledTextEvent_SetMargin(wxobj, value); }
-        public int Margin() { return wxStyledTextEvent_GetMargin(wxobj); }
+        public проц FoldLevelNow(цел значение) { wxStyledTextEvent_SetFoldLevelNow(шхобъ, значение); }
+        public цел FoldLevelNow() { return wxStyledTextEvent_GetFoldLevelNow(шхобъ); }
+
+        public проц FoldLevelPrev(цел значение) { wxStyledTextEvent_SetFoldLevelPrev(шхобъ, значение); }
+        public цел FoldLevelPrev() { return wxStyledTextEvent_GetFoldLevelPrev(шхобъ); }
 
         //-----------------------------------------------------------------------------
 
-        public void Message(int value) { wxStyledTextEvent_SetMessage(wxobj, value); } 
-        public int Message() { return wxStyledTextEvent_GetMessage(wxobj); }
+        public проц Margin(цел значение) { wxStyledTextEvent_SetMargin(шхобъ, значение); }
+        public цел Margin() { return wxStyledTextEvent_GetMargin(шхобъ); }
 
         //-----------------------------------------------------------------------------
 
-        public void WParam(int value) { wxStyledTextEvent_SetWParam(wxobj, value); }
-        public int WParam() { return wxStyledTextEvent_GetWParam(wxobj); }
+        public проц Message(цел значение) { wxStyledTextEvent_SetMessage(шхобъ, значение); } 
+        public цел Message() { return wxStyledTextEvent_GetMessage(шхобъ); }
 
         //-----------------------------------------------------------------------------
 
-        public void LParam(int value) { wxStyledTextEvent_SetLParam(wxobj, value); }
-        public int LParam() { return wxStyledTextEvent_GetLParam(wxobj); }
+        public проц WParam(цел значение) { wxStyledTextEvent_SetWParam(шхобъ, значение); }
+        public цел WParam() { return wxStyledTextEvent_GetWParam(шхобъ); }
 
         //-----------------------------------------------------------------------------
 
-        public void ListType(int value) { wxStyledTextEvent_SetListType(wxobj, value); }
-        public int ListType() { return wxStyledTextEvent_GetListType(wxobj); }
+        public проц LParam(цел значение) { wxStyledTextEvent_SetLParam(шхобъ, значение); }
+        public цел LParam() { return wxStyledTextEvent_GetLParam(шхобъ); }
 
         //-----------------------------------------------------------------------------
 
-        public void X(int value) { wxStyledTextEvent_SetX(wxobj, value); }
-        public int X() { return wxStyledTextEvent_GetX(wxobj); }
+        public проц ListType(цел значение) { wxStyledTextEvent_SetListType(шхобъ, значение); }
+        public цел ListType() { return wxStyledTextEvent_GetListType(шхобъ); }
 
         //-----------------------------------------------------------------------------
 
-        public void Y(int value) { wxStyledTextEvent_SetY(wxobj, value); }
-        public int Y() { return wxStyledTextEvent_GetY(wxobj); }
+        public проц X(цел значение) { wxStyledTextEvent_SetX(шхобъ, значение); }
+        public цел X() { return wxStyledTextEvent_GetX(шхобъ); }
 
         //-----------------------------------------------------------------------------
 
-        public void DragText(string value) { wxStyledTextEvent_SetDragText(wxobj, value); }
-        public string DragText() { return cast(string) new wxString(wxStyledTextEvent_GetDragText(wxobj), true); }
+        public проц Y(цел значение) { wxStyledTextEvent_SetY(шхобъ, значение); }
+        public цел Y() { return wxStyledTextEvent_GetY(шхобъ); }
 
         //-----------------------------------------------------------------------------
 
-        public void DragAllowMove(bool value) { wxStyledTextEvent_SetDragAllowMove(wxobj, value); } 
-        public bool DragAllowMove() { return wxStyledTextEvent_GetDragAllowMove(wxobj); }
+        public проц DragText(ткст значение) { wxStyledTextEvent_SetDragText(шхобъ, значение); }
+        public ткст DragText() { return cast(ткст) new wxString(wxStyledTextEvent_GetDragText(шхобъ), да); }
+
+        //-----------------------------------------------------------------------------
+
+        public проц DragAllowMove(бул значение) { wxStyledTextEvent_SetDragAllowMove(шхобъ, значение); } 
+        public бул DragAllowMove() { return wxStyledTextEvent_GetDragAllowMove(шхобъ); }
 
         //-----------------------------------------------------------------------------
 
         /*public DragResult DragResult
         {
-            set { wxStyledTextEvent_SetDragResult(wxobj, wxObject.SafePtr(value)); }
-            get { return wxStyledTextEvent_GetDragResult(wxobj); }
+            set { wxStyledTextEvent_SetDragResult(шхобъ, wxObject.SafePtr(значение)); }
+            get { return wxStyledTextEvent_GetDragResult(шхобъ); }
         }*/
 
         //-----------------------------------------------------------------------------
 
-        public bool Shift() { return wxStyledTextEvent_GetShift(wxobj); }
+        public бул Shift() { return wxStyledTextEvent_GetShift(шхобъ); }
 
-        public bool Control() { return wxStyledTextEvent_GetControl(wxobj); }
+        public бул Control() { return wxStyledTextEvent_GetControl(шхобъ); }
 
-        public bool Alt() { return wxStyledTextEvent_GetAlt(wxobj); }
+        public бул Alt() { return wxStyledTextEvent_GetAlt(шхобъ); }
 
-        private static Event New(IntPtr obj) { return new StyledTextEvent(obj); }
+        private static Событие Нов(ЦУк объ) { return new StyledTextEvent(объ); }
     }
 
 //! \cond VERSION

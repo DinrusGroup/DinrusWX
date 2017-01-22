@@ -8,7 +8,7 @@
 // (C) 2004 Alexander Olk
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: Launcher.d,v 1.9 2006/11/17 15:20:57 afb Exp $
+// $Ид: Launcher.d,v 1.9 2006/11/17 15:20:57 afb Exp $
 //-----------------------------------------------------------------------------
 
 import wx.wx;
@@ -17,16 +17,16 @@ private import std.c.process;
 
 	public class LauncherFrame : Frame
 	{
-		private MiddleHtmlWindow middleHtmlWindow = null;
-		private TopHtmlWindow topHtmlWindow = null;
-		private BottomHtmlWindow bottomHtmlWindow = null;
+		private MiddleHtmlWindow middleHtmlWindow = пусто;
+		private TopHtmlWindow topHtmlWindow = пусто;
+		private BottomHtmlWindow bottomHtmlWindow = пусто;
 		
 		//---------------------------------------------------------------------
 
-		public this( string title, Point pos, Size size )
+		public this( ткст title, Точка поз, Размер size )
 		{
 			super(title, wxDefaultPosition, size);
-			icon = new Icon( "../Samples/Launcher/mondrian.png" );
+			иконка = new Icon( "../Samples/Launcher/mondrian.png" );
 
 			CreateStatusBar( 1 );
 			StatusText = "Welcome...";	
@@ -35,11 +35,11 @@ private import std.c.process;
 			middleHtmlWindow = new MiddleHtmlWindow( this );
 			bottomHtmlWindow = new BottomHtmlWindow( this );
 			
-			BoxSizer bs = new BoxSizer( Orientation.wxVERTICAL );
+			BoxSizer bs = new BoxSizer( Ориентация.wxVERTICAL );
 			
-			bs.Add( topHtmlWindow, 0, Stretch.wxGROW );
-			bs.Add( middleHtmlWindow, 1, Stretch.wxGROW );
-			bs.Add( bottomHtmlWindow, 0, Stretch.wxGROW );
+			bs.Добавь( topHtmlWindow, 0, Stretch.wxGROW );
+			bs.Добавь( middleHtmlWindow, 1, Stretch.wxGROW );
+			bs.Добавь( bottomHtmlWindow, 0, Stretch.wxGROW );
 			
 			sizer = bs;
 			
@@ -48,12 +48,12 @@ private import std.c.process;
 		
 		//---------------------------------------------------------------------	
 		
-		private void CheckEnvironment()
+		private проц CheckEnvironment()
 		{
 		/*
 			// If we could determine they are running under PNET warn them
 			// things probably won't work (at cast(of)least v0.6.6)
-			string clr; //= Environment.GetEnvironmentVariable("CLR_LAUNCHER");
+			ткст clr; //= Environment.GetEnvironmentVariable("CLR_LAUNCHER");
 			if (clr == "ilrun")
 			{
 				MessageDialog md = new MessageDialog(this, 
@@ -69,9 +69,9 @@ private import std.c.process;
 	
 	public class TopHtmlWindow : HtmlWindow
 	{
-		public this( LauncherFrame parent )
+		public this( LauncherFrame родитель )
 		{
-			super( parent, -1, wxDefaultPosition, Size( 400, 144 ) );
+			super( родитель, -1, wxDefaultPosition, Размер( 400, 144 ) );
 			LoadPage( "../Samples/Launcher/launchertop.html" );
 		}
 	}
@@ -80,22 +80,22 @@ private import std.c.process;
 	
 	public class BottomHtmlWindow : HtmlWindow
 	{
-		private LauncherFrame parent = null;
+		private LauncherFrame родитель = пусто;
 	
-		public this( LauncherFrame parent )
+		public this( LauncherFrame родитель )
 		{
-			super( parent, -1, wxDefaultPosition, Size( 400, 80 ) );
-			this.parent = parent;
+			super( родитель, -1, wxDefaultPosition, Размер( 400, 80 ) );
+			this.родитель = родитель;
 			LoadPage( "../Samples/Launcher/launcherbottom.html" );
 		}
 		
 		//---------------------------------------------------------------------	
 		
-		public override void OnLinkClicked(HtmlLinkInfo link)
+		public override проц OnLinkClicked(HtmlLinkInfo link)
 		{
 			if ( link.Href == "quit" )
 			{
-				parent.Close();
+				родитель.Закрой();
 				return;
 			}
 		}
@@ -105,33 +105,33 @@ private import std.c.process;
 	
 	public class MiddleHtmlWindow : HtmlWindow
 	{
-		private LauncherFrame parent = null;
+		private LauncherFrame родитель = пусто;
 		
 		//---------------------------------------------------------------------	
 	
-		public this( LauncherFrame parent )
+		public this( LauncherFrame родитель )
 		{
-			super( parent );
-			this.parent = parent;
+			super( родитель );
+			this.родитель = родитель;
 		
 			LoadPage( "../Samples/Launcher/wxDSamplesLauncher.html" );
 		}
 		
 		//---------------------------------------------------------------------	
 		
-		public override void OnLinkClicked(HtmlLinkInfo link)
+		public override проц OnLinkClicked(HtmlLinkInfo link)
 		{
-			string app = link.Href;
+			ткст прил = link.Href;
 			
 			version(__WXMSW__)
-			     app ~= ".exe";
+			     прил ~= ".exe";
 			version(__WXMAC__)
-			     app ~= ".app";
+			     прил ~= ".прил";
 
-			if ( std.file.exists( app ) )
+			if ( std.file.exists( прил ) )
 			{
-				string launch_command = app;
-				string[] launch_args = null;
+				ткст launch_command = прил;
+				ткст[] launch_args = пусто;
 
                             /*
                                 // If we are on a Linux platform, use wxnet-run script to
@@ -139,15 +139,15 @@ private import std.c.process;
                                 // as this gets inherited. The script ensures we use the
                                 // .NET runtime the user has selected.
                                 if ( std.file.exists( "wxnet-run" ) )
-                                        launch_command = "./wxnet-run " ~ app ~ ".exe";
+                                        launch_command = "./wxnet-run " ~ прил ~ ".exe";
 
                                 // On MacOS we need to launch the appropriate bundle
                                 else if ( std.file.exists( "../MacBundles" ) ) //FIXME: check directory
-                                        launch_command = "open ../MacBundles/" ~ app ~ ".app";
+                                        launch_command = "open ../MacBundles/" ~ прил ~ ".прил";
 
                                 // Everything else (Windows for now) just execute the assembly
                                 else
-                                        launch_command = app ~ ".exe";
+                                        launch_command = прил ~ ".exe";
                            */
 
 				version(__WXMAC__)
@@ -155,12 +155,12 @@ private import std.c.process;
 				    launch_command = "/bin/sh";
 				    launch_args ~= launch_command;
 				    launch_args ~= "-c";
-				    launch_args ~= "/usr/bin/open -a " ~ GetCwd() ~ "/" ~ app;
+				    launch_args ~= "/usr/bin/open -a " ~ GetCwd() ~ "/" ~ прил;
 				}
 
 				try
 				{
-					parent.StatusText = "Executing " ~ app;
+					родитель.StatusText = "Executing " ~ прил;
 					std.process.spawnvp(_P_NOWAIT, launch_command, launch_args);
 				}
 				catch (Exception ex)
@@ -171,13 +171,13 @@ private import std.c.process;
 			}
 			else
 			{
-				TellError("The sample " ~ app ~ " could not be found in the 'bin' directory. The sample may not be available on your operating system or it could not be built because of missing development libraries.");
+				TellError("The sample " ~ прил ~ " could not be found in the 'bin' directory. The sample may not be available on your operating system or it could not be built because of missing development libraries.");
 			}
 		}
 		
 		//---------------------------------------------------------------------	
 
-		private void TellError(string msg)
+		private проц TellError(ткст msg)
 		{
 			MessageDialog md = new MessageDialog(this, 
 				"An error occured while trying to launch your sample:\n\n" ~ msg,
@@ -188,28 +188,28 @@ private import std.c.process;
 	
 	//---------------------------------------------------------------------	
 
-	public class LauncherApp : App
+	public class LauncherApp : Прил
 	{
-		public override bool OnInit()
+		public override бул ПриИниц()
 		{
-			LauncherFrame frame = new LauncherFrame( "wxD Samples Launcher", Point( 10, 100 ), Size( 600, 600 ) );
-			frame.Show( true );
+			LauncherFrame frame = new LauncherFrame( "wxD Samples Launcher", Точка( 10, 100 ), Размер( 600, 600 ) );
+			frame.Show( да );
 
-			return true;
+			return да;
 		}
 
 		//---------------------------------------------------------------------
 
 		
-		static void Main()
+		static проц Main()
 		{
-			LauncherApp app = new LauncherApp();
-			app.Run();
+			LauncherApp прил = new LauncherApp();
+			прил.Пуск();
 		}
 	}
 
 
-void main()
+проц main()
 {
 	LauncherApp.Main();
 }

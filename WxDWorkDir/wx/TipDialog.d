@@ -10,7 +10,7 @@
 // (C) 2003 by Alexander Olk
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: TipDialog.d,v 1.9 2006/11/17 15:21:01 afb Exp $
+// $Ид: TipDialog.d,v 1.9 2006/11/17 15:21:01 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.TipDialog;
@@ -18,28 +18,28 @@ public import wx.common;
 public import wx.Dialog;
 
 	//! \cond EXTERN
-	static extern (C) IntPtr wxCreateFileTipProvider_func(string filename, int currentTip);
-	static extern (C) bool wxShowTip_func(IntPtr parent, IntPtr tipProvider, bool showAtStartup);
-	static extern (C) int wxTipProvider_GetCurrentTip();
+	static extern (C) ЦУк wxCreateFileTipProvider_func(ткст фимя, цел currentTip);
+	static extern (C) бул wxShowTip_func(ЦУк родитель, ЦУк tipProvider, бул showAtStartup);
+	static extern (C) цел wxTipProvider_GetCurrentTip();
 	//! \endcond
 
     alias TipProvider wxTipProvider;
     public class TipProvider
     {
-	public static IntPtr CreateFileTipProvider(string filename, int currentTip)
+	public static ЦУк CreateFileTipProvider(ткст фимя, цел currentTip)
 	{
-		return wxCreateFileTipProvider_func(filename, currentTip);
+		return wxCreateFileTipProvider_func(фимя, currentTip);
 	}
 
-	public static bool ShowTip(Window parent, IntPtr tipProvider)
+	public static бул ShowTip(Окно родитель, ЦУк tipProvider)
 	{
-		return wxShowTip_func(wxObject.SafePtr(parent), tipProvider, true);
+		return wxShowTip_func(wxObject.SafePtr(родитель), tipProvider, да);
 	}
 
-	public static bool ShowTip(Window parent, IntPtr tipProvider, bool showAtStartup)
+	public static бул ShowTip(Окно родитель, ЦУк tipProvider, бул showAtStartup)
 	{
-		return wxShowTip_func(wxObject.SafePtr(parent), tipProvider, showAtStartup);
+		return wxShowTip_func(wxObject.SafePtr(родитель), tipProvider, showAtStartup);
 	}
 
-	static int CurrentTip() { return wxTipProvider_GetCurrentTip(); }
+	static цел CurrentTip() { return wxTipProvider_GetCurrentTip(); }
     }

@@ -1,4 +1,4 @@
-//-----------------------------------------------------------------------------
+﻿//-----------------------------------------------------------------------------
 // wxD - GridSizer.d
 // (C) 2005 bero <berobero.sourceforge.net>
 // based on
@@ -10,7 +10,7 @@
 // (C) 2003 Bryan Bulten
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: GridSizer.d,v 1.10 2007/08/20 08:39:16 afb Exp $
+// $Ид: GridSizer.d,v 1.10 2007/08/20 08:39:16 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.GridSizer;
@@ -18,17 +18,17 @@ public import wx.common;
 public import wx.Sizer;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxGridSizer_ctor(int rows, int cols, int vgap, int hgap);
-		static extern (C) void wxGridSizer_RecalcSizes(IntPtr self);
-		static extern (C) void wxGridSizer_CalcMin(IntPtr self, inout Size size);
-		static extern (C) void wxGridSizer_SetCols(IntPtr self, int cols);
-		static extern (C) void wxGridSizer_SetRows(IntPtr self, int rows);
-		static extern (C) void wxGridSizer_SetVGap(IntPtr self, int gap);
-		static extern (C) void wxGridSizer_SetHGap(IntPtr self, int gap);
-		static extern (C) int wxGridSizer_GetCols(IntPtr self);
-		static extern (C) int wxGridSizer_GetRows(IntPtr self);
-		static extern (C) int wxGridSizer_GetVGap(IntPtr self);
-		static extern (C) int wxGridSizer_GetHGap(IntPtr self);
+		static extern (C) ЦУк wxGridSizer_ctor(цел rows, цел cols, цел vgap, цел hgap);
+		static extern (C) проц wxGridSizer_RecalcSizes(ЦУк сам);
+		static extern (C) проц wxGridSizer_CalcMin(ЦУк сам, inout Размер size);
+		static extern (C) проц wxGridSizer_SetCols(ЦУк сам, цел cols);
+		static extern (C) проц wxGridSizer_SetRows(ЦУк сам, цел rows);
+		static extern (C) проц wxGridSizer_SetVGap(ЦУк сам, цел gap);
+		static extern (C) проц wxGridSizer_SetHGap(ЦУк сам, цел gap);
+		static extern (C) цел wxGridSizer_GetCols(ЦУк сам);
+		static extern (C) цел wxGridSizer_GetRows(ЦУк сам);
+		static extern (C) цел wxGridSizer_GetVGap(ЦУк сам);
+		static extern (C) цел wxGridSizer_GetHGap(ЦУк сам);
 		//! \endcond
 
 		//---------------------------------------------------------------------
@@ -36,75 +36,75 @@ public import wx.Sizer;
 	alias GridSizer wxGridSizer;
 	public class GridSizer : Sizer
 	{
-		public this(IntPtr wxobj)
+		public this(ЦУк шхобъ)
 		{
-			super(wxobj);
+			super(шхобъ);
 		}
 
-		public this(int rows, int cols, int vgap, int hgap)
+		public this(цел rows, цел cols, цел vgap, цел hgap)
 		{
 			super(wxGridSizer_ctor(rows, cols, vgap, hgap));
 		}
 
-		public this(int cols, int vgap = 0, int hgap = 0)
+		public this(цел cols, цел vgap = 0, цел hgap = 0)
 		{
 			this(cols == 0 ? 1 : 0, cols, vgap, hgap);
 		}
 
 		//---------------------------------------------------------------------
 
-		public override void RecalcSizes()
+		public override проц RecalcSizes()
 		{
-			wxGridSizer_RecalcSizes(wxobj);
+			wxGridSizer_RecalcSizes(шхобъ);
 		}
 
 		//---------------------------------------------------------------------
 
-		public override Size CalcMin()
+		public override Размер CalcMin()
 		{
-			Size size;
-			wxGridSizer_CalcMin(wxobj, size);
+			Размер size;
+			wxGridSizer_CalcMin(шхобъ, size);
 			return size;
 		}
 
 		//---------------------------------------------------------------------
 
-		public void Cols(int value) 
+		public проц Cols(цел значение) 
 			{
-				wxGridSizer_SetCols(wxobj, value);
+				wxGridSizer_SetCols(шхобъ, значение);
 			}
-		public int Cols() 
+		public цел Cols() 
 			{
-				return wxGridSizer_GetCols(wxobj);
+				return wxGridSizer_GetCols(шхобъ);
 			}
 
-		public void Rows(int value) 
+		public проц Rows(цел значение) 
 			{
-				wxGridSizer_SetRows(wxobj, value);
+				wxGridSizer_SetRows(шхобъ, значение);
 			}
-		public int Rows() 
+		public цел Rows() 
 			{
-				return wxGridSizer_GetRows(wxobj);
+				return wxGridSizer_GetRows(шхобъ);
 			}
 
 		//---------------------------------------------------------------------
 
-		public void VGap(int value) 
+		public проц VGap(цел значение) 
 			{
-				wxGridSizer_SetVGap(wxobj, value);
+				wxGridSizer_SetVGap(шхобъ, значение);
 			}
-		public int VGap() 
+		public цел VGap() 
 			{
-				return wxGridSizer_GetVGap(wxobj);
+				return wxGridSizer_GetVGap(шхобъ);
 			}
 
-		public void HGap(int value) 
+		public проц HGap(цел значение) 
 			{
-				wxGridSizer_SetHGap(wxobj, value);
+				wxGridSizer_SetHGap(шхобъ, значение);
 			}
-		public int HGap() 
+		public цел HGap() 
 			{
-				return wxGridSizer_GetHGap(wxobj);
+				return wxGridSizer_GetHGap(шхобъ);
 			}
 
 		//---------------------------------------------------------------------

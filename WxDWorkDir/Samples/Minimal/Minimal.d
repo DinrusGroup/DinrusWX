@@ -9,7 +9,7 @@
 // (C) 2003 by 379, Inc.
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: Minimal.d,v 1.11 2008/04/07 22:12:49 afb Exp $
+// $Ид: Minimal.d,v 1.11 2008/04/07 22:12:49 afb Exp $
 //-----------------------------------------------------------------------------
 
 import wx.wx;
@@ -25,37 +25,37 @@ import wx.wx;
 
 		//---------------------------------------------------------------------
 
-		public this(string title, Point pos, Size size)
+		public this(ткст title, Точка поз, Размер size)
 		{
-			super(title, pos, size);
-			// Set the window icon
+			super(title, поз, size);
+			// Установи the окно иконка
 
 			version (__WXMAC_XCODE__)
-			icon = new Icon("Minimal.app/Contents/Resources/mondrian.png");
+			иконка = new Icon("Minimal.прил/Contents/Resources/mondrian.png");
 			else
-			icon = new Icon("../Samples/Minimal/mondrian.png");
+			иконка = new Icon("../Samples/Minimal/mondrian.png");
 
-			// Set up a menu
+			// Установи up a меню
 
-			Menu fileMenu = new Menu();
+			Меню fileMenu = new Меню();
 			fileMenu.Append(Cmd.Dialog, "&Show dialog\tAlt-D", "Show test dialog");
 			fileMenu.Append(Cmd.Quit, "E&xit\tAlt-X", "Quit this program");
 
-			Menu helpMenu = new Menu();
+			Меню helpMenu = new Меню();
 			helpMenu.Append(Cmd.About, "&About...\tF1", "Show about dialog");
 
 			MenuBar menuBar = new MenuBar();
 			menuBar.Append(fileMenu, "&File");
-			menuBar.Append(helpMenu, "&Help");
+			menuBar.Append(helpMenu, "&Справка");
 
 			this.menuBar = menuBar;
 
-			// Set up a status bar
+			// Установи up a status bar
 
 			CreateStatusBar(2);
 			StatusText = "Welcome to wxWidgets!";
 
-			// Set up the event table
+			// Установи up the event table
 
 			EVT_MENU(Cmd.Quit,    &OnQuit);
 			EVT_MENU(Cmd.Dialog,  &OnDialog);
@@ -64,31 +64,31 @@ import wx.wx;
 
 		//---------------------------------------------------------------------
 
-		public void OnQuit(Object sender, Event e)
+		public проц OnQuit(Объект sender, Событие e)
 		{
-			Close();
+			Закрой();
 		}
 
 		//---------------------------------------------------------------------
 
-		public void OnDialog(Object sender, Event e)
+		public проц OnDialog(Объект sender, Событие e)
 		{
-            Dialog dialog = new Dialog( this, -1, "Test dialog", Point(50,50), Size(450,340) );
-            BoxSizer main_sizer = new BoxSizer( Orientation.wxVERTICAL );
+            Dialog dialog = new Dialog( this, -1, "Test dialog", Точка(50,50), Размер(450,340) );
+            BoxSizer main_sizer = new BoxSizer( Ориентация.wxVERTICAL );
 
-            StaticBoxSizer top_sizer = new StaticBoxSizer( new StaticBox( dialog, -1, "Bitmaps" ), Orientation.wxHORIZONTAL );
-            main_sizer.Add( top_sizer, 0, Direction.wxALL, 5 );
+            StaticBoxSizer top_sizer = new StaticBoxSizer( new StaticBox( dialog, -1, "Bitmaps" ), Ориентация.wxHORIZONTAL );
+            main_sizer.Добавь( top_sizer, 0, Direction.wxALL, 5 );
 
-            BitmapButton bb = new BitmapButton( dialog, -1, new Bitmap("../Samples/Minimal/mondrian.png") );
-            top_sizer.Add( bb, 0, Direction.wxALL, 10 );
+            BitmapButton bb = new BitmapButton( dialog, -1, new Битмап("../Samples/Minimal/mondrian.png") );
+            top_sizer.Добавь( bb, 0, Direction.wxALL, 10 );
 
-            StaticBitmap sb = new StaticBitmap( dialog, -1, new Bitmap("../Samples/Minimal/mondrian.png") );
-            top_sizer.Add( sb, 0, Direction.wxALL, 10 );
+            StaticBitmap sb = new StaticBitmap( dialog, -1, new Битмап("../Samples/Minimal/mondrian.png") );
+            top_sizer.Добавь( sb, 0, Direction.wxALL, 10 );
 
-            Button button = new Button( dialog, 5100, "OK" );
-            main_sizer.Add( button, 0, Direction.wxALL|Alignment.wxALIGN_CENTER, 5 );
+            Кнопка button = new Кнопка( dialog, 5100, "OK" );
+            main_sizer.Добавь( button, 0, Direction.wxALL|Alignment.wxALIGN_CENTER, 5 );
 
-            dialog.SetSizer( main_sizer, true );
+            dialog.SetSizer( main_sizer, да );
             main_sizer.Fit( dialog );
             main_sizer.SetSizeHints( dialog );
 
@@ -98,9 +98,9 @@ import wx.wx;
 
 		//---------------------------------------------------------------------
 
-		public void OnAbout(Object sender, Event e)
+		public проц OnAbout(Объект sender, Событие e)
 		{
-			string msg = "This is the About dialog of the minimal sample.\nWelcome to " ~ wxVERSION_STRING;
+			ткст msg = "This is the About dialog of the minimal sample.\nWelcome to " ~ wxVERSION_STRING;
 			MessageBox(this, msg, "About Minimal", Dialog.wxOK | Dialog.wxICON_INFORMATION);
 		}
 
@@ -109,30 +109,30 @@ import wx.wx;
 
 
 
-	public class Minimal : App
+	public class Minimal : Прил
 	{
 		//---------------------------------------------------------------------
 
-		public override bool OnInit()
+		public override бул ПриИниц()
 		{
-			MyFrame frame = new MyFrame("Minimal wxWidgets App", Point(50,50), Size(450,340));
-			frame.Show(true);
+			MyFrame frame = new MyFrame("Minimal wxWidgets Прил", Точка(50,50), Размер(450,340));
+			frame.Show(да);
 
-			return true;
+			return да;
 		}
 
 		//---------------------------------------------------------------------
 
-		static void Main()
+		static проц Main()
 		{
-			Minimal app = new Minimal();
-			app.Run();
+			Minimal прил = new Minimal();
+			прил.Пуск();
 		}
 
 		//---------------------------------------------------------------------
 	}
 
-int main()
+цел main()
 {
 	Minimal.Main();
 	return 0;

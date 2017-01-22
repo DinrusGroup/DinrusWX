@@ -9,7 +9,7 @@
 // Written by Bryan Bulten (bryan@bulten.ca)
 // (C) 2003 Bryan Bulten
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
-// $Id: StaticBoxSizer.d,v 1.10 2007/08/20 08:39:16 afb Exp $
+// $Ид: StaticBoxSizer.d,v 1.10 2007/08/20 08:39:16 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.StaticBoxSizer;
@@ -18,8 +18,8 @@ public import wx.BoxSizer;
 public import wx.StaticBox;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxStaticBoxSizer_ctor(IntPtr box, int orient);
-		static extern (C) IntPtr wxStaticBoxSizer_GetStaticBox(IntPtr self);
+		static extern (C) ЦУк wxStaticBoxSizer_ctor(ЦУк box, цел orient);
+		static extern (C) ЦУк wxStaticBoxSizer_GetStaticBox(ЦУк сам);
 		//! \endcond
 
 		//---------------------------------------------------------------------
@@ -27,19 +27,19 @@ public import wx.StaticBox;
 	alias StaticBoxSizer wxStaticBoxSizer;
 	public class StaticBoxSizer : BoxSizer
 	{
-		public this(IntPtr wxobj)
+		public this(ЦУк шхобъ)
 		{
-			super(wxobj);
+			super(шхобъ);
 		}
 
-		public this(StaticBox box, int orient)
+		public this(StaticBox box, цел orient)
 		{
 			super(wxStaticBoxSizer_ctor(wxObject.SafePtr(box), orient));
 		}
 
-		public this(int orient, Window parent, string label)
+		public this(цел orient, Окно родитель, ткст надпись)
 		{
-			this(new StaticBox(parent, -1, label), orient);
+			this(new StaticBox(родитель, -1, надпись), orient);
 		}
 
 		//---------------------------------------------------------------------
@@ -47,7 +47,7 @@ public import wx.StaticBox;
 		public StaticBox staticBox() 
 			{
 				return cast(StaticBox)FindObject(
-                                    wxStaticBoxSizer_GetStaticBox(wxobj)
+                                    wxStaticBoxSizer_GetStaticBox(шхобъ)
                                 );
 			}
 

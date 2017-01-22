@@ -1,4 +1,4 @@
-//-----------------------------------------------------------------------------
+﻿//-----------------------------------------------------------------------------
 // wxD - IconizeEvent.d
 // (C) 2005 bero <berobero@users.sourceforge.net>
 // based on
@@ -10,7 +10,7 @@
 // (C) 2004 by Alexander Olk
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: IconizeEvent.d,v 1.9 2006/11/17 15:20:59 afb Exp $
+// $Ид: IconizeEvent.d,v 1.9 2006/11/17 15:20:59 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.IconizeEvent;
@@ -19,30 +19,30 @@ public import wx.common;
 public import wx.Event;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxIconizeEvent_ctor(int winid,bool iconized);
-		static extern (C) bool wxIconizeEvent_Iconized(IntPtr self);
+		static extern (C) ЦУк wxIconizeEvent_ctor(цел winid,бул iconized);
+		static extern (C) бул wxIconizeEvent_Iconized(ЦУк сам);
 		//! \endcond
 		
 		//-----------------------------------------------------------------------------
 
 	alias IconizeEvent wxIconizeEvent;
-	public class IconizeEvent : Event
+	public class IconizeEvent : Событие
 	{
-		public this(IntPtr wxobj) 
-			{ super(wxobj); }
+		public this(ЦУк шхобъ) 
+			{ super(шхобъ); }
 
-		public this(int winid = 0, bool iconized = true)
+		public this(цел winid = 0, бул iconized = да)
 			{ this(wxIconizeEvent_ctor(winid,iconized)); }
 
 		//-----------------------------------------------------------------------------	
 		
-		public bool Iconized() { return wxIconizeEvent_Iconized(wxobj); }
+		public бул Iconized() { return wxIconizeEvent_Iconized(шхобъ); }
 
 
-		private static Event New(IntPtr obj) { return new IconizeEvent(obj); }
+		private static Событие Нов(ЦУк объ) { return new IconizeEvent(объ); }
 
 		static this()
 		{
-			AddEventType(wxEVT_ICONIZE,				&IconizeEvent.New);
+			ДобавьТипСоб(wxEVT_ICONIZE,				&IconizeEvent.Нов);
 		}
 	}

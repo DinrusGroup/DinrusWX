@@ -6,7 +6,7 @@
 //
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: Timer.d,v 1.1 2007/08/21 20:58:44 afb Exp $
+// $Ид: Timer.d,v 1.1 2007/08/21 20:58:44 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.Timer;
@@ -18,31 +18,31 @@ public import wx.EvtHandler;
 	//---------------------------------------------------------------------------
 	
 	/// generate notifications periodically until the timer is stopped (default)
-	const bool wxTIMER_CONTINOUS = false;
+	const бул wxTIMER_CONTINOUS = нет;
 
 	/// only send the notification once and then stop the timer
-	const bool wxTIMER_ONE_SHOT = true;
+	const бул wxTIMER_ONE_SHOT = да;
 
 	//-----------------------------------------------------------------------------
 
 		extern (C) {
-		alias void function (Timer) Virtual_Notify;
+		alias проц function (Timer) Virtual_Notify;
 		}
 		
 		//! \cond EXTERN
-		static extern (C) IntPtr wxTimer_ctor();
-		static extern (C) IntPtr wxTimer_ctor2(IntPtr owner, int id);
-		static extern (C) void   wxTimer_RegisterVirtual(IntPtr self, Timer obj, 
+		static extern (C) ЦУк wxTimer_ctor();
+		static extern (C) ЦУк wxTimer_ctor2(ЦУк owner, цел ид);
+		static extern (C) проц   wxTimer_RegisterVirtual(ЦУк сам, Timer объ, 
 			Virtual_Notify notify);
-		static extern (C) IntPtr wxTimer_dtor(IntPtr self);
+		static extern (C) ЦУк wxTimer_dtor(ЦУк сам);
 
-		static extern (C) int wxTimer_GetInterval(IntPtr self);
-		static extern (C) bool wxTimer_IsOneShot(IntPtr self);
-		static extern (C) bool wxTimer_IsRunning(IntPtr self);
-		static extern (C) void wxTimer_BaseNotify(IntPtr self);
-		static extern (C) void wxTimer_SetOwner(IntPtr self, IntPtr owner, int id);
-		static extern (C) bool wxTimer_Start(IntPtr self, int milliseconds, bool oneShot);
-		static extern (C) void wxTimer_Stop(IntPtr self);
+		static extern (C) цел wxTimer_GetInterval(ЦУк сам);
+		static extern (C) бул wxTimer_IsOneShot(ЦУк сам);
+		static extern (C) бул wxTimer_IsRunning(ЦУк сам);
+		static extern (C) проц wxTimer_BaseNotify(ЦУк сам);
+		static extern (C) проц wxTimer_SetOwner(ЦУк сам, ЦУк owner, цел ид);
+		static extern (C) бул wxTimer_Start(ЦУк сам, цел milliseconds, бул oneShot);
+		static extern (C) проц wxTimer_Stop(ЦУк сам);
 		//! \endcond
 		
 		//-----------------------------------------------------------------------------
@@ -52,69 +52,69 @@ public import wx.EvtHandler;
 	{
 
 		public this()
-			{ this(wxTimer_ctor(), true); }
+			{ this(wxTimer_ctor(), да); }
 		
-		public this(EvtHandler owner, int id=-1)
-			{ this(wxTimer_ctor2(owner.wxobj, id), true); }
+		public this(EvtHandler owner, цел ид=-1)
+			{ this(wxTimer_ctor2(owner.шхобъ, ид), да); }
 		
-		public this(IntPtr wxobj) 
+		public this(ЦУк шхобъ) 
 		{
-			super(wxobj);
+			super(шхобъ);
 			
-			wxTimer_RegisterVirtual(wxobj, this, &staticNotify);
+			wxTimer_RegisterVirtual(шхобъ, this, &staticNotify);
 		}
 		
-		private this(IntPtr wxobj, bool memOwn)
+		private this(ЦУк шхобъ, бул memOwn)
 		{ 
-			super(wxobj);
+			super(шхобъ);
 			this.memOwn = memOwn;
 			
-			wxTimer_RegisterVirtual(wxobj, this, &staticNotify);
+			wxTimer_RegisterVirtual(шхобъ, this, &staticNotify);
 		}
 
-		override protected void dtor() { wxTimer_dtor(wxobj); }
+		override protected проц dtor() { wxTimer_dtor(шхобъ); }
 		
 		//---------------------------------------------------------------------
 		
-		static extern(C) private void staticNotify(Timer obj)
+		static extern(C) private проц staticNotify(Timer объ)
 		{
-			obj.Notify();
+			объ.Notify();
 		}
-		protected /+virtual+/ void Notify()
+		protected /+virtual+/ проц Notify()
 		{
-			wxTimer_BaseNotify(wxobj);
+			wxTimer_BaseNotify(шхобъ);
 		}
 
 		//---------------------------------------------------------------------
 				
-		public int Interval()
+		public цел Interval()
 		{
-			return wxTimer_GetInterval(wxobj);
+			return wxTimer_GetInterval(шхобъ);
 		}
 		
-		public bool IsOneShot()
+		public бул IsOneShot()
 		{
-			return wxTimer_IsOneShot(wxobj);
+			return wxTimer_IsOneShot(шхобъ);
 		}
 		
-		public bool IsRunning()
+		public бул IsRunning()
 		{
-			return wxTimer_IsRunning(wxobj);
+			return wxTimer_IsRunning(шхобъ);
 		}
 		
-		public void SetOwner(EvtHandler owner, int id=-1)
+		public проц SetOwner(EvtHandler owner, цел ид=-1)
 		{
-			wxTimer_SetOwner(wxobj, owner.wxobj, id);
+			wxTimer_SetOwner(шхобъ, owner.шхобъ, ид);
 		}
 		
-		public bool Start(int milliseconds=-1, bool oneShot=false)
+		public бул Start(цел milliseconds=-1, бул oneShot=нет)
 		{
-			return wxTimer_Start(wxobj, milliseconds, oneShot);
+			return wxTimer_Start(шхобъ, milliseconds, oneShot);
 		}
 
-		public void Stop()
+		public проц Stop()
 		{
-			wxTimer_Stop(wxobj);
+			wxTimer_Stop(шхобъ);
 		}
 
 	}

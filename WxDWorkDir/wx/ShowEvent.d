@@ -10,7 +10,7 @@
 // (C) 2004 by Alexander Olk
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: ShowEvent.d,v 1.9 2006/11/17 15:21:00 afb Exp $
+// $Ид: ShowEvent.d,v 1.9 2006/11/17 15:21:00 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.ShowEvent;
@@ -19,31 +19,31 @@ public import wx.common;
 public import wx.Event;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxShowEvent_ctor(int winid, bool show);
-		//static extern (C) bool wxShowEvent_GetShow(IntPtr self);
-		static extern (C) void wxShowEvent_SetShow(IntPtr self, bool show);
+		static extern (C) ЦУк wxShowEvent_ctor(цел winid, бул show);
+		//static extern (C) бул wxShowEvent_GetShow(ЦУк сам);
+		static extern (C) проц wxShowEvent_SetShow(ЦУк сам, бул show);
 		//! \endcond
 		
 		//-----------------------------------------------------------------------------
 
 	alias ShowEvent wxShowEvent;
-	public class ShowEvent : Event
+	public class ShowEvent : Событие
 	{
-		public this(IntPtr wxobj) 
-			{ super(wxobj); }
+		public this(ЦУк шхобъ) 
+			{ super(шхобъ); }
 
-		public this(int winid = 0, bool show = false)
+		public this(цел winid = 0, бул show = нет)
 			{ this(wxShowEvent_ctor(winid,show)); }
 
 		//-----------------------------------------------------------------------------	
 		
-		//public bool Show() { return wxShowEvent_GetShow(wxobj); }
-		public void Show(bool value) { wxShowEvent_SetShow(wxobj, value); }
+		//public бул Show() { return wxShowEvent_GetShow(шхобъ); }
+		public проц Show(бул значение) { wxShowEvent_SetShow(шхобъ, значение); }
 
-		private static Event New(IntPtr obj) { return new ShowEvent(obj); }
+		private static Событие Нов(ЦУк объ) { return new ShowEvent(объ); }
 
 		static this()
 		{
-			AddEventType(wxEVT_SHOW,				&ShowEvent.New);
+			ДобавьТипСоб(wxEVT_SHOW,				&ShowEvent.Нов);
 		}
 	}

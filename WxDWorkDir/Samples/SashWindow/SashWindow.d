@@ -8,19 +8,19 @@
 // (C) 2004 Alexander Olk
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: SashWindow.d,v 1.9 2006/11/17 15:20:58 afb Exp $
+// $Ид: SashWindow.d,v 1.9 2006/11/17 15:20:58 afb Exp $
 //-----------------------------------------------------------------------------
 
 import wx.wx;
-private import std.string;
+private import std.ткст;
 
 	//---------------------------------------------------------------------	
 
 	public class SashWindowFrame : Frame
 	{
-		public this( string title, Point pos, Size size )
+		public this( ткст title, Точка поз, Размер size )
 		{
-			super( title, pos, size );
+			super( title, поз, size );
 			MainPanel mp = new MainPanel( this );
 
 			TextCtrl textCtrl = new TextCtrl(this, -1, "", wxDefaultPosition, wxDefaultSize, 
@@ -28,9 +28,9 @@ private import std.string;
 
 			Log.SetActiveTarget( textCtrl );
 
-			BoxSizer bSizer = new BoxSizer( Orientation.wxVERTICAL );
-			bSizer.Add( mp, 1, Stretch.wxGROW );
-			bSizer.Add( textCtrl, 0, Stretch.wxGROW );
+			BoxSizer bSizer = new BoxSizer( Ориентация.wxVERTICAL );
+			bSizer.Добавь( mp, 1, Stretch.wxGROW );
+			bSizer.Добавь( textCtrl, 0, Stretch.wxGROW );
 
 			sizer = bSizer;
 		}
@@ -61,55 +61,55 @@ private import std.string;
 
 		//---------------------------------------------------------------------
 
-		public this(Window parent)
+		public this(Окно родитель)
 		{
-			super( parent );
+			super( родитель );
 
 			la = new LayoutAlgorithm();
 			remainingSpace = new Panel( this, -1, wxDefaultPosition, wxDefaultSize, wxSUNKEN_BORDER );
 			StaticText st = new StaticText( remainingSpace, -1, "I'm the remaining space Panel" );
 
 			topWindow = new SashLayoutWindow( this, Cmd.ID_WINDOW_TOP, 
-				wxDefaultPosition, Size( 200, 30 ), 
+				wxDefaultPosition, Размер( 200, 30 ), 
 				wxNO_BORDER | SashWindow.wxSW_3D );
-			topWindow.DefaultSize = Size( 1000, 30 );
-			topWindow.Orientation = LayoutOrientation.wxLAYOUT_HORIZONTAL;
+			topWindow.DefaultSize = Размер( 1000, 30 );
+			topWindow.Ориентация = LayoutOrientation.wxLAYOUT_HORIZONTAL;
 			topWindow.Alignment = LayoutAlignment.wxLAYOUT_TOP;
-			topWindow.BackgroundColour = new Colour( 255, 0, 0 );
-			topWindow.SetSashVisible( SashEdgePosition.wxSASH_BOTTOM, true );
+			topWindow.ЦветЗП = new Цвет( 255, 0, 0 );
+			topWindow.SetSashVisible( SashEdgePosition.wxSASH_BOTTOM, да );
 			StaticText st1 = new StaticText( topWindow, -1, "I'm the top SashLayoutWindow" );
 
 			bottomWindow = new SashLayoutWindow( this, Cmd.ID_WINDOW_BOTTOM, 
-				wxDefaultPosition, Size( 200, 30 ), 
+				wxDefaultPosition, Размер( 200, 30 ), 
 				wxNO_BORDER | SashWindow.wxSW_3D );
-			bottomWindow.DefaultSize = Size( 1000, 30 );
-			bottomWindow.Orientation = LayoutOrientation.wxLAYOUT_HORIZONTAL;
+			bottomWindow.DefaultSize = Размер( 1000, 30 );
+			bottomWindow.Ориентация = LayoutOrientation.wxLAYOUT_HORIZONTAL;
 			bottomWindow.Alignment = LayoutAlignment.wxLAYOUT_BOTTOM;
-			bottomWindow.BackgroundColour = new Colour( 0, 0, 255 );
-			bottomWindow.SetSashVisible( SashEdgePosition.wxSASH_TOP, true );
+			bottomWindow.ЦветЗП = new Цвет( 0, 0, 255 );
+			bottomWindow.SetSashVisible( SashEdgePosition.wxSASH_TOP, да );
 			StaticText st2 = new StaticText( bottomWindow, -1, "I'm the bottom SashLayoutWindow" );
 
 			leftWindow1 = new SashLayoutWindow( this, Cmd.ID_WINDOW_LEFT1, 
-				wxDefaultPosition, Size( 200, 30 ), 
+				wxDefaultPosition, Размер( 200, 30 ), 
 				wxNO_BORDER | SashWindow.wxSW_3D );
-			leftWindow1.DefaultSize = Size( 120, 1000 );
-			leftWindow1.Orientation = LayoutOrientation.wxLAYOUT_VERTICAL;
+			leftWindow1.DefaultSize = Размер( 120, 1000 );
+			leftWindow1.Ориентация = LayoutOrientation.wxLAYOUT_VERTICAL;
 			leftWindow1.Alignment = LayoutAlignment.wxLAYOUT_LEFT;
-			leftWindow1.BackgroundColour = new Colour( 0, 255, 0 );
-			leftWindow1.SetSashVisible( SashEdgePosition.wxSASH_RIGHT, true );
+			leftWindow1.ЦветЗП = new Цвет( 0, 255, 0 );
+			leftWindow1.SetSashVisible( SashEdgePosition.wxSASH_RIGHT, да );
 			leftWindow1.ExtraBorderSize = 10;
 			TextCtrl leftWindow1tc = new TextCtrl( leftWindow1, -1, 
 				"I'm a child of leftWindow1", wxDefaultPosition, 
 				wxDefaultSize, TextCtrl.wxTE_MULTILINE | wxSUNKEN_BORDER );
 
 			leftWindow2 = new SashLayoutWindow( this, Cmd.ID_WINDOW_LEFT2, 
-				wxDefaultPosition, Size( 200, 30 ), 
+				wxDefaultPosition, Размер( 200, 30 ), 
 				wxNO_BORDER | SashWindow.wxSW_3D );
-			leftWindow2.DefaultSize = Size( 120, 1000 );
-			leftWindow2.Orientation = LayoutOrientation.wxLAYOUT_VERTICAL;
+			leftWindow2.DefaultSize = Размер( 120, 1000 );
+			leftWindow2.Ориентация = LayoutOrientation.wxLAYOUT_VERTICAL;
 			leftWindow2.Alignment = LayoutAlignment.wxLAYOUT_LEFT;
-			leftWindow2.BackgroundColour = new Colour( 0, 255, 255 );
-			leftWindow2.SetSashVisible( SashEdgePosition.wxSASH_RIGHT, true );
+			leftWindow2.ЦветЗП = new Цвет( 0, 255, 255 );
+			leftWindow2.SetSashVisible( SashEdgePosition.wxSASH_RIGHT, да );
 			leftWindow2.ExtraBorderSize = 15;
 			TextCtrl leftWindow2tc = new TextCtrl( leftWindow2, -1, 
 				"I'm a child of leftWindow2", wxDefaultPosition, 
@@ -122,35 +122,35 @@ private import std.string;
 
 		//---------------------------------------------------------------------
 
-		public void OnSashDraggedRange( Object sender, Event e )
+		public проц OnSashDraggedRange( Объект sender, Событие e )
 		{
 			SashEvent se = cast(SashEvent) e;
 
 			Log.LogMessage("OnSashDraggedRange:" );
-			Log.LogMessage("DragStatus: " ~ .toString(cast(int)se.DragStatus) );
-			Log.LogMessage("Event ID: " ~ .toString(cast(int)se.ID) );
+			Log.LogMessage("DragStatus: " ~ .toString(cast(цел)se.DragStatus) );
+			Log.LogMessage("Событие ИД: " ~ .toString(cast(цел)se.ИД) );
 
 			if ( se.DragStatus == SashDragStatus.wxSASH_STATUS_OUT_OF_RANGE )
 				return;
 
-			int eventID = e.ID;
+			цел eventID = e.ИД;
 
 			switch ( eventID )
 			{
 				case Cmd.ID_WINDOW_TOP:
-					topWindow.DefaultSize = Size( 1000, se.DragRect.Height );
+					topWindow.DefaultSize = Размер( 1000, se.DragRect.Высота );
 				break;
 
 				case Cmd.ID_WINDOW_LEFT1:
-					leftWindow1.DefaultSize = Size( se.DragRect.Width, 1000 );
+					leftWindow1.DefaultSize = Размер( se.DragRect.Ширина, 1000 );
 				break;
 
 				case Cmd.ID_WINDOW_LEFT2:
-					leftWindow2.DefaultSize = Size( se.DragRect.Width, 1000 );
+					leftWindow2.DefaultSize = Размер( se.DragRect.Ширина, 1000 );
 				break;
 
 				case Cmd.ID_WINDOW_BOTTOM:
-					bottomWindow.DefaultSize = Size( 1000, se.DragRect.Height );
+					bottomWindow.DefaultSize = Размер( 1000, se.DragRect.Высота );
 				break;
 			}
 
@@ -160,7 +160,7 @@ private import std.string;
 
 		//---------------------------------------------------------------------
 
-		public void OnSize( Object sender, Event e )
+		public проц OnSize( Объект sender, Событие e )
 		{
 			Log.LogMessage("OnSize" );
 			la.LayoutWindow( this, remainingSpace );
@@ -169,29 +169,29 @@ private import std.string;
 
 	//---------------------------------------------------------------------
 
-	public class SashWindowApp : App
+	public class SashWindowApp : Прил
 	{
-		public override bool OnInit()
+		public override бул ПриИниц()
 		{
-			SashWindowFrame frame = new SashWindowFrame( "SashWindow wxWidgets Sample", Point( 10, 100), Size(650,340) );
-			frame.Show( true );
+			SashWindowFrame frame = new SashWindowFrame( "SashWindow wxWidgets Sample", Точка( 10, 100), Размер(650,340) );
+			frame.Show( да );
 
-			return true;
+			return да;
 		}
 
 		//---------------------------------------------------------------------
 
 		
-		static void Main()
+		static проц Main()
 		{
-			SashWindowApp app = new SashWindowApp();
-			app.Run();
+			SashWindowApp прил = new SashWindowApp();
+			прил.Пуск();
 		}
 
 		//---------------------------------------------------------------------
 	}
 
-void main()
+проц main()
 {
 	SashWindowApp.Main();
 }

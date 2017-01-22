@@ -9,7 +9,7 @@
 // Written by Bryan Bulten (bryan@bulten.ca)
 // (C) 2003 Bryan Bulten
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
-// $Id: Slider.d,v 1.11 2007/11/27 08:19:20 afb Exp $
+// $Ид: Slider.d,v 1.11 2007/11/27 08:19:20 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.Slider;
@@ -17,27 +17,27 @@ public import wx.common;
 public import wx.Control;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxSlider_ctor();
-		static extern (C) bool   wxSlider_Create(IntPtr self, IntPtr parent, int id, int value, int minValue, int maxValue, inout Point pos, inout Size size, uint style, IntPtr validator, string name);
-		static extern (C) int    wxSlider_GetValue(IntPtr self);
-		static extern (C) void   wxSlider_SetValue(IntPtr self, int value);
-		static extern (C) void   wxSlider_SetRange(IntPtr self, int minValue, int maxValue);
-		static extern (C) int    wxSlider_GetMin(IntPtr self);
-		static extern (C) int    wxSlider_GetMax(IntPtr self);
-		static extern (C) void   wxSlider_SetLineSize(IntPtr self, int lineSize);
-		static extern (C) void   wxSlider_SetPageSize(IntPtr self, int pageSize);
-		static extern (C) int    wxSlider_GetLineSize(IntPtr self);
-		static extern (C) int    wxSlider_GetPageSize(IntPtr self);
-		static extern (C) void   wxSlider_SetThumbLength(IntPtr self, int lenPixels);
-		static extern (C) int    wxSlider_GetThumbLength(IntPtr self);
-		//static extern (C) void   wxSlider_SetTickFreq(IntPtr self, int n, int pos);
-		static extern (C) int    wxSlider_GetTickFreq(IntPtr self);
-		static extern (C) void   wxSlider_ClearTicks(IntPtr self);
-		static extern (C) void   wxSlider_SetTick(IntPtr self, int tickPos);
-		static extern (C) void   wxSlider_ClearSel(IntPtr self);
-		static extern (C) int    wxSlider_GetSelEnd(IntPtr self);
-		static extern (C) int    wxSlider_GetSelStart(IntPtr self);
-		static extern (C) void   wxSlider_SetSelection(IntPtr self, int min, int max);
+		static extern (C) ЦУк wxSlider_ctor();
+		static extern (C) бул   wxSlider_Create(ЦУк сам, ЦУк родитель, цел ид, цел значение, цел minValue, цел maxValue, inout Точка поз, inout Размер size, бцел стиль, ЦУк validator, ткст имя);
+		static extern (C) цел    wxSlider_GetValue(ЦУк сам);
+		static extern (C) проц   wxSlider_SetValue(ЦУк сам, цел значение);
+		static extern (C) проц   wxSlider_SetRange(ЦУк сам, цел minValue, цел maxValue);
+		static extern (C) цел    wxSlider_GetMin(ЦУк сам);
+		static extern (C) цел    wxSlider_GetMax(ЦУк сам);
+		static extern (C) проц   wxSlider_SetLineSize(ЦУк сам, цел lineSize);
+		static extern (C) проц   wxSlider_SetPageSize(ЦУк сам, цел pageSize);
+		static extern (C) цел    wxSlider_GetLineSize(ЦУк сам);
+		static extern (C) цел    wxSlider_GetPageSize(ЦУк сам);
+		static extern (C) проц   wxSlider_SetThumbLength(ЦУк сам, цел lenPixels);
+		static extern (C) цел    wxSlider_GetThumbLength(ЦУк сам);
+		//static extern (C) проц   wxSlider_SetTickFreq(ЦУк сам, цел n, цел поз);
+		static extern (C) цел    wxSlider_GetTickFreq(ЦУк сам);
+		static extern (C) проц   wxSlider_ClearTicks(ЦУк сам);
+		static extern (C) проц   wxSlider_SetTick(ЦУк сам, цел tickPos);
+		static extern (C) проц   wxSlider_ClearSel(ЦУк сам);
+		static extern (C) цел    wxSlider_GetSelEnd(ЦУк сам);
+		static extern (C) цел    wxSlider_GetSelStart(ЦУк сам);
+		static extern (C) проц   wxSlider_SetSelection(ЦУк сам, цел min, цел max);
 		//! \endcond
 	
 		//---------------------------------------------------------------------
@@ -46,8 +46,8 @@ public import wx.Control;
     public class Slider : Control
     {
 		enum {
-			wxSL_HORIZONTAL      = Orientation.wxHORIZONTAL,
-			wxSL_VERTICAL        = Orientation.wxVERTICAL,
+			wxSL_HORIZONTAL      = Ориентация.wxHORIZONTAL,
+			wxSL_VERTICAL        = Ориентация.wxVERTICAL,
 
 			wxSL_NOTIFY_DRAG     = 0x0000,
 			wxSL_TICKS           = 0x0010,
@@ -61,110 +61,110 @@ public import wx.Control;
 			wxSL_SELRANGE        = 0x0800,
 		}
 
-		public const string wxSliderNameStr = "slider";
+		public const ткст wxSliderNameStr = "slider";
 		//---------------------------------------------------------------------
 
-		public this(IntPtr wxobj) 
-			{ super(wxobj);}
+		public this(ЦУк шхобъ) 
+			{ super(шхобъ);}
 
 		public this()
 			{ super(wxSlider_ctor()); }
 			
-		public this(Window parent, int id, int value, int minValue, int maxValue, Point pos = wxDefaultPosition, Size size = wxDefaultSize, int style = wxSL_HORIZONTAL, Validator validator = null, string name = wxSliderNameStr)
+		public this(Окно родитель, цел ид, цел значение, цел minValue, цел maxValue, Точка поз = wxDefaultPosition, Размер size = wxDefaultSize, цел стиль = wxSL_HORIZONTAL, Validator validator = пусто, ткст имя = wxSliderNameStr)
 		{
 			super(wxSlider_ctor());
-			if(!Create(parent, id, value, minValue, maxValue, pos, size, style, validator, name))
+			if(!Create(родитель, ид, значение, minValue, maxValue, поз, size, стиль, validator, имя))
 			{
 				throw new InvalidOperationException("Failed to create Slider");
 			}
 		}
 		
-		public static wxObject New(IntPtr wxobj) { return new Slider(wxobj); }
+		public static wxObject Нов(ЦУк шхобъ) { return new Slider(шхобъ); }
 	
 		//---------------------------------------------------------------------
-		// ctors with self created id
+		// ctors with сам created ид
 		
-		public this(Window parent, int value, int minValue, int maxValue, Point pos = wxDefaultPosition, Size size = wxDefaultSize, int style = wxSL_HORIZONTAL, Validator validator = null, string name = wxSliderNameStr)
-			{ this(parent, Window.UniqueID, value, minValue, maxValue, pos, size, style, validator, name);}
+		public this(Окно родитель, цел значение, цел minValue, цел maxValue, Точка поз = wxDefaultPosition, Размер size = wxDefaultSize, цел стиль = wxSL_HORIZONTAL, Validator validator = пусто, ткст имя = wxSliderNameStr)
+			{ this(родитель, Окно.UniqueID, значение, minValue, maxValue, поз, size, стиль, validator, имя);}
 		
 		//---------------------------------------------------------------------
 
-		public bool Create(Window parent, int id, int value, int minValue, int maxValue, inout Point pos, inout Size size, int style, Validator validator, string name)
+		public бул Create(Окно родитель, цел ид, цел значение, цел minValue, цел maxValue, inout Точка поз, inout Размер size, цел стиль, Validator validator, ткст имя)
 		{
-			return wxSlider_Create(wxobj, wxObject.SafePtr(parent), id, value, minValue, maxValue, pos, size, cast(uint)style, wxObject.SafePtr(validator), name);
+			return wxSlider_Create(шхобъ, wxObject.SafePtr(родитель), ид, значение, minValue, maxValue, поз, size, cast(бцел)стиль, wxObject.SafePtr(validator), имя);
 		}
 
 
 		//---------------------------------------------------------------------
 
-		public int Value() { return wxSlider_GetValue(wxobj); }
-		public void Value(int value) { wxSlider_SetValue(wxobj, value); }
+		public цел Value() { return wxSlider_GetValue(шхобъ); }
+		public проц Value(цел значение) { wxSlider_SetValue(шхобъ, значение); }
 
 		//---------------------------------------------------------------------
 
-		public void SetRange(int minValue, int maxValue)
+		public проц SetRange(цел minValue, цел maxValue)
 		{
-			wxSlider_SetRange(wxobj, minValue, maxValue);
+			wxSlider_SetRange(шхобъ, minValue, maxValue);
 		}
 
-		public int Max() { return wxSlider_GetMax(wxobj); }
+		public цел Max() { return wxSlider_GetMax(шхобъ); }
 
-		public int Min() { return wxSlider_GetMin(wxobj); }
+		public цел Min() { return wxSlider_GetMin(шхобъ); }
 
 		//---------------------------------------------------------------------
 
-		public int LineSize() { return wxSlider_GetLineSize(wxobj); }
-		public void LineSize(int value) { wxSlider_SetLineSize(wxobj, value); }
+		public цел LineSize() { return wxSlider_GetLineSize(шхобъ); }
+		public проц LineSize(цел значение) { wxSlider_SetLineSize(шхобъ, значение); }
 		
 		//---------------------------------------------------------------------
 
-		public int PageSize() { return wxSlider_GetPageSize(wxobj); }
-		public void PageSize(int value) { wxSlider_SetPageSize(wxobj, value); }
+		public цел PageSize() { return wxSlider_GetPageSize(шхобъ); }
+		public проц PageSize(цел значение) { wxSlider_SetPageSize(шхобъ, значение); }
 
 		//---------------------------------------------------------------------
 
-		public int ThumbLength() { return wxSlider_GetThumbLength(wxobj); }
-		public void ThumbLength(int value) { wxSlider_SetThumbLength(wxobj, value); }
+		public цел ThumbLength() { return wxSlider_GetThumbLength(шхобъ); }
+		public проц ThumbLength(цел значение) { wxSlider_SetThumbLength(шхобъ, значение); }
 
 		//---------------------------------------------------------------------
 
-		public int TickFreq() { return wxSlider_GetTickFreq(wxobj); }
+		public цел TickFreq() { return wxSlider_GetTickFreq(шхобъ); }
 /+
-		public void SetTickFreq(int n, int pos)
+		public проц SetTickFreq(цел n, цел поз)
 		{
-			wxSlider_SetTickFreq(wxobj, n, pos);
+			wxSlider_SetTickFreq(шхобъ, n, поз);
 		}
 +/
 		//---------------------------------------------------------------------
 
-		public void SetTick(int tickPos)
+		public проц SetTick(цел tickPos)
 		{
-			wxSlider_SetTick(wxobj, tickPos);
+			wxSlider_SetTick(шхобъ, tickPos);
 		}
 
-		public void ClearTicks()
+		public проц ClearTicks()
 		{
-			wxSlider_ClearTicks(wxobj);
+			wxSlider_ClearTicks(шхобъ);
 		}
 
-		public void ClearSel()
+		public проц ClearSel()
 		{
-			wxSlider_ClearSel(wxobj);
-		}
-
-		//---------------------------------------------------------------------
-
-		public int SelEnd() { return wxSlider_GetSelEnd(wxobj); }
-
-		public int SelStart() { return wxSlider_GetSelStart(wxobj); }
-
-		public void SetSelection(int min, int max)
-		{
-			wxSlider_SetSelection(wxobj, min, max);
+			wxSlider_ClearSel(шхобъ);
 		}
 
 		//---------------------------------------------------------------------
 
-		public override void UpdateUI_Add(EventListener value) { AddCommandListener(Event.wxEVT_COMMAND_SLIDER_UPDATED, ID, value, this); }
-		public override void UpdateUI_Remove(EventListener value) { RemoveHandler(value, this); }
+		public цел SelEnd() { return wxSlider_GetSelEnd(шхобъ); }
+
+		public цел SelStart() { return wxSlider_GetSelStart(шхобъ); }
+
+		public проц SetSelection(цел min, цел max)
+		{
+			wxSlider_SetSelection(шхобъ, min, max);
+		}
+
+		//---------------------------------------------------------------------
+
+		public override проц UpdateUI_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_COMMAND_SLIDER_UPDATED, ИД, значение, this); }
+		public override проц UpdateUI_Remove(EventListener значение) { RemoveHandler(значение, this); }
     }

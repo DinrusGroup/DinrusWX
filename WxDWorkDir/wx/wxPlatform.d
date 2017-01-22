@@ -6,7 +6,7 @@
 //
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: wxPlatform.d,v 1.7 2007/04/17 15:24:20 afb Exp $
+// $Ид: wxPlatform.d,v 1.7 2007/04/17 15:24:20 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.wxPlatform;
@@ -18,109 +18,109 @@ version (Tango)
 }
 else // Phobos
 {
-private import std.string;
+private import std.ткст;
 }
 //! \endcond
 
 		// ------------------------------------------------------
 		//! \cond EXTERN
-		static extern (C) bool wxPlatform_WXMSW();
-		static extern (C) bool wxPlatform_WXGTK();
-		static extern (C) bool wxPlatform_WXMAC();
-		static extern (C) bool wxPlatform_WXX11();
-		static extern (C) bool wxPlatform_WXUNIVERSAL();
+		static extern (C) бул wxPlatform_WXMSW();
+		static extern (C) бул wxPlatform_WXGTK();
+		static extern (C) бул wxPlatform_WXMAC();
+		static extern (C) бул wxPlatform_WXX11();
+		static extern (C) бул wxPlatform_WXUNIVERSAL();
 
-		static extern (C) bool wxPlatform_WXDEBUG();
-		static extern (C) bool wxPlatform_UNIX();
-		static extern (C) bool wxPlatform_UNICODE();
-		static extern (C) bool wxPlatform_DISPLAY();
-		static extern (C) bool wxPlatform_POSTSCRIPT();
-		static extern (C) bool wxPlatform_GLCANVAS();
-		static extern (C) bool wxPlatform_SOUND();
+		static extern (C) бул wxPlatform_WXDEBUG();
+		static extern (C) бул wxPlatform_UNIX();
+		static extern (C) бул wxPlatform_UNICODE();
+		static extern (C) бул wxPlatform_DISPLAY();
+		static extern (C) бул wxPlatform_POSTSCRIPT();
+		static extern (C) бул wxPlatform_GLCANVAS();
+		static extern (C) бул wxPlatform_SOUND();
 
-		static extern (C) IntPtr wxPlatform_wxGetOsDescription();
-		static extern (C) int wxPlatform_wxGetOsVersion(inout int major, inout int minor);
+		static extern (C) ЦУк wxPlatform_wxGetOsDescription();
+		static extern (C) цел wxPlatform_wxGetOsVersion(inout цел major, inout цел minor);
 
-		static extern (C) int wxPlatform_OS_UNKNOWN();
-		static extern (C) int wxPlatform_OS_WINDOWS();
-		static extern (C) int wxPlatform_OS_WINDOWS_9X();
-		static extern (C) int wxPlatform_OS_WINDOWS_NT();
-		static extern (C) int wxPlatform_OS_MAC();
-		static extern (C) int wxPlatform_OS_MAC_OS();
-		static extern (C) int wxPlatform_OS_DARWIN();
-		static extern (C) int wxPlatform_OS_UNIX();
-		static extern (C) int wxPlatform_OS_LINUX();
-		static extern (C) int wxPlatform_OS_FREEBSD();
+		static extern (C) цел wxPlatform_OS_UNKNOWN();
+		static extern (C) цел wxPlatform_OS_WINDOWS();
+		static extern (C) цел wxPlatform_OS_WINDOWS_9X();
+		static extern (C) цел wxPlatform_OS_WINDOWS_NT();
+		static extern (C) цел wxPlatform_OS_MAC();
+		static extern (C) цел wxPlatform_OS_MAC_OS();
+		static extern (C) цел wxPlatform_OS_DARWIN();
+		static extern (C) цел wxPlatform_OS_UNIX();
+		static extern (C) цел wxPlatform_OS_LINUX();
+		static extern (C) цел wxPlatform_OS_FREEBSD();
 		//! \endcond
 		// ------------------------------------------------------
 
 /// Win platform
-public bool __WXMSW__;
+public бул __WXMSW__;
 /// GTK platform
-public bool __WXGTK__;
+public бул __WXGTK__;
 /// Mac platform
-public bool __WXMAC__;
+public бул __WXMAC__;
 /// X11 platform
-public bool __WXX11__;
+public бул __WXX11__;
 
 /// Universal widgets
-public bool __WXUNIVERSAL__;
+public бул __WXUNIVERSAL__;
 
-/// Get OS description as a user-readable string
-public string wxGetOsDescription()
+/// Get OS description as a user-readable ткст
+public ткст wxGetOsDescription()
 {
-	return cast(string) new wxString(wxPlatform_wxGetOsDescription(), true);
+	return cast(ткст) new wxString(wxPlatform_wxGetOsDescription(), да);
 }
 
-public bool ANSI;
-public bool UNICODE;
+public бул ANSI;
+public бул UNICODE;
 
-public bool DEBUG;
-public bool UNIX;
+public бул DEBUG;
+public бул UNIX;
 
 /// wxUSE_DISPLAY
-public bool DISPLAY;
+public бул DISPLAY;
 /// wxUSE_POSTSCRIPT
-public bool POSTSCRIPT;
+public бул POSTSCRIPT;
 /// wxUSE_GLCANVAS
-public bool GLCANVAS;
+public бул GLCANVAS;
 /// wxUSE_SOUND
-public bool SOUND;
+public бул SOUND;
 
 // ------------------------------------------------------
 
 /// Unknown Platform
-public int OS_UNKNOWN;
+public цел OS_UNKNOWN;
 deprecated alias OS_UNKNOWN wxUNKNOWN_PLATFORM;
 
 /// Windows
-public int OS_WINDOWS;
+public цел OS_WINDOWS;
 /// Windows 95/98/ME
-public int OS_WINDOWS_9X;
+public цел OS_WINDOWS_9X;
 deprecated alias OS_WINDOWS_9X wxWIN95;
 /// Windows NT/2K/XP
-public int OS_WINDOWS_NT;
+public цел OS_WINDOWS_NT;
 deprecated alias OS_WINDOWS_NT wxWINDOWS_NT;
 
 /// Apple Mac OS
-public int OS_MAC;
+public цел OS_MAC;
 /// Apple Mac OS 8/9/X with Mac paths
-public int OS_MAC_OS;
+public цел OS_MAC_OS;
 deprecated alias OS_MAC_OS wxMAC;
 /// Apple Mac OS X with Unix paths
-public int OS_DARWIN;
+public цел OS_DARWIN;
 deprecated alias OS_DARWIN wxMAC_DARWIN;
 
 /// Unix
-public int OS_UNIX;
-deprecated public int wxUNIX;
+public цел OS_UNIX;
+deprecated public цел wxUNIX;
 /// Linux
-public int OS_LINUX;
+public цел OS_LINUX;
 /// FreeBSD
-public int OS_FREEBSD;
+public цел OS_FREEBSD;
 
 /// Get OS version
-public int wxGetOsVersion(inout int major, inout int minor)
+public цел wxGetOsVersion(inout цел major, inout цел minor)
 {
 	return wxPlatform_wxGetOsVersion(major, minor);
 }

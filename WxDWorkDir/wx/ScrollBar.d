@@ -10,7 +10,7 @@
 // (C) 2003 Bryan Bulten
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: ScrollBar.d,v 1.10 2007/03/13 17:02:41 afb Exp $
+// $Ид: ScrollBar.d,v 1.10 2007/03/13 17:02:41 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.ScrollBar;
@@ -18,15 +18,15 @@ public import wx.common;
 public import wx.Control;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxScrollBar_ctor();
-		static extern (C) bool   wxScrollBar_Create(IntPtr self, IntPtr parent, int id, inout Point pos, inout Size size, uint style, IntPtr validator, string name);
-		static extern (C) int    wxScrollBar_GetThumbPosition(IntPtr self);
-		static extern (C) int    wxScrollBar_GetThumbSize(IntPtr self);
-		static extern (C) int    wxScrollBar_GetPageSize(IntPtr self);
-		static extern (C) int    wxScrollBar_GetRange(IntPtr self);
-		static extern (C) bool   wxScrollBar_IsVertical(IntPtr self);
-		static extern (C) void   wxScrollBar_SetThumbPosition(IntPtr self, int viewStart);
-		static extern (C) void   wxScrollBar_SetScrollbar(IntPtr self, int position, int thumbSize, int range, int pageSize, bool refresh);
+		static extern (C) ЦУк wxScrollBar_ctor();
+		static extern (C) бул   wxScrollBar_Create(ЦУк сам, ЦУк родитель, цел ид, inout Точка поз, inout Размер size, бцел стиль, ЦУк validator, ткст имя);
+		static extern (C) цел    wxScrollBar_GetThumbPosition(ЦУк сам);
+		static extern (C) цел    wxScrollBar_GetThumbSize(ЦУк сам);
+		static extern (C) цел    wxScrollBar_GetPageSize(ЦУк сам);
+		static extern (C) цел    wxScrollBar_GetRange(ЦУк сам);
+		static extern (C) бул   wxScrollBar_IsVertical(ЦУк сам);
+		static extern (C) проц   wxScrollBar_SetThumbPosition(ЦУк сам, цел viewStart);
+		static extern (C) проц   wxScrollBar_SetScrollbar(ЦУк сам, цел position, цел thumbSize, цел range, цел pageSize, бул refresh);
 		//! \endcond
 
 		//-----------------------------------------------------------------------------
@@ -35,68 +35,68 @@ public import wx.Control;
 	public class ScrollBar : Control
 	{
 		enum {
-			wxSB_HORIZONTAL   = Orientation.wxHORIZONTAL,
-			wxSB_VERTICAL     = Orientation.wxVERTICAL,
+			wxSB_HORIZONTAL   = Ориентация.wxHORIZONTAL,
+			wxSB_VERTICAL     = Ориентация.wxVERTICAL,
 		}
 
-		public const string wxScrollBarNameStr = "scrollBar";
+		public const ткст wxScrollBarNameStr = "scrollBar";
 		//-----------------------------------------------------------------------------
 
-		public this(IntPtr wxobj)
-			{ super(wxobj); }
+		public this(ЦУк шхобъ)
+			{ super(шхобъ); }
 
 		public this()
 			{ super(wxScrollBar_ctor()); }
 	    
-		public this(Window parent, int id, Point pos = wxDefaultPosition, Size size = wxDefaultSize, int style = wxSB_HORIZONTAL, Validator validator = null, string name = wxScrollBarNameStr)
+		public this(Окно родитель, цел ид, Точка поз = wxDefaultPosition, Размер size = wxDefaultSize, цел стиль = wxSB_HORIZONTAL, Validator validator = пусто, ткст имя = wxScrollBarNameStr)
 		{
 			super (wxScrollBar_ctor() );
-			if (!Create(parent, id, pos, size, style, validator, name)) 
+			if (!Create(родитель, ид, поз, size, стиль, validator, имя)) 
 			{
 				throw new InvalidOperationException("Failed to create ScrollBar");
 			}
 		}
 		
-		public static wxObject New(IntPtr wxobj) { return new ScrollBar(wxobj); }
+		public static wxObject Нов(ЦУк шхобъ) { return new ScrollBar(шхобъ); }
 	
 		//---------------------------------------------------------------------
-		// ctors with self created id
+		// ctors with сам created ид
 		
-		public this(Window parent, Point pos = wxDefaultPosition, Size size = wxDefaultSize, int style = wxSB_HORIZONTAL, Validator validator = null, string name = wxScrollBarNameStr)
-			{ this(parent, Window.UniqueID, pos, size, style, validator, name); }
+		public this(Окно родитель, Точка поз = wxDefaultPosition, Размер size = wxDefaultSize, цел стиль = wxSB_HORIZONTAL, Validator validator = пусто, ткст имя = wxScrollBarNameStr)
+			{ this(родитель, Окно.UniqueID, поз, size, стиль, validator, имя); }
 		
 		//-----------------------------------------------------------------------------
 
-		public bool Create(Window parent, int id, Point pos, Size size, int style, Validator validator, string name)
+		public бул Create(Окно родитель, цел ид, Точка поз, Размер size, цел стиль, Validator validator, ткст имя)
 		{
-			return wxScrollBar_Create(wxobj, wxObject.SafePtr(parent), id, pos, size, cast(uint)style, wxObject.SafePtr(validator), name);
+			return wxScrollBar_Create(шхобъ, wxObject.SafePtr(родитель), ид, поз, size, cast(бцел)стиль, wxObject.SafePtr(validator), имя);
 		}
 
 		//-----------------------------------------------------------------------------
 
-		public int ThumbPosition() { return wxScrollBar_GetThumbPosition(wxobj); }
-		public void ThumbPosition(int value) { wxScrollBar_SetThumbPosition(wxobj, value); }
+		public цел ThumbPosition() { return wxScrollBar_GetThumbPosition(шхобъ); }
+		public проц ThumbPosition(цел значение) { wxScrollBar_SetThumbPosition(шхобъ, значение); }
 
 		//-----------------------------------------------------------------------------
 
-		public int ThumbSize() { return wxScrollBar_GetThumbSize(wxobj); }
+		public цел ThumbSize() { return wxScrollBar_GetThumbSize(шхобъ); }
 
 		//-----------------------------------------------------------------------------
 
-		public int PageSize() { return wxScrollBar_GetPageSize(wxobj); }
+		public цел PageSize() { return wxScrollBar_GetPageSize(шхобъ); }
 
 		//-----------------------------------------------------------------------------
 
-		public int Range() { return wxScrollBar_GetRange(wxobj); }
+		public цел Range() { return wxScrollBar_GetRange(шхобъ); }
 
 		//-----------------------------------------------------------------------------
 
-		public bool IsVertical() { return wxScrollBar_IsVertical(wxobj); }
+		public бул IsVertical() { return wxScrollBar_IsVertical(шхобъ); }
 
 		//-----------------------------------------------------------------------------
 
-		public override void SetScrollbar(int position, int thumbSize, int range, int pageSize, bool refresh)
+		public override проц SetScrollbar(цел position, цел thumbSize, цел range, цел pageSize, бул refresh)
 		{
-			wxScrollBar_SetScrollbar(wxobj, position, thumbSize, range, pageSize, refresh);
+			wxScrollBar_SetScrollbar(шхобъ, position, thumbSize, range, pageSize, refresh);
 		}
 	}

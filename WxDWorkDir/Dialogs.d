@@ -8,7 +8,7 @@
 // (C) 2003 Bryan Bulten
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: Dialogs.d,v 1.12 2009/01/16 14:38:22 afb Exp $
+// $Ид: Dialogs.d,v 1.12 2009/01/16 14:38:22 afb Exp $
 //-----------------------------------------------------------------------------
 
 import wx.wx;
@@ -16,25 +16,25 @@ pragma(lib, "wxd.lib");
 version (Tango)
 {
 import tango.core.Version;
-private import tango.text.convert.Integer;
+private import tango.текст.convert.Integer;
 static if (Tango.Major == 0 && Tango.Minor < 994)
-alias tango.text.convert.Integer.toUtf8 toString;
+alias tango.текст.convert.Integer.toUtf8 toString;
 else
-alias tango.text.convert.Integer.toString toString;
-private import tango.text.Util;
-ptrdiff_t indexOf(string a, string b) { return 0 /*TODO*/; }
-ptrdiff_t LastIndexOf(string a, string b) { return 0 /*TODO*/; }
+alias tango.текст.convert.Integer.toString toString;
+private import tango.текст.Util;
+ptrdiff_t indexOf(ткст a, ткст с) { return 0 /*TODO*/; }
+ptrdiff_t LastIndexOf(ткст a, ткст с) { return 0 /*TODO*/; }
 private import tango.math.Random;
 private import tango.io.FileSystem;
 alias FileSystem.getDirectory GETCWD;
-uint RAND() { return 0 /*Random.shared.next*/; }
+бцел RAND() { return 0 /*Random.shared.next*/; }
 }
 version(Phobos)
 {
-private import std.string;
+private import std.ткст;
 private import std.random;
-alias std.string.find indexOf;
-alias std.string.rfind LastIndexOf;
+alias std.ткст.find indexOf;
+alias std.ткст.rfind LastIndexOf;
 alias std.file.getcwd GETCWD;
 alias std.random.rand RAND;
 }
@@ -56,14 +56,14 @@ import stdrus;
 			Tip, NumEntry, LogDialog,
 			Modal, Modeless, ModelessBtn,
 			Progress, Busyinfo,
-			Find, Replace,
+			Find, Замени,
 			Exit
 		}
 
 		// for FileOpen2
-		public static string s_extDef="";
+		public static ткст s_extDef="";
 
-		// for Find and Replace
+		// for Find and Замени
 		public FindReplaceData m_findData;
 		public FindReplaceDialog m_dlgFind;
 		public FindReplaceDialog m_dlgReplace;
@@ -74,21 +74,21 @@ import stdrus;
 
 		//---------------------------------------------------------------------
 
-		public this(string title, Point pos, Size size)
+		public this(ткст title, Точка поз, Размер size)
 		{
-			super(title, pos, size);
-			// Set the window icon
-			icon = new Icon("./Samples/Dialogs/mondrian.png");
+			super(title, поз, size);
+			// Установи the окно иконка
+			иконка = new Icon("./Samples/Dialogs/mondrian.png");
 
-			// Set up a menu
-			Menu fileMenu = new Menu();
-			fileMenu.Append(Cmd.ChooseColour,	"&Choose Colour");
+			// Установи up a меню
+			Меню fileMenu = new Меню();
+			fileMenu.Append(Cmd.ChooseColour,	"&Choose Цвет");
 			fileMenu.AppendSeparator();
-			fileMenu.Append(Cmd.ChooseFont, 	"Choose &Font");
+			fileMenu.Append(Cmd.ChooseFont, 	"Choose &Шрифт");
 			fileMenu.AppendSeparator();
 			fileMenu.Append(Cmd.LogDialog, 	"&Log dialog\tCtrl-L");
 			fileMenu.Append(Cmd.MessageBox, 	"&Message Box\tCtrl-M");
-			fileMenu.Append(Cmd.TextEntry, 	"Text &entry\tCtrl-E");
+			fileMenu.Append(Cmd.TextEntry, 	"Текст &entry\tCtrl-E");
 			fileMenu.Append(Cmd.PasswordEntry, 	"&Password entry\tCtrl-P");
 			fileMenu.Append(Cmd.NumEntry, 		"&Numeric entry\tCtrl-N");
 			fileMenu.Append(Cmd.SingleChoice, 	"&Single choice\tCtrl-C");
@@ -96,15 +96,15 @@ import stdrus;
 			fileMenu.AppendSeparator();
 			fileMenu.Append(Cmd.Tip,		"&Tip of the day\tCtrl-T");
 			fileMenu.AppendSeparator();
-			fileMenu.Append(Cmd.FileOpen, 		"&Open file\tCtrl-O");
+			fileMenu.Append(Cmd.FileOpen, 		"&Открой file\tCtrl-O");
 			fileMenu.Append(Cmd.FileOpen2, 	"&Second open file\tCtrl-2");
-			fileMenu.Append(Cmd.FilesOpen, 	"Open &files\tCtrl-3");
+			fileMenu.Append(Cmd.FilesOpen, 	"Открой &files\tCtrl-3");
 			fileMenu.Append(Cmd.FileSave, 		"Sa&ve file\tCtrl-S");
 			fileMenu.Append(Cmd.DirChoose, 	"Choose &Directory\tCtrl-D");
 			fileMenu.Append(Cmd.Progress, 		"Pro&gress dialog\tCtrl-G");
 			fileMenu.Append(Cmd.Busyinfo, 		"&Busy info dialog\tCtrl-B");
 			fileMenu.AppendCheckItem(Cmd.Find,	"&Find dialog\tCtrl-F", "");
-			fileMenu.AppendCheckItem(Cmd.Replace,	"Find and &replace dialog\tShift-Ctrl-F", "");
+			fileMenu.AppendCheckItem(Cmd.Замени,	"Find and &replace dialog\tShift-Ctrl-F", "");
 			fileMenu.AppendSeparator();
 			fileMenu.Append(Cmd.Modal,	"Mo&dal dialog\tCtrl-W");
 			fileMenu.AppendCheckItem(Cmd.Modeless,	"Modeless &dialog\tCtrl-Z", "");
@@ -118,13 +118,13 @@ import stdrus;
 
 			this.menuBar = menuBar;
 
-			// Set up a status bar
+			// Установи up a status bar
 			CreateStatusBar();
 
 			// Create the canvas for drawing
 			canvas = new MyCanvas(this);
 
-			// Set up the event table
+			// Установи up the event table
 			EVT_MENU(Cmd.ChooseColour,     &OnChooseColour);
 			EVT_MENU(Cmd.ChooseFont,       &OnChooseFont);
 
@@ -147,7 +147,7 @@ import stdrus;
 			EVT_MENU(Cmd.Progress,		&OnProgress);
 			EVT_MENU(Cmd.Busyinfo,		&OnBusyinfo);
 			EVT_MENU(Cmd.Find,		&OnFind);
-			EVT_MENU(Cmd.Replace,		&OnReplace);
+			EVT_MENU(Cmd.Замени,		&OnReplace);
 			EVT_MENU(Cmd.Modal,		&OnModal);
 			EVT_MENU(Cmd.Modeless,		&OnModeless);
 
@@ -157,67 +157,67 @@ import stdrus;
 			EVT_FIND_REPLACE_ALL(-1,		&OnFindEvent);
 			EVT_FIND_CLOSE(-1,			&OnFindEvent);
 
-			EVT_MENU(Cmd.Exit,             &OnExit);
+			EVT_MENU(Cmd.Exit,             &ПриВыходе);
 
 			m_findData = new FindReplaceData();
 		}
 
 		//---------------------------------------------------------------------
 
-		public void OnChooseColour(Object sender, Event e)
+		public проц OnChooseColour(Объект sender, Событие e)
 		{
-			ColourData data = new ColourData();
+			ColourData данные = new ColourData();
 
-			data.colour = canvas.BackgroundColour;
-			data.ChooseFull = true;
+			данные.colour = canvas.ЦветЗП;
+			данные.ChooseFull = да;
 
-			for(int i = 0; i < 16; i++) 
+			for(цел i = 0; i < 16; i++) 
 			{
-				ubyte rgb = cast(ubyte)(i * 16);
-				Colour col = new Colour(rgb, rgb, rgb);
-				data.SetCustomColour(i, col);
+				ббайт rgb = cast(ббайт)(i * 16);
+				Цвет col = new Цвет(rgb, rgb, rgb);
+				данные.SetCustomColour(i, col);
 			}
 
-			ColourDialog cd = new ColourDialog(this, data);
+			ColourDialog cd = new ColourDialog(this, данные);
 			cd.Title = "Choose the background colour";
 
 			if (cd.ShowModal() == wxID_OK) 
 			{
-				canvas.BackgroundColour = cd.colourData.colour;
-				//canvas.Clear();
+				canvas.ЦветЗП = cd.colourData.colour;
+				//canvas.Очисть();
 				canvas.Refresh();
 			}
 		}
 
-		public void OnChooseFont(Object sender, Event e)
+		public проц OnChooseFont(Объект sender, Событие e)
 		{
-			FontData data = new FontData();
-			data.InitialFont = canvas.font;
-			data.colour = canvas.textColour;
+			FontData данные = new FontData();
+			данные.InitialFont = canvas.шрифт;
+			данные.colour = canvas.textColour;
 
-			FontDialog fd = new FontDialog(this, data);
+			FontDialog fd = new FontDialog(this, данные);
 
 			if (fd.ShowModal() == wxID_OK) 
 			{
-				canvas.font = fd.fontData.ChosenFont;
+				canvas.шрифт = fd.fontData.ChosenFont;
 				canvas.textColour = fd.fontData.colour;
 				canvas.Refresh();
 			}
 		}
 
-		public void OnDirChoose(Object sender, Event e)
+		public проц OnDirChoose(Объект sender, Событие e)
 		{
-			string dirHome = дайтекпап();
+			ткст dirHome = дайтекпап();
 			DirDialog dlg = new DirDialog(this, "Testing directory picker",
 				dirHome);
 
 			if (dlg.ShowModal() == Dialog.wxID_OK) 
 			{
-				Log.LogMessage("Selected path: " ~ dlg.Path);
+				Log.LogMessage("Selected путь: " ~ dlg.Путь);
 			}
 		}
 
-		public void OnLogDialog(Object sender, Event e)
+		public проц OnLogDialog(Объект sender, Событие e)
 		{
 		{
 			BusyCursor bc = new BusyCursor();
@@ -237,10 +237,10 @@ import stdrus;
 			Log.LogMessage("And this is the same dialog but with only one message.");
 		}
 
-		public void OnMessageBox(Object sender, Event e)
+		public проц OnMessageBox(Объект sender, Событие e)
 		{
-			MessageDialog md = new MessageDialog(this, "This is a message box\nA long, long string to test out the message box properly",
-				"Message box text", Dialog.wxNO_DEFAULT|Dialog.wxYES_NO|Dialog.wxCANCEL|Dialog.wxICON_INFORMATION);
+			MessageDialog md = new MessageDialog(this, "This is a message box\nA long, long ткст to test out the message box properly",
+				"Message box текст", Dialog.wxNO_DEFAULT|Dialog.wxYES_NO|Dialog.wxCANCEL|Dialog.wxICON_INFORMATION);
 
 			switch (md.ShowModal())
 			{
@@ -255,25 +255,25 @@ import stdrus;
 			}
 		}
 
-		public void OnTextEntry(Object sender, Event e)
+		public проц OnTextEntry(Объект sender, Событие e)
 		{
 			TextEntryDialog ted = new TextEntryDialog(this,
 				"This is a small sample\n" ~
-				"A long, long string to test out the text entrybox",
-				"Please enter a string",
-				"Default value",
+				"A long, long ткст to test out the текст entrybox",
+				"Please enter a ткст",
+				"Default значение",
 				Dialog.wxOK | Dialog.wxCANCEL);
 
 			if (ted.ShowModal() == Dialog.wxID_OK)
 			{
-				MessageDialog md = new MessageDialog(this, ted.Value, "Got string");
+				MessageDialog md = new MessageDialog(this, ted.Value, "Got ткст");
 				md.ShowModal();
 			}
 		}
 
-		public void OnPasswordEntry(Object sender, Event e)
+		public проц OnPasswordEntry(Объект sender, Событие e)
 		{
-			string pwd = GetPasswordFromUser("Enter password:",
+			ткст pwd = GetPasswordFromUser("Enter password:",
 				"Password entry dialog",
 				"",
 				this);
@@ -285,67 +285,67 @@ import stdrus;
 			}
 		}
 
-		public void OnNumericEntry(Object sender, Event e)
+		public проц OnNumericEntry(Объект sender, Событие e)
 		{
-			int res = GetNumberFromUser( "This is some text, actually a lot of text.\n" ~
-				"Even two rows of text.",
+			цел res = GetNumberFromUser( "This is some текст, actually a lot of текст.\n" ~
+				"Even two rows of текст.",
 				"Enter a number:",
 				"Numeric input test",
 				50, 0, 100, this );
 
-			string msg;
-			int icon;
+			ткст msg;
+			цел иконка;
 			if ( res == -1 )
 			{
 				msg = "Invalid number entered or dialog cancelled.";
-				icon = Dialog.wxICON_HAND;
+				иконка = Dialog.wxICON_HAND;
 			}
 			else
 			{
 				msg = "You've entered " ~ .toString(res);
-				icon = Dialog.wxICON_INFORMATION;
+				иконка = Dialog.wxICON_INFORMATION;
 			}
 
-			MessageDialog md = new MessageDialog(this, msg, "Numeric test result", Dialog.wxOK | icon);
+			MessageDialog md = new MessageDialog(this, msg, "Numeric test result", Dialog.wxOK | иконка);
 			md.ShowModal();
 		}
 
-		public void OnSingleChoice(Object sender, Event e)
+		public проц OnSingleChoice(Объект sender, Событие e)
 		{
-			string[] choices = [ "One", "Two", "Three", "Four", "Five"];
+			ткст[] choices = [ "One", "Two", "Three", "Four", "Five"];
 
 			SingleChoiceDialog scd = new SingleChoiceDialog(this,"This is a small sample\n" ~
 				"A single-choice dialog",
-				"Please select a value",
+				"Please select a значение",
 				choices);
 			scd.Selection = 2;
 
 			if (scd.ShowModal() == wxID_OK)
 			{
-				MessageDialog md = new MessageDialog(this, scd.StringSelection(), "Got string");
+				MessageDialog md = new MessageDialog(this, scd.StringSelection(), "Got ткст");
 				md.ShowModal();
 			}
 		}
 
-		public void OnMultiChoice(Object sender, Event e)
+		public проц OnMultiChoice(Объект sender, Событие e)
 		{
 			// OnMultiChoice uses MultiChoiceDialog instead of GetMultipleChoices which isn't implemented yet
-			string[] choices = [
+			ткст[] choices = [
 														  "One", "Two", "Three", "Four", "Five",
 														  "Six", "Seven", "Eight", "Nine", "Ten",
 														  "Eleven", "Twelve", "Seventeen" ];
 
 			MultiChoiceDialog mcd = new MultiChoiceDialog(this, "This is a small sample\n" ~
 				"A multi-choice convenience dialog",
-				"Please select a value",
+				"Please select a значение",
 				choices);
 			if (mcd.ShowModal() == wxID_OK)
 			{
-				int[] selections = mcd.GetSelections();
-				int count = selections.length;
-				string msg;
-				msg = "You selected " ~ .toString(count) ~ " items:\n";
-				for (int n = 0; n < count; n++)
+				цел[] selections = mcd.GetSelections();
+				цел счёт = selections.length;
+				ткст msg;
+				msg = "You selected " ~ .toString(счёт) ~ " items:\n";
+				for (цел n = 0; n < счёт; n++)
 				{
 					msg ~= "\t" ~ .toString(n) ~ ": " ~ .toString(selections[n]) ~ " (" ~ choices[selections[n]] ~ ")\n";
 				}
@@ -356,12 +356,12 @@ import stdrus;
 
 		}
 
-		public void OnTip(Object sender, Event e)
+		public проц OnTip(Объект sender, Событие e)
 		{
-			// we have to use a IntPtr, class wxTipProvider is abstract and wxFileTipProvider private
-			IntPtr tp = TipProvider.CreateFileTipProvider("../Samples/Dialogs/tips.txt", случайно());
+			// we have to use a ЦУк, class wxTipProvider is abstract and wxFileTipProvider private
+			ЦУк tp = TipProvider.CreateFileTipProvider("../Samples/Dialogs/tips.txt", случайно());
 
-			bool showAtStartup = TipProvider.ShowTip(this, tp);
+			бул showAtStartup = TipProvider.ShowTip(this, tp);
 
 			if ( showAtStartup )
 			{
@@ -370,10 +370,10 @@ import stdrus;
 			}
 
 			// does nothing, only for example
-			int s_index = TipProvider.CurrentTip;
+			цел s_index = TipProvider.CurrentTip;
 		}
 
-		public void OnFileOpen(Object sender, Event e)
+		public проц OnFileOpen(Объект sender, Событие e)
 		{
 			FileDialog fd = new FileDialog(this,
 				"Testing open file dialog",
@@ -385,33 +385,33 @@ import stdrus;
 
 			if (fd.ShowModal() == wxID_OK)
 			{
-				string info = "Full file name: " ~ fd.Path ~ "\n" ~
-					"Path: " ~ fd.Directory ~ "\n" ~
-					"Name: " ~ fd.Filename;
+				ткст info = "Full file имя: " ~ fd.Путь ~ "\n" ~
+					"Путь: " ~ fd.Directory ~ "\n" ~
+					"Имя: " ~ fd.Filename;
 				MessageDialog md = new MessageDialog(this, info, "Selected file");
 				md.ShowModal();
 			}
 		}
 
-		public void OnFileOpen2(Object sender, Event e)
+		public проц OnFileOpen2(Объект sender, Событие e)
 		{
-			string path = FileSelector( "Select the file to load",
+			ткст путь = FileSelector( "Select the file to load",
 				"", "", s_extDef,
-				"Waveform (*.wav)|*.wav|Plain text (*.txt)|*.txt|All files (*.*)|*.*",
+				"Waveform (*.wav)|*.wav|Plain текст (*.txt)|*.txt|All files (*.*)|*.*",
 				FileDialog.wxCHANGE_DIR,
 				this );
-			if (path.length == 0) return;
+			if (путь.length == 0) return;
 
-			s_extDef = path[path.найдрек(".") + 1..path.length];
+			s_extDef = путь[путь.найдрек(".") + 1..путь.length];
 
 			MessageDialog md = new MessageDialog(this,
-				"You selected the file '" ~ path ~
+				"You selected the file '" ~ путь ~
 				"', remembered extension '" ~ s_extDef ~ "'",
 				"FileOpen2");
 			md.ShowModal();
 		}
 
-		public void OnFilesOpen(Object sender, Event e)
+		public проц OnFilesOpen(Объект sender, Событие e)
 		{
 			FileDialog fd = new FileDialog(this,
 				"Testing open multiple file dialog",
@@ -420,12 +420,12 @@ import stdrus;
 
 			if (fd.ShowModal() == wxID_OK)
 			{
-				string[] paths, filenames;
+				ткст[] paths, filenames;
 				paths = fd.Paths;
-				filenames = fd.Filenames;
+				filenames = fd.Именаф;
 
-				string msg = "";
-				for (int n = 0; n < paths.length; n++)
+				ткст msg = "";
+				for (цел n = 0; n < paths.length; n++)
 				{
 					msg ~= "File " ~ .toString(n) ~ ": " ~ paths[n] ~ " " ~
 						" (" ~ filenames[n] ~ ")\n";
@@ -436,27 +436,27 @@ import stdrus;
 			}
 		}
 
-		public void OnFileSave(Object sender, Event e)
+		public проц OnFileSave(Объект sender, Событие e)
 		{
 			FileDialog fd = new FileDialog(this,
 				"Testing save file dialog",
 				"",
 				"myletter.doc",
-				"Text files (*.txt)|*.txt|Document files (*.doc)|*.doc",
+				"Текст files (*.txt)|*.txt|Document files (*.doc)|*.doc",
 				FileDialog.wxSAVE | FileDialog.wxOVERWRITE_PROMPT);
 
 			fd.FilterIndex = 1;
 
 			if (fd.ShowModal() == wxID_OK)
 			{
-				MessageDialog md = new MessageDialog(this, fd.Path ~ ", filter " ~ .toString(fd.FilterIndex), "FileSave");
+				MessageDialog md = new MessageDialog(this, fd.Путь ~ ", filter " ~ .toString(fd.FilterIndex), "FileSave");
 				md.ShowModal();
 			}
 		}
 
-		public void OnProgress(Object sender, Event e)
+		public проц OnProgress(Объект sender, Событие e)
 		{
-			int max = 10;
+			цел max = 10;
 
 			ProgressDialog pd = new ProgressDialog(
 				"Progress dialog example",
@@ -470,21 +470,21 @@ import stdrus;
 				ProgressDialog.wxPD_ESTIMATED_TIME |
 				ProgressDialog.wxPD_REMAINING_TIME);
 
-			bool cont = true;
-			for ( int i = 0; i <= max; i++)
+			бул cont = да;
+			for ( цел i = 0; i <= max; i++)
 			{
 				wxSleep(1);
 				if ( i == max )
 				{
-					cont = pd.Update(i, "That's all, folks!");
+					cont = pd.Обнови(i, "That's all, folks!");
 				}
 				else if ( i == max / 2 )
 				{
-					cont = pd.Update(i, "Only a half left (very long message)!");
+					cont = pd.Обнови(i, "Only a half left (very long message)!");
 				}
 				else
 				{
-					cont = pd.Update(i);
+					cont = pd.Обнови(i);
 				}
 				if ( !cont )
 				{
@@ -494,10 +494,10 @@ import stdrus;
 						Dialog.wxYES_NO | Dialog.wxICON_QUESTION);
 					if (md.ShowModal() == wxID_YES)
 					{
-						// use Dispose() or Show(false) to close the ProgressDialog
-						// otherwise the dialog won't get closed and the app hangs
+						// use Dispose() or Show(нет) to close the ProgressDialog
+						// otherwise the dialog won't get closed and the прил hangs
 						//pd.Dispose();
-						pd.Show(false);					
+						pd.Show(нет);					
 						break;
 					}
 					pd.Resume();
@@ -507,15 +507,15 @@ import stdrus;
 			pd.Dispose();
 		}
 
-		public void OnBusyinfo(Object sender, Event e)
+		public проц OnBusyinfo(Объект sender, Событие e)
 		{
 			scope WindowDisabler disableAll = new WindowDisabler();
 
 			scope BusyInfo info = new BusyInfo("Working, please wait...", this);
 
-			for ( int i = 0; i < 18; i++ )
+			for ( цел i = 0; i < 18; i++ )
 			{
-				App.GetApp().Yield();
+				Прил.ДайПрил().Yield();
 				// or wxYield();
 			}
 
@@ -523,74 +523,74 @@ import stdrus;
 
 		}
 
-		public void OnFind(Object sender, Event e)
+		public проц OnFind(Объект sender, Событие e)
 		{
 			m_dlgFind = new FindReplaceDialog(
 				this,
 				m_findData,
 				"Find Dialog",
 				FindReplaceDialog.wxFR_NOWHOLEWORD);
-			m_dlgFind.Show(true);
+			m_dlgFind.Show(да);
 		}
 
-		public void OnReplace(Object sender, Event e)
+		public проц OnReplace(Объект sender, Событие e)
 		{
 			m_dlgReplace = new FindReplaceDialog(
 				this,
 				m_findData,
 				"Find and replace dialog",
 				FindReplaceDialog.wxFR_REPLACEDIALOG);
-			m_dlgReplace.Show(true);
+			m_dlgReplace.Show(да);
 		}
 
-		public string DecodeFindDialogEventFlags(int flags)
+		public ткст DecodeFindDialogEventFlags(цел флаги)
 		{
-			string 	str = (((flags & FindReplaceDialog.wxFR_DOWN) != 0) ? "down" : "up") ~ ", " ~
-				(((flags & FindReplaceDialog.wxFR_WHOLEWORD) != 0) ? "whole words only, " : "") ~
-				(((flags & FindReplaceDialog.wxFR_MATCHCASE) != 0) ? "" : "not ") ~
+			ткст 	str = (((флаги & FindReplaceDialog.wxFR_DOWN) != 0) ? "down" : "up") ~ ", " ~
+				(((флаги & FindReplaceDialog.wxFR_WHOLEWORD) != 0) ? "whole words only, " : "") ~
+				(((флаги & FindReplaceDialog.wxFR_MATCHCASE) != 0) ? "" : "not ") ~
 				"case sensitive";
 
 			return str;
 		}
 
-		public void OnFindEvent(Object sender, Event e)
+		public проц OnFindEvent(Объект sender, Событие e)
 		{
 			FindDialogEvent fre= cast(FindDialogEvent)e;
-			int etype = fre.eventType;
+			цел etype = fre.ТипСоб;
 
-			if ( etype == Event.wxEVT_COMMAND_FIND   || etype == Event.wxEVT_COMMAND_FIND_NEXT )
+			if ( etype == Событие.wxEVT_COMMAND_FIND   || etype == Событие.wxEVT_COMMAND_FIND_NEXT )
 			{
-				Log.LogMessage("Find %s'%s' (flags: {%s})",
-					etype == Event.wxEVT_COMMAND_FIND_NEXT ? "next " : "",
+				Log.LogMessage("Find %s'%s' (флаги: {%s})",
+					etype == Событие.wxEVT_COMMAND_FIND_NEXT ? "next " : "",
 					fre.FindString,
-					DecodeFindDialogEventFlags(fre.Flags));
+					DecodeFindDialogEventFlags(fre.Флаги));
 			}
-			else if ( etype == Event.wxEVT_COMMAND_FIND_REPLACE ||
-				etype == Event.wxEVT_COMMAND_FIND_REPLACE_ALL )
+			else if ( etype == Событие.wxEVT_COMMAND_FIND_REPLACE ||
+				etype == Событие.wxEVT_COMMAND_FIND_REPLACE_ALL )
 			{
-				Log.LogMessage("Replace %s'%s' with '%s' (flags: %s)",
-					etype == Event.wxEVT_COMMAND_FIND_REPLACE_ALL ? "all " : "",
+				Log.LogMessage("Замени %s'%s' with '%s' (флаги: %s)",
+					etype == Событие.wxEVT_COMMAND_FIND_REPLACE_ALL ? "all " : "",
 					fre.FindString,
 					fre.ReplaceString,
-					DecodeFindDialogEventFlags(fre.Flags));
+					DecodeFindDialogEventFlags(fre.Флаги));
 			}
-			else if ( etype == Event.wxEVT_COMMAND_FIND_CLOSE )
+			else if ( etype == Событие.wxEVT_COMMAND_FIND_CLOSE )
 			{
 				FindReplaceDialog dlg = fre.Dialog;
 
-				int idMenu;
-				string txt;
+				цел idMenu;
+				ткст txt;
 				if ( dlg == m_dlgFind )
 				{
 					txt = "Find";
 					idMenu = Cmd.Find;
-					m_dlgFind = null;
+					m_dlgFind = пусто;
 				}
 				else if ( dlg == m_dlgReplace )
 				{
-					txt = "Replace";
-					idMenu = Cmd.Replace;
-					m_dlgReplace = null;
+					txt = "Замени";
+					idMenu = Cmd.Замени;
+					m_dlgReplace = пусто;
 				}
 				else
 				{
@@ -605,10 +605,10 @@ import stdrus;
 
 				if ( idMenu != -1 )
 				{
-					menuBar.Check(idMenu, false);
+					menuBar.Check(idMenu, нет);
 				}
 
-				dlg.Destroy();
+				dlg.Разрушь();
 			}
 			else
 			{
@@ -616,21 +616,21 @@ import stdrus;
 			}
 		}
 
-		public void OnModal(Object sender, Event e)
+		public проц OnModal(Объект sender, Событие e)
 		{
 			MyModalDialog dlg = new MyModalDialog(this);
 			dlg.ShowModal();
 		}
 
-		public void OnModeless(Object sender, Event e)
+		public проц OnModeless(Объект sender, Событие e)
 		{
 			CommandEvent ce = cast(CommandEvent) e;
-			bool show = menuBar.IsChecked(ce.ID);
+			бул show = menuBar.IsChecked(ce.ИД);
 
 			if ( show )
 			{
 				m_dialog = new MyModelessDialog(this);
-				m_dialog.Show(true);
+				m_dialog.Show(да);
 			}
 			else
 			{
@@ -640,9 +640,9 @@ import stdrus;
 
 		//---------------------------------------------------------------------
 
-		public void OnExit(Object sender, Event e)
+		public проц ПриВыходе(Объект sender, Событие e)
 		{
-			Close(true);
+			Закрой(да);
 		}
 
 		//---------------------------------------------------------------------
@@ -650,25 +650,25 @@ import stdrus;
 
 	public class MyCanvas : ScrolledWindow
 	{
-		public Font font;
-		public Colour textColour;
+		public Шрифт шрифт;
+		public Цвет textColour;
 
-		public this(Window parent)
+		public this(Окно родитель)
 		{
-			super(parent);
-			font = Font.wxNORMAL_FONT;
-			textColour = new Colour(0, 0, 0);
+			super(родитель);
+			шрифт = Шрифт.wxNORMAL_FONT;
+			textColour = new Цвет(0, 0, 0);
 			
 			EVT_PAINT(&OnPaint);
 		}
 
-		public void OnPaint(Object sender, Event e)
+		public проц OnPaint(Объект sender, Событие e)
 		{
 			PaintDC dc = new PaintDC(this);
-			dc.font = font;
-			dc.TextForeground = textColour;
-			dc.BackgroundMode = FillStyle.wxTRANSPARENT;
-			dc.DrawText("wxWidgets common dialogs test application", 10, 10);
+			dc.шрифт = шрифт;
+			dc.ППланТекста = textColour;
+			dc.ФоновыйРежим = СтильЗаливки.wxTRANSPARENT;
+			dc.РисуйТекст("wxWidgets common dialogs test application", 10, 10);
 			dc.Dispose(); //needed
 		}
 	}
@@ -677,43 +677,43 @@ import stdrus;
 
 	public class MyModelessDialog : Dialog
 	{
-		enum Id 
+		enum Ид 
 		{
 			DIALOG_MODELESS_BTN = 1
 		}
 
-		public this(Window parent)
+		public this(Окно родитель)
 		{
-			super(parent, -1, "Modeless dialog");
-			BoxSizer sizerTop = new BoxSizer(Orientation.wxVERTICAL);
+			super(родитель, -1, "Modeless dialog");
+			BoxSizer sizerTop = new BoxSizer(Ориентация.wxVERTICAL);
 
-			Button btn = new Button(this, Id.DIALOG_MODELESS_BTN, "Press me");
+			Кнопка btn = new Кнопка(this, Ид.DIALOG_MODELESS_BTN, "Press me");
 			CheckBox check = new CheckBox(this, -1, "Should be disabled");
 			check.Disable();
 
-			sizerTop.Add(btn, 1, Stretch.wxEXPAND | Direction.wxALL, 5);
-			sizerTop.Add(check, 1, Stretch.wxEXPAND | Direction.wxALL, 5);
+			sizerTop.Добавь(btn, 1, Stretch.wxEXPAND | Direction.wxALL, 5);
+			sizerTop.Добавь(check, 1, Stretch.wxEXPAND | Direction.wxALL, 5);
 
-			AutoLayout = true;
+			AutoLayout = да;
 			SetSizer(sizerTop);
 
 			sizerTop.SetSizeHints(this);
 			sizerTop.Fit(this);
 
-			EVT_BUTTON(Id.DIALOG_MODELESS_BTN, &OnButton);
+			EVT_BUTTON(Ид.DIALOG_MODELESS_BTN, &OnButton);
 			EVT_CLOSE(&OnClose);
 		}
 
-		public void OnButton(Object sender, Event e)
+		public проц OnButton(Объект sender, Событие e)
 		{
-			MessageBox(this, "Button pressed in modeless dialog", "Info",
+			MessageBox(this, "Кнопка pressed in modeless dialog", "Info",
 				Dialog.wxOK | Dialog.wxICON_INFORMATION);
 		}
 
-		public void OnClose(Object sender, Event e)
+		public проц OnClose(Объект sender, Событие e)
 		{
 			// must add CloseEvent...
-			// must add Event.Veto
+			// must add Событие.Veto
 		}
 	}
 
@@ -721,22 +721,22 @@ import stdrus;
 
 	public class MyModalDialog : Dialog
 	{
-		public Button m_btnFocused;
-		public Button m_btnDelete;
+		public Кнопка m_btnFocused;
+		public Кнопка m_btnDelete;
 
-		public this(Window parent)
+		public this(Окно родитель)
 		{
-			super(parent, -1, "Modal dialog");
-			BoxSizer sizerTop = new BoxSizer(Orientation.wxHORIZONTAL);
+			super(родитель, -1, "Modal dialog");
+			BoxSizer sizerTop = new BoxSizer(Ориентация.wxHORIZONTAL);
 
-			m_btnFocused = new Button(this, -1, "Default button");
-			m_btnDelete = new Button(this, -1, "&Delete button");
-			Button btnOk = new Button(this, wxID_CANCEL, "&Close");
-			sizerTop.Add(m_btnFocused, 0, Alignment.wxALIGN_CENTER | Direction.wxALL, 5);
-			sizerTop.Add(m_btnDelete, 0, Alignment.wxALIGN_CENTER | Direction.wxALL, 5);
-			sizerTop.Add(btnOk, 0, Alignment.wxALIGN_CENTER | Direction.wxALL, 5);
+			m_btnFocused = new Кнопка(this, -1, "Default button");
+			m_btnDelete = new Кнопка(this, -1, "&Delete button");
+			Кнопка btnOk = new Кнопка(this, wxID_CANCEL, "&Закрой");
+			sizerTop.Добавь(m_btnFocused, 0, Alignment.wxALIGN_CENTER | Direction.wxALL, 5);
+			sizerTop.Добавь(m_btnDelete, 0, Alignment.wxALIGN_CENTER | Direction.wxALL, 5);
+			sizerTop.Добавь(btnOk, 0, Alignment.wxALIGN_CENTER | Direction.wxALL, 5);
 
-			AutoLayout = true;
+			AutoLayout = да;
 			SetSizer(sizerTop);
 
 			sizerTop.SetSizeHints(this);
@@ -748,17 +748,17 @@ import stdrus;
 			EVT_BUTTON(-1, &OnButton);
 		}
 
-		public void OnButton(Object sender, Event e)
+		public проц OnButton(Объект sender, Событие e)
 		{
 			CommandEvent ce = cast(CommandEvent) e;
 
-			if ( ce.EventObject == m_btnDelete )
+			if ( ce.ОбъСоб == m_btnDelete )
 			{
-				//m_btnFocused = null;
+				//m_btnFocused = пусто;
 				m_btnDelete.Disable();
 				m_btnFocused.Hide();
 			}
-			else if (ce.EventObject == m_btnFocused )
+			else if (ce.ОбъСоб == m_btnFocused )
 			{
 				GetTextFromUser("Dummy prompt",
 					"Modal dialog called from dialog",
@@ -766,37 +766,37 @@ import stdrus;
 			}
 			else
 			{
-				e.Skip();
+				e.Пропусти();
 			}
 		}
 	}
 
-	public class Dialogs : App
+	public class Dialogs : Прил
 	{
 		//---------------------------------------------------------------------
 
-		public override bool OnInit()
+		public override бул ПриИниц()
 		{
 			MyFrame frame = new MyFrame("wxWidgets Dialogs Example",
-				Point(50,50), Size(450,340));
-			frame.Show(true);
+				Точка(50,50), Размер(450,340));
+			frame.Show(да);
 
-			return true;
+			return да;
 		}
 
 		//---------------------------------------------------------------------
 
 		
-		static void Main()
+		static проц Main()
 		{
-			Dialogs app = new Dialogs();
-			app.Run();
+			Dialogs прил = new Dialogs();
+			прил.Пуск();
 		}
 
 		//---------------------------------------------------------------------
 	}
 
-void main()
+проц main()
 {
 	Dialogs.Main();
 }

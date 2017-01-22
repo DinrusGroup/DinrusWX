@@ -1,8 +1,8 @@
 //-----------------------------------------------------------------------------
-// wxD - MenuItem.d
+// wxD - ЭлементМеню.d
 // (C) 2005 bero <berobero@users.sourceforge.net>
 // based on
-// wx.NET - MenuItem.cs
+// wx.NET - ЭлементМеню.cs
 //
 /// The wxMenuItem wrapper class.
 //
@@ -10,7 +10,7 @@
 // (C) 2003 
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: MenuItem.d,v 1.10 2007/01/28 23:06:37 afb Exp $
+// $Ид: ЭлементМеню.d,v 1.10 2007/01/28 23:06:37 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.MenuItem;
@@ -21,152 +21,152 @@ public import wx.Bitmap;
 public import wx.EvtHandler;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxMenuItem_GetMenu(IntPtr self);
-		static extern (C) void   wxMenuItem_SetMenu(IntPtr self, IntPtr menu);
-		static extern (C) void   wxMenuItem_SetId(IntPtr self, int id);
-		static extern (C) int    wxMenuItem_GetId(IntPtr self);
-		static extern (C) bool   wxMenuItem_IsSeparator(IntPtr self);
-		//static extern (C) void   wxMenuItem_SetText(IntPtr self, string str);
-		//static extern (C) IntPtr wxMenuItem_GetLabel(IntPtr self);
-		//static extern (C) IntPtr wxMenuItem_GetText(IntPtr self);
-		//static extern (C) IntPtr wxMenuItem_GetLabelFromText(IntPtr self, string text);
-		static extern (C) int    wxMenuItem_GetKind(IntPtr self);
-		static extern (C) void   wxMenuItem_SetCheckable(IntPtr self, bool checkable);
-		static extern (C) bool   wxMenuItem_IsCheckable(IntPtr self);
-		static extern (C) bool   wxMenuItem_IsSubMenu(IntPtr self);
-		static extern (C) void   wxMenuItem_SetSubMenu(IntPtr self, IntPtr menu);
-		static extern (C) IntPtr wxMenuItem_GetSubMenu(IntPtr self);
-		static extern (C) void   wxMenuItem_Enable(IntPtr self, bool enable);
-		static extern (C) bool   wxMenuItem_IsEnabled(IntPtr self);
-		static extern (C) void   wxMenuItem_Check(IntPtr self, bool check);
-		static extern (C) bool   wxMenuItem_IsChecked(IntPtr self);
-		static extern (C) void   wxMenuItem_Toggle(IntPtr self);
-		static extern (C) void   wxMenuItem_SetHelp(IntPtr self, string str);
-		static extern (C) IntPtr wxMenuItem_GetHelp(IntPtr self);
-		static extern (C) IntPtr wxMenuItem_GetAccel(IntPtr self);
-		static extern (C) void   wxMenuItem_SetAccel(IntPtr self, IntPtr accel);
-		//static extern (C) void   wxMenuItem_SetName(IntPtr self, string str);
-		//static extern (C) IntPtr wxMenuItem_GetName(IntPtr self);
-		static extern (C) IntPtr wxMenuItem_NewCheck(IntPtr parentMenu, int id, string text, string help, bool isCheckable, IntPtr subMenu);
-		static extern (C) IntPtr wxMenuItem_New(IntPtr parentMenu, int id, string text, string help, int kind, IntPtr subMenu);
-		static extern (C) void   wxMenuItem_SetBitmap(IntPtr self, IntPtr bitmap);
-		static extern (C) IntPtr wxMenuItem_GetBitmap(IntPtr self);
-		static extern (C) IntPtr wxMenuItem_ctor(IntPtr parentMenu, int id, string text, string help, int kind, IntPtr subMenu);
+		static extern (C) ЦУк wxMenuItem_GetMenu(ЦУк сам);
+		static extern (C) проц   wxMenuItem_SetMenu(ЦУк сам, ЦУк меню);
+		static extern (C) проц   wxMenuItem_SetId(ЦУк сам, цел ид);
+		static extern (C) цел    wxMenuItem_GetId(ЦУк сам);
+		static extern (C) бул   wxMenuItem_IsSeparator(ЦУк сам);
+		//static extern (C) проц   wxMenuItem_SetText(ЦУк сам, ткст str);
+		//static extern (C) ЦУк wxMenuItem_GetLabel(ЦУк сам);
+		//static extern (C) ЦУк wxMenuItem_GetText(ЦУк сам);
+		//static extern (C) ЦУк wxMenuItem_GetLabelFromText(ЦУк сам, ткст текст);
+		static extern (C) цел    wxMenuItem_GetKind(ЦУк сам);
+		static extern (C) проц   wxMenuItem_SetCheckable(ЦУк сам, бул checkable);
+		static extern (C) бул   wxMenuItem_IsCheckable(ЦУк сам);
+		static extern (C) бул   wxMenuItem_IsSubMenu(ЦУк сам);
+		static extern (C) проц   wxMenuItem_SetSubMenu(ЦУк сам, ЦУк меню);
+		static extern (C) ЦУк wxMenuItem_GetSubMenu(ЦУк сам);
+		static extern (C) проц   wxMenuItem_Enable(ЦУк сам, бул enable);
+		static extern (C) бул   wxMenuItem_IsEnabled(ЦУк сам);
+		static extern (C) проц   wxMenuItem_Check(ЦУк сам, бул check);
+		static extern (C) бул   wxMenuItem_IsChecked(ЦУк сам);
+		static extern (C) проц   wxMenuItem_Toggle(ЦУк сам);
+		static extern (C) проц   wxMenuItem_SetHelp(ЦУк сам, ткст str);
+		static extern (C) ЦУк wxMenuItem_GetHelp(ЦУк сам);
+		static extern (C) ЦУк wxMenuItem_GetAccel(ЦУк сам);
+		static extern (C) проц   wxMenuItem_SetAccel(ЦУк сам, ЦУк accel);
+		//static extern (C) проц   wxMenuItem_SetName(ЦУк сам, ткст str);
+		//static extern (C) ЦУк wxMenuItem_GetName(ЦУк сам);
+		static extern (C) ЦУк wxMenuItem_NewCheck(ЦУк менюРодитель, цел ид, ткст текст, ткст справка, бул isCheckable, ЦУк подменю);
+		static extern (C) ЦУк wxMenuItem_New(ЦУк менюРодитель, цел ид, ткст текст, ткст справка, цел вид, ЦУк подменю);
+		static extern (C) проц   wxMenuItem_SetBitmap(ЦУк сам, ЦУк битмап);
+		static extern (C) ЦУк wxMenuItem_GetBitmap(ЦУк сам);
+		static extern (C) ЦУк wxMenuItem_ctor(ЦУк менюРодитель, цел ид, ткст текст, ткст справка, цел вид, ЦУк подменю);
 		//! \endcond
 
 		//-----------------------------------------------------------------------------
 
-	alias MenuItem wxMenuItem;
-	public class MenuItem : wxObject
+	alias ЭлементМеню wxMenuItem;
+	public class ЭлементМеню : wxObject
 	{
-		public this(IntPtr wxobj) 
-			{ super(wxobj); }
+		public this(ЦУк шхобъ) 
+			{ super(шхобъ); }
 
-		public  this(Menu parentMenu = null, int id =  wxID_SEPARATOR, string text = "", string help = "", ItemKind kind = ItemKind.wxITEM_NORMAL, Menu subMenu = null)
-			{ this(wxMenuItem_ctor(wxObject.SafePtr(parentMenu), id, text, help, cast(int)kind, wxObject.SafePtr(subMenu))); }
+		public  this(Меню менюРодитель = пусто, цел ид =  wxID_SEPARATOR, ткст текст = "", ткст справка = "", ItemKind вид = ItemKind.wxITEM_NORMAL, Меню подменю = пусто)
+			{ this(wxMenuItem_ctor(wxObject.SafePtr(менюРодитель), ид, текст, справка, cast(цел)вид, wxObject.SafePtr(подменю))); }
 			
-		public static wxObject New2(IntPtr ptr) { return new MenuItem(ptr); }
+		public static wxObject New2(ЦУк ptr) { return new ЭлементМеню(ptr); }
 		//-----------------------------------------------------------------------------
 
-		public static MenuItem New(Menu parentMenu = null, int id = wxID_SEPARATOR, string text = "", string help = "", ItemKind kind=ItemKind.wxITEM_NORMAL, Menu subMenu = null)
+		public static ЭлементМеню Нов(Меню менюРодитель = пусто, цел ид = wxID_SEPARATOR, ткст текст = "", ткст справка = "", ItemKind вид=ItemKind.wxITEM_NORMAL, Меню подменю = пусто)
 		{
-			return new MenuItem(wxMenuItem_New(wxObject.SafePtr(parentMenu), id, text, help, cast(int)kind, wxObject.SafePtr(subMenu)));
+			return new ЭлементМеню(wxMenuItem_New(wxObject.SafePtr(менюРодитель), ид, текст, справка, cast(цел)вид, wxObject.SafePtr(подменю)));
 		}
 	/* OLD API
-		public static MenuItem New(Menu parentMenu, int id, string text, string help, bool isCheckable, Menu subMenu)
+		public static ЭлементМеню Нов(Меню менюРодитель, цел ид, ткст текст, ткст справка, бул isCheckable, Меню подменю)
 		{
-			return new MenuItem(wxMenuItem_NewCheck(wxObject.SafePtr(parentMenu), id, text, help, isCheckable, wxObject.SafePtr(subMenu)));
+			return new ЭлементМеню(wxMenuItem_NewCheck(wxObject.SafePtr(менюРодитель), ид, текст, справка, isCheckable, wxObject.SafePtr(подменю)));
 		}
 
 	*/	//-----------------------------------------------------------------------------
 
-		public Menu menu() { return cast(Menu)FindObject(wxMenuItem_GetMenu(wxobj), &Menu.New); }
-		public void menu(Menu value) { wxMenuItem_SetMenu(wxobj, wxObject.SafePtr(value)); }
+		public Меню меню() { return cast(Меню)FindObject(wxMenuItem_GetMenu(шхобъ), &Меню.Нов); }
+		public проц меню(Меню значение) { wxMenuItem_SetMenu(шхобъ, wxObject.SafePtr(значение)); }
 
 		//-----------------------------------------------------------------------------
 
-		public int ID() { return wxMenuItem_GetId(wxobj); }
-		public void ID(int value) { wxMenuItem_SetId(wxobj, value); }
+		public цел ИД() { return wxMenuItem_GetId(шхобъ); }
+		public проц ИД(цел значение) { wxMenuItem_SetId(шхобъ, значение); }
 		
 		//-----------------------------------------------------------------------------
 		
-		public bool IsSeparator() { return wxMenuItem_IsSeparator(wxobj); }
+		public бул Разделитель_ли() { return wxMenuItem_IsSeparator(шхобъ); }
 		
 		//-----------------------------------------------------------------------------
 	/+	
-		public void Text(string value) { wxMenuItem_SetText(wxobj, value); } 
-		public string Text() { return cast(string) new wxString(wxMenuItem_GetText(wxobj), true); }
+		public проц Текст(ткст значение) { wxMenuItem_SetText(шхобъ, значение); } 
+		public ткст Текст() { return cast(ткст) new wxString(wxMenuItem_GetText(шхобъ), да); }
 +/
 		//-----------------------------------------------------------------------------
 /+
-		public string Label() { return cast(string) new wxString(wxMenuItem_GetLabel(wxobj), true); }
+		public ткст Label() { return cast(ткст) new wxString(wxMenuItem_GetLabel(шхобъ), да); }
 +/
 		//-----------------------------------------------------------------------------
 /+
-		public string GetLabelFromText(string text)
+		public ткст GetLabelFromText(ткст текст)
 		{
-			return cast(string) new wxString(wxMenuItem_GetLabelFromText(wxobj, text), true);
+			return cast(ткст) new wxString(wxMenuItem_GetLabelFromText(шхобъ, текст), да);
 		}
 +/
 		//-----------------------------------------------------------------------------
 
-		public ItemKind Kind() { return cast(ItemKind)wxMenuItem_GetKind(wxobj); }
+		public ItemKind Вид() { return cast(ItemKind)wxMenuItem_GetKind(шхобъ); }
 
 		//-----------------------------------------------------------------------------
 
-		public void Checkable(bool value) { wxMenuItem_SetCheckable(wxobj, value); }
-		public bool Checkable() { return wxMenuItem_IsCheckable(wxobj); }
+		public проц Checkable(бул значение) { wxMenuItem_SetCheckable(шхобъ, значение); }
+		public бул Checkable() { return wxMenuItem_IsCheckable(шхобъ); }
 
 		//-----------------------------------------------------------------------------
 
-		public bool IsSubMenu() { return wxMenuItem_IsSubMenu(wxobj); }
+		public бул Подменю_ли() { return wxMenuItem_IsSubMenu(шхобъ); }
 
-		public void SubMenu(Menu value) { wxMenuItem_SetSubMenu(wxobj, wxObject.SafePtr(value)); }
-		public Menu SubMenu() { return cast(Menu)FindObject(wxMenuItem_GetSubMenu(wxobj), &Menu.New); }
-
-		//-----------------------------------------------------------------------------
-
-		public void Enabled(bool value) { wxMenuItem_Enable(wxobj, value); }
-		public bool Enabled() { return wxMenuItem_IsEnabled(wxobj); }
+		public проц Подменю(Меню значение) { wxMenuItem_SetSubMenu(шхобъ, wxObject.SafePtr(значение)); }
+		public Меню Подменю() { return cast(Меню)FindObject(wxMenuItem_GetSubMenu(шхобъ), &Меню.Нов); }
 
 		//-----------------------------------------------------------------------------
 
-		public void Checked(bool value) { wxMenuItem_Check(wxobj, value); }
-		public bool Checked() { return wxMenuItem_IsChecked(wxobj); }
+		public проц Enabled(бул значение) { wxMenuItem_Enable(шхобъ, значение); }
+		public бул Enabled() { return wxMenuItem_IsEnabled(шхобъ); }
 
 		//-----------------------------------------------------------------------------
 
-		public void Toggle()
+		public проц Checked(бул значение) { wxMenuItem_Check(шхобъ, значение); }
+		public бул Checked() { return wxMenuItem_IsChecked(шхобъ); }
+
+		//-----------------------------------------------------------------------------
+
+		public проц Toggle()
 		{
-			wxMenuItem_Toggle(wxobj);
+			wxMenuItem_Toggle(шхобъ);
 		}
 
 		//-----------------------------------------------------------------------------
 
-		public void Help(string value) { wxMenuItem_SetHelp(wxobj, value); }
-		public string Help() { return cast(string) new wxString(wxMenuItem_GetHelp(wxobj), true); }
+		public проц Справка(ткст значение) { wxMenuItem_SetHelp(шхобъ, значение); }
+		public ткст Справка() { return cast(ткст) new wxString(wxMenuItem_GetHelp(шхобъ), да); }
 
 		//-----------------------------------------------------------------------------
 
-		public AcceleratorEntry Accel() { return cast(AcceleratorEntry)FindObject(wxMenuItem_GetAccel(wxobj), &AcceleratorEntry.New); }
-		public void Accel(AcceleratorEntry value) { wxMenuItem_SetAccel(wxobj, wxObject.SafePtr(value)); }
+		public AcceleratorEntry Accel() { return cast(AcceleratorEntry)FindObject(wxMenuItem_GetAccel(шхобъ), &AcceleratorEntry.Нов); }
+		public проц Accel(AcceleratorEntry значение) { wxMenuItem_SetAccel(шхобъ, wxObject.SafePtr(значение)); }
 
 		//-----------------------------------------------------------------------------
 	/+	
-		public void Name(string value) { wxMenuItem_SetName(wxobj, value); }
-		public string Name() { return cast(string) new wxString(wxMenuItem_GetName(wxobj), true); }
+		public проц Имя(ткст значение) { wxMenuItem_SetName(шхобъ, значение); }
+		public ткст Имя() { return cast(ткст) new wxString(wxMenuItem_GetName(шхобъ), да); }
 		+/
 		//-----------------------------------------------------------------------------
 		
-		public void bitmap(Bitmap value) { wxMenuItem_SetBitmap(wxobj, wxObject.SafePtr(value)); }
-		public Bitmap bitmap() { return cast(Bitmap)FindObject(wxMenuItem_GetBitmap(wxobj), &Bitmap.New); }
+		public проц битмап(Битмап значение) { wxMenuItem_SetBitmap(шхобъ, wxObject.SafePtr(значение)); }
+		public Битмап битмап() { return cast(Битмап)FindObject(wxMenuItem_GetBitmap(шхобъ), &Битмап.Нов); }
 		
 		//---------------------------------------------------------------------
 		
-		public void Click_Add(EventListener value) { this.menu.AddEvent(ID, value, this); }
-		public void Click_Remove(EventListener value) { }
+		public проц Click_Add(EventListener значение) { this.меню.AddEvent(ИД, значение, this); }
+		public проц Click_Remove(EventListener значение) { }
 
-        public void Select_Add(EventListener value) { this.menu.AddEvent(ID, value, this); }
-        public void Select_Remove(EventListener value) { }
+        public проц Select_Add(EventListener значение) { this.меню.AddEvent(ИД, значение, this); }
+        public проц Select_Remove(EventListener значение) { }
 	}
 

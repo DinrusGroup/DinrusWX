@@ -6,7 +6,7 @@
 //
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: NotifyEvent.d,v 1.6 2006/11/17 15:21:00 afb Exp $
+// $Ид: NotifyEvent.d,v 1.6 2006/11/17 15:21:00 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.NotifyEvent;
@@ -15,10 +15,10 @@ public import wx.CommandEvent;
 
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxNotifyEvent_ctor(EventType commandtype,int winid);
-		static extern (C) void   wxNotifyEvent_Veto(IntPtr self);
-		static extern (C) void   wxNotifyEvent_Allow(IntPtr self);
-		static extern (C) bool   wxNotifyEvent_IsAllowed(IntPtr self);
+		static extern (C) ЦУк wxNotifyEvent_ctor(ТипСобытия commandtype,цел winid);
+		static extern (C) проц   wxNotifyEvent_Veto(ЦУк сам);
+		static extern (C) проц   wxNotifyEvent_Allow(ЦУк сам);
+		static extern (C) бул   wxNotifyEvent_IsAllowed(ЦУк сам);
 		//! \endcond
 
 		//-----------------------------------------------------------------------------
@@ -27,17 +27,17 @@ public import wx.CommandEvent;
 	public class NotifyEvent : CommandEvent
 	{
 
-		public this(IntPtr wxobj) 
-			{ super(wxobj); }
+		public this(ЦУк шхобъ) 
+			{ super(шхобъ); }
 
-		public this(EventType commandtype = wxEVT_NULL,int winid = 0)
+		public this(ТипСобытия commandtype = wxEVT_NULL,цел winid = 0)
 		{
 			this(wxNotifyEvent_ctor(commandtype,winid));
 		}
 
 		//-----------------------------------------------------------------------------
 
-		public void Veto() { wxNotifyEvent_Veto(wxobj); }
-		public void Allow() { wxNotifyEvent_Veto(wxobj); }
-		public void IsAllowed() { return wxNotifyEvent_IsAllowed(wxobj); }
+		public проц Veto() { wxNotifyEvent_Veto(шхобъ); }
+		public проц Allow() { wxNotifyEvent_Veto(шхобъ); }
+		public проц IsAllowed() { return wxNotifyEvent_IsAllowed(шхобъ); }
 	}

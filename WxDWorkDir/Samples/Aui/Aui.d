@@ -1,11 +1,11 @@
 
 ///////////////////////////////////////////////////////////////////////////////
-// Name:    wxauitest.cpp
+// Имя:    wxauitest.cpp
 // Purpose:   wxaui: wx advanced user interface - sample/test program
 // Author:    Benjamin I. Williams
 // Modified by: David Gileadi: converted to D code
 // Created:   2005-10-03
-// RCS-ID:
+// RCS-ИД:
 // Copyright:   (C) Copyright 2005, Kirix Corporation, All Rights Reserved.
 // Licence:   wxWindows Library Licence, Version 3.1
 ///////////////////////////////////////////////////////////////////////////////
@@ -22,34 +22,34 @@ import wx.ColourDialog;
 import wx.HTML;
 import wx.Window;
 import wx.aui.aui;
-import std.string;
+import std.ткст;
 
 
 // -- application --
 
-class MyApp : App
+class MyApp : Прил
 {
-  public bool OnInit()
+  public бул ПриИниц()
   {
-    Frame frame = new MyFrame(null,
+    Frame frame = new MyFrame(пусто,
                    wxID_ANY,
                    "wxAUI 0.9.2 Test Application",
-                   Window.wxDefaultPosition,
-                   Size(800, 600));
+                   Окно.wxDefaultPosition,
+                   Размер(800, 600));
     //SetTopWindow(frame);
     frame.Show();
 
-    return true;
+    return да;
   }
 
-  static void Main()
+  static проц Main()
   {
-    MyApp app = new MyApp();
-    app.Run();
+    MyApp прил = new MyApp();
+    прил.Пуск();
   }
 }
 
-int main()
+цел main()
 {
   MyApp.Main();
   return 0;
@@ -88,48 +88,48 @@ class MyFrame : public Frame
   };
 
 public:
-  this(wxWindow parent,
-      int id,
-      char[] title,
-      Point pos = Window.wxDefaultPosition,
-      Size size = wxDefaultSize,
-      long style = wxDEFAULT_FRAME_STYLE | wxSUNKEN_BORDER)
+  this(wxWindow родитель,
+      цел ид,
+      сим[] title,
+      Точка поз = Окно.wxDefaultPosition,
+      Размер size = wxDefaultSize,
+      long стиль = wxDEFAULT_FRAME_STYLE | wxSUNKEN_BORDER)
   {
-    super(parent, id, title, pos, size, style);
+    super(родитель, ид, title, поз, size, стиль);
 
     m_mgr = new FrameManager();
 
     // tell wxFrameManager to manage this frame
     m_mgr.SetFrame(this);
 
-    // set frame icon
-    icon = new Icon("../Samples/Aui/mondrian.png");
+    // set frame иконка
+    иконка = new Icon("../Samples/Aui/mondrian.png");
 
-    // create menu
+    // create меню
     MenuBar mb = new MenuBar;
 
-    Menu file_menu = new Menu;
+    Меню file_menu = new Меню;
     file_menu.Append(MenuIDs.wxID_EXIT, "Exit");
 
-    Menu view_menu = new Menu;
-    view_menu.Append(ID_CreateText, "Create Text Control");
+    Меню view_menu = new Меню;
+    view_menu.Append(ID_CreateText, "Create Текст Control");
     view_menu.Append(ID_CreateHTML, "Create HTML Control");
     view_menu.Append(ID_CreateTree, "Create Tree");
     view_menu.Append(ID_CreateGrid, "Create Grid");
-    view_menu.Append(ID_CreateSizeReport, "Create Size Reporter");
+    view_menu.Append(ID_CreateSizeReport, "Create Размер Reporter");
     view_menu.AppendSeparator();
     view_menu.Append(ID_GridContent, "Use a Grid for the Content Pane");
-    view_menu.Append(ID_TextContent, "Use a Text Control for the Content Pane");
+    view_menu.Append(ID_TextContent, "Use a Текст Control for the Content Pane");
     view_menu.Append(ID_HTMLContent, "Use an HTML Control for the Content Pane");
     view_menu.Append(ID_TreeContent, "Use a Tree Control for the Content Pane");
-    view_menu.Append(ID_SizeReportContent, "Use a Size Reporter for the Content Pane");
+    view_menu.Append(ID_SizeReportContent, "Use a Размер Reporter for the Content Pane");
 
-    Menu options_menu = new Menu;
+    Меню options_menu = new Меню;
     options_menu.AppendCheckItem(ID_AllowFloating, "Allow Floating");
     options_menu.AppendCheckItem(ID_TransparentHint, "Transparent Hint");
     options_menu.AppendCheckItem(ID_TransparentHintFade, "Transparent Hint Fade-in");
     options_menu.AppendCheckItem(ID_TransparentDrag, "Transparent Drag");
-    options_menu.AppendCheckItem(ID_AllowActivePane, "Allow Active Pane");
+    options_menu.AppendCheckItem(ID_AllowActivePane, "Allow Активен Pane");
     options_menu.AppendSeparator();
     options_menu.AppendRadioItem(ID_NoGradient, "No Caption Gradient");
     options_menu.AppendRadioItem(ID_VerticalGradient, "Vertical Caption Gradient");
@@ -137,21 +137,21 @@ public:
     options_menu.AppendSeparator();
     options_menu.Append(ID_Settings, "Settings Pane");
 
-    m_perspectives_menu = new Menu;
+    m_perspectives_menu = new Меню;
     m_perspectives_menu.Append(ID_CreatePerspective, "Create Perspective");
-    m_perspectives_menu.Append(ID_CopyPerspectiveCode, "Copy Perspective Data To Clipboard");
+    m_perspectives_menu.Append(ID_CopyPerspectiveCode, "Копируй Perspective Data To БуферОбмена");
     m_perspectives_menu.AppendSeparator();
     m_perspectives_menu.Append(ID_FirstPerspective+0, "Default Startup");
     m_perspectives_menu.Append(ID_FirstPerspective+1, "All Panes");
 
-    Menu help_menu = new Menu;
+    Меню help_menu = new Меню;
     help_menu.Append(ID_About, "About...");
 
     mb.Append(file_menu, "File");
     mb.Append(view_menu, "View");
     mb.Append(m_perspectives_menu, "Perspectives");
     mb.Append(options_menu, "Options");
-    mb.Append(help_menu, "Help");
+    mb.Append(help_menu, "Справка");
 
     menuBar = mb;
 
@@ -160,14 +160,14 @@ public:
 
 
     // min size for the frame itself isn't completely done.
-    // see the end up wxFrameManager::Update() for the test
+    // see the end up wxFrameManager::Обнови() for the test
     // code. For now, just hard code a frame minimum size
     SetSizeHints(400,300);
 
     // create some toolbars
-    ToolBar tb1 = new ToolBar(this, -1, Window.wxDefaultPosition, wxDefaultSize,
+    ToolBar tb1 = new ToolBar(this, -1, Окно.wxDefaultPosition, wxDefaultSize,
                      ToolBar.wxTB_FLAT | ToolBar.wxTB_NODIVIDER);
-    tb1.ToolBitmapSize = Size(48,48);
+    tb1.ToolBitmapSize = Размер(48,48);
     tb1.AddTool(101, "Test", ArtProvider.GetBitmap(ArtID.wxART_ERROR));
     tb1.AddSeparator();
     tb1.AddTool(102, "Test", ArtProvider.GetBitmap(ArtID.wxART_QUESTION));
@@ -178,11 +178,11 @@ public:
 
 
 
-    ToolBar tb2 = new ToolBar(this, -1, Window.wxDefaultPosition, wxDefaultSize,
+    ToolBar tb2 = new ToolBar(this, -1, Окно.wxDefaultPosition, wxDefaultSize,
                      ToolBar.wxTB_FLAT | ToolBar.wxTB_NODIVIDER);
-    tb2.ToolBitmapSize = Size(16,16);
+    tb2.ToolBitmapSize = Размер(16,16);
 
-    Bitmap tb2_bmp1 = ArtProvider.GetBitmap(ArtID.wxART_QUESTION, ArtClient.wxART_OTHER, Size(16,16));
+    Битмап tb2_bmp1 = ArtProvider.GetBitmap(ArtID.wxART_QUESTION, ArtClient.wxART_OTHER, Размер(16,16));
     tb2.AddTool(101, "Test", tb2_bmp1);
     tb2.AddTool(101, "Test", tb2_bmp1);
     tb2.AddTool(101, "Test", tb2_bmp1);
@@ -198,10 +198,10 @@ public:
     tb2.Realize();
 
 
-    ToolBar tb3 = new ToolBar(this, -1, Window.wxDefaultPosition, wxDefaultSize,
+    ToolBar tb3 = new ToolBar(this, -1, Окно.wxDefaultPosition, wxDefaultSize,
                      ToolBar.wxTB_FLAT | ToolBar.wxTB_NODIVIDER);
-    tb3.ToolBitmapSize = Size(16,16);
-    Bitmap tb3_bmp1 = ArtProvider.GetBitmap(ArtID.wxART_FOLDER, ArtClient.wxART_OTHER, Size(16,16));
+    tb3.ToolBitmapSize = Размер(16,16);
+    Битмап tb3_bmp1 = ArtProvider.GetBitmap(ArtID.wxART_FOLDER, ArtClient.wxART_OTHER, Размер(16,16));
     tb3.AddTool(101, "Test", tb3_bmp1);
     tb3.AddTool(101, "Test", tb3_bmp1);
     tb3.AddTool(101, "Test", tb3_bmp1);
@@ -211,23 +211,23 @@ public:
     tb3.AddTool(101, "Test", tb3_bmp1);
     tb3.Realize();
 
-    ToolBar tb4 = new ToolBar(this, -1, Window.wxDefaultPosition, wxDefaultSize,
+    ToolBar tb4 = new ToolBar(this, -1, Окно.wxDefaultPosition, wxDefaultSize,
                      ToolBar.wxTB_FLAT | ToolBar.wxTB_NODIVIDER | /*ToolBar.wxTB_HORZ_LAYOUT*/0x0800 | ToolBar.wxTB_TEXT);
-    tb4.ToolBitmapSize = Size(16,16);
-    Bitmap tb4_bmp1 = ArtProvider.GetBitmap(ArtID.wxART_NORMAL_FILE, ArtClient.wxART_OTHER, Size(16,16));
-    tb4.AddTool(101, "Item 1", tb4_bmp1);
-    tb4.AddTool(101, "Item 2", tb4_bmp1);
-    tb4.AddTool(101, "Item 3", tb4_bmp1);
-    tb4.AddTool(101, "Item 4", tb4_bmp1);
+    tb4.ToolBitmapSize = Размер(16,16);
+    Битмап tb4_bmp1 = ArtProvider.GetBitmap(ArtID.wxART_NORMAL_FILE, ArtClient.wxART_OTHER, Размер(16,16));
+    tb4.AddTool(101, "Элемент 1", tb4_bmp1);
+    tb4.AddTool(101, "Элемент 2", tb4_bmp1);
+    tb4.AddTool(101, "Элемент 3", tb4_bmp1);
+    tb4.AddTool(101, "Элемент 4", tb4_bmp1);
     tb4.AddSeparator();
-    tb4.AddTool(101, "Item 5", tb4_bmp1);
-    tb4.AddTool(101, "Item 6", tb4_bmp1);
-    tb4.AddTool(101, "Item 7", tb4_bmp1);
-    tb4.AddTool(101, "Item 8", tb4_bmp1);
+    tb4.AddTool(101, "Элемент 5", tb4_bmp1);
+    tb4.AddTool(101, "Элемент 6", tb4_bmp1);
+    tb4.AddTool(101, "Элемент 7", tb4_bmp1);
+    tb4.AddTool(101, "Элемент 8", tb4_bmp1);
     tb4.Realize();
 
 
-    // Set up the event table
+    // Установи up the event table
 
     EVT_ERASE_BACKGROUND(&OnEraseBackground);
     EVT_SIZE(&OnSize);
@@ -259,149 +259,149 @@ public:
     EVT_UPDATE_UI(ID_NoGradient, &OnUpdateUI);
     EVT_UPDATE_UI(ID_VerticalGradient, &OnUpdateUI);
     EVT_UPDATE_UI(ID_HorizontalGradient, &OnUpdateUI);
-    for (int i = 0; i < 1000; i++)
+    for (цел i = 0; i < 1000; i++)
       EVT_MENU(ID_FirstPerspective + i, &OnRestorePerspective);
 
 
     // add a bunch of panes
     PaneInfo info = new PaneInfo();
     m_mgr.AddPane(CreateSizeReportCtrl(), info.
-            Name("test1").Caption("Pane Caption").
+            Имя("test1").Caption("Pane Caption").
             Top());
 
     info = new PaneInfo();
     m_mgr.AddPane(CreateSizeReportCtrl(), info.
-            Name("test2").Caption("Client Size Reporter").
-            Bottom().Position(1));
+            Имя("test2").Caption("Client Размер Reporter").
+            Bottom().Положение(1));
 
     info = new PaneInfo();
     m_mgr.AddPane(CreateSizeReportCtrl(), info.
-            Name("test3").Caption("Client Size Reporter").
+            Имя("test3").Caption("Client Размер Reporter").
             Bottom());
 
     info = new PaneInfo();
     m_mgr.AddPane(CreateSizeReportCtrl(), info.
-            Name("test4").Caption("Pane Caption").
+            Имя("test4").Caption("Pane Caption").
             Left());
 
     info = new PaneInfo();
     m_mgr.AddPane(CreateSizeReportCtrl(), info.
-            Name("test5").Caption("Pane Caption").
+            Имя("test5").Caption("Pane Caption").
             Right());
 
     info = new PaneInfo();
     m_mgr.AddPane(CreateSizeReportCtrl(), info.
-            Name("test6").Caption("Client Size Reporter").
+            Имя("test6").Caption("Client Размер Reporter").
             Right().Row(1));
 
     info = new PaneInfo();
     m_mgr.AddPane(CreateSizeReportCtrl(), info.
-            Name("test7").Caption("Client Size Reporter").
+            Имя("test7").Caption("Client Размер Reporter").
             Left().Layer(1));
 /*
     info = new PaneInfo();
     m_mgr.AddPane(CreateTreeCtrl(), info.
-            Name("test8").Caption("Tree Pane").
-            Left().Layer(1).Position(1));
+            Имя("test8").Caption("Tree Pane").
+            Left().Layer(1).Положение(1));
 */
     info = new PaneInfo();
     m_mgr.AddPane(CreateSizeReportCtrl(), info.
-            Name("test9").Caption("Min Size 200x100").
-            BestSize(Size(200,100)).MinSize(Size(200,100)).
+            Имя("test9").Caption("Min Размер 200x100").
+            BestSize(Размер(200,100)).MinSize(Размер(200,100)).
             Bottom().Layer(1));
 
     info = new PaneInfo();
     m_mgr.AddPane(CreateTextCtrl(), info.
-            Name("test10").Caption("Text Pane").
-            Bottom().Layer(1).Position(1));
+            Имя("test10").Caption("Текст Pane").
+            Bottom().Layer(1).Положение(1));
 
     info = new PaneInfo();
     m_mgr.AddPane(CreateSizeReportCtrl(), info.
-            Name("test11").Caption("Fixed Pane").
-            Bottom().Layer(1).Position(2).Fixed());
+            Имя("test11").Caption("Fixed Pane").
+            Bottom().Layer(1).Положение(2).Fixed());
 
 
     info = new PaneInfo();
     m_mgr.AddPane(new SettingsPanel(this,this), info.
-            Name("settings").Caption("Dock Manager Settings").
-            Dockable(false).Float().Hide());
+            Имя("settings").Caption("Dock Manager Settings").
+            Dockable(нет).Float().Hide());
 
     // create some center panes
 
     info = new PaneInfo();
-    m_mgr.AddPane(CreateGrid(), info.Name("grid_content").
+    m_mgr.AddPane(CreateGrid(), info.Имя("grid_content").
             CenterPane().Hide());
 /*
     info = new PaneInfo();
-    m_mgr.AddPane(CreateTreeCtrl(), info.Name("tree_content").
+    m_mgr.AddPane(CreateTreeCtrl(), info.Имя("tree_content").
             CenterPane().Hide());
 */
     info = new PaneInfo();
-    m_mgr.AddPane(CreateSizeReportCtrl(), info.Name("sizereport_content").
+    m_mgr.AddPane(CreateSizeReportCtrl(), info.Имя("sizereport_content").
             CenterPane().Hide());
 
     info = new PaneInfo();
-    m_mgr.AddPane(CreateTextCtrl(), info.Name("text_content").
+    m_mgr.AddPane(CreateTextCtrl(), info.Имя("text_content").
             CenterPane().Hide());
 
     info = new PaneInfo();
-    m_mgr.AddPane(CreateHTMLCtrl(), info.Name("html_content").
+    m_mgr.AddPane(CreateHTMLCtrl(), info.Имя("html_content").
             CenterPane());
 
     // add the toolbars to the manager
 
     info = new PaneInfo();
     m_mgr.AddPane(tb1, info.
-            Name("tb1").Caption("Big Toolbar").
+            Имя("tb1").Caption("Big Toolbar").
             ToolbarPane().Top().
-            LeftDockable(false).RightDockable(false));
+            LeftDockable(нет).RightDockable(нет));
 
     info = new PaneInfo();
     m_mgr.AddPane(tb2, info.
-            Name("tb2").Caption("Toolbar 2").
+            Имя("tb2").Caption("Toolbar 2").
             ToolbarPane().Top().Row(1).
-            LeftDockable(false).RightDockable(false));
+            LeftDockable(нет).RightDockable(нет));
 
     info = new PaneInfo();
     m_mgr.AddPane(tb3, info.
-            Name("tb3").Caption("Toolbar 3").
-            ToolbarPane().Top().Row(1).Position(1).
-            LeftDockable(false).RightDockable(false));
+            Имя("tb3").Caption("Toolbar 3").
+            ToolbarPane().Top().Row(1).Положение(1).
+            LeftDockable(нет).RightDockable(нет));
 
     info = new PaneInfo();
     m_mgr.AddPane(tb4, info.
-            Name("tb4").Caption("Sample Bookmark Toolbar").
+            Имя("tb4").Caption("Sample Bookmark Toolbar").
             ToolbarPane().Top().Row(2).
-            LeftDockable(false).RightDockable(false));
+            LeftDockable(нет).RightDockable(нет));
 
     info = new PaneInfo();
-    m_mgr.AddPane(new Button(this, -1, "Test Button"),
-            info.Name("tb5").
-            ToolbarPane().Top().Row(2).Position(1).
-            LeftDockable(false).RightDockable(false));
+    m_mgr.AddPane(new Кнопка(this, -1, "Test Кнопка"),
+            info.Имя("tb5").
+            ToolbarPane().Top().Row(2).Положение(1).
+            LeftDockable(нет).RightDockable(нет));
 
 
 
     // make some default perspectives
 
-    char[] perspective_all = m_mgr.SavePerspective();
+    сим[] perspective_all = m_mgr.SavePerspective();
 
-    int i, count;
-    for (i = 0, count = m_mgr.GetPaneCount(); i < count; ++i)
+    цел i, счёт;
+    for (i = 0, счёт = m_mgr.GetPaneCount(); i < счёт; ++i)
       if (!m_mgr.GetPane(i).IsToolbar())
         m_mgr.GetPane(i).Hide();
     m_mgr.GetPane("tb1").Hide();
     m_mgr.GetPane("tb5").Hide();
-    m_mgr.GetPane("test8").Show().Left().Layer(0).Row(0).Position(0);
-    m_mgr.GetPane("test10").Show().Bottom().Layer(0).Row(0).Position(0);
+    m_mgr.GetPane("test8").Show().Left().Layer(0).Row(0).Положение(0);
+    m_mgr.GetPane("test10").Show().Bottom().Layer(0).Row(0).Положение(0);
     m_mgr.GetPane("html_content").Show();
-    char[] perspective_default = m_mgr.SavePerspective();
+    сим[] perspective_default = m_mgr.SavePerspective();
 
     m_perspectives ~= perspective_default;
     m_perspectives ~= perspective_all;
 
     // "commit" all changes made to wxFrameManager
-    m_mgr.Update();
+    m_mgr.Обнови();
   }
 
   ~this()
@@ -414,39 +414,39 @@ public:
     return m_mgr.GetArtProvider();
   }
 
-  void DoUpdate()
+  проц DoUpdate()
   {
-    m_mgr.Update();
+    m_mgr.Обнови();
   }
 
 private:
-  void OnEraseBackground(Object sender, Event event)
+  проц OnEraseBackground(Объект sender, Событие event)
   {
-    event.Skip();
+    event.Пропусти();
   }
 
-  void OnSize(Object sender, Event event)
+  проц OnSize(Объект sender, Событие event)
   {
-    event.Skip();
+    event.Пропусти();
   }
 
-  void OnSettings(Object sender, Event event)
+  проц OnSettings(Объект sender, Событие event)
   {
     // show the settings pane, and float it
     PaneInfo floating_pane = m_mgr.GetPane("settings").Float().Show();
 
-    if (floating_pane.floating_pos == Window.wxDefaultPosition)
+    if (floating_pane.floating_pos == Окно.wxDefaultPosition)
       floating_pane.FloatingPosition(GetStartPosition());
 
-    m_mgr.Update();
+    m_mgr.Обнови();
   }
 
 
-  void OnGradient(Object sender, Event event)
+  проц OnGradient(Объект sender, Событие event)
   {
-    int gradient = 0;
+    цел gradient = 0;
 
-    switch (event.ID())
+    switch (event.ИД())
     {
       case ID_NoGradient:     gradient = wxPaneDockArtGradients.wxAUI_GRADIENT_NONE; break;
       case ID_VerticalGradient:   gradient = wxPaneDockArtGradients.wxAUI_GRADIENT_VERTICAL; break;
@@ -454,27 +454,27 @@ private:
     }
 
     m_mgr.GetArtProvider().SetMetric(wxPaneDockArtSetting.wxAUI_ART_GRADIENT_TYPE, gradient);
-    m_mgr.Update();
+    m_mgr.Обнови();
   }
 
-  void OnManagerFlag(Object sender, Event event)
+  проц OnManagerFlag(Объект sender, Событие event)
   {
-    uint flag = 0;
+    бцел flag = 0;
 
 version(__WXMSW__)
 {}
 else
 {
-    if (event.ID() == ID_TransparentDrag ||
-      event.ID() == ID_TransparentHint ||
-      event.ID() == ID_TransparentHintFade)
+    if (event.ИД() == ID_TransparentDrag ||
+      event.ИД() == ID_TransparentHint ||
+      event.ИД() == ID_TransparentHintFade)
     {
       MessageBox("This option is presently only available on wxMSW");
       return;
     }
 }
 
-    switch (event.ID())
+    switch (event.ИД())
     {
       case ID_AllowFloating: flag = wxFrameManagerOption.wxAUI_MGR_ALLOW_FLOATING; break;
       case ID_TransparentDrag: flag = wxFrameManagerOption.wxAUI_MGR_TRANSPARENT_DRAG; break;
@@ -483,42 +483,42 @@ else
       case ID_AllowActivePane: flag = wxFrameManagerOption.wxAUI_MGR_ALLOW_ACTIVE_PANE; break;
     }
     m_mgr.SetFlags(m_mgr.GetFlags() ^ flag);
-    m_mgr.Update();
+    m_mgr.Обнови();
   }
 
-  void OnUpdateUI(Object sender, Event event)
+  проц OnUpdateUI(Объект sender, Событие event)
   {
-    uint flags = m_mgr.GetFlags();
+    бцел флаги = m_mgr.GetFlags();
 
-    switch (event.ID())
+    switch (event.ИД())
     {
       case ID_NoGradient:
-        (cast(UpdateUIEvent)event).Check(m_mgr.GetArtProvider().GetMetric(wxPaneDockArtSetting.wxAUI_ART_GRADIENT_TYPE) == wxPaneDockArtGradients.wxAUI_GRADIENT_NONE ? true : false);
+        (cast(UpdateUIEvent)event).Check(m_mgr.GetArtProvider().GetMetric(wxPaneDockArtSetting.wxAUI_ART_GRADIENT_TYPE) == wxPaneDockArtGradients.wxAUI_GRADIENT_NONE ? да : нет);
         break;
       case ID_VerticalGradient:
-        (cast(UpdateUIEvent)event).Check(m_mgr.GetArtProvider().GetMetric(wxPaneDockArtSetting.wxAUI_ART_GRADIENT_TYPE) == wxPaneDockArtGradients.wxAUI_GRADIENT_VERTICAL ? true : false);
+        (cast(UpdateUIEvent)event).Check(m_mgr.GetArtProvider().GetMetric(wxPaneDockArtSetting.wxAUI_ART_GRADIENT_TYPE) == wxPaneDockArtGradients.wxAUI_GRADIENT_VERTICAL ? да : нет);
         break;
       case ID_HorizontalGradient:
-        (cast(UpdateUIEvent)event).Check(m_mgr.GetArtProvider().GetMetric(wxPaneDockArtSetting.wxAUI_ART_GRADIENT_TYPE) == wxPaneDockArtGradients.wxAUI_GRADIENT_HORIZONTAL ? true : false);
+        (cast(UpdateUIEvent)event).Check(m_mgr.GetArtProvider().GetMetric(wxPaneDockArtSetting.wxAUI_ART_GRADIENT_TYPE) == wxPaneDockArtGradients.wxAUI_GRADIENT_HORIZONTAL ? да : нет);
         break;
       case ID_AllowFloating:
-        (cast(UpdateUIEvent)event).Check(flags & wxFrameManagerOption.wxAUI_MGR_ALLOW_FLOATING ? true : false);
+        (cast(UpdateUIEvent)event).Check(флаги & wxFrameManagerOption.wxAUI_MGR_ALLOW_FLOATING ? да : нет);
         break;
       case ID_TransparentDrag:
-        (cast(UpdateUIEvent)event).Check(flags & wxFrameManagerOption.wxAUI_MGR_TRANSPARENT_DRAG ? true : false);
+        (cast(UpdateUIEvent)event).Check(флаги & wxFrameManagerOption.wxAUI_MGR_TRANSPARENT_DRAG ? да : нет);
         break;
       case ID_TransparentHint:
-        (cast(UpdateUIEvent)event).Check(flags & wxFrameManagerOption.wxAUI_MGR_TRANSPARENT_HINT ? true : false);
+        (cast(UpdateUIEvent)event).Check(флаги & wxFrameManagerOption.wxAUI_MGR_TRANSPARENT_HINT ? да : нет);
         break;
       case ID_TransparentHintFade:
-        (cast(UpdateUIEvent)event).Check(flags & wxFrameManagerOption.wxAUI_MGR_TRANSPARENT_HINT_FADE ? true : false);
+        (cast(UpdateUIEvent)event).Check(флаги & wxFrameManagerOption.wxAUI_MGR_TRANSPARENT_HINT_FADE ? да : нет);
         break;
     }
   }
 
-  void OnCreatePerspective(Object sender, Event event)
+  проц OnCreatePerspective(Объект sender, Событие event)
   {
-    TextEntryDialog dlg = new TextEntryDialog(this, "Enter a name for the new perspective:",
+    TextEntryDialog dlg = new TextEntryDialog(this, "Enter a имя for the new perspective:",
                 "wxAUI Test");
 
     dlg.Value = format("Perspective %d", m_perspectives.length+1);
@@ -534,98 +534,98 @@ else
     m_perspectives ~= m_mgr.SavePerspective();
   }
 
-  void OnCopyPerspectiveCode(Object sender, Event event)
+  проц OnCopyPerspectiveCode(Объект sender, Событие event)
   {
-    char[] s = m_mgr.SavePerspective();
+    сим[] s = m_mgr.SavePerspective();
 
-    if (Clipboard.TheClipboard.Open())
+    if (БуферОбмена.TheClipboard.Открой())
     {
-      Clipboard.TheClipboard.SetData(new TextDataObject(s));
-      Clipboard.TheClipboard.Close();
+      БуферОбмена.TheClipboard.УстДанные(new ОбъектТекстовыхДанных(s));
+      БуферОбмена.TheClipboard.Закрой();
     }
   }
 
-  void OnRestorePerspective(Object sender, Event event)
+  проц OnRestorePerspective(Объект sender, Событие event)
   {
-    m_mgr.LoadPerspective(m_perspectives[event.ID - ID_FirstPerspective]);
+    m_mgr.LoadPerspective(m_perspectives[event.ИД - ID_FirstPerspective]);
   }
 
 
-  Point GetStartPosition()
+  Точка GetStartPosition()
   {
-    static int x = 0;
+    static цел x = 0;
     x += 20;
-    Point pt = ClientToScreen(Point(0,0));
-    return Point(pt.X + x, pt.Y + x);
+    Точка pt = ClientToScreen(Точка(0,0));
+    return Точка(pt.X + x, pt.Y + x);
   }
 
-  void OnCreateTree(Object sender, Event event)
+  проц OnCreateTree(Объект sender, Событие event)
   {
     PaneInfo info = new PaneInfo();
     m_mgr.AddPane(CreateTreeCtrl(), info.
-            Name("Test").Caption("Tree Control").
+            Имя("Test").Caption("Tree Control").
             Float().FloatingPosition(GetStartPosition()).
-            FloatingSize(Size(150,300)));
-    m_mgr.Update();
+            FloatingSize(Размер(150,300)));
+    m_mgr.Обнови();
   }
 
-  void OnCreateGrid(Object sender, Event event)
+  проц OnCreateGrid(Объект sender, Событие event)
   {
     PaneInfo info = new PaneInfo();
     m_mgr.AddPane(CreateGrid(), info.
-            Name("Test").Caption("Grid").
+            Имя("Test").Caption("Grid").
             Float().FloatingPosition(GetStartPosition()).
-            FloatingSize(Size(300,200)));
-    m_mgr.Update();
+            FloatingSize(Размер(300,200)));
+    m_mgr.Обнови();
   }
 
-  void OnCreateHTML(Object sender, Event event)
+  проц OnCreateHTML(Объект sender, Событие event)
   {
     PaneInfo info = new PaneInfo();
     m_mgr.AddPane(CreateHTMLCtrl(), info.
-            Name("Test").Caption("Grid").
+            Имя("Test").Caption("Grid").
             Float().FloatingPosition(GetStartPosition()).
-            FloatingSize(Size(300,200)));
-    m_mgr.Update();
+            FloatingSize(Размер(300,200)));
+    m_mgr.Обнови();
   }
 
-  void OnCreateText(Object sender, Event event)
+  проц OnCreateText(Объект sender, Событие event)
   {
     PaneInfo info = new PaneInfo();
     m_mgr.AddPane(CreateTextCtrl(), info.
-            Name("Test").Caption("Text Control").
+            Имя("Test").Caption("Текст Control").
             Float().FloatingPosition(GetStartPosition()));
-    m_mgr.Update();
+    m_mgr.Обнови();
   }
 
-  void OnCreateSizeReport(Object sender, Event event)
+  проц OnCreateSizeReport(Объект sender, Событие event)
   {
     PaneInfo info = new PaneInfo();
     m_mgr.AddPane(CreateSizeReportCtrl(), info.
-            Name("Test").Caption("Client Size Reporter").
+            Имя("Test").Caption("Client Размер Reporter").
             Float().FloatingPosition(GetStartPosition()));
-    m_mgr.Update();
+    m_mgr.Обнови();
   }
 
-  void OnChangeContentPane(Object sender, Event event)
+  проц OnChangeContentPane(Объект sender, Событие event)
   {
-    m_mgr.GetPane("grid_content").Show(event.ID() == ID_GridContent ? true:false);
-    m_mgr.GetPane("text_content").Show(event.ID() == ID_TextContent ? true:false);
-    m_mgr.GetPane("tree_content").Show(event.ID() == ID_TreeContent ? true:false);
-    m_mgr.GetPane("sizereport_content").Show(event.ID() == ID_SizeReportContent ? true:false);
-    m_mgr.GetPane("html_content").Show(event.ID() == ID_HTMLContent ? true:false);
-    m_mgr.Update();
+    m_mgr.GetPane("grid_content").Show(event.ИД() == ID_GridContent ? да:нет);
+    m_mgr.GetPane("text_content").Show(event.ИД() == ID_TextContent ? да:нет);
+    m_mgr.GetPane("tree_content").Show(event.ИД() == ID_TreeContent ? да:нет);
+    m_mgr.GetPane("sizereport_content").Show(event.ИД() == ID_SizeReportContent ? да:нет);
+    m_mgr.GetPane("html_content").Show(event.ИД() == ID_HTMLContent ? да:нет);
+    m_mgr.Обнови();
   }
 
   TextCtrl CreateTextCtrl()
   {
-    char[] text;
-    static int n = 0;
+    сим[] текст;
+    static цел n = 0;
 
-    text = format("This is text box %d", ++n);
+    текст = format("This is текст box %d", ++n);
 
-    return new TextCtrl(this,-1, text,
-                Point(0,0), Size(150,90),
+    return new TextCtrl(this,-1, текст,
+                Точка(0,0), Размер(150,90),
                 wxNO_BORDER | TextCtrl.wxTE_MULTILINE);
   }
 
@@ -633,8 +633,8 @@ else
   Grid CreateGrid()
   {
     Grid grid = new Grid(this, -1,
-                  Point(0,0),
-                  Size(150,250),
+                  Точка(0,0),
+                  Размер(150,250),
                   wxNO_BORDER | wxWANTS_CHARS);
     grid.CreateGrid(50, 20);
     return grid;
@@ -643,34 +643,34 @@ else
   TreeCtrl CreateTreeCtrl()
   {
     TreeCtrl tree = new TreeCtrl(this, -1,
-                      Point(0,0), Size(160,250),
+                      Точка(0,0), Размер(160,250),
                       TreeCtrl.wxTR_DEFAULT_STYLE | wxNO_BORDER);
 
     TreeItemId root = tree.AddRoot("wxAUI Project");
     ArrayTreeItemIds items = new ArrayTreeItemIds();
 
 
-    ImageList imglist = new ImageList(16, 16, true, 2);
-    imglist.Add(ArtProvider.GetBitmap(ArtID.wxART_FOLDER, ArtClient.wxART_OTHER, Size(16,16)));
-    imglist.Add(ArtProvider.GetBitmap(ArtID.wxART_NORMAL_FILE, ArtClient.wxART_OTHER, Size(16,16)));
+    ImageList imglist = new ImageList(16, 16, да, 2);
+    imglist.Добавь(ArtProvider.GetBitmap(ArtID.wxART_FOLDER, ArtClient.wxART_OTHER, Размер(16,16)));
+    imglist.Добавь(ArtProvider.GetBitmap(ArtID.wxART_NORMAL_FILE, ArtClient.wxART_OTHER, Размер(16,16)));
     tree.AssignImageList(imglist);
 
-    items.Add(tree.AppendItem(root, "Item 1", 0));
-    items.Add(tree.AppendItem(root, "Item 2", 0));
-    items.Add(tree.AppendItem(root, "Item 3", 0));
-    items.Add(tree.AppendItem(root, "Item 4", 0));
-    items.Add(tree.AppendItem(root, "Item 5", 0));
+    items.Добавь(tree.AppendItem(root, "Элемент 1", 0));
+    items.Добавь(tree.AppendItem(root, "Элемент 2", 0));
+    items.Добавь(tree.AppendItem(root, "Элемент 3", 0));
+    items.Добавь(tree.AppendItem(root, "Элемент 4", 0));
+    items.Добавь(tree.AppendItem(root, "Элемент 5", 0));
 
 
-    int i, count;
-    for (i = 0, count = items.Count(); i < count; ++i)
+    цел i, счёт;
+    for (i = 0, счёт = items.Счёт(); i < счёт; ++i)
     {
-      TreeItemId id = items.Item(i);
-      tree.AppendItem(id, "Subitem 1", 1);
-      tree.AppendItem(id, "Subitem 2", 1);
-      tree.AppendItem(id, "Subitem 3", 1);
-      tree.AppendItem(id, "Subitem 4", 1);
-      tree.AppendItem(id, "Subitem 5", 1);
+      TreeItemId ид = items.Элемент(i);
+      tree.AppendItem(ид, "Subitem 1", 1);
+      tree.AppendItem(ид, "Subitem 2", 1);
+      tree.AppendItem(ид, "Subitem 3", 1);
+      tree.AppendItem(ид, "Subitem 4", 1);
+      tree.AppendItem(ид, "Subitem 5", 1);
     }
 
 
@@ -679,34 +679,34 @@ else
     return tree;
   }
 
-  SizeReportCtrl CreateSizeReportCtrl(int width = 80, int height = 80)
+  SizeReportCtrl CreateSizeReportCtrl(цел ширина = 80, цел высота = 80)
   {
     SizeReportCtrl ctrl = new SizeReportCtrl(this, -1,
-                     Window.wxDefaultPosition,
-                     Size(width, height), m_mgr);
+                     Окно.wxDefaultPosition,
+                     Размер(ширина, высота), m_mgr);
     return ctrl;
   }
 
   HtmlWindow CreateHTMLCtrl()
   {
     HtmlWindow ctrl = new HtmlWindow(this, -1,
-                     Window.wxDefaultPosition,
-                     Size(400,300));
+                     Окно.wxDefaultPosition,
+                     Размер(400,300));
     ctrl.SetPage(GetIntroText());
     return ctrl;
   }
 
 
-  char[] GetIntroText()
+  сим[] GetIntroText()
   {
     return
       "<html><body>"
       "<h3>Welcome to wxAUI 0.9.2</h3>"
-      "<br/><b>Overview</b><br/>"
+      "<br/><с>Overview</с><br/>"
       "<p>wxAUI is an Advanced User Interface library for the wxWidgets toolkit "
       "that allows developers to create high-quality, cross-platform user "
       "interfaces quickly and easily.</p>"
-      "<p><b>Features</b></p>"
+      "<p><с>Features</с></p>"
       "<p>With wxAUI version 0.9.2, developers can create application frameworks with:</p>"
       "<ul>"
       "<li>Native, dockable floating frames</li>"
@@ -714,9 +714,9 @@ else
       "<li>Native toolbars incorporating real-time, &quot;spring-loaded&quot; dragging</li>"
       "<li>Customizable floating/docking behavior</li>"
       "<li>Completely customizable look-and-feel</li>"
-      "<li>Optional transparent window effects (while dragging or docking)</li>"
+      "<li>Optional transparent окно effects (while dragging or docking)</li>"
       "</ul>"
-      "<p><b>What's new in 0.9.2?</b></p>"
+      "<p><с>What's new in 0.9.2?</с></p>"
       "<p>The following features/fixes have been added since the last version of wxAUI:</p>"
       "<ul>"
       "<li>Support for wxMac</li>"
@@ -727,25 +727,25 @@ else
       "<li>Fix to not paint empty hint rectangles</li>"
       "<li>Fix for 64-bit compilation</li>"
       "</ul>"
-      "<p><b>What changed in 0.9.1?</b></p>"
+      "<p><с>What changed in 0.9.1?</с></p>"
       "<p>The following features/fixes were added in wxAUI 0.9.1:</p>"
       "<ul>"
       "<li>Support for MDI frames</li>"
       "<li>Gradient captions option</li>"
-      "<li>Active/Inactive panes option</li>"
+      "<li>Активен/Inactive panes option</li>"
       "<li>Fix for screen artifacts/paint problems</li>"
-      "<li>Fix for hiding/showing floated window problem</li>"
+      "<li>Fix for hiding/showing floated окно problem</li>"
       "<li>Fix for floating pane sizing problem</li>"
       "<li>Fix for drop position problem when dragging around center pane margins</li>"
-      "<li>LF-only text file formatting for source code</li>"
+      "<li>LF-only текст file formatting for source code</li>"
       "</ul>"
       "<p>See README.txt for more information.</p>"
       "</body></html>";
   }
 
   FrameManager m_mgr;
-  char[][] m_perspectives;
-  Menu m_perspectives_menu;
+  сим[][] m_perspectives;
+  Меню m_perspectives_menu;
 }
 
 
@@ -757,12 +757,12 @@ class SizeReportCtrl : Control
 {
 public:
 
-  this(wxWindow parent, int id = -1,
-           Point pos = Window.wxDefaultPosition,
-           Size size = wxDefaultSize,
-           FrameManager mgr = null)
+  this(wxWindow родитель, цел ид = -1,
+           Точка поз = Окно.wxDefaultPosition,
+           Размер size = wxDefaultSize,
+           FrameManager mgr = пусто)
   {
-    super(parent, id, pos, size, wxNO_BORDER);
+    super(родитель, ид, поз, size, wxNO_BORDER);
 
     m_mgr = mgr;
 
@@ -773,27 +773,27 @@ public:
 
 private:
 
-  void OnPaint(Object sender, Event evt)
+  проц OnPaint(Объект sender, Событие evt)
   {
-    evt.Skip();
+    evt.Пропусти();
 
     PaintDC dc = new PaintDC(this);
-    Size size = ClientSize;
-    char[] s;
-    int h, w, height;
+    Размер size = ClientSize;
+    сим[] s;
+    цел h, w, высота;
 
-    s = format("Size: %d x %d", size.Width, size.Height);
+    s = format("Размер: %d x %d", size.Ширина, size.Высота);
 
-    dc.SetFont(Font.wxNORMAL_FONT);
-    dc.GetTextExtent(s, w, height);
-    height += 3;
-    dc.SetBrush(Brush.wxWHITE_BRUSH);
-    dc.SetPen(Pen.wxWHITE_PEN);
-    dc.DrawRectangle(0, 0, size.Width, size.Height);
-    dc.SetPen(Pen.wxLIGHT_GREY_PEN);
-    dc.DrawLine(0, 0, size.Width, size.Height);
-    dc.DrawLine(0, size.Height, size.Width, 0);
-    dc.DrawText(s, (size.Width-w)/2, ((size.Height-(height*5))/2));
+    dc.SetFont(Шрифт.wxNORMAL_FONT);
+    dc.GetTextExtent(s, w, высота);
+    высота += 3;
+    dc.SetBrush(Кисть.wxWHITE_BRUSH);
+    dc.SetPen(Перо.wxWHITE_PEN);
+    dc.РисуйПрям(0, 0, size.Ширина, size.Высота);
+    dc.SetPen(Перо.wxLIGHT_GREY_PEN);
+    dc.РисуйЛинию(0, 0, size.Ширина, size.Высота);
+    dc.РисуйЛинию(0, size.Высота, size.Ширина, 0);
+    dc.РисуйТекст(s, (size.Ширина-w)/2, ((size.Высота-(высота*5))/2));
 
     if (m_mgr)
     {
@@ -801,28 +801,28 @@ private:
 
       s = format("Layer: %d", pi.dock_layer);
       dc.GetTextExtent(s, w, h);
-      dc.DrawText(s, (size.Width-w)/2, ((size.Height-(height*5))/2)+(height*1));
+      dc.РисуйТекст(s, (size.Ширина-w)/2, ((size.Высота-(высота*5))/2)+(высота*1));
 
       s = format("Dock: %d Row: %d", pi.dock_direction, pi.dock_row);
       dc.GetTextExtent(s, w, h);
-      dc.DrawText(s, (size.Width-w)/2, ((size.Height-(height*5))/2)+(height*2));
+      dc.РисуйТекст(s, (size.Ширина-w)/2, ((size.Высота-(высота*5))/2)+(высота*2));
 
-      s = format("Position: %d", pi.dock_pos);
+      s = format("Положение: %d", pi.dock_pos);
       dc.GetTextExtent(s, w, h);
-      dc.DrawText(s, (size.Width-w)/2, ((size.Height-(height*5))/2)+(height*3));
+      dc.РисуйТекст(s, (size.Ширина-w)/2, ((size.Высота-(высота*5))/2)+(высота*3));
 
       s = format("Proportion: %d", pi.dock_proportion);
       dc.GetTextExtent(s, w, h);
-      dc.DrawText(s, (size.Width-w)/2, ((size.Height-(height*5))/2)+(height*4));
+      dc.РисуйТекст(s, (size.Ширина-w)/2, ((size.Высота-(высота*5))/2)+(высота*4));
     }
   }
 
-  void OnEraseBackground(Object sender, Event evt)
+  проц OnEraseBackground(Объект sender, Событие evt)
   {
     // intentionally empty
   }
 
-  void OnSize(Object sender, Event evt)
+  проц OnSize(Объект sender, Событие evt)
   {
     Refresh();
   }
@@ -855,138 +855,138 @@ class SettingsPanel : Panel
 
 public:
 
-  this(wxWindow parent, MyFrame frame)
+  this(wxWindow родитель, MyFrame frame)
   {
-    super(parent, -1, Window.wxDefaultPosition, wxDefaultSize);
+    super(родитель, -1, Окно.wxDefaultPosition, wxDefaultSize);
 
-    BoxSizer vert = new BoxSizer(Orientation.wxVERTICAL);
+    BoxSizer vert = new BoxSizer(Ориентация.wxVERTICAL);
 
-    //vert.Add(1, 1, 1, Stretch.wxEXPAND);
+    //vert.Добавь(1, 1, 1, Stretch.wxEXPAND);
 
-    BoxSizer s1 = new BoxSizer(Orientation.wxHORIZONTAL);
-    m_border_size = new SpinCtrl(this, ID_PaneBorderSize, "", Window.wxDefaultPosition, Size(50,20));
-    s1.Add(1, 1, 1, Stretch.wxEXPAND);
-    s1.Add(new StaticText(this, -1, "Pane Border Size:"));
-    s1.Add(m_border_size);
-    s1.Add(1, 1, 1, Stretch.wxEXPAND);
-    s1.SetItemMinSize(1, Size(180, 20));
-    //vert.Add(s1, 0, Stretch.wxEXPAND | wxLEFT | wxBOTTOM, 5);
+    BoxSizer s1 = new BoxSizer(Ориентация.wxHORIZONTAL);
+    m_border_size = new SpinCtrl(this, ID_PaneBorderSize, "", Окно.wxDefaultPosition, Размер(50,20));
+    s1.Добавь(1, 1, 1, Stretch.wxEXPAND);
+    s1.Добавь(new StaticText(this, -1, "Pane Border Размер:"));
+    s1.Добавь(m_border_size);
+    s1.Добавь(1, 1, 1, Stretch.wxEXPAND);
+    s1.SetItemMinSize(1, Размер(180, 20));
+    //vert.Добавь(s1, 0, Stretch.wxEXPAND | wxLEFT | wxBOTTOM, 5);
 
-    BoxSizer s2 = new BoxSizer(Orientation.wxHORIZONTAL);
-    m_sash_size = new SpinCtrl(this, ID_SashSize, "", Window.wxDefaultPosition, Size(50,20));
-    s2.Add(1, 1, 1, Stretch.wxEXPAND);
-    s2.Add(new StaticText(this, -1, "Sash Size:"));
-    s2.Add(m_sash_size);
-    s2.Add(1, 1, 1, Stretch.wxEXPAND);
-    s2.SetItemMinSize(1, Size(180, 20));
-    //vert.Add(s2, 0, Stretch.wxEXPAND | wxLEFT | wxBOTTOM, 5);
+    BoxSizer s2 = new BoxSizer(Ориентация.wxHORIZONTAL);
+    m_sash_size = new SpinCtrl(this, ID_SashSize, "", Окно.wxDefaultPosition, Размер(50,20));
+    s2.Добавь(1, 1, 1, Stretch.wxEXPAND);
+    s2.Добавь(new StaticText(this, -1, "Sash Размер:"));
+    s2.Добавь(m_sash_size);
+    s2.Добавь(1, 1, 1, Stretch.wxEXPAND);
+    s2.SetItemMinSize(1, Размер(180, 20));
+    //vert.Добавь(s2, 0, Stretch.wxEXPAND | wxLEFT | wxBOTTOM, 5);
 
-    BoxSizer s3 = new BoxSizer(Orientation.wxHORIZONTAL);
-    m_caption_size = new SpinCtrl(this, ID_CaptionSize, "", Window.wxDefaultPosition, Size(50,20));
-    s3.Add(1, 1, 1, Stretch.wxEXPAND);
-    s3.Add(new StaticText(this, -1, "Caption Size:"));
-    s3.Add(m_caption_size);
-    s3.Add(1, 1, 1, Stretch.wxEXPAND);
-    s3.SetItemMinSize(1, Size(180, 20));
-    //vert.Add(s3, 0, Stretch.wxEXPAND | wxLEFT | wxBOTTOM, 5);
+    BoxSizer s3 = new BoxSizer(Ориентация.wxHORIZONTAL);
+    m_caption_size = new SpinCtrl(this, ID_CaptionSize, "", Окно.wxDefaultPosition, Размер(50,20));
+    s3.Добавь(1, 1, 1, Stretch.wxEXPAND);
+    s3.Добавь(new StaticText(this, -1, "Caption Размер:"));
+    s3.Добавь(m_caption_size);
+    s3.Добавь(1, 1, 1, Stretch.wxEXPAND);
+    s3.SetItemMinSize(1, Размер(180, 20));
+    //vert.Добавь(s3, 0, Stretch.wxEXPAND | wxLEFT | wxBOTTOM, 5);
 
-    //vert.Add(1, 1, 1, Stretch.wxEXPAND);
+    //vert.Добавь(1, 1, 1, Stretch.wxEXPAND);
 
 
-    Bitmap b = CreateColorBitmap(Colour.wxBLACK);
+    Битмап с = CreateColorBitmap(Цвет.wxBLACK);
 
-    BoxSizer s4 = new BoxSizer(Orientation.wxHORIZONTAL);
-    m_background_color = new BitmapButton(this, ID_BackgroundColor, b, Window.wxDefaultPosition, Size(50,25));
-    s4.Add(1, 1, 1, Stretch.wxEXPAND);
-    s4.Add(new StaticText(this, -1, "Background Color:"));
-    s4.Add(m_background_color);
-    s4.Add(1, 1, 1, Stretch.wxEXPAND);
-    s4.SetItemMinSize(1, Size(180, 20));
+    BoxSizer s4 = new BoxSizer(Ориентация.wxHORIZONTAL);
+    m_background_color = new BitmapButton(this, ID_BackgroundColor, с, Окно.wxDefaultPosition, Размер(50,25));
+    s4.Добавь(1, 1, 1, Stretch.wxEXPAND);
+    s4.Добавь(new StaticText(this, -1, "Фон Color:"));
+    s4.Добавь(m_background_color);
+    s4.Добавь(1, 1, 1, Stretch.wxEXPAND);
+    s4.SetItemMinSize(1, Размер(180, 20));
 
-    BoxSizer s5 = new BoxSizer(Orientation.wxHORIZONTAL);
-    m_sash_color = new BitmapButton(this, ID_SashColor, b, Window.wxDefaultPosition, Size(50,25));
-    s5.Add(1, 1, 1, Stretch.wxEXPAND);
-    s5.Add(new StaticText(this, -1, "Sash Color:"));
-    s5.Add(m_sash_color);
-    s5.Add(1, 1, 1, Stretch.wxEXPAND);
-    s5.SetItemMinSize(1, Size(180, 20));
+    BoxSizer s5 = new BoxSizer(Ориентация.wxHORIZONTAL);
+    m_sash_color = new BitmapButton(this, ID_SashColor, с, Окно.wxDefaultPosition, Размер(50,25));
+    s5.Добавь(1, 1, 1, Stretch.wxEXPAND);
+    s5.Добавь(new StaticText(this, -1, "Sash Color:"));
+    s5.Добавь(m_sash_color);
+    s5.Добавь(1, 1, 1, Stretch.wxEXPAND);
+    s5.SetItemMinSize(1, Размер(180, 20));
 
-    BoxSizer s6 = new BoxSizer(Orientation.wxHORIZONTAL);
-    m_inactive_caption_color = new BitmapButton(this, ID_InactiveCaptionColor, b, Window.wxDefaultPosition, Size(50,25));
-    s6.Add(1, 1, 1, Stretch.wxEXPAND);
-    s6.Add(new StaticText(this, -1, "Normal Caption:"));
-    s6.Add(m_inactive_caption_color);
-    s6.Add(1, 1, 1, Stretch.wxEXPAND);
-    s6.SetItemMinSize(1, Size(180, 20));
+    BoxSizer s6 = new BoxSizer(Ориентация.wxHORIZONTAL);
+    m_inactive_caption_color = new BitmapButton(this, ID_InactiveCaptionColor, с, Окно.wxDefaultPosition, Размер(50,25));
+    s6.Добавь(1, 1, 1, Stretch.wxEXPAND);
+    s6.Добавь(new StaticText(this, -1, "Normal Caption:"));
+    s6.Добавь(m_inactive_caption_color);
+    s6.Добавь(1, 1, 1, Stretch.wxEXPAND);
+    s6.SetItemMinSize(1, Размер(180, 20));
 
-    BoxSizer s7 = new BoxSizer(Orientation.wxHORIZONTAL);
-    m_inactive_caption_gradient_color = new BitmapButton(this, ID_InactiveCaptionGradientColor, b, Window.wxDefaultPosition, Size(50,25));
-    s7.Add(1, 1, 1, Stretch.wxEXPAND);
-    s7.Add(new StaticText(this, -1, "Normal Caption Gradient:"));
-    s7.Add(m_inactive_caption_gradient_color);
-    s7.Add(1, 1, 1, Stretch.wxEXPAND);
-    s7.SetItemMinSize(1, Size(180, 20));
+    BoxSizer s7 = new BoxSizer(Ориентация.wxHORIZONTAL);
+    m_inactive_caption_gradient_color = new BitmapButton(this, ID_InactiveCaptionGradientColor, с, Окно.wxDefaultPosition, Размер(50,25));
+    s7.Добавь(1, 1, 1, Stretch.wxEXPAND);
+    s7.Добавь(new StaticText(this, -1, "Normal Caption Gradient:"));
+    s7.Добавь(m_inactive_caption_gradient_color);
+    s7.Добавь(1, 1, 1, Stretch.wxEXPAND);
+    s7.SetItemMinSize(1, Размер(180, 20));
 
-    BoxSizer s8 = new BoxSizer(Orientation.wxHORIZONTAL);
-    m_inactive_caption_text_color = new BitmapButton(this, ID_InactiveCaptionTextColor, b, Window.wxDefaultPosition, Size(50,25));
-    s8.Add(1, 1, 1, Stretch.wxEXPAND);
-    s8.Add(new StaticText(this, -1, "Normal Caption Text:"));
-    s8.Add(m_inactive_caption_text_color);
-    s8.Add(1, 1, 1, Stretch.wxEXPAND);
-    s8.SetItemMinSize(1, Size(180, 20));
+    BoxSizer s8 = new BoxSizer(Ориентация.wxHORIZONTAL);
+    m_inactive_caption_text_color = new BitmapButton(this, ID_InactiveCaptionTextColor, с, Окно.wxDefaultPosition, Размер(50,25));
+    s8.Добавь(1, 1, 1, Stretch.wxEXPAND);
+    s8.Добавь(new StaticText(this, -1, "Normal Caption Текст:"));
+    s8.Добавь(m_inactive_caption_text_color);
+    s8.Добавь(1, 1, 1, Stretch.wxEXPAND);
+    s8.SetItemMinSize(1, Размер(180, 20));
 
-    BoxSizer s9 = new BoxSizer(Orientation.wxHORIZONTAL);
-    m_active_caption_color = new BitmapButton(this, ID_ActiveCaptionColor, b, Window.wxDefaultPosition, Size(50,25));
-    s9.Add(1, 1, 1, Stretch.wxEXPAND);
-    s9.Add(new StaticText(this, -1, "Active Caption:"));
-    s9.Add(m_active_caption_color);
-    s9.Add(1, 1, 1, Stretch.wxEXPAND);
-    s9.SetItemMinSize(1, Size(180, 20));
+    BoxSizer s9 = new BoxSizer(Ориентация.wxHORIZONTAL);
+    m_active_caption_color = new BitmapButton(this, ID_ActiveCaptionColor, с, Окно.wxDefaultPosition, Размер(50,25));
+    s9.Добавь(1, 1, 1, Stretch.wxEXPAND);
+    s9.Добавь(new StaticText(this, -1, "Активен Caption:"));
+    s9.Добавь(m_active_caption_color);
+    s9.Добавь(1, 1, 1, Stretch.wxEXPAND);
+    s9.SetItemMinSize(1, Размер(180, 20));
 
-    BoxSizer s10 = new BoxSizer(Orientation.wxHORIZONTAL);
-    m_active_caption_gradient_color = new BitmapButton(this, ID_ActiveCaptionGradientColor, b, Window.wxDefaultPosition, Size(50,25));
-    s10.Add(1, 1, 1, Stretch.wxEXPAND);
-    s10.Add(new StaticText(this, -1, "Active Caption Gradient:"));
-    s10.Add(m_active_caption_gradient_color);
-    s10.Add(1, 1, 1, Stretch.wxEXPAND);
-    s10.SetItemMinSize(1, Size(180, 20));
+    BoxSizer s10 = new BoxSizer(Ориентация.wxHORIZONTAL);
+    m_active_caption_gradient_color = new BitmapButton(this, ID_ActiveCaptionGradientColor, с, Окно.wxDefaultPosition, Размер(50,25));
+    s10.Добавь(1, 1, 1, Stretch.wxEXPAND);
+    s10.Добавь(new StaticText(this, -1, "Активен Caption Gradient:"));
+    s10.Добавь(m_active_caption_gradient_color);
+    s10.Добавь(1, 1, 1, Stretch.wxEXPAND);
+    s10.SetItemMinSize(1, Размер(180, 20));
 
-    BoxSizer s11 = new BoxSizer(Orientation.wxHORIZONTAL);
-    m_active_caption_text_color = new BitmapButton(this, ID_ActiveCaptionTextColor, b, Window.wxDefaultPosition, Size(50,25));
-    s11.Add(1, 1, 1, Stretch.wxEXPAND);
-    s11.Add(new StaticText(this, -1, "Active Caption Text:"));
-    s11.Add(m_active_caption_text_color);
-    s11.Add(1, 1, 1, Stretch.wxEXPAND);
-    s11.SetItemMinSize(1, Size(180, 20));
+    BoxSizer s11 = new BoxSizer(Ориентация.wxHORIZONTAL);
+    m_active_caption_text_color = new BitmapButton(this, ID_ActiveCaptionTextColor, с, Окно.wxDefaultPosition, Размер(50,25));
+    s11.Добавь(1, 1, 1, Stretch.wxEXPAND);
+    s11.Добавь(new StaticText(this, -1, "Активен Caption Текст:"));
+    s11.Добавь(m_active_caption_text_color);
+    s11.Добавь(1, 1, 1, Stretch.wxEXPAND);
+    s11.SetItemMinSize(1, Размер(180, 20));
 
-    BoxSizer s12 = new BoxSizer(Orientation.wxHORIZONTAL);
-    m_border_color = new BitmapButton(this, ID_BorderColor, b, Window.wxDefaultPosition, Size(50,25));
-    s12.Add(1, 1, 1, Stretch.wxEXPAND);
-    s12.Add(new StaticText(this, -1, "Border Color:"));
-    s12.Add(m_border_color);
-    s12.Add(1, 1, 1, Stretch.wxEXPAND);
-    s12.SetItemMinSize(1, Size(180, 20));
+    BoxSizer s12 = new BoxSizer(Ориентация.wxHORIZONTAL);
+    m_border_color = new BitmapButton(this, ID_BorderColor, с, Окно.wxDefaultPosition, Размер(50,25));
+    s12.Добавь(1, 1, 1, Stretch.wxEXPAND);
+    s12.Добавь(new StaticText(this, -1, "Border Color:"));
+    s12.Добавь(m_border_color);
+    s12.Добавь(1, 1, 1, Stretch.wxEXPAND);
+    s12.SetItemMinSize(1, Размер(180, 20));
 
-    BoxSizer s13 = new BoxSizer(Orientation.wxHORIZONTAL);
-    m_gripper_color = new BitmapButton(this, ID_GripperColor, b, Window.wxDefaultPosition, Size(50,25));
-    s13.Add(1, 1, 1, Stretch.wxEXPAND);
-    s13.Add(new StaticText(this, -1, "Gripper Color:"));
-    s13.Add(m_gripper_color);
-    s13.Add(1, 1, 1, Stretch.wxEXPAND);
-    s13.SetItemMinSize(1, Size(180, 20));
+    BoxSizer s13 = new BoxSizer(Ориентация.wxHORIZONTAL);
+    m_gripper_color = new BitmapButton(this, ID_GripperColor, с, Окно.wxDefaultPosition, Размер(50,25));
+    s13.Добавь(1, 1, 1, Stretch.wxEXPAND);
+    s13.Добавь(new StaticText(this, -1, "Gripper Color:"));
+    s13.Добавь(m_gripper_color);
+    s13.Добавь(1, 1, 1, Stretch.wxEXPAND);
+    s13.SetItemMinSize(1, Размер(180, 20));
 
     GridSizer grid_sizer = new GridSizer(0, 2, 0, 0);
     grid_sizer.HGap = 5;
-    grid_sizer.Add(s1);  grid_sizer.Add(s4);
-    grid_sizer.Add(s2);  grid_sizer.Add(s5);
-    grid_sizer.Add(s3);  grid_sizer.Add(s13);
-    grid_sizer.Add(1,1); grid_sizer.Add(s12);
-    grid_sizer.Add(s6);  grid_sizer.Add(s9);
-    grid_sizer.Add(s7);  grid_sizer.Add(s10);
-    grid_sizer.Add(s8);  grid_sizer.Add(s11);
+    grid_sizer.Добавь(s1);  grid_sizer.Добавь(s4);
+    grid_sizer.Добавь(s2);  grid_sizer.Добавь(s5);
+    grid_sizer.Добавь(s3);  grid_sizer.Добавь(s13);
+    grid_sizer.Добавь(1,1); grid_sizer.Добавь(s12);
+    grid_sizer.Добавь(s6);  grid_sizer.Добавь(s9);
+    grid_sizer.Добавь(s7);  grid_sizer.Добавь(s10);
+    grid_sizer.Добавь(s8);  grid_sizer.Добавь(s11);
 
-    BoxSizer cont_sizer = new BoxSizer(Orientation.wxVERTICAL);
-    cont_sizer.Add(grid_sizer, 1, Stretch.wxEXPAND | Direction.wxALL, 5);
+    BoxSizer cont_sizer = new BoxSizer(Ориентация.wxVERTICAL);
+    cont_sizer.Добавь(grid_sizer, 1, Stretch.wxEXPAND | Direction.wxALL, 5);
     SetSizer(cont_sizer);
     sizer().SetSizeHints(this);
 
@@ -1014,83 +1014,83 @@ public:
 
 private:
 
-  Bitmap CreateColorBitmap(Colour c)
+  Битмап CreateColorBitmap(Цвет c)
   {
-    Image image = new Image(25,14);
-    for (int x = 0; x < 25; ++x)
-      for (int y = 0; y < 14; ++y)
+    Рисунок рисунок = new Рисунок(25,14);
+    for (цел x = 0; x < 25; ++x)
+      for (цел y = 0; y < 14; ++y)
       {
-        Colour pixcol = c;
+        Цвет pixcol = c;
         if (x == 0 || x == 24 || y == 0 || y == 13)
-          pixcol = Colour.wxBLACK;
-        image.SetRGB(x, y, pixcol.Red(), pixcol.Green(), pixcol.Blue());
+          pixcol = Цвет.wxBLACK;
+        рисунок.УстКЗС(x, y, pixcol.Красный(), pixcol.Зелёный(), pixcol.Синий());
       }
-    return new Bitmap(image);
+    return new Битмап(рисунок);
   }
 
-  void UpdateColors()
+  проц UpdateColors()
   {
-    Colour bk = m_frame.GetDockArt().GetColor(wxPaneDockArtSetting.wxAUI_ART_BACKGROUND_COLOUR);
+    Цвет bk = m_frame.GetDockArt().GetColor(wxPaneDockArtSetting.wxAUI_ART_BACKGROUND_COLOUR);
     m_background_color.BitmapLabel = CreateColorBitmap(bk);
 
-    Colour cap = m_frame.GetDockArt().GetColor(wxPaneDockArtSetting.wxAUI_ART_INACTIVE_CAPTION_COLOUR);
+    Цвет cap = m_frame.GetDockArt().GetColor(wxPaneDockArtSetting.wxAUI_ART_INACTIVE_CAPTION_COLOUR);
     m_inactive_caption_color.BitmapLabel = CreateColorBitmap(cap);
 
-    Colour capgrad = m_frame.GetDockArt().GetColor(wxPaneDockArtSetting.wxAUI_ART_INACTIVE_CAPTION_GRADIENT_COLOUR);
+    Цвет capgrad = m_frame.GetDockArt().GetColor(wxPaneDockArtSetting.wxAUI_ART_INACTIVE_CAPTION_GRADIENT_COLOUR);
     m_inactive_caption_gradient_color.BitmapLabel = CreateColorBitmap(capgrad);
 
-    Colour captxt = m_frame.GetDockArt().GetColor(wxPaneDockArtSetting.wxAUI_ART_INACTIVE_CAPTION_TEXT_COLOUR);
+    Цвет captxt = m_frame.GetDockArt().GetColor(wxPaneDockArtSetting.wxAUI_ART_INACTIVE_CAPTION_TEXT_COLOUR);
     m_inactive_caption_text_color.BitmapLabel = CreateColorBitmap(captxt);
 
-    Colour acap = m_frame.GetDockArt().GetColor(wxPaneDockArtSetting.wxAUI_ART_ACTIVE_CAPTION_COLOUR);
+    Цвет acap = m_frame.GetDockArt().GetColor(wxPaneDockArtSetting.wxAUI_ART_ACTIVE_CAPTION_COLOUR);
     m_active_caption_color.BitmapLabel = CreateColorBitmap(acap);
 
-    Colour acapgrad = m_frame.GetDockArt().GetColor(wxPaneDockArtSetting.wxAUI_ART_ACTIVE_CAPTION_GRADIENT_COLOUR);
+    Цвет acapgrad = m_frame.GetDockArt().GetColor(wxPaneDockArtSetting.wxAUI_ART_ACTIVE_CAPTION_GRADIENT_COLOUR);
     m_active_caption_gradient_color.BitmapLabel = CreateColorBitmap(acapgrad);
 
-    Colour acaptxt = m_frame.GetDockArt().GetColor(wxPaneDockArtSetting.wxAUI_ART_ACTIVE_CAPTION_TEXT_COLOUR);
+    Цвет acaptxt = m_frame.GetDockArt().GetColor(wxPaneDockArtSetting.wxAUI_ART_ACTIVE_CAPTION_TEXT_COLOUR);
     m_active_caption_text_color.BitmapLabel = CreateColorBitmap(acaptxt);
 
-    Colour sash = m_frame.GetDockArt().GetColor(wxPaneDockArtSetting.wxAUI_ART_SASH_COLOUR);
+    Цвет sash = m_frame.GetDockArt().GetColor(wxPaneDockArtSetting.wxAUI_ART_SASH_COLOUR);
     m_sash_color.BitmapLabel = CreateColorBitmap(sash);
 
-    Colour border = m_frame.GetDockArt().GetColor(wxPaneDockArtSetting.wxAUI_ART_BORDER_COLOUR);
+    Цвет border = m_frame.GetDockArt().GetColor(wxPaneDockArtSetting.wxAUI_ART_BORDER_COLOUR);
     m_border_color.BitmapLabel = CreateColorBitmap(border);
 
-    Colour gripper = m_frame.GetDockArt().GetColor(wxPaneDockArtSetting.wxAUI_ART_GRIPPER_COLOUR);
+    Цвет gripper = m_frame.GetDockArt().GetColor(wxPaneDockArtSetting.wxAUI_ART_GRIPPER_COLOUR);
     m_gripper_color.BitmapLabel = CreateColorBitmap(gripper);
   }
 
-  void OnPaneBorderSize(Object sender, Event event)
+  проц OnPaneBorderSize(Объект sender, Событие event)
   {
     m_frame.GetDockArt().SetMetric(wxPaneDockArtSetting.wxAUI_ART_PANE_BORDER_SIZE,
                      m_border_size.Value);
     m_frame.DoUpdate();
   }
 
-  void OnSashSize(Object sender, Event event)
+  проц OnSashSize(Объект sender, Событие event)
   {
     m_frame.GetDockArt().SetMetric(wxPaneDockArtSetting.wxAUI_ART_SASH_SIZE,
                      m_sash_size.Value);
     m_frame.DoUpdate();
   }
 
-  void OnCaptionSize(Object sender, Event event)
+  проц OnCaptionSize(Объект sender, Событие event)
   {
     m_frame.GetDockArt().SetMetric(wxPaneDockArtSetting.wxAUI_ART_CAPTION_SIZE,
                      m_caption_size.Value);
     m_frame.DoUpdate();
   }
 
-  void OnSetColor(Object sender, Event event)
+  проц OnSetColor(Объект sender, Событие event)
   {
     ColourDialog dlg = new ColourDialog(m_frame);
     dlg.Title = "Color Picker";
     if (dlg.ShowModal() != wxID_OK)
       return;
 
-    int var = 0;
-    switch (event.ID)
+    цел var = 0;
+    switch (event.ИД)
     {
       case ID_BackgroundColor:        var = wxPaneDockArtSetting.wxAUI_ART_BACKGROUND_COLOUR; break;
       case ID_SashColor:          var = wxPaneDockArtSetting.wxAUI_ART_SASH_COLOUR; break;

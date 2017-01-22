@@ -10,7 +10,7 @@
 // (C) 2003 Alexander Olk
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: Utils.d,v 1.10 2007/01/28 23:06:37 afb Exp $
+// $Ид: Utils.d,v 1.10 2007/01/28 23:06:37 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.Utils;
@@ -18,73 +18,73 @@ public import wx.common;
 public import wx.Window;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxGlobal_GetHomeDir();
-		static extern (C) IntPtr wxGlobal_GetCwd();
-		static extern (C) void wxSleep_func(int num);
-		static extern (C) void wxMilliSleep_func(uint num);
-		static extern (C) void wxMicroSleep_func(uint num);
-		static extern (C) void wxYield_func();
-		static extern (C) void wxBeginBusyCursor_func();
-		static extern (C) void wxEndBusyCursor_func();
-		static extern (C) void wxMutexGuiEnter_func();
-		static extern (C) void wxMutexGuiLeave_func();
+		static extern (C) ЦУк wxGlobal_GetHomeDir();
+		static extern (C) ЦУк wxGlobal_GetCwd();
+		static extern (C) проц wxSleep_func(цел num);
+		static extern (C) проц wxMilliSleep_func(бцел num);
+		static extern (C) проц wxMicroSleep_func(бцел num);
+		static extern (C) проц wxYield_func();
+		static extern (C) проц wxBeginBusyCursor_func();
+		static extern (C) проц wxEndBusyCursor_func();
+		static extern (C) проц wxMutexGuiEnter_func();
+		static extern (C) проц wxMutexGuiLeave_func();
 		//! \endcond
 		
 		
-		public static string GetHomeDir()
+		public static ткст GetHomeDir()
 		{
-			return cast(string) new wxString(wxGlobal_GetHomeDir(), true);
+			return cast(ткст) new wxString(wxGlobal_GetHomeDir(), да);
 		}
 		
-		public static string GetCwd()
+		public static ткст GetCwd()
 		{
-			return cast(string) new wxString(wxGlobal_GetCwd(), true);
+			return cast(ткст) new wxString(wxGlobal_GetCwd(), да);
 		}
 		
 		//---------------------------------------------------------------------
 
-		public static void wxSleep(int num)
+		public static проц wxSleep(цел num)
 		{
 			wxSleep_func(num);
 		}
 
-		public static void wxMilliSleep(int num)
+		public static проц wxMilliSleep(цел num)
 		{
 			wxMilliSleep_func(num);
 		}
 
-		public static void wxMicroSleep(int num)
+		public static проц wxMicroSleep(цел num)
 		{
 			wxMicroSleep_func(num);
 		}
 		
 		//---------------------------------------------------------------------
 
-		public static void wxYield()
+		public static проц wxYield()
 		{
 			wxYield_func();
 		}
 		
 		//---------------------------------------------------------------------
 
-		public static void BeginBusyCursor()
+		public static проц BeginBusyCursor()
 		{
 			wxBeginBusyCursor_func();
 		}
 
-		public static void EndBusyCursor()
+		public static проц EndBusyCursor()
 		{
 			wxEndBusyCursor_func();
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public static void MutexGuiEnter()
+		public static проц MutexGuiEnter()
 		{
 			wxMutexGuiEnter_func();
 		}
 		
-		public static void MutexGuiLeave()
+		public static проц MutexGuiLeave()
 		{
 			wxMutexGuiLeave_func();
 		}
@@ -95,7 +95,7 @@ public import wx.Window;
 	alias BusyCursor wxBusyCursor;
 	public class BusyCursor : IDisposable
 	{
-		private bool disposed = false;
+		private бул disposed = нет;
 		public this()
 		{
 			BeginBusyCursor();
@@ -106,10 +106,10 @@ public import wx.Window;
 			Dispose();
 		}
 	
-		public void Dispose()
+		public проц Dispose()
 		{
 			if (!disposed) {
-				disposed = true;
+				disposed = да;
 				EndBusyCursor();
 			}
 		}
@@ -118,8 +118,8 @@ public import wx.Window;
 	//---------------------------------------------------------------------
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxWindowDisabler_ctor(IntPtr winToSkip);
-		static extern (C) void wxWindowDisabler_dtor(IntPtr self);
+		static extern (C) ЦУк wxWindowDisabler_ctor(ЦУк winToSkip);
+		static extern (C) проц wxWindowDisabler_dtor(ЦУк сам);
 		//! \endcond
 		
 	alias WindowDisabler wxWindowDisabler;
@@ -127,33 +127,33 @@ public import wx.Window;
 	{
 		//---------------------------------------------------------------------
 
-		public this(IntPtr wxobj)
+		public this(ЦУк шхобъ)
 		{
-			super(wxobj);
+			super(шхобъ);
 		}
 		
-		private this(IntPtr wxobj, bool memOwn)
+		private this(ЦУк шхобъ, бул memOwn)
 		{ 
-			super(wxobj);
+			super(шхобъ);
 			this.memOwn = memOwn;
 		}
 
 		public this()
-			{ this(cast(Window)null);}
+			{ this(cast(Окно)пусто);}
 
-		public this(Window winToSkip)
-			{ this(wxWindowDisabler_ctor(wxObject.SafePtr(winToSkip)), true);}
+		public this(Окно winToSkip)
+			{ this(wxWindowDisabler_ctor(wxObject.SafePtr(winToSkip)), да);}
 			
 		//---------------------------------------------------------------------
 		
-		override protected void dtor() { wxWindowDisabler_dtor(wxobj); }
+		override protected проц dtor() { wxWindowDisabler_dtor(шхобъ); }
 	}
 	
 	//---------------------------------------------------------------------
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxBusyInfo_ctor(string message, IntPtr parent);
-		static extern (C) void   wxBusyInfo_dtor(IntPtr self);
+		static extern (C) ЦУк wxBusyInfo_ctor(ткст message, ЦУк родитель);
+		static extern (C) проц   wxBusyInfo_dtor(ЦУк сам);
 		//! \endcond
 		
 	alias BusyInfo wxBusyInfo;
@@ -161,26 +161,26 @@ public import wx.Window;
 	{
 		//---------------------------------------------------------------------
 	
-		public this(IntPtr wxobj)
+		public this(ЦУк шхобъ)
 		{
-			super(wxobj);
+			super(шхобъ);
 		}
 	
-		public this(string message)
-			{ this(message, null);}
+		public this(ткст message)
+			{ this(message, пусто);}
 	
-		public this(string message, Window parent)
-			{ this(wxBusyInfo_ctor(message, wxObject.SafePtr(parent)), true);}
+		public this(ткст message, Окно родитель)
+			{ this(wxBusyInfo_ctor(message, wxObject.SafePtr(родитель)), да);}
 			
-		private this(IntPtr wxobj, bool memOwn)
+		private this(ЦУк шхобъ, бул memOwn)
 		{
-			super(wxobj);
+			super(шхобъ);
 			this.memOwn = memOwn;
 		}
 		
 		//---------------------------------------------------------------------
 
-		override protected void dtor() { wxBusyInfo_dtor(wxobj); }
+		override protected проц dtor() { wxBusyInfo_dtor(шхобъ); }
 	}
 	
 	//---------------------------------------------------------------------

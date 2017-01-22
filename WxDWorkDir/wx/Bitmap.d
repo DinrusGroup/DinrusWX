@@ -1,8 +1,8 @@
-//-----------------------------------------------------------------------------
-// wxD - Bitmap.d
+﻿//-----------------------------------------------------------------------------
+// wxD - Битмап.d
 // (C) 2005 bero <berobero.sourceforge.net>
 // based on
-// wx.NET - Bitmap.cs
+// wx.NET - Битмап.cs
 //
 /// The wxBitmap wrapper class.
 //
@@ -10,7 +10,7 @@
 // (C) 2003 by 379, Inc.
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: Bitmap.d,v 1.9 2006/11/17 15:20:59 afb Exp $
+// $Ид: Битмап.d,v 1.9 2006/11/17 15:20:59 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.Bitmap;
@@ -22,202 +22,202 @@ public import wx.Image;
 public import wx.Icon;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxBitmap_ctor();
-		static extern (C) IntPtr wxBitmap_ctorByImage(IntPtr image, int depth);
-		static extern (C) IntPtr wxBitmap_ctorByName(string name, BitmapType type);
-		static extern (C) IntPtr wxBitmap_ctorBySize(int width, int height, int depth);
-		static extern (C) IntPtr wxBitmap_ctorByBitmap(IntPtr bitmap);
-		//static extern (C) void   wxBitmap_RegisterDisposable(IntPtr self, Virtual_Dispose onDispose);
+		static extern (C) ЦУк wxBitmap_ctor();
+		static extern (C) ЦУк wxBitmap_ctorByImage(ЦУк рисунок, цел глубина);
+		static extern (C) ЦУк wxBitmap_ctorByName(ткст имя, ТипБитмапа тип);
+		static extern (C) ЦУк wxBitmap_ctorBySize(цел ширина, цел высота, цел глубина);
+		static extern (C) ЦУк wxBitmap_ctorByBitmap(ЦУк битмап);
+		//static extern (C) проц   wxBitmap_RegisterDisposable(ЦУк сам, Virtual_Dispose onDispose);
 		
-		static extern (C) IntPtr wxBitmap_ConvertToImage(IntPtr self);
-		static extern (C) bool   wxBitmap_LoadFile(IntPtr self, string name, BitmapType type);
-		static extern (C) bool   wxBitmap_SaveFile(IntPtr self, string name, BitmapType type, IntPtr palette);
-		static extern (C) bool   wxBitmap_Ok(IntPtr self);
+		static extern (C) ЦУк wxBitmap_ConvertToImage(ЦУк сам);
+		static extern (C) бул   wxBitmap_LoadFile(ЦУк сам, ткст имя, ТипБитмапа тип);
+		static extern (C) бул   wxBitmap_SaveFile(ЦУк сам, ткст имя, ТипБитмапа тип, ЦУк палитра);
+		static extern (C) бул   wxBitmap_Ok(ЦУк сам);
 	
-		static extern (C) int    wxBitmap_GetHeight(IntPtr self);
-		static extern (C) void   wxBitmap_SetHeight(IntPtr self, int height);
+		static extern (C) цел    wxBitmap_GetHeight(ЦУк сам);
+		static extern (C) проц   wxBitmap_SetHeight(ЦУк сам, цел высота);
 	
-		static extern (C) int    wxBitmap_GetWidth(IntPtr self);
-		static extern (C) void   wxBitmap_SetWidth(IntPtr self, int width);
+		static extern (C) цел    wxBitmap_GetWidth(ЦУк сам);
+		static extern (C) проц   wxBitmap_SetWidth(ЦУк сам, цел ширина);
 		
-		static extern (C) int    wxBitmap_GetDepth(IntPtr self);
-		static extern (C) void   wxBitmap_SetDepth(IntPtr self, int depth);
+		static extern (C) цел    wxBitmap_GetDepth(ЦУк сам);
+		static extern (C) проц   wxBitmap_SetDepth(ЦУк сам, цел глубина);
 		
-		static extern (C) IntPtr wxBitmap_GetSubBitmap(IntPtr self, inout Rectangle rect);
+		static extern (C) ЦУк wxBitmap_GetSubBitmap(ЦУк сам, inout Прямоугольник прям);
 		
-		static extern (C) IntPtr wxBitmap_GetMask(IntPtr self);
-		static extern (C) IntPtr wxBitmap_SetMask(IntPtr self, IntPtr mask);
+		static extern (C) ЦУк wxBitmap_GetMask(ЦУк сам);
+		static extern (C) ЦУк wxBitmap_SetMask(ЦУк сам, ЦУк маска);
 		
-		static extern (C) IntPtr wxBitmap_GetPalette(IntPtr self);
-		static extern (C) bool   wxBitmap_CopyFromIcon(IntPtr self, IntPtr icon);
+		static extern (C) ЦУк wxBitmap_GetPalette(ЦУк сам);
+		static extern (C) бул   wxBitmap_CopyFromIcon(ЦУк сам, ЦУк иконка);
 		
-		static extern (C) IntPtr wxBitmap_GetColourMap(IntPtr self);
+		static extern (C) ЦУк wxBitmap_GetColourMap(ЦУк сам);
 		//! \endcond
 	
 		//---------------------------------------------------------------------
 
-	alias Bitmap wxBitmap;
-	public class Bitmap : GDIObject
+	alias Битмап wxBitmap;
+	public class Битмап : GDIObject
 	{
-		public static Bitmap wxNullBitmap;
+		public static Битмап wxNullBitmap;
 /*
 		static this()
 		{
-			Image.InitAllHandlers();
+			Рисунок.ИницВсеОбработчики();
 		}
 */
 		public this()
 			{ this(wxBitmap_ctor()); }
 
-		public this(Image image)
-			{ this(image, -1); }
+		public this(Рисунок рисунок)
+			{ this(рисунок, -1); }
 
-		public this(Image image, int depth)
-			{ this(wxBitmap_ctorByImage(image.wxobj, depth)); }
+		public this(Рисунок рисунок, цел глубина)
+			{ this(wxBitmap_ctorByImage(рисунок.шхобъ, глубина)); }
 
-		public this(string name)
-			{ this(wxBitmap_ctorByName(name, BitmapType.wxBITMAP_TYPE_ANY)); }
+		public this(ткст имя)
+			{ this(wxBitmap_ctorByName(имя, ТипБитмапа.wxBITMAP_TYPE_ANY)); }
 
-		public this(string name, BitmapType type)
-			{ this(wxBitmap_ctorByName(name, type)); }
+		public this(ткст имя, ТипБитмапа тип)
+			{ this(wxBitmap_ctorByName(имя, тип)); }
 
-		public this(int width, int height)
-			{ this(width, height, -1); }
+		public this(цел ширина, цел высота)
+			{ this(ширина, высота, -1); }
 
-		public this(int width, int height, int depth)
-			{ this(wxBitmap_ctorBySize(width, height, depth));}
+		public this(цел ширина, цел высота, цел глубина)
+			{ this(wxBitmap_ctorBySize(ширина, высота, глубина));}
 	    
-		public this(Bitmap bitmap)
-			{ this(wxBitmap_ctorByBitmap(wxObject.SafePtr(bitmap)));}
+		public this(Битмап битмап)
+			{ this(wxBitmap_ctorByBitmap(wxObject.SafePtr(битмап)));}
 
-		public this(IntPtr wxobj) 
-			{ super(wxobj); }
+		public this(ЦУк шхобъ) 
+			{ super(шхобъ); }
 			
 		//---------------------------------------------------------------------
 
-		public Image ConvertToImage()
+		public Рисунок ConvertToImage()
 		{
-			return new Image(wxBitmap_ConvertToImage(wxobj));
+			return new Рисунок(wxBitmap_ConvertToImage(шхобъ));
 		}
 
 		//---------------------------------------------------------------------
 
-		public int Height() { return wxBitmap_GetHeight(wxobj); }
-		public void Height(int value) { wxBitmap_SetHeight(wxobj, value); }
+		public цел Высота() { return wxBitmap_GetHeight(шхобъ); }
+		public проц Высота(цел значение) { wxBitmap_SetHeight(шхобъ, значение); }
 
 		//---------------------------------------------------------------------
 
-		public bool LoadFile(string name, BitmapType type)
+		public бул ЗагрузиФайл(ткст имя, ТипБитмапа тип)
 		{
-			return wxBitmap_LoadFile(wxobj, name, type);
+			return wxBitmap_LoadFile(шхобъ, имя, тип);
 		}
 	
 		//---------------------------------------------------------------------
 	
-		public bool SaveFile(string name, BitmapType type)
+		public бул СохраниФайл(ткст имя, ТипБитмапа тип)
 		{
-			return SaveFile(name, type, null);
+			return СохраниФайл(имя, тип, пусто);
 		}
 	
-		public bool SaveFile(string name, BitmapType type, Palette palette)
+		public бул СохраниФайл(ткст имя, ТипБитмапа тип, Палитра палитра)
 		{
-			return wxBitmap_SaveFile(wxobj, name, type, wxObject.SafePtr(palette));
-		}
-
-		//---------------------------------------------------------------------
-
-		public int Width() { return wxBitmap_GetWidth(wxobj); }
-		public void Width(int value) { wxBitmap_SetWidth(wxobj, value); }
-
-		//---------------------------------------------------------------------
-
-		public /+virtual+/ bool Ok()
-		{
-			return wxBitmap_Ok(wxobj);
+			return wxBitmap_SaveFile(шхобъ, имя, тип, wxObject.SafePtr(палитра));
 		}
 
 		//---------------------------------------------------------------------
+
+		public цел Ширина() { return wxBitmap_GetWidth(шхобъ); }
+		public проц Ширина(цел значение) { wxBitmap_SetWidth(шхобъ, значение); }
+
+		//---------------------------------------------------------------------
+
+		public /+virtual+/ бул Ок()
+		{
+			return wxBitmap_Ok(шхобъ);
+		}
+
+		//---------------------------------------------------------------------
 	
-		public int Depth() { return wxBitmap_GetDepth(wxobj); }
-		public void Depth(int value) { wxBitmap_SetDepth(wxobj, value); }
+		public цел Depth() { return wxBitmap_GetDepth(шхобъ); }
+		public проц Depth(цел значение) { wxBitmap_SetDepth(шхобъ, значение); }
 	
 		//---------------------------------------------------------------------
 	
-		public Bitmap GetSubBitmap(Rectangle rect)
+		public Битмап GetSubBitmap(Прямоугольник прям)
 		{
-			return new Bitmap(wxBitmap_GetSubBitmap(wxobj, rect));
+			return new Битмап(wxBitmap_GetSubBitmap(шхобъ, прям));
 		}
 	
 		//---------------------------------------------------------------------
 	
-		public Mask mask() { return new Mask(wxBitmap_GetMask(wxobj)); }
-		public void mask(Mask value) { wxBitmap_SetMask(wxobj, wxObject.SafePtr(value)); }
+		public Маска маска() { return new Маска(wxBitmap_GetMask(шхобъ)); }
+		public проц маска(Маска значение) { wxBitmap_SetMask(шхобъ, wxObject.SafePtr(значение)); }
 	
 		//---------------------------------------------------------------------
 	
-		public Palette palette() { return new Palette(wxBitmap_GetPalette(wxobj)); }
+		public Палитра палитра() { return new Палитра(wxBitmap_GetPalette(шхобъ)); }
 	
 		//---------------------------------------------------------------------
 	
-		public Palette ColourMap() { return new Palette(wxBitmap_GetColourMap(wxobj)); }
+		public Палитра ColourMap() { return new Палитра(wxBitmap_GetColourMap(шхобъ)); }
 	
 		//---------------------------------------------------------------------
 		
-		public bool CopyFromIcon(Icon icon)
+		public бул CopyFromIcon(Icon иконка)
 		{
-			return wxBitmap_CopyFromIcon(wxobj, wxObject.SafePtr(icon));
+			return wxBitmap_CopyFromIcon(шхобъ, wxObject.SafePtr(иконка));
 		}
 		
-		public static wxObject New(IntPtr ptr) { return new Bitmap(ptr); }
+		public static wxObject Нов(ЦУк ptr) { return new Битмап(ptr); }
 	}
 
 	//---------------------------------------------------------------------
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxMask_ctor();
-		static extern (C) IntPtr wxMask_ctorByBitmpaColour(IntPtr bitmap, IntPtr colour);
-		static extern (C) IntPtr wxMask_ctorByBitmapIndex(IntPtr bitmap, int paletteIndex);
-		static extern (C) IntPtr wxMask_ctorByBitmap(IntPtr bitmap);
+		static extern (C) ЦУк wxMask_ctor();
+		static extern (C) ЦУк wxMask_ctorByBitmpaColour(ЦУк битмап, ЦУк colour);
+		static extern (C) ЦУк wxMask_ctorByBitmapIndex(ЦУк битмап, цел paletteIndex);
+		static extern (C) ЦУк wxMask_ctorByBitmap(ЦУк битмап);
 		
-		static extern (C) bool wxMask_CreateByBitmapColour(IntPtr self, IntPtr bitmap, IntPtr colour);
-		static extern (C) bool wxMask_CreateByBitmapIndex(IntPtr self, IntPtr bitmap, int paletteIndex);
-		static extern (C) bool wxMask_CreateByBitmap(IntPtr self, IntPtr bitmap);
+		static extern (C) бул wxMask_CreateByBitmapColour(ЦУк сам, ЦУк битмап, ЦУк colour);
+		static extern (C) бул wxMask_CreateByBitmapIndex(ЦУк сам, ЦУк битмап, цел paletteIndex);
+		static extern (C) бул wxMask_CreateByBitmap(ЦУк сам, ЦУк битмап);
 		//! \endcond
 		
 		//---------------------------------------------------------------------
-	alias Mask wxMask;
-	public class Mask : wxObject
+	alias Маска wxMask;
+	public class Маска : wxObject
 	{
 		
 		public this()
 			{ this(wxMask_ctor());}
 			
-		public this(Bitmap bitmap, Colour colour)
-			{ this(wxMask_ctorByBitmpaColour(wxObject.SafePtr(bitmap), wxObject.SafePtr(colour)));}
+		public this(Битмап битмап, Цвет colour)
+			{ this(wxMask_ctorByBitmpaColour(wxObject.SafePtr(битмап), wxObject.SafePtr(colour)));}
 			
-		public this(Bitmap bitmap, int paletteIndex)
-			{ this(wxMask_ctorByBitmapIndex(wxObject.SafePtr(bitmap), paletteIndex));}
+		public this(Битмап битмап, цел paletteIndex)
+			{ this(wxMask_ctorByBitmapIndex(wxObject.SafePtr(битмап), paletteIndex));}
 			
-		public this(Bitmap bitmap)
-			{ this(wxMask_ctorByBitmap(wxObject.SafePtr(bitmap)));}
+		public this(Битмап битмап)
+			{ this(wxMask_ctorByBitmap(wxObject.SafePtr(битмап)));}
 		
-		public this(IntPtr wxobj)
-			{ super(wxobj);}
+		public this(ЦУк шхобъ)
+			{ super(шхобъ);}
 			
 		//---------------------------------------------------------------------
 			
-		public bool Create(Bitmap bitmap, Colour colour)
+		public бул Create(Битмап битмап, Цвет colour)
 		{
-			return wxMask_CreateByBitmapColour(wxobj, wxObject.SafePtr(bitmap), wxObject.SafePtr(colour));
+			return wxMask_CreateByBitmapColour(шхобъ, wxObject.SafePtr(битмап), wxObject.SafePtr(colour));
 		}
 		
-		public bool Create(Bitmap bitmap, int paletteIndex)
+		public бул Create(Битмап битмап, цел paletteIndex)
 		{
-			return wxMask_CreateByBitmapIndex(wxobj, wxObject.SafePtr(bitmap), paletteIndex);
+			return wxMask_CreateByBitmapIndex(шхобъ, wxObject.SafePtr(битмап), paletteIndex);
 		}
 		
-		public bool Create(Bitmap bitmap)
+		public бул Create(Битмап битмап)
 		{
-			return wxMask_CreateByBitmap(wxobj, wxObject.SafePtr(bitmap));
+			return wxMask_CreateByBitmap(шхобъ, wxObject.SafePtr(битмап));
 		}
 	}

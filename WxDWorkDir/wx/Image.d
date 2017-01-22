@@ -1,8 +1,8 @@
-//-----------------------------------------------------------------------------
-// wxD - Image.d
+﻿//-----------------------------------------------------------------------------
+// wxD - Рисунок.d
 // (C) 2005 bero <berobero@users.sourceforge.net>
 // based on
-// wx.NET - Image.cs
+// wx.NET - Рисунок.cs
 //
 /// The wxImage wrapper class.
 //
@@ -10,7 +10,7 @@
 // (C) 2003 by 379, Inc.
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: Image.d,v 1.11 2008/09/04 11:05:46 afb Exp $
+// $Ид: Рисунок.d,v 1.11 2008/09/04 11:05:46 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.Image;
@@ -21,512 +21,512 @@ public import wx.Palette;
 public import wx.Colour;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxImage_ctor();
-		static extern (C) IntPtr wxImage_ctorByName(string name, BitmapType type);
-		static extern (C) IntPtr wxImage_ctorintintbool(int width, int height, bool clear);
-		static extern (C) IntPtr wxImage_ctorByData(int width, int height, ubyte* data, bool static_data);
-		static extern (C) IntPtr wxImage_ctorByDataAlpha(int width, int height, ubyte* data, ubyte* alpha, bool static_data);
-		static extern (C) IntPtr wxImage_ctorByImage(IntPtr image);
-		static extern (C) IntPtr wxImage_ctorByByteArray(IntPtr data, int length, BitmapType type);
-		static extern (C) void   wxImage_dtor(IntPtr self);
+		static extern (C) ЦУк wxImage_ctor();
+		static extern (C) ЦУк wxImage_ctorByName(ткст имя, ТипБитмапа тип);
+		static extern (C) ЦУк wxImage_ctorintintbool(цел ширина, цел высота, бул clear);
+		static extern (C) ЦУк wxImage_ctorByData(цел ширина, цел высота, ббайт* данные, бул статич_данные);
+		static extern (C) ЦУк wxImage_ctorByDataAlpha(цел ширина, цел высота, ббайт* данные, ббайт* альфа, бул статич_данные);
+		static extern (C) ЦУк wxImage_ctorByImage(ЦУк рисунок);
+		static extern (C) ЦУк wxImage_ctorByByteArray(ЦУк данные, цел length, ТипБитмапа тип);
+		static extern (C) проц   wxImage_dtor(ЦУк сам);
 		
-		static extern (C) void   wxImage_Destroy(IntPtr self);
+		static extern (C) проц   wxImage_Destroy(ЦУк сам);
 		
-		static extern (C) int    wxImage_GetHeight(IntPtr self);
-		static extern (C) int    wxImage_GetWidth(IntPtr self);
-		static extern (C) void   wxImage_InitAllHandlers();
-		static extern (C) void   wxImage_Rescale(IntPtr self, int width, int height);
-		static extern (C) IntPtr wxImage_Scale(IntPtr self, int width, int height);
+		static extern (C) цел    wxImage_GetHeight(ЦУк сам);
+		static extern (C) цел    wxImage_GetWidth(ЦУк сам);
+		static extern (C) проц   wxImage_InitAllHandlers();
+		static extern (C) проц   wxImage_Rescale(ЦУк сам, цел ширина, цел высота);
+		static extern (C) ЦУк wxImage_Scale(ЦУк сам, цел ширина, цел высота);
 
-		static extern (C) void   wxImage_SetMask(IntPtr self, bool mask);
-		static extern (C) bool   wxImage_HasMask(IntPtr self);
-		static extern (C) void   wxImage_SetMaskColour(IntPtr self, ubyte r, ubyte g, ubyte b);
+		static extern (C) проц   wxImage_SetMask(ЦУк сам, бул маска);
+		static extern (C) бул   wxImage_HasMask(ЦУк сам);
+		static extern (C) проц   wxImage_SetMaskColour(ЦУк сам, ббайт к, ббайт з, ббайт с);
 
-		static extern (C) bool   wxImage_LoadFileByTypeId(IntPtr self, string name, BitmapType type, int index);
-		static extern (C) bool   wxImage_LoadFileByMimeTypeId(IntPtr self, string name, string mimetype, int index);
-		static extern (C) bool   wxImage_SaveFileByType(IntPtr self, string name, BitmapType type);
-		static extern (C) bool   wxImage_SaveFileByMimeType(IntPtr self, string name, string mimetype);
+		static extern (C) бул   wxImage_LoadFileByTypeId(ЦУк сам, ткст имя, ТипБитмапа тип, цел индекс);
+		static extern (C) бул   wxImage_LoadFileByMimeTypeId(ЦУк сам, ткст имя, ткст mimetype, цел индекс);
+		static extern (C) бул   wxImage_SaveFileByType(ЦУк сам, ткст имя, ТипБитмапа тип);
+		static extern (C) бул   wxImage_SaveFileByMimeType(ЦУк сам, ткст имя, ткст mimetype);
 		
-		static extern (C) IntPtr wxImage_Copy(IntPtr self);
-		static extern (C) IntPtr wxImage_GetSubImage(IntPtr self, inout Rectangle rect);
+		static extern (C) ЦУк wxImage_Copy(ЦУк сам);
+		static extern (C) ЦУк wxImage_GetSubImage(ЦУк сам, inout Прямоугольник прям);
 		
-		static extern (C) void   wxImage_Paste(IntPtr self, IntPtr image, int x, int y);
+		static extern (C) проц   wxImage_Paste(ЦУк сам, ЦУк рисунок, цел x, цел y);
 		
-		static extern (C) IntPtr wxImage_ShrinkBy(IntPtr self, int xFactor, int yFactor);
+		static extern (C) ЦУк wxImage_ShrinkBy(ЦУк сам, цел xFactor, цел yFactor);
 		
-		static extern (C) IntPtr wxImage_Rotate(IntPtr self, double angle, inout Point centre_of_rotation, bool interpolating, inout Point offset_after_rotation);
-		static extern (C) IntPtr wxImage_Rotate90(IntPtr self, bool clockwise);
-		static extern (C) IntPtr wxImage_Mirror(IntPtr self, bool horizontally);
+		static extern (C) ЦУк wxImage_Rotate(ЦУк сам, дво угол, inout Точка центр_вращения, бул с_интерполяцией, inout Точка смещ_после_вращения);
+		static extern (C) ЦУк wxImage_Rotate90(ЦУк сам, бул по_часовой);
+		static extern (C) ЦУк wxImage_Mirror(ЦУк сам, бул горизонтально);
 		
-		static extern (C) void   wxImage_Replace(IntPtr self, ubyte r1, ubyte g1, ubyte b1, ubyte r2, ubyte g2, ubyte b2);
+		static extern (C) проц   wxImage_Replace(ЦУк сам, ббайт r1, ббайт g1, ббайт b1, ббайт r2, ббайт g2, ббайт b2);
 		
-		static extern (C) IntPtr wxImage_ConvertToMono(IntPtr self, ubyte r, ubyte g, ubyte b);
+		static extern (C) ЦУк wxImage_ConvertToMono(ЦУк сам, ббайт к, ббайт з, ббайт с);
 		
-		static extern (C) void   wxImage_SetRGB(IntPtr self, int x, int y, ubyte r, ubyte g, ubyte b);
+		static extern (C) проц   wxImage_SetRGB(ЦУк сам, цел x, цел y, ббайт к, ббайт з, ббайт с);
 		
-		static extern (C) ubyte   wxImage_GetRed(IntPtr self, int x, int y);
-		static extern (C) ubyte   wxImage_GetGreen(IntPtr self, int x, int y);
-		static extern (C) ubyte   wxImage_GetBlue(IntPtr self, int x, int y);
+		static extern (C) ббайт   wxImage_GetRed(ЦУк сам, цел x, цел y);
+		static extern (C) ббайт   wxImage_GetGreen(ЦУк сам, цел x, цел y);
+		static extern (C) ббайт   wxImage_GetBlue(ЦУк сам, цел x, цел y);
 		
-		static extern (C) void   wxImage_SetAlpha(IntPtr self, int x, int y, ubyte alpha);
-		static extern (C) ubyte   wxImage_GetAlpha(IntPtr self, int x, int y);
+		static extern (C) проц   wxImage_SetAlpha(ЦУк сам, цел x, цел y, ббайт альфа);
+		static extern (C) ббайт   wxImage_GetAlpha(ЦУк сам, цел x, цел y);
 		
-		static extern (C) bool   wxImage_FindFirstUnusedColour(IntPtr self, inout ubyte r, inout ubyte g, inout ubyte b, ubyte startR, ubyte startG, ubyte startB);
-		static extern (C) bool   wxImage_SetMaskFromImage(IntPtr self, IntPtr mask, ubyte mr, ubyte mg, ubyte mb);
+		static extern (C) бул   wxImage_FindFirstUnusedColour(ЦУк сам, inout ббайт к, inout ббайт з, inout ббайт с, ббайт startR, ббайт startG, ббайт startB);
+		static extern (C) бул   wxImage_SetMaskFromImage(ЦУк сам, ЦУк маска, ббайт mr, ббайт mg, ббайт mb);
 		
-		static extern (C) bool   wxImage_ConvertAlphaToMask(IntPtr self, ubyte threshold);
+		static extern (C) бул   wxImage_ConvertAlphaToMask(ЦУк сам, ббайт порог);
 		
-		static extern (C) bool   wxImage_CanRead(string name);
-		static extern (C) int    wxImage_GetImageCount(string name, int type);
+		static extern (C) бул   wxImage_CanRead(ткст имя);
+		static extern (C) цел    wxImage_GetImageCount(ткст имя, цел тип);
 		
-		static extern (C) bool   wxImage_Ok(IntPtr self);
+		static extern (C) бул   wxImage_Ok(ЦУк сам);
 		//--Alex
-		static extern (C) ubyte   wxImage_GetMaskRed(IntPtr self);
-		static extern (C) ubyte   wxImage_GetMaskGreen(IntPtr self);
-		static extern (C) ubyte   wxImage_GetMaskBlue(IntPtr self);
+		static extern (C) ббайт   wxImage_GetMaskRed(ЦУк сам);
+		static extern (C) ббайт   wxImage_GetMaskGreen(ЦУк сам);
+		static extern (C) ббайт   wxImage_GetMaskBlue(ЦУк сам);
 		
-		static extern (C) bool   wxImage_HasPalette(IntPtr self);
-		static extern (C) IntPtr wxImage_GetPalette(IntPtr self);
-		static extern (C) void   wxImage_SetPalette(IntPtr self, IntPtr palette);
+		static extern (C) бул   wxImage_HasPalette(ЦУк сам);
+		static extern (C) ЦУк wxImage_GetPalette(ЦУк сам);
+		static extern (C) проц   wxImage_SetPalette(ЦУк сам, ЦУк палитра);
 		
-		static extern (C) void   wxImage_SetOption(IntPtr self, string name, string value);
-		static extern (C) void   wxImage_SetOption2(IntPtr self, string name, int value);
-		static extern (C) IntPtr wxImage_GetOption(IntPtr self, string name);
-		static extern (C) int    wxImage_GetOptionInt(IntPtr self, string name);
-		static extern (C) bool   wxImage_HasOption(IntPtr self, string name);
+		static extern (C) проц   wxImage_SetOption(ЦУк сам, ткст имя, ткст значение);
+		static extern (C) проц   wxImage_SetOption2(ЦУк сам, ткст имя, цел значение);
+		static extern (C) ЦУк wxImage_GetOption(ЦУк сам, ткст имя);
+		static extern (C) цел    wxImage_GetOptionInt(ЦУк сам, ткст имя);
+		static extern (C) бул   wxImage_HasOption(ЦУк сам, ткст имя);
 		
-		static extern (C) uint  wxImage_CountColours(IntPtr self, uint stopafter);
+		static extern (C) бцел  wxImage_CountColours(ЦУк сам, бцел стоп_после);
 		
-		static extern (C) uint  wxImage_ComputeHistogram(IntPtr self, IntPtr h);
+		static extern (C) бцел  wxImage_ComputeHistogram(ЦУк сам, ЦУк h);
 		
-		static extern (C) IntPtr wxImage_GetHandlers();
-		static extern (C) void   wxImage_AddHandler(IntPtr handler);
-		static extern (C) void   wxImage_InsertHandler(IntPtr handler);
-		static extern (C) bool   wxImage_RemoveHandler(string name);
-		static extern (C) IntPtr wxImage_FindHandler(string name);
-		static extern (C) IntPtr wxImage_FindHandler2(string name, uint imageType);
-		static extern (C) IntPtr wxImage_FindHandler3(uint imageType);
-		static extern (C) IntPtr wxImage_FindHandlerMime(string mimetype);
+		static extern (C) ЦУк wxImage_GetHandlers();
+		static extern (C) проц   wxImage_AddHandler(ЦУк handler);
+		static extern (C) проц   wxImage_InsertHandler(ЦУк handler);
+		static extern (C) бул   wxImage_RemoveHandler(ткст имя);
+		static extern (C) ЦУк wxImage_FindHandler(ткст имя);
+		static extern (C) ЦУк wxImage_FindHandler2(ткст имя, бцел imageType);
+		static extern (C) ЦУк wxImage_FindHandler3(бцел imageType);
+		static extern (C) ЦУк wxImage_FindHandlerMime(ткст mimetype);
 		
-		static extern (C) IntPtr wxImage_GetImageExtWildcard();
+		static extern (C) ЦУк wxImage_GetImageExtWildcard();
 		
-		static extern (C) void   wxImage_CleanUpHandlers();
+		static extern (C) проц   wxImage_CleanUpHandlers();
 		
-		static extern (C) void   wxImage_InitStandardHandlers();
+		static extern (C) проц   wxImage_InitStandardHandlers();
 		//! \endcond
 
 		//---------------------------------------------------------------------
 
-	alias Image wxImage;
-	public class Image : wxObject
+	alias Рисунок wxImage;
+	public class Рисунок : wxObject
 	{
-		private static bool handlersLoaded = false;
+		private static бул обработчикиЗагружены = нет;
 		
-		public static void InitAllHandlers()
+		public static проц ИницВсеОбработчики()
 		{
-			// We only want to load the image handlers once.
-			if (!handlersLoaded) 
+			// We only want to load the рисунок handlers once.
+			if (!обработчикиЗагружены) 
 			{
 				wxImage_InitAllHandlers();
-				handlersLoaded = true;
+				обработчикиЗагружены = да;
 			}
 		}
 
 		static this()
 		{
-			InitAllHandlers();
+			ИницВсеОбработчики();
 		}
 		
-		public this(IntPtr wxobj)
-			{ super(wxobj);}
+		public this(ЦУк шхобъ)
+			{ super(шхобъ);}
 
 		public this()
 			{ this(wxImage_ctor());}
 
-		public this(string name)
-			{ this(wxImage_ctorByName(name, BitmapType.wxBITMAP_TYPE_ANY));}
+		public this(ткст имя)
+			{ this(wxImage_ctorByName(имя, ТипБитмапа.wxBITMAP_TYPE_ANY));}
 			
-		public this(int width, int height)
-			{ this(width, height, true);}
+		public this(цел ширина, цел высота)
+			{ this(ширина, высота, да);}
 		
-		public this(byte[] data, BitmapType type)
-			{ this(wxImage_ctorByByteArray(cast(IntPtr)data.ptr, data.length, type));}
+		public this(byte[] данные, ТипБитмапа тип)
+			{ this(wxImage_ctorByByteArray(cast(ЦУк)данные.ptr, данные.length, тип));}
 			
-		public this(int width, int height, bool clear)
-			{ this(wxImage_ctorintintbool(width, height, clear));}
+		public this(цел ширина, цел высота, бул clear)
+			{ this(wxImage_ctorintintbool(ширина, высота, clear));}
 
-		public this(int width, int height, ubyte *data, bool static_data)
-			{ this(wxImage_ctorByData(width, height, data, static_data));}
+		public this(цел ширина, цел высота, ббайт *данные, бул статич_данные)
+			{ this(wxImage_ctorByData(ширина, высота, данные, статич_данные));}
 
-		public this(int width, int height, ubyte *data, ubyte *alpha, bool static_data)
-			{ this(wxImage_ctorByDataAlpha(width, height, data, alpha, static_data));}
+		public this(цел ширина, цел высота, ббайт *данные, ббайт *альфа, бул статич_данные)
+			{ this(wxImage_ctorByDataAlpha(ширина, высота, данные, альфа, статич_данные));}
 
-		public this(Image image)
-			{ this(wxImage_ctorByImage(wxObject.SafePtr(image)));}
+		public this(Рисунок рисунок)
+			{ this(wxImage_ctorByImage(wxObject.SafePtr(рисунок)));}
 		
-		public static wxObject New(IntPtr ptr) { return new Image(ptr); }
+		public static wxObject Нов(ЦУк ptr) { return new Рисунок(ptr); }
 		
 		//---------------------------------------------------------------------
 		
-		public void Destroy()
+		public проц Разрушь()
 		{
-			wxImage_Destroy(wxobj);
-		}
-		
-		//---------------------------------------------------------------------
-
-		public int Width() { return wxImage_GetWidth(wxobj); }
-		public int Height() { return wxImage_GetHeight(wxobj); }
-		public Size size() { return Size(Width,Height); }
-
-		//---------------------------------------------------------------------
-		
-		public bool LoadFile(string path)
-		{
-			return LoadFile(path, BitmapType.wxBITMAP_TYPE_ANY, -1);
-		}
-		
-		public bool LoadFile(string path, BitmapType type)
-		{
-			return LoadFile(path, type, -1);
-		}
-		
-		public bool LoadFile(string path, BitmapType type, int index)
-		{
-			return wxImage_LoadFileByTypeId(wxobj, path, type, -1);
-		}
-		
-		//---------------------------------------------------------------------
-		
-		public bool LoadFile(string name, string mimetype)
-		{
-			return LoadFile(name, mimetype, -1);
-		}
-		
-		public bool LoadFile(string name, string mimetype, int index)
-		{
-			return wxImage_LoadFileByMimeTypeId(wxobj, name, mimetype, index);
+			wxImage_Destroy(шхобъ);
 		}
 		
 		//---------------------------------------------------------------------
 
-        	public bool SaveFile(string path)
+		public цел Ширина() { return wxImage_GetWidth(шхобъ); }
+		public цел Высота() { return wxImage_GetHeight(шхобъ); }
+		public Размер size() { return Размер(Ширина,Высота); }
+
+		//---------------------------------------------------------------------
+		
+		public бул ЗагрузиФайл(ткст путь)
+		{
+			return ЗагрузиФайл(путь, ТипБитмапа.wxBITMAP_TYPE_ANY, -1);
+		}
+		
+		public бул ЗагрузиФайл(ткст путь, ТипБитмапа тип)
+		{
+			return ЗагрузиФайл(путь, тип, -1);
+		}
+		
+		public бул ЗагрузиФайл(ткст путь, ТипБитмапа тип, цел индекс)
+		{
+			return wxImage_LoadFileByTypeId(шхобъ, путь, тип, -1);
+		}
+		
+		//---------------------------------------------------------------------
+		
+		public бул ЗагрузиФайл(ткст имя, ткст mimetype)
+		{
+			return ЗагрузиФайл(имя, mimetype, -1);
+		}
+		
+		public бул ЗагрузиФайл(ткст имя, ткст mimetype, цел индекс)
+		{
+			return wxImage_LoadFileByMimeTypeId(шхобъ, имя, mimetype, индекс);
+		}
+		
+		//---------------------------------------------------------------------
+
+        	public бул СохраниФайл(ткст путь)
 		{ 
-			return SaveFile(path, BitmapType.wxBITMAP_TYPE_ANY); 
+			return СохраниФайл(путь, ТипБитмапа.wxBITMAP_TYPE_ANY); 
 		}
 		
-		public bool SaveFile(string path, BitmapType type)
+		public бул СохраниФайл(ткст путь, ТипБитмапа тип)
 		{
-			return wxImage_SaveFileByType(wxobj, path, type);
+			return wxImage_SaveFileByType(шхобъ, путь, тип);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public bool SaveFile(string name, string mimetype)
+		public бул СохраниФайл(ткст имя, ткст mimetype)
 		{
-			return wxImage_SaveFileByMimeType(wxobj, name, mimetype);
+			return wxImage_SaveFileByMimeType(шхобъ, имя, mimetype);
 		}
 
 		//---------------------------------------------------------------------
 
-		public Image Rescale(int width, int height)
+		public Рисунок Ремасштабируй(цел ширина, цел высота)
 		{
-			wxImage_Rescale(wxobj, width, height);
+			wxImage_Rescale(шхобъ, ширина, высота);
 			return this;
 		}
 
 		//---------------------------------------------------------------------
 
-		public Image Scale(int width, int height)
+		public Рисунок Масштабируй(цел ширина, цел высота)
 		{
-			return new Image(wxImage_Scale(wxobj, width, height));
+			return new Рисунок(wxImage_Scale(шхобъ, ширина, высота));
 		}
 
 		//---------------------------------------------------------------------
 
-		public void SetMaskColour(ubyte r, ubyte g, ubyte b)
+		public проц УстЦветомаску(ббайт к, ббайт з, ббайт с)
 		{
-			wxImage_SetMaskColour(wxobj, r, g, b);
+			wxImage_SetMaskColour(шхобъ, к, з, с);
 		}
 		
 		//---------------------------------------------------------------------
 
-		public void MaskColour(Colour value) { SetMaskColour(value.Red, value.Green, value.Blue); }
+		public проц Цветомаска(Цвет значение) { УстЦветомаску(значение.Красный, значение.Зелёный, значение.Синий); }
 		
 		//---------------------------------------------------------------------
 
-		public void Mask(bool value) { wxImage_SetMask(wxobj, value); }
-		public bool Mask() { return wxImage_HasMask(wxobj); }
+		public проц Маска(бул значение) { wxImage_SetMask(шхобъ, значение); }
+		public бул Маска() { return wxImage_HasMask(шхобъ); }
 		
 		//---------------------------------------------------------------------
 		
-		public Image Copy()
+		public Рисунок Копируй()
 		{
-			return new Image(wxImage_Copy(wxobj));
-		}
-		
-		//---------------------------------------------------------------------
-		
-		public Image SubImage(Rectangle rect)
-		{
-			return cast(Image)FindObject(wxImage_GetSubImage(wxobj, rect), &Image.New);
+			return new Рисунок(wxImage_Copy(шхобъ));
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void Paste(Image image, int x, int y)
+		public Рисунок Подложка(Прямоугольник прям)
 		{
-			wxImage_Paste(wxobj, wxObject.SafePtr(image), x, y);
+			return cast(Рисунок)FindObject(wxImage_GetSubImage(шхобъ, прям), &Рисунок.Нов);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public Image ShrinkBy(int xFactor, int yFactor)
+		public проц Вставь(Рисунок рисунок, цел x, цел y)
 		{
-			return new Image(wxImage_ShrinkBy(wxobj, xFactor, yFactor));
+			wxImage_Paste(шхобъ, wxObject.SafePtr(рисунок), x, y);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public Image Rotate(double angle, Point centre_of_rotation)
+		public Рисунок СжатьПо(цел xFactor, цел yFactor)
 		{
-			Point dummy;
-			return Rotate(angle, centre_of_rotation, true, dummy);
-		}
-		
-		public Image Rotate(double angle, Point centre_of_rotation, bool interpolating)
-		{
-			Point dummy;
-			return Rotate(angle, centre_of_rotation, interpolating, dummy);
-		}
-		
-		public Image Rotate(double angle, Point centre_of_rotation, bool interpolating, Point offset_after_rotation)
-		{
-			return new Image(wxImage_Rotate(wxobj, angle, centre_of_rotation, interpolating, offset_after_rotation));
+			return new Рисунок(wxImage_ShrinkBy(шхобъ, xFactor, yFactor));
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public Image Rotate90()
+		public Рисунок Вращай(дво угол, Точка центр_вращения)
 		{
-			return Rotate90(true);
+			Точка dummy;
+			return Вращай(угол, центр_вращения, да, dummy);
 		}
 		
-		public Image Rotate90(bool clockwise)
+		public Рисунок Вращай(дво угол, Точка центр_вращения, бул с_интерполяцией)
 		{
-			return new Image(wxImage_Rotate90(wxobj, clockwise));
+			Точка dummy;
+			return Вращай(угол, центр_вращения, с_интерполяцией, dummy);
 		}
 		
-		//---------------------------------------------------------------------
-		
-		public Image Mirror()
+		public Рисунок Вращай(дво угол, Точка центр_вращения, бул с_интерполяцией, Точка смещ_после_вращения)
 		{
-			return Mirror(true);
-		}
-		
-		public Image Mirror(bool horizontally)
-		{
-			return new Image(wxImage_Mirror(wxobj, horizontally));
+			return new Рисунок(wxImage_Rotate(шхобъ, угол, центр_вращения, с_интерполяцией, смещ_после_вращения));
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void Replace(ubyte r1, ubyte g1, ubyte b1, ubyte r2, ubyte g2, ubyte b2)
+		public Рисунок Вращай90()
 		{
-			wxImage_Replace(wxobj, r1, g1, b1, r2, g2, b2);
+			return Вращай90(да);
+		}
+		
+		public Рисунок Вращай90(бул по_часовой)
+		{
+			return new Рисунок(wxImage_Rotate90(шхобъ, по_часовой));
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void ConvertToMono(ubyte r, ubyte g, ubyte b)
+		public Рисунок Зеркало()
 		{
-			wxImage_ConvertToMono(wxobj, r, g, b);
+			return Зеркало(да);
+		}
+		
+		public Рисунок Зеркало(бул горизонтально)
+		{
+			return new Рисунок(wxImage_Mirror(шхобъ, горизонтально));
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void SetRGB(int x, int y, ubyte r, ubyte g, ubyte b)
+		public проц Замени(ббайт r1, ббайт g1, ббайт b1, ббайт r2, ббайт g2, ббайт b2)
 		{
-			wxImage_SetRGB(wxobj, x, y, r, g, b);
+			wxImage_Replace(шхобъ, r1, g1, b1, r2, g2, b2);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public ubyte GetRed(int x, int y)
+		public проц ПреобразуйВМоно(ббайт к, ббайт з, ббайт с)
 		{
-			return wxImage_GetRed(wxobj, x, y);
+			wxImage_ConvertToMono(шхобъ, к, з, с);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public ubyte GetGreen(int x, int y)
+		public проц УстКЗС(цел x, цел y, ббайт к, ббайт з, ббайт с)
 		{
-			return wxImage_GetGreen(wxobj, x, y);
+			wxImage_SetRGB(шхобъ, x, y, к, з, с);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public ubyte GetBlue(int x, int y)
+		public ббайт ДайКрасный(цел x, цел y)
 		{
-			return wxImage_GetBlue(wxobj, x, y);
+			return wxImage_GetRed(шхобъ, x, y);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void SetAlpha(int x, int y, ubyte alpha)
+		public ббайт ДайЗелёный(цел x, цел y)
 		{
-			wxImage_SetAlpha(wxobj, x, y, alpha);
+			return wxImage_GetGreen(шхобъ, x, y);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public ubyte GetAlpha(int x, int y)
+		public ббайт ДайСиний(цел x, цел y)
 		{
-			return wxImage_GetAlpha(wxobj, x, y);
+			return wxImage_GetBlue(шхобъ, x, y);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public bool FindFirstUnusedColour(inout ubyte r, inout ubyte g, inout ubyte b)
+		public проц УстАльфу(цел x, цел y, ббайт альфа)
 		{
-			return FindFirstUnusedColour(r, g, b, 1, 0, 0);
-		}
-		
-		public bool FindFirstUnusedColour(inout ubyte r, inout ubyte g, inout ubyte b, ubyte startR)
-		{
-			return FindFirstUnusedColour(r, g, b, startR, 0, 0);
-		}
-		
-		public bool FindFirstUnusedColour(inout ubyte r, inout ubyte g, inout ubyte b, ubyte startR, ubyte startG)
-		{
-			return FindFirstUnusedColour(r, g, b, startR, startG, 0);
-		}
-		
-		public bool FindFirstUnusedColour(inout ubyte r, inout ubyte g, inout ubyte b, ubyte startR, ubyte startG, ubyte startB)
-		{
-			return wxImage_FindFirstUnusedColour(wxobj, r, g, b, startR, startG, startB);
+			wxImage_SetAlpha(шхобъ, x, y, альфа);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public bool SetMaskFromImage(Image mask, ubyte mr, ubyte mg, ubyte mb)
+		public ббайт ДайАльфу(цел x, цел y)
 		{
-			return wxImage_SetMaskFromImage(wxobj, wxObject.SafePtr(mask), mr, mg, mb);
+			return wxImage_GetAlpha(шхобъ, x, y);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public bool ConvertAlphaToMask()
+		public бул НайдиПервНеиспЦвет(inout ббайт к, inout ббайт з, inout ббайт с)
 		{
-			return ConvertAlphaToMask(128);
+			return НайдиПервНеиспЦвет(к, з, с, 1, 0, 0);
 		}
 		
-		public bool ConvertAlphaToMask(ubyte threshold)
+		public бул НайдиПервНеиспЦвет(inout ббайт к, inout ббайт з, inout ббайт с, ббайт startR)
 		{
-			return wxImage_ConvertAlphaToMask(wxobj, threshold);
+			return НайдиПервНеиспЦвет(к, з, с, startR, 0, 0);
 		}
 		
-		//---------------------------------------------------------------------
-		
-		public static bool CanRead(string name)
+		public бул НайдиПервНеиспЦвет(inout ббайт к, inout ббайт з, inout ббайт с, ббайт startR, ббайт startG)
 		{
-			return wxImage_CanRead(name);
+			return НайдиПервНеиспЦвет(к, з, с, startR, startG, 0);
 		}
 		
-		//---------------------------------------------------------------------
-		
-		public static int GetImageCount(string name)
+		public бул НайдиПервНеиспЦвет(inout ббайт к, inout ббайт з, inout ббайт с, ббайт startR, ббайт startG, ббайт startB)
 		{
-			return GetImageCount(name, BitmapType.wxBITMAP_TYPE_ANY);
-		}
-		
-		public static int GetImageCount(string name, BitmapType type)
-		{
-			return wxImage_GetImageCount(name, cast(int)type);
+			return wxImage_FindFirstUnusedColour(шхобъ, к, з, с, startR, startG, startB);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public bool Ok() { return wxImage_Ok(wxobj); }
-		
-		//---------------------------------------------------------------------
-		
-		public ubyte MaskRed() { return wxImage_GetMaskRed(wxobj); }
-		
-		//---------------------------------------------------------------------
-		
-		public ubyte MaskGreen() { return wxImage_GetMaskGreen(wxobj); }
-		
-		//---------------------------------------------------------------------
-		
-		public ubyte MaskBlue() { return wxImage_GetMaskBlue(wxobj); }
-		
-		//---------------------------------------------------------------------
-		
-		public bool HasPalette()
+		public бул УстМаскуИзРис(Рисунок маска, ббайт mr, ббайт mg, ббайт mb)
 		{
-			return wxImage_HasPalette(wxobj);
+			return wxImage_SetMaskFromImage(шхобъ, wxObject.SafePtr(маска), mr, mg, mb);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public Palette palette() { return cast(Palette)FindObject(wxImage_GetPalette(wxobj), &Palette.New); }
-		public void palette(Palette value) { wxImage_SetPalette(wxobj, wxObject.SafePtr(value)); }
-		
-		//---------------------------------------------------------------------
-		
-		public void SetOption(string name, string value)
+		public бул ПреобразуйАльфуВМаску()
 		{
-			wxImage_SetOption(wxobj, name, value);
+			return ПреобразуйАльфуВМаску(128);
+		}
+		
+		public бул ПреобразуйАльфуВМаску(ббайт порог)
+		{
+			return wxImage_ConvertAlphaToMask(шхобъ, порог);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void SetOption(string name, int value)
+		public static бул Читается(ткст имя)
 		{
-			wxImage_SetOption2(wxobj, name, value);
+			return wxImage_CanRead(имя);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public string GetOption(string name)
+		public static цел ДайЧлоРисунков(ткст имя)
 		{
-			return cast(string) new wxString(wxImage_GetOption(wxobj, name), true);
+			return ДайЧлоРисунков(имя, ТипБитмапа.wxBITMAP_TYPE_ANY);
+		}
+		
+		public static цел ДайЧлоРисунков(ткст имя, ТипБитмапа тип)
+		{
+			return wxImage_GetImageCount(имя, cast(цел)тип);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public int GetOptionInt(string name)
+		public бул Ок() { return wxImage_Ok(шхобъ); }
+		
+		//---------------------------------------------------------------------
+		
+		public ббайт КМаска() { return wxImage_GetMaskRed(шхобъ); }
+		
+		//---------------------------------------------------------------------
+		
+		public ббайт ЗМаска() { return wxImage_GetMaskGreen(шхобъ); }
+		
+		//---------------------------------------------------------------------
+		
+		public ббайт СМаска() { return wxImage_GetMaskBlue(шхобъ); }
+		
+		//---------------------------------------------------------------------
+		
+		public бул ЕстьПалитра()
 		{
-			return wxImage_GetOptionInt(wxobj, name);
+			return wxImage_HasPalette(шхобъ);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public bool HasOption(string name)
+		public Палитра палитра() { return cast(Палитра)FindObject(wxImage_GetPalette(шхобъ), &Палитра.Нов); }
+		public проц палитра(Палитра значение) { wxImage_SetPalette(шхобъ, wxObject.SafePtr(значение)); }
+		
+		//---------------------------------------------------------------------
+		
+		public проц УстОпц(ткст имя, ткст значение)
 		{
-			return wxImage_HasOption(wxobj, name);
+			wxImage_SetOption(шхобъ, имя, значение);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public uint CountColours()
+		public проц УстОпц(ткст имя, цел значение)
 		{
-			return CountColours(uint.max-1);
+			wxImage_SetOption2(шхобъ, имя, значение);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public uint CountColours(uint stopafter)
+		public ткст ДайОпц(ткст имя)
 		{
-			return wxImage_CountColours(wxobj, stopafter);
+			return cast(ткст) new wxString(wxImage_GetOption(шхобъ, имя), да);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public uint ComputeHistogram(ImageHistogram h)
+		public цел ДайОпцЦел(ткст имя)
 		{
-			return wxImage_ComputeHistogram(wxobj, wxObject.SafePtr(h));
+			return wxImage_GetOptionInt(шхобъ, имя);
+		}
+		
+		//---------------------------------------------------------------------
+		
+		public бул ЕстьОпц(ткст имя)
+		{
+			return wxImage_HasOption(шхобъ, имя);
+		}
+		
+		//---------------------------------------------------------------------
+		
+		public бцел ЧлоЦветов()
+		{
+			return ЧлоЦветов(бцел.max-1);
+		}
+		
+		//---------------------------------------------------------------------
+		
+		public бцел ЧлоЦветов(бцел стоп_после)
+		{
+			return wxImage_CountColours(шхобъ, стоп_после);
+		}
+		
+		//---------------------------------------------------------------------
+		
+		public бцел ВычислиГистограмму(ГистограммаРисунка h)
+		{
+			return wxImage_ComputeHistogram(шхобъ, wxObject.SafePtr(h));
 		}
 		
 		//---------------------------------------------------------------------
@@ -537,8 +537,8 @@ public import wx.Colour;
 				wxList wl = new wxList(wxImage_GetHandlers());
 				ArrayList al = new ArrayList();
 				
-				for (int i = 0; i < wl.Count; i++)
-                	al.Add(new ImageHandler(wl.Item(i)));
+				for (цел i = 0; i < wl.Счёт; i++)
+                	al.Добавь(new ImageHandler(wl.Элемент(i)));
 					
 				return wl;
 			}
@@ -546,67 +546,67 @@ public import wx.Colour;
 		
 		//---------------------------------------------------------------------
 		
-		public static void AddHandler(ImageHandler handler)
+		public static проц AddHandler(ImageHandler handler)
 		{
 			wxImage_AddHandler(wxObject.SafePtr(handler));
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public static void InsertHandler(ImageHandler handler)
+		public static проц InsertHandler(ImageHandler handler)
 		{
 			wxImage_InsertHandler(wxObject.SafePtr(handler));
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public static bool RemoveHandler(string name)
+		public static бул RemoveHandler(ткст имя)
 		{
-			return wxImage_RemoveHandler(name);
+			return wxImage_RemoveHandler(имя);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public static ImageHandler FindHandler(string name)
+		public static ImageHandler FindHandler(ткст имя)
 		{
-			return cast(ImageHandler)FindObject(wxImage_FindHandler(name));
+			return cast(ImageHandler)FindObject(wxImage_FindHandler(имя));
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public static ImageHandler FindHandler(string extension, int imageType)
+		public static ImageHandler FindHandler(ткст extension, цел imageType)
 		{
-			return cast(ImageHandler)FindObject(wxImage_FindHandler2(extension, cast(uint)imageType));
+			return cast(ImageHandler)FindObject(wxImage_FindHandler2(extension, cast(бцел)imageType));
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public static ImageHandler FindHandler(int imageType)
+		public static ImageHandler FindHandler(цел imageType)
 		{
-			return cast(ImageHandler)FindObject(wxImage_FindHandler3(cast(uint)imageType));
+			return cast(ImageHandler)FindObject(wxImage_FindHandler3(cast(бцел)imageType));
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public static ImageHandler FindHandlerMime(string mimetype)
+		public static ImageHandler FindHandlerMime(ткст mimetype)
 		{
 			return cast(ImageHandler)FindObject(wxImage_FindHandlerMime(mimetype));
 		}
 		
 		//---------------------------------------------------------------------
 		
-		static string ImageExtWildcard() { return cast(string) new wxString(wxImage_GetImageExtWildcard(), true); }
+		static ткст ImageExtWildcard() { return cast(ткст) new wxString(wxImage_GetImageExtWildcard(), да); }
 		
 		//---------------------------------------------------------------------
 		
-		public static void CleanUpHandlers()
+		public static проц CleanUpHandlers()
 		{
 			wxImage_CleanUpHandlers();
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public static void InitStandardHandlers()
+		public static проц InitStandardHandlers()
 		{
 			wxImage_InitStandardHandlers();
 		}
@@ -615,14 +615,14 @@ public import wx.Colour;
 	//---------------------------------------------------------------------
 	
 		//! \cond EXTERN
-		static extern (C) void   wxImageHandler_SetName(IntPtr self, string name);
-		static extern (C) void   wxImageHandler_SetExtension(IntPtr self, string ext);
-		static extern (C) void   wxImageHandler_SetType(IntPtr self, uint type);
-		static extern (C) void   wxImageHandler_SetMimeType(IntPtr self, string type);
-		static extern (C) IntPtr wxImageHandler_GetName(IntPtr self);
-		static extern (C) IntPtr wxImageHandler_GetExtension(IntPtr self);
-		static extern (C) uint   wxImageHandler_GetType(IntPtr self);
-		static extern (C) IntPtr wxImageHandler_GetMimeType(IntPtr self);
+		static extern (C) проц   wxImageHandler_SetName(ЦУк сам, ткст имя);
+		static extern (C) проц   wxImageHandler_SetExtension(ЦУк сам, ткст ext);
+		static extern (C) проц   wxImageHandler_SetType(ЦУк сам, бцел тип);
+		static extern (C) проц   wxImageHandler_SetMimeType(ЦУк сам, ткст тип);
+		static extern (C) ЦУк wxImageHandler_GetName(ЦУк сам);
+		static extern (C) ЦУк wxImageHandler_GetExtension(ЦУк сам);
+		static extern (C) бцел   wxImageHandler_GetType(ЦУк сам);
+		static extern (C) ЦУк wxImageHandler_GetMimeType(ЦУк сам);
 		//! \endcond
 		
 		//---------------------------------------------------------------------
@@ -630,39 +630,39 @@ public import wx.Colour;
 	alias ImageHandler wxImageHandler;
 	public class ImageHandler : wxObject
 	{
-		public this(IntPtr wxobj)
-			{ super(wxobj);}
+		public this(ЦУк шхобъ)
+			{ super(шхобъ);}
 		
 		//---------------------------------------------------------------------
 		
-		public string Name() { return cast(string) new wxString(wxImageHandler_GetName(wxobj), true); }
-		public void Name(string value) { wxImageHandler_SetName(wxobj, value); }
+		public ткст Имя() { return cast(ткст) new wxString(wxImageHandler_GetName(шхобъ), да); }
+		public проц Имя(ткст значение) { wxImageHandler_SetName(шхобъ, значение); }
 		
 		//---------------------------------------------------------------------
 		
-		public string Extension() { return cast(string) new wxString(wxImageHandler_GetExtension(wxobj), true); }
-		public void Extension(string value) { wxImageHandler_SetExtension(wxobj, value); }
+		public ткст Extension() { return cast(ткст) new wxString(wxImageHandler_GetExtension(шхобъ), да); }
+		public проц Extension(ткст значение) { wxImageHandler_SetExtension(шхобъ, значение); }
 		
 		//---------------------------------------------------------------------
 		
-		public int Type() { return cast(int)wxImageHandler_GetType(wxobj); }
-		public void Type(int value) { wxImageHandler_SetType(wxobj, cast(uint)value); }
+		public цел Тип() { return cast(цел)wxImageHandler_GetType(шхобъ); }
+		public проц Тип(цел значение) { wxImageHandler_SetType(шхобъ, cast(бцел)значение); }
 		
 		//---------------------------------------------------------------------
 		
-		public string MimeType() { return cast(string) new wxString(wxImageHandler_GetMimeType(wxobj), true); }
-		public void MimeType(string value) { wxImageHandler_SetMimeType(wxobj, value); }
+		public ткст MimeType() { return cast(ткст) new wxString(wxImageHandler_GetMimeType(шхобъ), да); }
+		public проц MimeType(ткст значение) { wxImageHandler_SetMimeType(шхобъ, значение); }
 	}
 	
 	//---------------------------------------------------------------------
 	
 		//! \cond EXTERN
-		static extern (C) IntPtr wxImageHistogramEntry_ctor();
-		static extern (C) void   wxImageHistogramEntry_dtor(IntPtr self);
-		static extern (C) uint  wxImageHistogramEntry_index(IntPtr self);
-		static extern (C) void   wxImageHistogramEntry_Setindex(IntPtr self, uint v);
-		static extern (C) uint  wxImageHistogramEntry_value(IntPtr self);
-		static extern (C) void   wxImageHistogramEntry_Setvalue(IntPtr self, uint v);
+		static extern (C) ЦУк wxImageHistogramEntry_ctor();
+		static extern (C) проц   wxImageHistogramEntry_dtor(ЦУк сам);
+		static extern (C) бцел  wxImageHistogramEntry_index(ЦУк сам);
+		static extern (C) проц   wxImageHistogramEntry_Setindex(ЦУк сам, бцел v);
+		static extern (C) бцел  wxImageHistogramEntry_value(ЦУк сам);
+		static extern (C) проц   wxImageHistogramEntry_Setvalue(ЦУк сам, бцел v);
 		//! \endcond
 		
 		//---------------------------------------------------------------------
@@ -670,81 +670,81 @@ public import wx.Colour;
 	alias ImageHistogramEntry wxImageHistogramEntry;
 	public class ImageHistogramEntry : wxObject
 	{
-		public this(IntPtr wxobj)
+		public this(ЦУк шхобъ)
 		{
-			super(wxobj);
+			super(шхобъ);
 		}
 		
-		private this(IntPtr wxobj, bool memOwn)
+		private this(ЦУк шхобъ, бул memOwn)
 		{ 
-			super(wxobj);
+			super(шхобъ);
 			this.memOwn = memOwn;
 		}
 			
 		public this()
-			{ this(wxImageHistogramEntry_ctor(), true);}
+			{ this(wxImageHistogramEntry_ctor(), да);}
 			
 		//---------------------------------------------------------------------
 				
-		override protected void dtor() { wxImageHistogramEntry_dtor(wxobj); }
+		override protected проц dtor() { wxImageHistogramEntry_dtor(шхобъ); }
 		
 		//---------------------------------------------------------------------
 		
-		public uint index() { return wxImageHistogramEntry_index(wxobj); }
-		public void index(uint value) { wxImageHistogramEntry_Setindex(wxobj, value); }
+		public бцел индекс() { return wxImageHistogramEntry_index(шхобъ); }
+		public проц индекс(бцел значение) { wxImageHistogramEntry_Setindex(шхобъ, значение); }
 		
 		//---------------------------------------------------------------------
 		
-		public uint value() { return wxImageHistogramEntry_value(wxobj); }
-		public void value(uint value) { wxImageHistogramEntry_Setvalue(wxobj, value); }
+		public бцел значение() { return wxImageHistogramEntry_value(шхобъ); }
+		public проц значение(бцел значение) { wxImageHistogramEntry_Setvalue(шхобъ, значение); }
 	}
 	
 	//---------------------------------------------------------------------
 	
 		//! \cond EXTERN
-		static extern (C) IntPtr wxImageHistogram_ctor();	
-		static extern (C) void   wxImageHistogram_dtor(IntPtr self);
-		static extern (C) uint  wxImageHistogram_MakeKey(ubyte r, ubyte g, ubyte b);
-		static extern (C) bool   wxImageHistogram_FindFirstUnusedColour(IntPtr self, inout ubyte r, inout ubyte g, inout ubyte b, ubyte startR, ubyte startG, ubyte startB);
+		static extern (C) ЦУк wxImageHistogram_ctor();	
+		static extern (C) проц   wxImageHistogram_dtor(ЦУк сам);
+		static extern (C) бцел  wxImageHistogram_MakeKey(ббайт к, ббайт з, ббайт с);
+		static extern (C) бул   wxImageHistogram_FindFirstUnusedColour(ЦУк сам, inout ббайт к, inout ббайт з, inout ббайт с, ббайт startR, ббайт startG, ббайт startB);
 		//! \endcond
 				
 		//---------------------------------------------------------------------
 		
-	alias ImageHistogram wxImageHistogram;
-	public class ImageHistogram : wxObject
+	alias ГистограммаРисунка wxImageHistogram;
+	public class ГистограммаРисунка : wxObject
 	{
-		public this(IntPtr wxobj)
-			{ super(wxobj);}
+		public this(ЦУк шхобъ)
+			{ super(шхобъ);}
 			
 		public this()
 			{ this(wxImageHistogram_ctor());}
 		
 		//---------------------------------------------------------------------
 		
-		public static uint MakeKey(ubyte r, ubyte g, ubyte b)
+		public static бцел MakeKey(ббайт к, ббайт з, ббайт с)
 		{
-			return wxImageHistogram_MakeKey(r, g, b);
+			return wxImageHistogram_MakeKey(к, з, с);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public bool FindFirstUnusedColour(inout ubyte r, inout ubyte g, inout ubyte b)
+		public бул НайдиПервНеиспЦвет(inout ббайт к, inout ббайт з, inout ббайт с)
 		{
-			return FindFirstUnusedColour(r, g, b, 1, 0, 0);
+			return НайдиПервНеиспЦвет(к, з, с, 1, 0, 0);
 		}
 		
-		public bool FindFirstUnusedColour(inout ubyte r, inout ubyte g, inout ubyte b, ubyte startR)
+		public бул НайдиПервНеиспЦвет(inout ббайт к, inout ббайт з, inout ббайт с, ббайт startR)
 		{
-			return FindFirstUnusedColour(r, g, b, startR, 0, 0);
+			return НайдиПервНеиспЦвет(к, з, с, startR, 0, 0);
 		}
 		
-		public bool FindFirstUnusedColour(inout ubyte r, inout ubyte g, inout ubyte b, ubyte startR, ubyte startG)
+		public бул НайдиПервНеиспЦвет(inout ббайт к, inout ббайт з, inout ббайт с, ббайт startR, ббайт startG)
 		{
-			return FindFirstUnusedColour(r, g, b, startR, startG, 0);
+			return НайдиПервНеиспЦвет(к, з, с, startR, startG, 0);
 		}
 		
-		public bool FindFirstUnusedColour(inout ubyte r, inout ubyte g, inout ubyte b, ubyte startR, ubyte startG, ubyte startB)
+		public бул НайдиПервНеиспЦвет(inout ббайт к, inout ббайт з, inout ббайт с, ббайт startR, ббайт startG, ббайт startB)
 		{
-			return wxImageHistogram_FindFirstUnusedColour(wxobj, r, g, b, startR, startG, startB);
+			return wxImageHistogram_FindFirstUnusedColour(шхобъ, к, з, с, startR, startG, startB);
 		}
 	}

@@ -1,63 +1,63 @@
-/// The wxArrayString wrapper class
+﻿/// The wxArrayString wrapper class
 module wx.ArrayString;
 public import wx.common;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxArrayString_ctor();
-		static extern (C) void   wxArrayString_dtor(IntPtr self);
-		static extern (C) void   wxArrayString_RegisterDisposable(IntPtr self, Virtual_Dispose onDispose);
-		static extern (C) void   wxArrayString_Add(IntPtr self, string toadd);
-		static extern (C) IntPtr wxArrayString_Item(IntPtr self, int num);
-		static extern (C) int    wxArrayString_GetCount(IntPtr self);
+		static extern (C) ЦУк wxArrayString_ctor();
+		static extern (C) проц   wxArrayString_dtor(ЦУк сам);
+		static extern (C) проц   wxArrayString_RegisterDisposable(ЦУк сам, Virtual_Dispose onDispose);
+		static extern (C) проц   wxArrayString_Add(ЦУк сам, ткст добавка);
+		static extern (C) ЦУк wxArrayString_Item(ЦУк сам, цел num);
+		static extern (C) цел    wxArrayString_GetCount(ЦУк сам);
 		//! \endcond
 		
-	alias ArrayString wxArrayString;
-	public class ArrayString : wxObject
+	alias МасТкст wxArrayString;
+	public class МасТкст : wxObject
 	{
 		//---------------------------------------------------------------------
 
-		public this(IntPtr wxobj)
+		public this(ЦУк шхобъ)
 		{
-			super(wxobj);
+			super(шхобъ);
 		}
 			
-		public this(IntPtr wxobj, bool memOwn)
+		public this(ЦУк шхобъ, бул memOwn)
 		{
-			super(wxobj);
+			super(шхобъ);
 			this.memOwn = memOwn;
 		}
 
 		public this()
 		{
-			this(wxArrayString_ctor(), true);
-			wxArrayString_RegisterDisposable(wxobj, &VirtualDispose);
+			this(wxArrayString_ctor(), да);
+			wxArrayString_RegisterDisposable(шхобъ, &VirtualDispose);
 		}
 		
 		//---------------------------------------------------------------------
 
-		public string[] toArray()
+		public ткст[] вМассив()
 		{
-			int count = this.Count;
-			string[] tmps = new string[count];
-			for (int i = 0; i < count; i++)
-				tmps[i] = this.Item(i);
+			цел счёт = this.Счёт;
+			ткст[] tmps = new ткст[счёт];
+			for (цел i = 0; i < счёт; i++)
+				tmps[i] = this.Элемент(i);
 			return tmps;
 		}
 	
-		public string Item(int num)
+		public ткст Элемент(цел num)
 		{
-			return cast(string) new wxString(wxArrayString_Item(wxobj, num), true);
+			return cast(ткст) new wxString(wxArrayString_Item(шхобъ, num), да);
 		}	
 	
-		public void Add(string toadd)
+		public проц Добавь(ткст добавка)
 		{
-			wxArrayString_Add(wxobj, toadd);
+			wxArrayString_Add(шхобъ, добавка);
 		}
 
-		public int Count() { return wxArrayString_GetCount(wxobj); }
+		public цел Счёт() { return wxArrayString_GetCount(шхобъ); }
         
 		//---------------------------------------------------------------------
 
-		override protected void dtor() { wxArrayString_dtor(wxobj); }
+		override protected проц dtor() { wxArrayString_dtor(шхобъ); }
 	}
 	

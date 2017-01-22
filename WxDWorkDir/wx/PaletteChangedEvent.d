@@ -10,7 +10,7 @@
 // (C) 2004 by Alexander Olk
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: PaletteChangedEvent.d,v 1.9 2006/11/17 15:21:00 afb Exp $
+// $Ид: PaletteChangedEvent.d,v 1.9 2006/11/17 15:21:00 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.PaletteChangedEvent;
@@ -21,31 +21,31 @@ public import wx.Event;
 public import wx.Window;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxPaletteChangedEvent_ctor(int winid);
-		static extern (C) void wxPaletteChangedEvent_SetChangedWindow(IntPtr self, IntPtr win);
-		static extern (C) IntPtr wxPaletteChangedEvent_GetChangedWindow(IntPtr self);
+		static extern (C) ЦУк wxPaletteChangedEvent_ctor(цел winid);
+		static extern (C) проц wxPaletteChangedEvent_SetChangedWindow(ЦУк сам, ЦУк окн);
+		static extern (C) ЦУк wxPaletteChangedEvent_GetChangedWindow(ЦУк сам);
 		//! \endcond
 		
 		//-----------------------------------------------------------------------------
 
 	alias PaletteChangedEvent wxPaletteChangedEvent;
-	public class PaletteChangedEvent : Event
+	public class PaletteChangedEvent : Событие
 	{
-		public this(IntPtr wxobj) 
-			{ super(wxobj); }
+		public this(ЦУк шхобъ) 
+			{ super(шхобъ); }
 
-		public this(int winid=0)
+		public this(цел winid=0)
 			{ this(wxPaletteChangedEvent_ctor(winid)); }
 
 		//-----------------------------------------------------------------------------	
 		
-		public Window ChangedWindow() { return cast(Window)FindObject(wxPaletteChangedEvent_GetChangedWindow(wxobj), &Window.New); }
-		public void ChangedWindow(Window value) { wxPaletteChangedEvent_SetChangedWindow(wxobj, wxObject.SafePtr(value)); }
+		public Окно ChangedWindow() { return cast(Окно)FindObject(wxPaletteChangedEvent_GetChangedWindow(шхобъ), &Окно.Нов); }
+		public проц ChangedWindow(Окно значение) { wxPaletteChangedEvent_SetChangedWindow(шхобъ, wxObject.SafePtr(значение)); }
 
-		private static Event New(IntPtr obj) { return new PaletteChangedEvent(obj); }
+		private static Событие Нов(ЦУк объ) { return new PaletteChangedEvent(объ); }
 
 		static this()
 		{
-			AddEventType(wxEVT_PALETTE_CHANGED,			&PaletteChangedEvent.New);
+			ДобавьТипСоб(wxEVT_PALETTE_CHANGED,			&PaletteChangedEvent.Нов);
 		}
 	}

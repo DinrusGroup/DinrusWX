@@ -6,7 +6,7 @@
 //
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: aui.d,v 1.1 2006/11/17 15:21:02 afb Exp $
+// $Ид: aui.d,v 1.1 2006/11/17 15:21:02 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.aui.aui;

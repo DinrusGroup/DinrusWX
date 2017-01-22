@@ -10,7 +10,7 @@
 // (C) 2003 379, Inc.
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: WizardPageSimple.d,v 1.9 2006/11/17 15:21:01 afb Exp $
+// $Ид: WizardPageSimple.d,v 1.9 2006/11/17 15:21:01 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.WizardPageSimple;
@@ -18,8 +18,8 @@ public import wx.WizardPage;
 public import wx.Wizard;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxWizardPageSimple_ctor(IntPtr parent, IntPtr prev, IntPtr next, IntPtr bitmap, string resource);
-		static extern (C) void   wxWizardPageSimple_Chain(IntPtr first, IntPtr second);
+		static extern (C) ЦУк wxWizardPageSimple_ctor(ЦУк родитель, ЦУк prev, ЦУк next, ЦУк битмап, ткст resource);
+		static extern (C) проц   wxWizardPageSimple_Chain(ЦУк first, ЦУк second);
 		//! \endcond
 
 		//---------------------------------------------------------------------
@@ -27,21 +27,21 @@ public import wx.Wizard;
 	alias WizardPageSimple wxWizardPageSimple;
 	public class WizardPageSimple : WizardPage
 	{
-		public this(Wizard parent, WizardPage prev = null, WizardPage next = null, Bitmap bitmap = Bitmap.wxNullBitmap, string resource = null)
+		public this(Wizard родитель, WizardPage prev = пусто, WizardPage next = пусто, Битмап битмап = Битмап.wxNullBitmap, ткст resource = пусто)
 		{
-			super(wxWizardPageSimple_ctor(wxObject.SafePtr(parent),
+			super(wxWizardPageSimple_ctor(wxObject.SafePtr(родитель),
 						wxObject.SafePtr(prev),wxObject.SafePtr(next),
-						wxObject.SafePtr(bitmap),resource));
+						wxObject.SafePtr(битмап),resource));
 		}
 
-		public this(IntPtr wxobj) 
+		public this(ЦУк шхобъ) 
 		{
-			super(wxobj);
+			super(шхобъ);
 		}
 
 		//---------------------------------------------------------------------
 
-		public static void Chain(WizardPageSimple first, WizardPageSimple second)
+		public static проц Chain(WizardPageSimple first, WizardPageSimple second)
 		{
 			wxWizardPageSimple_Chain(wxObject.SafePtr(first), wxObject.SafePtr(second));
 		}

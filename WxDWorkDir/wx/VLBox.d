@@ -10,7 +10,7 @@
 // (C) 2004 by Alexander Olk
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: VLBox.d,v 1.10 2007/11/27 08:19:20 afb Exp $
+// $Ид: VLBox.d,v 1.10 2007/11/27 08:19:20 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.VLBox;
@@ -19,58 +19,58 @@ public import wx.VScroll;
 /+
 		//! \cond EXTERN
 		extern (C) {
-		alias int function(VListBox obj, int n) Virtual_IntInt;
-		alias void function(VListBox obj, IntPtr dc, Rectangle rect, int n) Virtual_VoidDcRectSizeT;
+		alias цел function(VListBox объ, цел n) Virtual_IntInt;
+		alias проц function(VListBox объ, ЦУк dc, Прямоугольник прям, цел n) Virtual_VoidDcRectSizeT;
 		}
 
-		static extern (C) IntPtr wxVListBox_ctor(IntPtr parent, int id, inout Point pos, inout Size size, uint style, string name);
-		static extern (C) void wxVListBox_RegisterVirtual(IntPtr self, VListBox obj, 
+		static extern (C) ЦУк wxVListBox_ctor(ЦУк родитель, цел ид, inout Точка поз, inout Размер size, бцел стиль, ткст имя);
+		static extern (C) проц wxVListBox_RegisterVirtual(ЦУк сам, VListBox объ, 
 			Virtual_VoidDcRectSizeT onDrawItem, 
 			Virtual_IntInt onMeasureItem, 
 			Virtual_VoidDcRectSizeT onDrawSeparator,
 			Virtual_VoidDcRectSizeT onDrawBackground,
 			Virtual_IntInt onGetLineHeight);
-		static extern (C) bool wxVListBox_Create(IntPtr self,IntPtr parent, int id, inout Point pos, inout Size size, int style, string name);		
-		static extern (C) void wxVListBox_OnDrawSeparator(IntPtr self, IntPtr dc, inout Rectangle rect, int n);
-		static extern (C) void wxVListBox_OnDrawBackground(IntPtr self, IntPtr dc, inout Rectangle rect, int n);
-		static extern (C) int wxVListBox_OnGetLineHeight(IntPtr self, int line);
-		static extern (C) int wxVListBox_GetItemCount(IntPtr self);
-		static extern (C) bool wxVListBox_HasMultipleSelection(IntPtr self);
-		static extern (C) int wxVListBox_GetSelection(IntPtr self);
-		static extern (C) bool wxVListBox_IsCurrent(IntPtr self, int item);
-		static extern (C) bool wxVListBox_IsSelected(IntPtr self, int item);
-		static extern (C) int wxVListBox_GetSelectedCount(IntPtr self);
-		static extern (C) int wxVListBox_GetFirstSelected(IntPtr self, out uint cookie);
-		static extern (C) int wxVListBox_GetNextSelected(IntPtr self, inout uint cookie);
-		static extern (C) void wxVListBox_GetMargins(IntPtr self, out Point pt);
-		static extern (C) IntPtr wxVListBox_GetSelectionBackground(IntPtr self);
-		static extern (C) void wxVListBox_SetItemCount(IntPtr self, int count);
-		static extern (C) void wxVListBox_Clear(IntPtr self);
-		static extern (C) void wxVListBox_SetSelection(IntPtr self, int selection);
-		static extern (C) bool wxVListBox_Select(IntPtr self, int item, bool select);
-		static extern (C) bool wxVListBox_SelectRange(IntPtr self, int from, int to);
-		static extern (C) void wxVListBox_Toggle(IntPtr self, int item);
-		static extern (C) bool wxVListBox_SelectAll(IntPtr self);
-		static extern (C) bool wxVListBox_DeselectAll(IntPtr self);
-		static extern (C) void wxVListBox_SetMargins(IntPtr self, inout Point pt);
-		static extern (C) void wxVListBox_SetMargins2(IntPtr self, int x, int y);
-		static extern (C) void wxVListBox_SetSelectionBackground(IntPtr self, IntPtr col);
+		static extern (C) бул wxVListBox_Create(ЦУк сам,ЦУк родитель, цел ид, inout Точка поз, inout Размер size, цел стиль, ткст имя);		
+		static extern (C) проц wxVListBox_OnDrawSeparator(ЦУк сам, ЦУк dc, inout Прямоугольник прям, цел n);
+		static extern (C) проц wxVListBox_OnDrawBackground(ЦУк сам, ЦУк dc, inout Прямоугольник прям, цел n);
+		static extern (C) цел wxVListBox_OnGetLineHeight(ЦУк сам, цел line);
+		static extern (C) цел wxVListBox_GetItemCount(ЦУк сам);
+		static extern (C) бул wxVListBox_HasMultipleSelection(ЦУк сам);
+		static extern (C) цел wxVListBox_GetSelection(ЦУк сам);
+		static extern (C) бул wxVListBox_IsCurrent(ЦУк сам, цел элемент);
+		static extern (C) бул wxVListBox_IsSelected(ЦУк сам, цел элемент);
+		static extern (C) цел wxVListBox_GetSelectedCount(ЦУк сам);
+		static extern (C) цел wxVListBox_GetFirstSelected(ЦУк сам, out бцел cookie);
+		static extern (C) цел wxVListBox_GetNextSelected(ЦУк сам, inout бцел cookie);
+		static extern (C) проц wxVListBox_GetMargins(ЦУк сам, out Точка pt);
+		static extern (C) ЦУк wxVListBox_GetSelectionBackground(ЦУк сам);
+		static extern (C) проц wxVListBox_SetItemCount(ЦУк сам, цел счёт);
+		static extern (C) проц wxVListBox_Clear(ЦУк сам);
+		static extern (C) проц wxVListBox_SetSelection(ЦУк сам, цел selection);
+		static extern (C) бул wxVListBox_Select(ЦУк сам, цел элемент, бул select);
+		static extern (C) бул wxVListBox_SelectRange(ЦУк сам, цел from, цел to);
+		static extern (C) проц wxVListBox_Toggle(ЦУк сам, цел элемент);
+		static extern (C) бул wxVListBox_SelectAll(ЦУк сам);
+		static extern (C) бул wxVListBox_DeselectAll(ЦУк сам);
+		static extern (C) проц wxVListBox_SetMargins(ЦУк сам, inout Точка pt);
+		static extern (C) проц wxVListBox_SetMargins2(ЦУк сам, цел x, цел y);
+		static extern (C) проц wxVListBox_SetSelectionBackground(ЦУк сам, ЦУк col);
 		//! \endcond
 		
 	public abstract class VListBox : VScrolledWindow
 	{
-		const string wxVListBoxNameStr = "wxVListBox";
+		const ткст wxVListBoxNameStr = "wxVListBox";
 	
-		public this(IntPtr wxobj)
-			{ super(wxobj);}
+		public this(ЦУк шхобъ)
+			{ super(шхобъ);}
 			
 		public this()
-			{ this(null, Window.UniqueID, wxDefaultPosition, wxDefaultSize, 0, "");}
+			{ this(пусто, Окно.UniqueID, wxDefaultPosition, wxDefaultSize, 0, "");}
 			
-		public this(Window parent, int id /*= wxID_ANY*/, Point pos = wxDefaultPosition, Size size = wxDefaultSize, int style = 0, string name = wxVListBoxNameStr)
+		public this(Окно родитель, цел ид /*= wxID_ANY*/, Точка поз = wxDefaultPosition, Размер size = wxDefaultSize, цел стиль = 0, ткст имя = wxVListBoxNameStr)
 		{
-			this(wxVListBox_ctor(wxObject.SafePtr(parent), id, pos, size, style, name));
-			wxVListBox_RegisterVirtual(wxobj, this,
+			this(wxVListBox_ctor(wxObject.SafePtr(родитель), ид, поз, size, стиль, имя));
+			wxVListBox_RegisterVirtual(шхобъ, this,
 				&staticDoOnDrawItem,
 				&staticOnMeasureItem,
 				&staticDoOnDrawSeparator,
@@ -79,183 +79,183 @@ public import wx.VScroll;
 		}
 		
 		//---------------------------------------------------------------------
-		// ctors with self created id
+		// ctors with сам created ид
 		
-		public this(Window parent, Point pos = wxDefaultPosition, Size size = wxDefaultSize, int style = 0, string name = wxVListBoxNameStr)
-			{ this(parent, Window.UniqueID, pos, size, style, name);}
-		
-		//-----------------------------------------------------------------------------
-		
-		public override bool Create(Window parent, int id, inout Point pos, inout Size size, int style, string name)
-		{
-			return wxVListBox_Create(wxobj, wxObject.SafePtr(parent), id, pos, size, style, name); 
-		}
+		public this(Окно родитель, Точка поз = wxDefaultPosition, Размер size = wxDefaultSize, цел стиль = 0, ткст имя = wxVListBoxNameStr)
+			{ this(родитель, Окно.UniqueID, поз, size, стиль, имя);}
 		
 		//-----------------------------------------------------------------------------
 		
-		protected abstract void OnDrawItem(DC dc, Rectangle rect, int n);
-		
-		static extern(C) private void staticDoOnDrawItem(VListBox obj, IntPtr dc, Rectangle rect, int n)
+		public override бул Create(Окно родитель, цел ид, inout Точка поз, inout Размер size, цел стиль, ткст имя)
 		{
-			obj.OnDrawItem(cast(DC)FindObject(dc, &DC.New), rect, n);
+			return wxVListBox_Create(шхобъ, wxObject.SafePtr(родитель), ид, поз, size, стиль, имя); 
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		protected abstract int OnMeasureItem(int n);
+		protected abstract проц OnDrawItem(DC dc, Прямоугольник прям, цел n);
 		
-		static extern(C) private int staticOnMeasureItem(VListBox obj, int n)
+		static extern(C) private проц staticDoOnDrawItem(VListBox объ, ЦУк dc, Прямоугольник прям, цел n)
 		{
-			return obj.OnMeasureItem(n);
-		}
-
-		//-----------------------------------------------------------------------------
-		
-		protected /+virtual+/ void OnDrawSeparator(DC dc, Rectangle rect, int n)
-		{
-			wxVListBox_OnDrawSeparator(wxobj, wxObject.SafePtr(dc), rect, n);
-		}
-		
-		static extern(C) private void staticDoOnDrawSeparator(VListBox obj, IntPtr dc, Rectangle rect, int n)
-		{
-			obj.OnDrawSeparator(cast(DC)FindObject(dc, &DC.New), rect, n);
+			объ.OnDrawItem(cast(DC)FindObject(dc, &DC.Нов), прям, n);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		protected /+virtual+/ void OnDrawBackground(DC dc, Rectangle rect, int n)
-		{
-			wxVListBox_OnDrawBackground(wxobj, wxObject.SafePtr(dc), rect, n);
-		}
+		protected abstract цел OnMeasureItem(цел n);
 		
-		static extern(C) private void staticDoOnDrawBackground(VListBox obj, IntPtr dc, Rectangle rect, int n)
+		static extern(C) private цел staticOnMeasureItem(VListBox объ, цел n)
 		{
-			obj.OnDrawBackground(cast(DC)FindObject(dc, &DC.New), rect, n);
-		}
-		
-		//-----------------------------------------------------------------------------
-		
-		protected override int OnGetLineHeight(int line)
-		{
-			return wxVListBox_OnGetLineHeight(wxobj, line);
-		}
-		
-		static extern(C) private override int staticOnGetLineHeight(VListBox obj, int line)
-		{
-			return obj.OnGetLineHeight(line);
+			return объ.OnMeasureItem(n);
 		}
 
 		//-----------------------------------------------------------------------------
 		
-		public int ItemCount() { return wxVListBox_GetItemCount(wxobj); }
-		public void ItemCount(int value) { wxVListBox_SetItemCount(wxobj, value); }
-		
-		//-----------------------------------------------------------------------------
-		
-		public bool HasMultipleSelection() { return wxVListBox_HasMultipleSelection(wxobj); }
-		
-		//-----------------------------------------------------------------------------
-		
-		public int Selection() { return wxVListBox_GetSelection(wxobj); }
-		public void Selection(int value) { wxVListBox_SetSelection(wxobj, value); }
-		
-		//-----------------------------------------------------------------------------
-		
-		public bool IsCurrent(int item)
+		protected /+virtual+/ проц OnDrawSeparator(DC dc, Прямоугольник прям, цел n)
 		{
-			return wxVListBox_IsCurrent(wxobj, item);
+			wxVListBox_OnDrawSeparator(шхобъ, wxObject.SafePtr(dc), прям, n);
+		}
+		
+		static extern(C) private проц staticDoOnDrawSeparator(VListBox объ, ЦУк dc, Прямоугольник прям, цел n)
+		{
+			объ.OnDrawSeparator(cast(DC)FindObject(dc, &DC.Нов), прям, n);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public bool IsSelected(int item)
+		protected /+virtual+/ проц OnDrawBackground(DC dc, Прямоугольник прям, цел n)
 		{
-			return wxVListBox_IsSelected(wxobj, item);
+			wxVListBox_OnDrawBackground(шхобъ, wxObject.SafePtr(dc), прям, n);
+		}
+		
+		static extern(C) private проц staticDoOnDrawBackground(VListBox объ, ЦУк dc, Прямоугольник прям, цел n)
+		{
+			объ.OnDrawBackground(cast(DC)FindObject(dc, &DC.Нов), прям, n);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public int SelectedCount() { return wxVListBox_GetSelectedCount(wxobj); }
+		protected override цел OnGetLineHeight(цел line)
+		{
+			return wxVListBox_OnGetLineHeight(шхобъ, line);
+		}
+		
+		static extern(C) private override цел staticOnGetLineHeight(VListBox объ, цел line)
+		{
+			return объ.OnGetLineHeight(line);
+		}
+
+		//-----------------------------------------------------------------------------
+		
+		public цел ItemCount() { return wxVListBox_GetItemCount(шхобъ); }
+		public проц ItemCount(цел значение) { wxVListBox_SetItemCount(шхобъ, значение); }
 		
 		//-----------------------------------------------------------------------------
 		
-		public int GetFirstSelected(out uint cookie)
+		public бул HasMultipleSelection() { return wxVListBox_HasMultipleSelection(шхобъ); }
+		
+		//-----------------------------------------------------------------------------
+		
+		public цел Selection() { return wxVListBox_GetSelection(шхобъ); }
+		public проц Selection(цел значение) { wxVListBox_SetSelection(шхобъ, значение); }
+		
+		//-----------------------------------------------------------------------------
+		
+		public бул IsCurrent(цел элемент)
 		{
-			return wxVListBox_GetFirstSelected(wxobj, cookie);
+			return wxVListBox_IsCurrent(шхобъ, элемент);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public int GetNextSelected(inout uint cookie)
+		public бул IsSelected(цел элемент)
 		{
-			return wxVListBox_GetNextSelected(wxobj, cookie);
+			return wxVListBox_IsSelected(шхобъ, элемент);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public Point Margins() { 
-				Point pt;
-				wxVListBox_GetMargins(wxobj, pt);
+		public цел SelectedCount() { return wxVListBox_GetSelectedCount(шхобъ); }
+		
+		//-----------------------------------------------------------------------------
+		
+		public цел GetFirstSelected(out бцел cookie)
+		{
+			return wxVListBox_GetFirstSelected(шхобъ, cookie);
+		}
+		
+		//-----------------------------------------------------------------------------
+		
+		public цел GetNextSelected(inout бцел cookie)
+		{
+			return wxVListBox_GetNextSelected(шхобъ, cookie);
+		}
+		
+		//-----------------------------------------------------------------------------
+		
+		public Точка Margins() { 
+				Точка pt;
+				wxVListBox_GetMargins(шхобъ, pt);
 				return pt;
 			}
 			
-		public void Margins(Point value) { wxVListBox_SetMargins(wxobj, value); }
+		public проц Margins(Точка значение) { wxVListBox_SetMargins(шхобъ, значение); }
 		
-		public void SetMargins(int x, int y)
+		public проц SetMargins(цел x, цел y)
 		{
-			wxVListBox_SetMargins2(wxobj, x, y);
+			wxVListBox_SetMargins2(шхобъ, x, y);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public Colour SelectionBackground() { return new Colour(wxVListBox_GetSelectionBackground(wxobj), true); }
-		public void SelectionBackground(Colour value) { wxVListBox_SetSelectionBackground(wxobj, wxObject.SafePtr(value)); }
+		public Цвет SelectionBackground() { return new Цвет(wxVListBox_GetSelectionBackground(шхобъ), да); }
+		public проц SelectionBackground(Цвет значение) { wxVListBox_SetSelectionBackground(шхобъ, wxObject.SafePtr(значение)); }
 		
 		//-----------------------------------------------------------------------------
 		
-		public void Clear()
+		public проц Очисть()
 		{
-			wxVListBox_Clear(wxobj);
+			wxVListBox_Clear(шхобъ);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public bool Select(int item)
+		public бул Select(цел элемент)
 		{
-			return Select(item, true);
+			return Select(элемент, да);
 		}
 		
-		public bool Select(int item, bool select)
+		public бул Select(цел элемент, бул select)
 		{
-			return wxVListBox_Select(wxobj, item, select);
-		}
-		
-		//-----------------------------------------------------------------------------
-		
-		public bool SelectRange(int from, int to)
-		{
-			return wxVListBox_SelectRange(wxobj, from, to);
+			return wxVListBox_Select(шхобъ, элемент, select);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public void Toggle(int item)
+		public бул SelectRange(цел from, цел to)
 		{
-			wxVListBox_Toggle(wxobj, item);
+			return wxVListBox_SelectRange(шхобъ, from, to);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public bool SelectAll()
+		public проц Toggle(цел элемент)
 		{
-			return wxVListBox_SelectAll(wxobj);
+			wxVListBox_Toggle(шхобъ, элемент);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public bool DeselectAll()
+		public бул SelectAll()
 		{
-			return wxVListBox_DeselectAll(wxobj);
+			return wxVListBox_SelectAll(шхобъ);
+		}
+		
+		//-----------------------------------------------------------------------------
+		
+		public бул DeselectAll()
+		{
+			return wxVListBox_DeselectAll(шхобъ);
 		}
 	}
 +/

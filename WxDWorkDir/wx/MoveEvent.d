@@ -10,7 +10,7 @@
 // (C) 2004 by Alexander Olk
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: MoveEvent.d,v 1.9 2006/11/17 15:21:00 afb Exp $
+// $Ид: MoveEvent.d,v 1.9 2006/11/17 15:21:00 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.MoveEvent;
@@ -18,33 +18,33 @@ public import wx.common;
 public import wx.Event;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxMoveEvent_ctor();
-		static extern (C) IntPtr wxMoveEvent_GetPosition(IntPtr self, out Point point);
+		static extern (C) ЦУк wxMoveEvent_ctor();
+		static extern (C) ЦУк wxMoveEvent_GetPosition(ЦУк сам, out Точка point);
 		//! \endcond
 		
 		//-----------------------------------------------------------------------------
 
 	alias MoveEvent wxMoveEvent;
-	public class MoveEvent : Event
+	public class MoveEvent : Событие
 	{
-		public this(IntPtr wxobj) 
-			{ super(wxobj); }
+		public this(ЦУк шхобъ) 
+			{ super(шхобъ); }
 
 		public this()
 			{ this(wxMoveEvent_ctor()); }
 
 		//-----------------------------------------------------------------------------	
 		
-		public Point Position() {
-				Point point;
-				wxMoveEvent_GetPosition(wxobj, point);
+		public Точка Положение() {
+				Точка point;
+				wxMoveEvent_GetPosition(шхобъ, point);
 				return point;
 			}
 
-		private static Event New(IntPtr obj) { return new MoveEvent(obj); }
+		private static Событие Нов(ЦУк объ) { return new MoveEvent(объ); }
 
 		static this()
 		{
-			AddEventType(wxEVT_MOVE,                            &MoveEvent.New);
+			ДобавьТипСоб(wxEVT_MOVE,                            &MoveEvent.Нов);
 		}
 	}

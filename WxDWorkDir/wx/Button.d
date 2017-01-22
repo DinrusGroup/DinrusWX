@@ -1,8 +1,8 @@
-//-----------------------------------------------------------------------------
-// wxD - Button.d
+﻿//-----------------------------------------------------------------------------
+// wxD - Кнопка.d
 // (C) 2005 bero <berobero.sourceforge.net>
 // based on
-// wx.NET - Button.cs
+// wx.NET - Кнопка.cs
 //
 /// The wxButton wrapper class.
 //
@@ -10,7 +10,7 @@
 // (C) 2003 Bryan Bulten
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: Button.d,v 1.12 2007/11/27 08:19:20 afb Exp $
+// $Ид: Кнопка.d,v 1.12 2007/11/27 08:19:20 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.Button;
@@ -19,101 +19,101 @@ public import wx.Control;
 public import wx.Bitmap;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxButton_ctor();
-		static extern (C) bool   wxButton_Create(IntPtr self, IntPtr parent, int id, string label, inout Point pos, inout Size size, uint style, IntPtr validator, string name);
-		static extern (C) void   wxButton_SetDefault(IntPtr self);
-		static extern (C) void   wxButton_GetDefaultSize(out Size size);
+		static extern (C) ЦУк wxButton_ctor();
+		static extern (C) бул   wxButton_Create(ЦУк сам, ЦУк родитель, цел ид, ткст надпись, inout Точка поз, inout Размер size, бцел стиль, ЦУк validator, ткст имя);
+		static extern (C) проц   wxButton_SetDefault(ЦУк сам);
+		static extern (C) проц   wxButton_GetDefaultSize(out Размер size);
 		
-		//static extern (C) void wxButton_SetImageMargins(IntPtr self, int x, int y);
-		//static extern (C) void wxButton_SetImageLabel(IntPtr self, IntPtr bitmap);
+		//static extern (C) проц wxButton_SetImageMargins(ЦУк сам, цел x, цел y);
+		//static extern (C) проц wxButton_SetImageLabel(ЦУк сам, ЦУк битмап);
 		
-		//static extern (C) void wxButton_SetLabel(IntPtr self, string label);
+		//static extern (C) проц wxButton_SetLabel(ЦУк сам, ткст надпись);
 		//! \endcond
 
 		//---------------------------------------------------------------------
 
-	alias Button wxButton;
-	public class Button : Control
+	alias Кнопка wxButton;
+	public class Кнопка : Control
 	{
-		public const int wxBU_LEFT          =  0x0040;
-		public const int wxBU_TOP           =  0x0080;
-		public const int wxBU_RIGHT         =  0x0100;
-		public const int wxBU_BOTTOM        =  0x0200;
-		public const int wxBU_EXACTFIT      =  0x0001;
+		public const цел wxBU_LEFT          =  0x0040;
+		public const цел wxBU_TOP           =  0x0080;
+		public const цел wxBU_RIGHT         =  0x0100;
+		public const цел wxBU_BOTTOM        =  0x0200;
+		public const цел wxBU_EXACTFIT      =  0x0001;
 		
 		//---------------------------------------------------------------------
 		
-		public this(IntPtr wxobj) 
-			{ super(wxobj); }
+		public this(ЦУк шхобъ) 
+			{ super(шхобъ); }
 
 		public this()
 			{ this(wxButton_ctor()); }
 
-		public this(Window parent, int id, string label = "", Point pos = wxDefaultPosition, Size size = wxDefaultSize, int style = 0, Validator validator = null, string name = null)
+		public this(Окно родитель, цел ид, ткст надпись = "", Точка поз = wxDefaultPosition, Размер size = wxDefaultSize, цел стиль = 0, Validator validator = пусто, ткст имя = пусто)
 		{
 			this(wxButton_ctor());
-			if (!Create(parent, id, label, pos, size, style, validator, name))
+			if (!Create(родитель, ид, надпись, поз, size, стиль, validator, имя))
 			{
-				throw new InvalidOperationException("Failed to create Button");
+				throw new InvalidOperationException("Не удалось создать Кнопку");
 			}
 		}
 		
-		public static wxObject New(IntPtr wxobj) { return new Button(wxobj); }
+		public static wxObject Нов(ЦУк шхобъ) { return new Кнопка(шхобъ); }
 	
 		//---------------------------------------------------------------------
-		// ctors with self created id
+		// ctors with сам created ид
 		
-		public this(Window parent, string label, Point pos = wxDefaultPosition, Size size = wxDefaultSize, int style = 0, Validator validator = null, string name = null)
-			{ this(parent, Window.UniqueID, label, pos, size, style, validator, name);}
+		public this(Окно родитель, ткст надпись, Точка поз = wxDefaultPosition, Размер size = wxDefaultSize, цел стиль = 0, Validator validator = пусто, ткст имя = пусто)
+			{ this(родитель, Окно.UniqueID, надпись, поз, size, стиль, validator, имя);}
 			
 		//---------------------------------------------------------------------
 
-		public bool Create(Window parent, int id, string label, Point pos, Size size, int style, Validator validator, string name)
+		public бул Create(Окно родитель, цел ид, ткст надпись, Точка поз, Размер size, цел стиль, Validator validator, ткст имя)
 		{
-			return wxButton_Create(wxobj, wxObject.SafePtr(parent), id, label, pos, size, cast(uint)style, wxObject.SafePtr(validator), name);
+			return wxButton_Create(шхобъ, wxObject.SafePtr(родитель), ид, надпись, поз, size, cast(бцел)стиль, wxObject.SafePtr(validator), имя);
 		}
 
 		//---------------------------------------------------------------------
 
-		public void SetDefault()
+		public проц SetDefault()
 		{
-			wxButton_SetDefault(wxobj);
+			wxButton_SetDefault(шхобъ);
 		}
 
 		//---------------------------------------------------------------------
 
-		public static Size GetDefaultSize()
+		public static Размер GetDefaultSize()
 		{
-			Size size;
+			Размер size;
 			wxButton_GetDefaultSize(size);
 			return size;
 		}
 		
 		//---------------------------------------------------------------------
 	/+	
-		public /+virtual+/ void ImageLabel(Bitmap value)
+		public /+virtual+/ проц ImageLabel(Битмап значение)
 		{
-			wxButton_SetImageLabel(wxobj, wxObject.SafePtr(value));
+			wxButton_SetImageLabel(шхобъ, wxObject.SafePtr(значение));
 		}
 	+/	
 		//---------------------------------------------------------------------
 	/+	
-		public /+virtual+/ void SetImageMargins(int x, int y)
+		public /+virtual+/ проц SetImageMargins(цел x, цел y)
 		{
-			wxButton_SetImageMargins(wxobj, x, y);
+			wxButton_SetImageMargins(шхобъ, x, y);
 		}
 		+/
 		//---------------------------------------------------------------------
 		// Do we need get also ?
 	/+	
-		public override void Label(string value)
+		public override проц Label(ткст значение)
 		{
-			wxButton_SetLabel(wxobj, value);
+			wxButton_SetLabel(шхобъ, значение);
 		}
 		+/
 		//---------------------------------------------------------------------
 		
-		public void Click_Add(EventListener value) { AddCommandListener(Event.wxEVT_COMMAND_BUTTON_CLICKED, ID, value, this); }
-		public void Click_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц Click_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_COMMAND_BUTTON_CLICKED, ИД, значение, this); }
+		public проц Click_Remove(EventListener значение) { RemoveHandler(значение, this); }
 	}
 

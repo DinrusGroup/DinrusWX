@@ -7,7 +7,7 @@
 // Written by David Gileadi <gileadis@gmail.com>
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: FrameManager.d,v 1.2 2007/11/27 08:19:20 afb Exp $
+// $Ид: FrameManager.d,v 1.2 2007/11/27 08:19:20 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.aui.FrameManager;
@@ -89,131 +89,131 @@ enum wxPaneInsertLevel
 //-----------------------------------------------------------------------------
 
 //! \cond EXTERN
-static extern (C) IntPtr wxPaneInfo_ctor();
-static extern (C) void wxPaneInfo_Copy(IntPtr self, IntPtr c);
-static extern (C) bool wxPaneInfo_IsOk(IntPtr self);
-static extern (C) bool wxPaneInfo_IsFixed(IntPtr self);
-static extern (C) bool wxPaneInfo_IsResizable(IntPtr self);
-static extern (C) bool wxPaneInfo_IsShown(IntPtr self);
-static extern (C) bool wxPaneInfo_IsFloating(IntPtr self);
-static extern (C) bool wxPaneInfo_IsDocked(IntPtr self);
-static extern (C) bool wxPaneInfo_IsToolbar(IntPtr self);
-static extern (C) bool wxPaneInfo_IsTopDockable(IntPtr self);
-static extern (C) bool wxPaneInfo_IsBottomDockable(IntPtr self);
-static extern (C) bool wxPaneInfo_IsLeftDockable(IntPtr self);
-static extern (C) bool wxPaneInfo_IsRightDockable(IntPtr self);
-static extern (C) bool wxPaneInfo_IsFloatable(IntPtr self);
-static extern (C) bool wxPaneInfo_IsMovable(IntPtr self);
-static extern (C) bool wxPaneInfo_HasCaption(IntPtr self);
-static extern (C) bool wxPaneInfo_HasGripper(IntPtr self);
-static extern (C) bool wxPaneInfo_HasBorder(IntPtr self);
-static extern (C) bool wxPaneInfo_HasCloseButton(IntPtr self);
-static extern (C) bool wxPaneInfo_HasMaximizeButton(IntPtr self);
-static extern (C) bool wxPaneInfo_HasMinimizeButton(IntPtr self);
-static extern (C) bool wxPaneInfo_HasPinButton(IntPtr self);
-static extern (C) IntPtr wxPaneInfo_Window(IntPtr self, IntPtr w);
-static extern (C) IntPtr wxPaneInfo_Name(IntPtr self, char[] n);
-static extern (C) IntPtr wxPaneInfo_Caption(IntPtr self, char[] c);
-static extern (C) IntPtr wxPaneInfo_Left(IntPtr self);
-static extern (C) IntPtr wxPaneInfo_Right(IntPtr self);
-static extern (C) IntPtr wxPaneInfo_Top(IntPtr self);
-static extern (C) IntPtr wxPaneInfo_Bottom(IntPtr self);
-static extern (C) IntPtr wxPaneInfo_Center(IntPtr self);
-static extern (C) IntPtr wxPaneInfo_Centre(IntPtr self);
-static extern (C) IntPtr wxPaneInfo_Direction(IntPtr self, int direction);
-static extern (C) IntPtr wxPaneInfo_Layer(IntPtr self, int layer);
-static extern (C) IntPtr wxPaneInfo_Row(IntPtr self, int row);
-static extern (C) IntPtr wxPaneInfo_Position(IntPtr self, int pos);
-static extern (C) IntPtr wxPaneInfo_BestSize(IntPtr self, inout Size size);
-static extern (C) IntPtr wxPaneInfo_MinSize(IntPtr self, inout Size size);
-static extern (C) IntPtr wxPaneInfo_MaxSize(IntPtr self, inout Size size);
-static extern (C) IntPtr wxPaneInfo_BestSizeXY(IntPtr self, int x, int y);
-static extern (C) IntPtr wxPaneInfo_MinSizeXY(IntPtr self, int x, int y);
-static extern (C) IntPtr wxPaneInfo_MaxSizeXY(IntPtr self, int x, int y);
-static extern (C) IntPtr wxPaneInfo_FloatingPosition(IntPtr self, inout Point pos);
-static extern (C) IntPtr wxPaneInfo_FloatingPositionXY(IntPtr self, int x, int y);
-static extern (C) IntPtr wxPaneInfo_FloatingSize(IntPtr self, inout Size size);
-static extern (C) IntPtr wxPaneInfo_FloatingSizeXY(IntPtr self, int x, int y);
-static extern (C) IntPtr wxPaneInfo_Fixed(IntPtr self);
-static extern (C) IntPtr wxPaneInfo_Resizable(IntPtr self, bool resizable = true);
-static extern (C) IntPtr wxPaneInfo_Dock(IntPtr self);
-static extern (C) IntPtr wxPaneInfo_Float(IntPtr self);
-static extern (C) IntPtr wxPaneInfo_Hide(IntPtr self);
-static extern (C) IntPtr wxPaneInfo_Show(IntPtr self, bool show = true);
-static extern (C) IntPtr wxPaneInfo_CaptionVisible(IntPtr self, bool visible = true);
-static extern (C) IntPtr wxPaneInfo_PaneBorder(IntPtr self, bool visible = true);
-static extern (C) IntPtr wxPaneInfo_Gripper(IntPtr self, bool visible = true);
-static extern (C) IntPtr wxPaneInfo_CloseButton(IntPtr self, bool visible = true);
-static extern (C) IntPtr wxPaneInfo_MaximizeButton(IntPtr self, bool visible = true);
-static extern (C) IntPtr wxPaneInfo_MinimizeButton(IntPtr self, bool visible = true);
-static extern (C) IntPtr wxPaneInfo_PinButton(IntPtr self, bool visible = true);
-static extern (C) IntPtr wxPaneInfo_DestroyOnClose(IntPtr self, bool b = true);
-static extern (C) IntPtr wxPaneInfo_TopDockable(IntPtr self, bool b = true);
-static extern (C) IntPtr wxPaneInfo_BottomDockable(IntPtr self, bool b = true);
-static extern (C) IntPtr wxPaneInfo_LeftDockable(IntPtr self, bool b = true);
-static extern (C) IntPtr wxPaneInfo_RightDockable(IntPtr self, bool b = true);
-static extern (C) IntPtr wxPaneInfo_Floatable(IntPtr self, bool b = true);
-static extern (C) IntPtr wxPaneInfo_Movable(IntPtr self, bool b = true);
-static extern (C) IntPtr wxPaneInfo_Dockable(IntPtr self, bool b = true);
-static extern (C) IntPtr wxPaneInfo_DefaultPane(IntPtr self);
-static extern (C) IntPtr wxPaneInfo_CentrePane(IntPtr self);
-static extern (C) IntPtr wxPaneInfo_CenterPane(IntPtr self);
-static extern (C) IntPtr wxPaneInfo_ToolbarPane(IntPtr self);
-static extern (C) IntPtr wxPaneInfo_SetFlag(IntPtr self, uint flag, bool option_state);
-static extern (C) bool wxPaneInfo_HasFlag(IntPtr self, uint flag);
-static extern (C) char[] wxPaneInfo_GetName(IntPtr self);
-static extern (C) char[] wxPaneInfo_GetCaption(IntPtr self);
-static extern (C) IntPtr wxPaneInfo_GetWindow(IntPtr self);
-static extern (C) IntPtr wxPaneInfo_GetFrame(IntPtr self);
-static extern (C) uint wxPaneInfo_GetState(IntPtr self);
-static extern (C) int wxPaneInfo_GetDock_Direction(IntPtr self);
-static extern (C) int wxPaneInfo_GetDock_Layer(IntPtr self);
-static extern (C) int wxPaneInfo_GetDock_Row(IntPtr self);
-static extern (C) int wxPaneInfo_GetDock_Pos(IntPtr self);
-static extern (C) void wxPaneInfo_GetBest_Size(IntPtr self, out Size size);
-static extern (C) void wxPaneInfo_GetMin_Size(IntPtr self, out Size size);
-static extern (C) void wxPaneInfo_GetMax_Size(IntPtr self, out Size size);
-static extern (C) void wxPaneInfo_GetFloating_Pos(IntPtr self, out Point point);
-static extern (C) void wxPaneInfo_GetFloating_Size(IntPtr self, out Size size);
-static extern (C) int wxPaneInfo_GetDock_Proportion(IntPtr self);
-static extern (C) void wxPaneInfo_GetRect(IntPtr self, out Rectangle rect);
+static extern (C) ЦУк wxPaneInfo_ctor();
+static extern (C) проц wxPaneInfo_Copy(ЦУк сам, ЦУк c);
+static extern (C) бул wxPaneInfo_IsOk(ЦУк сам);
+static extern (C) бул wxPaneInfo_IsFixed(ЦУк сам);
+static extern (C) бул wxPaneInfo_IsResizable(ЦУк сам);
+static extern (C) бул wxPaneInfo_IsShown(ЦУк сам);
+static extern (C) бул wxPaneInfo_IsFloating(ЦУк сам);
+static extern (C) бул wxPaneInfo_IsDocked(ЦУк сам);
+static extern (C) бул wxPaneInfo_IsToolbar(ЦУк сам);
+static extern (C) бул wxPaneInfo_IsTopDockable(ЦУк сам);
+static extern (C) бул wxPaneInfo_IsBottomDockable(ЦУк сам);
+static extern (C) бул wxPaneInfo_IsLeftDockable(ЦУк сам);
+static extern (C) бул wxPaneInfo_IsRightDockable(ЦУк сам);
+static extern (C) бул wxPaneInfo_IsFloatable(ЦУк сам);
+static extern (C) бул wxPaneInfo_IsMovable(ЦУк сам);
+static extern (C) бул wxPaneInfo_HasCaption(ЦУк сам);
+static extern (C) бул wxPaneInfo_HasGripper(ЦУк сам);
+static extern (C) бул wxPaneInfo_HasBorder(ЦУк сам);
+static extern (C) бул wxPaneInfo_HasCloseButton(ЦУк сам);
+static extern (C) бул wxPaneInfo_HasMaximizeButton(ЦУк сам);
+static extern (C) бул wxPaneInfo_HasMinimizeButton(ЦУк сам);
+static extern (C) бул wxPaneInfo_HasPinButton(ЦУк сам);
+static extern (C) ЦУк wxPaneInfo_Window(ЦУк сам, ЦУк w);
+static extern (C) ЦУк wxPaneInfo_Name(ЦУк сам, сим[] n);
+static extern (C) ЦУк wxPaneInfo_Caption(ЦУк сам, сим[] c);
+static extern (C) ЦУк wxPaneInfo_Left(ЦУк сам);
+static extern (C) ЦУк wxPaneInfo_Right(ЦУк сам);
+static extern (C) ЦУк wxPaneInfo_Top(ЦУк сам);
+static extern (C) ЦУк wxPaneInfo_Bottom(ЦУк сам);
+static extern (C) ЦУк wxPaneInfo_Center(ЦУк сам);
+static extern (C) ЦУк wxPaneInfo_Centre(ЦУк сам);
+static extern (C) ЦУк wxPaneInfo_Direction(ЦУк сам, цел direction);
+static extern (C) ЦУк wxPaneInfo_Layer(ЦУк сам, цел layer);
+static extern (C) ЦУк wxPaneInfo_Row(ЦУк сам, цел row);
+static extern (C) ЦУк wxPaneInfo_Position(ЦУк сам, цел поз);
+static extern (C) ЦУк wxPaneInfo_BestSize(ЦУк сам, inout Размер size);
+static extern (C) ЦУк wxPaneInfo_MinSize(ЦУк сам, inout Размер size);
+static extern (C) ЦУк wxPaneInfo_MaxSize(ЦУк сам, inout Размер size);
+static extern (C) ЦУк wxPaneInfo_BestSizeXY(ЦУк сам, цел x, цел y);
+static extern (C) ЦУк wxPaneInfo_MinSizeXY(ЦУк сам, цел x, цел y);
+static extern (C) ЦУк wxPaneInfo_MaxSizeXY(ЦУк сам, цел x, цел y);
+static extern (C) ЦУк wxPaneInfo_FloatingPosition(ЦУк сам, inout Точка поз);
+static extern (C) ЦУк wxPaneInfo_FloatingPositionXY(ЦУк сам, цел x, цел y);
+static extern (C) ЦУк wxPaneInfo_FloatingSize(ЦУк сам, inout Размер size);
+static extern (C) ЦУк wxPaneInfo_FloatingSizeXY(ЦУк сам, цел x, цел y);
+static extern (C) ЦУк wxPaneInfo_Fixed(ЦУк сам);
+static extern (C) ЦУк wxPaneInfo_Resizable(ЦУк сам, бул resizable = да);
+static extern (C) ЦУк wxPaneInfo_Dock(ЦУк сам);
+static extern (C) ЦУк wxPaneInfo_Float(ЦУк сам);
+static extern (C) ЦУк wxPaneInfo_Hide(ЦУк сам);
+static extern (C) ЦУк wxPaneInfo_Show(ЦУк сам, бул show = да);
+static extern (C) ЦУк wxPaneInfo_CaptionVisible(ЦУк сам, бул visible = да);
+static extern (C) ЦУк wxPaneInfo_PaneBorder(ЦУк сам, бул visible = да);
+static extern (C) ЦУк wxPaneInfo_Gripper(ЦУк сам, бул visible = да);
+static extern (C) ЦУк wxPaneInfo_CloseButton(ЦУк сам, бул visible = да);
+static extern (C) ЦУк wxPaneInfo_MaximizeButton(ЦУк сам, бул visible = да);
+static extern (C) ЦУк wxPaneInfo_MinimizeButton(ЦУк сам, бул visible = да);
+static extern (C) ЦУк wxPaneInfo_PinButton(ЦУк сам, бул visible = да);
+static extern (C) ЦУк wxPaneInfo_DestroyOnClose(ЦУк сам, бул с = да);
+static extern (C) ЦУк wxPaneInfo_TopDockable(ЦУк сам, бул с = да);
+static extern (C) ЦУк wxPaneInfo_BottomDockable(ЦУк сам, бул с = да);
+static extern (C) ЦУк wxPaneInfo_LeftDockable(ЦУк сам, бул с = да);
+static extern (C) ЦУк wxPaneInfo_RightDockable(ЦУк сам, бул с = да);
+static extern (C) ЦУк wxPaneInfo_Floatable(ЦУк сам, бул с = да);
+static extern (C) ЦУк wxPaneInfo_Movable(ЦУк сам, бул с = да);
+static extern (C) ЦУк wxPaneInfo_Dockable(ЦУк сам, бул с = да);
+static extern (C) ЦУк wxPaneInfo_DefaultPane(ЦУк сам);
+static extern (C) ЦУк wxPaneInfo_CentrePane(ЦУк сам);
+static extern (C) ЦУк wxPaneInfo_CenterPane(ЦУк сам);
+static extern (C) ЦУк wxPaneInfo_ToolbarPane(ЦУк сам);
+static extern (C) ЦУк wxPaneInfo_SetFlag(ЦУк сам, бцел flag, бул option_state);
+static extern (C) бул wxPaneInfo_HasFlag(ЦУк сам, бцел flag);
+static extern (C) сим[] wxPaneInfo_GetName(ЦУк сам);
+static extern (C) сим[] wxPaneInfo_GetCaption(ЦУк сам);
+static extern (C) ЦУк wxPaneInfo_GetWindow(ЦУк сам);
+static extern (C) ЦУк wxPaneInfo_GetFrame(ЦУк сам);
+static extern (C) бцел wxPaneInfo_GetState(ЦУк сам);
+static extern (C) цел wxPaneInfo_GetDock_Direction(ЦУк сам);
+static extern (C) цел wxPaneInfo_GetDock_Layer(ЦУк сам);
+static extern (C) цел wxPaneInfo_GetDock_Row(ЦУк сам);
+static extern (C) цел wxPaneInfo_GetDock_Pos(ЦУк сам);
+static extern (C) проц wxPaneInfo_GetBest_Size(ЦУк сам, out Размер size);
+static extern (C) проц wxPaneInfo_GetMin_Size(ЦУк сам, out Размер size);
+static extern (C) проц wxPaneInfo_GetMax_Size(ЦУк сам, out Размер size);
+static extern (C) проц wxPaneInfo_GetFloating_Pos(ЦУк сам, out Точка point);
+static extern (C) проц wxPaneInfo_GetFloating_Size(ЦУк сам, out Размер size);
+static extern (C) цел wxPaneInfo_GetDock_Proportion(ЦУк сам);
+static extern (C) проц wxPaneInfo_GetRect(ЦУк сам, out Прямоугольник прям);
 //! \endcond
 
 //-----------------------------------------------------------------------------
 
 //! \cond EXTERN
-static extern (C) IntPtr wxFrameManager_ctor(IntPtr frame = null, uint flags = wxFrameManagerOption.wxAUI_MGR_DEFAULT);
-static extern (C) void wxFrameManager_dtor(IntPtr self);
-static extern (C) void wxFrameManager_UnInit(IntPtr self);
-static extern (C) void wxFrameManager_SetFlags(IntPtr self, uint flags);
-static extern (C) uint wxFrameManager_GetFlags(IntPtr self);
-static extern (C) void wxFrameManager_SetFrame(IntPtr self, IntPtr frame);
-static extern (C) IntPtr wxFrameManager_GetFrame(IntPtr self);
-static extern (C) void wxFrameManager_SetArtProvider(IntPtr self, IntPtr art_provider);
-static extern (C) IntPtr wxFrameManager_GetArtProvider(IntPtr self);
-static extern (C) IntPtr wxFrameManager_GetPaneByWindow(IntPtr self, IntPtr window);
-static extern (C) IntPtr wxFrameManager_GetPaneByName(IntPtr self, char[] name);
-static extern (C) int wxFrameManager_GetPaneCount(IntPtr self);
-static extern (C) IntPtr wxFrameManager_GetPane(IntPtr self, int index);
-static extern (C) bool wxFrameManager_AddPane(IntPtr self, IntPtr window, IntPtr pane_info);
-static extern (C) bool wxFrameManager_AddPane2(IntPtr self, IntPtr window, int direction, string caption);
-static extern (C) bool wxFrameManager_InsertPane(IntPtr self, IntPtr window, IntPtr pane_info, int insert_level = wxPaneInsertLevel.wxAUI_INSERT_PANE);
-static extern (C) bool wxFrameManager_DetachPane(IntPtr self, IntPtr window);
-static extern (C) char[] wxFrameManager_SavePerspective(IntPtr self);
-static extern (C) bool wxFrameManager_LoadPerspective(IntPtr self, char[] perspective, bool update = true);
-static extern (C) void wxFrameManager_Update(IntPtr self);
+static extern (C) ЦУк wxFrameManager_ctor(ЦУк frame = пусто, бцел флаги = wxFrameManagerOption.wxAUI_MGR_DEFAULT);
+static extern (C) проц wxFrameManager_dtor(ЦУк сам);
+static extern (C) проц wxFrameManager_UnInit(ЦУк сам);
+static extern (C) проц wxFrameManager_SetFlags(ЦУк сам, бцел флаги);
+static extern (C) бцел wxFrameManager_GetFlags(ЦУк сам);
+static extern (C) проц wxFrameManager_SetFrame(ЦУк сам, ЦУк frame);
+static extern (C) ЦУк wxFrameManager_GetFrame(ЦУк сам);
+static extern (C) проц wxFrameManager_SetArtProvider(ЦУк сам, ЦУк art_provider);
+static extern (C) ЦУк wxFrameManager_GetArtProvider(ЦУк сам);
+static extern (C) ЦУк wxFrameManager_GetPaneByWindow(ЦУк сам, ЦУк окно);
+static extern (C) ЦУк wxFrameManager_GetPaneByName(ЦУк сам, сим[] имя);
+static extern (C) цел wxFrameManager_GetPaneCount(ЦУк сам);
+static extern (C) ЦУк wxFrameManager_GetPane(ЦУк сам, цел индекс);
+static extern (C) бул wxFrameManager_AddPane(ЦУк сам, ЦУк окно, ЦУк pane_info);
+static extern (C) бул wxFrameManager_AddPane2(ЦУк сам, ЦУк окно, цел direction, ткст caption);
+static extern (C) бул wxFrameManager_InsertPane(ЦУк сам, ЦУк окно, ЦУк pane_info, цел insert_level = wxPaneInsertLevel.wxAUI_INSERT_PANE);
+static extern (C) бул wxFrameManager_DetachPane(ЦУк сам, ЦУк окно);
+static extern (C) сим[] wxFrameManager_SavePerspective(ЦУк сам);
+static extern (C) бул wxFrameManager_LoadPerspective(ЦУк сам, сим[] perspective, бул update = да);
+static extern (C) проц wxFrameManager_Update(ЦУк сам);
 
-static extern (C) EventType wxEvent_EVT_AUI_PANEBUTTON();
+static extern (C) ТипСобытия wxEvent_EVT_AUI_PANEBUTTON();
 //! \endcond
 
 //-----------------------------------------------------------------------------
 
 //! \cond EXTERN
-static extern (C) void wxFrameManagerEvent_SetPane(IntPtr self, IntPtr p);
-static extern (C) IntPtr wxFrameManagerEvent_GetPane(IntPtr self);
-static extern (C) void wxFrameManagerEvent_SetButton(IntPtr self, int b);
-static extern (C) int wxFrameManagerEvent_GetButton(IntPtr self);
-static extern (C) IntPtr wxFrameManagerEvent_Clone(IntPtr self);
+static extern (C) проц wxFrameManagerEvent_SetPane(ЦУк сам, ЦУк p);
+static extern (C) ЦУк wxFrameManagerEvent_GetPane(ЦУк сам);
+static extern (C) проц wxFrameManagerEvent_SetButton(ЦУк сам, цел с);
+static extern (C) цел wxFrameManagerEvent_GetButton(ЦУк сам);
+static extern (C) ЦУк wxFrameManagerEvent_Clone(ЦУк сам);
 //! \endcond
 
 //-----------------------------------------------------------------------------
@@ -221,9 +221,9 @@ static extern (C) IntPtr wxFrameManagerEvent_Clone(IntPtr self);
 alias PaneInfo wxPaneInfo;
 public class PaneInfo : wxObject
 {
-    public this(IntPtr wxobj)
+    public this(ЦУк шхобъ)
     {
-      super(wxobj);
+      super(шхобъ);
     }
 
     public this()
@@ -234,141 +234,141 @@ public class PaneInfo : wxObject
     public this(PaneInfo c)
     {
         this();
-        wxPaneInfo_Copy(wxobj, c.wxobj);
+        wxPaneInfo_Copy(шхобъ, c.шхобъ);
     }
 
-    public bool IsOk() { return wxPaneInfo_IsOk(wxobj); }
-    public bool IsFixed() { return wxPaneInfo_IsFixed(wxobj); }
-    public bool IsResizable() { return wxPaneInfo_IsResizable(wxobj); }
-    public bool IsShown() { return wxPaneInfo_IsShown(wxobj); }
-    public bool IsFloating() { return wxPaneInfo_IsFloating(wxobj); }
-    public bool IsDocked() { return wxPaneInfo_IsDocked(wxobj); }
-    public bool IsToolbar() { return wxPaneInfo_IsToolbar(wxobj); }
-    public bool IsTopDockable() { return wxPaneInfo_IsTopDockable(wxobj); }
-    public bool IsBottomDockable() { return wxPaneInfo_IsBottomDockable(wxobj); }
-    public bool IsLeftDockable() { return wxPaneInfo_IsLeftDockable(wxobj); }
-    public bool IsRightDockable() { return wxPaneInfo_IsRightDockable(wxobj); }
-    public bool IsFloatable() { return wxPaneInfo_IsFloatable(wxobj); }
-    public bool IsMovable() { return wxPaneInfo_IsMovable(wxobj); }
-    public bool HasCaption() { return wxPaneInfo_HasCaption(wxobj); }
-    public bool HasGripper() { return wxPaneInfo_HasGripper(wxobj); }
-    public bool HasBorder() { return wxPaneInfo_HasBorder(wxobj); }
-    public bool HasCloseButton() { return wxPaneInfo_HasCloseButton(wxobj); }
-    public bool HasMaximizeButton() { return wxPaneInfo_HasMaximizeButton(wxobj); }
-    public bool HasMinimizeButton() { return wxPaneInfo_HasMinimizeButton(wxobj); }
-    public bool HasPinButton() { return wxPaneInfo_HasPinButton(wxobj); }
+    public бул IsOk() { return wxPaneInfo_IsOk(шхобъ); }
+    public бул IsFixed() { return wxPaneInfo_IsFixed(шхобъ); }
+    public бул IsResizable() { return wxPaneInfo_IsResizable(шхобъ); }
+    public бул IsShown() { return wxPaneInfo_IsShown(шхобъ); }
+    public бул IsFloating() { return wxPaneInfo_IsFloating(шхобъ); }
+    public бул IsDocked() { return wxPaneInfo_IsDocked(шхобъ); }
+    public бул IsToolbar() { return wxPaneInfo_IsToolbar(шхобъ); }
+    public бул IsTopDockable() { return wxPaneInfo_IsTopDockable(шхобъ); }
+    public бул IsBottomDockable() { return wxPaneInfo_IsBottomDockable(шхобъ); }
+    public бул IsLeftDockable() { return wxPaneInfo_IsLeftDockable(шхобъ); }
+    public бул IsRightDockable() { return wxPaneInfo_IsRightDockable(шхобъ); }
+    public бул IsFloatable() { return wxPaneInfo_IsFloatable(шхобъ); }
+    public бул IsMovable() { return wxPaneInfo_IsMovable(шхобъ); }
+    public бул HasCaption() { return wxPaneInfo_HasCaption(шхобъ); }
+    public бул HasGripper() { return wxPaneInfo_HasGripper(шхобъ); }
+    public бул HasBorder() { return wxPaneInfo_HasBorder(шхобъ); }
+    public бул HasCloseButton() { return wxPaneInfo_HasCloseButton(шхобъ); }
+    public бул HasMaximizeButton() { return wxPaneInfo_HasMaximizeButton(шхобъ); }
+    public бул HasMinimizeButton() { return wxPaneInfo_HasMinimizeButton(шхобъ); }
+    public бул HasPinButton() { return wxPaneInfo_HasPinButton(шхобъ); }
 
-    public PaneInfo Window(wxWindow w) { return cast(PaneInfo) FindObject(wxPaneInfo_Window(wxobj, wxObject.SafePtr(w))); }
-    public PaneInfo Name(char[] n) { return cast(PaneInfo) FindObject(wxPaneInfo_Name(wxobj, n)); }
-    public PaneInfo Caption(char[] c) { return cast(PaneInfo) FindObject(wxPaneInfo_Caption(wxobj, c)); }
-    public PaneInfo Left() { return cast(PaneInfo) FindObject(wxPaneInfo_Left(wxobj)); }
-    public PaneInfo Right() { return cast(PaneInfo) FindObject(wxPaneInfo_Right(wxobj)); }
-    public PaneInfo Top() { return cast(PaneInfo) FindObject(wxPaneInfo_Top(wxobj)); }
-    public PaneInfo Bottom() { return cast(PaneInfo) FindObject(wxPaneInfo_Bottom(wxobj)); }
-    public PaneInfo Center() { return cast(PaneInfo) FindObject(wxPaneInfo_Center(wxobj)); }
-    public PaneInfo Centre() { return cast(PaneInfo) FindObject(wxPaneInfo_Centre(wxobj)); }
-    public PaneInfo Direction(int direction) { return cast(PaneInfo) FindObject(wxPaneInfo_Direction(wxobj, direction)); }
-    public PaneInfo Layer(int layer) { return cast(PaneInfo) FindObject(wxPaneInfo_Layer(wxobj, layer)); }
-    public PaneInfo Row(int row) { return cast(PaneInfo) FindObject(wxPaneInfo_Row(wxobj, row)); }
-    public PaneInfo Position(int pos) { return cast(PaneInfo) FindObject(wxPaneInfo_Position(wxobj, pos)); }
-    public PaneInfo BestSize(ref Size size) { return cast(PaneInfo) FindObject(wxPaneInfo_BestSize(wxobj, size)); }
-    public PaneInfo MinSize(ref Size size) { return cast(PaneInfo) FindObject(wxPaneInfo_MinSize(wxobj, size)); }
-    public PaneInfo MaxSize(ref Size size) { return cast(PaneInfo) FindObject(wxPaneInfo_MaxSize(wxobj, size)); }
-    public PaneInfo BestSize(int x, int y) { return cast(PaneInfo) FindObject(wxPaneInfo_BestSizeXY(wxobj, x, y)); }
-    public PaneInfo MinSize(int x, int y) { return cast(PaneInfo) FindObject(wxPaneInfo_MinSizeXY(wxobj, x, y)); }
-    public PaneInfo MaxSize(int x, int y) { return cast(PaneInfo) FindObject(wxPaneInfo_MaxSizeXY(wxobj, x, y)); }
-    public PaneInfo FloatingPosition(ref Point pos) { return cast(PaneInfo) FindObject(wxPaneInfo_FloatingPosition(wxobj, pos)); }
-    public PaneInfo FloatingPosition(int x, int y) { return cast(PaneInfo) FindObject(wxPaneInfo_FloatingPositionXY(wxobj, x, y)); }
-    public PaneInfo FloatingSize(ref Size size) { return cast(PaneInfo) FindObject(wxPaneInfo_FloatingSize(wxobj, size)); }
-    public PaneInfo FloatingSize(int x, int y) { return cast(PaneInfo) FindObject(wxPaneInfo_FloatingSizeXY(wxobj, x, y)); }
-    public PaneInfo Fixed() { return cast(PaneInfo) FindObject(wxPaneInfo_Fixed(wxobj)); }
-    public PaneInfo Resizable(bool resizable = true) { return cast(PaneInfo) FindObject(wxPaneInfo_Resizable(wxobj, resizable)); }
-    public PaneInfo Dock() { return cast(PaneInfo) FindObject(wxPaneInfo_Dock(wxobj)); }
-    public PaneInfo Float() { return cast(PaneInfo) FindObject(wxPaneInfo_Float(wxobj)); }
-    public PaneInfo Hide() { return cast(PaneInfo) FindObject(wxPaneInfo_Hide(wxobj)); }
-    public PaneInfo Show(bool show = true) { return cast(PaneInfo) FindObject(wxPaneInfo_Show(wxobj, show)); }
-    public PaneInfo CaptionVisible(bool visible = true) { return cast(PaneInfo) FindObject(wxPaneInfo_CaptionVisible(wxobj, visible)); }
-    public PaneInfo PaneBorder(bool visible = true) { return cast(PaneInfo) FindObject(wxPaneInfo_PaneBorder(wxobj, visible)); }
-    public PaneInfo Gripper(bool visible = true) { return cast(PaneInfo) FindObject(wxPaneInfo_Gripper(wxobj, visible)); }
-    public PaneInfo CloseButton(bool visible = true) { return cast(PaneInfo) FindObject(wxPaneInfo_CloseButton(wxobj, visible)); }
-    public PaneInfo MaximizeButton(bool visible = true) { return cast(PaneInfo) FindObject(wxPaneInfo_MaximizeButton(wxobj, visible)); }
-    public PaneInfo MinimizeButton(bool visible = true) { return cast(PaneInfo) FindObject(wxPaneInfo_MinimizeButton(wxobj, visible)); }
-    public PaneInfo PinButton(bool visible = true) { return cast(PaneInfo) FindObject(wxPaneInfo_PinButton(wxobj, visible)); }
-    public PaneInfo DestroyOnClose(bool b = true) { return cast(PaneInfo) FindObject(wxPaneInfo_DestroyOnClose(wxobj, b)); }
-    public PaneInfo TopDockable(bool b = true) { return cast(PaneInfo) FindObject(wxPaneInfo_TopDockable(wxobj, b)); }
-    public PaneInfo BottomDockable(bool b = true) { return cast(PaneInfo) FindObject(wxPaneInfo_BottomDockable(wxobj, b)); }
-    public PaneInfo LeftDockable(bool b = true) { return cast(PaneInfo) FindObject(wxPaneInfo_LeftDockable(wxobj, b)); }
-    public PaneInfo RightDockable(bool b = true) { return cast(PaneInfo) FindObject(wxPaneInfo_RightDockable(wxobj, b)); }
-    public PaneInfo Floatable(bool b = true) { return cast(PaneInfo) FindObject(wxPaneInfo_Floatable(wxobj, b)); }
-    public PaneInfo Movable(bool b = true) { return cast(PaneInfo) FindObject(wxPaneInfo_Movable(wxobj, b)); }
-    public PaneInfo Dockable(bool b = true) { return cast(PaneInfo) FindObject(wxPaneInfo_Dockable(wxobj, b)); }
-    public PaneInfo DefaultPane() { return cast(PaneInfo) FindObject(wxPaneInfo_DefaultPane(wxobj)); }
-    public PaneInfo CentrePane() { return cast(PaneInfo) FindObject(wxPaneInfo_CentrePane(wxobj)); }
-    public PaneInfo CenterPane() { return cast(PaneInfo) FindObject(wxPaneInfo_CenterPane(wxobj)); }
-    public PaneInfo ToolbarPane() { return cast(PaneInfo) FindObject(wxPaneInfo_ToolbarPane(wxobj)); }
-    public PaneInfo SetFlag(uint flag, bool option_state) { return cast(PaneInfo) FindObject(wxPaneInfo_SetFlag(wxobj, flag, option_state)); }
-    public bool HasFlag(uint flag) { return wxPaneInfo_HasFlag(wxobj, flag); }
+    public PaneInfo Окно(wxWindow w) { return cast(PaneInfo) FindObject(wxPaneInfo_Window(шхобъ, wxObject.SafePtr(w))); }
+    public PaneInfo Имя(сим[] n) { return cast(PaneInfo) FindObject(wxPaneInfo_Name(шхобъ, n)); }
+    public PaneInfo Caption(сим[] c) { return cast(PaneInfo) FindObject(wxPaneInfo_Caption(шхобъ, c)); }
+    public PaneInfo Left() { return cast(PaneInfo) FindObject(wxPaneInfo_Left(шхобъ)); }
+    public PaneInfo Right() { return cast(PaneInfo) FindObject(wxPaneInfo_Right(шхобъ)); }
+    public PaneInfo Top() { return cast(PaneInfo) FindObject(wxPaneInfo_Top(шхобъ)); }
+    public PaneInfo Bottom() { return cast(PaneInfo) FindObject(wxPaneInfo_Bottom(шхобъ)); }
+    public PaneInfo Center() { return cast(PaneInfo) FindObject(wxPaneInfo_Center(шхобъ)); }
+    public PaneInfo Centre() { return cast(PaneInfo) FindObject(wxPaneInfo_Centre(шхобъ)); }
+    public PaneInfo Direction(цел direction) { return cast(PaneInfo) FindObject(wxPaneInfo_Direction(шхобъ, direction)); }
+    public PaneInfo Layer(цел layer) { return cast(PaneInfo) FindObject(wxPaneInfo_Layer(шхобъ, layer)); }
+    public PaneInfo Row(цел row) { return cast(PaneInfo) FindObject(wxPaneInfo_Row(шхобъ, row)); }
+    public PaneInfo Положение(цел поз) { return cast(PaneInfo) FindObject(wxPaneInfo_Position(шхобъ, поз)); }
+    public PaneInfo BestSize(ref Размер size) { return cast(PaneInfo) FindObject(wxPaneInfo_BestSize(шхобъ, size)); }
+    public PaneInfo MinSize(ref Размер size) { return cast(PaneInfo) FindObject(wxPaneInfo_MinSize(шхобъ, size)); }
+    public PaneInfo MaxSize(ref Размер size) { return cast(PaneInfo) FindObject(wxPaneInfo_MaxSize(шхобъ, size)); }
+    public PaneInfo BestSize(цел x, цел y) { return cast(PaneInfo) FindObject(wxPaneInfo_BestSizeXY(шхобъ, x, y)); }
+    public PaneInfo MinSize(цел x, цел y) { return cast(PaneInfo) FindObject(wxPaneInfo_MinSizeXY(шхобъ, x, y)); }
+    public PaneInfo MaxSize(цел x, цел y) { return cast(PaneInfo) FindObject(wxPaneInfo_MaxSizeXY(шхобъ, x, y)); }
+    public PaneInfo FloatingPosition(ref Точка поз) { return cast(PaneInfo) FindObject(wxPaneInfo_FloatingPosition(шхобъ, поз)); }
+    public PaneInfo FloatingPosition(цел x, цел y) { return cast(PaneInfo) FindObject(wxPaneInfo_FloatingPositionXY(шхобъ, x, y)); }
+    public PaneInfo FloatingSize(ref Размер size) { return cast(PaneInfo) FindObject(wxPaneInfo_FloatingSize(шхобъ, size)); }
+    public PaneInfo FloatingSize(цел x, цел y) { return cast(PaneInfo) FindObject(wxPaneInfo_FloatingSizeXY(шхобъ, x, y)); }
+    public PaneInfo Fixed() { return cast(PaneInfo) FindObject(wxPaneInfo_Fixed(шхобъ)); }
+    public PaneInfo Resizable(бул resizable = да) { return cast(PaneInfo) FindObject(wxPaneInfo_Resizable(шхобъ, resizable)); }
+    public PaneInfo Dock() { return cast(PaneInfo) FindObject(wxPaneInfo_Dock(шхобъ)); }
+    public PaneInfo Float() { return cast(PaneInfo) FindObject(wxPaneInfo_Float(шхобъ)); }
+    public PaneInfo Hide() { return cast(PaneInfo) FindObject(wxPaneInfo_Hide(шхобъ)); }
+    public PaneInfo Show(бул show = да) { return cast(PaneInfo) FindObject(wxPaneInfo_Show(шхобъ, show)); }
+    public PaneInfo CaptionVisible(бул visible = да) { return cast(PaneInfo) FindObject(wxPaneInfo_CaptionVisible(шхобъ, visible)); }
+    public PaneInfo PaneBorder(бул visible = да) { return cast(PaneInfo) FindObject(wxPaneInfo_PaneBorder(шхобъ, visible)); }
+    public PaneInfo Gripper(бул visible = да) { return cast(PaneInfo) FindObject(wxPaneInfo_Gripper(шхобъ, visible)); }
+    public PaneInfo CloseButton(бул visible = да) { return cast(PaneInfo) FindObject(wxPaneInfo_CloseButton(шхобъ, visible)); }
+    public PaneInfo MaximizeButton(бул visible = да) { return cast(PaneInfo) FindObject(wxPaneInfo_MaximizeButton(шхобъ, visible)); }
+    public PaneInfo MinimizeButton(бул visible = да) { return cast(PaneInfo) FindObject(wxPaneInfo_MinimizeButton(шхобъ, visible)); }
+    public PaneInfo PinButton(бул visible = да) { return cast(PaneInfo) FindObject(wxPaneInfo_PinButton(шхобъ, visible)); }
+    public PaneInfo DestroyOnClose(бул с = да) { return cast(PaneInfo) FindObject(wxPaneInfo_DestroyOnClose(шхобъ, с)); }
+    public PaneInfo TopDockable(бул с = да) { return cast(PaneInfo) FindObject(wxPaneInfo_TopDockable(шхобъ, с)); }
+    public PaneInfo BottomDockable(бул с = да) { return cast(PaneInfo) FindObject(wxPaneInfo_BottomDockable(шхобъ, с)); }
+    public PaneInfo LeftDockable(бул с = да) { return cast(PaneInfo) FindObject(wxPaneInfo_LeftDockable(шхобъ, с)); }
+    public PaneInfo RightDockable(бул с = да) { return cast(PaneInfo) FindObject(wxPaneInfo_RightDockable(шхобъ, с)); }
+    public PaneInfo Floatable(бул с = да) { return cast(PaneInfo) FindObject(wxPaneInfo_Floatable(шхобъ, с)); }
+    public PaneInfo Movable(бул с = да) { return cast(PaneInfo) FindObject(wxPaneInfo_Movable(шхобъ, с)); }
+    public PaneInfo Dockable(бул с = да) { return cast(PaneInfo) FindObject(wxPaneInfo_Dockable(шхобъ, с)); }
+    public PaneInfo DefaultPane() { return cast(PaneInfo) FindObject(wxPaneInfo_DefaultPane(шхобъ)); }
+    public PaneInfo CentrePane() { return cast(PaneInfo) FindObject(wxPaneInfo_CentrePane(шхобъ)); }
+    public PaneInfo CenterPane() { return cast(PaneInfo) FindObject(wxPaneInfo_CenterPane(шхобъ)); }
+    public PaneInfo ToolbarPane() { return cast(PaneInfo) FindObject(wxPaneInfo_ToolbarPane(шхобъ)); }
+    public PaneInfo SetFlag(бцел flag, бул option_state) { return cast(PaneInfo) FindObject(wxPaneInfo_SetFlag(шхобъ, flag, option_state)); }
+    public бул HasFlag(бцел flag) { return wxPaneInfo_HasFlag(шхобъ, flag); }
 
-    public char[] name() { return wxPaneInfo_GetName(wxobj); }
-    public char[] caption() { return wxPaneInfo_GetCaption(wxobj); }
+    public сим[] имя() { return wxPaneInfo_GetName(шхобъ); }
+    public сим[] caption() { return wxPaneInfo_GetCaption(шхобъ); }
 
-    public wxWindow window()
+    public wxWindow окно()
     {
-      IntPtr ptr = wxPaneInfo_GetWindow(wxobj);
+      ЦУк ptr = wxPaneInfo_GetWindow(шхобъ);
       wxObject o = FindObject(ptr);
       return (o)? cast(wxWindow)o : new wxWindow(ptr);
     }
     public wxWindow frame()
     {
-      IntPtr ptr = wxPaneInfo_GetFrame(wxobj);
+      ЦУк ptr = wxPaneInfo_GetFrame(шхобъ);
       wxObject o = FindObject(ptr);
       return (o)? cast(wxWindow)o : new wxWindow(ptr);
     }
-    public uint state() { return wxPaneInfo_GetState(wxobj); }
+    public бцел state() { return wxPaneInfo_GetState(шхобъ); }
 
-    public int dock_direction() { return wxPaneInfo_GetDock_Direction(wxobj); }
-    public int dock_layer() { return wxPaneInfo_GetDock_Layer(wxobj); }
-    public int dock_row() { return wxPaneInfo_GetDock_Row(wxobj); }
-    public int dock_pos() { return wxPaneInfo_GetDock_Pos(wxobj); }
+    public цел dock_direction() { return wxPaneInfo_GetDock_Direction(шхобъ); }
+    public цел dock_layer() { return wxPaneInfo_GetDock_Layer(шхобъ); }
+    public цел dock_row() { return wxPaneInfo_GetDock_Row(шхобъ); }
+    public цел dock_pos() { return wxPaneInfo_GetDock_Pos(шхобъ); }
 
-    public Size best_size()
+    public Размер best_size()
     {
-      Size size;
-      wxPaneInfo_GetBest_Size(wxobj, size);
+      Размер size;
+      wxPaneInfo_GetBest_Size(шхобъ, size);
       return size;
     }
-    public Size min_size()
+    public Размер min_size()
     {
-      Size size;
-      wxPaneInfo_GetMin_Size(wxobj, size);
+      Размер size;
+      wxPaneInfo_GetMin_Size(шхобъ, size);
       return size;
     }
-    public Size max_size()
+    public Размер max_size()
     {
-      Size size;
-      wxPaneInfo_GetMax_Size(wxobj, size);
+      Размер size;
+      wxPaneInfo_GetMax_Size(шхобъ, size);
       return size;
     }
 
-    public Point floating_pos()
+    public Точка floating_pos()
     {
-      Point point;
-      wxPaneInfo_GetFloating_Pos(wxobj, point);
+      Точка point;
+      wxPaneInfo_GetFloating_Pos(шхобъ, point);
       return point;
     }
-    public Size floating_size()
+    public Размер floating_size()
     {
-      Size size;
-      wxPaneInfo_GetFloating_Size(wxobj, size);
+      Размер size;
+      wxPaneInfo_GetFloating_Size(шхобъ, size);
       return size;
     }
-    public int dock_proportion() { return wxPaneInfo_GetDock_Proportion(wxobj); }
+    public цел dock_proportion() { return wxPaneInfo_GetDock_Proportion(шхобъ); }
 
-    public Rectangle rect()
+    public Прямоугольник прям()
     {
-      Rectangle rect;
-      wxPaneInfo_GetRect(wxobj, rect);
-      return rect;
+      Прямоугольник прям;
+      wxPaneInfo_GetRect(шхобъ, прям);
+      return прям;
     }
 
     public enum wxPaneState
@@ -405,95 +405,95 @@ public class PaneInfo : wxObject
 alias FrameManager wxFrameManager;
 public class FrameManager : EvtHandler
 {
-    public this(IntPtr wxobj)
+    public this(ЦУк шхобъ)
     {
-      super(wxobj);
+      super(шхобъ);
     }
 
-    public this(Frame frame = null, uint flags = wxFrameManagerOption.wxAUI_MGR_DEFAULT)
+    public this(Frame frame = пусто, бцел флаги = wxFrameManagerOption.wxAUI_MGR_DEFAULT)
     {
-      this(wxFrameManager_ctor(wxObject.SafePtr(frame), flags));
+      this(wxFrameManager_ctor(wxObject.SafePtr(frame), флаги));
     }
 
-    public void UnInit() { wxFrameManager_UnInit(wxobj); }
+    public проц UnInit() { wxFrameManager_UnInit(шхобъ); }
 
-    public void SetFlags(uint flags) { wxFrameManager_SetFlags(wxobj, flags); }
-    public uint GetFlags() { return wxFrameManager_GetFlags(wxobj); }
+    public проц SetFlags(бцел флаги) { wxFrameManager_SetFlags(шхобъ, флаги); }
+    public бцел GetFlags() { return wxFrameManager_GetFlags(шхобъ); }
 
-    public void SetFrame(Frame frame) { wxFrameManager_SetFrame(wxobj, wxObject.SafePtr(frame)); }
+    public проц SetFrame(Frame frame) { wxFrameManager_SetFrame(шхобъ, wxObject.SafePtr(frame)); }
     public Frame GetFrame()
     {
-      IntPtr ptr = wxFrameManager_GetFrame(wxobj);
+      ЦУк ptr = wxFrameManager_GetFrame(шхобъ);
       wxObject o = FindObject(ptr);
       if (o) return cast(Frame)o;
       else return new Frame(ptr);
     }
 
-    public void SetArtProvider(DockArt art_provider) { wxFrameManager_SetArtProvider(wxobj, wxObject.SafePtr(art_provider)); }
+    public проц SetArtProvider(DockArt art_provider) { wxFrameManager_SetArtProvider(шхобъ, wxObject.SafePtr(art_provider)); }
     public DockArt GetArtProvider()
     {
-      IntPtr ptr = wxFrameManager_GetArtProvider(wxobj);
+      ЦУк ptr = wxFrameManager_GetArtProvider(шхобъ);
       wxObject o = FindObject(ptr);
       if (o) return cast(DockArt)o;
       else return new DockArt(ptr);
     }
 
-    public PaneInfo GetPane(Window window)
+    public PaneInfo GetPane(Окно окно)
     {
-      IntPtr ptr = wxFrameManager_GetPaneByWindow(wxobj, wxObject.SafePtr(window));
+      ЦУк ptr = wxFrameManager_GetPaneByWindow(шхобъ, wxObject.SafePtr(окно));
       wxObject o = FindObject(ptr);
       if (o) return cast(PaneInfo)o;
       else return new PaneInfo(ptr);
     }
-    public PaneInfo GetPane(char[] name)
+    public PaneInfo GetPane(сим[] имя)
     {
-      IntPtr ptr = wxFrameManager_GetPaneByName(wxobj, name);
+      ЦУк ptr = wxFrameManager_GetPaneByName(шхобъ, имя);
       wxObject o = FindObject(ptr);
       if (o) return cast(PaneInfo)o;
       else return new PaneInfo(ptr);
     }
-    public int GetPaneCount() { return wxFrameManager_GetPaneCount(wxobj); }
-    public PaneInfo GetPane(int index)
+    public цел GetPaneCount() { return wxFrameManager_GetPaneCount(шхобъ); }
+    public PaneInfo GetPane(цел индекс)
     {
-      IntPtr ptr = wxFrameManager_GetPane(wxobj, index);
+      ЦУк ptr = wxFrameManager_GetPane(шхобъ, индекс);
       wxObject o = FindObject(ptr);
       if (o) return cast(PaneInfo)o;
       else return new PaneInfo(ptr);
     }
 
-    public bool AddPane(Window window, PaneInfo pane_info)
+    public бул AddPane(Окно окно, PaneInfo pane_info)
     {
-      return wxFrameManager_AddPane(wxobj, wxObject.SafePtr(window), wxObject.SafePtr(pane_info));
+      return wxFrameManager_AddPane(шхобъ, wxObject.SafePtr(окно), wxObject.SafePtr(pane_info));
     }
 
-    public bool AddPane(Window window,
-                 int direction = Direction.wxLEFT,
-                 string caption = "")
+    public бул AddPane(Окно окно,
+                 цел direction = Direction.wxLEFT,
+                 ткст caption = "")
     {
-      return wxFrameManager_AddPane2(wxobj, wxObject.SafePtr(window), direction, caption);
+      return wxFrameManager_AddPane2(шхобъ, wxObject.SafePtr(окно), direction, caption);
     }
 
-    public bool InsertPane(Window window,
+    public бул InsertPane(Окно окно,
                  PaneInfo pane_info,
-                 int insert_level = wxPaneInsertLevel.wxAUI_INSERT_PANE)
+                 цел insert_level = wxPaneInsertLevel.wxAUI_INSERT_PANE)
     {
-      return wxFrameManager_InsertPane(wxobj, wxObject.SafePtr(window), wxObject.SafePtr(pane_info), insert_level);
+      return wxFrameManager_InsertPane(шхобъ, wxObject.SafePtr(окно), wxObject.SafePtr(pane_info), insert_level);
     }
 
-    public bool DetachPane(Window window)
+    public бул DetachPane(Окно окно)
     {
-      return wxFrameManager_DetachPane(wxobj, wxObject.SafePtr(window));
+      return wxFrameManager_DetachPane(шхобъ, wxObject.SafePtr(окно));
     }
 
-    public char[] SavePerspective() { return wxFrameManager_SavePerspective(wxobj); }
+    public сим[] SavePerspective() { return wxFrameManager_SavePerspective(шхобъ); }
 
-    public bool LoadPerspective(char[] perspective,
-                 bool update = true)
+    public бул LoadPerspective(сим[] perspective,
+                 бул update = да)
     {
-      return wxFrameManager_LoadPerspective(wxobj, perspective, update);
+      return wxFrameManager_LoadPerspective(шхобъ, perspective, update);
     }
 
-    public void Update() { return wxFrameManager_Update(wxobj); }
+    public проц Обнови() { return wxFrameManager_Update(шхобъ); }
 
 
 // wx event machinery
@@ -502,14 +502,14 @@ public class FrameManager : EvtHandler
 // right now the only event that works is wxEVT_AUI_PANEBUTTON. A full
 // spectrum of events will be implemented in the next incremental version
 
-    public static EventType wxEVT_AUI_PANEBUTTON;
+    public static ТипСобытия wxEVT_AUI_PANEBUTTON;
 
     static this()
     {
       wxEVT_AUI_PANEBUTTON = wxEvent_EVT_AUI_PANEBUTTON();
     }
 
-    public void EVT_AUI_PANEBUTTON(EventListener lsnr)
+    public проц EVT_AUI_PANEBUTTON(EventListener lsnr)
     {
       AddEventListener(wxEVT_AUI_PANEBUTTON, lsnr);
     }
@@ -519,28 +519,28 @@ public class FrameManager : EvtHandler
 
 // event declarations/classes
 alias FrameManagerEvent wxFrameManagerEvent;
-public class FrameManagerEvent : Event
+public class FrameManagerEvent : Событие
 {
-    public this(IntPtr wxobj)
+    public this(ЦУк шхобъ)
     {
-      super(wxobj);
+      super(шхобъ);
     }
 
-    public Event Clone()
+    public Событие Clone()
     {
-      return new FrameManagerEvent(wxFrameManagerEvent_Clone(wxobj));
+      return new FrameManagerEvent(wxFrameManagerEvent_Clone(шхобъ));
     }
 
-    public void SetPane(PaneInfo p) { wxFrameManagerEvent_SetPane(wxobj, wxObject.SafePtr(p)); }
-    public void SetButton(int b) { wxFrameManagerEvent_SetButton(wxobj, b); }
+    public проц SetPane(PaneInfo p) { wxFrameManagerEvent_SetPane(шхобъ, wxObject.SafePtr(p)); }
+    public проц SetButton(цел с) { wxFrameManagerEvent_SetButton(шхобъ, с); }
     public PaneInfo GetPane()
     {
-      IntPtr ptr = wxFrameManagerEvent_GetPane(wxobj);
+      ЦУк ptr = wxFrameManagerEvent_GetPane(шхобъ);
       wxObject o = FindObject(ptr);
       if (o) return cast(PaneInfo)o;
       else return new PaneInfo(ptr);
     }
-    public int GetButton() { return wxFrameManagerEvent_GetButton(wxobj); }
+    public цел GetButton() { return wxFrameManagerEvent_GetButton(шхобъ); }
 }
 
 

@@ -1,4 +1,4 @@
-//-----------------------------------------------------------------------------
+﻿//-----------------------------------------------------------------------------
 // wxD - ListBox.d
 // (C) 2005 bero <berobero@users.sourceforge.net>
 // based on
@@ -10,7 +10,7 @@
 // (C) 2003 Bryan Bulten
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: ListBox.d,v 1.12 2007/03/13 17:02:41 afb Exp $
+// $Ид: ListBox.d,v 1.12 2007/03/13 17:02:41 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.ListBox;
@@ -19,35 +19,35 @@ public import wx.Control;
 public import wx.ClientData;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxListBox_ctor();
-		static extern (C) void   wxListBox_dtor(IntPtr self);
-		static extern (C) void   wxListBox_Clear(IntPtr self);
-		static extern (C) bool   wxListBox_Create(IntPtr self, IntPtr parent, int id, inout Point pos, inout Size size, int n, string* choices, uint style, IntPtr validator, string name);
-		static extern (C) void   wxListBox_InsertText(IntPtr self, string item, int pos);
-		static extern (C) void   wxListBox_InsertTextData(IntPtr self, string item, int pos, IntPtr data);
-		static extern (C) void   wxListBox_InsertTextClientData(IntPtr self, string item, int pos, IntPtr clientData);
-		static extern (C) void   wxListBox_InsertItems(IntPtr self, int nItems, string* items, int pos);
-		static extern (C) void   wxListBox_Set(IntPtr self, int n, string* items, IntPtr clientData);
-		static extern (C) void   wxListBox_SetSelection(IntPtr self, int n, bool select);
-		static extern (C) void   wxListBox_Select(IntPtr self, int n);
-		static extern (C) void   wxListBox_Deselect(IntPtr self, int n);
-		static extern (C) void   wxListBox_DeselectAll(IntPtr self, int itemToLeaveSelected);
-		static extern (C) bool   wxListBox_SetStringSelection(IntPtr self, string s, bool select);
-		static extern (C) IntPtr wxListBox_GetSelections(IntPtr self);
-		static extern (C) void   wxListBox_SetFirstItem(IntPtr self, int n);
-		static extern (C) void   wxListBox_SetFirstItemText(IntPtr self, string s);
-		static extern (C) bool   wxListBox_HasMultipleSelection(IntPtr self);
-		static extern (C) bool   wxListBox_IsSorted(IntPtr self);
-		static extern (C) void   wxListBox_Command(IntPtr self, IntPtr evt);
-		static extern (C) bool   wxListBox_Selected(IntPtr self, int n);
-		static extern (C) int    wxListBox_GetSelection(IntPtr self);
-		static extern (C) IntPtr wxListBox_GetStringSelection(IntPtr self);
-		static extern (C) void   wxListBox_SetSingleString(IntPtr self, int n, string s);
-		static extern (C) IntPtr wxListBox_GetSingleString(IntPtr self, int n);
-		static extern (C) void   wxListBox_Append(IntPtr self, string item);
-		static extern (C) void   wxListBox_AppendClientData(IntPtr self, string item, IntPtr cliendData);
-		static extern (C) void   wxListBox_Delete(IntPtr self, int n);
-		static extern (C) int    wxListBox_GetCount(IntPtr self);
+		static extern (C) ЦУк wxListBox_ctor();
+		static extern (C) проц   wxListBox_dtor(ЦУк сам);
+		static extern (C) проц   wxListBox_Clear(ЦУк сам);
+		static extern (C) бул   wxListBox_Create(ЦУк сам, ЦУк родитель, цел ид, inout Точка поз, inout Размер size, цел n, ткст* choices, бцел стиль, ЦУк validator, ткст имя);
+		static extern (C) проц   wxListBox_InsertText(ЦУк сам, ткст элемент, цел поз);
+		static extern (C) проц   wxListBox_InsertTextData(ЦУк сам, ткст элемент, цел поз, ЦУк данные);
+		static extern (C) проц   wxListBox_InsertTextClientData(ЦУк сам, ткст элемент, цел поз, ЦУк clientData);
+		static extern (C) проц   wxListBox_InsertItems(ЦУк сам, цел nItems, ткст* items, цел поз);
+		static extern (C) проц   wxListBox_Set(ЦУк сам, цел n, ткст* items, ЦУк clientData);
+		static extern (C) проц   wxListBox_SetSelection(ЦУк сам, цел n, бул select);
+		static extern (C) проц   wxListBox_Select(ЦУк сам, цел n);
+		static extern (C) проц   wxListBox_Deselect(ЦУк сам, цел n);
+		static extern (C) проц   wxListBox_DeselectAll(ЦУк сам, цел itemToLeaveSelected);
+		static extern (C) бул   wxListBox_SetStringSelection(ЦУк сам, ткст s, бул select);
+		static extern (C) ЦУк wxListBox_GetSelections(ЦУк сам);
+		static extern (C) проц   wxListBox_SetFirstItem(ЦУк сам, цел n);
+		static extern (C) проц   wxListBox_SetFirstItemText(ЦУк сам, ткст s);
+		static extern (C) бул   wxListBox_HasMultipleSelection(ЦУк сам);
+		static extern (C) бул   wxListBox_IsSorted(ЦУк сам);
+		static extern (C) проц   wxListBox_Command(ЦУк сам, ЦУк evt);
+		static extern (C) бул   wxListBox_Selected(ЦУк сам, цел n);
+		static extern (C) цел    wxListBox_GetSelection(ЦУк сам);
+		static extern (C) ЦУк wxListBox_GetStringSelection(ЦУк сам);
+		static extern (C) проц   wxListBox_SetSingleString(ЦУк сам, цел n, ткст s);
+		static extern (C) ЦУк wxListBox_GetSingleString(ЦУк сам, цел n);
+		static extern (C) проц   wxListBox_Append(ЦУк сам, ткст элемент);
+		static extern (C) проц   wxListBox_AppendClientData(ЦУк сам, ткст элемент, ЦУк cliendData);
+		static extern (C) проц   wxListBox_Delete(ЦУк сам, цел n);
+		static extern (C) цел    wxListBox_GetCount(ЦУк сам);
 		//! \endcond
 	
 		//---------------------------------------------------------------------
@@ -67,277 +67,277 @@ public import wx.ClientData;
 			wxLB_INT_HEIGHT       = 0x0800,
 		}
 	
-		public const string wxListBoxNameStr = "listBox";
+		public const ткст wxListBoxNameStr = "listBox";
 		//---------------------------------------------------------------------
 		
-		public this(IntPtr wxobj) 
-			{ super(wxobj); }
+		public this(ЦУк шхобъ) 
+			{ super(шхобъ); }
 	
 		public this()
 			{ super(wxListBox_ctor()); }
 
-		public this(Window parent, int id, Point pos = wxDefaultPosition, Size size = wxDefaultSize, 
-			string[] choices = null, int style = 0, Validator validator =null, string name = wxListBoxNameStr)
+		public this(Окно родитель, цел ид, Точка поз = wxDefaultPosition, Размер size = wxDefaultSize, 
+			ткст[] choices = пусто, цел стиль = 0, Validator validator =пусто, ткст имя = wxListBoxNameStr)
 		{
 			super(wxListBox_ctor());
-			if(!wxListBox_Create(wxobj, wxObject.SafePtr(parent), id,
-					pos, size, choices.length, choices.ptr, cast(uint)style,
-					wxObject.SafePtr(validator), name))
+			if(!wxListBox_Create(шхобъ, wxObject.SafePtr(родитель), ид,
+					поз, size, choices.length, choices.ptr, cast(бцел)стиль,
+					wxObject.SafePtr(validator), имя))
 			{
 				throw new InvalidOperationException("Failed to create ListBox");
 			}
 		}
 		
-		public static wxObject New(IntPtr wxobj) { return new ListBox(wxobj); }
+		public static wxObject Нов(ЦУк шхобъ) { return new ListBox(шхобъ); }
 	
 		//---------------------------------------------------------------------
-		// ctors with self created id
+		// ctors with сам created ид
 		
-		public this(Window parent, Point pos = wxDefaultPosition, Size size = wxDefaultSize, 
-			string[] choices = null, int style = 0, Validator validator = null, string name = wxListBoxNameStr)
-			{ this( parent, Window.UniqueID, pos, size, choices, style, validator, name);}
-		
-		//---------------------------------------------------------------------
-	
-		public bool Create(Window parent, int id, inout Point pos, inout Size size, int n,
-				string[] choices, int style, Validator validator, string name)
-		{
-			return wxListBox_Create(wxobj, wxObject.SafePtr(parent), id,
-					pos, size, n, choices.ptr, cast(uint)style,
-					wxObject.SafePtr(validator), name);
-		}
+		public this(Окно родитель, Точка поз = wxDefaultPosition, Размер size = wxDefaultSize, 
+			ткст[] choices = пусто, цел стиль = 0, Validator validator = пусто, ткст имя = wxListBoxNameStr)
+			{ this( родитель, Окно.UniqueID, поз, size, choices, стиль, validator, имя);}
 		
 		//---------------------------------------------------------------------
 	
-		public int Selection() { return wxListBox_GetSelection(wxobj); }
-		public void Selection(int value) { wxListBox_Select(wxobj, value); }
-		
-		//---------------------------------------------------------------------
-	
-		public string StringSelection() { return cast(string) new wxString(wxListBox_GetStringSelection(wxobj), true); }
-		public void StringSelection(string value) { wxListBox_SetStringSelection(wxobj, value, true); }
-		
-		//---------------------------------------------------------------------
-	
-		public void SetSelection(int n, bool select)
+		public бул Create(Окно родитель, цел ид, inout Точка поз, inout Размер size, цел n,
+				ткст[] choices, цел стиль, Validator validator, ткст имя)
 		{
-			wxListBox_SetSelection(wxobj, n, select);
-		}
-	
-		public void SetSelection(string item, bool select)
-		{
-			wxListBox_SetStringSelection(wxobj, item, select);
-		}
-	
-		//---------------------------------------------------------------------
-	
-		public void Clear()
-		{
-			wxListBox_Clear(wxobj);
-		}
-	
-		//---------------------------------------------------------------------
-	
-		public string GetString(int n) 
-		{
-			return cast(string) new wxString(wxListBox_GetSingleString(wxobj, n), true);
-		}
-	
-		public void SetString(int n, string str)
-		{
-			wxListBox_SetSingleString(wxobj, n, str);
-		}
-	
-		//---------------------------------------------------------------------
-	
-		public void Append(string item)
-		{
-			wxListBox_Append(wxobj, item);
-		}
-	
-		public void Append(string item, ClientData data)
-		{
-			wxListBox_AppendClientData(wxobj, item, wxObject.SafePtr(data));
+			return wxListBox_Create(шхобъ, wxObject.SafePtr(родитель), ид,
+					поз, size, n, choices.ptr, cast(бцел)стиль,
+					wxObject.SafePtr(validator), имя);
 		}
 		
 		//---------------------------------------------------------------------
 	
-		public void Delete(int n)
+		public цел Selection() { return wxListBox_GetSelection(шхобъ); }
+		public проц Selection(цел значение) { wxListBox_Select(шхобъ, значение); }
+		
+		//---------------------------------------------------------------------
+	
+		public ткст StringSelection() { return cast(ткст) new wxString(wxListBox_GetStringSelection(шхобъ), да); }
+		public проц StringSelection(ткст значение) { wxListBox_SetStringSelection(шхобъ, значение, да); }
+		
+		//---------------------------------------------------------------------
+	
+		public проц SetSelection(цел n, бул select)
 		{
-			wxListBox_Delete(wxobj, n);
+			wxListBox_SetSelection(шхобъ, n, select);
+		}
+	
+		public проц SetSelection(ткст элемент, бул select)
+		{
+			wxListBox_SetStringSelection(шхобъ, элемент, select);
 		}
 	
 		//---------------------------------------------------------------------
 	
-		public void Insert(string item, int pos)
+		public проц Очисть()
 		{
-			wxListBox_InsertText(wxobj, item, pos);
+			wxListBox_Clear(шхобъ);
 		}
 	
-		public void Insert(string item, int pos, ClientData data)
+		//---------------------------------------------------------------------
+	
+		public ткст GetString(цел n) 
 		{
-			wxListBox_InsertTextData(wxobj, item, pos, wxObject.SafePtr(data));
+			return cast(ткст) new wxString(wxListBox_GetSingleString(шхобъ, n), да);
 		}
 	
-		/*public void Insert(string item, int pos, ClientData data)
+		public проц SetString(цел n, ткст str)
 		{
-		wxListBox_InsertTextClientData(wxobj, item, pos, wxObject.SafePtr(data));
+			wxListBox_SetSingleString(шхобъ, n, str);
+		}
+	
+		//---------------------------------------------------------------------
+	
+		public проц Append(ткст элемент)
+		{
+			wxListBox_Append(шхобъ, элемент);
+		}
+	
+		public проц Append(ткст элемент, ClientData данные)
+		{
+			wxListBox_AppendClientData(шхобъ, элемент, wxObject.SafePtr(данные));
+		}
+		
+		//---------------------------------------------------------------------
+	
+		public проц Delete(цел n)
+		{
+			wxListBox_Delete(шхобъ, n);
+		}
+	
+		//---------------------------------------------------------------------
+	
+		public проц Insert(ткст элемент, цел поз)
+		{
+			wxListBox_InsertText(шхобъ, элемент, поз);
+		}
+	
+		public проц Insert(ткст элемент, цел поз, ClientData данные)
+		{
+			wxListBox_InsertTextData(шхобъ, элемент, поз, wxObject.SafePtr(данные));
+		}
+	
+		/*public проц Insert(ткст элемент, цел поз, ClientData данные)
+		{
+		wxListBox_InsertTextClientData(шхобъ, элемент, поз, wxObject.SafePtr(данные));
 		}*/
 		
 		//---------------------------------------------------------------------
 	
-		public void InsertItems(string[] items, int pos)
+		public проц InsertItems(ткст[] items, цел поз)
 		{
-			wxListBox_InsertItems(wxobj, items.length, items.ptr, pos);
+			wxListBox_InsertItems(шхобъ, items.length, items.ptr, поз);
 		}
 	
 		//---------------------------------------------------------------------
 	
-		public void Set(string[] items, ClientData data)
+		public проц Установи(ткст[] items, ClientData данные)
 		{
-			wxListBox_Set(wxobj, items.length, items.ptr, wxObject.SafePtr(data));
+			wxListBox_Set(шхобъ, items.length, items.ptr, wxObject.SafePtr(данные));
 		}
 	
-		public void Set(string[] items)
+		public проц Установи(ткст[] items)
 		{
-			wxListBox_Set(wxobj, items.length, items.ptr, wxObject.SafePtr(null));
+			wxListBox_Set(шхобъ, items.length, items.ptr, wxObject.SafePtr(пусто));
 		}
 	
 		//---------------------------------------------------------------------
 	
-		public bool Selected(int n)
+		public бул Selected(цел n)
 		{
-			return wxListBox_Selected(wxobj, n);
+			return wxListBox_Selected(шхобъ, n);
 		}
 		
 		//---------------------------------------------------------------------
 	
-		public bool Sorted() { return wxListBox_IsSorted(wxobj); }
+		public бул Sorted() { return wxListBox_IsSorted(шхобъ); }
 	
 		//---------------------------------------------------------------------
 	
-		public bool HasMultipleSelection()
+		public бул HasMultipleSelection()
 		{
-			return wxListBox_HasMultipleSelection(wxobj);
+			return wxListBox_HasMultipleSelection(шхобъ);
 		}
 	
 		//---------------------------------------------------------------------
 	
-		public void Deselect(int n)
+		public проц Deselect(цел n)
 		{
-			wxListBox_Deselect(wxobj, n);
+			wxListBox_Deselect(шхобъ, n);
 		}
 	
-		public void DeselectAll(int itemToLeaveSelected)
+		public проц DeselectAll(цел itemToLeaveSelected)
 		{
-			wxListBox_DeselectAll(wxobj, itemToLeaveSelected);
-		}
-	
-		//---------------------------------------------------------------------
-	
-		public int[] Selections()
-		{
-			return (new ArrayInt(wxListBox_GetSelections(wxobj),true)).toArray();
+			wxListBox_DeselectAll(шхобъ, itemToLeaveSelected);
 		}
 	
 		//---------------------------------------------------------------------
 	
-		public void SetFirstItem(int n)
+		public цел[] Selections()
 		{
-			wxListBox_SetFirstItem(wxobj, n);
-		}
-	
-		public void SetFirstItem(string s)
-		{
-			wxListBox_SetFirstItemText(wxobj, s);
+			return (new МассивЦел(wxListBox_GetSelections(шхобъ),да)).вМассив();
 		}
 	
 		//---------------------------------------------------------------------
 	
-		public void Command(Event evt)
+		public проц SetFirstItem(цел n)
 		{
-			wxListBox_Command(wxobj, wxObject.SafePtr(evt));
+			wxListBox_SetFirstItem(шхобъ, n);
+		}
+	
+		public проц SetFirstItem(ткст s)
+		{
+			wxListBox_SetFirstItemText(шхобъ, s);
 		}
 	
 		//---------------------------------------------------------------------
 	
-		public int Count() { return wxListBox_GetCount(wxobj); }
+		public проц Command(Событие evt)
+		{
+			wxListBox_Command(шхобъ, wxObject.SafePtr(evt));
+		}
 	
 		//---------------------------------------------------------------------
 	
-		public void Select_Add(EventListener value) { AddCommandListener(Event.wxEVT_COMMAND_LISTBOX_SELECTED, ID, value, this); }
-		public void Select_Remove(EventListener value) { RemoveHandler(value, this); }
+		public цел Счёт() { return wxListBox_GetCount(шхобъ); }
 	
-		public void DoubleClick_Add(EventListener value) { AddCommandListener(Event.wxEVT_COMMAND_LISTBOX_DOUBLECLICKED, ID, value, this); }
-		public void DoubleClick_Remove(EventListener value) { RemoveHandler(value, this); }
+		//---------------------------------------------------------------------
+	
+		public проц Select_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_COMMAND_LISTBOX_SELECTED, ИД, значение, this); }
+		public проц Select_Remove(EventListener значение) { RemoveHandler(значение, this); }
+	
+		public проц DoubleClick_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_COMMAND_LISTBOX_DOUBLECLICKED, ИД, значение, this); }
+		public проц DoubleClick_Remove(EventListener значение) { RemoveHandler(значение, this); }
 	}
 	
 	//---------------------------------------------------------------------
 	
 		//! \cond EXTERN
-		static extern (C) IntPtr wxCheckListBox_ctor1();
-		static extern (C) IntPtr wxCheckListBox_ctor2(IntPtr parent, 
-			int id,
-			inout Point pos,
-			inout Size size,
-			int nStrings,
-			string* choices,
-			uint style,
-			IntPtr validator,
-			string name);
-		static extern (C) bool wxCheckListBox_IsChecked(IntPtr self, int index);
-		static extern (C) void wxCheckListBox_Check(IntPtr self, int index, bool check);
-		//static extern (C) int wxCheckListBox_GetItemHeight(IntPtr self);
+		static extern (C) ЦУк wxCheckListBox_ctor1();
+		static extern (C) ЦУк wxCheckListBox_ctor2(ЦУк родитель, 
+			цел ид,
+			inout Точка поз,
+			inout Размер size,
+			цел nStrings,
+			ткст* choices,
+			бцел стиль,
+			ЦУк validator,
+			ткст имя);
+		static extern (C) бул wxCheckListBox_IsChecked(ЦУк сам, цел индекс);
+		static extern (C) проц wxCheckListBox_Check(ЦУк сам, цел индекс, бул check);
+		//static extern (C) цел wxCheckListBox_GetItemHeight(ЦУк сам);
 		//! \endcond
 				
 	alias CheckListBox wxCheckListBox;
 	public class CheckListBox : ListBox
 	{
-		const string wxListBoxNameStr = "listBox";
+		const ткст wxListBoxNameStr = "listBox";
 
 		//---------------------------------------------------------------------
 	
-		public this(IntPtr wxobj)
-			{ super(wxobj);}
+		public this(ЦУк шхобъ)
+			{ super(шхобъ);}
 			
 		public this()
 			{ super(wxCheckListBox_ctor1());}
 			
-		public this(Window parent, int id, Point pos = wxDefaultPosition, Size size = wxDefaultSize, string[] choices = null, int style = 0, Validator validator = null, string name = wxListBoxNameStr)
-			{ super(wxCheckListBox_ctor2(wxObject.SafePtr(parent), id, pos, size, choices.length, choices.ptr, cast(uint)style, wxObject.SafePtr(validator), name));}
+		public this(Окно родитель, цел ид, Точка поз = wxDefaultPosition, Размер size = wxDefaultSize, ткст[] choices = пусто, цел стиль = 0, Validator validator = пусто, ткст имя = wxListBoxNameStr)
+			{ super(wxCheckListBox_ctor2(wxObject.SafePtr(родитель), ид, поз, size, choices.length, choices.ptr, cast(бцел)стиль, wxObject.SafePtr(validator), имя));}
 			
 		//---------------------------------------------------------------------
-		// ctors with self created id
+		// ctors with сам created ид
 			
-		public this(Window parent, Point pos = wxDefaultPosition, Size size = wxDefaultSize, string[] choices = null, int style = 0, Validator validator = null, string name = wxListBoxNameStr)
-			{ this(parent, Window.UniqueID, pos, size, choices, style, validator, name);}
+		public this(Окно родитель, Точка поз = wxDefaultPosition, Размер size = wxDefaultSize, ткст[] choices = пусто, цел стиль = 0, Validator validator = пусто, ткст имя = wxListBoxNameStr)
+			{ this(родитель, Окно.UniqueID, поз, size, choices, стиль, validator, имя);}
 
 		//--------------------------------------------------------------------
 		
-		public bool IsChecked(int index)
+		public бул IsChecked(цел индекс)
 		{
-			return wxCheckListBox_IsChecked(wxobj, index);
+			return wxCheckListBox_IsChecked(шхобъ, индекс);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void Check(int index)
+		public проц Check(цел индекс)
 		{
-			Check(index, true);
+			Check(индекс, да);
 		}
 		
-		public void Check(int index, bool check)
+		public проц Check(цел индекс, бул check)
 		{
-			wxCheckListBox_Check(wxobj, index, check);
+			wxCheckListBox_Check(шхобъ, индекс, check);
 		}
 		
 		//---------------------------------------------------------------------
 		
 		version(__WXMAC__) {} else
-	//	public int ItemHeight() { return wxCheckListBox_GetItemHeight(wxobj); }
+	//	public цел ItemHeight() { return wxCheckListBox_GetItemHeight(шхобъ); }
 		
 		//---------------------------------------------------------------------
 		
-		public void Checked_Add(EventListener value) { AddCommandListener(Event.wxEVT_COMMAND_CHECKLISTBOX_TOGGLED, ID, value, this); }
-		public void Checked_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц Checked_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_COMMAND_CHECKLISTBOX_TOGGLED, ИД, значение, this); }
+		public проц Checked_Remove(EventListener значение) { RemoveHandler(значение, this); }
 	}

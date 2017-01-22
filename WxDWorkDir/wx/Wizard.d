@@ -10,7 +10,7 @@
 // (C) 2003 379, Inc.
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: Wizard.d,v 1.9 2006/11/17 15:21:01 afb Exp $
+// $Ид: Wizard.d,v 1.9 2006/11/17 15:21:01 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.Wizard;
@@ -21,9 +21,9 @@ public import wx.Panel;
 public import wx.WizardPage;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxWizard_ctor(IntPtr parent, int id, string title, IntPtr bitmap, inout Point pos, int style);
-		static extern (C) bool   wxWizard_RunWizard(IntPtr self, IntPtr firstPage);
-		static extern (C) void   wxWizard_SetPageSize(IntPtr self, inout Size size);
+		static extern (C) ЦУк wxWizard_ctor(ЦУк родитель, цел ид, ткст title, ЦУк битмап, inout Точка поз, цел стиль);
+		static extern (C) бул   wxWizard_RunWizard(ЦУк сам, ЦУк firstPage);
+		static extern (C) проц   wxWizard_SetPageSize(ЦУк сам, inout Размер size);
 		//! \endcond
 
 		//---------------------------------------------------------------------
@@ -31,48 +31,48 @@ public import wx.WizardPage;
 	alias Wizard wxWizard;
 	public class Wizard : Dialog
 	{
-		public this(IntPtr wxobj) 
-			{ super(wxobj);}
+		public this(ЦУк шхобъ) 
+			{ super(шхобъ);}
 
-		public this(Window parent, int id = wxID_ANY, string title = "", Bitmap bitmap = Bitmap.wxNullBitmap, Point pos = wxDefaultPosition, int style = wxDEFAULT_DIALOG_STYLE)
-			{ super(wxWizard_ctor(wxObject.SafePtr(parent), id, title, wxObject.SafePtr(bitmap), pos, style));}
+		public this(Окно родитель, цел ид = wxID_ANY, ткст title = "", Битмап битмап = Битмап.wxNullBitmap, Точка поз = wxDefaultPosition, цел стиль = wxDEFAULT_DIALOG_STYLE)
+			{ super(wxWizard_ctor(wxObject.SafePtr(родитель), ид, title, wxObject.SafePtr(битмап), поз, стиль));}
 
 		//---------------------------------------------------------------------
 
-		public bool RunWizard(WizardPage firstPage)
+		public бул RunWizard(WizardPage firstPage)
 		{
-			if (firstPage is null)
+			if (firstPage is пусто)
 				throw new ArgumentNullException("firstPage");
 
-			return wxWizard_RunWizard(wxobj, firstPage.wxobj);
+			return wxWizard_RunWizard(шхобъ, firstPage.шхобъ);
 		}
 
 		//---------------------------------------------------------------------
 
-		public void PageSize(Size value) { wxWizard_SetPageSize(wxobj, value); }
+		public проц PageSize(Размер значение) { wxWizard_SetPageSize(шхобъ, значение); }
 	}
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxWizardEvent_ctor(int type,int id, bool direction,IntPtr page);
-		static extern (C) bool   wxWizardEvent_GetDirection(IntPtr self);
-		static extern (C) IntPtr wxWizardEvent_GetPage(IntPtr self);
+		static extern (C) ЦУк wxWizardEvent_ctor(цел тип,цел ид, бул direction,ЦУк page);
+		static extern (C) бул   wxWizardEvent_GetDirection(ЦУк сам);
+		static extern (C) ЦУк wxWizardEvent_GetPage(ЦУк сам);
 
-		static extern (C) EventType wxEvent_WIZARD_PAGE_CHANGED();
-		static extern (C) EventType wxEvent_WIZARD_PAGE_CHANGING();
-		static extern (C) EventType wxEvent_WIZARD_CANCEL();
-		static extern (C) EventType wxEvent_WIZARD_HELP();
-		static extern (C) EventType wxEvent_WIZARD_FINISHED();
+		static extern (C) ТипСобытия wxEvent_WIZARD_PAGE_CHANGED();
+		static extern (C) ТипСобытия wxEvent_WIZARD_PAGE_CHANGING();
+		static extern (C) ТипСобытия wxEvent_WIZARD_CANCEL();
+		static extern (C) ТипСобытия wxEvent_WIZARD_HELP();
+		static extern (C) ТипСобытия wxEvent_WIZARD_FINISHED();
 		//! \endcond
 
 /+
 	alias WizardEvent wxWizardEvent;
 	public class WizardEvent : NotifyEvent
 	{
-		static EventType wxEVT_WIZARD_PAGE_CHANGED;
-		static EventType wxEVT_WIZARD_PAGE_CHANGING;
-		static EventType wxEVT_WIZARD_CANCEL;
-		static EventType wxEVT_WIZARD_HELP;
-		static EventType wxEVT_WIZARD_FINISHED;
+		static ТипСобытия wxEVT_WIZARD_PAGE_CHANGED;
+		static ТипСобытия wxEVT_WIZARD_PAGE_CHANGING;
+		static ТипСобытия wxEVT_WIZARD_CANCEL;
+		static ТипСобытия wxEVT_WIZARD_HELP;
+		static ТипСобытия wxEVT_WIZARD_FINISHED;
 	
 		static this()
 		{
@@ -82,30 +82,30 @@ public import wx.WizardPage;
 			wxEVT_WIZARD_HELP     = wxEvent_WIZARD_HELP();
 			wxEVT_WIZARD_FINISHED = wxEvent_WIZARD_FINISHED();
 			
-			AddEventType(wxEVT_WIZARD_PAGE_CHANGED,  &WizardEvent.New);
-			AddEventType(wxEVT_WIZARD_PAGE_CHANGING, &WizardEvent.New);
-			AddEventType(wxEVT_WIZARD_CANCEL,   &WizardEvent.New);
-			AddEventType(wxEVT_WIZARD_HELP,     &WizardEvent.New);
-			AddEventType(wxEVT_WIZARD_FINISHED, &WizardEvent.New);
+			ДобавьТипСоб(wxEVT_WIZARD_PAGE_CHANGED,  &WizardEvent.Нов);
+			ДобавьТипСоб(wxEVT_WIZARD_PAGE_CHANGING, &WizardEvent.Нов);
+			ДобавьТипСоб(wxEVT_WIZARD_CANCEL,   &WizardEvent.Нов);
+			ДобавьТипСоб(wxEVT_WIZARD_HELP,     &WizardEvent.Нов);
+			ДобавьТипСоб(wxEVT_WIZARD_FINISHED, &WizardEvent.Нов);
 		}
 	
-		this(IntPtr ptr)
+		this(ЦУк ptr)
 			{ super(ptr); }
 	
-		this(EventType type = wxEVT_NULL, int id = wxID_ANY, bool direction = true, WizardPage page = null)
+		this(ТипСобытия тип = wxEVT_NULL, цел ид = wxID_ANY, бул direction = да, WizardPage page = пусто)
 		{
-			this(wxWizardEvent_ctor(type,id,direction,wxObject.SafePtr(page)));
+			this(wxWizardEvent_ctor(тип,ид,direction,wxObject.SafePtr(page)));
 		}
 
-		static Event New(IntPtr ptr) { return new WizardEvent(ptr); }
+		static Событие Нов(ЦУк ptr) { return new WizardEvent(ptr); }
 
-		bool Direction()
+		бул Direction()
 		{
-			return wxWizardEvent_GetDirection(wxobj);
+			return wxWizardEvent_GetDirection(шхобъ);
 		}
 		WizardPage Page()
 		{
-			return cast(WizardPage)FindObject(wxWizardEvent_GetPage(wxobj),&WizardPage.New);
+			return cast(WizardPage)FindObject(wxWizardEvent_GetPage(шхобъ),&WizardPage.Нов);
 		}
 	}
 +/

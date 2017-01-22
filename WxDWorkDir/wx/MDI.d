@@ -1,4 +1,4 @@
-//-----------------------------------------------------------------------------
+﻿//-----------------------------------------------------------------------------
 // wxD - MDI.d
 // (C) 2005 bero <berobero@users.sourceforge.net>
 // based on
@@ -10,7 +10,7 @@
 // (C) 2003 Bryan Bulten
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: MDI.d,v 1.10 2007/11/27 08:19:20 afb Exp $
+// $Ид: MDI.d,v 1.10 2007/11/27 08:19:20 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.MDI;
@@ -19,28 +19,28 @@ public import wx.Frame;
 
 		//! \cond EXTERN
 		extern (C) {
-		alias IntPtr function(MDIParentFrame obj) Virtual_OnCreateClient;
+		alias ЦУк function(MDIParentFrame объ) Virtual_OnCreateClient;
 		}
 
-		static extern (C) IntPtr wxMDIParentFrame_ctor();
-		static extern (C) void wxMDIParentFrame_RegisterVirtual(IntPtr self, MDIParentFrame obj, Virtual_OnCreateClient onCreateClient);
-		static extern (C) IntPtr wxMDIParentFrame_OnCreateClient(IntPtr self);
-		static extern (C) bool   wxMDIParentFrame_Create(IntPtr self, IntPtr parent, int id, string title, inout Point pos, inout Size size, uint style, string name);
+		static extern (C) ЦУк wxMDIParentFrame_ctor();
+		static extern (C) проц wxMDIParentFrame_RegisterVirtual(ЦУк сам, MDIParentFrame объ, Virtual_OnCreateClient onCreateClient);
+		static extern (C) ЦУк wxMDIParentFrame_OnCreateClient(ЦУк сам);
+		static extern (C) бул   wxMDIParentFrame_Create(ЦУк сам, ЦУк родитель, цел ид, ткст title, inout Точка поз, inout Размер size, бцел стиль, ткст имя);
 	
-		static extern (C) IntPtr wxMDIParentFrame_GetActiveChild(IntPtr self);
-		//static extern (C) void   wxMDIParentFrame_SetActiveChild(IntPtr self, IntPtr pChildFrame);
+		static extern (C) ЦУк wxMDIParentFrame_GetActiveChild(ЦУк сам);
+		//static extern (C) проц   wxMDIParentFrame_SetActiveChild(ЦУк сам, ЦУк pChildFrame);
 	
-	//	static extern (C) IntPtr wxMDIParentFrame_GetClientWindow(IntPtr self);
+	//	static extern (C) ЦУк wxMDIParentFrame_GetClientWindow(ЦУк сам);
 	
-		static extern (C) void   wxMDIParentFrame_Cascade(IntPtr self);
-		static extern (C) void   wxMDIParentFrame_Tile(IntPtr self);
+		static extern (C) проц   wxMDIParentFrame_Cascade(ЦУк сам);
+		static extern (C) проц   wxMDIParentFrame_Tile(ЦУк сам);
 	
-		static extern (C) void   wxMDIParentFrame_ArrangeIcons(IntPtr self);
+		static extern (C) проц   wxMDIParentFrame_ArrangeIcons(ЦУк сам);
 	
-		static extern (C) void   wxMDIParentFrame_ActivateNext(IntPtr self);
-		static extern (C) void   wxMDIParentFrame_ActivatePrevious(IntPtr self);
+		static extern (C) проц   wxMDIParentFrame_ActivateNext(ЦУк сам);
+		static extern (C) проц   wxMDIParentFrame_ActivatePrevious(ЦУк сам);
 		
-		static extern (C) void   wxMDIParentFrame_GetClientSize(IntPtr self, out int width, out int height);
+		static extern (C) проц   wxMDIParentFrame_GetClientSize(ЦУк сам, out цел ширина, out цел высота);
 		//! \endcond
 
 		//-----------------------------------------------------------------------------
@@ -52,61 +52,61 @@ public import wx.Frame;
 		
 		//-----------------------------------------------------------------------------
 		
-		public this(IntPtr wxobj)
-			{ super(wxobj);}
+		public this(ЦУк шхобъ)
+			{ super(шхобъ);}
 
 		public this()
 		{ 
 			super(wxMDIParentFrame_ctor());
-			wxMDIParentFrame_RegisterVirtual(wxobj, this, &staticDoOnCreateClient);
+			wxMDIParentFrame_RegisterVirtual(шхобъ, this, &staticDoOnCreateClient);
 		}
 
-		public this(Window parent, int id, string title, Point pos=wxDefaultPosition, Size size=wxDefaultSize, int style=wxDEFAULT_MDI_FRAME_STYLE, string name=wxFrameNameStr)
+		public this(Окно родитель, цел ид, ткст title, Точка поз=wxDefaultPosition, Размер size=wxDefaultSize, цел стиль=wxDEFAULT_MDI_FRAME_STYLE, ткст имя=wxFrameNameStr)
 		{
 			this();
 			
-			if (!Create(parent, id, title, pos, size, style, name)) 
+			if (!Create(родитель, ид, title, поз, size, стиль, имя)) 
 			{
 				throw new InvalidOperationException("Could not create MDIParentFrame");
 			}
 		}
 		
 		//---------------------------------------------------------------------
-		// ctors with self created id
+		// ctors with сам created ид
 		
-		public this(Window parent, string title, Point pos=wxDefaultPosition, Size size=wxDefaultSize, int style=wxDEFAULT_MDI_FRAME_STYLE, string name=wxFrameNameStr)
-			{ this(parent, Window.UniqueID, title, pos, size, style, name);}
+		public this(Окно родитель, ткст title, Точка поз=wxDefaultPosition, Размер size=wxDefaultSize, цел стиль=wxDEFAULT_MDI_FRAME_STYLE, ткст имя=wxFrameNameStr)
+			{ this(родитель, Окно.UniqueID, title, поз, size, стиль, имя);}
 		
 		//-----------------------------------------------------------------------------
 
-		public override bool Create(Window parent, int id, string title, inout Point pos, inout Size size, int style, string name)
+		public override бул Create(Окно родитель, цел ид, ткст title, inout Точка поз, inout Размер size, цел стиль, ткст имя)
 		{
-			return wxMDIParentFrame_Create(wxobj, wxObject.SafePtr(parent), id, title, pos, size, cast(uint)style, name);
+			return wxMDIParentFrame_Create(шхобъ, wxObject.SafePtr(родитель), ид, title, поз, size, cast(бцел)стиль, имя);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		static extern(C) private IntPtr staticDoOnCreateClient(MDIParentFrame obj)
+		static extern(C) private ЦУк staticDoOnCreateClient(MDIParentFrame объ)
 		{
-			return wxObject.SafePtr(obj.OnCreateClient());
+			return wxObject.SafePtr(объ.OnCreateClient());
 		}
 		
 		public /+virtual+/ MDIClientWindow OnCreateClient()
 		{
-			return cast(MDIClientWindow)FindObject(wxMDIParentFrame_OnCreateClient(wxobj), &MDIClientWindow.New);
+			return cast(MDIClientWindow)FindObject(wxMDIParentFrame_OnCreateClient(шхобъ), &MDIClientWindow.Нов);
 		}
 
 		//-----------------------------------------------------------------------------
 
 		public MDIChildFrame GetActiveChild()
 		{
-			return cast(MDIChildFrame)FindObject(wxMDIParentFrame_GetActiveChild(wxobj), &MDIChildFrame.New);
+			return cast(MDIChildFrame)FindObject(wxMDIParentFrame_GetActiveChild(шхобъ), &MDIChildFrame.Нов);
 		}
 
 		/*
-		public void SetActiveChild(MDIChildFrame pChildFrame)
+		public проц SetActiveChild(MDIChildFrame pChildFrame)
 		{
-			wxMDIParentFrame_SetActiveChild(wxobj, wxObject.SafePtr(pChildFrame));
+			wxMDIParentFrame_SetActiveChild(шхобъ, wxObject.SafePtr(pChildFrame));
 		}
 		*/
 
@@ -114,54 +114,54 @@ public import wx.Frame;
 /+
 		public MDIClientWindow GetClientWindow()
 		{
-			return cast(MDIClientWindow)FindObject(wxMDIParentFrame_GetClientWindow(wxobj), &MDIClientWindow.New);
+			return cast(MDIClientWindow)FindObject(wxMDIParentFrame_GetClientWindow(шхобъ), &MDIClientWindow.Нов);
 		}
 +/
 		//-----------------------------------------------------------------------------
 
-		public /+virtual+/ void Cascade()
+		public /+virtual+/ проц Cascade()
 		{
-			wxMDIParentFrame_Cascade(wxobj);
+			wxMDIParentFrame_Cascade(шхобъ);
 		}
 
-		public /+virtual+/ void Tile()
+		public /+virtual+/ проц Tile()
 		{
-			wxMDIParentFrame_Tile(wxobj);
-		}
-
-		//-----------------------------------------------------------------------------
-
-		public /+virtual+/ void ArrangeIcons()
-		{
-			wxMDIParentFrame_ArrangeIcons(wxobj);
+			wxMDIParentFrame_Tile(шхобъ);
 		}
 
 		//-----------------------------------------------------------------------------
 
-		public /+virtual+/ void ActivateNext()
+		public /+virtual+/ проц ArrangeIcons()
 		{
-			wxMDIParentFrame_ActivateNext(wxobj);
+			wxMDIParentFrame_ArrangeIcons(шхобъ);
 		}
 
-		public /+virtual+/ void ActivatePrevious()
+		//-----------------------------------------------------------------------------
+
+		public /+virtual+/ проц ActivateNext()
 		{
-			wxMDIParentFrame_ActivatePrevious(wxobj);
+			wxMDIParentFrame_ActivateNext(шхобъ);
+		}
+
+		public /+virtual+/ проц ActivatePrevious()
+		{
+			wxMDIParentFrame_ActivatePrevious(шхобъ);
 		}
 
 		//-----------------------------------------------------------------------------
 		
-		public /+virtual+/ void GetClientSize(out int width, out int height)
+		public /+virtual+/ проц GetClientSize(out цел ширина, out цел высота)
 		{
-			wxMDIParentFrame_GetClientSize(wxobj, width, height);
+			wxMDIParentFrame_GetClientSize(шхобъ, ширина, высота);
 		}
 	}
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxMDIChildFrame_ctor();
-		static extern (C) bool   wxMDIChildFrame_Create(IntPtr self, IntPtr parent, int id, string title, inout  Point pos, inout Size size, uint style, string name);
-		static extern (C) void   wxMDIChildFrame_Activate(IntPtr self);
-		static extern (C) void   wxMDIChildFrame_Restore(IntPtr self);
-		static extern (C) void   wxMDIChildFrame_Maximize(IntPtr self, bool maximize);
+		static extern (C) ЦУк wxMDIChildFrame_ctor();
+		static extern (C) бул   wxMDIChildFrame_Create(ЦУк сам, ЦУк родитель, цел ид, ткст title, inout  Точка поз, inout Размер size, бцел стиль, ткст имя);
+		static extern (C) проц   wxMDIChildFrame_Activate(ЦУк сам);
+		static extern (C) проц   wxMDIChildFrame_Restore(ЦУк сам);
+		static extern (C) проц   wxMDIChildFrame_Maximize(ЦУк сам, бул maximize);
 		//! \endcond
 
 		//-----------------------------------------------------------------------------
@@ -169,16 +169,16 @@ public import wx.Frame;
 	alias MDIChildFrame wxMDIChildFrame;
 	public class MDIChildFrame : Frame 
 	{
-		public this(IntPtr wxobj) 
-			{ super(wxobj); }
+		public this(ЦУк шхобъ) 
+			{ super(шхобъ); }
 
 		public this()
 			{ super(wxMDIChildFrame_ctor());}
 
-		public this(MDIParentFrame parent, int id, string title, Point pos = wxDefaultPosition, Size size = wxDefaultSize, int style=wxDEFAULT_FRAME_STYLE, string name=wxFrameNameStr)
+		public this(MDIParentFrame родитель, цел ид, ткст title, Точка поз = wxDefaultPosition, Размер size = wxDefaultSize, цел стиль=wxDEFAULT_FRAME_STYLE, ткст имя=wxFrameNameStr)
 		{
 			super(wxMDIChildFrame_ctor());
-			if (!Create(parent, id, title, pos, size, style, name))
+			if (!Create(родитель, ид, title, поз, size, стиль, имя))
 			{
 				throw new InvalidOperationException("Could not create MDIChildFrame");
 			}
@@ -186,22 +186,22 @@ public import wx.Frame;
 			EVT_ACTIVATE( &OnActivate );
 		}
 		
-		static wxObject New(IntPtr ptr) { return new MDIChildFrame(ptr); }
+		static wxObject Нов(ЦУк ptr) { return new MDIChildFrame(ptr); }
 		
 		//---------------------------------------------------------------------
-		// ctors with self created id
+		// ctors with сам created ид
 		
-		public this(MDIParentFrame parent, string title, Point pos = wxDefaultPosition, Size size = wxDefaultSize, int style=wxDEFAULT_FRAME_STYLE, string name=wxFrameNameStr)
-			{ this(parent, Window.UniqueID, title, pos, size, style, name); }
+		public this(MDIParentFrame родитель, ткст title, Точка поз = wxDefaultPosition, Размер size = wxDefaultSize, цел стиль=wxDEFAULT_FRAME_STYLE, ткст имя=wxFrameNameStr)
+			{ this(родитель, Окно.UniqueID, title, поз, size, стиль, имя); }
 		
 		//-----------------------------------------------------------------------------
 
-		public bool Create(MDIParentFrame parent, int id, string title, inout Point pos, inout Size size, int style, string name)
+		public бул Create(MDIParentFrame родитель, цел ид, ткст title, inout Точка поз, inout Размер size, цел стиль, ткст имя)
 		{
-			bool ret = wxMDIChildFrame_Create(wxobj, wxObject.SafePtr(parent), id, title, pos, size, style, name);
+			бул ret = wxMDIChildFrame_Create(шхобъ, wxObject.SafePtr(родитель), ид, title, поз, size, стиль, имя);
 			version(__WXMAC__){
 				// Bug in wxMac 2.5.2; it always returns FALSE
-				return true;
+				return да;
 			} else {
 				return ret;
 			} // version(__WXMAC__)
@@ -209,64 +209,64 @@ public import wx.Frame;
 
 		//-----------------------------------------------------------------------------
 
-		public /+virtual+/ void Activate()
+		public /+virtual+/ проц Activate()
 		{
-			wxMDIChildFrame_Activate(wxobj);
+			wxMDIChildFrame_Activate(шхобъ);
 		}
 
 		//-----------------------------------------------------------------------------
 
-		public /+virtual+/ void Restore()
+		public /+virtual+/ проц Restore()
 		{
-			wxMDIChildFrame_Restore(wxobj);
+			wxMDIChildFrame_Restore(шхобъ);
 		}
 
 		//-----------------------------------------------------------------------------
 	
-		public /+virtual+/ void OnActivate(Object sender, Event e)
+		public /+virtual+/ проц OnActivate(Объект sender, Событие e)
 		{
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public /+virtual+/ void Maximize()
+		public /+virtual+/ проц Maximize()
 		{
-			wxMDIChildFrame_Maximize(wxobj, true);
+			wxMDIChildFrame_Maximize(шхобъ, да);
 		}
 	}
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxMDIClientWindow_ctor();
-		static extern (C) bool   wxMDIClientWindow_CreateClient(IntPtr self, IntPtr parent, uint style);
+		static extern (C) ЦУк wxMDIClientWindow_ctor();
+		static extern (C) бул   wxMDIClientWindow_CreateClient(ЦУк сам, ЦУк родитель, бцел стиль);
 		//! \endcond
 	
 		//-----------------------------------------------------------------------------
 	
 	alias MDIClientWindow wxMDIClientWindow;
-	public class MDIClientWindow : Window
+	public class MDIClientWindow : Окно
 	{
-		public this(IntPtr wxobj) 
-			{ super(wxobj); }
+		public this(ЦУк шхобъ) 
+			{ super(шхобъ); }
 
 		public  this()
 			{ super(wxMDIClientWindow_ctor()); }
 
-		public this(MDIParentFrame parent, int style=0)
+		public this(MDIParentFrame родитель, цел стиль=0)
 		{
 			super(wxMDIClientWindow_ctor());
-			if (!CreateClient(parent, style))
+			if (!CreateClient(родитель, стиль))
 			{
 				throw new InvalidOperationException("Could not create MDIClientWindow");
 			}
 		}
 		
-		static wxObject New(IntPtr ptr) { return new MDIClientWindow(ptr); }
+		static wxObject Нов(ЦУк ptr) { return new MDIClientWindow(ptr); }
 		
 		//-----------------------------------------------------------------------------
 
-		public bool CreateClient(MDIParentFrame parent, int style)
+		public бул CreateClient(MDIParentFrame родитель, цел стиль)
 		{
-			return wxMDIClientWindow_CreateClient(wxobj, wxObject.SafePtr(parent), style);
+			return wxMDIClientWindow_CreateClient(шхобъ, wxObject.SafePtr(родитель), стиль);
 		}
 	}
 

@@ -10,7 +10,7 @@
 // (C) 2003 by 379, Inc.
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: SplitterWindow.d,v 1.9 2006/11/17 15:21:01 afb Exp $
+// $Ид: SplitterWindow.d,v 1.9 2006/11/17 15:21:01 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.SplitterWindow;
@@ -27,38 +27,38 @@ public import wx.Window;
 
 		//! \cond EXTERN
 		extern (C) {
-		alias void function(SplitterWindow obj, int x, int y) Virtual_OnDoubleClickSash;
-		alias void function(SplitterWindow obj, IntPtr removed) Virtual_OnUnsplit;
-		alias bool function(SplitterWindow obj, int newSashPosition) Virtual_OnSashPositionChange;
+		alias проц function(SplitterWindow объ, цел x, цел y) Virtual_OnDoubleClickSash;
+		alias проц function(SplitterWindow объ, ЦУк removed) Virtual_OnUnsplit;
+		alias бул function(SplitterWindow объ, цел newSashPosition) Virtual_OnSashPositionChange;
 		}
 		
-		static extern (C) IntPtr wxSplitWnd_ctor(IntPtr parent, int id, inout Point pos, inout Size size, uint style, string name);
-		static extern (C) void   wxSplitWnd_RegisterVirtual(IntPtr self, SplitterWindow obj, Virtual_OnDoubleClickSash onDoubleClickSash, Virtual_OnUnsplit onUnsplit, Virtual_OnSashPositionChange onSashPositionChange);
-		static extern (C) void   wxSplitWnd_OnDoubleClickSash(IntPtr self, int x, int y);
-		static extern (C) void   wxSplitWnd_OnUnsplit(IntPtr self, IntPtr removed);
-		static extern (C) bool   wxSplitWnd_OnSashPositionChange(IntPtr self, int newSashPosition);
-		static extern (C) int    wxSplitWnd_GetSplitMode(IntPtr self);
-		static extern (C) bool   wxSplitWnd_IsSplit(IntPtr self);
-		static extern (C) bool   wxSplitWnd_SplitHorizontally(IntPtr self, IntPtr wnd1, IntPtr wnd2, int sashPos);
-		static extern (C) bool   wxSplitWnd_SplitVertically(IntPtr self, IntPtr wnd1, IntPtr wnd2, int sashPos);
-		static extern (C) bool   wxSplitWnd_Unsplit(IntPtr self, IntPtr toRemove);
-		static extern (C) void   wxSplitWnd_SetSashPosition(IntPtr self, int position, bool redraw);
-		static extern (C) int    wxSplitWnd_GetSashPosition(IntPtr self);
+		static extern (C) ЦУк wxSplitWnd_ctor(ЦУк родитель, цел ид, inout Точка поз, inout Размер size, бцел стиль, ткст имя);
+		static extern (C) проц   wxSplitWnd_RegisterVirtual(ЦУк сам, SplitterWindow объ, Virtual_OnDoubleClickSash onDoubleClickSash, Virtual_OnUnsplit onUnsplit, Virtual_OnSashPositionChange onSashPositionChange);
+		static extern (C) проц   wxSplitWnd_OnDoubleClickSash(ЦУк сам, цел x, цел y);
+		static extern (C) проц   wxSplitWnd_OnUnsplit(ЦУк сам, ЦУк removed);
+		static extern (C) бул   wxSplitWnd_OnSashPositionChange(ЦУк сам, цел newSashPosition);
+		static extern (C) цел    wxSplitWnd_GetSplitMode(ЦУк сам);
+		static extern (C) бул   wxSplitWnd_IsSplit(ЦУк сам);
+		static extern (C) бул   wxSplitWnd_SplitHorizontally(ЦУк сам, ЦУк wnd1, ЦУк wnd2, цел sashPos);
+		static extern (C) бул   wxSplitWnd_SplitVertically(ЦУк сам, ЦУк wnd1, ЦУк wnd2, цел sashPos);
+		static extern (C) бул   wxSplitWnd_Unsplit(ЦУк сам, ЦУк toRemove);
+		static extern (C) проц   wxSplitWnd_SetSashPosition(ЦУк сам, цел position, бул redraw);
+		static extern (C) цел    wxSplitWnd_GetSashPosition(ЦУк сам);
 		
-		static extern (C) int    wxSplitWnd_GetMinimumPaneSize(IntPtr self);
-		static extern (C) IntPtr wxSplitWnd_GetWindow1(IntPtr self);
-		static extern (C) IntPtr wxSplitWnd_GetWindow2(IntPtr self);
-		static extern (C) void   wxSplitWnd_Initialize(IntPtr self, IntPtr window);
-		static extern (C) bool   wxSplitWnd_ReplaceWindow(IntPtr self, IntPtr winOld, IntPtr winNew);
-		static extern (C) void   wxSplitWnd_SetMinimumPaneSize(IntPtr self, int paneSize);
-		static extern (C) void   wxSplitWnd_SetSplitMode(IntPtr self, int mode);
-		static extern (C) void   wxSplitWnd_UpdateSize(IntPtr self);
+		static extern (C) цел    wxSplitWnd_GetMinimumPaneSize(ЦУк сам);
+		static extern (C) ЦУк wxSplitWnd_GetWindow1(ЦУк сам);
+		static extern (C) ЦУк wxSplitWnd_GetWindow2(ЦУк сам);
+		static extern (C) проц   wxSplitWnd_Initialize(ЦУк сам, ЦУк окно);
+		static extern (C) бул   wxSplitWnd_ReplaceWindow(ЦУк сам, ЦУк winOld, ЦУк winNew);
+		static extern (C) проц   wxSplitWnd_SetMinimumPaneSize(ЦУк сам, цел paneSize);
+		static extern (C) проц   wxSplitWnd_SetSplitMode(ЦУк сам, цел mode);
+		static extern (C) проц   wxSplitWnd_UpdateSize(ЦУк сам);
 		//! \endcond
 
 		//---------------------------------------------------------------------
 
 	alias SplitterWindow wxSplitterWindow;
-	public class SplitterWindow : Window
+	public class SplitterWindow : Окно
 	{
 		enum {
 			wxSP_3DBORDER		= 0x00000200,
@@ -69,125 +69,125 @@ public import wx.Window;
 		
 		//---------------------------------------------------------------------
 
-		public this(Window parent, int id /*= wxID_ANY*/, Point pos = wxDefaultPosition, Size size = wxDefaultSize, int style = wxSP_3D, string name="splitter")
+		public this(Окно родитель, цел ид /*= wxID_ANY*/, Точка поз = wxDefaultPosition, Размер size = wxDefaultSize, цел стиль = wxSP_3D, ткст имя="splitter")
 		{ 
-			super(wxSplitWnd_ctor(wxObject.SafePtr(parent), id, pos, size, cast(uint)style, name));
+			super(wxSplitWnd_ctor(wxObject.SafePtr(родитель), ид, поз, size, cast(бцел)стиль, имя));
 			
-			wxSplitWnd_RegisterVirtual(wxobj, this, &staticOnDoubleClickSash, &staticDoOnUnsplit, &staticOnSashPositionChange);
+			wxSplitWnd_RegisterVirtual(шхобъ, this, &staticOnDoubleClickSash, &staticDoOnUnsplit, &staticOnSashPositionChange);
 		}
 			
 		//---------------------------------------------------------------------
-		// ctors with self created id
+		// ctors with сам created ид
 			
-		public this(Window parent, Point pos=wxDefaultPosition, Size size=wxDefaultSize, int style=wxSP_3D, string name="splitter")
-			{ this(parent, Window.UniqueID, pos, size, style, name);}
+		public this(Окно родитель, Точка поз=wxDefaultPosition, Размер size=wxDefaultSize, цел стиль=wxSP_3D, ткст имя="splitter")
+			{ this(родитель, Окно.UniqueID, поз, size, стиль, имя);}
 
 		//---------------------------------------------------------------------
 		
-		static extern(C) private void staticOnDoubleClickSash(SplitterWindow obj, int x, int y)
+		static extern(C) private проц staticOnDoubleClickSash(SplitterWindow объ, цел x, цел y)
 		{
-			obj.OnDoubleClickSash(x, y);
+			объ.OnDoubleClickSash(x, y);
 		}
-		public /+virtual+/ void OnDoubleClickSash(int x, int y)
+		public /+virtual+/ проц OnDoubleClickSash(цел x, цел y)
 		{
-			wxSplitWnd_OnDoubleClickSash(wxobj, x, y);
-		}
-		
-		//---------------------------------------------------------------------
-		
-		static extern(C) private void staticDoOnUnsplit(SplitterWindow obj, IntPtr removed)
-		{
-			obj.OnUnsplit(cast(Window)FindObject(removed));
-		}
-		
-		public /+virtual+/ void OnUnsplit(Window removed)
-		{
-			wxSplitWnd_OnUnsplit(wxobj, wxObject.SafePtr(removed));
+			wxSplitWnd_OnDoubleClickSash(шхобъ, x, y);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		static extern(C) private bool staticOnSashPositionChange(SplitterWindow obj, int newSashPosition)
+		static extern(C) private проц staticDoOnUnsplit(SplitterWindow объ, ЦУк removed)
 		{
-			return obj.OnSashPositionChange(newSashPosition);
-		}
-		public /+virtual+/ bool OnSashPositionChange(int newSashPosition)
-		{
-			return wxSplitWnd_OnSashPositionChange(wxobj, newSashPosition);
+			объ.OnUnsplit(cast(Окно)FindObject(removed));
 		}
 		
-		//---------------------------------------------------------------------
-
-		public bool IsSplit() { return wxSplitWnd_IsSplit(wxobj); }
-
-		//---------------------------------------------------------------------
-
-		public bool SplitHorizontally(Window wnd1, Window wnd2, int sashPos=0)
+		public /+virtual+/ проц OnUnsplit(Окно removed)
 		{
-			return wxSplitWnd_SplitHorizontally(wxobj, wxObject.SafePtr(wnd1), wxObject.SafePtr(wnd2), sashPos);
-		}
-
-		//---------------------------------------------------------------------
-
-		public SplitMode splitMode() { return cast(SplitMode)wxSplitWnd_GetSplitMode(wxobj); }
-		public void splitMode(SplitMode value) { wxSplitWnd_SetSplitMode(wxobj, cast(int)value); }
-
-		//---------------------------------------------------------------------
-
-		public bool SplitVertically(Window wnd1, Window wnd2, int sashPos=0)
-		{
-			return wxSplitWnd_SplitVertically(wxobj, wxObject.SafePtr(wnd1), wxObject.SafePtr(wnd2), sashPos);
-		}
-
-		//---------------------------------------------------------------------
-
-		public bool Unsplit(Window toRemove=null)
-		{
-			return wxSplitWnd_Unsplit(wxobj, wxObject.SafePtr(toRemove));
-		}
-
-		//---------------------------------------------------------------------
-
-		public void SashPosition(int value) { SetSashPosition(value, true); }
-		public int SashPosition() { return wxSplitWnd_GetSashPosition(wxobj); }
-
-		public void SetSashPosition(int position, bool redraw=true)
-		{
-			wxSplitWnd_SetSashPosition(wxobj, position, redraw);
+			wxSplitWnd_OnUnsplit(шхобъ, wxObject.SafePtr(removed));
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public int MinimumPaneSize() { return wxSplitWnd_GetMinimumPaneSize(wxobj); }
-		public void MinimumPaneSize(int value) { wxSplitWnd_SetMinimumPaneSize(wxobj, value); }
-		
-		//---------------------------------------------------------------------
-		
-		public static wxObject myNew(IntPtr ptr) { return new Window(ptr); }
-		public Window Window1() { return cast(Window)FindObject(wxSplitWnd_GetWindow1(wxobj), &myNew); }
-		
-		//---------------------------------------------------------------------
-		
-		public Window Window2() { return cast(Window)FindObject(wxSplitWnd_GetWindow2(wxobj), &myNew); }
-		
-		//---------------------------------------------------------------------
-		
-		public void Initialize(Window window)
+		static extern(C) private бул staticOnSashPositionChange(SplitterWindow объ, цел newSashPosition)
 		{
-			wxSplitWnd_Initialize(wxobj, wxObject.SafePtr(window));
+			return объ.OnSashPositionChange(newSashPosition);
+		}
+		public /+virtual+/ бул OnSashPositionChange(цел newSashPosition)
+		{
+			return wxSplitWnd_OnSashPositionChange(шхобъ, newSashPosition);
+		}
+		
+		//---------------------------------------------------------------------
+
+		public бул IsSplit() { return wxSplitWnd_IsSplit(шхобъ); }
+
+		//---------------------------------------------------------------------
+
+		public бул SplitHorizontally(Окно wnd1, Окно wnd2, цел sashPos=0)
+		{
+			return wxSplitWnd_SplitHorizontally(шхобъ, wxObject.SafePtr(wnd1), wxObject.SafePtr(wnd2), sashPos);
+		}
+
+		//---------------------------------------------------------------------
+
+		public SplitMode splitMode() { return cast(SplitMode)wxSplitWnd_GetSplitMode(шхобъ); }
+		public проц splitMode(SplitMode значение) { wxSplitWnd_SetSplitMode(шхобъ, cast(цел)значение); }
+
+		//---------------------------------------------------------------------
+
+		public бул SplitVertically(Окно wnd1, Окно wnd2, цел sashPos=0)
+		{
+			return wxSplitWnd_SplitVertically(шхобъ, wxObject.SafePtr(wnd1), wxObject.SafePtr(wnd2), sashPos);
+		}
+
+		//---------------------------------------------------------------------
+
+		public бул Unsplit(Окно toRemove=пусто)
+		{
+			return wxSplitWnd_Unsplit(шхобъ, wxObject.SafePtr(toRemove));
+		}
+
+		//---------------------------------------------------------------------
+
+		public проц SashPosition(цел значение) { SetSashPosition(значение, да); }
+		public цел SashPosition() { return wxSplitWnd_GetSashPosition(шхобъ); }
+
+		public проц SetSashPosition(цел position, бул redraw=да)
+		{
+			wxSplitWnd_SetSashPosition(шхобъ, position, redraw);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public bool ReplaceWindow(Window winOld, Window winNew)
+		public цел MinimumPaneSize() { return wxSplitWnd_GetMinimumPaneSize(шхобъ); }
+		public проц MinimumPaneSize(цел значение) { wxSplitWnd_SetMinimumPaneSize(шхобъ, значение); }
+		
+		//---------------------------------------------------------------------
+		
+		public static wxObject myNew(ЦУк ptr) { return new Окно(ptr); }
+		public Окно Window1() { return cast(Окно)FindObject(wxSplitWnd_GetWindow1(шхобъ), &myNew); }
+		
+		//---------------------------------------------------------------------
+		
+		public Окно Window2() { return cast(Окно)FindObject(wxSplitWnd_GetWindow2(шхобъ), &myNew); }
+		
+		//---------------------------------------------------------------------
+		
+		public проц Инициализуй(Окно окно)
 		{
-			return wxSplitWnd_ReplaceWindow(wxobj, wxObject.SafePtr(winOld), wxObject.SafePtr(winNew));
+			wxSplitWnd_Initialize(шхобъ, wxObject.SafePtr(окно));
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void UpdateSize()
+		public бул ReplaceWindow(Окно winOld, Окно winNew)
 		{
-			wxSplitWnd_UpdateSize(wxobj);
+			return wxSplitWnd_ReplaceWindow(шхобъ, wxObject.SafePtr(winOld), wxObject.SafePtr(winNew));
+		}
+		
+		//---------------------------------------------------------------------
+		
+		public проц UpdateSize()
+		{
+			wxSplitWnd_UpdateSize(шхобъ);
 		}
 	}

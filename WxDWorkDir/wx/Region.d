@@ -9,7 +9,7 @@
 // Written by Bryan Bulten (bryan@bulten.ca)
 // (C) 2003 Bryan Bulten
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
-// $Id: Region.d,v 1.9 2006/11/17 15:21:00 afb Exp $
+// $Ид: Region.d,v 1.9 2006/11/17 15:21:00 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.Region;
@@ -25,44 +25,44 @@ public import wx.Colour;
     }
 
 		//! \cond EXTERN
-        static extern (C) IntPtr wxRegion_ctor();
-        static extern (C) IntPtr wxRegion_ctorByCoords(int x, int y, int w, int h);
-        static extern (C) IntPtr wxRegion_ctorByCorners(inout Point topLeft, inout Point bottomRight);
-        static extern (C) IntPtr wxRegion_ctorByRect(inout Rectangle rect);
-        static extern (C) IntPtr wxRegion_ctorByPoly(int n, inout Point[] points, int fillStyle);
-        static extern (C) IntPtr wxRegion_ctorByBitmap(IntPtr bmp, IntPtr transColour, int tolerance);
-        static extern (C) IntPtr wxRegion_ctorByRegion(IntPtr region);
+        static extern (C) ЦУк wxRegion_ctor();
+        static extern (C) ЦУк wxRegion_ctorByCoords(цел x, цел y, цел w, цел h);
+        static extern (C) ЦУк wxRegion_ctorByCorners(inout Точка topLeft, inout Точка bottomRight);
+        static extern (C) ЦУк wxRegion_ctorByRect(inout Прямоугольник прям);
+        static extern (C) ЦУк wxRegion_ctorByPoly(цел n, inout Точка[] points, цел fillStyle);
+        static extern (C) ЦУк wxRegion_ctorByBitmap(ЦУк bmp, ЦУк transColour, цел tolerance);
+        static extern (C) ЦУк wxRegion_ctorByRegion(ЦУк region);
 
-        static extern (C) void   wxRegion_dtor(IntPtr self);
+        static extern (C) проц   wxRegion_dtor(ЦУк сам);
 
-        static extern (C) void   wxRegion_Clear(IntPtr self);
-        static extern (C) bool   wxRegion_Offset(IntPtr self, int x, int y);
+        static extern (C) проц   wxRegion_Clear(ЦУк сам);
+        static extern (C) бул   wxRegion_Offset(ЦУк сам, цел x, цел y);
 
-        static extern (C) bool   wxRegion_Union(IntPtr self, int x, int y, int width, int height);
-        static extern (C) bool   wxRegion_UnionRect(IntPtr self, inout Rectangle rect);
-        static extern (C) bool   wxRegion_UnionRegion(IntPtr self, IntPtr region);
-        static extern (C) bool   wxRegion_UnionBitmap(IntPtr self, IntPtr bmp, IntPtr transColour, int tolerance);
+        static extern (C) бул   wxRegion_Union(ЦУк сам, цел x, цел y, цел ширина, цел высота);
+        static extern (C) бул   wxRegion_UnionRect(ЦУк сам, inout Прямоугольник прям);
+        static extern (C) бул   wxRegion_UnionRegion(ЦУк сам, ЦУк region);
+        static extern (C) бул   wxRegion_UnionBitmap(ЦУк сам, ЦУк bmp, ЦУк transColour, цел tolerance);
 
-        static extern (C) bool   wxRegion_Intersect(IntPtr self, int x, int y, int width, int height);
-        static extern (C) bool   wxRegion_IntersectRect(IntPtr self, inout Rectangle rect);
-        static extern (C) bool   wxRegion_IntersectRegion(IntPtr self, IntPtr region);
+        static extern (C) бул   wxRegion_Intersect(ЦУк сам, цел x, цел y, цел ширина, цел высота);
+        static extern (C) бул   wxRegion_IntersectRect(ЦУк сам, inout Прямоугольник прям);
+        static extern (C) бул   wxRegion_IntersectRegion(ЦУк сам, ЦУк region);
 
-        static extern (C) bool   wxRegion_Subtract(IntPtr self, int x, int y, int width, int height);
-        static extern (C) bool   wxRegion_SubtractRect(IntPtr self, inout Rectangle rect);
-        static extern (C) bool   wxRegion_SubtractRegion(IntPtr self, IntPtr region);
+        static extern (C) бул   wxRegion_Subtract(ЦУк сам, цел x, цел y, цел ширина, цел высота);
+        static extern (C) бул   wxRegion_SubtractRect(ЦУк сам, inout Прямоугольник прям);
+        static extern (C) бул   wxRegion_SubtractRegion(ЦУк сам, ЦУк region);
 
-        static extern (C) bool   wxRegion_Xor(IntPtr self, int x, int y, int width, int height);
-        static extern (C) bool   wxRegion_XorRect(IntPtr self, inout Rectangle rect);
-        static extern (C) bool   wxRegion_XorRegion(IntPtr self, IntPtr region);
+        static extern (C) бул   wxRegion_Xor(ЦУк сам, цел x, цел y, цел ширина, цел высота);
+        static extern (C) бул   wxRegion_XorRect(ЦУк сам, inout Прямоугольник прям);
+        static extern (C) бул   wxRegion_XorRegion(ЦУк сам, ЦУк region);
 
-        static extern (C) RegionContain wxRegion_ContainsCoords(IntPtr self, int x, int y);
-        static extern (C) RegionContain wxRegion_ContainsPoint(IntPtr self, inout Point pt);
-        static extern (C) RegionContain wxRegion_ContainsRectCoords(IntPtr self, int x, int y, int width, int height);
-        static extern (C) RegionContain wxRegion_ContainsRect(IntPtr self, inout Rectangle rect);
+        static extern (C) RegionContain wxRegion_ContainsCoords(ЦУк сам, цел x, цел y);
+        static extern (C) RegionContain wxRegion_ContainsPoint(ЦУк сам, inout Точка pt);
+        static extern (C) RegionContain wxRegion_ContainsRectCoords(ЦУк сам, цел x, цел y, цел ширина, цел высота);
+        static extern (C) RegionContain wxRegion_ContainsRect(ЦУк сам, inout Прямоугольник прям);
 
-        static extern (C) void   wxRegion_GetBox(IntPtr self, inout Rectangle rect);
-        static extern (C) bool   wxRegion_IsEmpty(IntPtr self);
-        static extern (C) IntPtr wxRegion_ConvertToBitmap(IntPtr self);
+        static extern (C) проц   wxRegion_GetBox(ЦУк сам, inout Прямоугольник прям);
+        static extern (C) бул   wxRegion_IsEmpty(ЦУк сам);
+        static extern (C) ЦУк wxRegion_ConvertToBitmap(ЦУк сам);
 		//! \endcond
 
         //---------------------------------------------------------------------
@@ -71,26 +71,26 @@ public import wx.Colour;
     public class Region : GDIObject
     {
 
-        public this(IntPtr wxobj) 
-            { super(wxobj); }
+        public this(ЦУк шхобъ) 
+            { super(шхобъ); }
 
         public this()
             { this(wxRegion_ctor()); }
 
-        public this(int x, int y, int w, int h)
+        public this(цел x, цел y, цел w, цел h)
             { this(wxRegion_ctorByCoords(x, y, w, h)); }
 
-        public this(Point topLeft, Point bottomRight)
+        public this(Точка topLeft, Точка bottomRight)
             { this(wxRegion_ctorByCorners(topLeft, bottomRight)); }
 
-        public this(Rectangle rect)
-            { this(wxRegion_ctorByRect(rect)); }
+        public this(Прямоугольник прям)
+            { this(wxRegion_ctorByRect(прям)); }
 
         version(__WXMAC__) {} else
-        public this(Point[] points, int fillStyle)
+        public this(Точка[] points, цел fillStyle)
             { this(wxRegion_ctorByPoly(points.length, points, fillStyle)); }
 
-        public this(Bitmap bmp, Colour transColour, int tolerance)
+        public this(Битмап bmp, Цвет transColour, цел tolerance)
             { this(wxRegion_ctorByBitmap(wxObject.SafePtr(bmp), wxObject.SafePtr(transColour), tolerance)); }
 
         public this(Region reg)
@@ -98,147 +98,147 @@ public import wx.Colour;
 
         //---------------------------------------------------------------------
 
-        public void Clear()
+        public проц Очисть()
         {
-            wxRegion_Clear(wxobj);
+            wxRegion_Clear(шхобъ);
         }
 
         version(__WXMAC__) {} else
-        public bool Offset(int x, int y)
+        public бул Offset(цел x, цел y)
         {
-            return wxRegion_Offset(wxobj, x, y);
+            return wxRegion_Offset(шхобъ, x, y);
         }
 
         //---------------------------------------------------------------------
 
-        public bool Union(int x, int y, int width, int height) 
+        public бул Union(цел x, цел y, цел ширина, цел высота) 
         {
-            return wxRegion_Union(wxobj, x, y, width, height);
+            return wxRegion_Union(шхобъ, x, y, ширина, высота);
         }
 
-        public bool Union(Rectangle rect)
+        public бул Union(Прямоугольник прям)
         {
-            return wxRegion_UnionRect(wxobj, rect);
+            return wxRegion_UnionRect(шхобъ, прям);
         }
 
-        public bool Union(Region reg)
+        public бул Union(Region reg)
         {
-            return wxRegion_UnionRegion(wxobj, wxObject.SafePtr(reg));
+            return wxRegion_UnionRegion(шхобъ, wxObject.SafePtr(reg));
         }
 
-        public bool Union(Bitmap bmp, Colour transColour, int tolerance)
+        public бул Union(Битмап bmp, Цвет transColour, цел tolerance)
         {
-            return wxRegion_UnionBitmap(wxobj, wxObject.SafePtr(bmp), wxObject.SafePtr(transColour), tolerance);
-        }
-
-        //---------------------------------------------------------------------
-
-        public bool Intersect(int x, int y, int width, int height)
-        {
-            return wxRegion_Intersect(wxobj, x, y, width, height);
-        }
-
-        public bool Intersect(Rectangle rect)
-        {
-            return wxRegion_IntersectRect(wxobj, rect);
-        }
-
-        public bool Intersect(Region region)
-        {
-            return wxRegion_IntersectRegion(wxobj, wxObject.SafePtr(region));
+            return wxRegion_UnionBitmap(шхобъ, wxObject.SafePtr(bmp), wxObject.SafePtr(transColour), tolerance);
         }
 
         //---------------------------------------------------------------------
 
-        public bool Subtract(int x, int y, int width, int height)
+        public бул Intersect(цел x, цел y, цел ширина, цел высота)
         {
-            return wxRegion_Subtract(wxobj, x, y, width, height);
+            return wxRegion_Intersect(шхобъ, x, y, ширина, высота);
         }
 
-        public bool Subtract(Rectangle rect)
+        public бул Intersect(Прямоугольник прям)
         {
-            return wxRegion_SubtractRect(wxobj, rect);
+            return wxRegion_IntersectRect(шхобъ, прям);
         }
 
-        public bool Subtract(Region region)
+        public бул Intersect(Region region)
         {
-            return wxRegion_SubtractRegion(wxobj, wxObject.SafePtr(region));
-        }
-
-        //---------------------------------------------------------------------
-
-        public bool Xor(int x, int y, int width, int height)
-        {
-            return wxRegion_Xor(wxobj, x, y, width, height);
-        }
-
-        public bool Xor(Rectangle rect)
-        {
-            return wxRegion_XorRect(wxobj, rect);
-        }
-
-        public bool Xor(Region region)
-        {
-            return wxRegion_XorRegion(wxobj, wxObject.SafePtr(region));
+            return wxRegion_IntersectRegion(шхобъ, wxObject.SafePtr(region));
         }
 
         //---------------------------------------------------------------------
 
-        public RegionContain Contains(int x, int y)
+        public бул Subtract(цел x, цел y, цел ширина, цел высота)
         {
-            return wxRegion_ContainsCoords(wxobj, x, y);
+            return wxRegion_Subtract(шхобъ, x, y, ширина, высота);
         }
 
-        public RegionContain Contains(Point pt)
+        public бул Subtract(Прямоугольник прям)
         {
-            return wxRegion_ContainsPoint(wxobj, pt);
+            return wxRegion_SubtractRect(шхобъ, прям);
         }
 
-        public RegionContain Contains(int x, int y, int width, int height)
+        public бул Subtract(Region region)
         {
-            return wxRegion_ContainsRectCoords(wxobj, x, y, width, height);
+            return wxRegion_SubtractRegion(шхобъ, wxObject.SafePtr(region));
         }
 
-        public RegionContain Contains(Rectangle rect)
+        //---------------------------------------------------------------------
+
+        public бул Xor(цел x, цел y, цел ширина, цел высота)
         {
-            return wxRegion_ContainsRect(wxobj, rect);
+            return wxRegion_Xor(шхобъ, x, y, ширина, высота);
+        }
+
+        public бул Xor(Прямоугольник прям)
+        {
+            return wxRegion_XorRect(шхобъ, прям);
+        }
+
+        public бул Xor(Region region)
+        {
+            return wxRegion_XorRegion(шхобъ, wxObject.SafePtr(region));
+        }
+
+        //---------------------------------------------------------------------
+
+        public RegionContain Contains(цел x, цел y)
+        {
+            return wxRegion_ContainsCoords(шхобъ, x, y);
+        }
+
+        public RegionContain Contains(Точка pt)
+        {
+            return wxRegion_ContainsPoint(шхобъ, pt);
+        }
+
+        public RegionContain Contains(цел x, цел y, цел ширина, цел высота)
+        {
+            return wxRegion_ContainsRectCoords(шхобъ, x, y, ширина, высота);
+        }
+
+        public RegionContain Contains(Прямоугольник прям)
+        {
+            return wxRegion_ContainsRect(шхобъ, прям);
         }
 
         //---------------------------------------------------------------------
         
-        public Rectangle GetBox()
+        public Прямоугольник GetBox()
         {
-            Rectangle rect;
-            wxRegion_GetBox(wxobj, rect);
-            return rect;
+            Прямоугольник прям;
+            wxRegion_GetBox(шхобъ, прям);
+            return прям;
         }
 
-        public bool IsEmpty() { return wxRegion_IsEmpty(wxobj); }
+        public бул IsEmpty() { return wxRegion_IsEmpty(шхобъ); }
 
-        public Bitmap ConvertToBitmap()
+        public Битмап ConvertToBitmap()
         {
-            return new Bitmap(wxRegion_ConvertToBitmap(wxobj));
+            return new Битмап(wxRegion_ConvertToBitmap(шхобъ));
         }
     }
 
 		//! \cond EXTERN
-        static extern (C) IntPtr wxRegionIterator_ctor();
-        static extern (C) IntPtr wxRegionIterator_ctorByRegion(IntPtr region);
+        static extern (C) ЦУк wxRegionIterator_ctor();
+        static extern (C) ЦУк wxRegionIterator_ctorByRegion(ЦУк region);
 
-        static extern (C) void   wxRegionIterator_Reset(IntPtr self);
-        static extern (C) void   wxRegionIterator_ResetToRegion(IntPtr self, IntPtr region);
+        static extern (C) проц   wxRegionIterator_Reset(ЦУк сам);
+        static extern (C) проц   wxRegionIterator_ResetToRegion(ЦУк сам, ЦУк region);
 
-        static extern (C) bool   wxRegionIterator_HaveRects(IntPtr self);
+        static extern (C) бул   wxRegionIterator_HaveRects(ЦУк сам);
         
-        static extern (C) int    wxRegionIterator_GetX(IntPtr self);
-        static extern (C) int    wxRegionIterator_GetY(IntPtr self);
+        static extern (C) цел    wxRegionIterator_GetX(ЦУк сам);
+        static extern (C) цел    wxRegionIterator_GetY(ЦУк сам);
 
-        static extern (C) int    wxRegionIterator_GetW(IntPtr self);
-        static extern (C) int    wxRegionIterator_GetWidth(IntPtr self);
-        static extern (C) int    wxRegionIterator_GetH(IntPtr self);
-        static extern (C) int    wxRegionIterator_GetHeight(IntPtr self);
+        static extern (C) цел    wxRegionIterator_GetW(ЦУк сам);
+        static extern (C) цел    wxRegionIterator_GetWidth(ЦУк сам);
+        static extern (C) цел    wxRegionIterator_GetH(ЦУк сам);
+        static extern (C) цел    wxRegionIterator_GetHeight(ЦУк сам);
 
-        static extern (C) void   wxRegionIterator_GetRect(IntPtr self, inout Rectangle rect);
+        static extern (C) проц   wxRegionIterator_GetRect(ЦУк сам, inout Прямоугольник прям);
 		//! \endcond
 
         //---------------------------------------------------------------------
@@ -246,8 +246,8 @@ public import wx.Colour;
     alias RegionIterator wxRegionIterator;
     public class RegionIterator : wxObject
     {
-        public this(IntPtr wxobj) 
-            { super(wxobj); }
+        public this(ЦУк шхобъ) 
+            { super(шхобъ); }
 
         public this()
             { this(wxRegionIterator_ctor()); }
@@ -257,40 +257,40 @@ public import wx.Colour;
 
         //---------------------------------------------------------------------
 
-        public void Reset()
+        public проц Reset()
         {
-            wxRegionIterator_Reset(wxobj);
+            wxRegionIterator_Reset(шхобъ);
         }
 
-        public void ResetToRegion(Region region)
+        public проц ResetToRegion(Region region)
         {
-            wxRegionIterator_ResetToRegion(wxobj, wxObject.SafePtr(region));
+            wxRegionIterator_ResetToRegion(шхобъ, wxObject.SafePtr(region));
         }
 
         //---------------------------------------------------------------------
 
-        public bool HaveRects()
+        public бул HaveRects()
         {
-            return wxRegionIterator_HaveRects(wxobj);
+            return wxRegionIterator_HaveRects(шхобъ);
         }
 
         //---------------------------------------------------------------------
         
-        public int X() { return wxRegionIterator_GetX(wxobj); }
+        public цел X() { return wxRegionIterator_GetX(шхобъ); }
 
-        public int Y() { return wxRegionIterator_GetY(wxobj); }
-
-        //---------------------------------------------------------------------
-
-        public int Width() { return wxRegionIterator_GetWidth(wxobj); }
-
-        public int Height() { return wxRegionIterator_GetHeight(wxobj); }
+        public цел Y() { return wxRegionIterator_GetY(шхобъ); }
 
         //---------------------------------------------------------------------
 
-        public Rectangle Rect() { 
-                Rectangle rect;
-                wxRegionIterator_GetRect(wxobj, rect);
-                return rect;
+        public цел Ширина() { return wxRegionIterator_GetWidth(шхобъ); }
+
+        public цел Высота() { return wxRegionIterator_GetHeight(шхобъ); }
+
+        //---------------------------------------------------------------------
+
+        public Прямоугольник Rect() { 
+                Прямоугольник прям;
+                wxRegionIterator_GetRect(шхобъ, прям);
+                return прям;
             }
     }

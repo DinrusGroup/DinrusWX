@@ -2,7 +2,7 @@
 module wx.common;
 
 /*! \mainpage
- *  <p><a href="http://wxd.sourceforge.net/"><b>wxD</b></a> is
+ *  <p><a href="http://wxd.sourceforge.net/"><с>wxD</с></a> is
  *  <a href="http://www.wxwidgets.org/">wxWidgets</a> bindings for the
  *  <a href="http://www.d-programming-language.org/">D programming language</a>.</p>
  */   
@@ -17,9 +17,9 @@ module wx.common;
 version (Tango)
 {
 public import tango.stdc.stddef;
-// "string" doesn't matter:
-const int version_major = 1;
-const int version_minor = 0;
+// "ткст" doesn't matter:
+const цел version_major = 1;
+const цел version_minor = 0;
 }
 
 version(Phobos)
@@ -40,58 +40,58 @@ import stdrus;
 
 interface IDisposable
 {
-	void Dispose();
+	проц Dispose();
 }
 
 interface ICloneable
 {
-	Object Clone();
+	Объект Clone();
 }
 
 
-	/// An implementation-specific type that is used to represent a pointer or a handle.
-	typedef void* IntPtr;
+	/// An implementation-specific тип that is used to represent a pointer or a handle.
+	typedef проц* ЦУк;
 
 version(UNICODE)
 	alias wchar_t wxChar;
 else //version(ANSI)
-	alias ubyte wxChar;
+	alias ббайт wxChar;
 /+
 //! \cond D1
 static if (version_major < 1 || (version_major == 1 && version_minor < 16))
 //! \endcond
-	static if (is(object.string)) { /*already added*/ } else
-	alias char[] string; // added in DMD 1.016 and DMD 2.000
+	static if (is(object.ткст)) { /*already added*/ } else
+	alias сим[] ткст; // added in DMD 1.016 and DMD 2.000
 
 //! \cond D2
 static if (version_major < 2 || (version_major == 2 && version_minor < 6))
 //! \endcond
-	string assumeUnique(char[] s) { return s; } // DMD 2.006
+	ткст assumeUnique(сим[] s) { return s; } // DMD 2.006
 +/
 
 class NullPointerException : Exception
 {
-	this(string msg) { super(msg); }
+	this(ткст msg) { super(msg); }
 }
 
 class NullReferenceException : Exception
 {
-	this(string msg) { super(msg); }
+	this(ткст msg) { super(msg); }
 }
 
-class ArgumentException : Exception
+class ИсклАрга : Exception
 {
-	this(string msg) { super(msg); }
+	this(ткст msg) { super(msg); }
 }
 
 class InvalidOperationException : Exception
 {
-	this(string msg) { super(msg); }
+	this(ткст msg) { super(msg); }
 }
 
 class ArgumentNullException : Exception
 {
-	this(string msg) { super(msg); }
+	this(ткст msg) { super(msg); }
 }
 
 
@@ -104,80 +104,80 @@ public import wx.wxString;
 //public import wx.App;
 //public import wx.Utils;
 
-alias Point wxPoint;
-struct Point
+alias Точка wxPoint;
+struct Точка
 {
-	int X,Y;
+	цел X,Y;
 
 	/** struct constructor */
-	static Point opCall(int x,int y)
+	static Точка opCall(цел x,цел y)
 	{
-	    Point pt;
+	    Точка pt;
 	    pt.X = x;
 	    pt.Y = y;
 	    return pt;
 	}
 }
 
-alias Size wxSize;
-struct Size
+alias Размер wxSize;
+struct Размер
 {
-	int Width,Height;
+	цел Ширина,Высота;
 
 	/** struct constructor */
-	static Size opCall(int w,int h) {
-	    Size sz;
-	    sz.Width = w;
-	    sz.Height = h;
+	static Размер opCall(цел w,цел h) {
+	    Размер sz;
+	    sz.Ширина = w;
+	    sz.Высота = h;
 	    return sz;
 	}
 }
 
-alias Rectangle wxRectangle;
-struct Rectangle
+alias Прямоугольник wxRectangle;
+struct Прямоугольник
 {
-	int X,Y,Width,Height;
-	int  Left() { return X; }
-	void Left(int value) { X = value; }
-	int  Top() { return Y; }
-	void Top(int value) { Y = value; }
+	цел X,Y,Ширина,Высота;
+	цел  Left() { return X; }
+	проц Left(цел значение) { X = значение; }
+	цел  Top() { return Y; }
+	проц Top(цел значение) { Y = значение; }
 
-	int  Right() { return X + Width - 1; }
-	void Right(int value) { Width = value - X + 1; }
-	int  Bottom() { return Y + Height - 1; }
-	void Bottom(int value) { Height = value - Y + 1; }
+	цел  Right() { return X + Ширина - 1; }
+	проц Right(цел значение) { Ширина = значение - X + 1; }
+	цел  Bottom() { return Y + Высота - 1; }
+	проц Bottom(цел значение) { Высота = значение - Y + 1; }
 
 	/** struct constructor */
-	static Rectangle opCall(int x,int y,int w,int h)
+	static Прямоугольник opCall(цел x,цел y,цел w,цел h)
 	{
-	    Rectangle rect;
-	    rect.X = x;
-	    rect.Y = y;
-	    rect.Width = w;
-	    rect.Height = h;
-	    return rect;
+	    Прямоугольник прям;
+	    прям.X = x;
+	    прям.Y = y;
+	    прям.Ширина = w;
+	    прям.Высота = h;
+	    return прям;
 	}
 }
 
 alias Rect wxRect;
-alias Rectangle Rect;
+alias Прямоугольник Rect;
 
 alias new_Rectangle new_Rect;
 
 
-deprecated Point new_Point(int x,int y)
+deprecated Точка new_Point(цел x,цел y)
 {
-	return Point(x,y);
+	return Точка(x,y);
 }
 
-deprecated Size new_Size(int w,int h)
+deprecated Размер new_Size(цел w,цел h)
 {
-	return Size(w,h);
+	return Размер(w,h);
 }
 
-deprecated Rectangle new_Rectangle(int x,int y,int w,int h)
+deprecated Прямоугольник new_Rectangle(цел x,цел y,цел w,цел h)
 {
-	return Rectangle(x,y,w,h);
+	return Прямоугольник(x,y,w,h);
 }
 
 /+
@@ -186,43 +186,43 @@ deprecated Rectangle new_Rectangle(int x,int y,int w,int h)
 
 //accel.cpp
 
-wxAcceleratorEntry* wxAcceleratorEntry_ctor(int flags, int keyCode, int cmd, wxMenuItem* item);
-void wxAcceleratorEntry_RegisterDisposable(_AcceleratorEntry* self, Virtual_Dispose onDispose);
-void wxAcceleratorEntry_dtor(wxAcceleratorEntry* self);
-void wxAcceleratorEntry_Set(wxAcceleratorEntry* self, int flags, int keyCode, int cmd, wxMenuItem* item);
-void wxAcceleratorEntry_SetMenuItem(wxAcceleratorEntry* self, wxMenuItem* item);
-int wxAcceleratorEntry_GetFlags(wxAcceleratorEntry* self);
-int wxAcceleratorEntry_GetKeyCode(wxAcceleratorEntry* self);
-int wxAcceleratorEntry_GetCommand(wxAcceleratorEntry* self);
-wxMenuItem* wxAcceleratorEntry_GetMenuItem(wxAcceleratorEntry* self);
-wxAcceleratorEntry* wxAcceleratorEntry_GetAccelFromString(wxc_string label);
+wxAcceleratorEntry* wxAcceleratorEntry_ctor(цел флаги, цел кодКлавиши, цел команда, wxMenuItem* элемент);
+проц wxAcceleratorEntry_RegisterDisposable(_AcceleratorEntry* сам, Virtual_Dispose onDispose);
+проц wxAcceleratorEntry_dtor(wxAcceleratorEntry* сам);
+проц wxAcceleratorEntry_Set(wxAcceleratorEntry* сам, цел флаги, цел кодКлавиши, цел команда, wxMenuItem* элемент);
+проц wxAcceleratorEntry_SetMenuItem(wxAcceleratorEntry* сам, wxMenuItem* элемент);
+цел wxAcceleratorEntry_GetFlags(wxAcceleratorEntry* сам);
+цел wxAcceleratorEntry_GetKeyCode(wxAcceleratorEntry* сам);
+цел wxAcceleratorEntry_GetCommand(wxAcceleratorEntry* сам);
+wxMenuItem* wxAcceleratorEntry_GetMenuItem(wxAcceleratorEntry* сам);
+wxAcceleratorEntry* wxAcceleratorEntry_GetAccelFromString(wxc_string надпись);
 wxAcceleratorTable* wxAcceleratorTable_ctor();
-wxc_bool wxAcceleratorTable_Ok(wxAcceleratorTable* self);
+wxc_bool wxAcceleratorTable_Ok(wxAcceleratorTable* сам);
 
 // activateevent.cpp
 
-wxActivateEvent* wxActivateEvent_ctor(wxEventType type, wxc_bool active, int Id);
-wxc_bool wxActivateEvent_GetActive(wxActivateEvent* self);
+wxActivateEvent* wxActivateEvent_ctor(wxEventType тип, wxc_bool активен, цел Ид);
+wxc_bool wxActivateEvent_GetActive(wxActivateEvent* сам);
 
-// wxD - app.cpp
+// wxD - прил.cpp
 
 _App* wxApp_ctor();
-void wxApp_RegisterVirtual(_App* self, wxc_object obj, Virtual_OnInit onInit, Virtual_OnRun onRun, Virtual_OnExit onExit,Virtual_Initialize initialize);
-wxc_bool wxApp_OnInit(_App* self);
-int wxApp_OnRun(_App* self);
-int wxApp_OnExit(_App* self);
-wxc_bool wxApp_Initialize(_App* self,int *argc, char **argv); 
-	void wxApp_Run(int argc, char* argv[]); 
-	void wxApp_Run(int argc, char* argv[]);
-wxString* wxApp_GetVendorName(wxApp* self);
-void wxApp_SetVendorName(wxApp* self, wxc_string name);
-wxString* wxApp_GetAppName(wxApp* self);
-void wxApp_SetAppName(wxApp* self, wxc_string name);
-wxWindow* wxApp_GetTopWindow(wxApp* self);
-void wxApp_SetTopWindow(wxApp* self, wxWindow* window);
-wxc_bool wxApp_SafeYield(wxWindow* win, wxc_bool onlyIfNeeded) ;
-wxc_bool wxApp_Yield(wxApp* self, wxc_bool onlyIfNeeded);
-void wxApp_ExitMainLoop(wxApp* self);
+проц wxApp_RegisterVirtual(_App* сам, wxc_object объ, Virtual_OnInit onInit, Virtual_OnRun onRun, Virtual_OnExit onExit,Virtual_Initialize инициализуй);
+wxc_bool wxApp_OnInit(_App* сам);
+цел wxApp_OnRun(_App* сам);
+цел wxApp_OnExit(_App* сам);
+wxc_bool wxApp_Initialize(_App* сам,цел *argc, сим **argv); 
+	проц wxApp_Run(цел argc, сим* argv[]); 
+	проц wxApp_Run(цел argc, сим* argv[]);
+wxString* wxApp_GetVendorName(wxApp* сам);
+проц wxApp_SetVendorName(wxApp* сам, wxc_string имя);
+wxString* wxApp_GetAppName(wxApp* сам);
+проц wxApp_SetAppName(wxApp* сам, wxc_string имя);
+wxWindow* wxApp_GetTopWindow(wxApp* сам);
+проц wxApp_SetTopWindow(wxApp* сам, wxWindow* окно);
+wxc_bool wxApp_SafeYield(wxWindow* окн, wxc_bool толькЕслиНужно) ;
+wxc_bool wxApp_Yield(wxApp* сам, wxc_bool толькЕслиНужно);
+проц wxApp_ExitMainLoop(wxApp* сам);
 
 
 +/

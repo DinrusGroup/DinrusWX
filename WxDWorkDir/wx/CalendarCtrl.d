@@ -1,4 +1,4 @@
-//-----------------------------------------------------------------------------
+﻿//-----------------------------------------------------------------------------
 // wxD - CalendarCtrl.d
 // (C) 2005 bero <berobero.sourceforge.net>
 // based on
@@ -10,14 +10,14 @@
 // (C) 2003 Bryan Bulten
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: CalendarCtrl.d,v 1.9 2006/11/17 15:20:59 afb Exp $
+// $Ид: CalendarCtrl.d,v 1.9 2006/11/17 15:20:59 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.CalendarCtrl;
 public import wx.common;
 public import wx.wxDateTime;
 public import wx.Colour;
-public import wx.Font;
+public import wx.Шрифт;
 public import wx.Control;
 public import wx.CommandEvent;
 
@@ -39,32 +39,32 @@ public import wx.CommandEvent;
     }
 
 		//! \cond EXTERN
-        static extern (C) IntPtr wxCalendarCtrl_ctor();
-        static extern (C) bool   wxCalendarCtrl_Create(IntPtr self, IntPtr parent, int id, IntPtr date, inout Point pos, inout Size size, uint style, string name);
-        static extern (C) bool   wxCalendarCtrl_SetDate(IntPtr self, IntPtr date);
-        static extern (C) IntPtr wxCalendarCtrl_GetDate(IntPtr self);
-        static extern (C) bool   wxCalendarCtrl_SetLowerDateLimit(IntPtr self, IntPtr date);
-        static extern (C) IntPtr wxCalendarCtrl_GetLowerDateLimit(IntPtr self);
-        static extern (C) bool   wxCalendarCtrl_SetUpperDateLimit(IntPtr self, IntPtr date);
-        static extern (C) IntPtr wxCalendarCtrl_GetUpperDateLimit(IntPtr self);
-        static extern (C) bool   wxCalendarCtrl_SetDateRange(IntPtr self, IntPtr lowerdate, IntPtr upperdate);
-        static extern (C) void   wxCalendarCtrl_EnableYearChange(IntPtr self, bool enable);
-        static extern (C) void   wxCalendarCtrl_EnableMonthChange(IntPtr self, bool enable);
-        static extern (C) void   wxCalendarCtrl_EnableHolidayDisplay(IntPtr self, bool display);
-        static extern (C) void   wxCalendarCtrl_SetHeaderColours(IntPtr self, IntPtr colFg, IntPtr colBg);
-        static extern (C) IntPtr wxCalendarCtrl_GetHeaderColourFg(IntPtr self);
-        static extern (C) IntPtr wxCalendarCtrl_GetHeaderColourBg(IntPtr self);
-        static extern (C) void   wxCalendarCtrl_SetHighlightColours(IntPtr self, IntPtr colFg, IntPtr colBg);
-        static extern (C) IntPtr wxCalendarCtrl_GetHighlightColourFg(IntPtr self);
-        static extern (C) IntPtr wxCalendarCtrl_GetHighlightColourBg(IntPtr self);
-        static extern (C) void   wxCalendarCtrl_SetHolidayColours(IntPtr self, IntPtr colFg, IntPtr colBg);
-        static extern (C) IntPtr wxCalendarCtrl_GetHolidayColourFg(IntPtr self);
-        static extern (C) IntPtr wxCalendarCtrl_GetHolidayColourBg(IntPtr self);
-        static extern (C) IntPtr wxCalendarCtrl_GetAttr(IntPtr self, int day);
-        static extern (C) void   wxCalendarCtrl_SetAttr(IntPtr self, int day, IntPtr attr);
-        static extern (C) void   wxCalendarCtrl_SetHoliday(IntPtr self, int day);
-        static extern (C) void   wxCalendarCtrl_ResetAttr(IntPtr self, int day);
-        static extern (C) int    wxCalendarCtrl_HitTest(IntPtr self, inout Point pos, IntPtr date, inout DayOfWeek wd);
+        static extern (C) ЦУк wxCalendarCtrl_ctor();
+        static extern (C) бул   wxCalendarCtrl_Create(ЦУк сам, ЦУк родитель, цел ид, ЦУк date, inout Точка поз, inout Размер size, бцел стиль, ткст имя);
+        static extern (C) бул   wxCalendarCtrl_SetDate(ЦУк сам, ЦУк date);
+        static extern (C) ЦУк wxCalendarCtrl_GetDate(ЦУк сам);
+        static extern (C) бул   wxCalendarCtrl_SetLowerDateLimit(ЦУк сам, ЦУк date);
+        static extern (C) ЦУк wxCalendarCtrl_GetLowerDateLimit(ЦУк сам);
+        static extern (C) бул   wxCalendarCtrl_SetUpperDateLimit(ЦУк сам, ЦУк date);
+        static extern (C) ЦУк wxCalendarCtrl_GetUpperDateLimit(ЦУк сам);
+        static extern (C) бул   wxCalendarCtrl_SetDateRange(ЦУк сам, ЦУк lowerdate, ЦУк upperdate);
+        static extern (C) проц   wxCalendarCtrl_EnableYearChange(ЦУк сам, бул enable);
+        static extern (C) проц   wxCalendarCtrl_EnableMonthChange(ЦУк сам, бул enable);
+        static extern (C) проц   wxCalendarCtrl_EnableHolidayDisplay(ЦУк сам, бул display);
+        static extern (C) проц   wxCalendarCtrl_SetHeaderColours(ЦУк сам, ЦУк цветПП, ЦУк цветЗП);
+        static extern (C) ЦУк wxCalendarCtrl_GetHeaderColourFg(ЦУк сам);
+        static extern (C) ЦУк wxCalendarCtrl_GetHeaderColourBg(ЦУк сам);
+        static extern (C) проц   wxCalendarCtrl_SetHighlightColours(ЦУк сам, ЦУк цветПП, ЦУк цветЗП);
+        static extern (C) ЦУк wxCalendarCtrl_GetHighlightColourFg(ЦУк сам);
+        static extern (C) ЦУк wxCalendarCtrl_GetHighlightColourBg(ЦУк сам);
+        static extern (C) проц   wxCalendarCtrl_SetHolidayColours(ЦУк сам, ЦУк цветПП, ЦУк цветЗП);
+        static extern (C) ЦУк wxCalendarCtrl_GetHolidayColourFg(ЦУк сам);
+        static extern (C) ЦУк wxCalendarCtrl_GetHolidayColourBg(ЦУк сам);
+        static extern (C) ЦУк wxCalendarCtrl_GetAttr(ЦУк сам, цел day);
+        static extern (C) проц   wxCalendarCtrl_SetAttr(ЦУк сам, цел day, ЦУк attr);
+        static extern (C) проц   wxCalendarCtrl_SetHoliday(ЦУк сам, цел day);
+        static extern (C) проц   wxCalendarCtrl_ResetAttr(ЦУк сам, цел day);
+        static extern (C) цел    wxCalendarCtrl_HitTest(ЦУк сам, inout Точка поз, ЦУк date, inout DayOfWeek wd);
 		//! \endcond
 
         //-----------------------------------------------------------------------------
@@ -90,137 +90,137 @@ public import wx.CommandEvent;
             // wxCAL_NO_YEAR_CHANGE)
             wxCAL_NO_MONTH_CHANGE            = 0x000c,
 
-            // use MS-style month-selection instead of combo-spin combination
+            // use MS-стиль month-selection instead of combo-spin combination
             wxCAL_SEQUENTIAL_MONTH_SELECTION = 0x0010,
 
             // show the neighbouring weeks in the previous and next month
             wxCAL_SHOW_SURROUNDING_WEEKS     = 0x0020
         }
         
-	public const string wxCalendarNameStr  = "CalendarCtrl";
+	public const ткст wxCalendarNameStr  = "CalendarCtrl";
         //-----------------------------------------------------------------------------
 
-        public this(IntPtr wxobj)
-            { super(wxobj); }
+        public this(ЦУк шхобъ)
+            { super(шхобъ); }
 	    
         public this()
             { this(wxCalendarCtrl_ctor()); }
 
-        public this(Window parent, int id, wxDateTime date = null /*wxDefaultDateTime*/, Point pos = wxDefaultPosition, Size size =wxDefaultSize , int style = wxCAL_SHOW_HOLIDAYS | wxWANTS_CHARS, string name = wxCalendarNameStr)
+        public this(Окно родитель, цел ид, wxDateTime date = пусто /*wxDefaultDateTime*/, Точка поз = wxDefaultPosition, Размер size =wxDefaultSize , цел стиль = wxCAL_SHOW_HOLIDAYS | wxWANTS_CHARS, ткст имя = wxCalendarNameStr)
         {
         	this(wxCalendarCtrl_ctor());
-            if (!Create(parent, id, date, pos, size, style, name))
+            if (!Create(родитель, ид, date, поз, size, стиль, имя))
             {
 				throw new InvalidOperationException("Failed to create CalendarCtrl");
             }
         }
 	
 	//-----------------------------------------------------------------------------
-	// ctors with self created id
+	// ctors with сам created ид
 	
-        public this(Window parent, DateTime date = null, Point pos = wxDefaultPosition, Size size =wxDefaultSize , int style = wxCAL_SHOW_HOLIDAYS | wxWANTS_CHARS, string name = wxCalendarNameStr)
-		{ this(parent, Window.UniqueID, date, pos, size, style, name);}
+        public this(Окно родитель, DateTime date = пусто, Точка поз = wxDefaultPosition, Размер size =wxDefaultSize , цел стиль = wxCAL_SHOW_HOLIDAYS | wxWANTS_CHARS, ткст имя = wxCalendarNameStr)
+		{ this(родитель, Окно.UniqueID, date, поз, size, стиль, имя);}
 		
 	//-----------------------------------------------------------------------------
 
-        public bool Create(Window parent, int id, wxDateTime date, inout Point pos, inout Size size, int style, string name)
+        public бул Create(Окно родитель, цел ид, wxDateTime date, inout Точка поз, inout Размер size, цел стиль, ткст имя)
         {
-            return wxCalendarCtrl_Create(wxobj, wxObject.SafePtr(parent), id, wxObject.SafePtr(date), pos, size, cast(uint)style, name);
+            return wxCalendarCtrl_Create(шхобъ, wxObject.SafePtr(родитель), ид, wxObject.SafePtr(date), поз, size, cast(бцел)стиль, имя);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void Date(DateTime value) { wxCalendarCtrl_SetDate(wxobj, wxObject.SafePtr(cast(wxDateTime)value)); }
-        public DateTime Date() { return new wxDateTime(wxCalendarCtrl_GetDate(wxobj)); }
+        public проц Date(DateTime значение) { wxCalendarCtrl_SetDate(шхобъ, wxObject.SafePtr(cast(wxDateTime)значение)); }
+        public DateTime Date() { return new wxDateTime(wxCalendarCtrl_GetDate(шхобъ)); }
 
         //-----------------------------------------------------------------------------
 
-        public void LowerDateLimit(DateTime value) { wxCalendarCtrl_SetLowerDateLimit(wxobj, wxObject.SafePtr(cast(wxDateTime)value)); }
-        public DateTime LowerDateLimit() { return new wxDateTime(wxCalendarCtrl_GetLowerDateLimit(wxobj)); }
+        public проц LowerDateLimit(DateTime значение) { wxCalendarCtrl_SetLowerDateLimit(шхобъ, wxObject.SafePtr(cast(wxDateTime)значение)); }
+        public DateTime LowerDateLimit() { return new wxDateTime(wxCalendarCtrl_GetLowerDateLimit(шхобъ)); }
 
-        public void UpperDateLimit(DateTime value) { wxCalendarCtrl_SetUpperDateLimit(wxobj, wxObject.SafePtr(cast(wxDateTime)value)); }
-        public DateTime UpperDateLimit() { return new wxDateTime(wxCalendarCtrl_GetUpperDateLimit(wxobj)); }
+        public проц UpperDateLimit(DateTime значение) { wxCalendarCtrl_SetUpperDateLimit(шхобъ, wxObject.SafePtr(cast(wxDateTime)значение)); }
+        public DateTime UpperDateLimit() { return new wxDateTime(wxCalendarCtrl_GetUpperDateLimit(шхобъ)); }
 
         //-----------------------------------------------------------------------------
 
-        public bool SetDateRange(DateTime lowerdate, DateTime upperdate)
+        public бул SetDateRange(DateTime lowerdate, DateTime upperdate)
         {
-            return wxCalendarCtrl_SetDateRange(wxobj, wxObject.SafePtr(cast(wxDateTime)lowerdate), wxObject.SafePtr(cast(wxDateTime)upperdate));
+            return wxCalendarCtrl_SetDateRange(шхобъ, wxObject.SafePtr(cast(wxDateTime)lowerdate), wxObject.SafePtr(cast(wxDateTime)upperdate));
         }
 
         //-----------------------------------------------------------------------------
 
-        public void EnableYearChange(bool value) { wxCalendarCtrl_EnableYearChange(wxobj, value); }
+        public проц EnableYearChange(бул значение) { wxCalendarCtrl_EnableYearChange(шхобъ, значение); }
 
-        public void EnableMonthChange(bool value) { wxCalendarCtrl_EnableMonthChange(wxobj, value); }
+        public проц EnableMonthChange(бул значение) { wxCalendarCtrl_EnableMonthChange(шхобъ, значение); }
 
-        public void EnableHolidayDisplay(bool value) { wxCalendarCtrl_EnableHolidayDisplay(wxobj, value); }
-
-        //-----------------------------------------------------------------------------
-
-        public void SetHeaderColours(Colour colFg, Colour colBg)
-        {
-            wxCalendarCtrl_SetHeaderColours(wxobj, wxObject.SafePtr(colFg), wxObject.SafePtr(colBg));
-        }
-
-        public Colour HeaderColourFg() { return new Colour(wxCalendarCtrl_GetHeaderColourFg(wxobj), true); }
-
-        public Colour HeaderColourBg() { return new Colour(wxCalendarCtrl_GetHeaderColourBg(wxobj), true); }
+        public проц EnableHolidayDisplay(бул значение) { wxCalendarCtrl_EnableHolidayDisplay(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public void SetHighlightColours(Colour colFg, Colour colBg)
+        public проц SetHeaderColours(Цвет цветПП, Цвет цветЗП)
         {
-            wxCalendarCtrl_SetHighlightColours(wxobj, wxObject.SafePtr(colFg), wxObject.SafePtr(colBg));
+            wxCalendarCtrl_SetHeaderColours(шхобъ, wxObject.SafePtr(цветПП), wxObject.SafePtr(цветЗП));
         }
 
-        public Colour HighlightColourFg() { return new Colour(wxCalendarCtrl_GetHighlightColourFg(wxobj)); }
+        public Цвет HeaderColourFg() { return new Цвет(wxCalendarCtrl_GetHeaderColourFg(шхобъ), да); }
 
-        public Colour HighlightColourBg() { return new Colour(wxCalendarCtrl_GetHighlightColourBg(wxobj)); }
+        public Цвет HeaderColourBg() { return new Цвет(wxCalendarCtrl_GetHeaderColourBg(шхобъ), да); }
 
         //-----------------------------------------------------------------------------
 
-        public void SetHolidayColours(Colour colFg, Colour colBg)
+        public проц SetHighlightColours(Цвет цветПП, Цвет цветЗП)
         {
-            wxCalendarCtrl_SetHolidayColours(wxobj, wxObject.SafePtr(colFg), wxObject.SafePtr(colBg));
+            wxCalendarCtrl_SetHighlightColours(шхобъ, wxObject.SafePtr(цветПП), wxObject.SafePtr(цветЗП));
         }
 
-        public Colour HolidayColourFg() { return new Colour(wxCalendarCtrl_GetHolidayColourFg(wxobj)); }
+        public Цвет HighlightColourFg() { return new Цвет(wxCalendarCtrl_GetHighlightColourFg(шхобъ)); }
 
-        public Colour HolidayColourBg() { return new Colour(wxCalendarCtrl_GetHolidayColourBg(wxobj)); }
+        public Цвет HighlightColourBg() { return new Цвет(wxCalendarCtrl_GetHighlightColourBg(шхобъ)); }
 
         //-----------------------------------------------------------------------------
 
-        public CalendarDateAttr GetAttr(int day)
+        public проц SetHolidayColours(Цвет цветПП, Цвет цветЗП)
         {
-            return cast(CalendarDateAttr)FindObject(wxCalendarCtrl_GetAttr(wxobj, day), &CalendarDateAttr.New);
+            wxCalendarCtrl_SetHolidayColours(шхобъ, wxObject.SafePtr(цветПП), wxObject.SafePtr(цветЗП));
         }
 
-        public void SetAttr(int day, CalendarDateAttr attr)
-        {
-            wxCalendarCtrl_SetAttr(wxobj, day, wxObject.SafePtr(attr));
-        }
+        public Цвет HolidayColourFg() { return new Цвет(wxCalendarCtrl_GetHolidayColourFg(шхобъ)); }
+
+        public Цвет HolidayColourBg() { return new Цвет(wxCalendarCtrl_GetHolidayColourBg(шхобъ)); }
 
         //-----------------------------------------------------------------------------
 
-        public void SetHoliday(int day)
+        public CalendarDateAttr GetAttr(цел day)
         {
-            wxCalendarCtrl_SetHoliday(wxobj, day);
+            return cast(CalendarDateAttr)FindObject(wxCalendarCtrl_GetAttr(шхобъ, day), &CalendarDateAttr.Нов);
+        }
+
+        public проц SetAttr(цел day, CalendarDateAttr attr)
+        {
+            wxCalendarCtrl_SetAttr(шхобъ, day, wxObject.SafePtr(attr));
         }
 
         //-----------------------------------------------------------------------------
 
-        public void ResetAttr(int day)
+        public проц SetHoliday(цел day)
         {
-            wxCalendarCtrl_ResetAttr(wxobj, day);
+            wxCalendarCtrl_SetHoliday(шхобъ, day);
         }
 
         //-----------------------------------------------------------------------------
 
-        public CalendarHitTestResult HitTest(Point pos, inout DateTime date, inout DayOfWeek wd)
+        public проц ResetAttr(цел day)
+        {
+            wxCalendarCtrl_ResetAttr(шхобъ, day);
+        }
+
+        //-----------------------------------------------------------------------------
+
+        public CalendarHitTestResult HitTest(Точка поз, inout DateTime date, inout DayOfWeek wd)
         {
             wxDateTime dt = date;
-            CalendarHitTestResult res = cast(CalendarHitTestResult)wxCalendarCtrl_HitTest(wxobj, pos, wxObject.SafePtr(dt), wd);
+            CalendarHitTestResult res = cast(CalendarHitTestResult)wxCalendarCtrl_HitTest(шхобъ, поз, wxObject.SafePtr(dt), wd);
             date = dt;
 
             return res;
@@ -228,48 +228,48 @@ public import wx.CommandEvent;
 
         //-----------------------------------------------------------------------------
 
-		public void SelectionChange_Add(EventListener value) { AddCommandListener(Event.wxEVT_CALENDAR_SEL_CHANGED, ID, value, this); }
-		public void SelectionChange_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц SelectionChange_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_CALENDAR_SEL_CHANGED, ИД, значение, this); }
+		public проц SelectionChange_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void DayChange_Add(EventListener value) { AddCommandListener(Event.wxEVT_CALENDAR_DAY_CHANGED, ID, value, this); }
-		public void DayChange_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц DayChange_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_CALENDAR_DAY_CHANGED, ИД, значение, this); }
+		public проц DayChange_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void MonthChange_Add(EventListener value) { AddCommandListener(Event.wxEVT_CALENDAR_MONTH_CHANGED, ID, value, this); }
-		public void MonthChange_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц MonthChange_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_CALENDAR_MONTH_CHANGED, ИД, значение, this); }
+		public проц MonthChange_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void YearChange_Add(EventListener value) { AddCommandListener(Event.wxEVT_CALENDAR_YEAR_CHANGED, ID, value, this); }
-		public void YearChange_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц YearChange_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_CALENDAR_YEAR_CHANGED, ИД, значение, this); }
+		public проц YearChange_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void DoubleClick_Add(EventListener value) { AddCommandListener(Event.wxEVT_CALENDAR_DOUBLECLICKED, ID, value, this); }
-		public void DoubleClick_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц DoubleClick_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_CALENDAR_DOUBLECLICKED, ИД, значение, this); }
+		public проц DoubleClick_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void WeekdayClick_Add(EventListener value) { AddCommandListener(Event.wxEVT_CALENDAR_WEEKDAY_CLICKED, ID, value, this); }
-		public void WeekdayClick_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц WeekdayClick_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_CALENDAR_WEEKDAY_CLICKED, ИД, значение, this); }
+		public проц WeekdayClick_Remove(EventListener значение) { RemoveHandler(значение, this); }
     }
 
 		//! \cond EXTERN
-        static extern (C) IntPtr wxCalendarDateAttr_ctor();
-        static extern (C) IntPtr wxCalendarDateAttr_ctor2(IntPtr colText, IntPtr colBack, IntPtr colBorder, IntPtr font, CalendarDateBorder border);
-        static extern (C) IntPtr wxCalendarDateAttr_ctor3(CalendarDateBorder border, IntPtr colBorder);
-	static extern (C) void   wxCalendarDateAttr_dtor(IntPtr self);
-	static extern (C) void   wxCalendarDateAttr_RegisterDisposable(IntPtr self, Virtual_Dispose onDispose);
-        static extern (C) void   wxCalendarDateAttr_SetTextColour(IntPtr self, IntPtr colText);
-        static extern (C) void   wxCalendarDateAttr_SetBackgroundColour(IntPtr self, IntPtr colBack);
-        static extern (C) void   wxCalendarDateAttr_SetBorderColour(IntPtr self, IntPtr col);
-        static extern (C) void   wxCalendarDateAttr_SetFont(IntPtr self, IntPtr font);
-        static extern (C) void   wxCalendarDateAttr_SetBorder(IntPtr self, int border);
-        static extern (C) void   wxCalendarDateAttr_SetHoliday(IntPtr self, bool holiday);
-        static extern (C) bool   wxCalendarDateAttr_HasTextColour(IntPtr self);
-        static extern (C) bool   wxCalendarDateAttr_HasBackgroundColour(IntPtr self);
-        static extern (C) bool   wxCalendarDateAttr_HasBorderColour(IntPtr self);
-        static extern (C) bool   wxCalendarDateAttr_HasFont(IntPtr self);
-        static extern (C) bool   wxCalendarDateAttr_HasBorder(IntPtr self);
-        static extern (C) bool   wxCalendarDateAttr_IsHoliday(IntPtr self);
-        static extern (C) IntPtr wxCalendarDateAttr_GetTextColour(IntPtr self);
-        static extern (C) IntPtr wxCalendarDateAttr_GetBackgroundColour(IntPtr self);
-        static extern (C) IntPtr wxCalendarDateAttr_GetBorderColour(IntPtr self);
-        static extern (C) IntPtr wxCalendarDateAttr_GetFont(IntPtr self);
-        static extern (C) int    wxCalendarDateAttr_GetBorder(IntPtr self);
+        static extern (C) ЦУк wxCalendarDateAttr_ctor();
+        static extern (C) ЦУк wxCalendarDateAttr_ctor2(ЦУк colText, ЦУк colBack, ЦУк colBorder, ЦУк шрифт, CalendarDateBorder border);
+        static extern (C) ЦУк wxCalendarDateAttr_ctor3(CalendarDateBorder border, ЦУк colBorder);
+	static extern (C) проц   wxCalendarDateAttr_dtor(ЦУк сам);
+	static extern (C) проц   wxCalendarDateAttr_RegisterDisposable(ЦУк сам, Virtual_Dispose onDispose);
+        static extern (C) проц   wxCalendarDateAttr_SetTextColour(ЦУк сам, ЦУк colText);
+        static extern (C) проц   wxCalendarDateAttr_SetBackgroundColour(ЦУк сам, ЦУк colBack);
+        static extern (C) проц   wxCalendarDateAttr_SetBorderColour(ЦУк сам, ЦУк col);
+        static extern (C) проц   wxCalendarDateAttr_SetFont(ЦУк сам, ЦУк шрифт);
+        static extern (C) проц   wxCalendarDateAttr_SetBorder(ЦУк сам, цел border);
+        static extern (C) проц   wxCalendarDateAttr_SetHoliday(ЦУк сам, бул holiday);
+        static extern (C) бул   wxCalendarDateAttr_HasTextColour(ЦУк сам);
+        static extern (C) бул   wxCalendarDateAttr_HasBackgroundColour(ЦУк сам);
+        static extern (C) бул   wxCalendarDateAttr_HasBorderColour(ЦУк сам);
+        static extern (C) бул   wxCalendarDateAttr_HasFont(ЦУк сам);
+        static extern (C) бул   wxCalendarDateAttr_HasBorder(ЦУк сам);
+        static extern (C) бул   wxCalendarDateAttr_IsHoliday(ЦУк сам);
+        static extern (C) ЦУк wxCalendarDateAttr_GetTextColour(ЦУк сам);
+        static extern (C) ЦУк wxCalendarDateAttr_GetBackgroundColour(ЦУк сам);
+        static extern (C) ЦУк wxCalendarDateAttr_GetBorderColour(ЦУк сам);
+        static extern (C) ЦУк wxCalendarDateAttr_GetFont(ЦУк сам);
+        static extern (C) цел    wxCalendarDateAttr_GetBorder(ЦУк сам);
 		//! \endcond
 	
         //-----------------------------------------------------------------------------
@@ -277,91 +277,91 @@ public import wx.CommandEvent;
     alias CalendarDateAttr wxCalendarDateAttr;
     public class CalendarDateAttr : wxObject
     {
-        public this(IntPtr wxobj)
+        public this(ЦУк шхобъ)
 	{ 
-		super(wxobj);
+		super(шхобъ);
 	}
 	
-	private this(IntPtr wxobj, bool memOwn)
+	private this(ЦУк шхобъ, бул memOwn)
 	{ 
-		super(wxobj);
+		super(шхобъ);
 		this.memOwn = memOwn;
 	}
 
         public this()
 	{ 
-		this(wxCalendarDateAttr_ctor(), true);
-		wxCalendarDateAttr_RegisterDisposable(wxobj, &VirtualDispose);
+		this(wxCalendarDateAttr_ctor(), да);
+		wxCalendarDateAttr_RegisterDisposable(шхобъ, &VirtualDispose);
 	}
 
-        public this(Colour colText, Colour colBack = Colour.wxNullColour, Colour colBorder = Colour.wxNullColour, Font font = Font.wxNullFont, CalendarDateBorder border = CalendarDateBorder.wxCAL_BORDER_NONE)
+        public this(Цвет colText, Цвет colBack = Цвет.wxNullColour, Цвет colBorder = Цвет.wxNullColour, Шрифт шрифт = Шрифт.wxNullFont, CalendarDateBorder border = CalendarDateBorder.wxCAL_BORDER_NONE)
         {
-        	this(wxCalendarDateAttr_ctor2(wxObject.SafePtr(colText), wxObject.SafePtr(colBack), wxObject.SafePtr(colBorder), wxObject.SafePtr(font), border),true);
-		wxCalendarDateAttr_RegisterDisposable(wxobj, &VirtualDispose);
+        	this(wxCalendarDateAttr_ctor2(wxObject.SafePtr(colText), wxObject.SafePtr(colBack), wxObject.SafePtr(colBorder), wxObject.SafePtr(шрифт), border),да);
+		wxCalendarDateAttr_RegisterDisposable(шхобъ, &VirtualDispose);
         }
 
-        public  this(CalendarDateBorder border, Colour colBorder)
+        public  this(CalendarDateBorder border, Цвет colBorder)
         {
-        	this(wxCalendarDateAttr_ctor3(border, wxObject.SafePtr(colBorder)),true);
-		wxCalendarDateAttr_RegisterDisposable(wxobj, &VirtualDispose);
+        	this(wxCalendarDateAttr_ctor3(border, wxObject.SafePtr(colBorder)),да);
+		wxCalendarDateAttr_RegisterDisposable(шхобъ, &VirtualDispose);
         }
 	
 	//---------------------------------------------------------------------
 				
-	override protected void dtor() { wxCalendarDateAttr_dtor(wxobj); }
+	override protected проц dtor() { wxCalendarDateAttr_dtor(шхобъ); }
 
         //-----------------------------------------------------------------------------
 
-        public void TextColour(Colour value) { wxCalendarDateAttr_SetTextColour(wxobj, wxObject.SafePtr(value)); }
-        public Colour TextColour() { return new Colour(wxCalendarDateAttr_GetTextColour(wxobj)); }
+        public проц TextColour(Цвет значение) { wxCalendarDateAttr_SetTextColour(шхобъ, wxObject.SafePtr(значение)); }
+        public Цвет TextColour() { return new Цвет(wxCalendarDateAttr_GetTextColour(шхобъ)); }
 
         //-----------------------------------------------------------------------------
 
-        public void BackgroundColour(Colour value) { wxCalendarDateAttr_SetBackgroundColour(wxobj, wxObject.SafePtr(value)); }
-        public Colour BackgroundColour() { return new Colour(wxCalendarDateAttr_GetBackgroundColour(wxobj)); }
+        public проц ЦветЗП(Цвет значение) { wxCalendarDateAttr_SetBackgroundColour(шхобъ, wxObject.SafePtr(значение)); }
+        public Цвет ЦветЗП() { return new Цвет(wxCalendarDateAttr_GetBackgroundColour(шхобъ)); }
 
         //-----------------------------------------------------------------------------
 
-        public void BorderColour(Colour value) { wxCalendarDateAttr_SetBorderColour(wxobj, wxObject.SafePtr(value)); }
-        public Colour BorderColour() { return new Colour(wxCalendarDateAttr_GetBorderColour(wxobj)); }
+        public проц BorderColour(Цвет значение) { wxCalendarDateAttr_SetBorderColour(шхобъ, wxObject.SafePtr(значение)); }
+        public Цвет BorderColour() { return new Цвет(wxCalendarDateAttr_GetBorderColour(шхобъ)); }
 
         //-----------------------------------------------------------------------------
 
-        public void font(Font value) { wxCalendarDateAttr_SetFont(wxobj, wxObject.SafePtr(value)); }
-        public Font font() { return new Font(wxCalendarDateAttr_GetFont(wxobj)); }
+        public проц шрифт(Шрифт значение) { wxCalendarDateAttr_SetFont(шхобъ, wxObject.SafePtr(значение)); }
+        public Шрифт шрифт() { return new Шрифт(wxCalendarDateAttr_GetFont(шхобъ)); }
 
         //-----------------------------------------------------------------------------
 
-        public void Border(CalendarDateBorder value) { wxCalendarDateAttr_SetBorder(wxobj, cast(int)value); }
-        public CalendarDateBorder Border() { return cast(CalendarDateBorder)wxCalendarDateAttr_GetBorder(wxobj); }
+        public проц Border(CalendarDateBorder значение) { wxCalendarDateAttr_SetBorder(шхобъ, cast(цел)значение); }
+        public CalendarDateBorder Border() { return cast(CalendarDateBorder)wxCalendarDateAttr_GetBorder(шхобъ); }
 
         //-----------------------------------------------------------------------------
 
-        public void IsHoliday(bool value) { wxCalendarDateAttr_SetHoliday(wxobj, value); }
-        public bool IsHoliday() { return wxCalendarDateAttr_IsHoliday(wxobj); }
+        public проц IsHoliday(бул значение) { wxCalendarDateAttr_SetHoliday(шхобъ, значение); }
+        public бул IsHoliday() { return wxCalendarDateAttr_IsHoliday(шхобъ); }
 
         //-----------------------------------------------------------------------------
 
-        public bool HasTextColour() { return wxCalendarDateAttr_HasTextColour(wxobj); }
+        public бул HasTextColour() { return wxCalendarDateAttr_HasTextColour(шхобъ); }
 
-        public bool HasBackgroundColour() { return wxCalendarDateAttr_HasBackgroundColour(wxobj); }
+        public бул HasBackgroundColour() { return wxCalendarDateAttr_HasBackgroundColour(шхобъ); }
 
-        public bool HasBorderColour() { return wxCalendarDateAttr_HasBorderColour(wxobj); }
+        public бул HasBorderColour() { return wxCalendarDateAttr_HasBorderColour(шхобъ); }
 
-        public bool HasFont() { return wxCalendarDateAttr_HasFont(wxobj); }
+        public бул HasFont() { return wxCalendarDateAttr_HasFont(шхобъ); }
 
-        public bool HasBorder() { return wxCalendarDateAttr_HasBorder(wxobj); }
+        public бул HasBorder() { return wxCalendarDateAttr_HasBorder(шхобъ); }
 
 
-	public static wxObject New(IntPtr ptr) { return new CalendarDateAttr(ptr); }
+	public static wxObject Нов(ЦУк ptr) { return new CalendarDateAttr(ptr); }
         //-----------------------------------------------------------------------------
     }
 
 		//! \cond EXTERN
-        static extern (C) IntPtr wxCalendarEvent_ctor();
-        static extern (C) IntPtr wxCalendarEvent_ctor2(IntPtr cal, int type);
-        static extern (C) IntPtr wxCalendarEvent_GetDate(IntPtr self);
-        static extern (C) int    wxCalendarEvent_GetWeekDay(IntPtr self);
+        static extern (C) ЦУк wxCalendarEvent_ctor();
+        static extern (C) ЦУк wxCalendarEvent_ctor2(ЦУк cal, цел тип);
+        static extern (C) ЦУк wxCalendarEvent_GetDate(ЦУк сам);
+        static extern (C) цел    wxCalendarEvent_GetWeekDay(ЦУк сам);
 		//! \endcond
 
         //-----------------------------------------------------------------------------
@@ -369,24 +369,24 @@ public import wx.CommandEvent;
     alias CalendarEvent wxCalendarEvent;
     public class CalendarEvent : CommandEvent
     {
-	public this(IntPtr wxobj)
-		{ super(wxobj);}
+	public this(ЦУк шхобъ)
+		{ super(шхобъ);}
 
         public this()
             { super(wxCalendarEvent_ctor()); }
 
         //-----------------------------------------------------------------------------
 
-        public this(CalendarCtrl cal, EventType type)
-            { super(wxCalendarEvent_ctor2(wxObject.SafePtr(cal), type)); }
+        public this(CalendarCtrl cal, ТипСобытия тип)
+            { super(wxCalendarEvent_ctor2(wxObject.SafePtr(cal), тип)); }
 
         //-----------------------------------------------------------------------------
 
-        public DateTime Date() { return new wxDateTime(wxCalendarEvent_GetDate(wxobj)); }
+        public DateTime Date() { return new wxDateTime(wxCalendarEvent_GetDate(шхобъ)); }
 
-        public DayOfWeek WeekDay() { return cast(DayOfWeek)wxCalendarEvent_GetWeekDay(wxobj); }
+        public DayOfWeek WeekDay() { return cast(DayOfWeek)wxCalendarEvent_GetWeekDay(шхобъ); }
 
-		private static Event New(IntPtr obj) { return new CalendarEvent(obj); }
+		private static Событие Нов(ЦУк объ) { return new CalendarEvent(объ); }
 
 		static this()
 		{
@@ -397,12 +397,12 @@ public import wx.CommandEvent;
 			wxEVT_CALENDAR_DOUBLECLICKED = wxEvent_EVT_CALENDAR_DOUBLECLICKED();
 			wxEVT_CALENDAR_WEEKDAY_CLICKED = wxEvent_EVT_CALENDAR_WEEKDAY_CLICKED();
 	
-			AddEventType(wxEVT_CALENDAR_SEL_CHANGED,            &CalendarEvent.New);
-			AddEventType(wxEVT_CALENDAR_DAY_CHANGED,            &CalendarEvent.New);
-			AddEventType(wxEVT_CALENDAR_MONTH_CHANGED,          &CalendarEvent.New);
-			AddEventType(wxEVT_CALENDAR_YEAR_CHANGED,           &CalendarEvent.New);
-			AddEventType(wxEVT_CALENDAR_DOUBLECLICKED,          &CalendarEvent.New);
-			AddEventType(wxEVT_CALENDAR_WEEKDAY_CLICKED,        &CalendarEvent.New);
+			ДобавьТипСоб(wxEVT_CALENDAR_SEL_CHANGED,            &CalendarEvent.Нов);
+			ДобавьТипСоб(wxEVT_CALENDAR_DAY_CHANGED,            &CalendarEvent.Нов);
+			ДобавьТипСоб(wxEVT_CALENDAR_MONTH_CHANGED,          &CalendarEvent.Нов);
+			ДобавьТипСоб(wxEVT_CALENDAR_YEAR_CHANGED,           &CalendarEvent.Нов);
+			ДобавьТипСоб(wxEVT_CALENDAR_DOUBLECLICKED,          &CalendarEvent.Нов);
+			ДобавьТипСоб(wxEVT_CALENDAR_WEEKDAY_CLICKED,        &CalendarEvent.Нов);
 		}
     }
 

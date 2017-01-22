@@ -1,141 +1,115 @@
-//-----------------------------------------------------------------------------
-// wxD - Colour.d
-// (C) 2005 bero <berobero.sourceforge.net>
-// based on
-// wx.NET - Colour.cs
-//
-/// The wxColour wrapper class.
-//
-// Written by Jason Perkins (jason@379.com)
-// (C) 2003 by 379, Inc.
-// Licensed under the wxWidgets license, see LICENSE.txt for details.
-//
-// $Id: Colour.d,v 1.10 2007/04/17 15:24:20 afb Exp $
-//-----------------------------------------------------------------------------
-
-module wx.Colour;
+﻿module wx.Colour;
 public import wx.common;
 
 //! \cond STD
-version (Tango)
-{
-}
 
-version(Phobos)
-{
-private import std.string;
-private import std.utf;
-}
-
-version(Dinrus)
-{
 import dinrus;
-}
+
 //! \endcond
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxColour_ctor();
-		static extern (C) IntPtr wxColour_ctorByName(string name);
-		static extern (C) IntPtr wxColour_ctorByParts(ubyte red, ubyte green, ubyte blue);
-		static extern (C) void   wxColour_dtor(IntPtr self);
-		//static extern (C) void   wxColour_RegisterDisposable(IntPtr self, Virtual_Dispose onDispose);
+		static extern (C) ЦУк wxColour_ctor();
+		static extern (C) ЦУк wxColour_ctorByName(ткст имя);
+		static extern (C) ЦУк wxColour_ctorByParts(ббайт красный, ббайт зелёный, ббайт синий);
+		static extern (C) проц   wxColour_dtor(ЦУк сам);
+		//static extern (C) проц   wxColour_RegisterDisposable(ЦУк сам, Virtual_Dispose onDispose);
 
-		static extern (C) ubyte   wxColour_Red(IntPtr self);
-		static extern (C) ubyte   wxColour_Blue(IntPtr self);
-		static extern (C) ubyte   wxColour_Green(IntPtr self);
+		static extern (C) ббайт   wxColour_Red(ЦУк сам);
+		static extern (C) ббайт   wxColour_Blue(ЦУк сам);
+		static extern (C) ббайт   wxColour_Green(ЦУк сам);
 
-		static extern (C) bool   wxColour_Ok(IntPtr self);
-		static extern (C) void   wxColour_Set(IntPtr self, ubyte red, ubyte green, ubyte blue);
+		static extern (C) бул   wxColour_Ok(ЦУк сам);
+		static extern (C) проц   wxColour_Set(ЦУк сам, ббайт красный, ббайт зелёный, ббайт синий);
 		
-		static extern (C) IntPtr wxColour_CreateByName(string name);
+		static extern (C) ЦУк wxColour_CreateByName(ткст имя);
 		//! \endcond
 
 		//---------------------------------------------------------------------
 
-	alias Colour wxColour;
-	public class Colour : wxObject
+	alias Цвет wxColour;
+	public class Цвет : wxObject
 	{
-		public static Colour wxBLACK;
-		public static Colour wxWHITE;
-		public static Colour wxRED;
-		public static Colour wxBLUE;
-		public static Colour wxGREEN;
-		public static Colour wxCYAN;
-		public static Colour wxLIGHT_GREY;
-		public static Colour wxNullColour;
+		public static Цвет wxBLACK;
+		public static Цвет wxWHITE;
+		public static Цвет wxRED;
+		public static Цвет wxBLUE;
+		public static Цвет wxGREEN;
+		public static Цвет wxCYAN;
+		public static Цвет wxLIGHT_GREY;
+		public static Цвет wxNullColour;
 
 		//---------------------------------------------------------------------
 
-		public this(IntPtr wxobj)
+		public this(ЦУк шхобъ)
 		{
-			super(wxobj);
+			super(шхобъ);
 		}
 			
-		public this(IntPtr wxobj, bool memOwn)
+		public this(ЦУк шхобъ, бул memOwn)
 		{ 
-			super(wxobj);
+			super(шхобъ);
 			this.memOwn = memOwn;
 		}
 
 		public this() 
 		{ 
-			this(wxColour_ctor(), true);
-			//wxColour_RegisterDisposable(wxobj, &VirtualDispose);
+			this(wxColour_ctor(), да);
+			//wxColour_RegisterDisposable(шхобъ, &VirtualDispose);
 		}
 
-		public this(string name)
+		public this(ткст имя)
 		{ 
-			this(wxColour_ctorByName(name), true); // toupper
-			//wxColour_RegisterDisposable(wxobj, &VirtualDispose);
+			this(wxColour_ctorByName(имя), да); // toupper
+			//wxColour_RegisterDisposable(шхобъ, &VirtualDispose);
 		}
 
-		public this(ubyte red, ubyte green, ubyte blue)
+		public this(ббайт красный, ббайт зелёный, ббайт синий)
 		{ 
-			this(wxColour_ctorByParts(red, green, blue), true);
-			//wxColour_RegisterDisposable(wxobj, &VirtualDispose);
+			this(wxColour_ctorByParts(красный, зелёный, синий), да);
+			//wxColour_RegisterDisposable(шхобъ, &VirtualDispose);
 		}
 
 		//---------------------------------------------------------------------
 
-		public override void Dispose()
+		public override проц Dispose()
 		{
-			if ((this != Colour.wxBLACK) && (this != Colour.wxWHITE) &&
-				(this != Colour.wxRED) && (this != Colour.wxBLUE) &&
-					(this != Colour.wxGREEN) && (this != Colour.wxCYAN) &&
-						(this != Colour.wxLIGHT_GREY)) 
+			if ((this != Цвет.wxBLACK) && (this != Цвет.wxWHITE) &&
+				(this != Цвет.wxRED) && (this != Цвет.wxBLUE) &&
+					(this != Цвет.wxGREEN) && (this != Цвет.wxCYAN) &&
+						(this != Цвет.wxLIGHT_GREY)) 
 			{
-				super.Dispose(/*true*/);
+				super.Dispose(/*да*/);
 			}
 		}
 
 		//---------------------------------------------------------------------
 
-		public ubyte Red() { return wxColour_Red(wxobj); }
+		public ббайт Красный() { return wxColour_Red(шхобъ); }
 
-		public ubyte Green() { return wxColour_Green(wxobj); }
+		public ббайт Зелёный() { return wxColour_Green(шхобъ); }
 
-		public ubyte Blue() { return wxColour_Blue(wxobj); }
+		public ббайт Синий() { return wxColour_Blue(шхобъ); }
 
 		//---------------------------------------------------------------------
 
-		public bool Ok()
+		public бул Ок()
 		{
-			return wxColour_Ok(wxobj);
+			return wxColour_Ok(шхобъ);
 		}
 
-		public void Set(ubyte red, ubyte green, ubyte blue)
+		public проц Установи(ббайт красный, ббайт зелёный, ббайт синий)
 		{
-			wxColour_Set(wxobj, red, green, blue);
+			wxColour_Set(шхобъ, красный, зелёный, синий);
 		}
 
 		//---------------------------------------------------------------------
 		
 		version(__WXGTK__){
-		public static Colour CreateByName(string name)
+		public static Цвет СоздайПоИмени(ткст имя)
 		{
-			return new Colour(wxColour_CreateByName(name), true);
+			return new Цвет(wxColour_CreateByName(имя), да);
 		}
 		} // version(__WXGTK__)
 
-		public static wxObject New(IntPtr ptr) { return new Colour(ptr); }
+		public static wxObject Нов(ЦУк ptr) { return new Цвет(ptr); }
 	}

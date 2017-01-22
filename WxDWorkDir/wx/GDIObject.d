@@ -1,4 +1,4 @@
-//-----------------------------------------------------------------------------
+﻿//-----------------------------------------------------------------------------
 // wxD - GDIObject.d
 // (C) 2005 bero <berobero.sourceforge.net>
 // based on
@@ -10,14 +10,14 @@
 // (C) 2003 by 379, Inc.
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: GDIObject.d,v 1.9 2006/11/17 15:20:59 afb Exp $
+// $Ид: GDIObject.d,v 1.9 2006/11/17 15:20:59 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.GDIObject;
 public import wx.common;
 
 		//! \cond EXTERN
-		static extern (C) void wxGDIObj_dtor(IntPtr self);
+		static extern (C) проц wxGDIObj_dtor(ЦУк сам);
 		//! \endcond
 
 		//---------------------------------------------------------------------
@@ -25,13 +25,13 @@ public import wx.common;
 	alias GDIObject wxGDIObject;
 	public class GDIObject : wxObject
 	{
-		public this(IntPtr wxobj) 
-			{ super(wxobj);}
+		public this(ЦУк шхобъ) 
+			{ super(шхобъ);}
 
-		/*public override void Dispose()
+		/*public override проц Dispose()
 		{
-			wxobj = IntPtr.init;
-			Dispose(false);
+			шхобъ = ЦУк.init;
+			Dispose(нет);
 		}*/		
 
 		//---------------------------------------------------------------------

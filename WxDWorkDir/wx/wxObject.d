@@ -10,7 +10,7 @@
 // (C) 2003 by 379, Inc.
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: wxObject.d,v 1.14 2008/07/29 06:53:22 afb Exp $
+// $Ид: wxObject.d,v 1.14 2008/07/29 06:53:22 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.wxObject;
@@ -23,37 +23,37 @@ import tango.core.Version;
 
 		//! \cond EXTERN
 		extern (C) {
-		alias void function(IntPtr ptr) Virtual_Dispose;
+		alias проц function(ЦУк ptr) Virtual_Dispose;
 		}
 	
-		static extern (C) IntPtr wxObject_GetTypeName(IntPtr obj);
-		static extern (C) void   wxObject_dtor(IntPtr self);
+		static extern (C) ЦУк wxObject_GetTypeName(ЦУк объ);
+		static extern (C) проц   wxObject_dtor(ЦУк сам);
 		//! \endcond
 
 		//---------------------------------------------------------------------
 		// this is for Locale gettext support...
 		
 		//! \cond EXTERN
-		static extern (C) IntPtr wxGetTranslation_func(string str);
+		static extern (C) ЦУк wxGetTranslation_func(ткст str);
 		//! \endcond
 		
-		public static string GetTranslation(string str)
+		public static ткст GetTranslation(ткст str)
 		{
-			return cast(string) new wxString(wxGetTranslation_func(str), true);
+			return cast(ткст) new wxString(wxGetTranslation_func(str), да);
 		}
 
 		// in wxWidgets it is a c/c++ macro
 				
-		public static string _(string str)
+		public static ткст _(ткст str)
 		{
-			return cast(string) new wxString(wxGetTranslation_func(str), true);
+			return cast(ткст) new wxString(wxGetTranslation_func(str), да);
 		}
 
 		//---------------------------------------------------------------------
 /+
 	template findObject(class T)
-	T find(IntPtr ptr){
-		Object o = wxObject.FindObject(ptr);
+	T find(ЦУк ptr){
+		Объект o = wxObject.FindObject(ptr);
 		if (o) return cast(T)o;
 		else new T(ptr);
 	}
@@ -63,30 +63,30 @@ import tango.core.Version;
 	/// called for all derived class objects where necessary.
 	/**
 	  * wxObject is the hub of a dynamic object creation scheme, enabling a
-	  * program to create instances of a class only knowing its string class
-	  * name, and to query the class hierarchy.
+	  * program to create instances of a class only knowing its ткст class
+	  * имя, and to query the class hierarchy.
 	  **/
 	public class wxObject : IDisposable
 	{
 		// Reference to the associated C++ object
-		public IntPtr wxobj = IntPtr.init;
+		public ЦУк шхобъ = ЦУк.init;
 
 		// Hashtable to associate C++ objects with D references
-		private static wxObject[IntPtr] objects;
+		private static wxObject[ЦУк] objects;
 		
-		// memOwn is true when we create a new instance with the wrapper ctor
+		// memOwn is да when we create a new instance with the wrapper ctor
 		// or if a call to a wrapper function returns new c++ instance.
 		// Otherwise the created c++ object won't be deleted by the Dispose member.
-		protected bool memOwn = false;
+		protected бул memOwn = нет;
 		
 		//---------------------------------------------------------------------
 
-		public this(IntPtr wxobj)
+		public this(ЦУк шхобъ)
 		{
 		//	lock(typeof(wxObject)) {
-				this.wxobj = wxobj;
+				this.шхобъ = шхобъ;
 
-				if (wxobj == IntPtr.init) {
+				if (шхобъ == ЦУк.init) {
 					version (Tango)
 					static if (Tango.Major == 0 && Tango.Minor < 994)
 					throw new NullReferenceException("Unable to create instance of " ~ this.toUtf8());
@@ -100,29 +100,29 @@ import tango.core.Version;
 		//	}
 		}
 
-		private this(IntPtr wxobj,bool memOwn)
+		private this(ЦУк шхобъ,бул memOwn)
 		{
-			this(wxobj);
+			this(шхобъ);
 			this.memOwn = memOwn;
 		}
 
 		//---------------------------------------------------------------------
 
-		public static IntPtr SafePtr(wxObject obj)
+		public static ЦУк SafePtr(wxObject объ)
 		{
-			return obj ? obj.wxobj : IntPtr.init;
+			return объ ? объ.шхобъ : ЦУк.init;
 		}
 		
 		//---------------------------------------------------------------------
 
-		private static string GetTypeName(IntPtr wxobj)
+		private static ткст GetTypeName(ЦУк шхобъ)
 		{
-			return cast(string) new wxString(wxObject_GetTypeName(wxobj), true);
+			return cast(ткст) new wxString(wxObject_GetTypeName(шхобъ), да);
 		}
 
-		public string GetTypeName()
+		public ткст GetTypeName()
 		{
-			return cast(string) new wxString(wxObject_GetTypeName(wxobj), true);
+			return cast(ткст) new wxString(wxObject_GetTypeName(шхобъ), да);
 		}
 
 		//---------------------------------------------------------------------
@@ -130,10 +130,10 @@ import tango.core.Version;
 		// Registers an wxObject, so that it can be referenced using a C++ object
 		// pointer.
         
-		private static void AddObject(wxObject obj)
+		private static проц AddObject(wxObject объ)
 		{
-			if (obj.wxobj != IntPtr.init) {
-				objects[obj.wxobj] = obj;
+			if (объ.шхобъ != ЦУк.init) {
+				objects[объ.шхобъ] = объ;
 			}
 		}
 	
@@ -143,24 +143,24 @@ import tango.core.Version;
 		// pointer.
 		//
 		// If the pointer is not found, a reference to the object is created 
-		// using type.
+		// using тип.
 
-		alias static wxObject function(IntPtr wxobj) newfunc;
+		alias static wxObject function(ЦУк шхобъ) newfunc;
 
-		public static wxObject FindObject(IntPtr ptr, newfunc New)
+		public static wxObject FindObject(ЦУк ptr, newfunc Нов)
 		{
-			if (ptr == IntPtr.init) {
-				return null;
+			if (ptr == ЦУк.init) {
+				return пусто;
 			}
 
 			wxObject o = FindObject(ptr);
 
 			// If the object wasn't found, create it
-		//	if (type != null && (o == null || o.GetType() != type)) {
-		//		o = (wxObject)Activator.CreateInstance(type, new object[]{ptr});
+		//	if (тип != пусто && (o == пусто || o.GetType() != тип)) {
+		//		o = (wxObject)Activator.CreateInstance(тип, new object[]{ptr});
 		//	}
-			if (o is null) {
-				o = New(ptr);
+			if (o is пусто) {
+				o = Нов(ptr);
 			}
 
 			return o;
@@ -169,31 +169,31 @@ import tango.core.Version;
 		// Locates the registered object that references the given C++ object
 		// pointer.
 
-		public static wxObject FindObject(IntPtr ptr)
+		public static wxObject FindObject(ЦУк ptr)
 		{
-			if (ptr != IntPtr.init) {
+			if (ptr != ЦУк.init) {
 				wxObject *o = ptr in objects;
 				if (o) return *o;
 			}
 
-			return null;
+			return пусто;
 		}
 		
 		//---------------------------------------------------------------------
 
 		// Removes a registered object.
-		// returns true if the object is found in the
+		// returns да if the object is found in the
 		// Hashtable and is removed (for Dispose)
 
-		public static bool RemoveObject(IntPtr ptr)
+		public static бул RemoveObject(ЦУк ptr)
 		{
-			bool retval = false;
+			бул retval = нет;
 
-			if (ptr != IntPtr.init)
+			if (ptr != ЦУк.init)
 			{
 				if(ptr in objects) {
 					objects.remove(ptr);
-					retval = true;
+					retval = да;
 				}
 			}
 			
@@ -203,24 +203,24 @@ import tango.core.Version;
 		//---------------------------------------------------------------------
 		
 		// called when an c++ (wx)wxObject dtor gets invoked
-		static extern(C) private void VirtualDispose(IntPtr ptr)
+		static extern(C) private проц VirtualDispose(ЦУк ptr)
 		{
 			FindObject(ptr).realVirtualDispose();
 		}
 
-		private void realVirtualDispose()
+		private проц realVirtualDispose()
 		{
-			RemoveObject(wxobj);
-			wxobj = IntPtr.init;
+			RemoveObject(шхобъ);
+			шхобъ = ЦУк.init;
 		}
 
-		protected void dtor() { wxObject_dtor(wxobj); }
+		protected проц dtor() { wxObject_dtor(шхобъ); }
 
-		public /+virtual+/ void Dispose()
+		public /+virtual+/ проц Dispose()
 		{
-			if (wxobj != IntPtr.init)
+			if (шхобъ != ЦУк.init)
 			{
-			//	bool still_there = RemoveObject(wxobj);
+			//	бул still_there = RemoveObject(шхобъ);
 
 			//	lock (typeof (wxObject)) {
 					if (memOwn /*&& still_there*/)
@@ -229,9 +229,9 @@ import tango.core.Version;
 					}
 			//	}
 				
-				RemoveObject(wxobj);
-				wxobj = IntPtr.init;
-			//	memOwn = false;
+				RemoveObject(шхобъ);
+				шхобъ = ЦУк.init;
+			//	memOwn = нет;
 			}
 			//GC.SuppressFinalize(this);
 		}
@@ -241,6 +241,6 @@ import tango.core.Version;
 			Dispose();
 		}
 
-		protected bool disposed() { return wxobj==IntPtr.init; }
+		protected бул disposed() { return шхобъ==ЦУк.init; }
 	}
 

@@ -1,4 +1,4 @@
-//-----------------------------------------------------------------------------
+﻿//-----------------------------------------------------------------------------
 // wxD - ComboBox.d
 // (C) 2005 bero <berobero.sourceforge.net>
 // based on
@@ -10,7 +10,7 @@
 // (C) 2003 Bryan Bulten
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: ComboBox.d,v 1.12 2007/03/13 17:02:40 afb Exp $
+// $Ид: ComboBox.d,v 1.12 2007/03/13 17:02:40 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.ComboBox;
@@ -20,49 +20,49 @@ public import wx.ClientData;
 
 		
 		//! \cond EXTERN
-		static extern (C) IntPtr wxComboBox_ctor();
-		static extern (C) bool   wxComboBox_Create(IntPtr self, IntPtr window, int id, string value, inout Point pos, inout Size size, int n, string* choices, uint style, IntPtr validator, string name);
+		static extern (C) ЦУк wxComboBox_ctor();
+		static extern (C) бул   wxComboBox_Create(ЦУк сам, ЦУк окно, цел ид, ткст значение, inout Точка поз, inout Размер size, цел n, ткст* choices, бцел стиль, ЦУк validator, ткст имя);
 		
-		static extern (C) void   wxComboBox_Append(IntPtr self, string item);
-		static extern (C) void   wxComboBox_AppendData(IntPtr self, string item, IntPtr data);
+		static extern (C) проц   wxComboBox_Append(ЦУк сам, ткст элемент);
+		static extern (C) проц   wxComboBox_AppendData(ЦУк сам, ткст элемент, ЦУк данные);
 		
-		static extern (C) void   wxComboBox_Clear(IntPtr self);
-		static extern (C) void   wxComboBox_Delete(IntPtr self, int n);
+		static extern (C) проц   wxComboBox_Clear(ЦУк сам);
+		static extern (C) проц   wxComboBox_Delete(ЦУк сам, цел n);
 		
-		static extern (C) int    wxComboBox_FindString(IntPtr self, string str);
+		static extern (C) цел    wxComboBox_FindString(ЦУк сам, ткст str);
 		
-		static extern (C) int    wxComboBox_GetCount(IntPtr self);
-		static extern (C) int    wxComboBox_GetSelection(IntPtr self);
-		static extern (C) IntPtr wxComboBox_GetString(IntPtr self, int n);
-		//static extern (C) void   wxComboBox_SetString(IntPtr self, int n, string text);
+		static extern (C) цел    wxComboBox_GetCount(ЦУк сам);
+		static extern (C) цел    wxComboBox_GetSelection(ЦУк сам);
+		static extern (C) ЦУк wxComboBox_GetString(ЦУк сам, цел n);
+		//static extern (C) проц   wxComboBox_SetString(ЦУк сам, цел n, ткст текст);
 		
-		static extern (C) IntPtr wxComboBox_GetValue(IntPtr self);
-		static extern (C) void   wxComboBox_SetValue(IntPtr self, string text);
+		static extern (C) ЦУк wxComboBox_GetValue(ЦУк сам);
+		static extern (C) проц   wxComboBox_SetValue(ЦУк сам, ткст текст);
 		
-		static extern (C) IntPtr wxComboBox_GetStringSelection(IntPtr self);
-		static extern (C) void   wxComboBox_SetStringSelection(IntPtr self, string value);
+		static extern (C) ЦУк wxComboBox_GetStringSelection(ЦУк сам);
+		static extern (C) проц   wxComboBox_SetStringSelection(ЦУк сам, ткст значение);
 		
-		static extern (C) IntPtr wxComboBox_GetClientData(IntPtr self, int n);
-		static extern (C) void   wxComboBox_SetClientData(IntPtr self, int n, IntPtr data);
+		static extern (C) ЦУк wxComboBox_GetClientData(ЦУк сам, цел n);
+		static extern (C) проц   wxComboBox_SetClientData(ЦУк сам, цел n, ЦУк данные);
 		
-		static extern (C) void   wxComboBox_Copy(IntPtr self);
-		static extern (C) void   wxComboBox_Cut(IntPtr self);
-		static extern (C) void   wxComboBox_Paste(IntPtr self);
+		static extern (C) проц   wxComboBox_Copy(ЦУк сам);
+		static extern (C) проц   wxComboBox_Cut(ЦУк сам);
+		static extern (C) проц   wxComboBox_Paste(ЦУк сам);
 		
-		static extern (C) void   wxComboBox_SetInsertionPoint(IntPtr self, uint pos);
-		static extern (C) uint   wxComboBox_GetInsertionPoint(IntPtr self);
-		static extern (C) void   wxComboBox_SetInsertionPointEnd(IntPtr self);
-		static extern (C) uint   wxComboBox_GetLastPosition(IntPtr self);
+		static extern (C) проц   wxComboBox_SetInsertionPoint(ЦУк сам, бцел поз);
+		static extern (C) бцел   wxComboBox_GetInsertionPoint(ЦУк сам);
+		static extern (C) проц   wxComboBox_SetInsertionPointEnd(ЦУк сам);
+		static extern (C) бцел   wxComboBox_GetLastPosition(ЦУк сам);
 		
-		static extern (C) void   wxComboBox_Replace(IntPtr self, uint from, uint to, string value);
-		static extern (C) void   wxComboBox_SetSelectionSingle(IntPtr self, int n);
-		static extern (C) void   wxComboBox_SetSelectionMult(IntPtr self, uint from, uint to);
-		static extern (C) void   wxComboBox_SetEditable(IntPtr self, bool editable);
-		static extern (C) void   wxComboBox_Remove(IntPtr self, uint from, uint to);
+		static extern (C) проц   wxComboBox_Replace(ЦУк сам, бцел from, бцел to, ткст значение);
+		static extern (C) проц   wxComboBox_SetSelectionSingle(ЦУк сам, цел n);
+		static extern (C) проц   wxComboBox_SetSelectionMult(ЦУк сам, бцел from, бцел to);
+		static extern (C) проц   wxComboBox_SetEditable(ЦУк сам, бул editable);
+		static extern (C) проц   wxComboBox_Remove(ЦУк сам, бцел from, бцел to);
 		
-		static extern (C) void wxComboBox_SetSelection(IntPtr self, int n);
+		static extern (C) проц wxComboBox_SetSelection(ЦУк сам, цел n);
 		
-		static extern (C) void wxComboBox_Select(IntPtr self, int n);
+		static extern (C) проц wxComboBox_Select(ЦУк сам, цел n);
 		//! \endcond
 		
 		//---------------------------------------------------------------------
@@ -70,203 +70,203 @@ public import wx.ClientData;
 	alias ComboBox wxComboBox;
 	public class ComboBox : Control
 	{
-		public const int wxCB_SIMPLE           = 0x0004;
-		public const int wxCB_SORT             = 0x0008;
-		public const int wxCB_READONLY         = 0x0010;
-		public const int wxCB_DROPDOWN         = 0x0020;
+		public const цел wxCB_SIMPLE           = 0x0004;
+		public const цел wxCB_SORT             = 0x0008;
+		public const цел wxCB_READONLY         = 0x0010;
+		public const цел wxCB_DROPDOWN         = 0x0020;
 		
-		public const string wxComboBoxNameStr = "comboBox";
+		public const ткст wxComboBoxNameStr = "comboBox";
 		//---------------------------------------------------------------------
 
-		public this(IntPtr wxobj) 
-			{ super(wxobj); }
+		public this(ЦУк шхобъ) 
+			{ super(шхобъ); }
 
 		public this()
 			{ super(wxComboBox_ctor()); }
 
-		public this(Window parent, int id, string value="", Point pos = wxDefaultPosition, Size size = wxDefaultSize, string[] choices = null, int style = 0, Validator val = null, string name = wxComboBoxNameStr)
+		public this(Окно родитель, цел ид, ткст значение="", Точка поз = wxDefaultPosition, Размер size = wxDefaultSize, ткст[] choices = пусто, цел стиль = 0, Validator val = пусто, ткст имя = wxComboBoxNameStr)
 		{
 			super(wxComboBox_ctor());
-			if(!wxComboBox_Create(wxobj, wxObject.SafePtr(parent), id, 
-						value, pos, size, 
-						choices.length, choices.ptr, cast(uint)style, 
-						wxObject.SafePtr(validator), name)) 
+			if(!wxComboBox_Create(шхобъ, wxObject.SafePtr(родитель), ид, 
+						значение, поз, size, 
+						choices.length, choices.ptr, cast(бцел)стиль, 
+						wxObject.SafePtr(validator), имя)) 
 			{
 				throw new InvalidOperationException("Failed to create ListBox");
 			}
 		}
 		
-		public static wxObject New(IntPtr wxobj) { return new ComboBox(wxobj); }
+		public static wxObject Нов(ЦУк шхобъ) { return new ComboBox(шхобъ); }
 	
 		//---------------------------------------------------------------------
-		// ctors with self created id
+		// ctors with сам created ид
 		
-		public this(Window parent)
-			{ this(parent, Window.UniqueID, "", wxDefaultPosition, wxDefaultSize, cast(string[])null, 0, null, null); }
+		public this(Окно родитель)
+			{ this(родитель, Окно.UniqueID, "", wxDefaultPosition, wxDefaultSize, cast(ткст[])пусто, 0, пусто, пусто); }
 
-		public this(Window parent, string value="", Point pos = wxDefaultPosition, Size size = wxDefaultSize, string[] choices = null, int style = 0, Validator val = null, string name = wxComboBoxNameStr)
-			{ this(parent, Window.UniqueID, value, pos, size, choices, style, validator, name);}
+		public this(Окно родитель, ткст значение="", Точка поз = wxDefaultPosition, Размер size = wxDefaultSize, ткст[] choices = пусто, цел стиль = 0, Validator val = пусто, ткст имя = wxComboBoxNameStr)
+			{ this(родитель, Окно.UniqueID, значение, поз, size, choices, стиль, validator, имя);}
 		
 		//---------------------------------------------------------------------
 
-		public bool Create(Window parent, int id, string value, 
-				Point pos, Size size,
-				string[] choices, int style, Validator validator,
-				string name)
+		public бул Create(Окно родитель, цел ид, ткст значение, 
+				Точка поз, Размер size,
+				ткст[] choices, цел стиль, Validator validator,
+				ткст имя)
 		{
-			return wxComboBox_Create(wxobj, wxObject.SafePtr(parent), id,
-					value, pos, size, 
+			return wxComboBox_Create(шхобъ, wxObject.SafePtr(родитель), ид,
+					значение, поз, size, 
 					choices.length, choices.ptr, 
-					cast(uint)style, wxObject.SafePtr(validator), name);
+					cast(бцел)стиль, wxObject.SafePtr(validator), имя);
 		}
 
 		//---------------------------------------------------------------------
         
-		public int Selection() { return wxComboBox_GetSelection(wxobj); }
-		public void Selection(int value) { wxComboBox_SetSelectionSingle(wxobj, value); }
+		public цел Selection() { return wxComboBox_GetSelection(шхобъ); }
+		public проц Selection(цел значение) { wxComboBox_SetSelectionSingle(шхобъ, значение); }
 
 		//---------------------------------------------------------------------
 
-		public string StringSelection() { return cast(string) new wxString(wxComboBox_GetStringSelection(wxobj), true); }
-		public void StringSelection(string value) { wxComboBox_SetStringSelection(wxobj, value); }
-
-		//---------------------------------------------------------------------
-        
-		public int Count() { return wxComboBox_GetCount(wxobj); }
-		
-		//---------------------------------------------------------------------
-
-		public string GetString(int n)
-		{
-			return cast(string) new wxString(wxComboBox_GetString(wxobj, n), true);
-		}
-
-		//---------------------------------------------------------------------
-
-		public ClientData GetClientData(int n)
-		{
-			return cast(ClientData)FindObject(wxComboBox_GetClientData(wxobj, n));
-		}
-
-		public void SetClientData(int n, ClientData data)
-		{
-			wxComboBox_SetClientData(wxobj, n, wxObject.SafePtr(data));
-		}
-
-		//---------------------------------------------------------------------
-
-		public int FindString(string str)
-		{
-			return wxComboBox_FindString(wxobj, str);
-		}
-
-		//---------------------------------------------------------------------
-
-		public void Delete(int n)
-		{
-			wxComboBox_Delete(wxobj, n);
-		}
-
-		public void Clear()
-		{
-			wxComboBox_Clear(wxobj);
-		}
-
-		//---------------------------------------------------------------------
-
-		public void Append(string item)
-		{
-			wxComboBox_Append(wxobj, item);
-		}
-
-		public void Append(string item, ClientData data)
-		{
-			wxComboBox_AppendData(wxobj, item, wxObject.SafePtr(data));
-		}
-
-		//---------------------------------------------------------------------
-
-		public void Copy()
-		{
-			wxComboBox_Copy(wxobj);
-		}
-		
-		//---------------------------------------------------------------------
-
-		public void Cut()
-		{
-			wxComboBox_Cut(wxobj);
-		}
-		
-		//---------------------------------------------------------------------
-
-		public void Paste()
-		{
-			wxComboBox_Paste(wxobj);
-		}
+		public ткст StringSelection() { return cast(ткст) new wxString(wxComboBox_GetStringSelection(шхобъ), да); }
+		public проц StringSelection(ткст значение) { wxComboBox_SetStringSelection(шхобъ, значение); }
 
 		//---------------------------------------------------------------------
         
-		public int InsertionPoint() { return wxComboBox_GetInsertionPoint(wxobj); }
-		public void InsertionPoint(int value) { wxComboBox_SetInsertionPoint(wxobj, cast(uint)value); }
+		public цел Счёт() { return wxComboBox_GetCount(шхобъ); }
 		
 		//---------------------------------------------------------------------
 
-		public void SetInsertionPointEnd()
+		public ткст GetString(цел n)
 		{
-			wxComboBox_SetInsertionPointEnd(wxobj);
+			return cast(ткст) new wxString(wxComboBox_GetString(шхобъ, n), да);
+		}
+
+		//---------------------------------------------------------------------
+
+		public ClientData GetClientData(цел n)
+		{
+			return cast(ClientData)FindObject(wxComboBox_GetClientData(шхобъ, n));
+		}
+
+		public проц SetClientData(цел n, ClientData данные)
+		{
+			wxComboBox_SetClientData(шхобъ, n, wxObject.SafePtr(данные));
+		}
+
+		//---------------------------------------------------------------------
+
+		public цел FindString(ткст str)
+		{
+			return wxComboBox_FindString(шхобъ, str);
+		}
+
+		//---------------------------------------------------------------------
+
+		public проц Delete(цел n)
+		{
+			wxComboBox_Delete(шхобъ, n);
+		}
+
+		public проц Очисть()
+		{
+			wxComboBox_Clear(шхобъ);
+		}
+
+		//---------------------------------------------------------------------
+
+		public проц Append(ткст элемент)
+		{
+			wxComboBox_Append(шхобъ, элемент);
+		}
+
+		public проц Append(ткст элемент, ClientData данные)
+		{
+			wxComboBox_AppendData(шхобъ, элемент, wxObject.SafePtr(данные));
+		}
+
+		//---------------------------------------------------------------------
+
+		public проц Копируй()
+		{
+			wxComboBox_Copy(шхобъ);
 		}
 		
 		//---------------------------------------------------------------------
 
-		public int GetLastPosition()
+		public проц Cut()
 		{
-			return wxComboBox_GetLastPosition(wxobj);
-		}
-
-		//---------------------------------------------------------------------
-
-		public void Replace(int from, int to, string value)
-		{
-			wxComboBox_Replace(wxobj, cast(uint)from, cast(uint)to, value);
-		}
-
-		//---------------------------------------------------------------------
-
-		public void SetSelection(int from, int to)
-		{
-			wxComboBox_SetSelectionMult(wxobj, cast(uint)from, cast(uint)to);
+			wxComboBox_Cut(шхобъ);
 		}
 		
-		public void SetSelection(int n)
-		{
-			wxComboBox_SetSelection(wxobj, n);
-		}
-
 		//---------------------------------------------------------------------
 
-		public void Editable(bool value) { wxComboBox_SetEditable(wxobj, value); }
-
-		//---------------------------------------------------------------------
-        
-		public void Remove(int from, int to)
+		public проц Вставь()
 		{
-			wxComboBox_Remove(wxobj, cast(uint)from, cast(uint)to);
+			wxComboBox_Paste(шхобъ);
 		}
 
 		//---------------------------------------------------------------------
         
-		public string Value() { return cast(string) new wxString(wxComboBox_GetValue(wxobj), true); }
-		public void Value(string value) { wxComboBox_SetValue(wxobj, value); }
+		public цел InsertionPoint() { return wxComboBox_GetInsertionPoint(шхобъ); }
+		public проц InsertionPoint(цел значение) { wxComboBox_SetInsertionPoint(шхобъ, cast(бцел)значение); }
 		
-		public void Select(int n)
+		//---------------------------------------------------------------------
+
+		public проц SetInsertionPointEnd()
 		{
-			wxComboBox_Select(wxobj, n);
+			wxComboBox_SetInsertionPointEnd(шхобъ);
+		}
+		
+		//---------------------------------------------------------------------
+
+		public цел GetLastPosition()
+		{
+			return wxComboBox_GetLastPosition(шхобъ);
 		}
 
 		//---------------------------------------------------------------------
 
-		public void Selected_Add(EventListener value) { AddCommandListener(Event.wxEVT_COMMAND_COMBOBOX_SELECTED, ID, value, this); }
-		public void Selected_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц Замени(цел from, цел to, ткст значение)
+		{
+			wxComboBox_Replace(шхобъ, cast(бцел)from, cast(бцел)to, значение);
+		}
+
+		//---------------------------------------------------------------------
+
+		public проц SetSelection(цел from, цел to)
+		{
+			wxComboBox_SetSelectionMult(шхобъ, cast(бцел)from, cast(бцел)to);
+		}
+		
+		public проц SetSelection(цел n)
+		{
+			wxComboBox_SetSelection(шхобъ, n);
+		}
+
+		//---------------------------------------------------------------------
+
+		public проц Editable(бул значение) { wxComboBox_SetEditable(шхобъ, значение); }
+
+		//---------------------------------------------------------------------
+        
+		public проц Remove(цел from, цел to)
+		{
+			wxComboBox_Remove(шхобъ, cast(бцел)from, cast(бцел)to);
+		}
+
+		//---------------------------------------------------------------------
+        
+		public ткст Value() { return cast(ткст) new wxString(wxComboBox_GetValue(шхобъ), да); }
+		public проц Value(ткст значение) { wxComboBox_SetValue(шхобъ, значение); }
+		
+		public проц Select(цел n)
+		{
+			wxComboBox_Select(шхобъ, n);
+		}
+
+		//---------------------------------------------------------------------
+
+		public проц Selected_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_COMMAND_COMBOBOX_SELECTED, ИД, значение, this); }
+		public проц Selected_Remove(EventListener значение) { RemoveHandler(значение, this); }
 	}
 

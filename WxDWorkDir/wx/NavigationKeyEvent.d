@@ -10,7 +10,7 @@
 // (C) 2004 by Alexander Olk
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: NavigationKeyEvent.d,v 1.9 2006/11/17 15:21:00 afb Exp $
+// $Ид: NavigationKeyEvent.d,v 1.9 2006/11/17 15:21:00 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.NavigationKeyEvent;
@@ -20,50 +20,50 @@ public import wx.Event;
 public import wx.Window;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxNavigationKeyEvent_ctor();
-		static extern (C) bool wxNavigationKeyEvent_GetDirection(IntPtr self);
-		static extern (C) void wxNavigationKeyEvent_SetDirection(IntPtr self, bool bForward);
-		static extern (C) bool wxNavigationKeyEvent_IsWindowChange(IntPtr self);
-		static extern (C) void wxNavigationKeyEvent_SetWindowChange(IntPtr self, bool bIs);
-		static extern (C) IntPtr wxNavigationKeyEvent_GetCurrentFocus(IntPtr self);
-		static extern (C) void wxNavigationKeyEvent_SetCurrentFocus(IntPtr self, IntPtr win);
-		static extern (C) void wxNavigationKeyEvent_SetFlags(IntPtr self, uint flags);
+		static extern (C) ЦУк wxNavigationKeyEvent_ctor();
+		static extern (C) бул wxNavigationKeyEvent_GetDirection(ЦУк сам);
+		static extern (C) проц wxNavigationKeyEvent_SetDirection(ЦУк сам, бул bForward);
+		static extern (C) бул wxNavigationKeyEvent_IsWindowChange(ЦУк сам);
+		static extern (C) проц wxNavigationKeyEvent_SetWindowChange(ЦУк сам, бул bIs);
+		static extern (C) ЦУк wxNavigationKeyEvent_GetCurrentFocus(ЦУк сам);
+		static extern (C) проц wxNavigationKeyEvent_SetCurrentFocus(ЦУк сам, ЦУк окн);
+		static extern (C) проц wxNavigationKeyEvent_SetFlags(ЦУк сам, бцел флаги);
 		//! \endcond
 		
 		//-----------------------------------------------------------------------------
 
 	alias NavigationKeyEvent wxNavigationKeyEvent;
-	public class NavigationKeyEvent : Event
+	public class NavigationKeyEvent : Событие
 	{
-		public this(IntPtr wxobj) 
-			{ super(wxobj); }
+		public this(ЦУк шхобъ) 
+			{ super(шхобъ); }
 
 		public this()
 			{ this(wxNavigationKeyEvent_ctor()); }
 			
 		//-----------------------------------------------------------------------------
 		
-		public bool Direction() { return wxNavigationKeyEvent_GetDirection(wxobj); }
-		public void Direction(bool value) { wxNavigationKeyEvent_SetDirection(wxobj, value); }
+		public бул Direction() { return wxNavigationKeyEvent_GetDirection(шхобъ); }
+		public проц Direction(бул значение) { wxNavigationKeyEvent_SetDirection(шхобъ, значение); }
 		
 		//-----------------------------------------------------------------------------
 		
-		public bool WindowChange() { return wxNavigationKeyEvent_IsWindowChange(wxobj); }
-		public void WindowChange(bool value) { wxNavigationKeyEvent_SetWindowChange(wxobj, value); }
+		public бул WindowChange() { return wxNavigationKeyEvent_IsWindowChange(шхобъ); }
+		public проц WindowChange(бул значение) { wxNavigationKeyEvent_SetWindowChange(шхобъ, значение); }
 		
 		//-----------------------------------------------------------------------------
 		
-		public Window CurrentFocus() { return cast(Window)FindObject(wxNavigationKeyEvent_GetCurrentFocus(wxobj), &Window.New); }
-		public void CurrentFocus(Window value) { wxNavigationKeyEvent_SetCurrentFocus(wxobj, wxObject.SafePtr(value)); }
+		public Окно CurrentFocus() { return cast(Окно)FindObject(wxNavigationKeyEvent_GetCurrentFocus(шхобъ), &Окно.Нов); }
+		public проц CurrentFocus(Окно значение) { wxNavigationKeyEvent_SetCurrentFocus(шхобъ, wxObject.SafePtr(значение)); }
 		
 		//-----------------------------------------------------------------------------
 		
-		public void Flags(int value) { wxNavigationKeyEvent_SetFlags(wxobj, cast(uint)value); }
+		public проц Флаги(цел значение) { wxNavigationKeyEvent_SetFlags(шхобъ, cast(бцел)значение); }
 
-		private static Event New(IntPtr obj) { return new NavigationKeyEvent(obj); }
+		private static Событие Нов(ЦУк объ) { return new NavigationKeyEvent(объ); }
 
 		static this()
 		{
-			AddEventType(wxEVT_NAVIGATION_KEY,			&NavigationKeyEvent.New);
+			ДобавьТипСоб(wxEVT_NAVIGATION_KEY,			&NavigationKeyEvent.Нов);
 		}
 	}

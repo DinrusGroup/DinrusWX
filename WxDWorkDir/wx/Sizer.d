@@ -10,7 +10,7 @@
 // (C) 2003 Bryan Bulten
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: Sizer.d,v 1.10 2007/08/20 08:38:46 afb Exp $
+// $Ид: Sizer.d,v 1.10 2007/08/20 08:38:46 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.Sizer;
@@ -18,288 +18,288 @@ public import wx.common;
 public import wx.Window;
 
 		//! \cond EXTERN
-		static extern (C) void wxSizer_AddWindow(IntPtr self, IntPtr window, int proportion, int flag, int border, IntPtr userData);
-		static extern (C) void wxSizer_AddSizer(IntPtr self, IntPtr sizer, int proportion, int flag, int border, IntPtr userData);
-		static extern (C) void wxSizer_Add(IntPtr self, int width, int height, int proportion, int flag, int border, IntPtr userData);
+		static extern (C) проц wxSizer_AddWindow(ЦУк сам, ЦУк окно, цел proportion, цел flag, цел border, ЦУк userData);
+		static extern (C) проц wxSizer_AddSizer(ЦУк сам, ЦУк sizer, цел proportion, цел flag, цел border, ЦУк userData);
+		static extern (C) проц wxSizer_Add(ЦУк сам, цел ширина, цел высота, цел proportion, цел flag, цел border, ЦУк userData);
 
-		static extern (C) void wxSizer_Fit(IntPtr self, IntPtr window, inout Size size);
-		static extern (C) void wxSizer_FitInside(IntPtr self, IntPtr window);
-		static extern (C) void wxSizer_Layout(IntPtr self);
+		static extern (C) проц wxSizer_Fit(ЦУк сам, ЦУк окно, inout Размер size);
+		static extern (C) проц wxSizer_FitInside(ЦУк сам, ЦУк окно);
+		static extern (C) проц wxSizer_Layout(ЦУк сам);
 
-		static extern (C) void wxSizer_InsertWindow(IntPtr self, int before, IntPtr window, int option, uint flag, int border, IntPtr userData);
-		static extern (C) void wxSizer_InsertSizer(IntPtr self, int before, IntPtr sizer, int option, uint flag, int border, IntPtr userData);
-		static extern (C) void wxSizer_Insert(IntPtr self, int before, int width, int height, int option, uint flag, int border, IntPtr userData);
+		static extern (C) проц wxSizer_InsertWindow(ЦУк сам, цел before, ЦУк окно, цел option, бцел flag, цел border, ЦУк userData);
+		static extern (C) проц wxSizer_InsertSizer(ЦУк сам, цел before, ЦУк sizer, цел option, бцел flag, цел border, ЦУк userData);
+		static extern (C) проц wxSizer_Insert(ЦУк сам, цел before, цел ширина, цел высота, цел option, бцел flag, цел border, ЦУк userData);
 
-		static extern (C) void wxSizer_PrependWindow(IntPtr self, IntPtr window, int option, uint flag, int border, IntPtr userData);
-		static extern (C) void wxSizer_PrependSizer(IntPtr self, IntPtr sizer, int option, uint flag, int border, IntPtr userData);
-		static extern (C) void wxSizer_Prepend(IntPtr self, int width, int height, int option, uint flag, int border, IntPtr userData);
+		static extern (C) проц wxSizer_PrependWindow(ЦУк сам, ЦУк окно, цел option, бцел flag, цел border, ЦУк userData);
+		static extern (C) проц wxSizer_PrependSizer(ЦУк сам, ЦУк sizer, цел option, бцел flag, цел border, ЦУк userData);
+		static extern (C) проц wxSizer_Prepend(ЦУк сам, цел ширина, цел высота, цел option, бцел flag, цел border, ЦУк userData);
 
-	//	static extern (C) bool wxSizer_RemoveWindow(IntPtr self, IntPtr window);
-		static extern (C) bool wxSizer_RemoveSizer(IntPtr self, IntPtr sizer);
-		static extern (C) bool wxSizer_Remove(IntPtr self, int pos);
+	//	static extern (C) бул wxSizer_RemoveWindow(ЦУк сам, ЦУк окно);
+		static extern (C) бул wxSizer_RemoveSizer(ЦУк сам, ЦУк sizer);
+		static extern (C) бул wxSizer_Remove(ЦУк сам, цел поз);
 
-		static extern (C) void wxSizer_Clear(IntPtr self, bool delete_windows);
-		static extern (C) void wxSizer_DeleteWindows(IntPtr self);
+		static extern (C) проц wxSizer_Clear(ЦУк сам, бул delete_windows);
+		static extern (C) проц wxSizer_DeleteWindows(ЦУк сам);
 
-		static extern (C) void wxSizer_SetMinSize(IntPtr self, inout Size size);
+		static extern (C) проц wxSizer_SetMinSize(ЦУк сам, inout Размер size);
 
-		static extern (C) bool wxSizer_SetItemMinSizeWindow(IntPtr self, IntPtr window, inout Size size);
-		static extern (C) bool wxSizer_SetItemMinSizeSizer(IntPtr self, IntPtr sizer, inout Size size);
-		static extern (C) bool wxSizer_SetItemMinSize(IntPtr self, int pos, inout Size size);
+		static extern (C) бул wxSizer_SetItemMinSizeWindow(ЦУк сам, ЦУк окно, inout Размер size);
+		static extern (C) бул wxSizer_SetItemMinSizeSizer(ЦУк сам, ЦУк sizer, inout Размер size);
+		static extern (C) бул wxSizer_SetItemMinSize(ЦУк сам, цел поз, inout Размер size);
 
-		static extern (C) void wxSizer_GetSize(IntPtr self, out Size size);
-		static extern (C) void wxSizer_GetPosition(IntPtr self, out Point pt);
-		static extern (C) void wxSizer_GetMinSize(IntPtr self, out Size size);
+		static extern (C) проц wxSizer_GetSize(ЦУк сам, out Размер size);
+		static extern (C) проц wxSizer_GetPosition(ЦУк сам, out Точка pt);
+		static extern (C) проц wxSizer_GetMinSize(ЦУк сам, out Размер size);
 
-		static extern (C) void wxSizer_RecalcSizes(IntPtr self);
-		static extern (C) void wxSizer_CalcMin(IntPtr self, out Size size);
+		static extern (C) проц wxSizer_RecalcSizes(ЦУк сам);
+		static extern (C) проц wxSizer_CalcMin(ЦУк сам, out Размер size);
 
-		static extern (C) void wxSizer_SetSizeHints(IntPtr self, IntPtr window);
-		//static extern (C) void wxSizer_SetVirtualSizeHints(IntPtr self, IntPtr window);
-		static extern (C) void wxSizer_SetDimension(IntPtr self, int x, int y, int width, int height);
+		static extern (C) проц wxSizer_SetSizeHints(ЦУк сам, ЦУк окно);
+		//static extern (C) проц wxSizer_SetVirtualSizeHints(ЦУк сам, ЦУк окно);
+		static extern (C) проц wxSizer_SetDimension(ЦУк сам, цел x, цел y, цел ширина, цел высота);
 
-		static extern (C) void wxSizer_ShowWindow(IntPtr self, IntPtr window, bool show);
-		static extern (C) void wxSizer_HideWindow(IntPtr self, IntPtr window);
-		static extern (C) void wxSizer_ShowSizer(IntPtr self, IntPtr sizer, bool show);
-		static extern (C) void wxSizer_HideSizer(IntPtr self, IntPtr sizer);
+		static extern (C) проц wxSizer_ShowWindow(ЦУк сам, ЦУк окно, бул show);
+		static extern (C) проц wxSizer_HideWindow(ЦУк сам, ЦУк окно);
+		static extern (C) проц wxSizer_ShowSizer(ЦУк сам, ЦУк sizer, бул show);
+		static extern (C) проц wxSizer_HideSizer(ЦУк сам, ЦУк sizer);
 
-		static extern (C) bool wxSizer_IsShownWindow(IntPtr self, IntPtr window);
-		static extern (C) bool wxSizer_IsShownSizer(IntPtr self, IntPtr sizer);
+		static extern (C) бул wxSizer_IsShownWindow(ЦУк сам, ЦУк окно);
+		static extern (C) бул wxSizer_IsShownSizer(ЦУк сам, ЦУк sizer);
 		
-		static extern (C) bool wxSizer_DetachWindow(IntPtr self, IntPtr window);
-		static extern (C) bool wxSizer_DetachSizer(IntPtr self, IntPtr sizer);
-		static extern (C) bool wxSizer_Detach(IntPtr self, int index);
+		static extern (C) бул wxSizer_DetachWindow(ЦУк сам, ЦУк окно);
+		static extern (C) бул wxSizer_DetachSizer(ЦУк сам, ЦУк sizer);
+		static extern (C) бул wxSizer_Detach(ЦУк сам, цел индекс);
 		//! \endcond
 
 		//---------------------------------------------------------------------
 
 	public abstract class Sizer : wxObject
 	{
-		public this(IntPtr wxobj)
-			{ super(wxobj);}
+		public this(ЦУк шхобъ)
+			{ super(шхобъ);}
 
 		//---------------------------------------------------------------------
 
-		public void Add(Window window, int proportion=0, int flag=0, int border=0, wxObject userData=null)
+		public проц Добавь(Окно окно, цел proportion=0, цел flag=0, цел border=0, wxObject userData=пусто)
 		{
-			wxSizer_AddWindow(wxobj, wxObject.SafePtr(window), proportion, flag,
+			wxSizer_AddWindow(шхобъ, wxObject.SafePtr(окно), proportion, flag,
 							  border, wxObject.SafePtr(userData));
 		}
 
-		public void Add(Sizer sizer, int proportion=0, int flag=0, int border=0, wxObject userData=null)
+		public проц Добавь(Sizer sizer, цел proportion=0, цел flag=0, цел border=0, wxObject userData=пусто)
 		{
-			wxSizer_AddSizer(wxobj, wxObject.SafePtr(sizer), proportion, cast(int)flag,
+			wxSizer_AddSizer(шхобъ, wxObject.SafePtr(sizer), proportion, cast(цел)flag,
 							 border, wxObject.SafePtr(userData));
 		}
 
-		public void Add(int width, int height, int proportion=0, int flag=0, int border=0, wxObject userData=null)
+		public проц Добавь(цел ширина, цел высота, цел proportion=0, цел flag=0, цел border=0, wxObject userData=пусто)
 		{
-			wxSizer_Add(wxobj, width, height, proportion, cast(int)flag, border,
+			wxSizer_Add(шхобъ, ширина, высота, proportion, cast(цел)flag, border,
 						wxObject.SafePtr(userData));
 		}
 
 		//---------------------------------------------------------------------
 
-		public void AddSpacer(int size)
+		public проц AddSpacer(цел size)
 		{
-			Add(size, size, 0);
+			Добавь(size, size, 0);
 		}
 
-		public void AddStretchSpacer(int proportion = 1)
+		public проц AddStretchSpacer(цел proportion = 1)
 		{
-			Add(0, 0, proportion);
+			Добавь(0, 0, proportion);
 		}
 
 		//---------------------------------------------------------------------
 
-		public Size Fit(Window window)
+		public Размер Fit(Окно окно)
 		{
-			Size size;
-			wxSizer_Fit(wxobj, wxObject.SafePtr(window), size);
+			Размер size;
+			wxSizer_Fit(шхобъ, wxObject.SafePtr(окно), size);
 			return size;
 		}
 
-		public void FitInside(Window window)
+		public проц FitInside(Окно окно)
 		{
-			wxSizer_FitInside(wxobj, wxObject.SafePtr(window));
+			wxSizer_FitInside(шхобъ, wxObject.SafePtr(окно));
 		}
 
-		public void Layout()
+		public проц Layout()
 		{
-			wxSizer_Layout(wxobj);
+			wxSizer_Layout(шхобъ);
 		}
 
 		//---------------------------------------------------------------------
 
-		public void Insert(uint index, Window window, int proportion=0, int flag=0,
-						   int border=0, wxObject userData=null)
+		public проц Insert(бцел индекс, Окно окно, цел proportion=0, цел flag=0,
+						   цел border=0, wxObject userData=пусто)
 		{
-			wxSizer_InsertWindow(wxobj, index, wxObject.SafePtr(window),
+			wxSizer_InsertWindow(шхобъ, индекс, wxObject.SafePtr(окно),
 								 proportion, flag, border,
 								 wxObject.SafePtr(userData));
 		}
 
-		public void Insert(uint index, Sizer sizer, int proportion=0, int flag=0,
-						   int border=0, wxObject userData=null)
+		public проц Insert(бцел индекс, Sizer sizer, цел proportion=0, цел flag=0,
+						   цел border=0, wxObject userData=пусто)
 		{
-			wxSizer_InsertSizer(wxobj, index, wxObject.SafePtr(sizer),
+			wxSizer_InsertSizer(шхобъ, индекс, wxObject.SafePtr(sizer),
 								proportion, flag, border,
 								wxObject.SafePtr(userData));
 		}
 
-		public void Insert(uint index, int width, int height, int proportion=0,
-						   int flag=0, int border=0, wxObject userData=null)
+		public проц Insert(бцел индекс, цел ширина, цел высота, цел proportion=0,
+						   цел flag=0, цел border=0, wxObject userData=пусто)
 		{
-			wxSizer_Insert(wxobj, index, width, height, proportion, flag,
+			wxSizer_Insert(шхобъ, индекс, ширина, высота, proportion, flag,
 						   border, wxObject.SafePtr(userData));
 		}
 
 		//---------------------------------------------------------------------
 
-		public void Prepend(Window window, int proportion=0, int flag=0, int border=0,
-							wxObject userData=null)
+		public проц Prepend(Окно окно, цел proportion=0, цел flag=0, цел border=0,
+							wxObject userData=пусто)
 		{
-			wxSizer_PrependWindow(wxobj, wxObject.SafePtr(window), proportion,
+			wxSizer_PrependWindow(шхобъ, wxObject.SafePtr(окно), proportion,
 								flag, border, wxObject.SafePtr(userData));
 		}
 
-		public void Prepend(Sizer sizer, int proportion=0, int flag=0, int border=0,
-							wxObject userData=null)
+		public проц Prepend(Sizer sizer, цел proportion=0, цел flag=0, цел border=0,
+							wxObject userData=пусто)
 		{
-			wxSizer_PrependSizer(wxobj, wxObject.SafePtr(sizer), proportion,
+			wxSizer_PrependSizer(шхобъ, wxObject.SafePtr(sizer), proportion,
 								 flag, border, wxObject.SafePtr(userData));
 		}
 
-		public void Prepend(int width, int height, int proportion=0, int flag=0,
-						    int border=0, wxObject userData=null)
+		public проц Prepend(цел ширина, цел высота, цел proportion=0, цел flag=0,
+						    цел border=0, wxObject userData=пусто)
 		{
-			wxSizer_Prepend(wxobj, width, height, proportion,
+			wxSizer_Prepend(шхобъ, ширина, высота, proportion,
 							flag, border, wxObject.SafePtr(userData));
 		}
 
 		//---------------------------------------------------------------------
 
-		public void PrependSpacer(int size)
+		public проц PrependSpacer(цел size)
 		{
 			Prepend(size, size, 0);
 		}
 
-		public void PrependStretchSpacer(int proportion = 1)
+		public проц PrependStretchSpacer(цел proportion = 1)
 		{
 			Prepend(0, 0, proportion);
 		}
 
 		//---------------------------------------------------------------------
 /+
-		public bool Remove(Window window)
+		public бул Remove(Окно окно)
 		{
-			return wxSizer_RemoveWindow(wxobj, wxObject.SafePtr(window));
+			return wxSizer_RemoveWindow(шхобъ, wxObject.SafePtr(окно));
 		}
 +/
-		public bool Remove(Sizer sizer)
+		public бул Remove(Sizer sizer)
 		{
-			return wxSizer_RemoveSizer(wxobj, wxObject.SafePtr(sizer));
+			return wxSizer_RemoveSizer(шхобъ, wxObject.SafePtr(sizer));
 		}
 
-		public bool Remove(int pos)
+		public бул Remove(цел поз)
 		{
-			return wxSizer_Remove(wxobj, pos);
-		}
-
-		//---------------------------------------------------------------------
-
-		public void SetMinSize(Size size)
-		{
-			wxSizer_SetMinSize(wxobj, size);
+			return wxSizer_Remove(шхобъ, поз);
 		}
 
 		//---------------------------------------------------------------------
 
-		public bool SetItemMinSize(Window window, Size size)
+		public проц SetMinSize(Размер size)
 		{
-			return wxSizer_SetItemMinSizeWindow(wxobj, wxObject.SafePtr(window),size);
-		}
-
-		public bool SetItemMinSize(Sizer sizer, Size size)
-		{
-			return wxSizer_SetItemMinSizeSizer(wxobj, wxObject.SafePtr(sizer),size);
-		}
-
-		public bool SetItemMinSize(int pos, Size size)
-		{
-			return wxSizer_SetItemMinSize(wxobj, pos, size);
+			wxSizer_SetMinSize(шхобъ, size);
 		}
 
 		//---------------------------------------------------------------------
 
-		public Size size() 
+		public бул SetItemMinSize(Окно окно, Размер size)
+		{
+			return wxSizer_SetItemMinSizeWindow(шхобъ, wxObject.SafePtr(окно),size);
+		}
+
+		public бул SetItemMinSize(Sizer sizer, Размер size)
+		{
+			return wxSizer_SetItemMinSizeSizer(шхобъ, wxObject.SafePtr(sizer),size);
+		}
+
+		public бул SetItemMinSize(цел поз, Размер size)
+		{
+			return wxSizer_SetItemMinSize(шхобъ, поз, size);
+		}
+
+		//---------------------------------------------------------------------
+
+		public Размер size() 
 			{
-				Size size;
-				wxSizer_GetSize(wxobj, size);
+				Размер size;
+				wxSizer_GetSize(шхобъ, size);
 				return size;
 			}
 
-		public Point Position() 
+		public Точка Положение() 
 			{
-				Point pt;
-				wxSizer_GetPosition(wxobj, pt);
+				Точка pt;
+				wxSizer_GetPosition(шхобъ, pt);
 				return pt;
 			}
 
-		public Size MinSize() 
+		public Размер MinSize() 
 			{
-				Size size;
-				wxSizer_GetMinSize(wxobj, size);
+				Размер size;
+				wxSizer_GetMinSize(шхобъ, size);
 				return size;
 			}
 
 		//---------------------------------------------------------------------
 
-		public /+virtual+/ void RecalcSizes()
+		public /+virtual+/ проц RecalcSizes()
 		{
-			wxSizer_RecalcSizes(wxobj);
+			wxSizer_RecalcSizes(шхобъ);
 		}
 
 		//---------------------------------------------------------------------
 
-		public /+virtual+/ Size CalcMin()
+		public /+virtual+/ Размер CalcMin()
 		{
-			Size size;
-			wxSizer_CalcMin(wxobj, size);
+			Размер size;
+			wxSizer_CalcMin(шхобъ, size);
 			return size;
 		}
 
 		//---------------------------------------------------------------------
 
-		public void SetSizeHints(Window window)
+		public проц SetSizeHints(Окно окно)
 		{
-			wxSizer_SetSizeHints(wxobj, wxObject.SafePtr(window));
+			wxSizer_SetSizeHints(шхобъ, wxObject.SafePtr(окно));
 		}
 /+
-		public void SetVirtualSizeHints(Window window)
+		public проц SetVirtualSizeHints(Окно окно)
 		{
-			wxSizer_SetVirtualSizeHints(wxobj, wxObject.SafePtr(window));
+			wxSizer_SetVirtualSizeHints(шхобъ, wxObject.SafePtr(окно));
 		}
 +/
-		public void SetDimension(int x, int y, int width, int height)
+		public проц SetDimension(цел x, цел y, цел ширина, цел высота)
 		{
-			wxSizer_SetDimension(wxobj, x, y, width, height);
+			wxSizer_SetDimension(шхобъ, x, y, ширина, высота);
 		}
 
 		//---------------------------------------------------------------------
 
-		public void Show(Window window, bool show)
+		public проц Show(Окно окно, бул show)
 		{
-			wxSizer_ShowWindow(wxobj, wxObject.SafePtr(window), show);
+			wxSizer_ShowWindow(шхобъ, wxObject.SafePtr(окно), show);
 		}
 
-		public void Show(Sizer sizer, bool show)
+		public проц Show(Sizer sizer, бул show)
 		{
-			wxSizer_ShowSizer(wxobj, wxObject.SafePtr(sizer), show);
+			wxSizer_ShowSizer(шхобъ, wxObject.SafePtr(sizer), show);
 		}
 
-		// New to wx.NET
-		public void Show(bool show)
+		// Нов to wx.NET
+		public проц Show(бул show)
 		{
 			Show(this, show);
 		}
@@ -307,55 +307,55 @@ public import wx.Window;
 
 		//---------------------------------------------------------------------
 
-		public void Clear(bool delete_windows)
+		public проц Очисть(бул delete_windows)
 		{
-			wxSizer_Clear(wxobj, delete_windows);
+			wxSizer_Clear(шхобъ, delete_windows);
 		}
 
-		public void DeleteWindows()
+		public проц DeleteWindows()
 		{
-			wxSizer_DeleteWindows(wxobj);
-		}
-
-		//---------------------------------------------------------------------
-
-		public void Hide(Window window)
-		{
-			wxSizer_HideWindow(wxobj, wxObject.SafePtr(window));
-		}
-
-		public void Hide(Sizer sizer)
-		{
-			wxSizer_HideSizer(wxobj, wxObject.SafePtr(sizer));
+			wxSizer_DeleteWindows(шхобъ);
 		}
 
 		//---------------------------------------------------------------------
 
-		public bool IsShown(Window window)
+		public проц Hide(Окно окно)
 		{
-			return wxSizer_IsShownWindow(wxobj, wxObject.SafePtr(window));
+			wxSizer_HideWindow(шхобъ, wxObject.SafePtr(окно));
 		}
 
-		public bool IsShown(Sizer sizer)
+		public проц Hide(Sizer sizer)
 		{
-			return wxSizer_IsShownSizer(wxobj, wxObject.SafePtr(sizer));
+			wxSizer_HideSizer(шхобъ, wxObject.SafePtr(sizer));
+		}
+
+		//---------------------------------------------------------------------
+
+		public бул IsShown(Окно окно)
+		{
+			return wxSizer_IsShownWindow(шхобъ, wxObject.SafePtr(окно));
+		}
+
+		public бул IsShown(Sizer sizer)
+		{
+			return wxSizer_IsShownSizer(шхобъ, wxObject.SafePtr(sizer));
 		}
 
 		//---------------------------------------------------------------------
 		
-		public bool Detach(Window window)
+		public бул Detach(Окно окно)
 		{
-			return wxSizer_DetachWindow(wxobj, wxObject.SafePtr(window));
+			return wxSizer_DetachWindow(шхобъ, wxObject.SafePtr(окно));
 		}
 		
-		public bool Detach(Sizer sizer)
+		public бул Detach(Sizer sizer)
 		{
-			return wxSizer_DetachSizer(wxobj, wxObject.SafePtr(sizer));
+			return wxSizer_DetachSizer(шхобъ, wxObject.SafePtr(sizer));
 		}
 		
-		public bool Detach(int index)
+		public бул Detach(цел индекс)
 		{
-			return wxSizer_Detach(wxobj, index);
+			return wxSizer_Detach(шхобъ, индекс);
 		}
 		
 		//---------------------------------------------------------------------

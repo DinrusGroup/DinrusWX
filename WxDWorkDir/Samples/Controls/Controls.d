@@ -12,7 +12,7 @@
 // (C) 2003 Bryan Bulten
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: Controls.d,v 1.11 2009/01/13 10:13:35 afb Exp $
+// $Ид: Controls.d,v 1.11 2009/01/13 10:13:35 afb Exp $
 //-----------------------------------------------------------------------------
 
 import wx.wx;
@@ -21,17 +21,17 @@ import wx.wx;
 version (Tango)
 {
 import tango.core.Version;
-private import tango.text.convert.Integer;
+private import tango.текст.convert.Integer;
 static if (Tango.Major == 0 && Tango.Minor < 994)
-alias tango.text.convert.Integer.toUtf8 toString;
+alias tango.текст.convert.Integer.toUtf8 toString;
 else
-alias tango.text.convert.Integer.toString toString;
+alias tango.текст.convert.Integer.toString toString;
 private import tango.io.Console;
-void PRINT(string s) { Cout(s).newline; }
+проц PRINT(ткст s) { Cout(s).newline; }
 }
 else // Phobos
 {
-private import std.string;
+private import std.ткст;
 private import std.stdio;
 alias writefln PRINT;
 }
@@ -39,25 +39,25 @@ alias writefln PRINT;
     //-------------------------------------------------------------------------
     // Application entry class
 
-    public class Controls : App
+    public class Controls : Прил
     {
-        public override bool OnInit()
+        public override бул ПриИниц()
         {
-            // TODO: Add command line processing for window position
+            // TODO: Добавь command line processing for окно position
 
-            MyFrame frame = new MyFrame("Controls wxWidgets App",
-                                        Point(50,50), Size(500,430));
-            frame.Show(true);
-            return true;
+            MyFrame frame = new MyFrame("Controls wxWidgets Прил",
+                                        Точка(50,50), Размер(500,430));
+            frame.Show(да);
+            return да;
         }
 
         //---------------------------------------------------------------------
 
         
-        static void Main()
+        static проц Main()
         {
-            Controls app = new Controls();
-            app.Run();
+            Controls прил = new Controls();
+            прил.Пуск();
         }
     }
 
@@ -66,50 +66,50 @@ alias writefln PRINT;
 
     public class MyFrame : Frame
     {
-        public const int ID_ABOUT       = 100;
-        public const int ID_EXIT        = 101;
-        public const int ID_CLEAR_LOG   = 102;
-        public const int ID_SET_DELAY   = 103;
-        public const int ID_TOGGLE_TIPS = 104;
-        public const int ID_DISABLE_ALL = 105;
+        public const цел ID_ABOUT       = 100;
+        public const цел ID_EXIT        = 101;
+        public const цел ID_CLEAR_LOG   = 102;
+        public const цел ID_SET_DELAY   = 103;
+        public const цел ID_TOGGLE_TIPS = 104;
+        public const цел ID_DISABLE_ALL = 105;
 
         //---------------------------------------------------------------------
 
         private MyPanel panel;
-        private static bool tipsEnabled = true;
-        private static int tipDelay = 5000;
-                private static bool panelEnabled = true;
+        private static бул tipsEnabled = да;
+        private static цел tipDelay = 5000;
+                private static бул panelEnabled = да;
 
         //---------------------------------------------------------------------
 
-        public this(string title, Point pos, Size size)
+        public this(ткст title, Точка поз, Размер size)
         {
-            super(title, pos, size);
-            // Set the window icon
-            icon = new Icon("../Samples/Controls/mondrian.png");
+            super(title, поз, size);
+            // Установи the окно иконка
+            иконка = new Icon("../Samples/Controls/mondrian.png");
 
             // Create the main panel
             panel = new MyPanel(this, 10, 10, 300, 100);
 
-            // Set up a menu
-            Menu fileMenu = new Menu();
-            fileMenu.Append(ID_CLEAR_LOG, "&Clear Log\tCtrl+L",
-                            "Clear the log window");
+            // Установи up a меню
+            Меню fileMenu = new Меню();
+            fileMenu.Append(ID_CLEAR_LOG, "&Очисть Log\tCtrl+L",
+                            "Очисть the log окно");
             fileMenu.AppendSeparator();
             fileMenu.Append(ID_ABOUT, "&About\tF1", "About this application");
             fileMenu.AppendSeparator();
             fileMenu.Append(ID_EXIT, "E&xit\tAlt+X", "Exit this program");
 
-            Menu tooltipMenu = new Menu();
-            tooltipMenu.Append(ID_SET_DELAY, "&Set Delay..\tCtrl+D",
-                               "Set tooltip delay");
+            Меню tooltipMenu = new Меню();
+            tooltipMenu.Append(ID_SET_DELAY, "&Установи Delay..\tCtrl+D",
+                               "Установи tooltip delay");
             tooltipMenu.AppendSeparator();
             tooltipMenu.Append(ID_TOGGLE_TIPS, "&Toggle Tooltips\tCtrl+T",
                                "Enable/Disable tooltips",
                                ItemKind.wxITEM_CHECK);
             tooltipMenu.Check(ID_TOGGLE_TIPS, tipsEnabled);
 
-            Menu panelMenu = new Menu();
+            Меню panelMenu = new Меню();
             panelMenu.Append(ID_DISABLE_ALL,
                              "&Disable All\tCtrl+E",
                              "Enable/Disable all panel controls",
@@ -122,7 +122,7 @@ alias writefln PRINT;
 
             this.menuBar = menuBar;
 
-            // Set up the event table for the menu
+            // Установи up the event table for the меню
             EVT_MENU(ID_CLEAR_LOG,      &OnClearLog);
             EVT_MENU(ID_ABOUT,          &OnAbout);
             EVT_MENU(ID_EXIT,           &OnQuit);
@@ -130,41 +130,41 @@ alias writefln PRINT;
             EVT_MENU(ID_TOGGLE_TIPS,    &OnToggleTooltips);
             EVT_MENU(ID_DISABLE_ALL,    &OnDisableAll);
 
-            // Set up a status bar
+            // Установи up a status bar
             CreateStatusBar(2);
             StatusText = "";
         }
 
         //---------------------------------------------------------------------
 
-        public void OnClearLog(Object sender, Event e)
+        public проц OnClearLog(Объект sender, Событие e)
         {
-            panel.text.Clear();
+            panel.текст.Очисть();
         }
 
         //---------------------------------------------------------------------
 
-        public void OnAbout(Object sender, Event e)
+        public проц OnAbout(Объект sender, Событие e)
         {
-            string msg = "This is the wxWidgets controls sample written in D.";
+            ткст msg = "This is the wxWidgets controls sample written in D.";
             MessageBox(this, msg, "About Controls",
                                        Dialog.wxOK);
         }
 
         //---------------------------------------------------------------------
 
-        public void OnQuit(Object sender, Event e)
+        public проц OnQuit(Объект sender, Событие e)
         {
-            Close(true);
+            Закрой(да);
         }
 
         //---------------------------------------------------------------------
 
-        public void OnSetTooltipDelay(Object sender, Event e)
+        public проц OnSetTooltipDelay(Объект sender, Событие e)
         {
-            int input;
+            цел input;
             input = GetNumberFromUser("Enter delay (in milliseconds)",
-                                      "Set tooltip delay", "ToolTip Delay",
+                                      "Установи tooltip delay", "ToolTip Delay",
                                       tipDelay, 0, 10000, this);
 
             if (input != -1) {
@@ -177,7 +177,7 @@ alias writefln PRINT;
 
         //---------------------------------------------------------------------
 
-        public void OnToggleTooltips(Object sender, Event e)
+        public проц OnToggleTooltips(Объект sender, Событие e)
         {
             tipsEnabled = !tipsEnabled;
             ToolTip.Enabled = tipsEnabled;
@@ -187,7 +187,7 @@ alias writefln PRINT;
 
         //---------------------------------------------------------------------
 
-        public void OnDisableAll(Object sender, Event e)
+        public проц OnDisableAll(Объект sender, Событие e)
         {
             panelEnabled = !panelEnabled;
             panel.Enabled = panelEnabled;
@@ -199,79 +199,79 @@ alias writefln PRINT;
 
     public class MyPanel : Panel
     {
-        private const int ID_NOTEBOOK         = 1;
+        private const цел ID_NOTEBOOK         = 1;
 
-        private const int ID_LISTBOX          = 2;
-        private const int ID_LISTBOX_SORTED   = 3;
-        private const int ID_LISTBOX_SEL_NUM  = 4;
-        private const int ID_LISTBOX_SEL_STR  = 5;
-        private const int ID_LISTBOX_APPEND   = 6;
-        private const int ID_LISTBOX_DELETE   = 7;
-        private const int ID_LISTBOX_FONT     = 8;
-        private const int ID_LISTBOX_ENABLE   = 9;
-        private const int ID_LISTBOX_CLEAR    = 10;
-        private const int ID_LISTBOX_COLOUR   = 11;
+        private const цел ID_LISTBOX          = 2;
+        private const цел ID_LISTBOX_SORTED   = 3;
+        private const цел ID_LISTBOX_SEL_NUM  = 4;
+        private const цел ID_LISTBOX_SEL_STR  = 5;
+        private const цел ID_LISTBOX_APPEND   = 6;
+        private const цел ID_LISTBOX_DELETE   = 7;
+        private const цел ID_LISTBOX_FONT     = 8;
+        private const цел ID_LISTBOX_ENABLE   = 9;
+        private const цел ID_LISTBOX_CLEAR    = 10;
+        private const цел ID_LISTBOX_COLOUR   = 11;
 
-        private const int ID_CHOICE           = 20;
-        private const int ID_CHOICE_SORTED    = 21;
-        private const int ID_CHOICE_SEL_NUM   = 22;
-        private const int ID_CHOICE_SEL_STR   = 23;
-        private const int ID_CHOICE_APPEND    = 24;
-        private const int ID_CHOICE_DELETE    = 25;
-        private const int ID_CHOICE_FONT      = 26;
-        private const int ID_CHOICE_ENABLE    = 27;
-        private const int ID_CHOICE_CLEAR     = 28;
+        private const цел ID_CHOICE           = 20;
+        private const цел ID_CHOICE_SORTED    = 21;
+        private const цел ID_CHOICE_SEL_NUM   = 22;
+        private const цел ID_CHOICE_SEL_STR   = 23;
+        private const цел ID_CHOICE_APPEND    = 24;
+        private const цел ID_CHOICE_DELETE    = 25;
+        private const цел ID_CHOICE_FONT      = 26;
+        private const цел ID_CHOICE_ENABLE    = 27;
+        private const цел ID_CHOICE_CLEAR     = 28;
 
-        private const int ID_COMBO            = 40;
-        private const int ID_COMBO_SEL_NUM    = 41;
-        private const int ID_COMBO_SEL_STR    = 42;
-        private const int ID_COMBO_APPEND     = 43;
-        private const int ID_COMBO_DELETE     = 44;
-        private const int ID_COMBO_FONT       = 45;
-        private const int ID_COMBO_ENABLE     = 46;
-        private const int ID_COMBO_CLEAR      = 47;
+        private const цел ID_COMBO            = 40;
+        private const цел ID_COMBO_SEL_NUM    = 41;
+        private const цел ID_COMBO_SEL_STR    = 42;
+        private const цел ID_COMBO_APPEND     = 43;
+        private const цел ID_COMBO_DELETE     = 44;
+        private const цел ID_COMBO_FONT       = 45;
+        private const цел ID_COMBO_ENABLE     = 46;
+        private const цел ID_COMBO_CLEAR      = 47;
 
-        private const int ID_RADIO            = 60;
-        private const int ID_RADIO_SEL_NUM    = 61;
-        private const int ID_RADIO_SEL_STR    = 62;
-        private const int ID_RADIO_FONT       = 63;
-        private const int ID_RADIO_ENABLE     = 64;
-        private const int ID_RADIO_BUTTON1    = 65;
-        private const int ID_RADIO_BUTTON2    = 66;
+        private const цел ID_RADIO            = 60;
+        private const цел ID_RADIO_SEL_NUM    = 61;
+        private const цел ID_RADIO_SEL_STR    = 62;
+        private const цел ID_RADIO_FONT       = 63;
+        private const цел ID_RADIO_ENABLE     = 64;
+        private const цел ID_RADIO_BUTTON1    = 65;
+        private const цел ID_RADIO_BUTTON2    = 66;
 
-        private const int ID_SLIDER           = 80;
-        private const int ID_SPINCTRL         = 81;
-        private const int ID_SPIN             = 82;
-        private const int ID_BTNPROGRESS      = 83;
+        private const цел ID_SLIDER           = 80;
+        private const цел ID_SPINCTRL         = 81;
+        private const цел ID_SPIN             = 82;
+        private const цел ID_BTNPROGRESS      = 83;
 		
-		private const int ID_BITMAP_BTN = 84;
-		private const int ID_BUTTON_LABEL = 85;
+		private const цел ID_BITMAP_BTN = 84;
+		private const цел ID_BUTTON_LABEL = 85;
 		
-		private const int ID_SIZER_CHECK1 = 90;
-		private const int ID_SIZER_CHECK2 = 91;
-		private const int ID_SIZER_CHECK3 = 92;
-		private const int ID_SIZER_CHECK4 = 93;
-		private const int ID_SIZER_CHECK14 = 94;
-		private const int ID_SIZER_CHECKBIG = 95;
+		private const цел ID_SIZER_CHECK1 = 90;
+		private const цел ID_SIZER_CHECK2 = 91;
+		private const цел ID_SIZER_CHECK3 = 92;
+		private const цел ID_SIZER_CHECK4 = 93;
+		private const цел ID_SIZER_CHECK14 = 94;
+		private const цел ID_SIZER_CHECKBIG = 95;
 
-        private const int ID_SETFONT          = 100;
+        private const цел ID_SETFONT          = 100;
 
-        enum Images { List = 0, Choice, Combo, Text, Radio, Gauge, Max }
+        enum Images { List = 0, Выбор, Combo, Текст, Radio, Gauge, Max }
 
         //---------------------------------------------------------------------
 
         private Notebook notebook;
-        public  TextCtrl text;
+        public  TextCtrl текст;
 
         // ListBox sample members
         private ListBox     listbox, listboxSorted;
-        private Button      selectNum, selectStr;
+        private Кнопка      selectNum, selectStr;
         private CheckBox    checkbox;
-        private bool        oldColour;
+        private бул        oldColour;
         private RadioBox    radiobox;
 
-        // Choice sample members
-        private Choice choice, choiceSorted;
+        // Выбор sample members
+        private Выбор choice, choiceSorted;
 
         // Combo sample members
         private ComboBox combo;
@@ -282,225 +282,225 @@ alias writefln PRINT;
         private SpinCtrl spinctrl;
         private SpinButton spinbutton;
         private TextCtrl spintext;
-        private int initialSpinValue;
-        private Button btnProgress;
+        private цел initialSpinValue;
+        private Кнопка btnProgress;
 		
-		private Button fontButton;
+		private Кнопка fontButton;
 		
 		private StaticText m_label;
 		
 		private BoxSizer m_buttonSizer;
-		private Button m_sizerBtn1;
-		private Button m_sizerBtn2;
-		private Button m_sizerBtn3;
-		private Button m_sizerBtn4;
+		private Кнопка m_sizerBtn1;
+		private Кнопка m_sizerBtn2;
+		private Кнопка m_sizerBtn3;
+		private Кнопка m_sizerBtn4;
 		private BoxSizer m_hsizer;
-		private Button m_bigBtn;
+		private Кнопка m_bigBtn;
 
         //---------------------------------------------------------------------
 
-        public this(Frame frame, int x, int y, int w, int h)
+        public this(Frame frame, цел x, цел y, цел w, цел h)
         {
-            super(frame, -1, Point(x, y), Size(w, h));
-            string[] choices = [
+            super(frame, -1, Точка(x, y), Размер(w, h));
+            ткст[] choices = [
                 "This", "is", "one of my", "wonderful", "examples"
             ];
 
-            string[] choices2 = [
+            ткст[] choices2 = [
                     "First", "Second"
             ];
 
-            oldColour = false;
+            oldColour = нет;
 
-            // Create the log text view
-            text = new TextCtrl(this, -1, "This is the log window.\n",
-                                Point(0, 250), Size(100, 50),
+            // Create the log текст view
+            текст = new TextCtrl(this, -1, "This is the log окно.\n",
+                                Точка(0, 250), Размер(100, 50),
                                 TextCtrl.wxTE_MULTILINE);
-            text.BackgroundColour = new Colour("wheat");
+            текст.ЦветЗП = new Цвет("wheat");
 
             Log.AddTraceMask("focus");
-            Log.SetActiveTarget( text ); 
+            Log.SetActiveTarget( текст ); 
 
             // Create the notebook
             notebook = new Notebook(this, ID_NOTEBOOK);
 
-            // Create the image list for the notebook
-            string imgPath = "../Samples/Controls/Icons/";
-            ImageList imagelist = new ImageList(16, 16, false,
+            // Create the рисунок list for the notebook
+            ткст imgPath = "../Samples/Controls/Icons/";
+            ImageList imagelist = new ImageList(16, 16, нет,
                                                 Images.Max);
 
-            imagelist.Add(new Bitmap(imgPath ~ "list.xpm"));
-            imagelist.Add(new Bitmap(imgPath ~ "choice.xpm"));
-            imagelist.Add(new Bitmap(imgPath ~ "combo.xpm"));
-            imagelist.Add(new Bitmap(imgPath ~ "text.xpm"));
-            imagelist.Add(new Bitmap(imgPath ~ "radio.xpm"));
-            imagelist.Add(new Bitmap(imgPath ~ "gauge.xpm"));
+            imagelist.Добавь(new Битмап(imgPath ~ "list.xpm"));
+            imagelist.Добавь(new Битмап(imgPath ~ "choice.xpm"));
+            imagelist.Добавь(new Битмап(imgPath ~ "combo.xpm"));
+            imagelist.Добавь(new Битмап(imgPath ~ "текст.xpm"));
+            imagelist.Добавь(new Битмап(imgPath ~ "radio.xpm"));
+            imagelist.Добавь(new Битмап(imgPath ~ "gauge.xpm"));
 
             notebook.Images = imagelist;
 
-            // Add some panels
+            // Добавь some panels
 
             // wxListBox sample panel
             Panel panel = new Panel(notebook);
-            notebook.AddPage(panel, "wxListBox", true, Images.List);
+            notebook.AddPage(panel, "wxListBox", да, Images.List);
 
             listbox = new ListBox(panel, ID_LISTBOX,
-                                  Point(10, 10), Size(120, 70),
+                                  Точка(10, 10), Размер(120, 70),
                                   choices, ListBox.wxLB_ALWAYS_SB);
             listboxSorted = new ListBox(panel, ID_LISTBOX_SORTED,
-                                        Point(10, 90), Size(120, 70),
+                                        Точка(10, 90), Размер(120, 70),
                                         choices, ListBox.wxLB_SORT);
 
-            // TODO: Add in ClientData
+            // TODO: Добавь in ClientData
 
             listbox.toolTip = "This is a List Box.";
             listboxSorted.toolTip = "This is a sorted List Box.";
 
-            selectNum = new Button(panel, -1,
-                                   "Select #&2", Point(180, 30),
-                                   Size(150, -1));
-            selectStr = new Button(panel, ID_LISTBOX_SEL_STR,
-                                   "&Select 'This'", Point(340, 30),
-                                   Size(150, -1));
+            selectNum = new Кнопка(panel, -1,
+                                   "Select #&2", Точка(180, 30),
+                                   Размер(150, -1));
+            selectStr = new Кнопка(panel, ID_LISTBOX_SEL_STR,
+                                   "&Select 'This'", Точка(340, 30),
+                                   Размер(150, -1));
 
-            new Button(panel, ID_LISTBOX_CLEAR, "&Clear",
-                       Point(180, 80), Size(150, -1));
-            new Button(panel, ID_LISTBOX_APPEND, "&Append 'Hi!'",
-                       Point(340, 80), Size(150, -1));
-            new Button(panel, ID_LISTBOX_DELETE,
-                       "Delete selected item",
-                       Point(180, 130), Size(150, -1));
+            new Кнопка(panel, ID_LISTBOX_CLEAR, "&Очисть",
+                       Точка(180, 80), Размер(150, -1));
+            new Кнопка(panel, ID_LISTBOX_APPEND, "&Append 'Hi!'",
+                       Точка(340, 80), Размер(150, -1));
+            new Кнопка(panel, ID_LISTBOX_DELETE,
+                       "Delete selected элемент",
+                       Точка(180, 130), Размер(150, -1));
 
-            Button button = new Button(panel, ID_LISTBOX_FONT,
-                                       "Set &Italic font",
-                                       Point(340, 130),
-                                       Size(150, -1));
+            Кнопка button = new Кнопка(panel, ID_LISTBOX_FONT,
+                                       "Установи &Italic шрифт",
+                                       Точка(340, 130),
+                                       Размер(150, -1));
             button.SetDefault();
-            button.ForegroundColour = new Colour("blue");
-            button.toolTip = "Click here to set Italic font";
+            button.ЦветПП = new Цвет("синий");
+            button.toolTip = "Click here to set Italic шрифт";
 
             checkbox = new CheckBox(panel, ID_LISTBOX_ENABLE,
-                                    "&Disable", Point(20, 170));
-            checkbox.Value = false;
+                                    "&Disable", Точка(20, 170));
+            checkbox.Value = нет;
             checkbox.toolTip = "Click to disable listbox";
 
             new CheckBox(panel, ID_LISTBOX_COLOUR,
-                         "&Toggle colour", Point(110, 170));
+                         "&Toggle colour", Точка(110, 170));
 
             panel.cursor = new Cursor(StockCursor.wxCURSOR_HAND);
 
             // wxChoice sample panel
             panel = new Panel(notebook);
-            notebook.AddPage(panel, "wxChoice", false, Images.Choice);
+            notebook.AddPage(panel, "wxChoice", нет, Images.Выбор);
 
-            choice = new Choice(panel, ID_CHOICE, Point(10, 10),
-                                Size(120, -1), choices);
-            choiceSorted = new Choice(panel, ID_CHOICE_SORTED,
-                                      Point(10, 70), Size(120, -1),
+            choice = new Выбор(panel, ID_CHOICE, Точка(10, 10),
+                                Размер(120, -1), choices);
+            choiceSorted = new Выбор(panel, ID_CHOICE_SORTED,
+                                      Точка(10, 70), Размер(120, -1),
                                       choices, ComboBox.wxCB_SORT);
 
-            // TODO: Add in client data
+            // TODO: Добавь in client данные
 
             choice.Selection = 2;
-            choice.BackgroundColour = new Colour("red");
+            choice.ЦветЗП = new Цвет("красный");
 
-            new Button(panel, ID_CHOICE_SEL_NUM, "Select #&2",
-                       Point(180, 30), Size(150, -1));
-            new Button(panel, ID_CHOICE_SEL_STR, "&Select 'This'",
-                       Point(340, 30), Size(150, -1));
-            new Button(panel, ID_CHOICE_CLEAR, "&Clear",
-                       Point(180, 80), Size(150, -1));
-            new Button(panel, ID_CHOICE_APPEND, "&Append 'Hi!'",
-                       Point(340, 80), Size(150, -1));
-            new Button(panel, ID_CHOICE_DELETE, "D&elete selected item",
-                       Point(180, 130), Size(150, -1));
-            new Button(panel, ID_CHOICE_FONT, "Set &Italic font",
-                       Point(340, 130), Size(150, -1));
+            new Кнопка(panel, ID_CHOICE_SEL_NUM, "Select #&2",
+                       Точка(180, 30), Размер(150, -1));
+            new Кнопка(panel, ID_CHOICE_SEL_STR, "&Select 'This'",
+                       Точка(340, 30), Размер(150, -1));
+            new Кнопка(panel, ID_CHOICE_CLEAR, "&Очисть",
+                       Точка(180, 80), Размер(150, -1));
+            new Кнопка(panel, ID_CHOICE_APPEND, "&Append 'Hi!'",
+                       Точка(340, 80), Размер(150, -1));
+            new Кнопка(panel, ID_CHOICE_DELETE, "D&elete selected элемент",
+                       Точка(180, 130), Размер(150, -1));
+            new Кнопка(panel, ID_CHOICE_FONT, "Установи &Italic шрифт",
+                       Точка(340, 130), Размер(150, -1));
             new CheckBox(panel, ID_CHOICE_ENABLE, "&Disable",
-                         Point(20, 130));
+                         Точка(20, 130));
 
             // wxComboBox sample panel
             panel = new Panel(notebook);
-            notebook.AddPage(panel, "wxComboBox", false, Images.Combo);
+            notebook.AddPage(panel, "wxComboBox", нет, Images.Combo);
 
             new StaticBox(panel, -1, "&Box around combobox",
-                          Point(5, 5), Size(150, 100));
+                          Точка(5, 5), Размер(150, 100));
             combo = new ComboBox(panel, ID_COMBO, "This",
-                                 Point(20, 25), Size(120, -1),
+                                 Точка(20, 25), Размер(120, -1),
                                  choices);
             combo.toolTip = "This is a natural\ncombobox - unbelievable";
 
-            new Button(panel, ID_COMBO_SEL_NUM, "Select #&2",
-                       Point(180, 30), Size(150, -1));
-            new Button(panel, ID_COMBO_SEL_STR, "&Select 'This'",
-                       Point(340, 30), Size(150, -1));
-            new Button(panel, ID_COMBO_CLEAR, "&Clear",
-                       Point(180, 80), Size(150, -1));
-            new Button(panel, ID_COMBO_APPEND, "&Append 'Hi!'",
-                       Point(340, 80), Size(150, -1));
-            new Button(panel, ID_COMBO_DELETE, "D&elete selected item",
-                       Point(180, 130), Size(150, -1));
-            new Button(panel, ID_COMBO_FONT, "Set &Italic font",
-                       Point(340, 130), Size(150, -1));
+            new Кнопка(panel, ID_COMBO_SEL_NUM, "Select #&2",
+                       Точка(180, 30), Размер(150, -1));
+            new Кнопка(panel, ID_COMBO_SEL_STR, "&Select 'This'",
+                       Точка(340, 30), Размер(150, -1));
+            new Кнопка(panel, ID_COMBO_CLEAR, "&Очисть",
+                       Точка(180, 80), Размер(150, -1));
+            new Кнопка(panel, ID_COMBO_APPEND, "&Append 'Hi!'",
+                       Точка(340, 80), Размер(150, -1));
+            new Кнопка(panel, ID_COMBO_DELETE, "D&elete selected элемент",
+                       Точка(180, 130), Размер(150, -1));
+            new Кнопка(panel, ID_COMBO_FONT, "Установи &Italic шрифт",
+                       Точка(340, 130), Размер(150, -1));
             new CheckBox(panel, ID_COMBO_ENABLE, "&Disable",
-                         Point(20, 130));
+                         Точка(20, 130));
 
             // wxRadioBox sample panel
             panel = new Panel(notebook);
-            notebook.AddPage(panel, "wxRadioBox", false, Images.Radio);
+            notebook.AddPage(panel, "wxRadioBox", нет, Images.Radio);
 
                         new RadioBox(panel, ID_RADIO, "&That",
-                         Point(10, 160), wxDefaultSize, choices2, 1,
+                         Точка(10, 160), wxDefaultSize, choices2, 1,
                          RadioBox.wxRA_SPECIFY_ROWS);
             radiobox = new RadioBox(panel, ID_RADIO,
-                                    "T&his", Point(10, 10),
+                                    "T&his", Точка(10, 10),
                                     wxDefaultSize, choices, 1,
                                     RadioBox.wxRA_SPECIFY_COLS);
             radiobox.toolTip = "Ever seen a radiobox?";
-            radiobox.ForegroundColour = new Colour("Red");
+            radiobox.ЦветПП = new Цвет("Красный");
 
-            new Button(panel, ID_RADIO_SEL_NUM, "Select #&2",
-                       Point(180, 30), Size(150, -1));
-            fontButton = new Button(panel, ID_SETFONT, "Set &more Italic font",
-                       Point(340, 30), Size(150, -1));
-            new Button(panel, ID_RADIO_SEL_STR, "&Select 'This'",
-                       Point(180, 80), Size(150, -1));
-            new Button(panel, ID_RADIO_FONT, "Set &Italic Font",
-                       Point(340, 80), Size(150, -1));
+            new Кнопка(panel, ID_RADIO_SEL_NUM, "Select #&2",
+                       Точка(180, 30), Размер(150, -1));
+            fontButton = new Кнопка(panel, ID_SETFONT, "Установи &more Italic шрифт",
+                       Точка(340, 30), Размер(150, -1));
+            new Кнопка(panel, ID_RADIO_SEL_STR, "&Select 'This'",
+                       Точка(180, 80), Размер(150, -1));
+            new Кнопка(panel, ID_RADIO_FONT, "Установи &Italic Шрифт",
+                       Точка(340, 80), Размер(150, -1));
             new CheckBox(panel, ID_RADIO_ENABLE, "&Disable",
-                         Point(340, 130));
+                         Точка(340, 130));
 
                         (new RadioButton(panel, ID_RADIO_BUTTON1, "Radiobutton1",
-                                                        Point(210, 170), wxDefaultSize,
-                                                        RadioButton.wxRB_GROUP)).Value = false;
+                                                        Точка(210, 170), wxDefaultSize,
+                                                        RadioButton.wxRB_GROUP)).Value = нет;
                         new RadioButton(panel, ID_RADIO_BUTTON2, "Radiobutton2",
-                                                        Point(340, 170));
+                                                        Точка(340, 170));
 
             // wxGauge sample panel
             panel = new Panel(notebook);
-            notebook.AddPage(panel, "wxGauge", false, Images.Gauge);
+            notebook.AddPage(panel, "wxGauge", нет, Images.Gauge);
 
             new StaticBox(panel, -1, "&wxGauge and wxSlider", 
-                          Point(10, 10), Size(222, 130));
+                          Точка(10, 10), Размер(222, 130));
             gauge = new Gauge(panel, -1, 200, 
-                              Point(18, 50), Size(155, 30), 
+                              Точка(18, 50), Размер(155, 30), 
                               Gauge.wxGA_HORIZONTAL | /*Border.*/wxNO_BORDER);
-            gauge.BackgroundColour = new Colour("Green");
-            gauge.ForegroundColour = new Colour("Red");
+            gauge.ЦветЗП = new Цвет("Зелёный");
+            gauge.ЦветПП = new Цвет("Красный");
 
             gaugeVert = new Gauge(panel, -1, 200, 
-                                  Point(195, 35), Size(30, 90),
+                                  Точка(195, 35), Размер(30, 90),
                                   Gauge.wxGA_VERTICAL | Gauge.wxGA_SMOOTH |
                                   /*Border.*/wxNO_BORDER);
 
             slider = new Slider(panel, ID_SLIDER, 0, 0, 200, 
-                                Point(18, 90), Size(155, -1),
+                                Точка(18, 90), Размер(155, -1),
                                 Slider.wxSL_AUTOTICKS | Slider.wxSL_LABELS);
             slider.SetTickFreq(40, 0);
             slider.toolTip = "This is a sliding slider!";
 
-            new StaticBox(panel, -1, "&Explanation", Point(230, 10),
-                          Size(270, 130), Alignment.wxALIGN_CENTER);
+            new StaticBox(panel, -1, "&Explanation", Точка(230, 10),
+                          Размер(270, 130), Alignment.wxALIGN_CENTER);
             new StaticText(panel, -1, 
                            "In order to see the gauge (aka progress \n" ~
                            "bar) control do something, drag the \n" ~
@@ -508,117 +508,117 @@ alias writefln PRINT;
                            "\n" ~
                            "This is also supposed to demonstrate\n" ~
                            "how to use static controls.",
-                           Point(250, 25), Size(240, 110));
+                           Точка(250, 25), Размер(240, 110));
 
             spinctrl = new SpinCtrl(panel, ID_SPINCTRL, "",
-                                    Point(200, 160), Size(80, -1));
+                                    Точка(200, 160), Размер(80, -1));
             spinctrl.SetRange(10, 30);
             spinctrl.Value = 15;
 
             initialSpinValue = -5;
             spintext = new TextCtrl(panel, -1, "" ~ .toString(initialSpinValue),
-                                    Point(20, 160), Size(80, -1));
+                                    Точка(20, 160), Размер(80, -1));
             spinbutton = new SpinButton(panel, ID_SPIN, 
-                                        Point(103, 160), Size(80, -1));
+                                        Точка(103, 160), Размер(80, -1));
             spinbutton.SetRange(-40, 30);
             spinbutton.Value = initialSpinValue;
 
-            btnProgress = new Button(panel, ID_BTNPROGRESS, 
+            btnProgress = new Кнопка(panel, ID_BTNPROGRESS, 
                                      "&Show progress dialog",
-                                     Point(300, 160)); 
+                                     Точка(300, 160)); 
 									 
 			// wxBitmapXXX sampel panel
 			panel = new Panel(notebook);
-			notebook.AddPage(panel, "wxBitmapXXX", false );
+			notebook.AddPage(panel, "wxBitmapXXX", нет );
 			
-			Icon icon = ArtProvider.GetIcon( ArtID.wxART_INFORMATION );
-			new StaticBitmap( panel, -1, icon, Point(10, 10) );
+			Icon иконка = ArtProvider.GetIcon( ArtID.wxART_INFORMATION );
+			new StaticBitmap( panel, -1, иконка, Точка(10, 10) );
 			
-			Bitmap bitmap = new Bitmap( 100, 100 );
+			Битмап битмап = new Битмап( 100, 100 );
 			MemoryDC dc = new MemoryDC();
-			dc.SelectObject( bitmap );
-			dc.pen = Pen.wxGREEN_PEN;
-			dc.Clear();
-			dc.DrawEllipse( 5, 5, 90, 90 );
-			dc.DrawText( "Bitmap", 30, 40 );
-			dc.SelectObject( Bitmap.wxNullBitmap );
+			dc.SelectObject( битмап );
+			dc.перо = Перо.wxGREEN_PEN;
+			dc.Очисть();
+			dc.РисуйЭллипс( 5, 5, 90, 90 );
+			dc.РисуйТекст( "Битмап", 30, 40 );
+			dc.SelectObject( Битмап.wxNullBitmap );
 			
-			new BitmapButton( panel, ID_BITMAP_BTN, bitmap, Point( 100, 20 ) );
+			new BitmapButton( panel, ID_BITMAP_BTN, битмап, Точка( 100, 20 ) );
 			
-			Bitmap bmp1 = ArtProvider.GetBitmap( ArtID.wxART_INFORMATION );
-			Bitmap bmp2 = ArtProvider.GetBitmap( ArtID.wxART_WARNING );
-			Bitmap bmp3 = ArtProvider.GetBitmap( ArtID.wxART_QUESTION );
+			Битмап bmp1 = ArtProvider.GetBitmap( ArtID.wxART_INFORMATION );
+			Битмап bmp2 = ArtProvider.GetBitmap( ArtID.wxART_WARNING );
+			Битмап bmp3 = ArtProvider.GetBitmap( ArtID.wxART_QUESTION );
 			
-//			BitmapButton bmpBtn = new BitmapButton( panel, -1, bmp1, Point( 30, 70 ) );
+//			BitmapButton bmpBtn = new BitmapButton( panel, -1, bmp1, Точка( 30, 70 ) );
 			
 //			bmpBtn.BitmapSelected = bmp2;
 //			bmpBtn.BitmapFocus = bmp3;
 			
-			new ToggleButton( panel, ID_BUTTON_LABEL, "&Toggle label", Point( 250, 20 ) );
+			new ToggleButton( panel, ID_BUTTON_LABEL, "&Toggle надпись", Точка( 250, 20 ) );
 			
-			m_label = new StaticText( panel, -1, "Label with some long text", 
-									Point ( 250, 60 ), wxDefaultSize, Alignment.wxALIGN_RIGHT );
-			m_label.ForegroundColour = Colour.wxBLUE;
+			m_label = new StaticText( panel, -1, "Label with some long текст", 
+									Точка ( 250, 60 ), wxDefaultSize, Alignment.wxALIGN_RIGHT );
+			m_label.ЦветПП = Цвет.wxBLUE;
 			
 			// wxSizer sampel panel
             panel = new Panel(notebook);
-            notebook.AddPage(panel, "wxSizer", false );
-			panel.AutoLayout = true;	
+            notebook.AddPage(panel, "wxSizer", нет );
+			panel.AutoLayout = да;	
 
-			BoxSizer sizer = new BoxSizer( Orientation.wxVERTICAL );
+			BoxSizer sizer = new BoxSizer( Ориентация.wxVERTICAL );
 			StaticBoxSizer csizer = new StaticBoxSizer( new StaticBox( panel, -1, "Show Buttons" ), 
-															Orientation.wxHORIZONTAL );
+															Ориентация.wxHORIZONTAL );
 														
 			CheckBox check1 = new CheckBox( panel, ID_SIZER_CHECK1, "1" );
-			check1.Value = true;
-			csizer.Add( check1 );
+			check1.Value = да;
+			csizer.Добавь( check1 );
 			
 			CheckBox check2 = new CheckBox( panel, ID_SIZER_CHECK2, "2" );
-			check2.Value = true;
-			csizer.Add( check2 );
+			check2.Value = да;
+			csizer.Добавь( check2 );
 			
 			CheckBox check3 = new CheckBox( panel, ID_SIZER_CHECK3, "3" );
-			check3.Value = true;
-			csizer.Add( check3 );
+			check3.Value = да;
+			csizer.Добавь( check3 );
 			
 			CheckBox check4 = new CheckBox( panel, ID_SIZER_CHECK4, "4" );
-			check4.Value = true;
-			csizer.Add( check4 );
+			check4.Value = да;
+			csizer.Добавь( check4 );
 			
 			CheckBox check14 = new CheckBox( panel, ID_SIZER_CHECK14, "14" );
-			check14.Value = true;
-			csizer.Add( check14 );
+			check14.Value = да;
+			csizer.Добавь( check14 );
 			
 			CheckBox checkBig = new CheckBox( panel, ID_SIZER_CHECKBIG, "Big" );
-			checkBig.Value = true;
-			csizer.Add( checkBig );
+			checkBig.Value = да;
+			csizer.Добавь( checkBig );
 			
-			sizer.Add( csizer );
+			sizer.Добавь( csizer );
 			
-			m_hsizer = new BoxSizer( Orientation.wxHORIZONTAL );
+			m_hsizer = new BoxSizer( Ориентация.wxHORIZONTAL );
 			
-			m_buttonSizer = new BoxSizer( Orientation.wxVERTICAL );
+			m_buttonSizer = new BoxSizer( Ориентация.wxVERTICAL );
 			
-			m_sizerBtn1 = new Button( panel, -1, "Test Button &1" );
-			m_buttonSizer.Add( m_sizerBtn1, 0, Direction.wxALL, 10 );
-			m_sizerBtn2 = new Button( panel, -1, "Test Button &2" );
-			m_buttonSizer.Add( m_sizerBtn2, 0, Direction.wxALL, 10 );
-			m_sizerBtn3 = new Button( panel, -1, "Test Button &3" );
-			m_buttonSizer.Add( m_sizerBtn3, 0, Direction.wxALL, 10 );			
-			m_sizerBtn4 = new Button( panel, -1, "Test Button &4" );
-			m_buttonSizer.Add( m_sizerBtn4, 0, Direction.wxALL, 10 );	
+			m_sizerBtn1 = new Кнопка( panel, -1, "Test Кнопка &1" );
+			m_buttonSizer.Добавь( m_sizerBtn1, 0, Direction.wxALL, 10 );
+			m_sizerBtn2 = new Кнопка( panel, -1, "Test Кнопка &2" );
+			m_buttonSizer.Добавь( m_sizerBtn2, 0, Direction.wxALL, 10 );
+			m_sizerBtn3 = new Кнопка( panel, -1, "Test Кнопка &3" );
+			m_buttonSizer.Добавь( m_sizerBtn3, 0, Direction.wxALL, 10 );			
+			m_sizerBtn4 = new Кнопка( panel, -1, "Test Кнопка &4" );
+			m_buttonSizer.Добавь( m_sizerBtn4, 0, Direction.wxALL, 10 );	
 
-			m_hsizer.Add( m_buttonSizer );
-			m_hsizer.Add( new BoxSizer( Orientation.wxHORIZONTAL ), 1, Stretch.wxEXPAND, 0 );
+			m_hsizer.Добавь( m_buttonSizer );
+			m_hsizer.Добавь( new BoxSizer( Ориентация.wxHORIZONTAL ), 1, Stretch.wxEXPAND, 0 );
 			
-			m_bigBtn = new Button( panel, -1, "Multiline\nbutton" );
-			m_hsizer.Add( m_bigBtn, 3, Stretch.wxEXPAND | Direction.wxALL, 10 );
+			m_bigBtn = new Кнопка( panel, -1, "Multiline\nbutton" );
+			m_hsizer.Добавь( m_bigBtn, 3, Stretch.wxEXPAND | Direction.wxALL, 10 );
 			
-			sizer.Add( m_hsizer, 1, Stretch.wxEXPAND );
+			sizer.Добавь( m_hsizer, 1, Stretch.wxEXPAND );
 			
 			panel.sizer = sizer;
 
-            // Set event listeners
+            // Установи event listeners
 
             EVT_SIZE(&OnSize);
 
@@ -691,51 +691,51 @@ alias writefln PRINT;
 			EVT_NOTEBOOK_PAGE_CHANGED(ID_NOTEBOOK,  &OnPageChanged);
         }
 	
-	public void OnClicked2( Object sender, Event e )
+	public проц OnClicked2( Объект sender, Событие e )
 	{
 		PRINT( "OnClicked2");
 	}
 
         //---------------------------------------------------------------------
 
-        public void OnSize(Object sender, Event e)
+        public проц OnSize(Объект sender, Событие e)
         {
-            notebook.SetSize(2, 2, ClientSize.Width - 4,
-                             ClientSize.Height * 2 / 3 - 4);
-            text.SetSize(2, ClientSize.Height * 2 / 3 + 2,
-                         ClientSize.Width - 4, ClientSize.Height / 3 - 4);
+            notebook.УстРазм(2, 2, ClientSize.Ширина - 4,
+                             ClientSize.Высота * 2 / 3 - 4);
+            текст.УстРазм(2, ClientSize.Высота * 2 / 3 + 2,
+                         ClientSize.Ширина - 4, ClientSize.Высота / 3 - 4);
         }
 
         //---------------------------------------------------------------------
 
-        public void OnListBox(Object sender, Event e)
+        public проц OnListBox(Объект sender, Событие e)
         {
             CommandEvent ce = cast(CommandEvent)e;
 
-            if (ce.ID == -1)
+            if (ce.ИД == -1)
             {
-                text.AppendText("ListBox has no selections anymore.\n");
+                текст.AppendText("ListBox has no selections anymore.\n");
                 return;
             }
 
             ListBox lb =
-                ce.ID == ID_LISTBOX ? listbox : listboxSorted;
-            text.AppendText("ListBox event selection string is: '" ~
+                ce.ИД == ID_LISTBOX ? listbox : listboxSorted;
+            текст.AppendText("ListBox event selection ткст is: '" ~
                             ce.String ~ "'\n" ~
-                            "ListBox control selection string is: '" ~
+                            "ListBox control selection ткст is: '" ~
                             lb.StringSelection ~ "'\n");
         }
 
-        public void OnListBoxDoubleClick(Object sender, Event e)
+        public проц OnListBoxDoubleClick(Объект sender, Событие e)
         {
             CommandEvent ce = cast(CommandEvent)e;
-            text.AppendText("ListBox event selection string is: '" ~
+            текст.AppendText("ListBox event selection ткст is: '" ~
                             ce.String ~ "'\n");
         }
 
-        public void OnListBoxButtons(Object sender, Event e)
+        public проц OnListBoxButtons(Объект sender, Событие e)
         {
-            switch(e.ID)
+            switch(e.ИД)
             {
             case ID_LISTBOX_SEL_NUM:
 	    	PRINT( "OnListBoxButtons");
@@ -744,9 +744,9 @@ alias writefln PRINT;
                 break;
 
             case ID_LISTBOX_SEL_STR:
-		if ( listbox.Count > 0 )
+		if ( listbox.Счёт > 0 )
 		{
-			for ( int i = 0; i < listbox.Count; i++ )
+			for ( цел i = 0; i < listbox.Счёт; i++ )
 			{
 				if ( listbox.GetString( i ) == "This" )
 				{
@@ -765,11 +765,11 @@ alias writefln PRINT;
                 break;
 
             case ID_LISTBOX_ENABLE:
-                text.AppendText("CheckBox clicked.\n");
+                текст.AppendText("CheckBox clicked.\n");
 
                 CommandEvent ce = cast(CommandEvent)e;
 
-                CheckBox cb = cast(CheckBox)e.EventObject;
+                CheckBox cb = cast(CheckBox)e.ОбъСоб;
 
                 if (ce.Int == 1)
                     cb.toolTip = "Click to enable listbox";
@@ -783,8 +783,8 @@ alias writefln PRINT;
                 break;
 
             case ID_LISTBOX_CLEAR:
-                listbox.Clear();
-                listboxSorted.Clear();
+                listbox.Очисть();
+                listboxSorted.Очисть();
                 break; 
 
             case ID_LISTBOX_APPEND:
@@ -793,39 +793,39 @@ alias writefln PRINT;
                 break;
 
             case ID_LISTBOX_FONT:
-                listbox.font = Font.wxITALIC_FONT;
-                listboxSorted.font = Font.wxITALIC_FONT;
+                listbox.шрифт = Шрифт.wxITALIC_FONT;
+                listboxSorted.шрифт = Шрифт.wxITALIC_FONT;
                 break;
             }
         }
 
         //---------------------------------------------------------------------
 
-        public void OnChangeColour(Object sender, Event e)
+        public проц OnChangeColour(Объект sender, Событие e)
         {
             if(oldColour)
             {
-                BackgroundColour = new Colour("red");
-                selectStr.ForegroundColour = new Colour("red");
-                selectStr.BackgroundColour = new Colour("white");
-                oldColour = false;
+                ЦветЗП = new Цвет("красный");
+                selectStr.ЦветПП = new Цвет("красный");
+                selectStr.ЦветЗП = new Цвет("white");
+                oldColour = нет;
             }
             else
             {
-                BackgroundColour = new Colour("white");
-                selectStr.ForegroundColour = new Colour("white");
-                selectStr.BackgroundColour = new Colour("red");
-                oldColour = true;
+                ЦветЗП = new Цвет("white");
+                selectStr.ЦветПП = new Цвет("white");
+                selectStr.ЦветЗП = new Цвет("красный");
+                oldColour = да;
             }
         }
 
         //---------------------------------------------------------------------
 
-        public void OnChoiceButtons(Object sender, Event e)
+        public проц OnChoiceButtons(Объект sender, Событие e)
         {
             CommandEvent ce = cast(CommandEvent)e;
 
-            switch(ce.ID)
+            switch(ce.ИД)
             {
             case ID_CHOICE_SEL_NUM:
                 choice.Selection = 2;
@@ -838,8 +838,8 @@ alias writefln PRINT;
                 break;
 
             case ID_CHOICE_CLEAR:
-                choice.Clear();
-                choiceSorted.Clear();
+                choice.Очисть();
+                choiceSorted.Очисть();
                 break;
 
             case ID_CHOICE_APPEND:
@@ -855,8 +855,8 @@ alias writefln PRINT;
                 break;
 
             case ID_CHOICE_FONT:
-                choice.font = Font.wxITALIC_FONT;
-                choiceSorted.font = Font.wxITALIC_FONT;
+                choice.шрифт = Шрифт.wxITALIC_FONT;
+                choiceSorted.шрифт = Шрифт.wxITALIC_FONT;
                 break;
 
             case ID_CHOICE_ENABLE:
@@ -866,24 +866,24 @@ alias writefln PRINT;
             }
         }
 
-        public void OnChoice(Object sender, Event e)
+        public проц OnChoice(Объект sender, Событие e)
         {
             CommandEvent ce = cast(CommandEvent)e;
-            Choice c = e.ID == ID_CHOICE ? choice : choiceSorted;
+            Выбор c = e.ИД == ID_CHOICE ? choice : choiceSorted;
 
-            text.AppendText("Choice event selection is: '" ~
+            текст.AppendText("Выбор event selection is: '" ~
                             ce.String ~ "'\n" ~
-                            "Choice control selection is: '" ~
+                            "Выбор control selection is: '" ~
                             c.StringSelection ~ "'\n");
         }
 
         //---------------------------------------------------------------------
 
-        public void OnComboButtons(Object sender, Event e)
+        public проц OnComboButtons(Объект sender, Событие e)
         {
             CommandEvent ce = cast(CommandEvent)e;
 
-            switch(ce.ID)
+            switch(ce.ИД)
             {
             case ID_COMBO_SEL_NUM:
                 combo.Selection = 2;
@@ -894,7 +894,7 @@ alias writefln PRINT;
                 break;
 
             case ID_COMBO_CLEAR:
-                combo.Clear();
+                combo.Очисть();
                 break;
 
             case ID_COMBO_APPEND:
@@ -907,8 +907,8 @@ alias writefln PRINT;
                 break;
 
             case ID_COMBO_FONT:
-                combo.font = Font.wxITALIC_FONT;
-                combo.font = Font.wxITALIC_FONT;
+                combo.шрифт = Шрифт.wxITALIC_FONT;
+                combo.шрифт = Шрифт.wxITALIC_FONT;
                 break;
 
             case ID_COMBO_ENABLE:
@@ -917,44 +917,44 @@ alias writefln PRINT;
             }
         }
 
-        public void OnCombo(Object sender, Event e)
+        public проц OnCombo(Объект sender, Событие e)
         {
             CommandEvent ce = cast(CommandEvent)e;
 
-            text.AppendText("Combo event selection is: '" ~
+            текст.AppendText("Combo event selection is: '" ~
                             ce.String ~ "'\n" ~
                             "Combo control selection is: '" ~
                             combo.StringSelection ~ "'\n");
         }
 
-        public void OnComboTextChanged(Object sender, Event e)
+        public проц OnComboTextChanged(Объект sender, Событие e)
         {
             CommandEvent ce = cast(CommandEvent)e;
 
 	    	PRINT( ce.String );
 
-            Log.LogMessage( "Text in the combobox changed: now is '{0}'", ce.String);
+            Log.LogMessage( "Текст in the combobox changed: now is '{0}'", ce.String);
         }
 
-        public void OnComboTextEnter(Object sender, Event e)
+        public проц OnComboTextEnter(Объект sender, Событие e)
         {
-            Log.LogMessage("Enter pressed in the combobox: value is: '{0}'", combo.Value);
+            Log.LogMessage("Enter pressed in the combobox: значение is: '{0}'", combo.Value);
         }
 
         //---------------------------------------------------------------------
 
-        public void OnRadio(Object sender, Event e)
+        public проц OnRadio(Объект sender, Событие e)
         {
             CommandEvent ce = cast(CommandEvent)e;
-            text.AppendText("Radio selection string is: '" ~
+            текст.AppendText("Radio selection ткст is: '" ~
                             ce.String ~ "'.\n");
         }
 
-        public void OnRadioButtons(Object sender, Event e)
+        public проц OnRadioButtons(Объект sender, Событие e)
         {
             CommandEvent ce = cast(CommandEvent)e;
 
-            switch(ce.ID)
+            switch(ce.ИД)
             {
             case ID_RADIO_ENABLE:
                 radiobox.Enabled = (ce.Int == 0);
@@ -969,35 +969,35 @@ alias writefln PRINT;
                 break;
 
             case ID_RADIO_FONT:
-                radiobox.ForegroundColour = new Colour("Green");
-                radiobox.font = Font.wxITALIC_FONT;
+                radiobox.ЦветПП = new Цвет("Зелёный");
+                radiobox.шрифт = Шрифт.wxITALIC_FONT;
                 break;
             }
         }
 
         //---------------------------------------------------------------------
 
-        public void OnSetFont(Object sender, Event e)
+        public проц OnSetFont(Объект sender, Событие e)
         {
-			fontButton.font = Font.wxITALIC_FONT;
-			text.font = Font.wxITALIC_FONT;
+			fontButton.шрифт = Шрифт.wxITALIC_FONT;
+			текст.шрифт = Шрифт.wxITALIC_FONT;
         }
 		
-		public void OnUpdateLabel(Object sender, Event e)
+		public проц OnUpdateLabel(Объект sender, Событие e)
 		{
 			CommandEvent ce = cast(CommandEvent) e;
-			m_label.Label = ce.Int == 0 ? "Very very very very very long text." : "Shorter text.";
+			m_label.Label = ce.Int == 0 ? "Very very very very very long текст." : "Shorter текст.";
 		}
 		
-		public void OnBmpButton(Object sender, Event e)
+		public проц OnBmpButton(Объект sender, Событие e)
 		{
-			Log.LogMessage("Bitmap button clicked.");
+			Log.LogMessage("Битмап button clicked.");
 		}
 		
-		public void OnSizerCheck(Object sender, Event e)
+		public проц OnSizerCheck(Объект sender, Событие e)
 		{
 			CommandEvent ce = cast(CommandEvent) e;
-			switch( e.ID )
+			switch( e.ИД )
 			{
 				case ID_SIZER_CHECK1:
 					m_buttonSizer.Show( m_sizerBtn1, ce.IsChecked );
@@ -1028,56 +1028,56 @@ alias writefln PRINT;
 
         //---------------------------------------------------------------------
         
-        public void OnSliderUpdate(Object sender, Event e)
+        public проц OnSliderUpdate(Объект sender, Событие e)
         {
             gauge.Value = slider.Value;
             gaugeVert.Value = slider.Value;
         }
 
-        public void OnSpinCtrl(Object sender, Event e)
+        public проц OnSpinCtrl(Объект sender, Событие e)
         {
             CommandEvent ce = cast(CommandEvent)e;
-            text.AppendText("SpinCtrl changed: now " ~ .toString(spinctrl.Value) ~ 
+            текст.AppendText("SpinCtrl changed: now " ~ .toString(spinctrl.Value) ~ 
                             " (from event: " ~ .toString(ce.Int) ~ ")\n");
         }
 
-        public void OnSpinCtrlUp(Object sender, Event e)
+        public проц OnSpinCtrlUp(Объект sender, Событие e)
         {
             CommandEvent ce = cast(CommandEvent)e;
-            text.AppendText("SpinCtrl up: now " ~ .toString(spinctrl.Value) ~ 
+            текст.AppendText("SpinCtrl up: now " ~ .toString(spinctrl.Value) ~ 
                             " (from event: " ~ .toString(ce.Int) ~ ")\n");
         }
 
-        public void OnSpinCtrlDown(Object sender, Event e)
+        public проц OnSpinCtrlDown(Объект sender, Событие e)
         {
             CommandEvent ce = cast(CommandEvent)e;
-            text.AppendText("SpinCtrl down: now " ~ .toString(spinctrl.Value) ~ 
+            текст.AppendText("SpinCtrl down: now " ~ .toString(spinctrl.Value) ~ 
                             " (from event: " ~ .toString(ce.Int) ~ ")\n");
         }
 
-        public void OnSpinCtrlText(Object sender, Event e)
+        public проц OnSpinCtrlText(Объект sender, Событие e)
         {
             CommandEvent ce = cast(CommandEvent)e;
-            text.AppendText("SpinCtrl text changed: now " ~ .toString(spinctrl.Value) ~ 
+            текст.AppendText("SpinCtrl текст changed: now " ~ .toString(spinctrl.Value) ~ 
                             " (from event: " ~ ce.String ~ ")\n");
         } 
 
-        public void OnSpinUpdate(Object sender, Event e) 
+        public проц OnSpinUpdate(Объект sender, Событие e) 
         {
 			SpinEvent se = cast(SpinEvent) e;
-            spintext.Value = "" ~ .toString(se.Position);
+            spintext.Value = "" ~ .toString(se.Положение);
 
-            text.AppendText("Spin conntrol range: (" ~ .toString(spinbutton.Min) ~ ", " ~ 
+            текст.AppendText("Spin conntrol range: (" ~ .toString(spinbutton.Min) ~ ", " ~ 
 					.toString(spinbutton.Max) ~ "), current = " ~ .toString(spinbutton.Value) ~ "\n");
 
         }
 
-        public void OnSpinUp(Object sender, Event e)
+        public проц OnSpinUp(Объект sender, Событие e)
         {
 			SpinEvent se = cast(SpinEvent) e;
-            string str = "Spin button up: current = " ~ .toString(spinbutton.Value) ~ "\n";
+            ткст str = "Spin button up: current = " ~ .toString(spinbutton.Value) ~ "\n";
 
-            if (se.Position > 17) {
+            if (se.Положение > 17) {
                 str ~= "Preventing spin button from going above 17.\n";
 
 				se.Veto();
@@ -1086,12 +1086,12 @@ alias writefln PRINT;
 			Log.LogMessage(str);
         }
         
-        public void OnSpinDown(Object sender, Event e)
+        public проц OnSpinDown(Объект sender, Событие e)
         {
             SpinEvent se = cast(SpinEvent) e;
-            string str = "Spin button down: current = " ~ .toString(spinbutton.Value) ~ "\n";
+            ткст str = "Spin button down: current = " ~ .toString(spinbutton.Value) ~ "\n";
 
-            if (se.Position < -17) {
+            if (se.Положение < -17) {
                 str ~= "Preventing spin button from going below -17.\n";
 
 				se.Veto();
@@ -1100,14 +1100,14 @@ alias writefln PRINT;
 			Log.LogMessage(str);
         }
 
-        public void OnUpdateShowProgress(Object sender, Event e)
+        public проц OnUpdateShowProgress(Объект sender, Событие e)
         {
             btnProgress.Enabled = spinbutton.Value > 0;
         }
 
-        public void OnShowProgress(Object sender, Event e)
+        public проц OnShowProgress(Объект sender, Событие e)
         {
-			int max = spinbutton.Value;
+			цел max = spinbutton.Value;
 			
 			if ( max <= 0 )
 			{
@@ -1126,44 +1126,44 @@ alias writefln PRINT;
 													ProgressDialog.wxPD_ESTIMATED_TIME |
 													ProgressDialog.wxPD_REMAINING_TIME );
 													
-			bool cont = true;
-			for ( int i = 0; i <= max; i++ )
+			бул cont = да;
+			for ( цел i = 0; i <= max; i++ )
 			{
 				wxSleep(1);
 				if ( i == max )
 				{
-					cont = pd.Update(i, "That's all, folks!");
+					cont = pd.Обнови(i, "That's all, folks!");
 				}
 				else if ( i == max / 2 )
 				{
-					cont = pd.Update(i, "Only a half left (very long message)!");
+					cont = pd.Обнови(i, "Only a half left (very long message)!");
 				}
 				else
 				{
-					cont = pd.Update(i);
+					cont = pd.Обнови(i);
 				}
 				if ( !cont ) break;
 			}
 			
 			if ( !cont )
 			{
-				text.AppendText("Progress dialog aborted!\n");
+				текст.AppendText("Progress dialog aborted!\n");
 				
-				// use Dispose() or Show(false) to close the ProgressDialog
-				// otherwise the dialog won't get closed and the app hangs
+				// use Dispose() or Show(нет) to close the ProgressDialog
+				// otherwise the dialog won't get closed and the прил hangs
 				//pd.Dispose();
-				pd.Show(false);
+				pd.Show(нет);
 			}
 			else
 			{
-				text.AppendText("Countdown from " ~ .toString(max) ~ " finished.\n");
+				текст.AppendText("Countdown from " ~ .toString(max) ~ " finished.\n");
 			}
         }
 		
-		public void OnPageChanging(Object sender, Event e)
+		public проц OnPageChanging(Объект sender, Событие e)
 		{
 			NotebookEvent ne = cast(NotebookEvent) e;
-			int selOld = ne.OldSelection;
+			цел selOld = ne.OldSelection;
 			if ( selOld == 2 )
 			{
 				MessageDialog md = new MessageDialog(this, "This demonstrates how a program may prevent the\n" ~
@@ -1178,16 +1178,16 @@ alias writefln PRINT;
 				}	
 			}
 			
-			text.AppendText("Notebook selection is being changed from " ~ .toString(selOld) ~
+			текст.AppendText("Notebook selection is being changed from " ~ .toString(selOld) ~
 							" to " ~  .toString(ne.Selection) ~
 							" (current page from notebook is " ~
 							.toString(notebook.Selection) ~ ")\n");
 		}
 		
-		public void OnPageChanged(Object sender, Event e)
+		public проц OnPageChanged(Объект sender, Событие e)
 		{
 			NotebookEvent ne = cast(NotebookEvent) e;
-			text.AppendText("Notebook selection is now " ~ .toString(ne.Selection) ~
+			текст.AppendText("Notebook selection is now " ~ .toString(ne.Selection) ~
 							" (from notebook: " ~ .toString(notebook.Selection) ~ ")\n");
 		}
 
@@ -1195,7 +1195,7 @@ alias writefln PRINT;
     }
 
 
-void main()
+проц main()
 {
 	Controls.Main();
 }

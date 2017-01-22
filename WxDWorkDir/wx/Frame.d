@@ -1,4 +1,4 @@
-//-----------------------------------------------------------------------------
+﻿//-----------------------------------------------------------------------------
 // wxD - Frame.d
 // (C) 2005 bero <berobero@users.sourceforge.net>
 // based on
@@ -10,7 +10,7 @@
 // (C) 2003 by 379, Inc.
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: Frame.d,v 1.12 2008/11/04 14:29:16 afb Exp $
+// $Ид: Frame.d,v 1.12 2008/11/04 14:29:16 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.Frame;
@@ -22,116 +22,116 @@ public import wx.StatusBar;
 public import wx.Icon;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxFrame_ctor();
-		static extern (C) bool   wxFrame_Create(IntPtr self, IntPtr parent, int id, string title, inout Point pos, inout Size size, uint style, string name);
+		static extern (C) ЦУк wxFrame_ctor();
+		static extern (C) бул   wxFrame_Create(ЦУк сам, ЦУк родитель, цел ид, ткст title, inout Точка поз, inout Размер size, бцел стиль, ткст имя);
 
-		static extern (C) IntPtr wxFrame_CreateStatusBar(IntPtr self, int number, uint style, int id, string name);
+		static extern (C) ЦУк wxFrame_CreateStatusBar(ЦУк сам, цел number, бцел стиль, цел ид, ткст имя);
 
-		static extern (C) void   wxFrame_SendSizeEvent(IntPtr self);
+		static extern (C) проц   wxFrame_SendSizeEvent(ЦУк сам);
 
-		static extern (C) void   wxFrame_SetIcon(IntPtr self, IntPtr icon);
+		static extern (C) проц   wxFrame_SetIcon(ЦУк сам, ЦУк иконка);
 
-		static extern (C) void   wxFrame_SetMenuBar(IntPtr self, IntPtr menuBar);
-		static extern (C) IntPtr wxFrame_GetMenuBar(IntPtr self);
+		static extern (C) проц   wxFrame_SetMenuBar(ЦУк сам, ЦУк menuBar);
+		static extern (C) ЦУк wxFrame_GetMenuBar(ЦУк сам);
 
-		static extern (C) void   wxFrame_SetStatusText(IntPtr self, string text, int number);
+		static extern (C) проц   wxFrame_SetStatusText(ЦУк сам, ткст текст, цел number);
 
-		static extern (C) IntPtr wxFrame_CreateToolBar(IntPtr self, uint style, int id, string name);
-		static extern (C) IntPtr wxFrame_GetToolBar(IntPtr self);
-		static extern (C) void   wxFrame_SetToolBar(IntPtr self, IntPtr toolbar);
+		static extern (C) ЦУк wxFrame_CreateToolBar(ЦУк сам, бцел стиль, цел ид, ткст имя);
+		static extern (C) ЦУк wxFrame_GetToolBar(ЦУк сам);
+		static extern (C) проц   wxFrame_SetToolBar(ЦУк сам, ЦУк toolbar);
 
-		static extern (C) bool   wxFrame_ShowFullScreen(IntPtr self, bool show, uint style);
-		static extern (C) bool   wxFrame_IsFullScreen(IntPtr self);
+		static extern (C) бул   wxFrame_ShowFullScreen(ЦУк сам, бул show, бцел стиль);
+		static extern (C) бул   wxFrame_IsFullScreen(ЦУк сам);
 
-		static extern (C) IntPtr wxFrame_GetStatusBar(IntPtr wxobj); 
-		static extern (C) void   wxFrame_SetStatusBar(IntPtr wxobj, IntPtr statusbar);
+		static extern (C) ЦУк wxFrame_GetStatusBar(ЦУк шхобъ); 
+		static extern (C) проц   wxFrame_SetStatusBar(ЦУк шхобъ, ЦУк statusbar);
 
-		static extern (C) int    wxFrame_GetStatusBarPane(IntPtr wxobj); 
-		static extern (C) void   wxFrame_SetStatusBarPane(IntPtr wxobj, int n); 
+		static extern (C) цел    wxFrame_GetStatusBarPane(ЦУк шхобъ); 
+		static extern (C) проц   wxFrame_SetStatusBarPane(ЦУк шхобъ, цел n); 
 
-		static extern (C) void   wxFrame_SetStatusWidths(IntPtr self, int n, int* widths);
+		static extern (C) проц   wxFrame_SetStatusWidths(ЦУк сам, цел n, цел* widths);
 
-		static extern (C) void   wxFrame_Iconize(IntPtr wxobj, bool iconize); 
-		static extern (C) bool   wxFrame_IsIconized(IntPtr wxobj); 
+		static extern (C) проц   wxFrame_Iconize(ЦУк шхобъ, бул iconize); 
+		static extern (C) бул   wxFrame_IsIconized(ЦУк шхобъ); 
 
-		static extern (C) void   wxFrame_Maximize(IntPtr wxobj, bool maximize); 
-		static extern (C) bool   wxFrame_IsMaximized(IntPtr wxobj); 
+		static extern (C) проц   wxFrame_Maximize(ЦУк шхобъ, бул maximize); 
+		static extern (C) бул   wxFrame_IsMaximized(ЦУк шхобъ); 
 
-		//static extern (C) bool   wxFrame_SetShape(IntPtr self, IntPtr region);
+		//static extern (C) бул   wxFrame_SetShape(ЦУк сам, ЦУк region);
 		
-		static extern (C) void   wxFrame_GetClientAreaOrigin(IntPtr self, inout Point pt);
+		static extern (C) проц   wxFrame_GetClientAreaOrigin(ЦУк сам, inout Точка pt);
 		//! \endcond
             
 		//---------------------------------------------------------------------
 
 	alias Frame wxFrame;
-	/// A frame is a window whose size and position can (usually) be
+	/// A frame is a окно whose size and position can (usually) be
 	/// changed by the user. It usually has thick borders and a title bar,
-	/// and can optionally contain a menu bar, toolbar and status bar.
-	/// A frame can contain any window that is not a frame or dialog.
-	public class Frame : Window
+	/// and can optionally contain a меню bar, toolbar and status bar.
+	/// A frame can contain any окно that is not a frame or dialog.
+	public class Frame : Окно
 	{
-		public const int wxFULLSCREEN_NOMENUBAR   = 0x0001;
-		public const int wxFULLSCREEN_NOTOOLBAR   = 0x0002;
-		public const int wxFULLSCREEN_NOSTATUSBAR = 0x0004;
-		public const int wxFULLSCREEN_NOBORDER    = 0x0008;
-		public const int wxFULLSCREEN_NOCAPTION   = 0x0010;
-		public const int wxFULLSCREEN_ALL         = 
+		public const цел wxFULLSCREEN_NOMENUBAR   = 0x0001;
+		public const цел wxFULLSCREEN_NOTOOLBAR   = 0x0002;
+		public const цел wxFULLSCREEN_NOSTATUSBAR = 0x0004;
+		public const цел wxFULLSCREEN_NOBORDER    = 0x0008;
+		public const цел wxFULLSCREEN_NOCAPTION   = 0x0010;
+		public const цел wxFULLSCREEN_ALL         = 
                     wxFULLSCREEN_NOMENUBAR | wxFULLSCREEN_NOTOOLBAR |
                     wxFULLSCREEN_NOSTATUSBAR | wxFULLSCREEN_NOBORDER |
                     wxFULLSCREEN_NOCAPTION;
 		    
 		//-----------------------------------------------------------------------------
-		const string wxFrameNameStr="frame";
+		const ткст wxFrameNameStr="frame";
 
-		public this(IntPtr wxobj)
-			{ super(wxobj); }
+		public this(ЦУк шхобъ)
+			{ super(шхобъ); }
 			
 		public this()
 			{ this(wxFrame_ctor());}
 			
-		public this(Window parent, int id, string title, Point pos=wxDefaultPosition, Size size=wxDefaultSize, int style=wxDEFAULT_FRAME_STYLE, string name=wxFrameNameStr)
+		public this(Окно родитель, цел ид, ткст title, Точка поз=wxDefaultPosition, Размер size=wxDefaultSize, цел стиль=wxDEFAULT_FRAME_STYLE, ткст имя=wxFrameNameStr)
 		{
 			this(wxFrame_ctor());
-			if (!Create(parent, id, title, pos, size, style, name))
+			if (!Create(родитель, ид, title, поз, size, стиль, имя))
 			{
 				throw new InvalidOperationException("Failed to create Frame");
 			}
 		}
 		
 		//---------------------------------------------------------------------
-		// ctors with self created id
+		// ctors with сам created ид
 		
-		public this(Window parent, string title, Point pos=wxDefaultPosition, Size size=wxDefaultSize, int style=wxDEFAULT_FRAME_STYLE, string name=wxFrameNameStr)
-			{ this(parent, Window.UniqueID, title, pos, size, style, name);}
+		public this(Окно родитель, ткст title, Точка поз=wxDefaultPosition, Размер size=wxDefaultSize, цел стиль=wxDEFAULT_FRAME_STYLE, ткст имя=wxFrameNameStr)
+			{ this(родитель, Окно.UniqueID, title, поз, size, стиль, имя);}
 		
 		//---------------------------------------------------------------------
 
-		public bool Create(Window parent, int id, string title, inout Point pos, inout Size size, int style, string name)
+		public бул Create(Окно родитель, цел ид, ткст title, inout Точка поз, inout Размер size, цел стиль, ткст имя)
 		{
-			return wxFrame_Create(wxobj, wxObject.SafePtr(parent), id, title, pos, size, style, name);
+			return wxFrame_Create(шхобъ, wxObject.SafePtr(родитель), ид, title, поз, size, стиль, имя);
 		}
 
 		//---------------------------------------------------------------------
         
 		// Helper constructors
 
-		public this(string title, Point pos=wxDefaultPosition, Size size=wxDefaultSize, int style=wxDEFAULT_FRAME_STYLE)
-			{ this(null, -1, title, pos, size, style); }
+		public this(ткст title, Точка поз=wxDefaultPosition, Размер size=wxDefaultSize, цел стиль=wxDEFAULT_FRAME_STYLE)
+			{ this(пусто, -1, title, поз, size, стиль); }
 
 		//---------------------------------------------------------------------
         
-		public bool ShowFullScreen(bool show, int style) 
+		public бул ShowFullScreen(бул show, цел стиль) 
 		{
-			return wxFrame_ShowFullScreen(wxobj, show, cast(uint)style);
+			return wxFrame_ShowFullScreen(шхобъ, show, cast(бцел)стиль);
 		}
 
-		public bool ShowFullScreen(bool show) 
+		public бул ShowFullScreen(бул show) 
 		{
 			return ShowFullScreen(show, wxFULLSCREEN_ALL);
 		}
 
-		public bool IsFullScreen() { return wxFrame_IsFullScreen(wxobj); }
+		public бул IsFullScreen() { return wxFrame_IsFullScreen(шхобъ); }
 
 		//---------------------------------------------------------------------
 
@@ -140,123 +140,123 @@ public import wx.Icon;
 			return CreateStatusBar(1, 0, -1, "statusBar"); 
 		}
 		
-		public StatusBar CreateStatusBar(int number)
+		public StatusBar CreateStatusBar(цел number)
 		{ 
 			return CreateStatusBar(number, 0, -1, "statusBar"); 
 		}
 		
-		public StatusBar CreateStatusBar(int number, int style)
+		public StatusBar CreateStatusBar(цел number, цел стиль)
 		{ 
-			return CreateStatusBar(number, style, -1, "statusBar"); 
+			return CreateStatusBar(number, стиль, -1, "statusBar"); 
 		}
 		
-		public StatusBar CreateStatusBar(int number, int style, int id)
+		public StatusBar CreateStatusBar(цел number, цел стиль, цел ид)
 		{ 
-			return CreateStatusBar(number, style, id, "statusBar"); 
+			return CreateStatusBar(number, стиль, ид, "statusBar"); 
 		}
 
-		public StatusBar CreateStatusBar(int number, int style, int id, string name)
+		public StatusBar CreateStatusBar(цел number, цел стиль, цел ид, ткст имя)
 		{
-			return new StatusBar(wxFrame_CreateStatusBar(wxobj, number, cast(uint)style, id, name));
+			return new StatusBar(wxFrame_CreateStatusBar(шхобъ, number, cast(бцел)стиль, ид, имя));
 		}
 
-		public StatusBar statusBar() { return cast(StatusBar)FindObject(wxFrame_GetStatusBar(wxobj), &StatusBar.New); }
-		public void statusBar(StatusBar value) { wxFrame_SetStatusBar(wxobj, wxObject.SafePtr(value)); }
+		public StatusBar statusBar() { return cast(StatusBar)FindObject(wxFrame_GetStatusBar(шхобъ), &StatusBar.Нов); }
+		public проц statusBar(StatusBar значение) { wxFrame_SetStatusBar(шхобъ, wxObject.SafePtr(значение)); }
 
-		public int StatusBarPane() { return wxFrame_GetStatusBarPane(wxobj); }
-		public void StatusBarPane(int value) { wxFrame_SetStatusBarPane(wxobj, value); }
+		public цел StatusBarPane() { return wxFrame_GetStatusBarPane(шхобъ); }
+		public проц StatusBarPane(цел значение) { wxFrame_SetStatusBarPane(шхобъ, значение); }
 
 		//---------------------------------------------------------------------
 
-		public void SendSizeEvent()
+		public проц SendSizeEvent()
 		{
-			wxFrame_SendSizeEvent(wxobj);
+			wxFrame_SendSizeEvent(шхобъ);
 		}
 
 		//---------------------------------------------------------------------
 
-		public void icon(Icon value) { wxFrame_SetIcon(wxobj, wxObject.SafePtr(value)); }
+		public проц иконка(Icon значение) { wxFrame_SetIcon(шхобъ, wxObject.SafePtr(значение)); }
 
 		//---------------------------------------------------------------------
 
-		public void menuBar(MenuBar value) { 
-				wxFrame_SetMenuBar(wxobj, wxObject.SafePtr(value)); 
-				// add menu events...
-			if (value)
+		public проц menuBar(MenuBar значение) { 
+				wxFrame_SetMenuBar(шхобъ, wxObject.SafePtr(значение)); 
+				// add меню events...
+			if (значение)
 			{
-				for ( int i = 0; i < menuBar.MenuCount; ++i )
+				for ( цел i = 0; i < menuBar.MenuCount; ++i )
 				{
-					Menu menu = value.GetMenu(i);
-					menu.ConnectEvents(this);
+					Меню меню = значение.GetMenu(i);
+					меню.ConnectEvents(this);
 				}
 			}
 		}
-		public MenuBar menuBar() { return cast(MenuBar)FindObject(wxFrame_GetMenuBar(wxobj), &MenuBar.New); }
+		public MenuBar menuBar() { return cast(MenuBar)FindObject(wxFrame_GetMenuBar(шхобъ), &MenuBar.Нов); }
 
 		//---------------------------------------------------------------------
 
-		public void StatusText(string value) { SetStatusText(value); }
+		public проц StatusText(ткст значение) { SetStatusText(значение); }
 
-		public void SetStatusText(string text) 
-		{ SetStatusText(text, 0); }
+		public проц SetStatusText(ткст текст) 
+		{ SetStatusText(текст, 0); }
 
-		public void SetStatusText(string text, int number)
+		public проц SetStatusText(ткст текст, цел number)
 		{
-			wxFrame_SetStatusText(wxobj, text, number);
+			wxFrame_SetStatusText(шхобъ, текст, number);
 		}
 
 		//---------------------------------------------------------------------
 
-		public void StatusWidths(int[] value)
+		public проц StatusWidths(цел[] значение)
 		{
-			SetStatusWidths(value.length, value);
+			SetStatusWidths(значение.length, значение);
 		}
 
-		public void SetStatusWidths(int n, int[] widths)
+		public проц SetStatusWidths(цел n, цел[] widths)
 		{
-			wxFrame_SetStatusWidths(wxobj, n, widths.ptr);
+			wxFrame_SetStatusWidths(шхобъ, n, widths.ptr);
 		}
 
 		//---------------------------------------------------------------------
 /+
 		public ToolBar CreateToolBar()
 		{ return CreateToolBar(/*Border.*/wxNO_BORDER | ToolBar.wxTB_HORIZONTAL, -1, "toolBar"); }
-		public ToolBar CreateToolBar(int style)
-		{ return CreateToolBar(style, -1, "toolBar"); }
-		public ToolBar CreateToolBar(int style, int id)
-		{ return CreateToolBar(style, id, "toolBar"); }
+		public ToolBar CreateToolBar(цел стиль)
+		{ return CreateToolBar(стиль, -1, "toolBar"); }
+		public ToolBar CreateToolBar(цел стиль, цел ид)
+		{ return CreateToolBar(стиль, ид, "toolBar"); }
 
-		public ToolBar CreateToolBar(int style, int id, string name)
+		public ToolBar CreateToolBar(цел стиль, цел ид, ткст имя)
 		{
-			return new ToolBar(wxFrame_CreateToolBar(wxobj, cast(uint)style, id, name));
+			return new ToolBar(wxFrame_CreateToolBar(шхобъ, cast(бцел)стиль, ид, имя));
 		}
 
-		public ToolBar toolBar() { return cast(ToolBar)FindObject(wxFrame_GetToolBar(wxobj)); }
-		public void toolBar(ToolBar value) { wxFrame_SetToolBar(wxobj, wxObject.SafePtr(value)); }
+		public ToolBar toolBar() { return cast(ToolBar)FindObject(wxFrame_GetToolBar(шхобъ)); }
+		public проц toolBar(ToolBar значение) { wxFrame_SetToolBar(шхобъ, wxObject.SafePtr(значение)); }
 +/
 		//---------------------------------------------------------------------
 
-		public bool Iconized() { return wxFrame_IsIconized(wxobj); }
-		public void Iconized(bool value) { wxFrame_Iconize(wxobj, value); }
+		public бул Iconized() { return wxFrame_IsIconized(шхобъ); }
+		public проц Iconized(бул значение) { wxFrame_Iconize(шхобъ, значение); }
 
 		//---------------------------------------------------------------------
 
-		public bool Maximized() { return wxFrame_IsMaximized(wxobj); }
-		public void Maximized(bool value) { wxFrame_Maximize(wxobj, value); }
+		public бул Maximized() { return wxFrame_IsMaximized(шхобъ); }
+		public проц Maximized(бул значение) { wxFrame_Maximize(шхобъ, значение); }
 
 		//---------------------------------------------------------------------
 
-		/*public bool SetShape(wx.Region region)
+		/*public бул SetShape(wx.Region region)
 		{
-			return wxFrame_SetShape(wxobj, wxObject.SafePtr(region));
+			return wxFrame_SetShape(шхобъ, wxObject.SafePtr(region));
 		}*/
 
 		//---------------------------------------------------------------------
 		
-		public override Point ClientAreaOrigin()
+		public override Точка ClientAreaOrigin()
 		{
-			Point pt;
-			wxFrame_GetClientAreaOrigin(wxobj, pt);
+			Точка pt;
+			wxFrame_GetClientAreaOrigin(шхобъ, pt);
 			return pt;
 		}
 	}

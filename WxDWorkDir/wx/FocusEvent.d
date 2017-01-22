@@ -1,4 +1,4 @@
-//-----------------------------------------------------------------------------
+﻿//-----------------------------------------------------------------------------
 // wxD - FocusEvent.d
 // (C) 2005 bero <berobero@users.sourceforge.net>
 // based on
@@ -10,7 +10,7 @@
 // (C) 2004 by Alexander Olk
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: FocusEvent.d,v 1.9 2006/11/17 15:20:59 afb Exp $
+// $Ид: FocusEvent.d,v 1.9 2006/11/17 15:20:59 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.FocusEvent;
@@ -20,32 +20,32 @@ public import wx.Window;
 public import wx.Event;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxFocusEvent_ctor(int type,int winid);
-		static extern (C) IntPtr wxFocusEvent_GetWindow(IntPtr self);
-		static extern (C) void   wxFocusEvent_SetWindow(IntPtr self, IntPtr win);
+		static extern (C) ЦУк wxFocusEvent_ctor(цел тип,цел winid);
+		static extern (C) ЦУк wxFocusEvent_GetWindow(ЦУк сам);
+		static extern (C) проц   wxFocusEvent_SetWindow(ЦУк сам, ЦУк окн);
 		//! \endcond
 		
 		//-----------------------------------------------------------------------------
 
 	alias FocusEvent wxFocusEvent;
-	public class FocusEvent : Event
+	public class FocusEvent : Событие
 	{
-		public this(IntPtr wxobj) 
-			{ super(wxobj); }
+		public this(ЦУк шхобъ) 
+			{ super(шхобъ); }
 
-		public this(EventType type = wxEVT_NULL, int winid = 0)
-			{ this(wxFocusEvent_ctor(type,winid)); }
+		public this(ТипСобытия тип = wxEVT_NULL, цел winid = 0)
+			{ this(wxFocusEvent_ctor(тип,winid)); }
 
 		//-----------------------------------------------------------------------------	
 		
-		public Window window() { return cast(Window)FindObject(wxFocusEvent_GetWindow(wxobj), &Window.New); }
-		public void window(Window value) { wxFocusEvent_SetWindow(wxobj, wxObject.SafePtr(value)); }
+		public Окно окно() { return cast(Окно)FindObject(wxFocusEvent_GetWindow(шхобъ), &Окно.Нов); }
+		public проц окно(Окно значение) { wxFocusEvent_SetWindow(шхобъ, wxObject.SafePtr(значение)); }
 
-		private static Event New(IntPtr obj) { return new FocusEvent(obj); }
+		private static Событие Нов(ЦУк объ) { return new FocusEvent(объ); }
 
 		static this()
 		{
-			AddEventType(wxEVT_SET_FOCUS,				&FocusEvent.New);
-			AddEventType(wxEVT_KILL_FOCUS,				&FocusEvent.New);
+			ДобавьТипСоб(wxEVT_SET_FOCUS,				&FocusEvent.Нов);
+			ДобавьТипСоб(wxEVT_KILL_FOCUS,				&FocusEvent.Нов);
 		}
 	}

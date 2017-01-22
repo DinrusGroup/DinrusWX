@@ -1,8 +1,8 @@
-//-----------------------------------------------------------------------------
-// wxD - Window.d
+﻿//-----------------------------------------------------------------------------
+// wxD - Окно.d
 // (C) 2005 bero <berobero.sourceforge.net>
 // based on
-// wx.NET - Window.cs
+// wx.NET - Окно.cs
 //
 /// The wxWindow wrapper class.
 //
@@ -10,14 +10,14 @@
 // (C) 2003 by 379, Inc.
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: Window.d,v 1.13 2009/02/08 13:16:40 afb Exp $
+// $Ид: Окно.d,v 1.13 2009/02/08 13:16:40 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.Window;
 public import wx.common;
 public import wx.EvtHandler;
 public import wx.Cursor;
-public import wx.Font;
+public import wx.Шрифт;
 public import wx.Colour;
 public import wx.Region;
 public import wx.Validator;
@@ -74,263 +74,263 @@ public import wx.ToolTip;
 	};
 	
 		//! \cond EXTERN
-		static extern (C) IntPtr wxVisualAttributes_ctor();
-		static extern (C) void   wxVisualAttributes_dtor(IntPtr self);
-		static extern (C) void   wxVisualAttributes_RegisterDisposable(IntPtr self, Virtual_Dispose onDispose);
-		static extern (C) void   wxVisualAttributes_SetFont(IntPtr self, IntPtr font);
-		static extern (C) IntPtr wxVisualAttributes_GetFont(IntPtr self);
-		static extern (C) void   wxVisualAttributes_SetColourFg(IntPtr self, IntPtr colour);
-		static extern (C) IntPtr wxVisualAttributes_GetColourFg(IntPtr self);
-		static extern (C) void   wxVisualAttributes_SetColourBg(IntPtr self, IntPtr colour);
-		static extern (C) IntPtr wxVisualAttributes_GetColourBg(IntPtr self);
+		static extern (C) ЦУк wxVisualAttributes_ctor();
+		static extern (C) проц   wxVisualAttributes_dtor(ЦУк сам);
+		static extern (C) проц   wxVisualAttributes_RegisterDisposable(ЦУк сам, Virtual_Dispose onDispose);
+		static extern (C) проц   wxVisualAttributes_SetFont(ЦУк сам, ЦУк шрифт);
+		static extern (C) ЦУк wxVisualAttributes_GetFont(ЦУк сам);
+		static extern (C) проц   wxVisualAttributes_SetColourFg(ЦУк сам, ЦУк colour);
+		static extern (C) ЦУк wxVisualAttributes_GetColourFg(ЦУк сам);
+		static extern (C) проц   wxVisualAttributes_SetColourBg(ЦУк сам, ЦУк colour);
+		static extern (C) ЦУк wxVisualAttributes_GetColourBg(ЦУк сам);
 		//! \endcond
 		
 		//---------------------------------------------------------------------
 
-	alias VisualAttributes wxVisualAttributes;
-	public class VisualAttributes : wxObject
+	alias ВизАтры wxVisualAttributes;
+	public class ВизАтры : wxObject
 	{
-		public this(IntPtr wxobj)
+		public this(ЦУк шхобъ)
 		{ 
-			super(wxobj);
+			super(шхобъ);
 		}
 		
-		private this(IntPtr wxobj, bool memOwn)
+		private this(ЦУк шхобъ, бул memOwn)
 		{ 
-			super(wxobj);
+			super(шхобъ);
 			this.memOwn = memOwn;
 		}
 			
 		public this()
 		{ 
-			this(wxVisualAttributes_ctor(), true);
-			wxVisualAttributes_RegisterDisposable(wxobj, &VirtualDispose);
+			this(wxVisualAttributes_ctor(), да);
+			wxVisualAttributes_RegisterDisposable(шхобъ, &VirtualDispose);
 		}
 		
 		//---------------------------------------------------------------------
 
-		public Font font() { return new Font(wxVisualAttributes_GetFont(wxobj), true); }
-		public void font(Font value) { wxVisualAttributes_SetFont(wxobj, wxObject.SafePtr(value)); }
+		public Шрифт шрифт() { return new Шрифт(wxVisualAttributes_GetFont(шхобъ), да); }
+		public проц шрифт(Шрифт значение) { wxVisualAttributes_SetFont(шхобъ, wxObject.SafePtr(значение)); }
 		
 		//---------------------------------------------------------------------
 		
-		public Colour colFg() { return new Colour(wxVisualAttributes_GetColourFg(wxobj), true); }		
+		public Цвет цветПП() { return new Цвет(wxVisualAttributes_GetColourFg(шхобъ), да); }		
 		//---------------------------------------------------------------------
 		
-		public Colour colBg() { return new Colour(wxVisualAttributes_GetColourBg(wxobj), true); }		
+		public Цвет цветЗП() { return new Цвет(wxVisualAttributes_GetColourBg(шхобъ), да); }		
 		//---------------------------------------------------------------------
 		
-		override protected void dtor() { wxVisualAttributes_dtor(wxobj); }
+		override protected проц dtor() { wxVisualAttributes_dtor(шхобъ); }
 	}
 
 	//---------------------------------------------------------------------
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxWindow_ctor(IntPtr parent, int id, inout Point pos, inout Size size, uint style, string name);
-		static extern (C) bool   wxWindow_Close(IntPtr self, bool force);
-		static extern (C) void   wxWindow_GetBestSize(IntPtr self, out Size size);
-		static extern (C) void   wxWindow_GetClientSize(IntPtr self, out Size size);
-		static extern (C) int    wxWindow_GetId(IntPtr self);
-		static extern (C) uint   wxWindow_GetWindowStyleFlag(IntPtr self);
-		static extern (C) uint   wxWindow_Layout(IntPtr self);
-		static extern (C) void   wxWindow_SetAutoLayout(IntPtr self, bool autoLayout);
-		static extern (C) void   wxWindow_SetBackgroundColour(IntPtr self, IntPtr colour);
-		static extern (C) IntPtr wxWindow_GetBackgroundColour(IntPtr self);
-		static extern (C) void   wxWindow_SetForegroundColour(IntPtr self, IntPtr colour);
-		static extern (C) IntPtr wxWindow_GetForegroundColour(IntPtr self);
-		static extern (C) void   wxWindow_SetCursor(IntPtr self, IntPtr cursor);
-		static extern (C) void   wxWindow_SetId(IntPtr self, int id);
-		static extern (C) void   wxWindow_SetSize(IntPtr self, int x, int y, int width, int height, uint flags);
-		static extern (C) void   wxWindow_SetSize2(IntPtr self, int width, int height);
-		static extern (C) void   wxWindow_SetSize3(IntPtr self, inout Size size);
-		static extern (C) void   wxWindow_SetSize4(IntPtr self, inout Rectangle rect);
-		static extern (C) void   wxWindow_SetSizer(IntPtr self, IntPtr sizer, bool deleteOld);
-		static extern (C) void   wxWindow_SetWindowStyleFlag(IntPtr self, uint style);
-		static extern (C) bool   wxWindow_Show(IntPtr self, bool show);
-		static extern (C) bool   wxWindow_SetFont(IntPtr self, IntPtr font);
-		static extern (C) IntPtr wxWindow_GetFont(IntPtr self);
-		static extern (C) void   wxWindow_SetToolTip(IntPtr self, string tip);
-		static extern (C) bool 	 wxWindow_Enable(IntPtr self, bool enable);
-		static extern (C) bool   wxWindow_IsEnabled(IntPtr self);
+		static extern (C) ЦУк wxWindow_ctor(ЦУк родитель, цел ид, inout Точка поз, inout Размер size, бцел стиль, ткст имя);
+		static extern (C) бул   wxWindow_Close(ЦУк сам, бул force);
+		static extern (C) проц   wxWindow_GetBestSize(ЦУк сам, out Размер size);
+		static extern (C) проц   wxWindow_GetClientSize(ЦУк сам, out Размер size);
+		static extern (C) цел    wxWindow_GetId(ЦУк сам);
+		static extern (C) бцел   wxWindow_GetWindowStyleFlag(ЦУк сам);
+		static extern (C) бцел   wxWindow_Layout(ЦУк сам);
+		static extern (C) проц   wxWindow_SetAutoLayout(ЦУк сам, бул autoLayout);
+		static extern (C) проц   wxWindow_SetBackgroundColour(ЦУк сам, ЦУк colour);
+		static extern (C) ЦУк wxWindow_GetBackgroundColour(ЦУк сам);
+		static extern (C) проц   wxWindow_SetForegroundColour(ЦУк сам, ЦУк colour);
+		static extern (C) ЦУк wxWindow_GetForegroundColour(ЦУк сам);
+		static extern (C) проц   wxWindow_SetCursor(ЦУк сам, ЦУк cursor);
+		static extern (C) проц   wxWindow_SetId(ЦУк сам, цел ид);
+		static extern (C) проц   wxWindow_SetSize(ЦУк сам, цел x, цел y, цел ширина, цел высота, бцел флаги);
+		static extern (C) проц   wxWindow_SetSize2(ЦУк сам, цел ширина, цел высота);
+		static extern (C) проц   wxWindow_SetSize3(ЦУк сам, inout Размер size);
+		static extern (C) проц   wxWindow_SetSize4(ЦУк сам, inout Прямоугольник прям);
+		static extern (C) проц   wxWindow_SetSizer(ЦУк сам, ЦУк sizer, бул deleteOld);
+		static extern (C) проц   wxWindow_SetWindowStyleFlag(ЦУк сам, бцел стиль);
+		static extern (C) бул   wxWindow_Show(ЦУк сам, бул show);
+		static extern (C) бул   wxWindow_SetFont(ЦУк сам, ЦУк шрифт);
+		static extern (C) ЦУк wxWindow_GetFont(ЦУк сам);
+		static extern (C) проц   wxWindow_SetToolTip(ЦУк сам, ткст tip);
+		static extern (C) бул 	 wxWindow_Enable(ЦУк сам, бул enable);
+		static extern (C) бул   wxWindow_IsEnabled(ЦУк сам);
 
-		static extern (C) int    wxWindow_EVT_TRANSFERDATAFROMWINDOW();
-		static extern (C) int    wxWindow_EVT_TRANSFERDATATOWINDOW();
+		static extern (C) цел    wxWindow_EVT_TRANSFERDATAFROMWINDOW();
+		static extern (C) цел    wxWindow_EVT_TRANSFERDATATOWINDOW();
 
-		//static extern (C) bool wxWindow_LoadFromResource(IntPtr self, IntPtr parent, string resourceName, IntPtr table);
-		//static extern (C) IntPtr wxWindow_CreateItem(IntPtr self, IntPtr childResource, IntPtr parentResource, IntPtr table);
-		static extern (C) bool   wxWindow_Destroy(IntPtr self);
-		static extern (C) bool   wxWindow_DestroyChildren(IntPtr self);
-		static extern (C) void   wxWindow_SetTitle(IntPtr self, string title);
-		static extern (C) IntPtr wxWindow_GetTitle(IntPtr self);
-		static extern (C) void   wxWindow_SetName(IntPtr self, string name);
-		static extern (C) IntPtr wxWindow_GetName(IntPtr self);
-		static extern (C) int    wxWindow_NewControlId();
-		static extern (C) int    wxWindow_NextControlId(int id);
-		static extern (C) int    wxWindow_PrevControlId(int id);
-		static extern (C) void   wxWindow_Move(IntPtr self, int x, int y, int flags);
-		static extern (C) void   wxWindow_Raise(IntPtr self);
-		static extern (C) void   wxWindow_Lower(IntPtr self);
-		static extern (C) void   wxWindow_SetClientSize(IntPtr self, int width, int height);
-		static extern (C) void   wxWindow_GetPosition(IntPtr self, out Point point);
-		static extern (C) void   wxWindow_GetSize(IntPtr self, out Size size);
-		static extern (C) void   wxWindow_GetRect(IntPtr self, out Rectangle rect);
-		static extern (C) void   wxWindow_GetClientAreaOrigin(IntPtr self, out Point point);
-		static extern (C) void   wxWindow_GetClientRect(IntPtr self, out Rectangle rect);
-		static extern (C) void   wxWindow_GetAdjustedBestSize(IntPtr self, out Size size);
-		static extern (C) void   wxWindow_Center(IntPtr self, int direction);
-		static extern (C) void   wxWindow_CenterOnScreen(IntPtr self, int dir);
-		static extern (C) void   wxWindow_CenterOnParent(IntPtr self, int dir);
-		static extern (C) void   wxWindow_Fit(IntPtr self);
-		static extern (C) void   wxWindow_FitInside(IntPtr self);
-		static extern (C) void   wxWindow_SetSizeHints(IntPtr self, int minW, int minH, int maxW, int maxH, int incW, int incH);
-	//	static extern (C) void   wxWindow_SetVirtualSizeHints(IntPtr self, int minW, int minH, int maxW, int maxH);
-		static extern (C) int    wxWindow_GetMinWidth(IntPtr self);
-		static extern (C) int    wxWindow_GetMinHeight(IntPtr self);
-		static extern (C) void   wxWindow_GetMinSize(IntPtr self, out Size size);
-		static extern (C) void   wxWindow_SetMinSize(IntPtr self, Size* size);
-		static extern (C) int    wxWindow_GetMaxWidth(IntPtr self);
-		static extern (C) int    wxWindow_GetMaxHeight(IntPtr self);
-		static extern (C) void   wxWindow_GetMaxSize(IntPtr self, out Size size);
-		static extern (C) void   wxWindow_SetMaxSize(IntPtr self, Size* size);
-		static extern (C) void   wxWindow_SetVirtualSize(IntPtr self, inout Size size);
-		static extern (C) void   wxWindow_GetVirtualSize(IntPtr self, out Size size);
-		static extern (C) void   wxWindow_GetBestVirtualSize(IntPtr self, out Size size);
-		static extern (C) bool   wxWindow_Hide(IntPtr self);
-		static extern (C) bool   wxWindow_Disable(IntPtr self);
-		static extern (C) bool   wxWindow_IsShown(IntPtr self);
-		static extern (C) void   wxWindow_SetWindowStyle(IntPtr self, uint style);
-		static extern (C) uint   wxWindow_GetWindowStyle(IntPtr self);
-		static extern (C) bool   wxWindow_HasFlag(IntPtr self, int flag);
-		static extern (C) bool   wxWindow_IsRetained(IntPtr self);
-		static extern (C) void   wxWindow_SetExtraStyle(IntPtr self, uint exStyle);
-		static extern (C) uint   wxWindow_GetExtraStyle(IntPtr self);
-		//static extern (C) void   wxWindow_MakeModal(IntPtr self, bool modal);
-		static extern (C) void   wxWindow_SetThemeEnabled(IntPtr self, bool enableTheme);
-		static extern (C) bool   wxWindow_GetThemeEnabled(IntPtr self);
-		static extern (C) void   wxWindow_SetFocus(IntPtr self);
-		static extern (C) void   wxWindow_SetFocusFromKbd(IntPtr self);
-		static extern (C) IntPtr wxWindow_FindFocus();
-		static extern (C) bool   wxWindow_AcceptsFocus(IntPtr self);
-		static extern (C) bool   wxWindow_AcceptsFocusFromKeyboard(IntPtr self);
-		static extern (C) IntPtr wxWindow_GetParent(IntPtr self);
-		static extern (C) IntPtr wxWindow_GetGrandParent(IntPtr self);
-		static extern (C) bool   wxWindow_IsTopLevel(IntPtr self);
-		static extern (C) void   wxWindow_SetParent(IntPtr self, IntPtr parent);
-		static extern (C) bool   wxWindow_Reparent(IntPtr self, IntPtr newParent);
-		static extern (C) void   wxWindow_AddChild(IntPtr self, IntPtr child);
-		static extern (C) void   wxWindow_RemoveChild(IntPtr self, IntPtr child);
-		static extern (C) IntPtr wxWindow_FindWindowId(IntPtr self, int id);
-		static extern (C) IntPtr wxWindow_FindWindowName(IntPtr self, string name);
-		static extern (C) IntPtr wxWindow_FindWindowById(int id, IntPtr parent);
-		static extern (C) IntPtr wxWindow_FindWindowByName(string name, IntPtr parent);
-		static extern (C) IntPtr wxWindow_FindWindowByLabel(string label, IntPtr parent);
-		static extern (C) IntPtr wxWindow_GetEventHandler(IntPtr self);
-		static extern (C) void   wxWindow_SetEventHandler(IntPtr self, IntPtr handler);
-		static extern (C) void   wxWindow_PushEventHandler(IntPtr self, IntPtr handler);
-		static extern (C) IntPtr wxWindow_PopEventHandler(IntPtr self, bool deleteHandler);
-		static extern (C) bool   wxWindow_RemoveEventHandler(IntPtr self, IntPtr handler);
-		static extern (C) void   wxWindow_SetValidator(IntPtr self, IntPtr validator);
-		static extern (C) IntPtr wxWindow_GetValidator(IntPtr self);
-		static extern (C) bool   wxWindow_Validate(IntPtr self);
-		static extern (C) bool   wxWindow_TransferDataToWindow(IntPtr self);
-		static extern (C) bool   wxWindow_TransferDataFromWindow(IntPtr self);
-		static extern (C) void   wxWindow_InitDialog(IntPtr self);
-		static extern (C) void   wxWindow_SetAcceleratorTable(IntPtr self, IntPtr accel);
-		static extern (C) IntPtr wxWindow_GetAcceleratorTable(IntPtr self);
-		static extern (C) void   wxWindow_ConvertPixelsToDialogPoint(IntPtr self, inout Point pt, out Point point);
-		static extern (C) void   wxWindow_ConvertDialogToPixelsPoint(IntPtr self, inout Point pt, out Point point);
-		static extern (C) void   wxWindow_ConvertPixelsToDialogSize(IntPtr self, inout Size sz, out Size size);
-		static extern (C) void   wxWindow_ConvertDialogToPixelsSize(IntPtr self, inout Size sz, out Size size);
-		static extern (C) void   wxWindow_WarpPointer(IntPtr self, int x, int y);
-		static extern (C) void   wxWindow_CaptureMouse(IntPtr self);
-		static extern (C) void   wxWindow_ReleaseMouse(IntPtr self);
-		static extern (C) IntPtr wxWindow_GetCapture();
-		static extern (C) bool   wxWindow_HasCapture(IntPtr self);
-		static extern (C) void   wxWindow_Refresh(IntPtr self, bool eraseBackground, inout Rectangle rect);
-		static extern (C) void   wxWindow_RefreshRect(IntPtr self, inout Rectangle rect);
-		static extern (C) void   wxWindow_Update(IntPtr self);
-		static extern (C) void   wxWindow_ClearBackground(IntPtr self);
-		static extern (C) void   wxWindow_Freeze(IntPtr self);
-		static extern (C) void   wxWindow_Thaw(IntPtr self);
-		static extern (C) void   wxWindow_PrepareDC(IntPtr self, IntPtr dc);
-		static extern (C) bool   wxWindow_IsExposed(IntPtr self, int x, int y, int w, int h);
-		static extern (C) void   wxWindow_SetCaret(IntPtr self, IntPtr caret);
-		static extern (C) IntPtr wxWindow_GetCaret(IntPtr self);
-		static extern (C) int    wxWindow_GetCharHeight(IntPtr self);
-		static extern (C) int    wxWindow_GetCharWidth(IntPtr self);
-		static extern (C) void   wxWindow_GetTextExtent(IntPtr self, string str, out int x, out int y, out int descent, out int externalLeading, IntPtr theFont);
-		static extern (C) void   wxWindow_ClientToScreen(IntPtr self, inout int x, inout int y);
-		static extern (C) void   wxWindow_ScreenToClient(IntPtr self, inout int x, inout int y);
-		static extern (C) void   wxWindow_ClientToScreen(IntPtr self, inout Point pt, out Point point);
-		static extern (C) void   wxWindow_ScreenToClient(IntPtr self, inout Point pt, out Point point);
-		//static extern (C) wxHitTest wxWindow_HitTest(IntPtr self, Coord x, Coord y);
-		//static extern (C) wxHitTest wxWindow_HitTest(IntPtr self, inout Point pt);
-		static extern (C) int    wxWindow_GetBorder(IntPtr self);
-		static extern (C) int    wxWindow_GetBorderByFlags(IntPtr self, uint flags);
-		static extern (C) void   wxWindow_UpdateWindowUI(IntPtr self);
-		static extern (C) bool   wxWindow_PopupMenu(IntPtr self, IntPtr menu, inout Point pos);
-		static extern (C) bool   wxWindow_HasScrollbar(IntPtr self, int orient);
-		static extern (C) void   wxWindow_SetScrollbar(IntPtr self, int orient, int pos, int thumbvisible, int range, bool refresh);
-		static extern (C) void   wxWindow_SetScrollPos(IntPtr self, int orient, int pos, bool refresh);
-		static extern (C) int    wxWindow_GetScrollPos(IntPtr self, int orient);
-		static extern (C) int    wxWindow_GetScrollThumb(IntPtr self, int orient);
-		static extern (C) int    wxWindow_GetScrollRange(IntPtr self, int orient);
-		static extern (C) void   wxWindow_ScrollWindow(IntPtr self, int dx, int dy, inout Rectangle rect);
-		static extern (C) bool   wxWindow_ScrollLines(IntPtr self, int lines);
-		static extern (C) bool   wxWindow_ScrollPages(IntPtr self, int pages);
-		static extern (C) bool   wxWindow_LineUp(IntPtr self);
-		static extern (C) bool   wxWindow_LineDown(IntPtr self);
-		static extern (C) bool   wxWindow_PageUp(IntPtr self);
-		static extern (C) bool   wxWindow_PageDown(IntPtr self);
-		static extern (C) void   wxWindow_SetHelpText(IntPtr self, string text);
-		//static extern (C) void   wxWindow_SetHelpTextForId(IntPtr self, string text);
-		static extern (C) IntPtr wxWindow_GetHelpText(IntPtr self);
-		//static extern (C) void wxWindow_SetToolTip(IntPtr self, IntPtr tip);
-		//static extern (C) IntPtr wxWindow_GetToolTip(IntPtr self);
-		static extern (C) void   wxWindow_SetDropTarget(IntPtr self, IntPtr dropTarget);
-		static extern (C) IntPtr wxWindow_GetDropTarget(IntPtr self);
-		static extern (C) void   wxWindow_SetConstraints(IntPtr self, IntPtr constraints);
-		static extern (C) IntPtr wxWindow_GetConstraints(IntPtr self);
-		static extern (C) bool   wxWindow_GetAutoLayout(IntPtr self);
-		static extern (C) void   wxWindow_SetSizerAndFit(IntPtr self, IntPtr sizer, bool deleteOld);
-		static extern (C) IntPtr wxWindow_GetSizer(IntPtr self);
-		static extern (C) void   wxWindow_SetContainingSizer(IntPtr self, IntPtr sizer);
-		static extern (C) IntPtr wxWindow_GetContainingSizer(IntPtr self);
-		static extern (C) IntPtr wxWindow_GetPalette(IntPtr self);
-		static extern (C) void   wxWindow_SetPalette(IntPtr self, IntPtr pal);
-		static extern (C) bool   wxWindow_HasCustomPalette(IntPtr self);
-		static extern (C) IntPtr wxWindow_GetUpdateRegion(IntPtr self);
+		//static extern (C) бул wxWindow_LoadFromResource(ЦУк сам, ЦУк родитель, ткст resourceName, ЦУк table);
+		//static extern (C) ЦУк wxWindow_CreateItem(ЦУк сам, ЦУк childResource, ЦУк parentResource, ЦУк table);
+		static extern (C) бул   wxWindow_Destroy(ЦУк сам);
+		static extern (C) бул   wxWindow_DestroyChildren(ЦУк сам);
+		static extern (C) проц   wxWindow_SetTitle(ЦУк сам, ткст title);
+		static extern (C) ЦУк wxWindow_GetTitle(ЦУк сам);
+		static extern (C) проц   wxWindow_SetName(ЦУк сам, ткст имя);
+		static extern (C) ЦУк wxWindow_GetName(ЦУк сам);
+		static extern (C) цел    wxWindow_NewControlId();
+		static extern (C) цел    wxWindow_NextControlId(цел ид);
+		static extern (C) цел    wxWindow_PrevControlId(цел ид);
+		static extern (C) проц   wxWindow_Move(ЦУк сам, цел x, цел y, цел флаги);
+		static extern (C) проц   wxWindow_Raise(ЦУк сам);
+		static extern (C) проц   wxWindow_Lower(ЦУк сам);
+		static extern (C) проц   wxWindow_SetClientSize(ЦУк сам, цел ширина, цел высота);
+		static extern (C) проц   wxWindow_GetPosition(ЦУк сам, out Точка point);
+		static extern (C) проц   wxWindow_GetSize(ЦУк сам, out Размер size);
+		static extern (C) проц   wxWindow_GetRect(ЦУк сам, out Прямоугольник прям);
+		static extern (C) проц   wxWindow_GetClientAreaOrigin(ЦУк сам, out Точка point);
+		static extern (C) проц   wxWindow_GetClientRect(ЦУк сам, out Прямоугольник прям);
+		static extern (C) проц   wxWindow_GetAdjustedBestSize(ЦУк сам, out Размер size);
+		static extern (C) проц   wxWindow_Center(ЦУк сам, цел direction);
+		static extern (C) проц   wxWindow_CenterOnScreen(ЦУк сам, цел dir);
+		static extern (C) проц   wxWindow_CenterOnParent(ЦУк сам, цел dir);
+		static extern (C) проц   wxWindow_Fit(ЦУк сам);
+		static extern (C) проц   wxWindow_FitInside(ЦУк сам);
+		static extern (C) проц   wxWindow_SetSizeHints(ЦУк сам, цел minW, цел minH, цел maxW, цел maxH, цел incW, цел incH);
+	//	static extern (C) проц   wxWindow_SetVirtualSizeHints(ЦУк сам, цел minW, цел minH, цел maxW, цел maxH);
+		static extern (C) цел    wxWindow_GetMinWidth(ЦУк сам);
+		static extern (C) цел    wxWindow_GetMinHeight(ЦУк сам);
+		static extern (C) проц   wxWindow_GetMinSize(ЦУк сам, out Размер size);
+		static extern (C) проц   wxWindow_SetMinSize(ЦУк сам, Размер* size);
+		static extern (C) цел    wxWindow_GetMaxWidth(ЦУк сам);
+		static extern (C) цел    wxWindow_GetMaxHeight(ЦУк сам);
+		static extern (C) проц   wxWindow_GetMaxSize(ЦУк сам, out Размер size);
+		static extern (C) проц   wxWindow_SetMaxSize(ЦУк сам, Размер* size);
+		static extern (C) проц   wxWindow_SetVirtualSize(ЦУк сам, inout Размер size);
+		static extern (C) проц   wxWindow_GetVirtualSize(ЦУк сам, out Размер size);
+		static extern (C) проц   wxWindow_GetBestVirtualSize(ЦУк сам, out Размер size);
+		static extern (C) бул   wxWindow_Hide(ЦУк сам);
+		static extern (C) бул   wxWindow_Disable(ЦУк сам);
+		static extern (C) бул   wxWindow_IsShown(ЦУк сам);
+		static extern (C) проц   wxWindow_SetWindowStyle(ЦУк сам, бцел стиль);
+		static extern (C) бцел   wxWindow_GetWindowStyle(ЦУк сам);
+		static extern (C) бул   wxWindow_HasFlag(ЦУк сам, цел flag);
+		static extern (C) бул   wxWindow_IsRetained(ЦУк сам);
+		static extern (C) проц   wxWindow_SetExtraStyle(ЦУк сам, бцел exStyle);
+		static extern (C) бцел   wxWindow_GetExtraStyle(ЦУк сам);
+		//static extern (C) проц   wxWindow_MakeModal(ЦУк сам, бул modal);
+		static extern (C) проц   wxWindow_SetThemeEnabled(ЦУк сам, бул enableTheme);
+		static extern (C) бул   wxWindow_GetThemeEnabled(ЦУк сам);
+		static extern (C) проц   wxWindow_SetFocus(ЦУк сам);
+		static extern (C) проц   wxWindow_SetFocusFromKbd(ЦУк сам);
+		static extern (C) ЦУк wxWindow_FindFocus();
+		static extern (C) бул   wxWindow_AcceptsFocus(ЦУк сам);
+		static extern (C) бул   wxWindow_AcceptsFocusFromKeyboard(ЦУк сам);
+		static extern (C) ЦУк wxWindow_GetParent(ЦУк сам);
+		static extern (C) ЦУк wxWindow_GetGrandParent(ЦУк сам);
+		static extern (C) бул   wxWindow_IsTopLevel(ЦУк сам);
+		static extern (C) проц   wxWindow_SetParent(ЦУк сам, ЦУк родитель);
+		static extern (C) бул   wxWindow_Reparent(ЦУк сам, ЦУк newParent);
+		static extern (C) проц   wxWindow_AddChild(ЦУк сам, ЦУк child);
+		static extern (C) проц   wxWindow_RemoveChild(ЦУк сам, ЦУк child);
+		static extern (C) ЦУк wxWindow_FindWindowId(ЦУк сам, цел ид);
+		static extern (C) ЦУк wxWindow_FindWindowName(ЦУк сам, ткст имя);
+		static extern (C) ЦУк wxWindow_FindWindowById(цел ид, ЦУк родитель);
+		static extern (C) ЦУк wxWindow_FindWindowByName(ткст имя, ЦУк родитель);
+		static extern (C) ЦУк wxWindow_FindWindowByLabel(ткст надпись, ЦУк родитель);
+		static extern (C) ЦУк wxWindow_GetEventHandler(ЦУк сам);
+		static extern (C) проц   wxWindow_SetEventHandler(ЦУк сам, ЦУк handler);
+		static extern (C) проц   wxWindow_PushEventHandler(ЦУк сам, ЦУк handler);
+		static extern (C) ЦУк wxWindow_PopEventHandler(ЦУк сам, бул deleteHandler);
+		static extern (C) бул   wxWindow_RemoveEventHandler(ЦУк сам, ЦУк handler);
+		static extern (C) проц   wxWindow_SetValidator(ЦУк сам, ЦУк validator);
+		static extern (C) ЦУк wxWindow_GetValidator(ЦУк сам);
+		static extern (C) бул   wxWindow_Validate(ЦУк сам);
+		static extern (C) бул   wxWindow_TransferDataToWindow(ЦУк сам);
+		static extern (C) бул   wxWindow_TransferDataFromWindow(ЦУк сам);
+		static extern (C) проц   wxWindow_InitDialog(ЦУк сам);
+		static extern (C) проц   wxWindow_SetAcceleratorTable(ЦУк сам, ЦУк accel);
+		static extern (C) ЦУк wxWindow_GetAcceleratorTable(ЦУк сам);
+		static extern (C) проц   wxWindow_ConvertPixelsToDialogPoint(ЦУк сам, inout Точка pt, out Точка point);
+		static extern (C) проц   wxWindow_ConvertDialogToPixelsPoint(ЦУк сам, inout Точка pt, out Точка point);
+		static extern (C) проц   wxWindow_ConvertPixelsToDialogSize(ЦУк сам, inout Размер sz, out Размер size);
+		static extern (C) проц   wxWindow_ConvertDialogToPixelsSize(ЦУк сам, inout Размер sz, out Размер size);
+		static extern (C) проц   wxWindow_WarpPointer(ЦУк сам, цел x, цел y);
+		static extern (C) проц   wxWindow_CaptureMouse(ЦУк сам);
+		static extern (C) проц   wxWindow_ReleaseMouse(ЦУк сам);
+		static extern (C) ЦУк wxWindow_GetCapture();
+		static extern (C) бул   wxWindow_HasCapture(ЦУк сам);
+		static extern (C) проц   wxWindow_Refresh(ЦУк сам, бул eraseBackground, inout Прямоугольник прям);
+		static extern (C) проц   wxWindow_RefreshRect(ЦУк сам, inout Прямоугольник прям);
+		static extern (C) проц   wxWindow_Update(ЦУк сам);
+		static extern (C) проц   wxWindow_ClearBackground(ЦУк сам);
+		static extern (C) проц   wxWindow_Freeze(ЦУк сам);
+		static extern (C) проц   wxWindow_Thaw(ЦУк сам);
+		static extern (C) проц   wxWindow_PrepareDC(ЦУк сам, ЦУк dc);
+		static extern (C) бул   wxWindow_IsExposed(ЦУк сам, цел x, цел y, цел w, цел h);
+		static extern (C) проц   wxWindow_SetCaret(ЦУк сам, ЦУк caret);
+		static extern (C) ЦУк wxWindow_GetCaret(ЦУк сам);
+		static extern (C) цел    wxWindow_GetCharHeight(ЦУк сам);
+		static extern (C) цел    wxWindow_GetCharWidth(ЦУк сам);
+		static extern (C) проц   wxWindow_GetTextExtent(ЦУк сам, ткст str, out цел x, out цел y, out цел descent, out цел externalLeading, ЦУк theFont);
+		static extern (C) проц   wxWindow_ClientToScreen(ЦУк сам, inout цел x, inout цел y);
+		static extern (C) проц   wxWindow_ScreenToClient(ЦУк сам, inout цел x, inout цел y);
+		static extern (C) проц   wxWindow_ClientToScreen(ЦУк сам, inout Точка pt, out Точка point);
+		static extern (C) проц   wxWindow_ScreenToClient(ЦУк сам, inout Точка pt, out Точка point);
+		//static extern (C) wxHitTest wxWindow_HitTest(ЦУк сам, Coord x, Coord y);
+		//static extern (C) wxHitTest wxWindow_HitTest(ЦУк сам, inout Точка pt);
+		static extern (C) цел    wxWindow_GetBorder(ЦУк сам);
+		static extern (C) цел    wxWindow_GetBorderByFlags(ЦУк сам, бцел флаги);
+		static extern (C) проц   wxWindow_UpdateWindowUI(ЦУк сам);
+		static extern (C) бул   wxWindow_PopupMenu(ЦУк сам, ЦУк меню, inout Точка поз);
+		static extern (C) бул   wxWindow_HasScrollbar(ЦУк сам, цел orient);
+		static extern (C) проц   wxWindow_SetScrollbar(ЦУк сам, цел orient, цел поз, цел thumbvisible, цел range, бул refresh);
+		static extern (C) проц   wxWindow_SetScrollPos(ЦУк сам, цел orient, цел поз, бул refresh);
+		static extern (C) цел    wxWindow_GetScrollPos(ЦУк сам, цел orient);
+		static extern (C) цел    wxWindow_GetScrollThumb(ЦУк сам, цел orient);
+		static extern (C) цел    wxWindow_GetScrollRange(ЦУк сам, цел orient);
+		static extern (C) проц   wxWindow_ScrollWindow(ЦУк сам, цел dx, цел dy, inout Прямоугольник прям);
+		static extern (C) бул   wxWindow_ScrollLines(ЦУк сам, цел lines);
+		static extern (C) бул   wxWindow_ScrollPages(ЦУк сам, цел pages);
+		static extern (C) бул   wxWindow_LineUp(ЦУк сам);
+		static extern (C) бул   wxWindow_LineDown(ЦУк сам);
+		static extern (C) бул   wxWindow_PageUp(ЦУк сам);
+		static extern (C) бул   wxWindow_PageDown(ЦУк сам);
+		static extern (C) проц   wxWindow_SetHelpText(ЦУк сам, ткст текст);
+		//static extern (C) проц   wxWindow_SetHelpTextForId(ЦУк сам, ткст текст);
+		static extern (C) ЦУк wxWindow_GetHelpText(ЦУк сам);
+		//static extern (C) проц wxWindow_SetToolTip(ЦУк сам, ЦУк tip);
+		//static extern (C) ЦУк wxWindow_GetToolTip(ЦУк сам);
+		static extern (C) проц   wxWindow_SetDropTarget(ЦУк сам, ЦУк dropTarget);
+		static extern (C) ЦУк wxWindow_GetDropTarget(ЦУк сам);
+		static extern (C) проц   wxWindow_SetConstraints(ЦУк сам, ЦУк constraints);
+		static extern (C) ЦУк wxWindow_GetConstraints(ЦУк сам);
+		static extern (C) бул   wxWindow_GetAutoLayout(ЦУк сам);
+		static extern (C) проц   wxWindow_SetSizerAndFit(ЦУк сам, ЦУк sizer, бул deleteOld);
+		static extern (C) ЦУк wxWindow_GetSizer(ЦУк сам);
+		static extern (C) проц   wxWindow_SetContainingSizer(ЦУк сам, ЦУк sizer);
+		static extern (C) ЦУк wxWindow_GetContainingSizer(ЦУк сам);
+		static extern (C) ЦУк wxWindow_GetPalette(ЦУк сам);
+		static extern (C) проц   wxWindow_SetPalette(ЦУк сам, ЦУк pal);
+		static extern (C) бул   wxWindow_HasCustomPalette(ЦУк сам);
+		static extern (C) ЦУк wxWindow_GetUpdateRegion(ЦУк сам);
 		
-		static extern (C) void   wxWindow_SetWindowVariant(IntPtr self, int variant);
-		static extern (C) int    wxWindow_GetWindowVariant(IntPtr self);
-		static extern (C) bool   wxWindow_IsBeingDeleted(IntPtr self);
-		static extern (C) void   wxWindow_InvalidateBestSize(IntPtr self);
-		static extern (C) void   wxWindow_CacheBestSize(IntPtr self, Size size);
-		static extern (C) void   wxWindow_GetBestFittingSize(IntPtr self, inout Size size);
-		static extern (C) void   wxWindow_SetBestFittingSize(IntPtr self, inout Size size);
-		static extern (C) IntPtr wxWindow_GetChildren(IntPtr self, int num);
-		static extern (C) int    wxWindow_GetChildrenCount(IntPtr self);
-		static extern (C) IntPtr wxWindow_GetDefaultAttributes(IntPtr self);
-		static extern (C) IntPtr wxWindow_GetClassDefaultAttributes(int variant);
-		static extern (C) void   wxWindow_SetBackgroundStyle(IntPtr self, int style);
-		static extern (C) int    wxWindow_GetBackgroundStyle(IntPtr self);
-		//static extern (C) IntPtr wxWindow_GetToolTipText(IntPtr self);
-		static extern (C) IntPtr wxWindow_GetAncestorWithCustomPalette(IntPtr self);
-		static extern (C) void   wxWindow_InheritAttributes(IntPtr self);
-		static extern (C) bool   wxWindow_ShouldInheritColours(IntPtr self);
+		static extern (C) проц   wxWindow_SetWindowVariant(ЦУк сам, цел variant);
+		static extern (C) цел    wxWindow_GetWindowVariant(ЦУк сам);
+		static extern (C) бул   wxWindow_IsBeingDeleted(ЦУк сам);
+		static extern (C) проц   wxWindow_InvalidateBestSize(ЦУк сам);
+		static extern (C) проц   wxWindow_CacheBestSize(ЦУк сам, Размер size);
+		static extern (C) проц   wxWindow_GetBestFittingSize(ЦУк сам, inout Размер size);
+		static extern (C) проц   wxWindow_SetBestFittingSize(ЦУк сам, inout Размер size);
+		static extern (C) ЦУк wxWindow_GetChildren(ЦУк сам, цел num);
+		static extern (C) цел    wxWindow_GetChildrenCount(ЦУк сам);
+		static extern (C) ЦУк wxWindow_GetDefaultAttributes(ЦУк сам);
+		static extern (C) ЦУк wxWindow_GetClassDefaultAttributes(цел variant);
+		static extern (C) проц   wxWindow_SetBackgroundStyle(ЦУк сам, цел стиль);
+		static extern (C) цел    wxWindow_GetBackgroundStyle(ЦУк сам);
+		//static extern (C) ЦУк wxWindow_GetToolTipText(ЦУк сам);
+		static extern (C) ЦУк wxWindow_GetAncestorWithCustomPalette(ЦУк сам);
+		static extern (C) проц   wxWindow_InheritAttributes(ЦУк сам);
+		static extern (C) бул   wxWindow_ShouldInheritColours(ЦУк сам);
 		//! \endcond
 
 		//---------------------------------------------------------------------
 
-	alias Window wxWindow;
+	alias Окно wxWindow;
 	/// wxWindow is the base class for all windows and represents any
 	/// visible object on screen. All controls, top level windows and so on
 	/// are windows. Sizers and device contexts are not, however, as they don't
 	/// appear on screen themselves.
-	public class Window : EvtHandler
+	public class Окно : EvtHandler
 	{
 		enum {
-			wxVSCROLL			= cast(int)0x80000000,
+			wxVSCROLL			= cast(цел)0x80000000,
 			wxHSCROLL			= 0x40000000,
 			wxCAPTION			= 0x20000000,
 
@@ -379,7 +379,7 @@ public import wx.ToolTip;
 			wxBORDER_DOUBLE			= 0x10000000,
 			wxBORDER_MASK			= 0x1f200000,
 	
-		// Border flags
+		// Border флаги
 			wxDOUBLE_BORDER			= wxBORDER_DOUBLE,
 			wxSUNKEN_BORDER			= wxBORDER_SUNKEN,
 			wxRAISED_BORDER			= wxBORDER_RAISED,
@@ -398,33 +398,33 @@ public import wx.ToolTip;
 			wxDEFAULT_DIALOG_STYLE		= wxSYSTEM_MENU | wxCAPTION | wxCLOSE_BOX,
 		}
 
-		private static int uniqueID			= 10000; // start with 10000 to not interfere with the old id system
+		private static цел uniqueID			= 10000; // start with 10000 to not interfere with the old ид system
 
 		//---------------------------------------------------------------------
 
-		public const Point wxDefaultPosition = {X:-1, Y:-1};
-		public const Size  wxDefaultSize     = {Width:-1, Height:-1};
-		const string wxPanelNameStr = "panel";
+		public const Точка wxDefaultPosition = {X:-1, Y:-1};
+		public const Размер  wxDefaultSize     = {Ширина:-1, Высота:-1};
+		const ткст wxPanelNameStr = "panel";
 
 		//---------------------------------------------------------------------
 
-		public this(Window parent, int id, Point pos=wxDefaultPosition, Size size=wxDefaultSize, int style=0, string name=wxPanelNameStr)
-			{ this(wxWindow_ctor(wxObject.SafePtr(parent), id, pos, size, style, name), 
-				false /*a Window will always be destroyed by its parent*/);}
+		public this(Окно родитель, цел ид, Точка поз=wxDefaultPosition, Размер size=wxDefaultSize, цел стиль=0, ткст имя=wxPanelNameStr)
+			{ this(wxWindow_ctor(wxObject.SafePtr(родитель), ид, поз, size, стиль, имя), 
+				нет /*a Окно will always be destroyed by its родитель*/);}
 			
-		public this(Window parent, Point pos=wxDefaultPosition, Size size=wxDefaultSize, int style=0, string name=wxPanelNameStr)
-			{ this(parent, Window.UniqueID, pos, size, style, name);}
+		public this(Окно родитель, Точка поз=wxDefaultPosition, Размер size=wxDefaultSize, цел стиль=0, ткст имя=wxPanelNameStr)
+			{ this(родитель, Окно.UniqueID, поз, size, стиль, имя);}
 
-		public this(IntPtr wxobj) 
+		public this(ЦУк шхобъ) 
 		{
-			super(wxobj);
+			super(шхобъ);
 			AddEventListener(wxWindow_EVT_TRANSFERDATATOWINDOW(), &OnTransferDataToWindow);
 			AddEventListener(wxWindow_EVT_TRANSFERDATAFROMWINDOW(), &OnTransferDataFromWindow);
 		}
 		
-		private this(IntPtr wxobj, bool memOwn)
+		private this(ЦУк шхобъ, бул memOwn)
 		{ 
-			super(wxobj);
+			super(шхобъ);
 			this.memOwn = memOwn;
 			
 			AddEventListener(wxWindow_EVT_TRANSFERDATATOWINDOW(), &OnTransferDataToWindow);
@@ -432,1013 +432,1013 @@ public import wx.ToolTip;
 		}
 
 
-		static wxObject New(IntPtr ptr) { return new Window(ptr); }
+		static wxObject Нов(ЦУк ptr) { return new Окно(ptr); }
 		//---------------------------------------------------------------------
 
-		public /+virtual+/ void   BackgroundColour(Colour value)
+		public /+virtual+/ проц   ЦветЗП(Цвет значение)
 		{
-			wxWindow_SetBackgroundColour(wxobj, wxObject.SafePtr(value));
+			wxWindow_SetBackgroundColour(шхобъ, wxObject.SafePtr(значение));
 		}
-		public /+virtual+/ Colour BackgroundColour()
+		public /+virtual+/ Цвет ЦветЗП()
 		{
-			return new Colour(wxWindow_GetBackgroundColour(wxobj), true);
+			return new Цвет(wxWindow_GetBackgroundColour(шхобъ), да);
 		}
 
-		public /+virtual+/ Colour ForegroundColour()
+		public /+virtual+/ Цвет ЦветПП()
 		{
-			return new Colour(wxWindow_GetForegroundColour(wxobj), true);
+			return new Цвет(wxWindow_GetForegroundColour(шхобъ), да);
 		}
-		public /+virtual+/ void   ForegroundColour(Colour value)
+		public /+virtual+/ проц   ЦветПП(Цвет значение)
 		{
-			wxWindow_SetForegroundColour(wxobj, wxObject.SafePtr(value));
+			wxWindow_SetForegroundColour(шхобъ, wxObject.SafePtr(значение));
 		}
 
 		//---------------------------------------------------------------------
 
 		// Note: was previously defined as WindowFont
-		public /+virtual+/ void font(Font value)
+		public /+virtual+/ проц шрифт(Шрифт значение)
 		{
-			wxWindow_SetFont(wxobj, value.wxobj);
+			wxWindow_SetFont(шхобъ, значение.шхобъ);
 		}
-		public /+virtual+/ Font font()
+		public /+virtual+/ Шрифт шрифт()
 		{
-			return new Font(wxWindow_GetFont(wxobj), true);
+			return new Шрифт(wxWindow_GetFont(шхобъ), да);
 		}
 
 
 		//---------------------------------------------------------------------
 
-		public /+virtual+/ Size BestSize()
+		public /+virtual+/ Размер BestSize()
 		{
-			Size size;
-			wxWindow_GetBestSize(wxobj, size);
+			Размер size;
+			wxWindow_GetBestSize(шхобъ, size);
 			return size;
 		}
 
 		//---------------------------------------------------------------------
 
-		public /+virtual+/ Size ClientSize()
+		public /+virtual+/ Размер ClientSize()
 		{
-			Size size;
-			wxWindow_GetClientSize(wxobj, size);
+			Размер size;
+			wxWindow_GetClientSize(шхобъ, size);
 			return size;
 		}
-		public /+virtual+/ void ClientSize(Size value)
+		public /+virtual+/ проц ClientSize(Размер значение)
 		{
-			wxWindow_SetClientSize(wxobj, value.Width, value.Height);
+			wxWindow_SetClientSize(шхобъ, значение.Ширина, значение.Высота);
 		}
 
 		//---------------------------------------------------------------------
 
-		public /+virtual+/ bool Close()
+		public /+virtual+/ бул Закрой()
 		{
-			return wxWindow_Close(wxobj, false);
+			return wxWindow_Close(шхобъ, нет);
 		}
 
-		public /+virtual+/ bool Close(bool force)
+		public /+virtual+/ бул Закрой(бул force)
 		{
-			return wxWindow_Close(wxobj, force);
+			return wxWindow_Close(шхобъ, force);
 		}
 
 		//---------------------------------------------------------------------
 
-		public /+virtual+/ int ID() { return wxWindow_GetId(wxobj); }
-		public /+virtual+/ void ID(int value) { wxWindow_SetId(wxobj, value); }
+		public /+virtual+/ цел ИД() { return wxWindow_GetId(шхобъ); }
+		public /+virtual+/ проц ИД(цел значение) { wxWindow_SetId(шхобъ, значение); }
 		
 		//---------------------------------------------------------------------
 		
-		public static int UniqueID() { return ++uniqueID; }
+		public static цел UniqueID() { return ++uniqueID; }
 		
 		//---------------------------------------------------------------------
 
-		public /+virtual+/ void Layout()
+		public /+virtual+/ проц Layout()
 		{
-			wxWindow_Layout(wxobj);
+			wxWindow_Layout(шхобъ);
 		}
 
 		//---------------------------------------------------------------------
 
-		public /+virtual+/ void cursor(Cursor value)
+		public /+virtual+/ проц cursor(Cursor значение)
 		{
-			wxWindow_SetCursor(wxobj, wxObject.SafePtr(value));
+			wxWindow_SetCursor(шхобъ, wxObject.SafePtr(значение));
 		}
 
 		//---------------------------------------------------------------------
 
-		public /+virtual+/ void SetSize(int x, int y, int width, int height)
+		public /+virtual+/ проц УстРазм(цел x, цел y, цел ширина, цел высота)
 		{
-			wxWindow_SetSize(wxobj, x, y, width, height, 0);
+			wxWindow_SetSize(шхобъ, x, y, ширина, высота, 0);
 		}
 		
-		public /+virtual+/ void SetSize(int width, int height)
+		public /+virtual+/ проц УстРазм(цел ширина, цел высота)
 		{
-			wxWindow_SetSize2(wxobj, width, height);
+			wxWindow_SetSize2(шхобъ, ширина, высота);
 		}
 		
-		public /+virtual+/ void SetSize(Size size)
+		public /+virtual+/ проц УстРазм(Размер size)
 		{
-			wxWindow_SetSize3(wxobj, size);
+			wxWindow_SetSize3(шхобъ, size);
 		}
 
-		public /+virtual+/ void SetSize(Rectangle rect)
+		public /+virtual+/ проц УстРазм(Прямоугольник прям)
 		{
-			wxWindow_SetSize4(wxobj, rect);
+			wxWindow_SetSize4(шхобъ, прям);
 		}
 
 		//---------------------------------------------------------------------
 
-		public /+virtual+/ void SetSizer(Sizer sizer, bool deleteOld=true)
+		public /+virtual+/ проц SetSizer(Sizer sizer, бул deleteOld=да)
 		{
-			wxWindow_SetSizer(wxobj, sizer.wxobj, deleteOld);
+			wxWindow_SetSizer(шхобъ, sizer.шхобъ, deleteOld);
 		}
 
 		//---------------------------------------------------------------------
 		
-		public /+virtual+/ bool Show(bool show=true)
+		public /+virtual+/ бул Show(бул show=да)
 		{
-			return wxWindow_Show(wxobj, show);
+			return wxWindow_Show(шхобъ, show);
 		}
 
 		//---------------------------------------------------------------------
 
-		public /+virtual+/ int  StyleFlags()
+		public /+virtual+/ цел  StyleFlags()
 		{
-			return wxWindow_GetWindowStyleFlag(wxobj);
+			return wxWindow_GetWindowStyleFlag(шхобъ);
 		}
-		public /+virtual+/ void StyleFlags(uint value) 
+		public /+virtual+/ проц StyleFlags(бцел значение) 
 		{
-			wxWindow_SetWindowStyleFlag(wxobj, value);
+			wxWindow_SetWindowStyleFlag(шхобъ, значение);
 		}
 
 		//---------------------------------------------------------------------
 
-		private void OnTransferDataFromWindow(Object sender, Event e)
+		private проц OnTransferDataFromWindow(Объект sender, Событие e)
 		{
 			if (!TransferDataFromWindow())
-				e.Skip();
+				e.Пропусти();
 		}
 
 		//---------------------------------------------------------------------
 
-		private void OnTransferDataToWindow(Object sender, Event e)
+		private проц OnTransferDataToWindow(Объект sender, Событие e)
 		{
 			if (!TransferDataToWindow())
-				e.Skip();
+				e.Пропусти();
 		}
 
 		//---------------------------------------------------------------------
 
-		public /+virtual+/ void toolTip(string value)
+		public /+virtual+/ проц toolTip(ткст значение)
 		{
-			wxWindow_SetToolTip(wxobj, value);
+			wxWindow_SetToolTip(шхобъ, значение);
 		}
 
 		//---------------------------------------------------------------------
 
-		public /+virtual+/ void Enabled(bool value)
+		public /+virtual+/ проц Enabled(бул значение)
 		{
-			wxWindow_Enable(wxobj, value);
+			wxWindow_Enable(шхобъ, значение);
 		}
-		public /+virtual+/ bool Enabled()
+		public /+virtual+/ бул Enabled()
 		{
-			return wxWindow_IsEnabled(wxobj);
-		}
-
-		//---------------------------------------------------------------------
-
-		public /+virtual+/ bool Destroy()
-		{
-			return wxWindow_Destroy(wxobj);
-		}
-
-		public /+virtual+/ bool DestroyChildren()
-		{
-			return wxWindow_DestroyChildren(wxobj);
+			return wxWindow_IsEnabled(шхобъ);
 		}
 
 		//---------------------------------------------------------------------
 
-		public /+virtual+/ void  Title(string value)
+		public /+virtual+/ бул Разрушь()
 		{
-			wxWindow_SetTitle(wxobj, value);
+			return wxWindow_Destroy(шхобъ);
 		}
-		public /+virtual+/ string Title()
+
+		public /+virtual+/ бул DestroyChildren()
 		{
-			return cast(string) new wxString(wxWindow_GetTitle(wxobj), true);
+			return wxWindow_DestroyChildren(шхобъ);
 		}
 
 		//---------------------------------------------------------------------
 
-		public /+virtual+/ void Name(string value)
+		public /+virtual+/ проц  Title(ткст значение)
+		{
+			wxWindow_SetTitle(шхобъ, значение);
+		}
+		public /+virtual+/ ткст Title()
+		{
+			return cast(ткст) new wxString(wxWindow_GetTitle(шхобъ), да);
+		}
+
+		//---------------------------------------------------------------------
+
+		public /+virtual+/ проц Имя(ткст значение)
 			{
-				wxWindow_SetName(wxobj, value);
+				wxWindow_SetName(шхобъ, значение);
 			}
-		public /+virtual+/ string Name()
+		public /+virtual+/ ткст Имя()
 			{
-				return cast(string) new wxString(wxWindow_GetName(wxobj), true);
+				return cast(ткст) new wxString(wxWindow_GetName(шхобъ), да);
 			}
 
 		//---------------------------------------------------------------------
 
-		public static int NewControlId()
+		public static цел NewControlId()
 		{
 			return wxWindow_NewControlId();
 		}
 
-		public static int NextControlId(int id)
+		public static цел NextControlId(цел ид)
 		{
-			return wxWindow_NextControlId(id);
+			return wxWindow_NextControlId(ид);
 		}
 
-		public static int PrevControlId(int id)
+		public static цел PrevControlId(цел ид)
 		{
-			return wxWindow_PrevControlId(id);
-		}
-
-		//---------------------------------------------------------------------
-
-		public /+virtual+/ void Move(int x, int y, int flags)
-		{
-			wxWindow_Move(wxobj, x, y, flags);
+			return wxWindow_PrevControlId(ид);
 		}
 
 		//---------------------------------------------------------------------
 
-		public /+virtual+/ void Raise()
+		public /+virtual+/ проц Move(цел x, цел y, цел флаги)
 		{
-			wxWindow_Raise(wxobj);
-		}
-
-		public /+virtual+/ void Lower()
-		{
-			wxWindow_Lower(wxobj);
+			wxWindow_Move(шхобъ, x, y, флаги);
 		}
 
 		//---------------------------------------------------------------------
 
-		public /+virtual+/ Point Position()
+		public /+virtual+/ проц Raise()
+		{
+			wxWindow_Raise(шхобъ);
+		}
+
+		public /+virtual+/ проц Lower()
+		{
+			wxWindow_Lower(шхобъ);
+		}
+
+		//---------------------------------------------------------------------
+
+		public /+virtual+/ Точка Положение()
 			{
-				Point point;
-				wxWindow_GetPosition(wxobj, point);
+				Точка point;
+				wxWindow_GetPosition(шхобъ, point);
 				return point;
 			}
-		public /+virtual+/ void  Position(Point value)
+		public /+virtual+/ проц  Положение(Точка значение)
 			{
-				Move(value.X, value.Y, 0);
+				Move(значение.X, значение.Y, 0);
 			}
 
 		//---------------------------------------------------------------------
 
-		public /+virtual+/ Size size()
+		public /+virtual+/ Размер size()
 			{
-				Size size;
-				wxWindow_GetSize(wxobj, size);
+				Размер size;
+				wxWindow_GetSize(шхобъ, size);
 				return size;
 			}
-		public /+virtual+/ void size(Size value)
+		public /+virtual+/ проц size(Размер значение)
 			{
-				wxWindow_SetSize(wxobj, Position.X, Position.Y,
-								 value.Width, value.Height, 0);
+				wxWindow_SetSize(шхобъ, Положение.X, Положение.Y,
+								 значение.Ширина, значение.Высота, 0);
 			}
 
 		//---------------------------------------------------------------------
 
-		public /+virtual+/ Rectangle Rect()
+		public /+virtual+/ Прямоугольник Rect()
 		{
-				Rectangle rect;
-				wxWindow_GetRect(wxobj, rect);
-				return rect;
+				Прямоугольник прям;
+				wxWindow_GetRect(шхобъ, прям);
+				return прям;
 		}
 
 		//---------------------------------------------------------------------
 
-		public /+virtual+/ Point ClientAreaOrigin()
+		public /+virtual+/ Точка ClientAreaOrigin()
 		{
-				Point point;
-				wxWindow_GetClientAreaOrigin(wxobj, point);
+				Точка point;
+				wxWindow_GetClientAreaOrigin(шхобъ, point);
 				return point;
 		}
 
 		//---------------------------------------------------------------------
 
-		public /+virtual+/ Rectangle ClientRect()
+		public /+virtual+/ Прямоугольник ClientRect()
 		{
-				Rectangle rect;
-				wxWindow_GetClientRect(wxobj, rect);
-				return rect;
+				Прямоугольник прям;
+				wxWindow_GetClientRect(шхобъ, прям);
+				return прям;
 		}
 
 		//---------------------------------------------------------------------
 
-		public /+virtual+/ Size AdjustedBestSize()
+		public /+virtual+/ Размер AdjustedBestSize()
 		{
-				Size size;
-				wxWindow_GetAdjustedBestSize(wxobj, size);
+				Размер size;
+				wxWindow_GetAdjustedBestSize(шхобъ, size);
 				return size;
 		}
 
 		//---------------------------------------------------------------------
 
-		public /+virtual+/ void Centre()
+		public /+virtual+/ проц Centre()
 		{ 
-			Center( Orientation.wxBOTH ); 
+			Center( Ориентация.wxBOTH ); 
 		}
 		
-		public /+virtual+/ void Center()
+		public /+virtual+/ проц Center()
 		{ 
-			Center( Orientation.wxBOTH ); 
+			Center( Ориентация.wxBOTH ); 
 		}
 		
-		public /+virtual+/ void Centre(int direction)
+		public /+virtual+/ проц Centre(цел direction)
 		{ 
 			Center( direction ); 
 		}
 		
-		public /+virtual+/ void Center(int direction)
+		public /+virtual+/ проц Center(цел direction)
 		{
-			wxWindow_Center(wxobj, direction);
+			wxWindow_Center(шхобъ, direction);
 		}
 
-		public /+virtual+/ void CentreOnScreen()
+		public /+virtual+/ проц CentreOnScreen()
 		{ 
-			CenterOnScreen( Orientation.wxBOTH ); 
+			CenterOnScreen( Ориентация.wxBOTH ); 
 		}
 		
-		public /+virtual+/ void CenterOnScreen()
+		public /+virtual+/ проц CenterOnScreen()
 		{ 
-			CenterOnScreen( Orientation.wxBOTH ); 
+			CenterOnScreen( Ориентация.wxBOTH ); 
 		}
 		
-		public /+virtual+/ void CentreOnScreen(int direction)
+		public /+virtual+/ проц CentreOnScreen(цел direction)
 		{ 
 			CenterOnScreen( direction ); 
 		}
 		
-		public /+virtual+/ void CenterOnScreen(int direction)
+		public /+virtual+/ проц CenterOnScreen(цел direction)
 		{
-			wxWindow_CenterOnScreen(wxobj, direction);
+			wxWindow_CenterOnScreen(шхобъ, direction);
 		}
 
-		public /+virtual+/ void CentreOnParent()
+		public /+virtual+/ проц CentreOnParent()
 		{ 
-			CenterOnParent( Orientation.wxBOTH ); 
+			CenterOnParent( Ориентация.wxBOTH ); 
 		}
 		
-		public /+virtual+/ void CenterOnParent()
+		public /+virtual+/ проц CenterOnParent()
 		{ 
-			CenterOnParent( Orientation.wxBOTH ); 
+			CenterOnParent( Ориентация.wxBOTH ); 
 		}
 		
-		public /+virtual+/ void CentreOnParent(int direction)
+		public /+virtual+/ проц CentreOnParent(цел direction)
 		{ 
 			CenterOnParent( direction ); 
 		}
 		
-		public /+virtual+/ void CenterOnParent(int direction)
+		public /+virtual+/ проц CenterOnParent(цел direction)
 		{
-			wxWindow_CenterOnParent(wxobj, direction);
+			wxWindow_CenterOnParent(шхобъ, direction);
 		}
 
 		//---------------------------------------------------------------------
 
-		public /+virtual+/ void Fit()
+		public /+virtual+/ проц Fit()
 		{
-			wxWindow_Fit(wxobj);
+			wxWindow_Fit(шхобъ);
 		}
 
-		public /+virtual+/ void FitInside()
+		public /+virtual+/ проц FitInside()
 		{
-			wxWindow_FitInside(wxobj);
+			wxWindow_FitInside(шхобъ);
 		}
 
 		//---------------------------------------------------------------------
 
-		public /+virtual+/ void SetSizeHints(int minW, int minH)
+		public /+virtual+/ проц SetSizeHints(цел minW, цел minH)
 		{ 
 			SetSizeHints(minW, minH, -1, -1, -1, -1); 
 		}
 		
-		public /+virtual+/ void SetSizeHints(int minW, int minH, int maxW, int maxH)
+		public /+virtual+/ проц SetSizeHints(цел minW, цел minH, цел maxW, цел maxH)
 		{ 
 			SetSizeHints(minW, minH, maxW, maxH, -1, -1); 
 		}
 		
-		public /+virtual+/ void SetSizeHints(int minW, int minH, int maxW, int maxH, int incW, int incH)
+		public /+virtual+/ проц SetSizeHints(цел minW, цел minH, цел maxW, цел maxH, цел incW, цел incH)
 		{
-			wxWindow_SetSizeHints(wxobj, minW, minH, maxW, maxH, incW, incH);
+			wxWindow_SetSizeHints(шхобъ, minW, minH, maxW, maxH, incW, incH);
 		}
 /+
-		public /+virtual+/ void SetVirtualSizeHints(int minW, int minH, int maxW, int maxH)
+		public /+virtual+/ проц SetVirtualSizeHints(цел minW, цел minH, цел maxW, цел maxH)
 		{
-			wxWindow_SetVirtualSizeHints(wxobj, minW, minH, maxW, maxH);
+			wxWindow_SetVirtualSizeHints(шхобъ, minW, minH, maxW, maxH);
 		}
 +/
 		//---------------------------------------------------------------------
 
-		public /+virtual+/ int MinWidth()
+		public /+virtual+/ цел MinWidth()
 		{
-				return wxWindow_GetMinWidth(wxobj);
+				return wxWindow_GetMinWidth(шхобъ);
 		}
 
-		public /+virtual+/ int MinHeight()
+		public /+virtual+/ цел MinHeight()
 		{
-				return wxWindow_GetMinHeight(wxobj);
+				return wxWindow_GetMinHeight(шхобъ);
 		}
 
-		public /+virtual+/ int MaxWidth()
+		public /+virtual+/ цел MaxWidth()
 		{
-				return wxWindow_GetMaxWidth(wxobj);
+				return wxWindow_GetMaxWidth(шхобъ);
 		}
 
-		public /+virtual+/ int MaxHeight()
+		public /+virtual+/ цел MaxHeight()
 		{
-				return wxWindow_GetMaxHeight(wxobj);
+				return wxWindow_GetMaxHeight(шхобъ);
 		}
 
 		//---------------------------------------------------------------------
 
-		public /+virtual+/ Size MinSize()
+		public /+virtual+/ Размер MinSize()
 		{
-				Size size;
-				wxWindow_GetMinSize(wxobj, size);
+				Размер size;
+				wxWindow_GetMinSize(шхобъ, size);
 				return size;
 		}
 
-		public void MinSize(Size size)
+		public проц MinSize(Размер size)
 		{
-				wxWindow_SetMinSize(wxobj, &size);
+				wxWindow_SetMinSize(шхобъ, &size);
 		}
 
-		public /+virtual+/ Size MaxSize()
+		public /+virtual+/ Размер MaxSize()
 		{
-				Size size;
-				wxWindow_GetMaxSize(wxobj, size);
+				Размер size;
+				wxWindow_GetMaxSize(шхобъ, size);
 				return size;
 		}
 
-		public void MaxSize(Size size)
+		public проц MaxSize(Размер size)
 		{
-				wxWindow_SetMaxSize(wxobj, &size);
+				wxWindow_SetMaxSize(шхобъ, &size);
 		}
 
 		//---------------------------------------------------------------------
 
-		public /+virtual+/ Size VirtualSize()
+		public /+virtual+/ Размер VirtualSize()
 			{
-				Size size;
-				wxWindow_GetVirtualSize(wxobj, size);
+				Размер size;
+				wxWindow_GetVirtualSize(шхобъ, size);
 				return size;
 			}
-		public /+virtual+/ void  VirtualSize(Size value)
+		public /+virtual+/ проц  VirtualSize(Размер значение)
 			{
-				wxWindow_SetVirtualSize(wxobj, value);
+				wxWindow_SetVirtualSize(шхобъ, значение);
 			}
 
 		//---------------------------------------------------------------------
 
-		public /+virtual+/ Size BestVirtualSize()
+		public /+virtual+/ Размер BestVirtualSize()
 		{
-				Size size;
-				wxWindow_GetBestVirtualSize(wxobj, size);
+				Размер size;
+				wxWindow_GetBestVirtualSize(шхобъ, size);
 				return size;
 		}
 
 		//---------------------------------------------------------------------
 
-		public /+virtual+/ bool Hide()
+		public /+virtual+/ бул Hide()
 		{
-			return wxWindow_Hide(wxobj);
+			return wxWindow_Hide(шхобъ);
 		}
 
-		public /+virtual+/ bool Disable()
+		public /+virtual+/ бул Disable()
 		{
-			return wxWindow_Disable(wxobj);
+			return wxWindow_Disable(шхобъ);
 		}
 
-		public /+virtual+/ bool IsShown()
+		public /+virtual+/ бул IsShown()
 		{
-			return wxWindow_IsShown(wxobj);
-		}
-
-		//---------------------------------------------------------------------
-
-		public /+virtual+/ int WindowStyle()
-			{
-				return wxWindow_GetWindowStyle(wxobj);
-			}
-		public /+virtual+/ void WindowStyle(uint value)
-			{
-				wxWindow_SetWindowStyle(wxobj, value);
-			}
-
-		public /+virtual+/ bool HasFlag(int flag)
-		{
-			return wxWindow_HasFlag(wxobj, flag);
+			return wxWindow_IsShown(шхобъ);
 		}
 
 		//---------------------------------------------------------------------
 
-		public /+virtual+/ bool IsRetained()
+		public /+virtual+/ цел WindowStyle()
+			{
+				return wxWindow_GetWindowStyle(шхобъ);
+			}
+		public /+virtual+/ проц WindowStyle(бцел значение)
+			{
+				wxWindow_SetWindowStyle(шхобъ, значение);
+			}
+
+		public /+virtual+/ бул HasFlag(цел flag)
 		{
-			return wxWindow_IsRetained(wxobj);
+			return wxWindow_HasFlag(шхобъ, flag);
 		}
 
 		//---------------------------------------------------------------------
 
-		public /+virtual+/ int ExtraStyle()
+		public /+virtual+/ бул IsRetained()
+		{
+			return wxWindow_IsRetained(шхобъ);
+		}
+
+		//---------------------------------------------------------------------
+
+		public /+virtual+/ цел ExtraStyle()
 			{
-				return wxWindow_GetExtraStyle(wxobj);
+				return wxWindow_GetExtraStyle(шхобъ);
 			}
-		public /+virtual+/ void ExtraStyle(uint value)
+		public /+virtual+/ проц ExtraStyle(бцел значение)
 			{
-				wxWindow_SetExtraStyle(wxobj, value);
+				wxWindow_SetExtraStyle(шхобъ, значение);
 			}
 
 		//---------------------------------------------------------------------
 /+
-		public void MakeModal(bool value)
+		public проц MakeModal(бул значение)
 		{
-			wxWindow_MakeModal(wxobj, value);
+			wxWindow_MakeModal(шхобъ, значение);
 		}
 
 	+/	//---------------------------------------------------------------------
 
-		public bool ThemeEnabled()
+		public бул ThemeEnabled()
 		{
-			return wxWindow_GetThemeEnabled(wxobj);
+			return wxWindow_GetThemeEnabled(шхобъ);
 		}
-		public void ThemeEnabled(bool value)
+		public проц ThemeEnabled(бул значение)
 		{
-			wxWindow_SetThemeEnabled(wxobj, value);
-		}
-
-		//---------------------------------------------------------------------
-
-		public /+virtual+/ void SetFocus()
-		{
-			wxWindow_SetFocus(wxobj);
-		}
-
-		public /+virtual+/ void SetFocusFromKbd()
-		{
-			wxWindow_SetFocusFromKbd(wxobj);
-		}
-
-		public static Window FindFocus()
-		{
-			return cast(Window)FindObject(wxWindow_FindFocus());
+			wxWindow_SetThemeEnabled(шхобъ, значение);
 		}
 
 		//---------------------------------------------------------------------
 
-		public /+virtual+/ bool AcceptsFocus()
+		public /+virtual+/ проц SetFocus()
 		{
-			return wxWindow_AcceptsFocus(wxobj);
+			wxWindow_SetFocus(шхобъ);
 		}
 
-		public /+virtual+/ bool AcceptsFocusFromKeyboard()
+		public /+virtual+/ проц SetFocusFromKbd()
 		{
-			return wxWindow_AcceptsFocusFromKeyboard(wxobj);
+			wxWindow_SetFocusFromKbd(шхобъ);
 		}
 
-		//---------------------------------------------------------------------
-
-		public /+virtual+/ Window Parent()
+		public static Окно FindFocus()
 		{
-			return cast(Window)FindObject(wxWindow_GetParent(wxobj));
-		}
-		public /+virtual+/ void Parent(Window value)
-		{
-			wxWindow_SetParent(wxobj, wxObject.SafePtr(value));
-		}
-
-		public /+virtual+/ Window GrandParent()
-		{
-			return cast(Window)FindObject(wxWindow_GetGrandParent(wxobj));
-		}
-
-		public /+virtual+/ bool Reparent(Window newParent)
-		{
-			return wxWindow_Reparent(wxobj, wxObject.SafePtr(newParent));
+			return cast(Окно)FindObject(wxWindow_FindFocus());
 		}
 
 		//---------------------------------------------------------------------
 
-		public /+virtual+/ bool IsTopLevel()
+		public /+virtual+/ бул AcceptsFocus()
 		{
-			return wxWindow_IsTopLevel(wxobj);
-		}
-		//---------------------------------------------------------------------
-
-		public /+virtual+/ void AddChild(Window child)
-		{
-			wxWindow_AddChild(wxobj, wxObject.SafePtr(child));
+			return wxWindow_AcceptsFocus(шхобъ);
 		}
 
-		public /+virtual+/ void RemoveChild(Window child)
+		public /+virtual+/ бул AcceptsFocusFromKeyboard()
 		{
-			wxWindow_RemoveChild(wxobj, wxObject.SafePtr(child));
+			return wxWindow_AcceptsFocusFromKeyboard(шхобъ);
 		}
 
 		//---------------------------------------------------------------------
 
-		public /+virtual+/ Window FindWindow(int id)
+		public /+virtual+/ Окно Parent()
 		{
-			return cast(Window)FindObject(wxWindow_FindWindowId(wxobj, id));
+			return cast(Окно)FindObject(wxWindow_GetParent(шхобъ));
+		}
+		public /+virtual+/ проц Parent(Окно значение)
+		{
+			wxWindow_SetParent(шхобъ, wxObject.SafePtr(значение));
 		}
 
-		public /+virtual+/ Window FindWindow(int id, newfunc func)
+		public /+virtual+/ Окно GrandParent()
 		{
-			return cast(Window)FindObject(wxWindow_FindWindowId(wxobj, id), func);
+			return cast(Окно)FindObject(wxWindow_GetGrandParent(шхобъ));
 		}
 
-		public /+virtual+/ Window FindWindow(string name)
+		public /+virtual+/ бул Reparent(Окно newParent)
 		{
-			return cast(Window)FindObject(wxWindow_FindWindowName(wxobj, name));
+			return wxWindow_Reparent(шхобъ, wxObject.SafePtr(newParent));
 		}
 
 		//---------------------------------------------------------------------
 
-		public static Window FindWindowById(int id, Window parent)
+		public /+virtual+/ бул IsTopLevel()
 		{
-			return cast(Window)FindObject(wxWindow_FindWindowById(id, wxObject.SafePtr(parent)));
+			return wxWindow_IsTopLevel(шхобъ);
+		}
+		//---------------------------------------------------------------------
+
+		public /+virtual+/ проц AddChild(Окно child)
+		{
+			wxWindow_AddChild(шхобъ, wxObject.SafePtr(child));
 		}
 
-		public static Window FindWindowByName(string name, Window parent)
+		public /+virtual+/ проц RemoveChild(Окно child)
 		{
-			return cast(Window)FindObject(wxWindow_FindWindowByName(name, wxObject.SafePtr(parent)));
+			wxWindow_RemoveChild(шхобъ, wxObject.SafePtr(child));
 		}
 
-		public static Window FindWindowByLabel(string label, Window parent)
+		//---------------------------------------------------------------------
+
+		public /+virtual+/ Окно FindWindow(цел ид)
 		{
-			return cast(Window)FindObject(wxWindow_FindWindowByLabel(label, wxObject.SafePtr(parent)));
+			return cast(Окно)FindObject(wxWindow_FindWindowId(шхобъ, ид));
+		}
+
+		public /+virtual+/ Окно FindWindow(цел ид, newfunc func)
+		{
+			return cast(Окно)FindObject(wxWindow_FindWindowId(шхобъ, ид), func);
+		}
+
+		public /+virtual+/ Окно FindWindow(ткст имя)
+		{
+			return cast(Окно)FindObject(wxWindow_FindWindowName(шхобъ, имя));
+		}
+
+		//---------------------------------------------------------------------
+
+		public static Окно FindWindowById(цел ид, Окно родитель)
+		{
+			return cast(Окно)FindObject(wxWindow_FindWindowById(ид, wxObject.SafePtr(родитель)));
+		}
+
+		public static Окно FindWindowByName(ткст имя, Окно родитель)
+		{
+			return cast(Окно)FindObject(wxWindow_FindWindowByName(имя, wxObject.SafePtr(родитель)));
+		}
+
+		public static Окно FindWindowByLabel(ткст надпись, Окно родитель)
+		{
+			return cast(Окно)FindObject(wxWindow_FindWindowByLabel(надпись, wxObject.SafePtr(родитель)));
 		}
 
 		//---------------------------------------------------------------------
 
 		public EvtHandler EventHandler()
 		{
-			IntPtr ptr = wxWindow_GetEventHandler(wxobj);
+			ЦУк ptr = wxWindow_GetEventHandler(шхобъ);
 			wxObject o = FindObject(ptr);
 			if (o) return cast(EvtHandler)o;
 			else return new EvtHandler(ptr);
-		//	return cast(EvtHandler)FindObject(wxWindow_GetEventHandler(wxobj),&EvtHandler.New);
+		//	return cast(EvtHandler)FindObject(wxWindow_GetEventHandler(шхобъ),&EvtHandler.Нов);
 		}
-		public void EventHandler(EvtHandler value)
+		public проц EventHandler(EvtHandler значение)
 		{
-			wxWindow_SetEventHandler(wxobj, wxObject.SafePtr(value));
+			wxWindow_SetEventHandler(шхобъ, wxObject.SafePtr(значение));
 		}
 
 		//---------------------------------------------------------------------
 
-		public void PushEventHandler(EvtHandler handler)
+		public проц PushEventHandler(EvtHandler handler)
 		{
-			wxWindow_PushEventHandler(wxobj, wxObject.SafePtr(handler));
+			wxWindow_PushEventHandler(шхобъ, wxObject.SafePtr(handler));
 		}
 
-		public EvtHandler PopEventHandler(bool deleteHandler)
+		public EvtHandler PopEventHandler(бул deleteHandler)
 		{
-			IntPtr ptr = wxWindow_PopEventHandler(wxobj, deleteHandler);
+			ЦУк ptr = wxWindow_PopEventHandler(шхобъ, deleteHandler);
 			wxObject o = FindObject(ptr);
 			if (o) return cast(EvtHandler)o;
 			else return new EvtHandler(ptr);
-		//	return cast(EvtHandler)FindObject(wxWindow_PopEventHandler(wxobj, deleteHandler),&EvtHandler.New);
+		//	return cast(EvtHandler)FindObject(wxWindow_PopEventHandler(шхобъ, deleteHandler),&EvtHandler.Нов);
 		}
 
-		public bool RemoveEventHandler(EvtHandler handler)
+		public бул RemoveEventHandler(EvtHandler handler)
 		{
-			return wxWindow_RemoveEventHandler(wxobj, wxObject.SafePtr(handler));
+			return wxWindow_RemoveEventHandler(шхобъ, wxObject.SafePtr(handler));
 		}
 
 		//---------------------------------------------------------------------
 
 		public /+virtual+/ Validator validator()
 		{
-			return cast(Validator)FindObject(wxWindow_GetValidator(wxobj));
+			return cast(Validator)FindObject(wxWindow_GetValidator(шхобъ));
 		}
-		public /+virtual+/ void validator(Validator value)
+		public /+virtual+/ проц validator(Validator значение)
 		{
-			wxWindow_SetValidator(wxobj, wxObject.SafePtr(value));
-		}
-
-		public /+virtual+/ bool Validate()
-		{
-			return wxWindow_Validate(wxobj);
+			wxWindow_SetValidator(шхобъ, wxObject.SafePtr(значение));
 		}
 
-		//---------------------------------------------------------------------
-
-		public /+virtual+/ bool TransferDataToWindow()
+		public /+virtual+/ бул Validate()
 		{
-			//return wxWindow_TransferDataToWindow(wxobj);
-			return true;
-		}
-
-		public /+virtual+/ bool TransferDataFromWindow()
-		{
-			//return wxWindow_TransferDataFromWindow(wxobj);
-			return true;
+			return wxWindow_Validate(шхобъ);
 		}
 
 		//---------------------------------------------------------------------
 
-		public /+virtual+/ void InitDialog()
+		public /+virtual+/ бул TransferDataToWindow()
 		{
-			wxWindow_InitDialog(wxobj);
+			//return wxWindow_TransferDataToWindow(шхобъ);
+			return да;
+		}
+
+		public /+virtual+/ бул TransferDataFromWindow()
+		{
+			//return wxWindow_TransferDataFromWindow(шхобъ);
+			return да;
 		}
 
 		//---------------------------------------------------------------------
 
-		public /+virtual+/ Point ConvertPixelsToDialog(Point pt)
+		public /+virtual+/ проц InitDialog()
 		{
-			Point point;
-			wxWindow_ConvertPixelsToDialogPoint(wxobj, pt, point);
+			wxWindow_InitDialog(шхобъ);
+		}
+
+		//---------------------------------------------------------------------
+
+		public /+virtual+/ Точка ConvertPixelsToDialog(Точка pt)
+		{
+			Точка point;
+			wxWindow_ConvertPixelsToDialogPoint(шхобъ, pt, point);
 			return point;
 		}
 
-		public /+virtual+/ Point ConvertDialogToPixels(Point pt)
+		public /+virtual+/ Точка ConvertDialogToPixels(Точка pt)
 		{
-			Point point;
-			wxWindow_ConvertDialogToPixelsPoint(wxobj, pt, point);
+			Точка point;
+			wxWindow_ConvertDialogToPixelsPoint(шхобъ, pt, point);
 			return point;
 		}
 
-		public /+virtual+/ Size ConvertPixelsToDialog(Size sz)
+		public /+virtual+/ Размер ConvertPixelsToDialog(Размер sz)
 		{
-			Size size;
-			wxWindow_ConvertPixelsToDialogSize(wxobj, sz, size);
+			Размер size;
+			wxWindow_ConvertPixelsToDialogSize(шхобъ, sz, size);
 			return size;
 		}
 
-		public /+virtual+/ Size ConvertDialogToPixels(Size sz)
+		public /+virtual+/ Размер ConvertDialogToPixels(Размер sz)
 		{
-			Size size;
-			wxWindow_ConvertPixelsToDialogSize(wxobj, sz, size);
+			Размер size;
+			wxWindow_ConvertPixelsToDialogSize(шхобъ, sz, size);
 			return size;
 		}
 
 		//---------------------------------------------------------------------
 
-		public /+virtual+/ void WarpPointer(int x, int y)
+		public /+virtual+/ проц WarpPointer(цел x, цел y)
 		{
-			wxWindow_WarpPointer(wxobj, x, y);
+			wxWindow_WarpPointer(шхобъ, x, y);
 		}
 
-		public /+virtual+/ void CaptureMouse()
+		public /+virtual+/ проц CaptureMouse()
 		{
-			wxWindow_CaptureMouse(wxobj);
+			wxWindow_CaptureMouse(шхобъ);
 		}
 
-		public /+virtual+/ void ReleaseMouse()
+		public /+virtual+/ проц ReleaseMouse()
 		{
-			wxWindow_ReleaseMouse(wxobj);
+			wxWindow_ReleaseMouse(шхобъ);
 		}
 
-		public static Window GetCapture()
+		public static Окно GetCapture()
 		{
-			return cast(Window)FindObject(wxWindow_GetCapture());
+			return cast(Окно)FindObject(wxWindow_GetCapture());
 		}
 
-		public /+virtual+/ bool HasCapture()
+		public /+virtual+/ бул HasCapture()
 		{
-			return wxWindow_HasCapture(wxobj);
+			return wxWindow_HasCapture(шхобъ);
 		}
 
 		//---------------------------------------------------------------------
 
-		public /+virtual+/ void Refresh()
+		public /+virtual+/ проц Refresh()
 		{
-			Refresh(true, ClientRect);
+			Refresh(да, ClientRect);
 		}
 
-		public /+virtual+/ void Refresh(bool eraseBackground)
+		public /+virtual+/ проц Refresh(бул eraseBackground)
 		{
 			Refresh(eraseBackground, ClientRect);
 		}
 
-		public /+virtual+/ void Refresh(bool eraseBackground, Rectangle rect)
+		public /+virtual+/ проц Refresh(бул eraseBackground, Прямоугольник прям)
 		{
-			wxWindow_Refresh(wxobj, eraseBackground, rect);
+			wxWindow_Refresh(шхобъ, eraseBackground, прям);
 		}
 
-		public /+virtual+/ void RefreshRectangle(Rectangle rect)
+		public /+virtual+/ проц RefreshRectangle(Прямоугольник прям)
 		{
-			wxWindow_RefreshRect(wxobj, rect);
-		}
-
-		//---------------------------------------------------------------------
-
-		public /+virtual+/ void Update()
-		{
-			wxWindow_Update(wxobj);
-		}
-
-		public /+virtual+/ void ClearBackground()
-		{
-			wxWindow_ClearBackground(wxobj);
+			wxWindow_RefreshRect(шхобъ, прям);
 		}
 
 		//---------------------------------------------------------------------
 
-		public /+virtual+/ void Freeze()
+		public /+virtual+/ проц Обнови()
 		{
-			wxWindow_Freeze(wxobj);
+			wxWindow_Update(шхобъ);
 		}
 
-		public /+virtual+/ void Thaw()
+		public /+virtual+/ проц ClearBackground()
 		{
-			wxWindow_Thaw(wxobj);
-		}
-
-		//---------------------------------------------------------------------
-
-		public /+virtual+/ void PrepareDC(DC dc)
-		{
-			wxWindow_PrepareDC(wxobj, wxObject.SafePtr(dc));
+			wxWindow_ClearBackground(шхобъ);
 		}
 
 		//---------------------------------------------------------------------
 
-		public /+virtual+/ bool  IsExposed(int x, int y, int w, int h)
+		public /+virtual+/ проц Freeze()
 		{
-			return wxWindow_IsExposed(wxobj, x, y, w, h);
+			wxWindow_Freeze(шхобъ);
+		}
+
+		public /+virtual+/ проц Thaw()
+		{
+			wxWindow_Thaw(шхобъ);
+		}
+
+		//---------------------------------------------------------------------
+
+		public /+virtual+/ проц PrepareDC(DC dc)
+		{
+			wxWindow_PrepareDC(шхобъ, wxObject.SafePtr(dc));
+		}
+
+		//---------------------------------------------------------------------
+
+		public /+virtual+/ бул  IsExposed(цел x, цел y, цел w, цел h)
+		{
+			return wxWindow_IsExposed(шхобъ, x, y, w, h);
 		}
 
 		//---------------------------------------------------------------------
 
 		public /+virtual+/ Caret caret()
 		{
-			return cast(Caret)FindObject(wxWindow_GetCaret(wxobj),&Caret.New);
+			return cast(Caret)FindObject(wxWindow_GetCaret(шхобъ),&Caret.Нов);
 		}
-		public /+virtual+/ void caret(Caret value)
+		public /+virtual+/ проц caret(Caret значение)
 		{
-			wxWindow_SetCaret(wxobj, wxObject.SafePtr(value));
-		}
-
-		//---------------------------------------------------------------------
-
-		public /+virtual+/ int CharHeight()
-		{
-			return wxWindow_GetCharHeight(wxobj);
-		}
-
-		public /+virtual+/ int CharWidth()
-		{
-			return wxWindow_GetCharWidth(wxobj);
+			wxWindow_SetCaret(шхобъ, wxObject.SafePtr(значение));
 		}
 
 		//---------------------------------------------------------------------
 
-		public void GetTextExtent(string str, out int x, out int y, out int descent,
-								  out int externalLeading, Font font)
+		public /+virtual+/ цел CharHeight()
 		{
-			wxWindow_GetTextExtent(wxobj, str, x, y, descent,
-								   externalLeading, wxObject.SafePtr(font));
+			return wxWindow_GetCharHeight(шхобъ);
+		}
+
+		public /+virtual+/ цел CharWidth()
+		{
+			return wxWindow_GetCharWidth(шхобъ);
 		}
 
 		//---------------------------------------------------------------------
 
-		public void ClientToScreen(inout int x, inout int y)
+		public проц GetTextExtent(ткст str, out цел x, out цел y, out цел descent,
+								  out цел externalLeading, Шрифт шрифт)
 		{
-			wxWindow_ClientToScreen(wxobj, x, y);
+			wxWindow_GetTextExtent(шхобъ, str, x, y, descent,
+								   externalLeading, wxObject.SafePtr(шрифт));
 		}
 
-		public Point ClientToScreen(Point clientPoint)
+		//---------------------------------------------------------------------
+
+		public проц ClientToScreen(inout цел x, inout цел y)
 		{
-			Point screenPoint;
-			wxWindow_ClientToScreen(wxobj, clientPoint, screenPoint);
+			wxWindow_ClientToScreen(шхобъ, x, y);
+		}
+
+		public Точка ClientToScreen(Точка clientPoint)
+		{
+			Точка screenPoint;
+			wxWindow_ClientToScreen(шхобъ, clientPoint, screenPoint);
 			return screenPoint;
 		}
 
-		public /+virtual+/ void ScreenToClient(inout int x, inout int y)
+		public /+virtual+/ проц ScreenToClient(inout цел x, inout цел y)
 		{
-			wxWindow_ScreenToClient(wxobj, x, y);
+			wxWindow_ScreenToClient(шхобъ, x, y);
 		}
 
-		public Point ScreenToClient(Point screenPoint)
+		public Точка ScreenToClient(Точка screenPoint)
 		{
-			Point clientPoint;
-			wxWindow_ScreenToClient(wxobj, screenPoint, clientPoint);
+			Точка clientPoint;
+			wxWindow_ScreenToClient(шхобъ, screenPoint, clientPoint);
 			return clientPoint;
 		}
 
 		//---------------------------------------------------------------------
 
-		public /+virtual+/ void UpdateWindowUI()
+		public /+virtual+/ проц UpdateWindowUI()
 		{
-			wxWindow_UpdateWindowUI(wxobj);
+			wxWindow_UpdateWindowUI(шхобъ);
 		}
 
 		//---------------------------------------------------------------------
 
-		public /+virtual+/ bool PopupMenu(Menu menu, Point pos)
+		public /+virtual+/ бул PopupMenu(Меню меню, Точка поз)
 		{
-			bool tmpbool = wxWindow_PopupMenu(wxobj, wxObject.SafePtr(menu), pos);
+			бул tmpbool = wxWindow_PopupMenu(шхобъ, wxObject.SafePtr(меню), поз);
 			
-			menu.ConnectEvents(this);
+			меню.ConnectEvents(this);
 			
 			return tmpbool;
 		}
 
 		//---------------------------------------------------------------------
 
-		public /+virtual+/ bool HasScrollbar(int orient)
+		public /+virtual+/ бул HasScrollbar(цел orient)
 		{
-			return wxWindow_HasScrollbar(wxobj, orient);
+			return wxWindow_HasScrollbar(шхобъ, orient);
 		}
 
-		public /+virtual+/ void SetScrollbar(int orient, int pos, int thumbSize, int range, bool refresh)
+		public /+virtual+/ проц SetScrollbar(цел orient, цел поз, цел thumbSize, цел range, бул refresh)
 		{
-			wxWindow_SetScrollbar(wxobj, orient, pos, thumbSize, range, refresh);
+			wxWindow_SetScrollbar(шхобъ, orient, поз, thumbSize, range, refresh);
 		}
 
-		public /+virtual+/ void SetScrollPos(int orient, int pos, bool refresh)
+		public /+virtual+/ проц SetScrollPos(цел orient, цел поз, бул refresh)
 		{
-			wxWindow_SetScrollPos(wxobj, orient, pos, refresh);
-		}
-
-		//---------------------------------------------------------------------
-
-		public /+virtual+/ int GetScrollPos(int orient)
-		{
-			return wxWindow_GetScrollPos(wxobj, orient);
-		}
-
-		public /+virtual+/ int GetScrollThumb(int orient)
-		{
-			return wxWindow_GetScrollThumb(wxobj, orient);
-		}
-
-		public /+virtual+/ int GetScrollRange(int orient)
-		{
-			return wxWindow_GetScrollRange(wxobj, orient);
+			wxWindow_SetScrollPos(шхобъ, orient, поз, refresh);
 		}
 
 		//---------------------------------------------------------------------
 
-		public /+virtual+/ void ScrollWindow(int dx, int dy, Rectangle rect)
+		public /+virtual+/ цел GetScrollPos(цел orient)
 		{
-			wxWindow_ScrollWindow(wxobj, dx, dy, rect);
+			return wxWindow_GetScrollPos(шхобъ, orient);
 		}
 
-		public /+virtual+/ bool ScrollLines(int lines)
+		public /+virtual+/ цел GetScrollThumb(цел orient)
 		{
-			return wxWindow_ScrollLines(wxobj, lines);
+			return wxWindow_GetScrollThumb(шхобъ, orient);
 		}
 
-		public /+virtual+/ bool ScrollPages(int pages)
+		public /+virtual+/ цел GetScrollRange(цел orient)
 		{
-			return wxWindow_ScrollPages(wxobj, pages);
-		}
-
-		//---------------------------------------------------------------------
-
-		public /+virtual+/ bool LineUp()
-		{
-			return wxWindow_LineUp(wxobj);
-		}
-
-		public /+virtual+/ bool LineDown()
-		{
-			return wxWindow_LineDown(wxobj);
-		}
-
-		public /+virtual+/ bool PageUp()
-		{
-			return wxWindow_PageUp(wxobj);
-		}
-
-		public /+virtual+/ bool PageDown()
-		{
-			return wxWindow_PageDown(wxobj);
+			return wxWindow_GetScrollRange(шхобъ, orient);
 		}
 
 		//---------------------------------------------------------------------
 
-		public /+virtual+/ string HelpText()
+		public /+virtual+/ проц ScrollWindow(цел dx, цел dy, Прямоугольник прям)
+		{
+			wxWindow_ScrollWindow(шхобъ, dx, dy, прям);
+		}
+
+		public /+virtual+/ бул ScrollLines(цел lines)
+		{
+			return wxWindow_ScrollLines(шхобъ, lines);
+		}
+
+		public /+virtual+/ бул ScrollPages(цел pages)
+		{
+			return wxWindow_ScrollPages(шхобъ, pages);
+		}
+
+		//---------------------------------------------------------------------
+
+		public /+virtual+/ бул LineUp()
+		{
+			return wxWindow_LineUp(шхобъ);
+		}
+
+		public /+virtual+/ бул LineDown()
+		{
+			return wxWindow_LineDown(шхобъ);
+		}
+
+		public /+virtual+/ бул PageUp()
+		{
+			return wxWindow_PageUp(шхобъ);
+		}
+
+		public /+virtual+/ бул PageDown()
+		{
+			return wxWindow_PageDown(шхобъ);
+		}
+
+		//---------------------------------------------------------------------
+
+		public /+virtual+/ ткст HelpText()
 			{
-				return cast(string) new wxString(wxWindow_GetHelpText(wxobj), true);
+				return cast(ткст) new wxString(wxWindow_GetHelpText(шхобъ), да);
 			}
-		public /+virtual+/ void HelpText(string value)
+		public /+virtual+/ проц HelpText(ткст значение)
 			{
-				wxWindow_SetHelpText(wxobj, value);
+				wxWindow_SetHelpText(шхобъ, значение);
 			}
 /+
-		public /+virtual+/ void SetHelpTextForId(string text)
+		public /+virtual+/ проц SetHelpTextForId(ткст текст)
 		{
-			wxWindow_SetHelpTextForId(wxobj, text);
+			wxWindow_SetHelpTextForId(шхобъ, текст);
 		}
 
 +/		//---------------------------------------------------------------------
 /+FIXME
 		public /+virtual+/ DropTarget dropTarget()
 			{
-				return cast(DropTarget)FindObject(wxWindow_GetDropTarget(wxobj),&DropTarget.New);
+				return cast(DropTarget)FindObject(wxWindow_GetDropTarget(шхобъ),&DropTarget.Нов);
 			}
 +/
-		public /+virtual+/ void dropTarget(DropTarget value)
+		public /+virtual+/ проц dropTarget(DropTarget значение)
 			{
-				wxWindow_SetDropTarget(wxobj, wxObject.SafePtr(value));
+				wxWindow_SetDropTarget(шхобъ, wxObject.SafePtr(значение));
 			}
 
 		//---------------------------------------------------------------------
@@ -1448,284 +1448,284 @@ public import wx.ToolTip;
 		{
 			get
 			{
-				return new LayoutConstraints(wxWindow_GetConstraints(wxobj));
+				return new LayoutConstraints(wxWindow_GetConstraints(шхобъ));
 			}
 			set
 			{
-				wxWindow_SetConstraints(wxobj, wxObject.SafePtr(value));
+				wxWindow_SetConstraints(шхобъ, wxObject.SafePtr(значение));
 			}
 		}*/
 
 		//---------------------------------------------------------------------
 
-		public /+virtual+/ bool AutoLayout()
+		public /+virtual+/ бул AutoLayout()
 			{
-				return wxWindow_GetAutoLayout(wxobj);
+				return wxWindow_GetAutoLayout(шхобъ);
 			}
-		public /+virtual+/ void AutoLayout(bool value)
+		public /+virtual+/ проц AutoLayout(бул значение)
 			{
-				wxWindow_SetAutoLayout(wxobj, value);
+				wxWindow_SetAutoLayout(шхобъ, значение);
 			}
 
 		//---------------------------------------------------------------------
 
-		public /+virtual+/ void SetSizerAndFit(Sizer sizer, bool deleteOld)
+		public /+virtual+/ проц SetSizerAndFit(Sizer sizer, бул deleteOld)
 		{
-			wxWindow_SetSizerAndFit(wxobj, wxObject.SafePtr(sizer), deleteOld);
+			wxWindow_SetSizerAndFit(шхобъ, wxObject.SafePtr(sizer), deleteOld);
 		}
 
 		//---------------------------------------------------------------------
 
 		public /+virtual+/ Sizer sizer()
 			{
-				return cast(Sizer)FindObject(wxWindow_GetSizer(wxobj));
+				return cast(Sizer)FindObject(wxWindow_GetSizer(шхобъ));
 			}
-		public /+virtual+/ void  sizer(Sizer value)
+		public /+virtual+/ проц  sizer(Sizer значение)
 			{
-				SetSizer(value, true);
+				SetSizer(значение, да);
 			}
 
 		//---------------------------------------------------------------------
 
 		public /+virtual+/ Sizer ContainingSizer()
 			{
-				return cast(Sizer)FindObject(wxWindow_GetContainingSizer(wxobj));
+				return cast(Sizer)FindObject(wxWindow_GetContainingSizer(шхобъ));
 			}
-		public /+virtual+/ void  ContainingSizer(Sizer value)
+		public /+virtual+/ проц  ContainingSizer(Sizer значение)
 			{
-				wxWindow_SetContainingSizer(wxobj, wxObject.SafePtr(value));
+				wxWindow_SetContainingSizer(шхобъ, wxObject.SafePtr(значение));
 			}
 
 		//---------------------------------------------------------------------
 
-		public /+virtual+/ Palette palette()
+		public /+virtual+/ Палитра палитра()
 			{
-				return new Palette(wxWindow_GetPalette(wxobj));
+				return new Палитра(wxWindow_GetPalette(шхобъ));
 			}
-		public /+virtual+/ void palette(Palette value)
+		public /+virtual+/ проц палитра(Палитра значение)
 			{
-				wxWindow_SetPalette(wxobj, wxObject.SafePtr(value));
+				wxWindow_SetPalette(шхобъ, wxObject.SafePtr(значение));
 			}
 
 		//---------------------------------------------------------------------
 
-		public /+virtual+/ bool HasCustomPalette()
+		public /+virtual+/ бул HasCustomPalette()
 		{
-			return wxWindow_HasCustomPalette(wxobj);
+			return wxWindow_HasCustomPalette(шхобъ);
 		}
 
 		//---------------------------------------------------------------------
 
 		public /+virtual+/ Region UpdateRegion()
 		{
-			return new Region(wxWindow_GetUpdateRegion(wxobj));
+			return new Region(wxWindow_GetUpdateRegion(шхобъ));
 		}
 
 		//---------------------------------------------------------------------
 		
 		// Implement very common System.Windows.Forms.Control members
 
-		public /+virtual+/ int Top() { return this.Position.Y; }
-		public /+virtual+/ void Top(int value) { this.Move(this.Position.X, value,	0);	}
+		public /+virtual+/ цел Top() { return this.Положение.Y; }
+		public /+virtual+/ проц Top(цел значение) { this.Move(this.Положение.X, значение,	0);	}
 
-		public /+virtual+/ int Left()	{ return this.Position.X; }
-		public /+virtual+/ void Left(int value) { this.Move(value, this.Position.Y,	0);	}
+		public /+virtual+/ цел Left()	{ return this.Положение.X; }
+		public /+virtual+/ проц Left(цел значение) { this.Move(значение, this.Положение.Y,	0);	}
 
-		public /+virtual+/ int Right() { return this.Position.X + this.size.Width;	}
-		public /+virtual+/ void Right( int value) { this.Move(value -	this.size.Width, this.Position.Y, 0); }
+		public /+virtual+/ цел Right() { return this.Положение.X + this.size.Ширина;	}
+		public /+virtual+/ проц Right( цел значение) { this.Move(значение -	this.size.Ширина, this.Положение.Y, 0); }
 
-		public /+virtual+/ int Bottom() { return this.Position.Y + this.size.Height; }
-		public /+virtual+/ void Bottom(int value) { this.Move(this.Position.X, value - this.size.Height, 0); }
+		public /+virtual+/ цел Bottom() { return this.Положение.Y + this.size.Высота; }
+		public /+virtual+/ проц Bottom(цел значение) { this.Move(this.Положение.X, значение - this.size.Высота, 0); }
 
-		public /+virtual+/ int Width() { return this.size.Width; }
-		public /+virtual+/ void Width(int value) { Size size; size.Width = value; size.Height = this.size.Height; this.size = size; }
+		public /+virtual+/ цел Ширина() { return this.size.Ширина; }
+		public /+virtual+/ проц Ширина(цел значение) { Размер size; size.Ширина = значение; size.Высота = this.size.Высота; this.size = size; }
 
-		public /+virtual+/ int Height() { return this.size.Height; }
-		public /+virtual+/ void Height(int value) { Size size; size.Width = this.size.Width; size.Height = value; this.size = size; }
+		public /+virtual+/ цел Высота() { return this.size.Высота; }
+		public /+virtual+/ проц Высота(цел значение) { Размер size; size.Ширина = this.size.Ширина; size.Высота = значение; this.size = size; }
 
 		//---------------------------------------------------------------------
 		
-		public WindowVariant windowVariant() { return cast(WindowVariant)wxWindow_GetWindowVariant(wxobj); }		
+		public WindowVariant windowVariant() { return cast(WindowVariant)wxWindow_GetWindowVariant(шхобъ); }		
 		//---------------------------------------------------------------------
 		
-		public bool IsBeingDeleted()
+		public бул IsBeingDeleted()
 		{
-			return wxWindow_IsBeingDeleted(wxobj);
+			return wxWindow_IsBeingDeleted(шхобъ);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void CacheBestSize(Size size)
+		public проц CacheBestSize(Размер size)
 		{
-			wxWindow_CacheBestSize(wxobj, size);
+			wxWindow_CacheBestSize(шхобъ, size);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void InvalidateBestSize()
+		public проц InvalidateBestSize()
 		{
-			wxWindow_InvalidateBestSize(wxobj);
+			wxWindow_InvalidateBestSize(шхобъ);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public Size BestFittingSize()
+		public Размер BestFittingSize()
 		{
-			Size size;
-			wxWindow_GetBestFittingSize(wxobj, size);
+			Размер size;
+			wxWindow_GetBestFittingSize(шхобъ, size);
 			return size;
 		}
-		public void BestFittingSize(Size value)
+		public проц BestFittingSize(Размер значение)
 		{			
-			wxWindow_SetBestFittingSize(wxobj, value);
+			wxWindow_SetBestFittingSize(шхобъ, значение);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public Window[] Children()
+		public Окно[] Children()
 		{
-			int count = wxWindow_GetChildrenCount(wxobj);
-			Window[] ret = new Window[count];
-			for (int num = 0; num < count; num++)
+			цел счёт = wxWindow_GetChildrenCount(шхобъ);
+			Окно[] ret = new Окно[счёт];
+			for (цел num = 0; num < счёт; num++)
 			{
-				ret[num] = cast(Window)FindObject(wxWindow_GetChildren(wxobj, num));
+				ret[num] = cast(Окно)FindObject(wxWindow_GetChildren(шхобъ, num));
 			}
 			return ret;
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public AcceleratorTable acceleratorTable() { return cast(AcceleratorTable)FindObject(wxWindow_GetAcceleratorTable(wxobj),&AcceleratorTable.New); }		
+		public AcceleratorTable acceleratorTable() { return cast(AcceleratorTable)FindObject(wxWindow_GetAcceleratorTable(шхобъ),&AcceleratorTable.Нов); }		
 		//---------------------------------------------------------------------
 		
-		public /+virtual+/ VisualAttributes DefaultAttributes()
+		public /+virtual+/ ВизАтры DefaultAttributes()
 		{
-			return new VisualAttributes(wxWindow_GetDefaultAttributes(wxobj), true);
+			return new ВизАтры(wxWindow_GetDefaultAttributes(шхобъ), да);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public static VisualAttributes ClassDefaultAttributes()
+		public static ВизАтры ClassDefaultAttributes()
 		{
 			return ClassDefaultAttributes(WindowVariant.wxWINDOW_VARIANT_NORMAL);
 		}
 		
-		public static VisualAttributes ClassDefaultAttributes(WindowVariant variant)
+		public static ВизАтры ClassDefaultAttributes(WindowVariant variant)
 		{
-			return new VisualAttributes(wxWindow_GetClassDefaultAttributes(cast(int)variant), true);
+			return new ВизАтры(wxWindow_GetClassDefaultAttributes(cast(цел)variant), да);
 		}
 		
 		//---------------------------------------------------------------------
 		
 		public /+virtual+/ BackgroundStyle backgroundStyle()
 		{
-			return cast(BackgroundStyle)wxWindow_GetBackgroundStyle(wxobj);
+			return cast(BackgroundStyle)wxWindow_GetBackgroundStyle(шхобъ);
 		}
-		public /+virtual+/ void backgroundStyle(BackgroundStyle value)
+		public /+virtual+/ проц backgroundStyle(BackgroundStyle значение)
 		{
-			wxWindow_SetBackgroundStyle(wxobj, cast(int)value);
+			wxWindow_SetBackgroundStyle(шхобъ, cast(цел)значение);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public Border border() { return cast(Border)wxWindow_GetBorder(wxobj); }		
-		public Border BorderByFlags(uint flags)
+		public Border border() { return cast(Border)wxWindow_GetBorder(шхобъ); }		
+		public Border BorderByFlags(бцел флаги)
 		{
-			return cast(Border)wxWindow_GetBorderByFlags(wxobj, flags);
+			return cast(Border)wxWindow_GetBorderByFlags(шхобъ, флаги);
 		}
 		
 		//---------------------------------------------------------------------
 		
                 // TODO Not available in OS X
                 /*
-		public string ToolTipText() { return cast(string) new wxString(wxWindow_GetToolTipText(wxobj), true); }                */
+		public ткст ToolTipText() { return cast(ткст) new wxString(wxWindow_GetToolTipText(шхобъ), да); }                */
 		
 		//---------------------------------------------------------------------
 		
-		public Window AncestorWithCustomPalette() { return cast(Window)FindObject(wxWindow_GetAncestorWithCustomPalette(wxobj),&Window.New); }		
+		public Окно AncestorWithCustomPalette() { return cast(Окно)FindObject(wxWindow_GetAncestorWithCustomPalette(шхобъ),&Окно.Нов); }		
 		//---------------------------------------------------------------------
 		
-		public /+virtual+/ void InheritAttributes()
+		public /+virtual+/ проц InheritAttributes()
 		{
-			wxWindow_InheritAttributes(wxobj);
+			wxWindow_InheritAttributes(шхобъ);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public /+virtual+/ bool ShouldInheritColours()
+		public /+virtual+/ бул ShouldInheritColours()
 		{
-			return wxWindow_ShouldInheritColours(wxobj);
+			return wxWindow_ShouldInheritColours(шхобъ);
 		}
 		
 		//---------------------------------------------------------------------
 
-		public void LeftUp_Add(EventListener value) { AddCommandListener(Event.wxEVT_LEFT_UP, ID, value, this); }
-		public void LeftUp_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц LeftUp_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_LEFT_UP, ИД, значение, this); }
+		public проц LeftUp_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void RightUp_Add(EventListener value) { AddCommandListener(Event.wxEVT_RIGHT_UP, ID, value, this); }
-		public void RightUp_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц RightUp_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_RIGHT_UP, ИД, значение, this); }
+		public проц RightUp_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void MiddleUp_Add(EventListener value) { AddCommandListener(Event.wxEVT_MIDDLE_UP, ID, value, this); }
-		public void MiddleUp_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц MiddleUp_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_MIDDLE_UP, ИД, значение, this); }
+		public проц MiddleUp_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void LeftDown_Add(EventListener value) { AddCommandListener(Event.wxEVT_LEFT_DOWN, ID, value, this); }
-		public void LeftDown_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц LeftDown_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_LEFT_DOWN, ИД, значение, this); }
+		public проц LeftDown_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void MiddleDown_Add(EventListener value) { AddCommandListener(Event.wxEVT_MIDDLE_DOWN, ID, value, this); }
-		public void MiddleDown_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц MiddleDown_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_MIDDLE_DOWN, ИД, значение, this); }
+		public проц MiddleDown_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void RightDown_Add(EventListener value) { AddCommandListener(Event.wxEVT_RIGHT_DOWN, ID, value, this); }
-		public void RightDown_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц RightDown_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_RIGHT_DOWN, ИД, значение, this); }
+		public проц RightDown_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void LeftDoubleClick_Add(EventListener value) { AddCommandListener(Event.wxEVT_LEFT_DCLICK, ID, value, this); }
-		public void LeftDoubleClick_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц LeftDoubleClick_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_LEFT_DCLICK, ИД, значение, this); }
+		public проц LeftDoubleClick_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void RightDoubleClick_Add(EventListener value) { AddCommandListener(Event.wxEVT_RIGHT_DCLICK, ID, value, this); }
-		public void RightDoubleClick_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц RightDoubleClick_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_RIGHT_DCLICK, ИД, значение, this); }
+		public проц RightDoubleClick_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void MiddleDoubleClick_Add(EventListener value) { AddCommandListener(Event.wxEVT_MIDDLE_DCLICK, ID, value, this); }
-		public void MiddleDoubleClick_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц MiddleDoubleClick_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_MIDDLE_DCLICK, ИД, значение, this); }
+		public проц MiddleDoubleClick_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void MouseMove_Add(EventListener value) { AddCommandListener(Event.wxEVT_MOTION, ID, value, this); }
-		public void MouseMove_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц MouseMove_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_MOTION, ИД, значение, this); }
+		public проц MouseMove_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void MouseThumbTrack_Add(EventListener value) { AddCommandListener(Event.wxEVT_SCROLL_THUMBTRACK, ID, value, this); }
-		public void MouseThumbTrack_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц MouseThumbTrack_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_SCROLL_THUMBTRACK, ИД, значение, this); }
+		public проц MouseThumbTrack_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void MouseEnter_Add(EventListener value) { AddCommandListener(Event.wxEVT_ENTER_WINDOW, ID, value, this); }
-		public void MouseEnter_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц MouseEnter_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_ENTER_WINDOW, ИД, значение, this); }
+		public проц MouseEnter_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void MouseLeave_Add(EventListener value) { AddCommandListener(Event.wxEVT_LEAVE_WINDOW, ID, value, this); }
-		public void MouseLeave_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц MouseLeave_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_LEAVE_WINDOW, ИД, значение, this); }
+		public проц MouseLeave_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void ScrollLineUp_Add(EventListener value) { AddCommandListener(Event.wxEVT_SCROLL_LINEUP, ID, value, this); }
-		public void ScrollLineUp_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц ScrollLineUp_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_SCROLL_LINEUP, ИД, значение, this); }
+		public проц ScrollLineUp_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void ScrollLineDown_Add(EventListener value) { AddCommandListener(Event.wxEVT_SCROLL_LINEDOWN, ID, value, this); }
-		public void ScrollLineDown_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц ScrollLineDown_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_SCROLL_LINEDOWN, ИД, значение, this); }
+		public проц ScrollLineDown_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void UpdateUI_Add(EventListener value) { AddCommandListener(Event.wxEVT_UPDATE_UI, ID, value, this); }
-		public void UpdateUI_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц UpdateUI_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_UPDATE_UI, ИД, значение, this); }
+		public проц UpdateUI_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void KeyDown_Add(EventListener value) { AddCommandListener(Event.wxEVT_KEY_DOWN, ID, value, this); }
-		public void KeyDown_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц KeyDown_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_KEY_DOWN, ИД, значение, this); }
+		public проц KeyDown_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void KeyUp_Add(EventListener value) { AddCommandListener(Event.wxEVT_KEY_UP, ID, value, this); }
-		public void KeyUp_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц KeyUp_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_KEY_UP, ИД, значение, this); }
+		public проц KeyUp_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void Char_Add(EventListener value) { AddCommandListener(Event.wxEVT_CHAR, ID, value, this); }
-		public void Char_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц Char_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_CHAR, ИД, значение, this); }
+		public проц Char_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void Closing_Add(EventListener value) { AddCommandListener(Event.wxEVT_CLOSE_WINDOW, ID, value, this); }
-		public void Closing_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц Closing_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_CLOSE_WINDOW, ИД, значение, this); }
+		public проц Closing_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void Activated_Add(EventListener value) { AddCommandListener(Event.wxEVT_ACTIVATE, ID, value, this); }
-		public void Activated_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц Activated_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_ACTIVATE, ИД, значение, this); }
+		public проц Activated_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void Moved_Add(EventListener value) { AddCommandListener(Event.wxEVT_MOVE, ID, value, this); }
-		public void Moved_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц Moved_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_MOVE, ИД, значение, this); }
+		public проц Moved_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void Resized_Add(EventListener value) { AddCommandListener(Event.wxEVT_SIZE, ID, value, this); }
-		public void Resized_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц Resized_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_SIZE, ИД, значение, this); }
+		public проц Resized_Remove(EventListener значение) { RemoveHandler(значение, this); }
 	}
 

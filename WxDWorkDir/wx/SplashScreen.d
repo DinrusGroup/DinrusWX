@@ -10,7 +10,7 @@
 // (C) 2003 Bryan Bulten 
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: SplashScreen.d,v 1.9 2006/11/17 15:21:01 afb Exp $
+// $Ид: SplashScreen.d,v 1.9 2006/11/17 15:21:01 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.SplashScreen;
@@ -18,10 +18,10 @@ public import wx.common;
 public import wx.Frame;
 
 		//! \cond EXTERN
-        static extern (C) IntPtr wxSplashScreen_ctor(IntPtr bitmap, uint splashStyle, int milliseconds, IntPtr parent, int id, inout Point pos, inout Size size, uint style);
-        static extern (C) int    wxSplashScreen_GetSplashStyle(IntPtr self);
-        static extern (C) IntPtr wxSplashScreen_GetSplashWindow(IntPtr self);
-        static extern (C) int    wxSplashScreen_GetTimeout(IntPtr self);
+        static extern (C) ЦУк wxSplashScreen_ctor(ЦУк битмап, бцел splashStyle, цел milliseconds, ЦУк родитель, цел ид, inout Точка поз, inout Размер size, бцел стиль);
+        static extern (C) цел    wxSplashScreen_GetSplashStyle(ЦУк сам);
+        static extern (C) ЦУк wxSplashScreen_GetSplashWindow(ЦУк сам);
+        static extern (C) цел    wxSplashScreen_GetTimeout(ЦУк сам);
 		//! \endcond
 
         //-----------------------------------------------------------------------------
@@ -41,47 +41,47 @@ public import wx.Frame;
 
         //-----------------------------------------------------------------------------
 
-        public this(IntPtr wxobj) 
-            { super(wxobj); }
+        public this(ЦУк шхобъ) 
+            { super(шхобъ); }
 
-        public this(Bitmap bitmap, int splashStyle, int milliseconds, Window parent, int id, Point pos=wxDefaultPosition, Size size=wxDefaultSize, int style=wxSPLASH_DEFAULT)
-            { super(wxSplashScreen_ctor(wxObject.SafePtr(bitmap), splashStyle, milliseconds, wxObject.SafePtr(parent), id, pos, size, style)); }
-
-        //-----------------------------------------------------------------------------
-
-        public int SplashStyle() { return wxSplashScreen_GetSplashStyle(wxobj); }
+        public this(Битмап битмап, цел splashStyle, цел milliseconds, Окно родитель, цел ид, Точка поз=wxDefaultPosition, Размер size=wxDefaultSize, цел стиль=wxSPLASH_DEFAULT)
+            { super(wxSplashScreen_ctor(wxObject.SafePtr(битмап), splashStyle, milliseconds, wxObject.SafePtr(родитель), ид, поз, size, стиль)); }
 
         //-----------------------------------------------------------------------------
 
-        public SplashScreenWindow SplashWindow() { return cast(SplashScreenWindow)FindObject(wxSplashScreen_GetSplashWindow(wxobj), &SplashScreenWindow.New); }
+        public цел SplashStyle() { return wxSplashScreen_GetSplashStyle(шхобъ); }
 
         //-----------------------------------------------------------------------------
 
-        public int Timeout() { return wxSplashScreen_GetTimeout(wxobj); }
+        public SplashScreenWindow SplashWindow() { return cast(SplashScreenWindow)FindObject(wxSplashScreen_GetSplashWindow(шхобъ), &SplashScreenWindow.Нов); }
+
+        //-----------------------------------------------------------------------------
+
+        public цел Timeout() { return wxSplashScreen_GetTimeout(шхобъ); }
     }
     
     //-----------------------------------------------------------------------------
 
 		//! \cond EXTERN
-        static extern (C) IntPtr wxSplashScreenWindow_ctor(IntPtr bitmap, IntPtr parent, int id, inout Point pos, inout Size size, uint style);
-        static extern (C) void   wxSplashScreenWindow_SetBitmap(IntPtr self, IntPtr bitmap);
-        static extern (C) IntPtr wxSplashScreenWindow_GetBitmap(IntPtr self);
+        static extern (C) ЦУк wxSplashScreenWindow_ctor(ЦУк битмап, ЦУк родитель, цел ид, inout Точка поз, inout Размер size, бцел стиль);
+        static extern (C) проц   wxSplashScreenWindow_SetBitmap(ЦУк сам, ЦУк битмап);
+        static extern (C) ЦУк wxSplashScreenWindow_GetBitmap(ЦУк сам);
 		//! \endcond
 
         //-----------------------------------------------------------------------------
 
     alias SplashScreenWindow wxSplashScreenWindow;
-    public class SplashScreenWindow : Window
+    public class SplashScreenWindow : Окно
     {
-        public this(IntPtr wxobj) 
-            { super(wxobj); }
+        public this(ЦУк шхобъ) 
+            { super(шхобъ); }
 
-        public this(Bitmap bitmap, Window parent, int id, Point pos=wxDefaultPosition, Size size=wxDefaultSize, int style=wxNO_BORDER)
-            { super(wxSplashScreenWindow_ctor(wxObject.SafePtr(bitmap), wxObject.SafePtr(parent), id, pos, size, style)); }
+        public this(Битмап битмап, Окно родитель, цел ид, Точка поз=wxDefaultPosition, Размер size=wxDefaultSize, цел стиль=wxNO_BORDER)
+            { super(wxSplashScreenWindow_ctor(wxObject.SafePtr(битмап), wxObject.SafePtr(родитель), ид, поз, size, стиль)); }
 
         //-----------------------------------------------------------------------------
 
-        public void bitmap(Bitmap value) { wxSplashScreenWindow_SetBitmap(wxobj, wxObject.SafePtr(value)); }
-        public Bitmap bitmap() { return cast(Bitmap)FindObject(wxSplashScreenWindow_GetBitmap(wxobj)); }
+        public проц битмап(Битмап значение) { wxSplashScreenWindow_SetBitmap(шхобъ, wxObject.SafePtr(значение)); }
+        public Битмап битмап() { return cast(Битмап)FindObject(wxSplashScreenWindow_GetBitmap(шхобъ)); }
     }
 

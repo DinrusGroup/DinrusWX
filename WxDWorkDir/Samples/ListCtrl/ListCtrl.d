@@ -8,12 +8,12 @@
 // (C) 2004 Alexander Olk
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: ListCtrl.d,v 1.11 2008/04/24 07:22:14 afb Exp $
+// $Ид: ListCtrl.d,v 1.11 2008/04/24 07:22:14 afb Exp $
 //-----------------------------------------------------------------------------
 
 import wx.wx;
 private import std.stdio;
-private import std.string;
+private import std.ткст;
 
 	public enum Cmd
 	{
@@ -60,63 +60,63 @@ private import std.string;
 		public MyListCtrl m_listCtrl;
 		public Panel m_panel;
 		
-		public static int NUM_ITEMS = 30;
+		public static цел NUM_ITEMS = 30;
 		
-		public static int NUM_ICONS = 9;
+		public static цел NUM_ICONS = 9;
 
 		//---------------------------------------------------------------------
 
-		public this(string title, Point pos, Size size)
+		public this(ткст title, Точка поз, Размер size)
 		{
-			super(title, pos, size);
-			// Set the window icon and status bar
+			super(title, поз, size);
+			// Установи the окно иконка and status bar
 
-			icon = new Icon("../Samples/ListCtrl/mondrian.png");
+			иконка = new Icon("../Samples/ListCtrl/mondrian.png");
 			
-			// Make an image list containing large icons
-			m_imageListNormal = new ImageList(32, 32, true);
-			m_imageListSmall = new ImageList(16, 16, true);
+			// Make an рисунок list containing large icons
+			m_imageListNormal = new ImageList(32, 32, да);
+			m_imageListSmall = new ImageList(16, 16, да);
 			
-			Bitmap bmp = new Bitmap( "../Samples/ListCtrl/bitmaps/toolbrai.xpm" );
-			m_imageListNormal.Add( bmp );
-			bmp = new Bitmap( "../Samples/ListCtrl/bitmaps/toolchar.xpm" );
-			m_imageListNormal.Add( bmp );
-			bmp = new Bitmap( "../Samples/ListCtrl/bitmaps/tooldata.xpm" );
-			m_imageListNormal.Add( bmp );
-			bmp = new Bitmap( "../Samples/ListCtrl/bitmaps/toolnote.xpm" );
-			m_imageListNormal.Add( bmp );
-			bmp = new Bitmap( "../Samples/ListCtrl/bitmaps/tooltodo.xpm" );
-			m_imageListNormal.Add( bmp );
-			bmp = new Bitmap( "../Samples/ListCtrl/bitmaps/toolchec.xpm" );
-			m_imageListNormal.Add( bmp );
-			bmp = new Bitmap( "../Samples/ListCtrl/bitmaps/toolgame.xpm" );
-			m_imageListNormal.Add( bmp );
-			bmp = new Bitmap( "../Samples/ListCtrl/bitmaps/tooltime.xpm" );
-			m_imageListNormal.Add( bmp );
-			bmp = new Bitmap( "../Samples/ListCtrl/bitmaps/toolword.xpm" );
-			m_imageListNormal.Add( bmp );
+			Битмап bmp = new Битмап( "../Samples/ListCtrl/bitmaps/toolbrai.xpm" );
+			m_imageListNormal.Добавь( bmp );
+			bmp = new Битмап( "../Samples/ListCtrl/bitmaps/toolchar.xpm" );
+			m_imageListNormal.Добавь( bmp );
+			bmp = new Битмап( "../Samples/ListCtrl/bitmaps/tooldata.xpm" );
+			m_imageListNormal.Добавь( bmp );
+			bmp = new Битмап( "../Samples/ListCtrl/bitmaps/toolnote.xpm" );
+			m_imageListNormal.Добавь( bmp );
+			bmp = new Битмап( "../Samples/ListCtrl/bitmaps/tooltodo.xpm" );
+			m_imageListNormal.Добавь( bmp );
+			bmp = new Битмап( "../Samples/ListCtrl/bitmaps/toolchec.xpm" );
+			m_imageListNormal.Добавь( bmp );
+			bmp = new Битмап( "../Samples/ListCtrl/bitmaps/toolgame.xpm" );
+			m_imageListNormal.Добавь( bmp );
+			bmp = new Битмап( "../Samples/ListCtrl/bitmaps/tooltime.xpm" );
+			m_imageListNormal.Добавь( bmp );
+			bmp = new Битмап( "../Samples/ListCtrl/bitmaps/toolword.xpm" );
+			m_imageListNormal.Добавь( bmp );
 			
-			bmp = new Bitmap( "../Samples/ListCtrl/bitmaps/small1.xpm" );
-			m_imageListSmall.Add( bmp );
+			bmp = new Битмап( "../Samples/ListCtrl/bitmaps/small1.xpm" );
+			m_imageListSmall.Добавь( bmp );
 
 			// Make a menubar
-			Menu menuFile = new Menu();
+			Меню menuFile = new Меню();
 			menuFile.Append(Cmd.LIST_ABOUT, _("&About"));
 			menuFile.AppendSeparator();
 			menuFile.Append(Cmd.LIST_QUIT, _("E&xit\tAlt-X"));
 
-			Menu menuView = new Menu();
+			Меню menuView = new Меню();
 			menuView.Append(Cmd.LIST_LIST_VIEW, _("&List view\tF1"));
 			menuView.Append(Cmd.LIST_REPORT_VIEW, _("&Report view\tF2"));
 			menuView.Append(Cmd.LIST_ICON_VIEW, _("&Icon view\tF3"));
-			menuView.Append(Cmd.LIST_ICON_TEXT_VIEW, _("Icon view with &text\tF4"));
-			menuView.Append(Cmd.LIST_SMALL_ICON_VIEW, _("&Small icon view\tF5"));
-			menuView.Append(Cmd.LIST_SMALL_ICON_TEXT_VIEW, _("Small icon &view with text\tF6"));
+			menuView.Append(Cmd.LIST_ICON_TEXT_VIEW, _("Icon view with &текст\tF4"));
+			menuView.Append(Cmd.LIST_SMALL_ICON_VIEW, _("&Small иконка view\tF5"));
+			menuView.Append(Cmd.LIST_SMALL_ICON_TEXT_VIEW, _("Small иконка &view with текст\tF6"));
 			menuView.Append(Cmd.LIST_VIRTUAL_VIEW, _("Virtual view\tF7"));
 
-			Menu menuList = new Menu();
-			menuList.Append(Cmd.LIST_FOCUS_LAST, _("&Make last item current\tCtrl-L"));
-			menuList.Append(Cmd.LIST_TOGGLE_FIRST, _("To&ggle first item\tCtrl-G"));
+			Меню menuList = new Меню();
+			menuList.Append(Cmd.LIST_FOCUS_LAST, _("&Make last элемент current\tCtrl-L"));
+			menuList.Append(Cmd.LIST_TOGGLE_FIRST, _("To&ggle first элемент\tCtrl-G"));
 			menuList.Append(Cmd.LIST_DESELECT_ALL, _("&Deselect All\tCtrl-D"));
 			menuList.Append(Cmd.LIST_SELECT_ALL, _("S&elect All\tCtrl-A"));
 			menuList.AppendSeparator();
@@ -125,9 +125,9 @@ private import std.string;
 			menuList.AppendSeparator();
 			menuList.Append(Cmd.LIST_SORT, _("&Sort\tCtrl-S"));
 			menuList.AppendSeparator();
-			menuList.Append(Cmd.LIST_ADD, _("&Append an item\tCtrl-P"));
-			menuList.Append(Cmd.LIST_EDIT, _("&Edit the item\tCtrl-E"));
-			menuList.Append(Cmd.LIST_DELETE, _("&Delete first item\tCtrl-X"));
+			menuList.Append(Cmd.LIST_ADD, _("&Append an элемент\tCtrl-P"));
+			menuList.Append(Cmd.LIST_EDIT, _("&Edit the элемент\tCtrl-E"));
+			menuList.Append(Cmd.LIST_DELETE, _("&Delete first элемент\tCtrl-X"));
 			menuList.Append(Cmd.LIST_DELETE_ALL, _("Delete &all items"));
 			menuList.AppendSeparator();
 			menuList.Append(Cmd.LIST_FREEZE, _("Free&ze\tCtrl-Z"));
@@ -136,22 +136,22 @@ private import std.string;
 			menuList.AppendCheckItem(Cmd.LIST_TOGGLE_LINES, _("Toggle &lines\tCtrl-I"));
 			menuList.AppendCheckItem(Cmd.LIST_TOGGLE_MULTI_SEL, _("&Multiple selection\tCtrl-M"), _("Toggle multiple selection"));
 
-			Menu menuCol = new Menu();
+			Меню menuCol = new Меню();
 			menuCol.Append(Cmd.LIST_SET_FG_COL, _("&Foreground colour..."));
-			menuCol.Append(Cmd.LIST_SET_BG_COL, _("&Background colour..."));
+			menuCol.Append(Cmd.LIST_SET_BG_COL, _("&Фон colour..."));
 
 			MenuBar menubar = new MenuBar();
 			menubar.Append(menuFile, _("&File"));
 			menubar.Append(menuView, _("&View"));
 			menubar.Append(menuList, _("&List"));
-			menubar.Append(menuCol, _("&Colour"));
+			menubar.Append(menuCol, _("&Цвет"));
 			
 			this.menuBar = menubar;
 
 			m_panel = new Panel(this, wxID_ANY);
 			m_logWindow = new TextCtrl(m_panel, wxID_ANY, "",
 					wxDefaultPosition, wxDefaultSize,
-					TextCtrl.wxTE_MULTILINE | Window.wxSUNKEN_BORDER);
+					TextCtrl.wxTE_MULTILINE | Окно.wxSUNKEN_BORDER);
 
 			Log.SetActiveTarget(m_logWindow);
 
@@ -197,15 +197,15 @@ private import std.string;
 		
 		//---------------------------------------------------------------------	
 		
-		public void OnClosing(Object sender, Event e)
+		public проц OnClosing(Объект sender, Событие e)
 		{
-			Log.SetActiveTarget(null);
-			e.Skip();
+			Log.SetActiveTarget(пусто);
+			e.Пропусти();
 		}
 
 		//---------------------------------------------------------------------	
 
-		public void OnAbout( Object sender, Event e )
+		public проц OnAbout( Объект sender, Событие e )
 		{
 			MessageBox( "List test sample\nJulian Smart (c) 1997\nPorted to wxD by BERO", "About",
 				Dialog.wxOK | Dialog.wxICON_INFORMATION );
@@ -213,35 +213,35 @@ private import std.string;
 
 		//---------------------------------------------------------------------	
 
-		public void OnQuit( Object sender, Event e )
+		public проц OnQuit( Объект sender, Событие e )
 		{
-			Close();
+			Закрой();
 		}
 		
 		//---------------------------------------------------------------------	
 		
-		public void OnSize( Object sender, Event e )
+		public проц OnSize( Объект sender, Событие e )
 		{
 			DoSize();
 
-			e.Skip();
+			e.Пропусти();
 		}
 		
 		//---------------------------------------------------------------------	
 
-		public void DoSize()
+		public проц DoSize()
 		{
 			if ( !m_logWindow ) return;
 
-			Size size = ClientSize;
-			int y = (2*size.Height)/3;
-			m_listCtrl.SetSize(0, 0, size.Width, y);
-			m_logWindow.SetSize(0, y + 1, size.Width, size.Height - y);
+			Размер size = ClientSize;
+			цел y = (2*size.Высота)/3;
+			m_listCtrl.УстРазм(0, 0, size.Ширина, y);
+			m_logWindow.УстРазм(0, y + 1, size.Ширина, size.Высота - y);
 		}
 		
 		//---------------------------------------------------------------------	
 		
-		public void OnFreeze( Object sender, Event e )
+		public проц OnFreeze( Объект sender, Событие e )
 		{
 			Log.LogMessage(_("Freezing the control"));
 
@@ -250,7 +250,7 @@ private import std.string;
 
 		//---------------------------------------------------------------------	
 
-		public void OnThaw( Object sender, Event e )
+		public проц OnThaw( Объект sender, Событие e )
 		{
 			Log.LogMessage(_("Thawing the control"));
 
@@ -259,7 +259,7 @@ private import std.string;
 
 		//---------------------------------------------------------------------	
 
-		public void OnToggleLines( Object sender, Event e )
+		public проц OnToggleLines( Объект sender, Событие e )
 		{
 			CommandEvent ce = cast(CommandEvent)e;
 		
@@ -268,78 +268,78 @@ private import std.string;
 
 		//---------------------------------------------------------------------	
 
-		public void OnFocusLast( Object sender, Event e )
+		public проц OnFocusLast( Объект sender, Событие e )
 		{
-			long index = m_listCtrl.ItemCount - 1;
-			if ( index == -1 )
+			long индекс = m_listCtrl.ItemCount - 1;
+			if ( индекс == -1 )
 			{
 				return;
 			}
 
-			m_listCtrl.SetItemState(index, ListCtrl.wxLIST_STATE_FOCUSED, ListCtrl.wxLIST_STATE_FOCUSED);
-			m_listCtrl.EnsureVisible(index);
+			m_listCtrl.SetItemState(индекс, ListCtrl.wxLIST_STATE_FOCUSED, ListCtrl.wxLIST_STATE_FOCUSED);
+			m_listCtrl.EnsureVisible(индекс);
 		}
 
 		//---------------------------------------------------------------------	
 
-		public void OnToggleFirstSel( Object sender, Event e )
+		public проц OnToggleFirstSel( Объект sender, Событие e )
 		{
 			m_listCtrl.SetItemState(0, (~m_listCtrl.GetItemState(0, ListCtrl.wxLIST_STATE_SELECTED) ) & ListCtrl.wxLIST_STATE_SELECTED, ListCtrl.wxLIST_STATE_SELECTED);
 		}
 
 		//---------------------------------------------------------------------	
 
-		public void OnDeselectAll( Object sender, Event e )
+		public проц OnDeselectAll( Объект sender, Событие e )
 		{
 			if ( !CheckNonVirtual() )
 				return;
 
-			int n = m_listCtrl.ItemCount;
-			for (int i = 0; i < n; i++)
+			цел n = m_listCtrl.ItemCount;
+			for (цел i = 0; i < n; i++)
 				m_listCtrl.SetItemState(i,0,ListCtrl.wxLIST_STATE_SELECTED);
 		}
 
 		//---------------------------------------------------------------------	
 
-		public void OnSelectAll( Object sender, Event e )
+		public проц OnSelectAll( Объект sender, Событие e )
 		{
 			if ( !CheckNonVirtual() )
 				return;
 
-			int n = m_listCtrl.ItemCount;
-			for (int i = 0; i < n; i++)
+			цел n = m_listCtrl.ItemCount;
+			for (цел i = 0; i < n; i++)
 				m_listCtrl.SetItemState(i,ListCtrl.wxLIST_STATE_SELECTED, ListCtrl.wxLIST_STATE_SELECTED);
 		}
 
 		//---------------------------------------------------------------------	
 
-		public bool CheckNonVirtual()
+		public бул CheckNonVirtual()
 		{
 			if ( !m_listCtrl.HasFlag(ListCtrl.wxLC_VIRTUAL) )
-				return true;
+				return да;
 
 			Log.LogWarning("Can't do this in virtual view, sorry.");
 
-			return false;
+			return нет;
 		}
 		
 		//---------------------------------------------------------------------	
 		
-		public void RecreateList(long flags)
+		public проц RecreateList(long флаги)
 		{
-			RecreateList(flags, true);
+			RecreateList(флаги, да);
 		}
 		
-		public void RecreateList(long flags, bool withText)
+		public проц RecreateList(long флаги, бул withText)
 		{
 			//delete m_listCtrl;
 
 			m_listCtrl = new MyListCtrl(m_panel, Cmd.LIST_CTRL,
 					wxDefaultPosition, wxDefaultSize,
-					flags |
+					флаги |
 					wxSUNKEN_BORDER | ListCtrl.wxLC_EDIT_LABELS);
 
-			switch ( flags & ListCtrl.wxLC_MASK_TYPE )
+			switch ( флаги & ListCtrl.wxLC_MASK_TYPE )
 			{
 				case ListCtrl.wxLC_LIST:
 					InitWithListItems();
@@ -350,11 +350,11 @@ private import std.string;
 				break;
 
 				case ListCtrl.wxLC_SMALL_ICON:
-					InitWithIconItems(withText, true);
+					InitWithIconItems(withText, да);
 				break;
 
 				case ListCtrl.wxLC_REPORT:
-					if ( (flags & ListCtrl.wxLC_VIRTUAL) > 0 )
+					if ( (флаги & ListCtrl.wxLC_VIRTUAL) > 0 )
 						InitWithVirtualItems();
 					else
 						InitWithReportItems();
@@ -367,55 +367,55 @@ private import std.string;
 
 			DoSize();
 
-			m_logWindow.Clear();
+			m_logWindow.Очисть();
 		}
 		
 		//---------------------------------------------------------------------	
 		
-		public void OnListView(Object sender, Event e)
+		public проц OnListView(Объект sender, Событие e)
 		{
 			RecreateList(ListCtrl.wxLC_LIST);
 		}
 		
 		//---------------------------------------------------------------------	
 
-		public void InitWithListItems()
+		public проц InitWithListItems()
 		{
-			for ( int i = 0; i < NUM_ITEMS; i++ )
+			for ( цел i = 0; i < NUM_ITEMS; i++ )
 			{
-				m_listCtrl.InsertItem(i, "Item " ~ .toString(i));
+				m_listCtrl.InsertItem(i, "Элемент " ~ .toString(i));
 			}
 		}
 		
 		//---------------------------------------------------------------------	
 
-		public void OnReportView(Object sender, Event e)
+		public проц OnReportView(Объект sender, Событие e)
 		{
 			RecreateList(ListCtrl.wxLC_REPORT);
 		}
 		
 		//---------------------------------------------------------------------	
 
-		public void InitWithReportItems()
+		public проц InitWithReportItems()
 		{
 			m_listCtrl.SetImageList(m_imageListSmall, wxIMAGE_LIST_SMALL);
 
 			ListItem itemCol = new ListItem();
-			itemCol.Text = "Column 1";
-			itemCol.Image = -1;
+			itemCol.Текст = "Column 1";
+			itemCol.Рисунок = -1;
 			m_listCtrl.InsertColumn(0, itemCol);
 			
-			itemCol.Text = "Column 2";
+			itemCol.Текст = "Column 2";
 			itemCol.Align = ListCtrl.wxLIST_FORMAT_CENTRE;
 			m_listCtrl.InsertColumn(1, itemCol);
 			
-			itemCol.Text = "Column 3";
+			itemCol.Текст = "Column 3";
 			itemCol.Align = ListCtrl.wxLIST_FORMAT_RIGHT;
 			m_listCtrl.InsertColumn(2, itemCol);
 			
 			m_listCtrl.Hide();
 			
-			for ( int i = 0; i < NUM_ITEMS; i++ )
+			for ( цел i = 0; i < NUM_ITEMS; i++ )
 			{
 				m_listCtrl.InsertItemInReportView(i);
 			}
@@ -423,22 +423,22 @@ private import std.string;
 			m_logWindow.WriteText(.toString(NUM_ITEMS) ~ " items inserted");
 			m_listCtrl.Show();
 			
-			ListItem item = new ListItem();
-			item.Id = 0;
-			item.TextColour = Colour.wxRED;
-			m_listCtrl.SetItem( item );
+			ListItem элемент = new ListItem();
+			элемент.Ид = 0;
+			элемент.TextColour = Цвет.wxRED;
+			m_listCtrl.SetItem( элемент );
 			
-			item.Id = 2;
-			item.TextColour = Colour.wxGREEN;
-			m_listCtrl.SetItem( item );
-			item.Id = 4;
-			item.TextColour = Colour.wxLIGHT_GREY;
-			item.font = Font.wxITALIC_FONT;
-			item.BackgroundColour = Colour.wxRED;
-			m_listCtrl.SetItem( item );
+			элемент.Ид = 2;
+			элемент.TextColour = Цвет.wxGREEN;
+			m_listCtrl.SetItem( элемент );
+			элемент.Ид = 4;
+			элемент.TextColour = Цвет.wxLIGHT_GREY;
+			элемент.шрифт = Шрифт.wxITALIC_FONT;
+			элемент.ЦветЗП = Цвет.wxRED;
+			m_listCtrl.SetItem( элемент );
 			
-			m_listCtrl.TextColour = Colour.wxBLUE;
-			m_listCtrl.BackgroundColour = Colour.wxLIGHT_GREY;
+			m_listCtrl.TextColour = Цвет.wxBLUE;
+			m_listCtrl.ЦветЗП = Цвет.wxLIGHT_GREY;
 			
 			m_listCtrl.SetColumnWidth( 0, ListCtrl.wxLIST_AUTOSIZE );
 			m_listCtrl.SetColumnWidth( 1, ListCtrl.wxLIST_AUTOSIZE );
@@ -447,69 +447,69 @@ private import std.string;
 		
 		//---------------------------------------------------------------------	
 		
-		public void InitWithIconItems(bool withText)
+		public проц InitWithIconItems(бул withText)
 		{
-			InitWithIconItems(withText, false);
+			InitWithIconItems(withText, нет);
 		}
 
-		public void InitWithIconItems(bool withText, bool sameIcon)
+		public проц InitWithIconItems(бул withText, бул sameIcon)
 		{
 			m_listCtrl.SetImageList(m_imageListNormal, wxIMAGE_LIST_NORMAL);
 			m_listCtrl.SetImageList(m_imageListSmall, wxIMAGE_LIST_SMALL);
 
-			for ( int i = 0; i < NUM_ICONS; i++ )
+			for ( цел i = 0; i < NUM_ICONS; i++ )
 			{
-				int image = sameIcon ? 0 : i;
+				цел рисунок = sameIcon ? 0 : i;
 
 				if ( withText )
 				{
-					m_listCtrl.InsertItem(i, "Label " ~ .toString(i), image);
+					m_listCtrl.InsertItem(i, "Label " ~ .toString(i), рисунок);
 				}
 				else
 				{
-					m_listCtrl.InsertItem(i, image);
+					m_listCtrl.InsertItem(i, рисунок);
 				}
 			}
 		}
 		
 		//---------------------------------------------------------------------	
 
-		public void OnIconView(Object sender, Event e)
+		public проц OnIconView(Объект sender, Событие e)
 		{
-			RecreateList(ListCtrl.wxLC_ICON, false);
+			RecreateList(ListCtrl.wxLC_ICON, нет);
 		}
 		
 		//---------------------------------------------------------------------	
 
-		public void OnIconTextView(Object sender, Event e)
+		public проц OnIconTextView(Объект sender, Событие e)
 		{
 			RecreateList(ListCtrl.wxLC_ICON);
 		}
 		
 		//---------------------------------------------------------------------	
 
-		public void OnSmallIconView(Object sender, Event e)
+		public проц OnSmallIconView(Объект sender, Событие e)
 		{
-			RecreateList(ListCtrl.wxLC_SMALL_ICON, false);
+			RecreateList(ListCtrl.wxLC_SMALL_ICON, нет);
 		}
 		
 		//---------------------------------------------------------------------	
 
-		public void OnSmallIconTextView(Object sender, Event e)
+		public проц OnSmallIconTextView(Объект sender, Событие e)
 		{
 			RecreateList(ListCtrl.wxLC_SMALL_ICON);
 		}
 		
 		//---------------------------------------------------------------------	
 
-		public void OnVirtualView(Object sender, Event e)
+		public проц OnVirtualView(Объект sender, Событие e)
 		{
 			RecreateList(ListCtrl.wxLC_REPORT | ListCtrl.wxLC_VIRTUAL);
 		}
 		
 		//---------------------------------------------------------------------	
 
-		public void InitWithVirtualItems()
+		public проц InitWithVirtualItems()
 		{
 			m_listCtrl.SetImageList(m_imageListSmall, wxIMAGE_LIST_SMALL);
 
@@ -523,7 +523,7 @@ private import std.string;
 		
 		//---------------------------------------------------------------------	
 		
-		public static extern(C) int MyCompareFunction(int item1, int item2, int sortData)
+		public static extern(C) цел MyCompareFunction(цел item1, цел item2, цел sortData)
 		{
 			// inverse the order
 			if (item1 < item2)
@@ -536,7 +536,7 @@ private import std.string;
 		
 		//---------------------------------------------------------------------	
 
-		public void OnSort(Object sender, Event e)
+		public проц OnSort(Объект sender, Событие e)
 		{
 			m_listCtrl.SortItems(&MyCompareFunction,0);
  
@@ -545,18 +545,18 @@ private import std.string;
 		
 		//---------------------------------------------------------------------	
 
-		public void OnShowSelInfo(Object sender, Event e)
+		public проц OnShowSelInfo(Объект sender, Событие e)
 		{
-			int selCount = m_listCtrl.SelectedItemCount;
+			цел selCount = m_listCtrl.SelectedItemCount;
 			Log.LogMessage(.toString(selCount) ~" items selected:");
 
-			int shownCount = 0;
+			цел shownCount = 0;
 
-			int item = m_listCtrl.GetNextItem(-1, ListCtrl.wxLIST_NEXT_ALL,
+			цел элемент = m_listCtrl.GetNextItem(-1, ListCtrl.wxLIST_NEXT_ALL,
 						ListCtrl.wxLIST_STATE_SELECTED);
-			while ( item != -1 )
+			while ( элемент != -1 )
 			{
-				Log.LogMessage("\t" ~ .toString(item) ~ "d (" ~ m_listCtrl.GetItemText(item) ~ ")");
+				Log.LogMessage("\t" ~ .toString(элемент) ~ "d (" ~ m_listCtrl.GetItemText(элемент) ~ ")");
 
 				if ( ++shownCount > 10 )
 				{
@@ -564,26 +564,26 @@ private import std.string;
 					break;
 				}
 
-				item = m_listCtrl.GetNextItem(item, ListCtrl.wxLIST_NEXT_ALL,
+				элемент = m_listCtrl.GetNextItem(элемент, ListCtrl.wxLIST_NEXT_ALL,
 					ListCtrl.wxLIST_STATE_SELECTED);
 			}
 		}
 		
 		//---------------------------------------------------------------------	
 
-		public void OnShowColInfo(Object sender, Event e)
+		public проц OnShowColInfo(Объект sender, Событие e)
 		{
-			int count = m_listCtrl.ColumnCount;
-			Log.LogMessage(.toString(count) ~ " columns:");
-			for ( int c = 0; c < count; c++ )
+			цел счёт = m_listCtrl.ColumnCount;
+			Log.LogMessage(.toString(счёт) ~ " columns:");
+			for ( цел c = 0; c < счёт; c++ )
 			{
-				Log.LogMessage("\tcolumn " ~ .toString(c) ~ " has width " ~ .toString(m_listCtrl.GetColumnWidth(c)));
+				Log.LogMessage("\tcolumn " ~ .toString(c) ~ " has ширина " ~ .toString(m_listCtrl.GetColumnWidth(c)));
 			}
 		}
 		
 		//---------------------------------------------------------------------	
 
-		public void OnUpdateShowColInfo(Object sender, Event e)
+		public проц OnUpdateShowColInfo(Объект sender, Событие e)
 		{
 			UpdateUIEvent ue = cast(UpdateUIEvent)e;
 		
@@ -592,23 +592,23 @@ private import std.string;
 		
 		//---------------------------------------------------------------------	
 
-		public void OnToggleMultiSel(Object sender, Event e)
+		public проц OnToggleMultiSel(Объект sender, Событие e)
 		{
-			long flags = m_listCtrl.StyleFlags;
-			if ( (flags & ListCtrl.wxLC_SINGLE_SEL) > 0 )
-				flags &= ~ListCtrl.wxLC_SINGLE_SEL;
+			long флаги = m_listCtrl.StyleFlags;
+			if ( (флаги & ListCtrl.wxLC_SINGLE_SEL) > 0 )
+				флаги &= ~ListCtrl.wxLC_SINGLE_SEL;
 			else
-				flags |= ListCtrl.wxLC_SINGLE_SEL;
+				флаги |= ListCtrl.wxLC_SINGLE_SEL;
 
 			m_logWindow.WriteText("Current selection mode: " ~ 
-				( ( (flags & ListCtrl.wxLC_SINGLE_SEL) > 0 ) ? "sing" : "multip" ) ~ "le\n");
+				( ( (флаги & ListCtrl.wxLC_SINGLE_SEL) > 0 ) ? "sing" : "multip" ) ~ "le\n");
 
-			RecreateList(flags);
+			RecreateList(флаги);
 		}
 		
 		//---------------------------------------------------------------------	
 
-		public void OnUpdateToggleMultiSel(Object sender, Event e)
+		public проц OnUpdateToggleMultiSel(Объект sender, Событие e)
 		{
 			UpdateUIEvent ue = cast(UpdateUIEvent)e;
 			
@@ -617,32 +617,32 @@ private import std.string;
 		
 		//---------------------------------------------------------------------	
 
-		public void OnSetFgColour(Object sender, Event e)
+		public проц OnSetFgColour(Объект sender, Событие e)
 		{
-			m_listCtrl.ForegroundColour = GetColourFromUser(this);
+			m_listCtrl.ЦветПП = GetColourFromUser(this);
 			m_listCtrl.Refresh();
 		}
 		
 		//---------------------------------------------------------------------	
 
-		public void OnSetBgColour(Object sender, Event e)
+		public проц OnSetBgColour(Объект sender, Событие e)
 		{
-			m_listCtrl.BackgroundColour = GetColourFromUser(this);
+			m_listCtrl.ЦветЗП = GetColourFromUser(this);
 			m_listCtrl.Refresh();
 		}
 		
 		//---------------------------------------------------------------------	
 
-		public void OnAdd(Object sender, Event e)
+		public проц OnAdd(Объект sender, Событие e)
 		{
-			m_listCtrl.InsertItem(m_listCtrl.ItemCount, _("Appended item"));
+			m_listCtrl.InsertItem(m_listCtrl.ItemCount, _("Appended элемент"));
 		}
 		
 		//---------------------------------------------------------------------	
 
-		public void OnEdit(Object sender, Event e)
+		public проц OnEdit(Объект sender, Событие e)
 		{
-			int itemCur = m_listCtrl.GetNextItem(-1, ListCtrl.wxLIST_NEXT_ALL,
+			цел itemCur = m_listCtrl.GetNextItem(-1, ListCtrl.wxLIST_NEXT_ALL,
 						ListCtrl.wxLIST_STATE_FOCUSED);
 
 			if ( itemCur != -1 )
@@ -651,13 +651,13 @@ private import std.string;
 			}
 			else
 			{
-				m_logWindow.WriteText(_("No item to edit"));
+				m_logWindow.WriteText(_("No элемент to edit"));
 			}
 		}
 		
 		//---------------------------------------------------------------------	
 
-		public void OnDelete(Object sender, Event e)
+		public проц OnDelete(Объект sender, Событие e)
 		{
 			if ( m_listCtrl.ItemCount > 0 )
 			{
@@ -671,7 +671,7 @@ private import std.string;
 		
 		//---------------------------------------------------------------------	
 
-		public void OnDeleteAll(Object sender, Event e)
+		public проц OnDeleteAll(Объект sender, Событие e)
 		{
 
 			m_listCtrl.DeleteAllItems();
@@ -688,9 +688,9 @@ private import std.string;
 		
 		//---------------------------------------------------------------------
 		
-		public this( Window parent, int id, Point pos, Size size, long style )
+		public this( Окно родитель, цел ид, Точка поз, Размер size, long стиль )
 		{
-			super( parent, id, pos, size, style );
+			super( родитель, ид, поз, size, стиль );
 			EVT_LIST_BEGIN_DRAG(Cmd.LIST_CTRL, &OnBeginDrag);
 			EVT_LIST_BEGIN_RDRAG(Cmd.LIST_CTRL, &OnBeginRDrag);
 			EVT_LIST_BEGIN_LABEL_EDIT(Cmd.LIST_CTRL, &OnBeginLabelEdit);
@@ -716,7 +716,7 @@ private import std.string;
 		
 		//---------------------------------------------------------------------	
 		
-		public void OnCacheHint(Object sender, Event e)
+		public проц OnCacheHint(Объект sender, Событие e)
 		{
 			ListEvent le = cast(ListEvent)e;
 			
@@ -725,21 +725,21 @@ private import std.string;
 		
 		//---------------------------------------------------------------------	
 
-		public void SetColumnImage(int col, int image)
+		public проц SetColumnImage(цел col, цел рисунок)
 		{
-			ListItem item = new ListItem();
-			item.Mask = ListCtrl.wxLIST_MASK_IMAGE;
-			item.Image = image;
-			SetColumn(col, item);
+			ListItem элемент = new ListItem();
+			элемент.Маска = ListCtrl.wxLIST_MASK_IMAGE;
+			элемент.Рисунок = рисунок;
+			SetColumn(col, элемент);
 		}
 		
 		//---------------------------------------------------------------------	
 
-		public void OnColClick(Object sender, Event e)
+		public проц OnColClick(Объект sender, Событие e)
 		{
 			ListEvent le = cast(ListEvent)e;
 			
-			int col = le.Column;
+			цел col = le.Column;
 			SetColumnImage(col, 0);
 
 			Log.LogMessage( "OnColumnClick at " ~ .toString(col) ~ "." );
@@ -747,34 +747,34 @@ private import std.string;
 		
 		//---------------------------------------------------------------------	
 
-		public void OnColRightClick(Object sender, Event e)
+		public проц OnColRightClick(Объект sender, Событие e)
 		{
 			ListEvent le = cast(ListEvent)e;
 		
-			int col = le.Column;
+			цел col = le.Column;
 			if ( col != -1 )
 			{
 				SetColumnImage(col, -1);
 			}
 
-			Menu menu = new Menu("Test");
-			menu.Append(Cmd.LIST_ABOUT, _("&About"));
-			PopupMenu(menu, le.point); 
+			Меню меню = new Меню("Test");
+			меню.Append(Cmd.LIST_ABOUT, _("&About"));
+			PopupMenu(меню, le.point); 
 
 			Log.LogMessage( "OnColumnRightClick at " ~ .toString(le.Column) ~ "." );
 		}
 		
 		//---------------------------------------------------------------------	
 
-		public void LogColEvent(Object sender, Event e, string name)
+		public проц LogColEvent(Объект sender, Событие e, ткст имя)
 		{
 			ListEvent le = cast(ListEvent)e;
 		
-			int col = le.Column;
+			цел col = le.Column;
 			
-			string msg = name ~ ": column ";
-			msg ~= .toString(col) ~ "(width = ";
-			msg ~= .toString(le.Item.Width) ~ " or ";
+			ткст msg = имя ~ ": column ";
+			msg ~= .toString(col) ~ "(ширина = ";
+			msg ~= .toString(le.Элемент.Ширина) ~ " or ";
 			msg ~= .toString(GetColumnWidth(col)) ~ ".";
 
 			Log.LogMessage( msg );
@@ -782,7 +782,7 @@ private import std.string;
 		
 		//---------------------------------------------------------------------	
 
-		public void OnColBeginDrag(Object sender, Event e)
+		public проц OnColBeginDrag(Объект sender, Событие e)
 		{
 			LogColEvent( sender, e, "OnColBeginDrag" );
 			
@@ -798,33 +798,33 @@ private import std.string;
 		
 		//---------------------------------------------------------------------	
 
-		public void OnColDragging(Object sender, Event e)
+		public проц OnColDragging(Объект sender, Событие e)
 		{
 			LogColEvent( sender, e, "OnColDragging" );
 		}
 		
 		//---------------------------------------------------------------------	
 
-		public void OnColEndDrag(Object sender, Event e)
+		public проц OnColEndDrag(Объект sender, Событие e)
 		{
 			LogColEvent( sender, e, "OnColEndDrag" );
 		}
 		
 		//---------------------------------------------------------------------	
 
-		public void OnBeginDrag(Object sender, Event e)
+		public проц OnBeginDrag(Объект sender, Событие e)
 		{
 			ListEvent le = cast(ListEvent)e;
 		
-			Point pt = le.point;
+			Точка pt = le.point;
 
-			int flags = 0;
-			Log.LogMessage( "OnBeginDrag at (" ~ .toString(pt.X) ~ ", " ~ .toString(pt.Y) ~ "), item " ~ .toString(HitTest(pt, flags)) ~ ".");
+			цел флаги = 0;
+			Log.LogMessage( "OnBeginDrag at (" ~ .toString(pt.X) ~ ", " ~ .toString(pt.Y) ~ "), элемент " ~ .toString(HitTest(pt, флаги)) ~ ".");
 		}
 		
 		//---------------------------------------------------------------------	
 
-		public void OnBeginRDrag(Object sender, Event e)
+		public проц OnBeginRDrag(Объект sender, Событие e)
 		{
 			ListEvent le = cast(ListEvent)e;
 		
@@ -833,40 +833,40 @@ private import std.string;
 		
 		//---------------------------------------------------------------------	
 
-		public void OnBeginLabelEdit(Object sender, Event e)
+		public проц OnBeginLabelEdit(Объект sender, Событие e)
 		{
 			ListEvent le = cast(ListEvent)e;
 				
-			Log.LogMessage( "OnBeginLabelEdit: " ~ le.Item.Text);
+			Log.LogMessage( "OnBeginLabelEdit: " ~ le.Элемент.Текст);
 		}
 		
 		//---------------------------------------------------------------------	
 
-		public void OnEndLabelEdit(Object sender, Event e)
+		public проц OnEndLabelEdit(Объект sender, Событие e)
 		{
 			ListEvent le = cast(ListEvent)e;
 		
 			Log.LogMessage( "OnEndLabelEdit: " ~
-				(le.EditCancelled ? "[cancelled]" : le.Item.Text) );
+				(le.EditCancelled ? "[cancelled]" : le.Элемент.Текст) );
 		}
 		
 		//---------------------------------------------------------------------	
 
-		public void OnDeleteItem(Object sender, Event e)
+		public проц OnDeleteItem(Объект sender, Событие e)
 		{
 			LogEvent(sender, e, "OnDeleteItem");
 		}
 		
 		//---------------------------------------------------------------------	
 
-		public void OnDeleteAllItems(Object sender, Event e)
+		public проц OnDeleteAllItems(Объект sender, Событие e)
 		{
 			LogEvent(sender, e, "OnDeleteAllItems");
 		}
 	
 		//---------------------------------------------------------------------	
 
-		public void OnSelected(Object sender, Event e)
+		public проц OnSelected(Объект sender, Событие e)
 		{
 			LogEvent(sender, e, "OnSelected");
 			
@@ -875,13 +875,13 @@ private import std.string;
 			if ( (StyleFlags & ListCtrl.wxLC_REPORT) > 0 )
 			{
 				ListItem info = new ListItem();
-				info.Id = le.Index;
+				info.Ид = le.Index;
 				info.Column = 1;
-				info.Mask = ListCtrl.wxLIST_MASK_TEXT;
+				info.Маска = ListCtrl.wxLIST_MASK_TEXT;
 				if ( GetItem(info) )
 				{
-					Log.LogMessage("Value of the 2nd field of the selected item: " ~
-						info.Text);
+					Log.LogMessage("Value of the 2nd field of the selected элемент: " ~
+						info.Текст);
 				}
 				else
 				{
@@ -892,50 +892,50 @@ private import std.string;
 		
 		//---------------------------------------------------------------------	
 
-		public void OnDeselected(Object sender, Event e)
+		public проц OnDeselected(Объект sender, Событие e)
 		{
 			LogEvent(sender, e, "OnDeselected");
 		}
 		
 		//---------------------------------------------------------------------	
 
-		public void OnActivated(Object sender, Event e)
+		public проц OnActivated(Объект sender, Событие e)
 		{
 			LogEvent(sender, e, "OnActivated");
 		}
 		
 		//---------------------------------------------------------------------	
 
-		public void OnFocused(Object sender, Event e)
+		public проц OnFocused(Объект sender, Событие e)
 		{
 			LogEvent(sender, e, "OnFocused");
 
-			e.Skip();
+			e.Пропусти();
 		}
 		
 		//---------------------------------------------------------------------	
 
-		public void OnListKeyDown(Object sender, Event e)
+		public проц OnListKeyDown(Объект sender, Событие e)
 		{
 			ListEvent le = cast(ListEvent)e;
 		
-			switch ( le.KeyCode )
+			switch ( le.КодКлавиши )
 			{
 				case 'c': // colorize
 				case 'C':
 				{
 					ListItem info = new ListItem();
-					info.Id = le.Index;
+					info.Ид = le.Index;
 					GetItem(info);
 
 					ListItemAttr attr = info.Attributes;
 					if ( !attr || !attr.HasTextColour )
 					{
-						info.TextColour = Colour.wxCYAN;
+						info.TextColour = Цвет.wxCYAN;
 
 						SetItem(info);
 
-						RefreshItem(info.Id);
+						RefreshItem(info.Ид);
 					}
 				}
 				break;
@@ -943,38 +943,38 @@ private import std.string;
 				case 'n': // next
 				case 'N':
 				{
-					int item = GetNextItem(-1,
+					цел элемент = GetNextItem(-1,
 						ListCtrl.wxLIST_NEXT_ALL, ListCtrl.wxLIST_STATE_FOCUSED);
-					if ( item++ == ItemCount - 1 )
+					if ( элемент++ == ItemCount - 1 )
 					{
-						item = 0;
+						элемент = 0;
 					}
 
-					Log.LogMessage("Focusing item " ~ .toString(item));
+					Log.LogMessage("Focusing элемент " ~ .toString(элемент));
 
-					SetItemState(item, ListCtrl.wxLIST_STATE_FOCUSED, ListCtrl.wxLIST_STATE_FOCUSED);
-					EnsureVisible(item);
+					SetItemState(элемент, ListCtrl.wxLIST_STATE_FOCUSED, ListCtrl.wxLIST_STATE_FOCUSED);
+					EnsureVisible(элемент);
 				}
 				break;
 
-				case KeyCode.WXK_DELETE:
+				case КодКлавиши.WXK_DELETE:
 				{
-					int item = GetNextItem(-1,
+					цел элемент = GetNextItem(-1,
 						ListCtrl.wxLIST_NEXT_ALL, ListCtrl.wxLIST_STATE_SELECTED);
-					while ( item != -1 )
+					while ( элемент != -1 )
 					{
-						DeleteItem(item);
+						DeleteItem(элемент);
 
-						Log.LogMessage("Item " ~ .toString(item) ~ " deleted");
+						Log.LogMessage("Элемент " ~ .toString(элемент) ~ " deleted");
 
 						// -1 because the indices were shifted by DeleteItem()
-						item = GetNextItem(item - 1,
+						элемент = GetNextItem(элемент - 1,
 							ListCtrl.wxLIST_NEXT_ALL, ListCtrl.wxLIST_STATE_SELECTED);
 					}
 				}
 				break;
 
-				case KeyCode.WXK_INSERT:
+				case КодКлавиши.WXK_INSERT:
 					if ( (StyleFlags & ListCtrl.wxLC_REPORT) > 0 )
 					{
 						if ( (StyleFlags & ListCtrl.wxLC_VIRTUAL) > 0 )
@@ -992,20 +992,20 @@ private import std.string;
 				default:
 					LogEvent(sender, e, "OnListKeyDown");
 
-					le.Skip();
+					le.Пропусти();
 				break;
 			}
 		}
 		
 		//---------------------------------------------------------------------	
 
-		public void OnChar(Object sender, Event e)
+		public проц OnChar(Объект sender, Событие e)
 		{
-			KeyEvent ke = cast(KeyEvent)e;
+			СобКлавиши ke = cast(СобКлавиши)e;
 		
-			Log.LogMessage("Got char event.");
+			Log.LogMessage("Got сим event.");
 	
-			switch ( ke.KeyCode )
+			switch ( ke.КодКлавиши )
 			{
 				case 'n':
 				case 'N':
@@ -1015,83 +1015,83 @@ private import std.string;
 				break;
 
 				default:
-					e.Skip();
+					e.Пропусти();
 				break;
 			}
 		}
 	
 		//---------------------------------------------------------------------	
 
-		public void LogEvent(Object sender, Event e, string eventName)
+		public проц LogEvent(Объект sender, Событие e, ткст eventName)
 		{
 			ListEvent le = cast(ListEvent)e;
 		
-			Log.LogMessage("Item " ~ .toString(le.Index) ~ ": " ~ eventName ~ " (item text = " ~ le.Text ~
-				 ", data = " ~ .toString(le.Data) ~ ")");
+			Log.LogMessage("Элемент " ~ .toString(le.Index) ~ ": " ~ eventName ~ " (элемент текст = " ~ le.Текст ~
+				 ", данные = " ~ .toString(le.Data) ~ ")");
 		}
 		
 		//---------------------------------------------------------------------	
 
-		public string OnGetItemText(long item, long column)
+		public ткст OnGetItemText(long элемент, long column)
 		{
-			string s = "Column " ~ .toString(column) ~ " of item " ~ .toString(item);
+			ткст s = "Column " ~ .toString(column) ~ " of элемент " ~ .toString(элемент);
 			return s;
 		}
 		
 		//---------------------------------------------------------------------	
 
-		public int OnGetItemImage(long item)
+		public цел OnGetItemImage(long элемент)
 		{
 			return 0;
 		}
 		
 		//---------------------------------------------------------------------	
 
-		public ListItemAttr OnGetItemAttr(long item)
+		public ListItemAttr OnGetItemAttr(long элемент)
 		{
-			return (item % 2) > 0 ? null : m_attr;
+			return (элемент % 2) > 0 ? пусто : m_attr;
 		}
 		
 		//---------------------------------------------------------------------	
 		
-		public void InsertItemInReportView(int i)
+		public проц InsertItemInReportView(цел i)
 		{
-			string buf = "This is item " ~ .toString(i);
-			int tmp = InsertItem(i, buf, 0);
+			ткст buf = "This is элемент " ~ .toString(i);
+			цел tmp = InsertItem(i, buf, 0);
 			SetItemData(tmp, i);
 
-			buf = "Col 1, item " ~ .toString(i);
+			buf = "Col 1, элемент " ~ .toString(i);
 			SetItem(i, 1, buf);
 
-			buf = "Item " ~ .toString(i) ~ " in column 2";
+			buf = "Элемент " ~ .toString(i) ~ " in column 2";
 			SetItem(i, 2, buf);
 		}
 	}
 	
 	//---------------------------------------------------------------------	
 
-	public class ListCtrlApp : App
+	public class ListCtrlApp : Прил
 	{
-		public override bool OnInit()
+		public override бул ПриИниц()
 		{
-			MyFrame frame = new MyFrame("ListCtrl Test", Point(50, 50), Size(450,340));
-			frame.Show(true);
+			MyFrame frame = new MyFrame("ListCtrl Test", Точка(50, 50), Размер(450,340));
+			frame.Show(да);
 
-			return true;
+			return да;
 		}
 
 		//---------------------------------------------------------------------
 
 		
-		static void Main()
+		static проц Main()
 		{
-			ListCtrlApp app = new ListCtrlApp();
-			app.Run();
+			ListCtrlApp прил = new ListCtrlApp();
+			прил.Пуск();
 		}
 	}
 
 
-void main()
+проц main()
 {
 	ListCtrlApp.Main();
 }

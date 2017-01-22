@@ -1,4 +1,4 @@
-//-----------------------------------------------------------------------------
+﻿//-----------------------------------------------------------------------------
 // wxD - Config.d
 // (C) 2005 bero <berobero@users.sourceforge.net>
 // based on
@@ -10,12 +10,12 @@
 // (C) 2003 Bryan Bulten
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: Config.d,v 1.11 2007/11/27 08:19:20 afb Exp $
+// $Ид: Config.d,v 1.11 2007/11/27 08:19:20 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.Config;
 public import wx.common;
-public import wx.Font;
+public import wx.Шрифт;
 public import wx.Colour;
 public import wx.wxString;
 
@@ -28,7 +28,7 @@ public import wx.wxString;
         Float
     }
     
-    // Style flags for constructor style parameter
+    // Style флаги for constructor стиль parameter
     public enum ConfigStyleFlags
     {
     	wxCONFIG_USE_LOCAL_FILE = 1,
@@ -39,80 +39,80 @@ public import wx.wxString;
 
 
 		//! \cond EXTERN
-        static extern (C) IntPtr wxConfigBase_Set(IntPtr pConfig);
-        static extern (C) IntPtr wxConfigBase_Get(bool createOnDemand);
-        static extern (C) IntPtr wxConfigBase_Create();
-        static extern (C) void   wxConfigBase_DontCreateOnDemand();
-        static extern (C) void   wxConfigBase_SetPath(IntPtr self, string strPath);
-        static extern (C) IntPtr wxConfigBase_GetPath(IntPtr self);
-        static extern (C) bool   wxConfigBase_GetFirstGroup(IntPtr self, IntPtr str, inout int lIndex);
-        static extern (C) bool   wxConfigBase_GetNextGroup(IntPtr self, IntPtr str, inout int lIndex);
-        static extern (C) bool   wxConfigBase_GetFirstEntry(IntPtr self, IntPtr str, inout int lIndex);
-        static extern (C) bool   wxConfigBase_GetNextEntry(IntPtr self, IntPtr str, inout int lIndex);
-        static extern (C) int    wxConfigBase_GetNumberOfEntries(IntPtr self, bool bRecursive);
-        static extern (C) int    wxConfigBase_GetNumberOfGroups(IntPtr self, bool bRecursive);
-        static extern (C) bool   wxConfigBase_HasGroup(IntPtr self, string strName);
-        static extern (C) bool   wxConfigBase_HasEntry(IntPtr self, string strName);
-        static extern (C) bool   wxConfigBase_Exists(IntPtr self, string strName);
-        static extern (C) int    wxConfigBase_GetEntryType(IntPtr self, string name);
-        static extern (C) bool   wxConfigBase_ReadStr(IntPtr self, string key, IntPtr pStr);
-        static extern (C) bool   wxConfigBase_ReadStrDef(IntPtr self, string key, IntPtr pStr, string defVal);
-        static extern (C) bool   wxConfigBase_ReadInt(IntPtr self, string key, inout int pl);
-        static extern (C) bool   wxConfigBase_ReadIntDef(IntPtr self, string key, inout int pl, int defVal);
-        static extern (C) bool   wxConfigBase_ReadDbl(IntPtr self, string key, inout double val);
-        static extern (C) bool   wxConfigBase_ReadDblDef(IntPtr self, string key, inout double val, double defVal);
-        static extern (C) bool   wxConfigBase_ReadBool(IntPtr self, string key, inout bool val);
-        static extern (C) bool   wxConfigBase_ReadBoolDef(IntPtr self, string key, inout bool val, bool defVal);
-        static extern (C) IntPtr wxConfigBase_ReadStrRet(IntPtr self, string key, string defVal);
-        static extern (C) int    wxConfigBase_ReadIntRet(IntPtr self, string key, int defVal);
-        static extern (C) bool   wxConfigBase_WriteStr(IntPtr self, string key, string val);
-        static extern (C) bool   wxConfigBase_WriteInt(IntPtr self, string key, int val);
-        static extern (C) bool   wxConfigBase_WriteDbl(IntPtr self, string key, double val);
-        static extern (C) bool   wxConfigBase_WriteBool(IntPtr self, string key, bool val);
-        static extern (C) bool   wxConfigBase_Flush(IntPtr self, bool bCurrentOnly);
-        static extern (C) bool   wxConfigBase_RenameEntry(IntPtr self, string oldName, string newName);
-        static extern (C) bool   wxConfigBase_RenameGroup(IntPtr self, string oldName, string newName);
-        static extern (C) bool   wxConfigBase_DeleteEntry(IntPtr self, string key, bool bDeleteGroupIfEmpty);
-        static extern (C) bool   wxConfigBase_DeleteGroup(IntPtr self, string key);
-        static extern (C) bool   wxConfigBase_DeleteAll(IntPtr self);
-        static extern (C) bool   wxConfigBase_IsExpandingEnvVars(IntPtr self);
-        static extern (C) void   wxConfigBase_SetExpandEnvVars(IntPtr self, bool bDoIt);
-        static extern (C) IntPtr wxConfigBase_ExpandEnvVars(IntPtr self, string str);
-        static extern (C) void   wxConfigBase_SetRecordDefaults(IntPtr self, bool bDoIt);
-        static extern (C) bool   wxConfigBase_IsRecordingDefaults(IntPtr self);
-        static extern (C) IntPtr wxConfigBase_GetAppName(IntPtr self);
-        static extern (C) void   wxConfigBase_SetAppName(IntPtr self, string appName);
-        static extern (C) IntPtr wxConfigBase_GetVendorName(IntPtr self);
-        static extern (C) void   wxConfigBase_SetVendorName(IntPtr self, string vendorName);
-        static extern (C) void   wxConfigBase_SetStyle(IntPtr self, int style);
-        static extern (C) int    wxConfigBase_GetStyle(IntPtr self);
+        static extern (C) ЦУк wxConfigBase_Set(ЦУк pConfig);
+        static extern (C) ЦУк wxConfigBase_Get(бул createOnDemand);
+        static extern (C) ЦУк wxConfigBase_Create();
+        static extern (C) проц   wxConfigBase_DontCreateOnDemand();
+        static extern (C) проц   wxConfigBase_SetPath(ЦУк сам, ткст strPath);
+        static extern (C) ЦУк wxConfigBase_GetPath(ЦУк сам);
+        static extern (C) бул   wxConfigBase_GetFirstGroup(ЦУк сам, ЦУк str, inout цел lIndex);
+        static extern (C) бул   wxConfigBase_GetNextGroup(ЦУк сам, ЦУк str, inout цел lIndex);
+        static extern (C) бул   wxConfigBase_GetFirstEntry(ЦУк сам, ЦУк str, inout цел lIndex);
+        static extern (C) бул   wxConfigBase_GetNextEntry(ЦУк сам, ЦУк str, inout цел lIndex);
+        static extern (C) цел    wxConfigBase_GetNumberOfEntries(ЦУк сам, бул bRecursive);
+        static extern (C) цел    wxConfigBase_GetNumberOfGroups(ЦУк сам, бул bRecursive);
+        static extern (C) бул   wxConfigBase_HasGroup(ЦУк сам, ткст strName);
+        static extern (C) бул   wxConfigBase_HasEntry(ЦУк сам, ткст strName);
+        static extern (C) бул   wxConfigBase_Exists(ЦУк сам, ткст strName);
+        static extern (C) цел    wxConfigBase_GetEntryType(ЦУк сам, ткст имя);
+        static extern (C) бул   wxConfigBase_ReadStr(ЦУк сам, ткст key, ЦУк pStr);
+        static extern (C) бул   wxConfigBase_ReadStrDef(ЦУк сам, ткст key, ЦУк pStr, ткст defVal);
+        static extern (C) бул   wxConfigBase_ReadInt(ЦУк сам, ткст key, inout цел pl);
+        static extern (C) бул   wxConfigBase_ReadIntDef(ЦУк сам, ткст key, inout цел pl, цел defVal);
+        static extern (C) бул   wxConfigBase_ReadDbl(ЦУк сам, ткст key, inout дво val);
+        static extern (C) бул   wxConfigBase_ReadDblDef(ЦУк сам, ткст key, inout дво val, дво defVal);
+        static extern (C) бул   wxConfigBase_ReadBool(ЦУк сам, ткст key, inout бул val);
+        static extern (C) бул   wxConfigBase_ReadBoolDef(ЦУк сам, ткст key, inout бул val, бул defVal);
+        static extern (C) ЦУк wxConfigBase_ReadStrRet(ЦУк сам, ткст key, ткст defVal);
+        static extern (C) цел    wxConfigBase_ReadIntRet(ЦУк сам, ткст key, цел defVal);
+        static extern (C) бул   wxConfigBase_WriteStr(ЦУк сам, ткст key, ткст val);
+        static extern (C) бул   wxConfigBase_WriteInt(ЦУк сам, ткст key, цел val);
+        static extern (C) бул   wxConfigBase_WriteDbl(ЦУк сам, ткст key, дво val);
+        static extern (C) бул   wxConfigBase_WriteBool(ЦУк сам, ткст key, бул val);
+        static extern (C) бул   wxConfigBase_Flush(ЦУк сам, бул bCurrentOnly);
+        static extern (C) бул   wxConfigBase_RenameEntry(ЦУк сам, ткст oldName, ткст newName);
+        static extern (C) бул   wxConfigBase_RenameGroup(ЦУк сам, ткст oldName, ткст newName);
+        static extern (C) бул   wxConfigBase_DeleteEntry(ЦУк сам, ткст key, бул bDeleteGroupIfEmpty);
+        static extern (C) бул   wxConfigBase_DeleteGroup(ЦУк сам, ткст key);
+        static extern (C) бул   wxConfigBase_DeleteAll(ЦУк сам);
+        static extern (C) бул   wxConfigBase_IsExpandingEnvVars(ЦУк сам);
+        static extern (C) проц   wxConfigBase_SetExpandEnvVars(ЦУк сам, бул bDoIt);
+        static extern (C) ЦУк wxConfigBase_ExpandEnvVars(ЦУк сам, ткст str);
+        static extern (C) проц   wxConfigBase_SetRecordDefaults(ЦУк сам, бул bDoIt);
+        static extern (C) бул   wxConfigBase_IsRecordingDefaults(ЦУк сам);
+        static extern (C) ЦУк wxConfigBase_GetAppName(ЦУк сам);
+        static extern (C) проц   wxConfigBase_SetAppName(ЦУк сам, ткст appName);
+        static extern (C) ЦУк wxConfigBase_GetVendorName(ЦУк сам);
+        static extern (C) проц   wxConfigBase_SetVendorName(ЦУк сам, ткст vendorName);
+        static extern (C) проц   wxConfigBase_SetStyle(ЦУк сам, цел стиль);
+        static extern (C) цел    wxConfigBase_GetStyle(ЦУк сам);
 		//! \endcond
 
 		//---------------------------------------------------------------------
 
-    // although it wxConfig is not derived from wxobj we do not change it.
+    // although it wxConfig is not derived from шхобъ we do not change it.
     // Use Config.Get() to get an instance.
     alias Config wxConfig;
     public class Config : wxObject
     {
-        public this(IntPtr wxobj)
-            { super(wxobj); }
+        public this(ЦУк шхобъ)
+            { super(шхобъ); }
 	
-	public static wxObject New(IntPtr ptr) { return new Config(ptr); }
+	public static wxObject Нов(ЦУк ptr) { return new Config(ptr); }
 	
-        public static Config Set(Config config)
+        public static Config Установи(Config config)
         {
-            return cast(Config)FindObject(wxConfigBase_Set(wxObject.SafePtr(config)), &Config.New);
+            return cast(Config)FindObject(wxConfigBase_Set(wxObject.SafePtr(config)), &Config.Нов);
         }
 
-        public static Config Get(bool createOnDemand)
+        public static Config Get(бул createOnDemand)
         {
-            return cast(Config)FindObject(wxConfigBase_Get(createOnDemand), &Config.New);
+            return cast(Config)FindObject(wxConfigBase_Get(createOnDemand), &Config.Нов);
         }
 	
 	public static Config Get()
         {
-            return cast(Config)FindObject(wxConfigBase_Get(true), &Config.New);
+            return cast(Config)FindObject(wxConfigBase_Get(да), &Config.Нов);
         }
 
         public static Config Create()
@@ -122,59 +122,35 @@ public import wx.wxString;
 
 		//---------------------------------------------------------------------
 
-        public void DontCreateOnDemand()
+        public проц DontCreateOnDemand()
         {
             wxConfigBase_DontCreateOnDemand();
         }
 
 		//---------------------------------------------------------------------
 
-        public void Path(string value) { wxConfigBase_SetPath(wxobj, value); }
-        public string Path() { return cast(string) new wxString(wxConfigBase_GetPath(wxobj), true); }
+        public проц Путь(ткст значение) { wxConfigBase_SetPath(шхобъ, значение); }
+        public ткст Путь() { return cast(ткст) new wxString(wxConfigBase_GetPath(шхобъ), да); }
 
 		//---------------------------------------------------------------------
 
-        public bool GetFirstGroup(inout string str, inout int lIndex)
+        public бул ДайПервуюГруппу(inout ткст str, inout цел lIndex)
         {
-            bool ret;
+            бул ret;
             wxString wstr = new wxString(str);
 
-            ret = wxConfigBase_GetFirstGroup(wxobj, wxString.SafePtr(wstr), lIndex);
+            ret = wxConfigBase_GetFirstGroup(шхобъ, wxString.SafePtr(wstr), lIndex);
             str = wstr.toString();
 
             return ret;
         }
 
-        public bool GetNextGroup(inout string str, inout int lIndex)
+        public бул ДайСледщГруппу(inout ткст str, inout цел lIndex)
         {
-            bool ret;
+            бул ret;
             wxString wstr = new wxString(str);
 
-            ret = wxConfigBase_GetNextGroup(wxobj, wxString.SafePtr(wstr), lIndex);
-            str = wstr.toString();
-
-            return ret;
-        }
-
-		//---------------------------------------------------------------------
-
-        public bool GetFirstEntry(inout string str, inout int lIndex)
-        {
-            bool ret;
-            wxString wstr = new wxString(str);
-
-            ret = wxConfigBase_GetFirstEntry(wxobj, wxString.SafePtr(wstr), lIndex);
-            str = wstr.toString();
-
-            return ret;
-        }
-
-        public bool GetNextEntry(inout string str, inout int lIndex)
-        {
-            bool ret;
-            wxString wstr = new wxString(str);
-
-            ret = wxConfigBase_GetNextEntry(wxobj, wxString.SafePtr(wstr), lIndex);
+            ret = wxConfigBase_GetNextGroup(шхобъ, wxString.SafePtr(wstr), lIndex);
             str = wstr.toString();
 
             return ret;
@@ -182,59 +158,23 @@ public import wx.wxString;
 
 		//---------------------------------------------------------------------
 
-        public int GetNumberOfEntries(bool bRecursive)
+        public бул ДайПервуюЗапись(inout ткст str, inout цел lIndex)
         {
-            return wxConfigBase_GetNumberOfEntries(wxobj, bRecursive);
-        }
-
-        public int GetNumberOfGroups(bool bRecursive)
-        {
-            return wxConfigBase_GetNumberOfGroups(wxobj, bRecursive);
-        }
-
-		//---------------------------------------------------------------------
-
-        public bool HasGroup(string strName)
-        {
-            return wxConfigBase_HasGroup(wxobj, strName);
-        }
-
-        public bool HasEntry(string strName)
-        {
-            return wxConfigBase_HasEntry(wxobj, strName);
-        }
-
-		//---------------------------------------------------------------------
-
-        public bool Exists(string strName)
-        {
-            return wxConfigBase_Exists(wxobj, strName);
-        }
-
-        public EntryType GetEntryType(string name)
-        {
-            return cast(EntryType)wxConfigBase_GetEntryType(wxobj, name);
-        }
-
-		//---------------------------------------------------------------------
-
-        public bool Read(string key, inout string str)
-        {
-            bool ret;
+            бул ret;
             wxString wstr = new wxString(str);
 
-            ret = wxConfigBase_ReadStr(wxobj, key, wxString.SafePtr(wstr));
+            ret = wxConfigBase_GetFirstEntry(шхобъ, wxString.SafePtr(wstr), lIndex);
             str = wstr.toString();
 
             return ret;
         }
 
-        public bool Read(string key, inout string str, string defVal)
+        public бул ДайСледщЗапись(inout ткст str, inout цел lIndex)
         {
-            bool ret;
+            бул ret;
             wxString wstr = new wxString(str);
 
-            ret = wxConfigBase_ReadStrDef(wxobj, key, wxString.SafePtr(wstr), defVal);
+            ret = wxConfigBase_GetNextEntry(шхобъ, wxString.SafePtr(wstr), lIndex);
             str = wstr.toString();
 
             return ret;
@@ -242,66 +182,126 @@ public import wx.wxString;
 
 		//---------------------------------------------------------------------
 
-        public bool Read(string key, inout int pl)
+        public цел GetNumberOfEntries(бул bRecursive)
         {
-            return wxConfigBase_ReadInt(wxobj, key, pl);
+            return wxConfigBase_GetNumberOfEntries(шхобъ, bRecursive);
         }
 
-        public bool Read(string key, inout int pl, int defVal)
+        public цел GetNumberOfGroups(бул bRecursive)
         {
-            return wxConfigBase_ReadIntDef(wxobj, key, pl, defVal);
-        }
-
-		//---------------------------------------------------------------------
-
-        public bool Read(string key, inout double val)
-        {
-            return wxConfigBase_ReadDbl(wxobj, key, val);
-        }
-
-        public bool Read(string key, inout double val, double defVal)
-        {
-            return wxConfigBase_ReadDblDef(wxobj, key, val, defVal);
+            return wxConfigBase_GetNumberOfGroups(шхобъ, bRecursive);
         }
 
 		//---------------------------------------------------------------------
 
-        public bool Read(string key, inout bool val)
+        public бул HasGroup(ткст strName)
         {
-            return wxConfigBase_ReadBool(wxobj, key, val);
+            return wxConfigBase_HasGroup(шхобъ, strName);
         }
 
-        public bool Read(string key, inout bool val, bool defVal)
+        public бул HasEntry(ткст strName)
         {
-            return wxConfigBase_ReadBoolDef(wxobj, key, val, defVal);
+            return wxConfigBase_HasEntry(шхобъ, strName);
         }
 
 		//---------------------------------------------------------------------
 
-        public bool Read(string key, inout Font val)
+        public бул Exists(ткст strName)
         {
-            return Read(key, val, Font.wxNORMAL_FONT);
+            return wxConfigBase_Exists(шхобъ, strName);
         }
 
-        public bool Read(string key, inout Font val, Font defVal)
+        public EntryType GetEntryType(ткст имя)
         {
-            bool ret = true;
+            return cast(EntryType)wxConfigBase_GetEntryType(шхобъ, имя);
+        }
 
-            int pointSize = 0, family = 0, style = 0, weight = 0, encoding = 0;
-            bool underline = false;
-            string faceName = "";
+		//---------------------------------------------------------------------
 
-            ret &= Read(key ~ "/PointSize", pointSize,  cast(int)defVal.PointSize);
-            ret &= Read(key ~ "/Family",    family,     cast(int)defVal.Family);
-            ret &= Read(key ~ "/Style",     style,      cast(int)defVal.Style);
-            ret &= Read(key ~ "/Weight",    weight,     cast(int)defVal.Weight);
-            ret &= Read(key ~ "/Underline", underline,  cast(bool)defVal.Underlined);
+        public бул Read(ткст key, inout ткст str)
+        {
+            бул ret;
+            wxString wstr = new wxString(str);
+
+            ret = wxConfigBase_ReadStr(шхобъ, key, wxString.SafePtr(wstr));
+            str = wstr.toString();
+
+            return ret;
+        }
+
+        public бул Read(ткст key, inout ткст str, ткст defVal)
+        {
+            бул ret;
+            wxString wstr = new wxString(str);
+
+            ret = wxConfigBase_ReadStrDef(шхобъ, key, wxString.SafePtr(wstr), defVal);
+            str = wstr.toString();
+
+            return ret;
+        }
+
+		//---------------------------------------------------------------------
+
+        public бул Read(ткст key, inout цел pl)
+        {
+            return wxConfigBase_ReadInt(шхобъ, key, pl);
+        }
+
+        public бул Read(ткст key, inout цел pl, цел defVal)
+        {
+            return wxConfigBase_ReadIntDef(шхобъ, key, pl, defVal);
+        }
+
+		//---------------------------------------------------------------------
+
+        public бул Read(ткст key, inout дво val)
+        {
+            return wxConfigBase_ReadDbl(шхобъ, key, val);
+        }
+
+        public бул Read(ткст key, inout дво val, дво defVal)
+        {
+            return wxConfigBase_ReadDblDef(шхобъ, key, val, defVal);
+        }
+
+		//---------------------------------------------------------------------
+
+        public бул Read(ткст key, inout бул val)
+        {
+            return wxConfigBase_ReadBool(шхобъ, key, val);
+        }
+
+        public бул Read(ткст key, inout бул val, бул defVal)
+        {
+            return wxConfigBase_ReadBoolDef(шхобъ, key, val, defVal);
+        }
+
+		//---------------------------------------------------------------------
+
+        public бул Read(ткст key, inout Шрифт val)
+        {
+            return Read(key, val, Шрифт.wxNORMAL_FONT);
+        }
+
+        public бул Read(ткст key, inout Шрифт val, Шрифт defVal)
+        {
+            бул ret = да;
+
+            цел pointSize = 0, family = 0, стиль = 0, weight = 0, encoding = 0;
+            бул underline = нет;
+            ткст faceName = "";
+
+            ret &= Read(key ~ "/PointSize", pointSize,  cast(цел)defVal.PointSize);
+            ret &= Read(key ~ "/Family",    family,     cast(цел)defVal.Family);
+            ret &= Read(key ~ "/Style",     стиль,      cast(цел)defVal.Style);
+            ret &= Read(key ~ "/Weight",    weight,     cast(цел)defVal.Weight);
+            ret &= Read(key ~ "/Underline", underline,  cast(бул)defVal.Underlined);
             ret &= Read(key ~ "/FaceName",  faceName,   defVal.FaceName);
-            ret &= Read(key ~ "/Encoding",  encoding,   cast(int)defVal.Encoding);
+            ret &= Read(key ~ "/Encoding",  encoding,   cast(цел)defVal.Encoding);
 
             val.PointSize   = pointSize;
             val.Family      = cast(FontFamily)family;
-            val.Style       = cast(FontStyle)style;
+            val.Style       = cast(FontStyle)стиль;
             val.Weight      = cast(FontWeight)weight;
             val.Underlined  = underline;
             val.FaceName    = faceName;
@@ -312,51 +312,51 @@ public import wx.wxString;
 
 		//---------------------------------------------------------------------
 
-        public bool Read(string key, inout Colour val)
+        public бул Read(ткст key, inout Цвет val)
         {
-            Colour def = new Colour(0, 0, 0);
+            Цвет def = new Цвет(0, 0, 0);
             return Read(key, val, def);
         }
 
-	private static int hex2int(string str)
+	private static цел hex2int(ткст str)
 	{
-		int value = 0;
-		foreach(char foo; str) {
-			char ch = foo;
+		цел значение = 0;
+		foreach(сим foo; str) {
+			сим ch = foo;
 			if (ch>='0' && ch<='9') ch-='0';
 			else if (ch>='A' && ch<='F') ch=ch-'A'+10;
 			else if (ch>='a' && ch<='f') ch=ch-'a'+10;
 			else return -1;
-			value = value*10 + ch;
+			значение = значение*10 + ch;
 		}
-		return value;
+		return значение;
 	}
 
-        public bool Read(string key, inout Colour val, Colour defVal)
+        public бул Read(ткст key, inout Цвет val, Цвет defVal)
         {
-            string str;
-            bool ret = Read(key,str);
+            ткст str;
+            бул ret = Read(key,str);
             if (!ret || !str || str[0]!='#') {
             //    val = defval;
             } else {
-                uint c = hex2int(str[1..str.length]);
+                бцел c = hex2int(str[1..str.length]);
 
-                int r = (c>>16)&255;
-                int g = (c>>8)&255;
-                int b = c&255;
+                цел к = (c>>16)&255;
+                цел з = (c>>8)&255;
+                цел с = c&255;
 
-                val = new Colour(cast(ubyte)r, cast(ubyte)g, cast(ubyte)b);
+                val = new Цвет(cast(ббайт)к, cast(ббайт)з, cast(ббайт)с);
             }
             return ret;
 /*
-            bool ret = true;
-            int r = 0, b = 0, g = 0;
+            бул ret = да;
+            цел к = 0, с = 0, з = 0;
 
-            ret &= Read(key ~ "/Red",   r, cast(int)defVal.Red);
-            ret &= Read(key ~ "/Blue",  b, cast(int)defVal.Blue);
-            ret &= Read(key ~ "/Green", g, cast(int)defVal.Green);
+            ret &= Read(key ~ "/Красный",   к, cast(цел)defVal.Красный);
+            ret &= Read(key ~ "/Синий",  с, cast(цел)defVal.Синий);
+            ret &= Read(key ~ "/Зелёный", з, cast(цел)defVal.Зелёный);
 
-            val = new Colour(cast(ubyte)r, cast(ubyte)g, cast(ubyte)b);
+            val = new Цвет(cast(ббайт)к, cast(ббайт)з, cast(ббайт)с);
 
             return ret;
 */
@@ -364,162 +364,162 @@ public import wx.wxString;
 
 		//---------------------------------------------------------------------
 /+
-        public string Read(string key, string defVal)
+        public ткст Read(ткст key, ткст defVal)
         {
-            return cast(string) new wxString(wxConfigBase_ReadStrRet(wxobj, key, defVal), true);
+            return cast(ткст) new wxString(wxConfigBase_ReadStrRet(шхобъ, key, defVal), да);
         }
 +/
-        public int Read(string key, int defVal)
+        public цел Read(ткст key, цел defVal)
         {
-            return wxConfigBase_ReadIntRet(wxobj, key, defVal);
+            return wxConfigBase_ReadIntRet(шхобъ, key, defVal);
         }
 
-        public bool Read(string key, bool defVal) {
-            bool val = false;
+        public бул Read(ткст key, бул defVal) {
+            бул val = нет;
             Read(key, val, defVal);
             return val;
         }
 
-        public Colour Read(string key, Colour defVal)
+        public Цвет Read(ткст key, Цвет defVal)
         {
-            Colour col = new Colour();
+            Цвет col = new Цвет();
             Read(key, col, defVal);
             return col;
         }
 
-        public Font Read(string key, Font defVal)
+        public Шрифт Read(ткст key, Шрифт defVal)
         {
-            Font fnt = new Font();
+            Шрифт fnt = new Шрифт();
             Read(key, fnt, defVal);
             return fnt;
         }
 
 		//---------------------------------------------------------------------
 
-        public bool Write(string key, string val)
+        public бул Write(ткст key, ткст val)
         {
-            return wxConfigBase_WriteStr(wxobj, key, val);
+            return wxConfigBase_WriteStr(шхобъ, key, val);
         }
 
-        public bool Write(string key, int val)
+        public бул Write(ткст key, цел val)
         {
-            return wxConfigBase_WriteInt(wxobj, key, val);
+            return wxConfigBase_WriteInt(шхобъ, key, val);
         }
 
-        public bool Write(string key, double val)
+        public бул Write(ткст key, дво val)
         {
-            return wxConfigBase_WriteDbl(wxobj, key, val);
+            return wxConfigBase_WriteDbl(шхобъ, key, val);
         }
 
-        public bool Write(string key, bool val)
+        public бул Write(ткст key, бул val)
         {
-            return wxConfigBase_WriteBool(wxobj, key, val);
+            return wxConfigBase_WriteBool(шхобъ, key, val);
         }
 
-	private static void tohex(char* s,uint value)
+	private static проц tohex(сим* s,бцел значение)
 	{
-		const static char[16] hexdigits = "0123456789ABCDEF";
-		s[0] = hexdigits[value>>4];
-		s[1] = hexdigits[value&15];
+		const static сим[16] hexdigits = "0123456789ABCDEF";
+		s[0] = hexdigits[значение>>4];
+		s[1] = hexdigits[значение&15];
 	}
 	
-        public bool Write(string key, Colour col)
+        public бул Write(ткст key, Цвет col)
         {
 /*
-            bool ret = true;
-            ret &= Write(key ~ "/Red",   cast(int)col.Red);
-            ret &= Write(key ~ "/Blue",  cast(int)col.Blue);
-            ret &= Write(key ~ "/Green", cast(int)col.Green);
+            бул ret = да;
+            ret &= Write(key ~ "/Красный",   cast(цел)col.Красный);
+            ret &= Write(key ~ "/Синий",  cast(цел)col.Синий);
+            ret &= Write(key ~ "/Зелёный", cast(цел)col.Зелёный);
             return ret;
 */
-	    char[] buf = new char[7];
+	    сим[] buf = new сим[7];
 	    buf[0] = '#';
-	    tohex(&buf[1],col.Red);
-	    tohex(&buf[3],col.Green);
-	    tohex(&buf[5],col.Blue);
+	    tohex(&buf[1],col.Красный);
+	    tohex(&buf[3],col.Зелёный);
+	    tohex(&buf[5],col.Синий);
 	    return Write(key, buf);//assumeUnique(buf));
         }
 
-        public bool Write(string key, Font val)
+        public бул Write(ткст key, Шрифт val)
         {
-            bool ret = true;
+            бул ret = да;
 
-            ret &= Write(key ~ "/PointSize", cast(int)val.PointSize);
-            ret &= Write(key ~ "/Family",    cast(int)val.Family);
-            ret &= Write(key ~ "/Style",     cast(int)val.Style);
-            ret &= Write(key ~ "/Weight",    cast(int)val.Weight);
-            ret &= Write(key ~ "/Underline", cast(bool)val.Underlined);
+            ret &= Write(key ~ "/PointSize", cast(цел)val.PointSize);
+            ret &= Write(key ~ "/Family",    cast(цел)val.Family);
+            ret &= Write(key ~ "/Style",     cast(цел)val.Style);
+            ret &= Write(key ~ "/Weight",    cast(цел)val.Weight);
+            ret &= Write(key ~ "/Underline", cast(бул)val.Underlined);
             ret &= Write(key ~ "/FaceName",  val.FaceName);
-            ret &= Write(key ~ "/Encoding",  cast(int)val.Encoding);
+            ret &= Write(key ~ "/Encoding",  cast(цел)val.Encoding);
 
             return ret;
         }
 
 		//---------------------------------------------------------------------
 
-        public bool Flush(bool bCurrentOnly)
+        public бул Flush(бул bCurrentOnly)
         {
-            return wxConfigBase_Flush(wxobj, bCurrentOnly);
+            return wxConfigBase_Flush(шхобъ, bCurrentOnly);
         }
 
 		//---------------------------------------------------------------------
 
-        public bool RenameEntry(string oldName, string newName)
+        public бул RenameEntry(ткст oldName, ткст newName)
         {
-            return wxConfigBase_RenameEntry(wxobj, oldName, newName);
+            return wxConfigBase_RenameEntry(шхобъ, oldName, newName);
         }
 
-        public bool RenameGroup(string oldName, string newName)
+        public бул RenameGroup(ткст oldName, ткст newName)
         {
-            return wxConfigBase_RenameGroup(wxobj, oldName, newName);
-        }
-
-		//---------------------------------------------------------------------
-
-        public bool DeleteEntry(string key, bool bDeleteGroupIfEmpty)
-        {
-            return wxConfigBase_DeleteEntry(wxobj, key, bDeleteGroupIfEmpty);
-        }
-
-        public bool DeleteGroup(string key)
-        {
-            return wxConfigBase_DeleteGroup(wxobj, key);
-        }
-
-        public bool DeleteAll()
-        {
-            return wxConfigBase_DeleteAll(wxobj);
+            return wxConfigBase_RenameGroup(шхобъ, oldName, newName);
         }
 
 		//---------------------------------------------------------------------
 
-        public bool ExpandEnvVars() { return wxConfigBase_IsExpandingEnvVars(wxobj); }
-        public void ExpandEnvVars(bool value) { wxConfigBase_SetExpandEnvVars(wxobj, value); }
-
-        /*public string ExpandEnvVars(string str)
+        public бул DeleteEntry(ткст key, бул bDeleteGroupIfEmpty)
         {
-            return cast(string) new wxString(wxConfigBase_ExpandEnvVars(wxobj, str));
+            return wxConfigBase_DeleteEntry(шхобъ, key, bDeleteGroupIfEmpty);
+        }
+
+        public бул DeleteGroup(ткст key)
+        {
+            return wxConfigBase_DeleteGroup(шхобъ, key);
+        }
+
+        public бул DeleteAll()
+        {
+            return wxConfigBase_DeleteAll(шхобъ);
+        }
+
+		//---------------------------------------------------------------------
+
+        public бул ExpandEnvVars() { return wxConfigBase_IsExpandingEnvVars(шхобъ); }
+        public проц ExpandEnvVars(бул значение) { wxConfigBase_SetExpandEnvVars(шхобъ, значение); }
+
+        /*public ткст ExpandEnvVars(ткст str)
+        {
+            return cast(ткст) new wxString(wxConfigBase_ExpandEnvVars(шхобъ, str));
         }*/
 
 		//---------------------------------------------------------------------
 
-        public void RecordDefaults(bool value) { wxConfigBase_SetRecordDefaults(wxobj, value); }
-        public bool RecordDefaults() { return wxConfigBase_IsRecordingDefaults(wxobj); }
+        public проц RecordDefaults(бул значение) { wxConfigBase_SetRecordDefaults(шхобъ, значение); }
+        public бул RecordDefaults() { return wxConfigBase_IsRecordingDefaults(шхобъ); }
 
 		//---------------------------------------------------------------------
 
-        public string AppName() { return cast(string) new wxString(wxConfigBase_GetAppName(wxobj), true); }
-        public void AppName(string value) { wxConfigBase_SetAppName(wxobj, value); }
+        public ткст ИмяПрил() { return cast(ткст) new wxString(wxConfigBase_GetAppName(шхобъ), да); }
+        public проц ИмяПрил(ткст значение) { wxConfigBase_SetAppName(шхобъ, значение); }
 
 		//---------------------------------------------------------------------
 
-        public string VendorName() { return cast(string) new wxString(wxConfigBase_GetVendorName(wxobj), true); }
-        public void VendorName(string value) { wxConfigBase_SetVendorName(wxobj, value); }
+        public ткст ИмяПроизводителя() { return cast(ткст) new wxString(wxConfigBase_GetVendorName(шхобъ), да); }
+        public проц ИмяПроизводителя(ткст значение) { wxConfigBase_SetVendorName(шхобъ, значение); }
 
 		//---------------------------------------------------------------------
 
-        public void Style(int value) { wxConfigBase_SetStyle(wxobj, value); }
-        public int Style() { return wxConfigBase_GetStyle(wxobj); }
+        public проц Style(цел значение) { wxConfigBase_SetStyle(шхобъ, значение); }
+        public цел Style() { return wxConfigBase_GetStyle(шхобъ); }
 
 		//---------------------------------------------------------------------
     }

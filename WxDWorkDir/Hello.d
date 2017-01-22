@@ -1,36 +1,36 @@
 //-----------------------------------------------------------------------------
 // wxD/Samples - Hello.d
-// converted to wxD from http://www.wxwidgets.org/wiki/index.php/Hello_World
+// converted to wxD from http://www.wxwidgets.org/wiki/индекс.php/Hello_World
 //-----------------------------------------------------------------------------
 
 import io.Stdout, wx.wx;
 
  /**
-  * This class shows a window containing a statusbar with the text 'Hello World'
+  * This class shows a окно containing a statusbar with the текст 'Hello World'
   */
-public class HelloWorldApp : App
+public class HelloWorldApp : Прил
 {
-	public override bool OnInit()
+	public override бул ПриИниц()
 	{
-        wxFrame frame = new wxFrame(null, wxID_ANY, "Hello wxWidgets World");
+        wxFrame frame = new wxFrame(пусто, wxID_ANY, "Hello wxWidgets World");
         //frame.CreateStatusBar();
        // frame.StatusText = "Hello World";
-        frame.Show(true);
-       // TopWindow = frame;
-        return true;
+        frame.Show(да);
+       // ТопОкно = frame;
+        return да;
 	}
 }
 
 
-int main()
+цел main()
 {
 
 Стдвыв("Проверка работы Стдвыв").нс;
-HelloWorldApp app = new HelloWorldApp();
+HelloWorldApp прил = new HelloWorldApp();
 
-Стдвыв(app.VendorName()).нс;
+Стдвыв(прил.ИмяПроизводителя()).нс;
 
 	
-	app.Run();
+	прил.Пуск();
 	return 0;
 }

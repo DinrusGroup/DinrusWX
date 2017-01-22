@@ -2,57 +2,57 @@
 import wx.wx;
 
     /**
-     * A class to view an image.
+     * A class to view an рисунок.
      *
-     * A scrolled window is used so that large images can be viewed.
+     * A scrolled окно is used so that large images can be viewed.
      */
     public class ImageViewer : ScrolledWindow
     {
-        private Bitmap m_bitmap, m_defaultBmp;
+        private Битмап m_bitmap, m_defaultBmp;
 
-        public this(Window parent)
+        public this(Окно родитель)
         {
-            super(parent);
-            // Load a default image (logo)
-            m_defaultBmp = new Bitmap("../Samples/Tutorial/ImageView.bmp", 
-                                         BitmapType.wxBITMAP_TYPE_BMP);
+            super(родитель);
+            // Load a default рисунок (logo)
+            m_defaultBmp = new Битмап("../Samples/Tutorial/ImageView.bmp", 
+                                         ТипБитмапа.wxBITMAP_TYPE_BMP);
 
             // Our panel will have a white background, the colour contructor
             // accepts strings for several common colours.
-            BackgroundColour = new Colour("White");
+            ЦветЗП = new Цвет("White");
 
-            // Set our bitmap
-            Bitmap = m_defaultBmp;
+            // Установи our битмап
+            Битмап = m_defaultBmp;
         }
 
         /**
-         * The bitmap to be displayed.
+         * The битмап to be displayed.
          */
-        public void bitmap(Bitmap value)
+        public проц битмап(Битмап значение)
         {
-                if (value == null) {
+                if (значение == пусто) {
                     // Use the default
                     m_bitmap = m_defaultBmp;
                 }
                 else {
-                    m_bitmap = value; 
+                    m_bitmap = значение; 
                 }
 
-                // Initialize the scrollbars
-                SetScrollbars(1, 1, m_bitmap.Width, m_bitmap.Height,
-                              0, 0, true);
+                // Инициализуй the scrollbars
+                SetScrollbars(1, 1, m_bitmap.Ширина, m_bitmap.Высота,
+                              0, 0, да);
 
-                // Redraw the window
+                // Redraw the окно
                 Refresh();
         }
 
         /**
-         * Override the OnDraw method so we can draw the bitmap.
+         * Override the OnDraw method so we can draw the битмап.
          */
-        public override void OnDraw(DC dc)
+        public override проц OnDraw(DC dc)
         {
-            // Draw the bitmap onto the device context
-            dc.DrawBitmap(m_bitmap, 0, 0 , false);
+            // Draw the битмап onto the device context
+            dc.РисуйБитмап(m_bitmap, 0, 0 , нет);
         }
     }
 

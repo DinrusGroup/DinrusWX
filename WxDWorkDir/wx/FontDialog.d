@@ -1,4 +1,4 @@
-//-----------------------------------------------------------------------------
+﻿//-----------------------------------------------------------------------------
 // wxD - FontDialog.d
 // (C) 2005 bero <berobero@users.sourceforge.net>
 // based on
@@ -10,38 +10,38 @@
 // (C) 2003 Bryan Bulten
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: FontDialog.d,v 1.9 2006/11/17 15:20:59 afb Exp $
+// $Ид: FontDialog.d,v 1.9 2006/11/17 15:20:59 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.FontDialog;
 public import wx.common;
 public import wx.Dialog;
-public import wx.Font;
+public import wx.Шрифт;
 public import wx.GdiCommon; //for nullobject
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxFontData_ctor();
-		static extern (C) void   wxFontData_dtor(IntPtr self);
+		static extern (C) ЦУк wxFontData_ctor();
+		static extern (C) проц   wxFontData_dtor(ЦУк сам);
 
-		static extern (C) void   wxFontData_SetAllowSymbols(IntPtr self, bool flag);
-		static extern (C) bool   wxFontData_GetAllowSymbols(IntPtr self);
+		static extern (C) проц   wxFontData_SetAllowSymbols(ЦУк сам, бул flag);
+		static extern (C) бул   wxFontData_GetAllowSymbols(ЦУк сам);
 
-		static extern (C) void   wxFontData_SetColour(IntPtr self, IntPtr colour);
-		static extern (C) IntPtr wxFontData_GetColour(IntPtr self);
+		static extern (C) проц   wxFontData_SetColour(ЦУк сам, ЦУк colour);
+		static extern (C) ЦУк wxFontData_GetColour(ЦУк сам);
 
-		static extern (C) void   wxFontData_SetShowHelp(IntPtr self, bool flag);
-		static extern (C) bool   wxFontData_GetShowHelp(IntPtr self);
+		static extern (C) проц   wxFontData_SetShowHelp(ЦУк сам, бул flag);
+		static extern (C) бул   wxFontData_GetShowHelp(ЦУк сам);
 
-		static extern (C) void   wxFontData_EnableEffects(IntPtr self, bool flag);
-		static extern (C) bool   wxFontData_GetEnableEffects(IntPtr self);
+		static extern (C) проц   wxFontData_EnableEffects(ЦУк сам, бул flag);
+		static extern (C) бул   wxFontData_GetEnableEffects(ЦУк сам);
 
-		static extern (C) void   wxFontData_SetInitialFont(IntPtr self, IntPtr font);
-		static extern (C) IntPtr wxFontData_GetInitialFont(IntPtr self);
+		static extern (C) проц   wxFontData_SetInitialFont(ЦУк сам, ЦУк шрифт);
+		static extern (C) ЦУк wxFontData_GetInitialFont(ЦУк сам);
 
-		static extern (C) void   wxFontData_SetChosenFont(IntPtr self, IntPtr font);
-		static extern (C) IntPtr wxFontData_GetChosenFont(IntPtr self);
+		static extern (C) проц   wxFontData_SetChosenFont(ЦУк сам, ЦУк шрифт);
+		static extern (C) ЦУк wxFontData_GetChosenFont(ЦУк сам);
 
-		static extern (C) void   wxFontData_SetRange(IntPtr self, int minRange, int maxRange);
+		static extern (C) проц   wxFontData_SetRange(ЦУк сам, цел minRange, цел maxRange);
 		//! \endcond
 
         //---------------------------------------------------------------------
@@ -49,78 +49,78 @@ public import wx.GdiCommon; //for nullobject
     alias FontData wxFontData;
     public class FontData : wxObject
     {
-        public this(IntPtr wxobj) 
-            { super(wxobj); }
+        public this(ЦУк шхобъ) 
+            { super(шхобъ); }
 
         public this()
             { super(wxFontData_ctor()); }
 
         //---------------------------------------------------------------------
 
-        public bool AllowSymbols() { return wxFontData_GetAllowSymbols(wxobj); }
-        public void AllowSymbols(bool value) { wxFontData_SetAllowSymbols(wxobj, value); }
+        public бул AllowSymbols() { return wxFontData_GetAllowSymbols(шхобъ); }
+        public проц AllowSymbols(бул значение) { wxFontData_SetAllowSymbols(шхобъ, значение); }
 
         //---------------------------------------------------------------------
 
-        public bool EffectsEnabled() { return wxFontData_GetEnableEffects(wxobj); }
-        public void EffectsEnabled(bool value) { wxFontData_EnableEffects(wxobj, value); }
+        public бул EffectsEnabled() { return wxFontData_GetEnableEffects(шхобъ); }
+        public проц EffectsEnabled(бул значение) { wxFontData_EnableEffects(шхобъ, значение); }
 
         //---------------------------------------------------------------------
 
-        public bool ShowHelp() { return wxFontData_GetShowHelp(wxobj); }
-        public void ShowHelp(bool value) { wxFontData_SetShowHelp(wxobj, value); }
+        public бул ShowHelp() { return wxFontData_GetShowHelp(шхобъ); }
+        public проц ShowHelp(бул значение) { wxFontData_SetShowHelp(шхобъ, значение); }
 
         //---------------------------------------------------------------------
 
-        public Colour colour() 
+        public Цвет colour() 
             {
-                return new Colour(wxFontData_GetColour(wxobj), true);
+                return new Цвет(wxFontData_GetColour(шхобъ), да);
             }
-        public void colour(Colour value) 
+        public проц colour(Цвет значение) 
             {
-                wxFontData_SetColour(wxobj, wxObject.SafePtr(value)); 
+                wxFontData_SetColour(шхобъ, wxObject.SafePtr(значение)); 
             }
 
         //---------------------------------------------------------------------
         
-        public Font InitialFont() 
+        public Шрифт InitialFont() 
             {
-                return new Font(wxFontData_GetInitialFont(wxobj));
+                return new Шрифт(wxFontData_GetInitialFont(шхобъ));
             }
-        public void InitialFont(Font value) 
+        public проц InitialFont(Шрифт значение) 
             {
-                wxFontData_SetInitialFont(wxobj, wxObject.SafePtr(value));
-            }
-
-        //---------------------------------------------------------------------
-
-        public Font ChosenFont() 
-            {
-                return new Font(wxFontData_GetChosenFont(wxobj));
-            }
-        public void ChosenFont(Font value) 
-            {
-                wxFontData_SetChosenFont(wxobj, wxObject.SafePtr(value));
+                wxFontData_SetInitialFont(шхобъ, wxObject.SafePtr(значение));
             }
 
         //---------------------------------------------------------------------
 
-        public void SetRange(int min, int max)
+        public Шрифт ChosenFont() 
+            {
+                return new Шрифт(wxFontData_GetChosenFont(шхобъ));
+            }
+        public проц ChosenFont(Шрифт значение) 
+            {
+                wxFontData_SetChosenFont(шхобъ, wxObject.SafePtr(значение));
+            }
+
+        //---------------------------------------------------------------------
+
+        public проц SetRange(цел min, цел max)
         {
-            wxFontData_SetRange(wxobj, min, max);
+            wxFontData_SetRange(шхобъ, min, max);
         }
 
         //---------------------------------------------------------------------
-	public static wxObject New(IntPtr ptr) { return new FontData(ptr); }
+	public static wxObject Нов(ЦУк ptr) { return new FontData(ptr); }
     }
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxFontDialog_ctor();
-		static extern (C) bool   wxFontDialog_Create(IntPtr self, IntPtr parent, IntPtr data);
-		static extern (C) void   wxFontDialog_dtor(IntPtr self);
+		static extern (C) ЦУк wxFontDialog_ctor();
+		static extern (C) бул   wxFontDialog_Create(ЦУк сам, ЦУк родитель, ЦУк данные);
+		static extern (C) проц   wxFontDialog_dtor(ЦУк сам);
 
-		static extern (C) int    wxFontDialog_ShowModal(IntPtr self);
-		static extern (C) IntPtr wxFontDialog_GetFontData(IntPtr self);
+		static extern (C) цел    wxFontDialog_ShowModal(ЦУк сам);
+		static extern (C) ЦУк wxFontDialog_GetFontData(ЦУк сам);
 		//! \endcond
 
         //---------------------------------------------------------------------
@@ -128,51 +128,51 @@ public import wx.GdiCommon; //for nullobject
 	alias FontDialog wxFontDialog;
 	public class FontDialog : Dialog
 	{
-        public this(IntPtr wxobj)
-            { super(wxobj); }
+        public this(ЦУк шхобъ)
+            { super(шхобъ); }
 
         public this()
             { super(wxFontDialog_ctor()); }
 
-        public this(Window parent)
-            { this(parent, null); }
+        public this(Окно родитель)
+            { this(родитель, пусто); }
 
-        public this(Window parent, FontData data)
+        public this(Окно родитель, FontData данные)
         {
         	this();
-            if (!Create(parent, data)) 
+            if (!Create(родитель, данные)) 
             {
                 throw new InvalidOperationException("Failed to create FontDialog");
             }
         }
 
-        public bool Create(Window parent, FontData data)
+        public бул Create(Окно родитель, FontData данные)
         {
-            return wxFontDialog_Create(wxobj, wxObject.SafePtr(parent), wxObject.SafePtr(data));
+            return wxFontDialog_Create(шхобъ, wxObject.SafePtr(родитель), wxObject.SafePtr(данные));
         }
 
         //---------------------------------------------------------------------
 
         public FontData fontData() 
         {
-            return cast(FontData)FindObject(wxFontDialog_GetFontData(wxobj), &FontData.New);
+            return cast(FontData)FindObject(wxFontDialog_GetFontData(шхобъ), &FontData.Нов);
         }
 
         //---------------------------------------------------------------------
 
-        public override int ShowModal()
+        public override цел ShowModal()
         {
-            return wxFontDialog_ShowModal(wxobj);
+            return wxFontDialog_ShowModal(шхобъ);
         }
 
         //---------------------------------------------------------------------
 	}
 
 	//! \cond EXTERN
-	extern (C) IntPtr wxGetFontFromUser_func(IntPtr parent, IntPtr fontInit);
+	extern (C) ЦУк wxGetFontFromUser_func(ЦУк родитель, ЦУк fontInit);
 	//! \endcond
 
-	Font GetFontFromUser(Window parent,Font fontInit=null)
+	Шрифт GetFontFromUser(Окно родитель,Шрифт fontInit=пусто)
 	{
-		return new Font(wxGetFontFromUser_func(wxObject.SafePtr(parent),wxObject.SafePtr(fontInit)));
+		return new Шрифт(wxGetFontFromUser_func(wxObject.SafePtr(родитель),wxObject.SafePtr(fontInit)));
 	}

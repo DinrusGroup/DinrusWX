@@ -10,7 +10,7 @@
 // (C) 2004 by Alexander Olk
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: TabCtrl.d,v 1.11 2007/03/13 17:02:41 afb Exp $
+// $Ид: TabCtrl.d,v 1.11 2007/03/13 17:02:41 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.TabCtrl;
@@ -26,93 +26,93 @@ public import wx.ImageList;
 public import wx.wxString;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxTabEvent_ctor(int commandType, int id, int nSel, int nOldSel);
-		static extern (C) int    wxTabEvent_GetSelection(IntPtr self);
-		static extern (C) void   wxTabEvent_SetSelection(IntPtr self, int nSel);
-		static extern (C) int    wxTabEvent_GetOldSelection(IntPtr self);
-		static extern (C) void   wxTabEvent_SetOldSelection(IntPtr self, int nOldSel);
-		static extern (C) void wxTabEvent_Veto(IntPtr self);
-		static extern (C) void wxTabEvent_Allow(IntPtr self);
-		static extern (C) bool wxTabEvent_IsAllowed(IntPtr self);		
+		static extern (C) ЦУк wxTabEvent_ctor(цел commandType, цел ид, цел nSel, цел nOldSel);
+		static extern (C) цел    wxTabEvent_GetSelection(ЦУк сам);
+		static extern (C) проц   wxTabEvent_SetSelection(ЦУк сам, цел nSel);
+		static extern (C) цел    wxTabEvent_GetOldSelection(ЦУк сам);
+		static extern (C) проц   wxTabEvent_SetOldSelection(ЦУк сам, цел nOldSel);
+		static extern (C) проц wxTabEvent_Veto(ЦУк сам);
+		static extern (C) проц wxTabEvent_Allow(ЦУк сам);
+		static extern (C) бул wxTabEvent_IsAllowed(ЦУк сам);		
 		//! \endcond
 
 		//-----------------------------------------------------------------------------
 
 	alias TabEvent wxTabEvent;
-	public class TabEvent : Event
+	public class TabEvent : Событие
 	{
-		public this(IntPtr wxobj)
-			{ super(wxobj); }
+		public this(ЦУк шхобъ)
+			{ super(шхобъ); }
 
-		public this(int commandType, int id, int nSel, int nOldSel)
-			{ super(wxTabEvent_ctor(commandType, id, nSel, nOldSel)); }
-
-		//-----------------------------------------------------------------------------
-
-		public int Selection() { return wxTabEvent_GetSelection(wxobj); }
-		public void Selection(int value) { wxTabEvent_SetSelection(wxobj, value); }
+		public this(цел commandType, цел ид, цел nSel, цел nOldSel)
+			{ super(wxTabEvent_ctor(commandType, ид, nSel, nOldSel)); }
 
 		//-----------------------------------------------------------------------------
 
-		public int OldSelection() { return wxTabEvent_GetOldSelection(wxobj); }
-		public void OldSelection(int value) { wxTabEvent_SetOldSelection(wxobj, value); }
+		public цел Selection() { return wxTabEvent_GetSelection(шхобъ); }
+		public проц Selection(цел значение) { wxTabEvent_SetSelection(шхобъ, значение); }
+
+		//-----------------------------------------------------------------------------
+
+		public цел OldSelection() { return wxTabEvent_GetOldSelection(шхобъ); }
+		public проц OldSelection(цел значение) { wxTabEvent_SetOldSelection(шхобъ, значение); }
 		
 		//-----------------------------------------------------------------------------		
 		
-		public void Veto()
+		public проц Veto()
 		{
-			wxTabEvent_Veto(wxobj);
+			wxTabEvent_Veto(шхобъ);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public void Allow()
+		public проц Allow()
 		{
-			wxTabEvent_Allow(wxobj);
+			wxTabEvent_Allow(шхобъ);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public bool Allowed() { return wxTabEvent_IsAllowed(wxobj); }
+		public бул Allowed() { return wxTabEvent_IsAllowed(шхобъ); }
 
-		private static Event New(IntPtr obj) { return new TabEvent(obj); }
+		private static Событие Нов(ЦУк объ) { return new TabEvent(объ); }
 
 		static this()
 		{
 			wxEVT_COMMAND_TAB_SEL_CHANGED = wxEvent_EVT_COMMAND_TAB_SEL_CHANGED();
 			wxEVT_COMMAND_TAB_SEL_CHANGING = wxEvent_EVT_COMMAND_TAB_SEL_CHANGING();
 
-			AddEventType(wxEVT_COMMAND_TAB_SEL_CHANGED,   &TabEvent.New);
-			AddEventType(wxEVT_COMMAND_TAB_SEL_CHANGING,  &TabEvent.New);
+			ДобавьТипСоб(wxEVT_COMMAND_TAB_SEL_CHANGED,   &TabEvent.Нов);
+			ДобавьТипСоб(wxEVT_COMMAND_TAB_SEL_CHANGING,  &TabEvent.Нов);
 		}
 	}
 
 	//-----------------------------------------------------------------------------
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxTabCtrl_ctor();
-		static extern (C) IntPtr wxTabCtrl_ctor2(IntPtr parent, int id, inout Point pos, inout Size size, uint style, string name);
-		static extern (C) int wxTabCtrl_GetSelection(IntPtr self);
-		static extern (C) int wxTabCtrl_GetCurFocus(IntPtr self);
-		static extern (C) IntPtr wxTabCtrl_GetImageList(IntPtr self);
-		static extern (C) int wxTabCtrl_GetItemCount(IntPtr self);
-		static extern (C) bool wxTabCtrl_GetItemRect(IntPtr self, int item, out Rectangle rect);
-		static extern (C) int wxTabCtrl_GetRowCount(IntPtr self);
-		static extern (C) IntPtr wxTabCtrl_GetItemText(IntPtr self, int item);
-		static extern (C) int wxTabCtrl_GetItemImage(IntPtr self, int item);
-		static extern (C) IntPtr wxTabCtrl_GetItemData(IntPtr self, int item);
-		static extern (C) int wxTabCtrl_SetSelection(IntPtr self, int item);
-		static extern (C) void wxTabCtrl_SetImageList(IntPtr self, IntPtr imageList);
-		static extern (C) bool wxTabCtrl_SetItemText(IntPtr self, int item, string text);
-		static extern (C) bool wxTabCtrl_SetItemImage(IntPtr self, int item, int image);
-		static extern (C) bool wxTabCtrl_SetItemData(IntPtr self, int item, IntPtr data);
-		static extern (C) void wxTabCtrl_SetItemSize(IntPtr self, inout Size size);
-		static extern (C) bool wxTabCtrl_Create(IntPtr self, IntPtr parent, int id, inout Point pos, inout Size size, uint style, string name);
-		static extern (C) void wxTabCtrl_SetPadding(IntPtr self, inout Size padding);
-		static extern (C) bool wxTabCtrl_DeleteAllItems(IntPtr self);
-		static extern (C) bool wxTabCtrl_DeleteItem(IntPtr self, int item);
-		static extern (C) int wxTabCtrl_HitTest(IntPtr self, inout Point pt, out int flags);
-		static extern (C) bool wxTabCtrl_InsertItem(IntPtr self, int item, string text, int imageId, IntPtr data);
+		static extern (C) ЦУк wxTabCtrl_ctor();
+		static extern (C) ЦУк wxTabCtrl_ctor2(ЦУк родитель, цел ид, inout Точка поз, inout Размер size, бцел стиль, ткст имя);
+		static extern (C) цел wxTabCtrl_GetSelection(ЦУк сам);
+		static extern (C) цел wxTabCtrl_GetCurFocus(ЦУк сам);
+		static extern (C) ЦУк wxTabCtrl_GetImageList(ЦУк сам);
+		static extern (C) цел wxTabCtrl_GetItemCount(ЦУк сам);
+		static extern (C) бул wxTabCtrl_GetItemRect(ЦУк сам, цел элемент, out Прямоугольник прям);
+		static extern (C) цел wxTabCtrl_GetRowCount(ЦУк сам);
+		static extern (C) ЦУк wxTabCtrl_GetItemText(ЦУк сам, цел элемент);
+		static extern (C) цел wxTabCtrl_GetItemImage(ЦУк сам, цел элемент);
+		static extern (C) ЦУк wxTabCtrl_GetItemData(ЦУк сам, цел элемент);
+		static extern (C) цел wxTabCtrl_SetSelection(ЦУк сам, цел элемент);
+		static extern (C) проц wxTabCtrl_SetImageList(ЦУк сам, ЦУк imageList);
+		static extern (C) бул wxTabCtrl_SetItemText(ЦУк сам, цел элемент, ткст текст);
+		static extern (C) бул wxTabCtrl_SetItemImage(ЦУк сам, цел элемент, цел рисунок);
+		static extern (C) бул wxTabCtrl_SetItemData(ЦУк сам, цел элемент, ЦУк данные);
+		static extern (C) проц wxTabCtrl_SetItemSize(ЦУк сам, inout Размер size);
+		static extern (C) бул wxTabCtrl_Create(ЦУк сам, ЦУк родитель, цел ид, inout Точка поз, inout Размер size, бцел стиль, ткст имя);
+		static extern (C) проц wxTabCtrl_SetPadding(ЦУк сам, inout Размер padding);
+		static extern (C) бул wxTabCtrl_DeleteAllItems(ЦУк сам);
+		static extern (C) бул wxTabCtrl_DeleteItem(ЦУк сам, цел элемент);
+		static extern (C) цел wxTabCtrl_HitTest(ЦУк сам, inout Точка pt, out цел флаги);
+		static extern (C) бул wxTabCtrl_InsertItem(ЦУк сам, цел элемент, ткст текст, цел imageId, ЦУк данные);
 		//! \endcond
 
 	alias TabCtrl wxTabCtrl;
@@ -120,155 +120,155 @@ public import wx.wxString;
 	{
 		//-----------------------------------------------------------------------------
 
-		public this(IntPtr wxobj) 
-			{ super(wxobj); }
+		public this(ЦУк шхобъ) 
+			{ super(шхобъ); }
 
 		public this()
 			{ super(wxTabCtrl_ctor());}
 
-		public this(Window parent, int id, Point pos = wxDefaultPosition, Size size = wxDefaultSize, int style =0, string name = "tabCtrl")
-			{ super(wxTabCtrl_ctor2(wxObject.SafePtr(parent), id, pos, size, cast(uint)style, name));}
+		public this(Окно родитель, цел ид, Точка поз = wxDefaultPosition, Размер size = wxDefaultSize, цел стиль =0, ткст имя = "tabCtrl")
+			{ super(wxTabCtrl_ctor2(wxObject.SafePtr(родитель), ид, поз, size, cast(бцел)стиль, имя));}
 			
-		public static wxObject New(IntPtr wxobj) { return new TabCtrl(wxobj); }
+		public static wxObject Нов(ЦУк шхобъ) { return new TabCtrl(шхобъ); }
 	
 		//---------------------------------------------------------------------
-		// ctors with self created id
+		// ctors with сам created ид
 		
-		public this(Window parent, Point pos = wxDefaultPosition, Size size = wxDefaultSize, int style =0, string name = "tabCtrl")
-			{ this(parent, Window.UniqueID, pos, size, style, name);}
+		public this(Окно родитель, Точка поз = wxDefaultPosition, Размер size = wxDefaultSize, цел стиль =0, ткст имя = "tabCtrl")
+			{ this(родитель, Окно.UniqueID, поз, size, стиль, имя);}
 
 		//-----------------------------------------------------------------------------
 
-		public bool Create(Window parent, int id, inout Point pos, inout Size size, int style, string name)
+		public бул Create(Окно родитель, цел ид, inout Точка поз, inout Размер size, цел стиль, ткст имя)
 		{
-			return wxTabCtrl_Create(wxobj, wxObject.SafePtr(parent), id, pos, size, cast(uint)style, name);
+			return wxTabCtrl_Create(шхобъ, wxObject.SafePtr(родитель), ид, поз, size, cast(бцел)стиль, имя);
 		}
 		
 		//-----------------------------------------------------------------------------
 
-		public int Selection() { return wxTabCtrl_GetSelection(wxobj); }
-		public void Selection(int value) { wxTabCtrl_SetSelection(wxobj, value); }
+		public цел Selection() { return wxTabCtrl_GetSelection(шхобъ); }
+		public проц Selection(цел значение) { wxTabCtrl_SetSelection(шхобъ, значение); }
 		
 		//-----------------------------------------------------------------------------
 
-		public int CurFocus() { return wxTabCtrl_GetCurFocus(wxobj); }
+		public цел CurFocus() { return wxTabCtrl_GetCurFocus(шхобъ); }
 		
 		//-----------------------------------------------------------------------------
 
-		public wxImageList ImageList() { return cast(wxImageList)FindObject(wxTabCtrl_GetImageList(wxobj)); }
-		public void ImageList(wxImageList value) { wxTabCtrl_SetImageList(wxobj, wxObject.SafePtr(value)); }
+		public wxImageList ImageList() { return cast(wxImageList)FindObject(wxTabCtrl_GetImageList(шхобъ)); }
+		public проц ImageList(wxImageList значение) { wxTabCtrl_SetImageList(шхобъ, wxObject.SafePtr(значение)); }
 		
 		//-----------------------------------------------------------------------------
 
-		public int ItemCount() { return wxTabCtrl_GetItemCount(wxobj); }
+		public цел ItemCount() { return wxTabCtrl_GetItemCount(шхобъ); }
 		
 		//-----------------------------------------------------------------------------
 
-		public bool GetItemRect(int item, out Rectangle rect)
+		public бул GetItemRect(цел элемент, out Прямоугольник прям)
 		{
-			return wxTabCtrl_GetItemRect(wxobj, item, rect);
+			return wxTabCtrl_GetItemRect(шхобъ, элемент, прям);
 		}
 		
 		//-----------------------------------------------------------------------------
 
-		public int RowCount() { return wxTabCtrl_GetRowCount(wxobj); }
+		public цел RowCount() { return wxTabCtrl_GetRowCount(шхобъ); }
 		
 		//-----------------------------------------------------------------------------
 
-		public string GetItemText(int item)
+		public ткст GetItemText(цел элемент)
 		{
-			wxString text = new wxString(wxTabCtrl_GetItemText(wxobj, item));
-			return text.toString();
+			wxString текст = new wxString(wxTabCtrl_GetItemText(шхобъ, элемент));
+			return текст.toString();
 		}
 		
 		//-----------------------------------------------------------------------------
 
-		public int GetItemImage(int item)
+		public цел GetItemImage(цел элемент)
 		{
-			return wxTabCtrl_GetItemImage(wxobj, item);
+			return wxTabCtrl_GetItemImage(шхобъ, элемент);
 		}
 		
 		//-----------------------------------------------------------------------------
 
-		public IntPtr GetItemData(int item)
+		public ЦУк GetItemData(цел элемент)
 		{
-			return wxTabCtrl_GetItemData(wxobj, item);
+			return wxTabCtrl_GetItemData(шхобъ, элемент);
 		}
 		
 		//-----------------------------------------------------------------------------
 
-		public bool SetItemText(int item, string text)
+		public бул SetItemText(цел элемент, ткст текст)
 		{
-			return wxTabCtrl_SetItemText(wxobj, item, text);
+			return wxTabCtrl_SetItemText(шхобъ, элемент, текст);
 		}
 		
 		//-----------------------------------------------------------------------------
 
-		public bool SetItemImage(int item, int image)
+		public бул SetItemImage(цел элемент, цел рисунок)
 		{
-			return wxTabCtrl_SetItemImage(wxobj, item, image);
+			return wxTabCtrl_SetItemImage(шхобъ, элемент, рисунок);
 		}
 		
 		//-----------------------------------------------------------------------------
 
-		public bool SetItemData(int item, IntPtr data)
+		public бул SetItemData(цел элемент, ЦУк данные)
 		{
-			return wxTabCtrl_SetItemData(wxobj, item, data);
+			return wxTabCtrl_SetItemData(шхобъ, элемент, данные);
 		}
 		
 		//-----------------------------------------------------------------------------
 
-		public void ItemSize(Size value) { wxTabCtrl_SetItemSize(wxobj, value); }
+		public проц ItemSize(Размер значение) { wxTabCtrl_SetItemSize(шхобъ, значение); }
 		
 		//-----------------------------------------------------------------------------
 
-		public void Padding(Size value) { wxTabCtrl_SetPadding(wxobj, value); }
+		public проц Padding(Размер значение) { wxTabCtrl_SetPadding(шхобъ, значение); }
 		
 		//-----------------------------------------------------------------------------
 
-		public bool DeleteAllItems()
+		public бул DeleteAllItems()
 		{
-			return wxTabCtrl_DeleteAllItems(wxobj);
+			return wxTabCtrl_DeleteAllItems(шхобъ);
 		}
 		
 		//-----------------------------------------------------------------------------
 
-		public bool DeleteItem(int item)
+		public бул DeleteItem(цел элемент)
 		{
-			return wxTabCtrl_DeleteItem(wxobj, item);
+			return wxTabCtrl_DeleteItem(шхобъ, элемент);
 		}
 		
 		//-----------------------------------------------------------------------------
 
-		public int HitTest(Point pt, out int flags)
+		public цел HitTest(Точка pt, out цел флаги)
 		{
-			return wxTabCtrl_HitTest(wxobj, pt, flags);
+			return wxTabCtrl_HitTest(шхобъ, pt, флаги);
 		}
 		
 		//-----------------------------------------------------------------------------
 
-		public bool InsertItem(int item, string text)
+		public бул InsertItem(цел элемент, ткст текст)
 		{
-			return InsertItem(item, text, -1, IntPtr.init);
+			return InsertItem(элемент, текст, -1, ЦУк.init);
 		}
 		
-		public bool InsertItem(int item, string text, int imageId)
+		public бул InsertItem(цел элемент, ткст текст, цел imageId)
 		{
-			return InsertItem(item, text, imageId, IntPtr.init);
+			return InsertItem(элемент, текст, imageId, ЦУк.init);
 		}
 		
-		public bool InsertItem(int item, string text, int imageId, IntPtr data)
+		public бул InsertItem(цел элемент, ткст текст, цел imageId, ЦУк данные)
 		{
-			return wxTabCtrl_InsertItem(wxobj, item, text, imageId, data);
+			return wxTabCtrl_InsertItem(шхобъ, элемент, текст, imageId, данные);
 		}
 
 		//---------------------------------------------------------------------
 
-		public void SelectionChange_Add(EventListener value) { AddCommandListener(Event.wxEVT_COMMAND_TAB_SEL_CHANGED, ID, value, this); }
-		public void SelectionChange_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц SelectionChange_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_COMMAND_TAB_SEL_CHANGED, ИД, значение, this); }
+		public проц SelectionChange_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void SelectionChanging_Add(EventListener value) { AddCommandListener(Event.wxEVT_COMMAND_TAB_SEL_CHANGING, ID, value, this); }
-		public void SelectionChanging_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц SelectionChanging_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_COMMAND_TAB_SEL_CHANGING, ИД, значение, this); }
+		public проц SelectionChanging_Remove(EventListener значение) { RemoveHandler(значение, this); }
 	}
 
 //! \cond VERSION

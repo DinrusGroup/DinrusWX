@@ -10,7 +10,7 @@
 // (C) 2003 Bryan Bulten
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: PrintPreview.d,v 1.9 2006/11/17 15:21:00 afb Exp $
+// $Ид: PrintPreview.d,v 1.9 2006/11/17 15:21:00 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.PrintPreview;
@@ -22,29 +22,29 @@ public import wx.PrintData;
 public import wx.Printer;
 
 		//! \cond EXTERN
-        static extern (C) IntPtr wxPrintPreview_ctor(IntPtr printout, IntPtr printoutForPrinting, IntPtr data);
-        static extern (C) IntPtr wxPrintPreview_ctorPrintData(IntPtr printout, IntPtr printoutForPrinting, IntPtr data);
-        static extern (C) bool   wxPrintPreview_SetCurrentPage(IntPtr self, int pageNum);
-        static extern (C) int    wxPrintPreview_GetCurrentPage(IntPtr self);
-        static extern (C) void   wxPrintPreview_SetPrintout(IntPtr self, IntPtr printout);
-        static extern (C) IntPtr wxPrintPreview_GetPrintout(IntPtr self);
-        static extern (C) IntPtr wxPrintPreview_GetPrintoutForPrinting(IntPtr self);
-        static extern (C) void   wxPrintPreview_SetFrame(IntPtr self, IntPtr frame);
-        static extern (C) void   wxPrintPreview_SetCanvas(IntPtr self, IntPtr canvas);
-        static extern (C) IntPtr wxPrintPreview_GetFrame(IntPtr self);
-        static extern (C) IntPtr wxPrintPreview_GetCanvas(IntPtr self);
-        static extern (C) bool   wxPrintPreview_PaintPage(IntPtr self, IntPtr canvas, IntPtr dc);
-        static extern (C) bool   wxPrintPreview_DrawBlankPage(IntPtr self, IntPtr canvas, IntPtr dc);
-        static extern (C) bool   wxPrintPreview_RenderPage(IntPtr self, int pageNum);
-        static extern (C) IntPtr wxPrintPreview_GetPrintDialogData(IntPtr self);
-        static extern (C) void   wxPrintPreview_SetZoom(IntPtr self, int percent);
-        static extern (C) int    wxPrintPreview_GetZoom(IntPtr self);
-        static extern (C) int    wxPrintPreview_GetMaxPage(IntPtr self);
-        static extern (C) int    wxPrintPreview_GetMinPage(IntPtr self);
-        static extern (C) bool   wxPrintPreview_Ok(IntPtr self);
-        static extern (C) void   wxPrintPreview_SetOk(IntPtr self, bool ok);
-        static extern (C) bool   wxPrintPreview_Print(IntPtr self, bool interactive);
-        static extern (C) void   wxPrintPreview_DetermineScaling(IntPtr self);
+        static extern (C) ЦУк wxPrintPreview_ctor(ЦУк printout, ЦУк printoutForPrinting, ЦУк данные);
+        static extern (C) ЦУк wxPrintPreview_ctorPrintData(ЦУк printout, ЦУк printoutForPrinting, ЦУк данные);
+        static extern (C) бул   wxPrintPreview_SetCurrentPage(ЦУк сам, цел pageNum);
+        static extern (C) цел    wxPrintPreview_GetCurrentPage(ЦУк сам);
+        static extern (C) проц   wxPrintPreview_SetPrintout(ЦУк сам, ЦУк printout);
+        static extern (C) ЦУк wxPrintPreview_GetPrintout(ЦУк сам);
+        static extern (C) ЦУк wxPrintPreview_GetPrintoutForPrinting(ЦУк сам);
+        static extern (C) проц   wxPrintPreview_SetFrame(ЦУк сам, ЦУк frame);
+        static extern (C) проц   wxPrintPreview_SetCanvas(ЦУк сам, ЦУк canvas);
+        static extern (C) ЦУк wxPrintPreview_GetFrame(ЦУк сам);
+        static extern (C) ЦУк wxPrintPreview_GetCanvas(ЦУк сам);
+        static extern (C) бул   wxPrintPreview_PaintPage(ЦУк сам, ЦУк canvas, ЦУк dc);
+        static extern (C) бул   wxPrintPreview_DrawBlankPage(ЦУк сам, ЦУк canvas, ЦУк dc);
+        static extern (C) бул   wxPrintPreview_RenderPage(ЦУк сам, цел pageNum);
+        static extern (C) ЦУк wxPrintPreview_GetPrintDialogData(ЦУк сам);
+        static extern (C) проц   wxPrintPreview_SetZoom(ЦУк сам, цел percent);
+        static extern (C) цел    wxPrintPreview_GetZoom(ЦУк сам);
+        static extern (C) цел    wxPrintPreview_GetMaxPage(ЦУк сам);
+        static extern (C) цел    wxPrintPreview_GetMinPage(ЦУк сам);
+        static extern (C) бул   wxPrintPreview_Ok(ЦУк сам);
+        static extern (C) проц   wxPrintPreview_SetOk(ЦУк сам, бул ok);
+        static extern (C) бул   wxPrintPreview_Print(ЦУк сам, бул interactive);
+        static extern (C) проц   wxPrintPreview_DetermineScaling(ЦУк сам);
 		//! \endcond
 
         //-----------------------------------------------------------------------------
@@ -52,108 +52,108 @@ public import wx.Printer;
     alias PrintPreview wxPrintPreview;
     public class PrintPreview : wxObject
     {
-        private this(IntPtr wxobj)
-            { super(wxobj); }
+        private this(ЦУк шхобъ)
+            { super(шхобъ); }
 
-        public this(Printout printout, Printout printoutForPrinting, PrintDialogData data)
-            { this(wxPrintPreview_ctor(wxObject.SafePtr(printout), wxObject.SafePtr(printoutForPrinting), wxObject.SafePtr(data))); }
+        public this(Printout printout, Printout printoutForPrinting, PrintDialogData данные)
+            { this(wxPrintPreview_ctor(wxObject.SafePtr(printout), wxObject.SafePtr(printoutForPrinting), wxObject.SafePtr(данные))); }
 
         public this(Printout printout, Printout printoutForPrinting)
-            { this(printout, printoutForPrinting, cast(PrintData)null); }
-        public this(Printout printout, Printout printoutForPrinting, PrintData data)
-            { this(wxPrintPreview_ctor(wxObject.SafePtr(printout), wxObject.SafePtr(printoutForPrinting), wxObject.SafePtr(data))); }
+            { this(printout, printoutForPrinting, cast(PrintData)пусто); }
+        public this(Printout printout, Printout printoutForPrinting, PrintData данные)
+            { this(wxPrintPreview_ctor(wxObject.SafePtr(printout), wxObject.SafePtr(printoutForPrinting), wxObject.SafePtr(данные))); }
 
-	public static wxObject New(IntPtr ptr) { return new PrintPreview(ptr); }
+	public static wxObject Нов(ЦУк ptr) { return new PrintPreview(ptr); }
         //-----------------------------------------------------------------------------
 
-        public bool SetCurrentPage(int pageNum)
+        public бул SetCurrentPage(цел pageNum)
         {
-            return wxPrintPreview_SetCurrentPage(wxobj, pageNum);
+            return wxPrintPreview_SetCurrentPage(шхобъ, pageNum);
         }
 
-        public int CurrentPage() { return wxPrintPreview_GetCurrentPage(wxobj); }
-        public void CurrentPage(int value) { SetCurrentPage(value); }
+        public цел CurrentPage() { return wxPrintPreview_GetCurrentPage(шхобъ); }
+        public проц CurrentPage(цел значение) { SetCurrentPage(значение); }
 
         //-----------------------------------------------------------------------------
 
-        public void printout(Printout value) { wxPrintPreview_SetPrintout(wxobj, wxObject.SafePtr(value)); }
-        public Printout printout() { return cast(Printout)FindObject(wxPrintPreview_GetPrintout(wxobj)/*, &Printout.New*/); }
+        public проц printout(Printout значение) { wxPrintPreview_SetPrintout(шхобъ, wxObject.SafePtr(значение)); }
+        public Printout printout() { return cast(Printout)FindObject(wxPrintPreview_GetPrintout(шхобъ)/*, &Printout.Нов*/); }
 
         //-----------------------------------------------------------------------------
 
-        public Printout PrintoutForPrinting() { return cast(Printout)FindObject(wxPrintPreview_GetPrintoutForPrinting(wxobj)/*, &Printout.New*/); }
+        public Printout PrintoutForPrinting() { return cast(Printout)FindObject(wxPrintPreview_GetPrintoutForPrinting(шхобъ)/*, &Printout.Нов*/); }
 
         //-----------------------------------------------------------------------------
 
-        public void frame(Frame value) { wxPrintPreview_SetFrame(wxobj, wxObject.SafePtr(value)); }
-        public Frame frame() { return cast(Frame)FindObject(wxPrintPreview_GetFrame(wxobj), &Frame.New); }
+        public проц frame(Frame значение) { wxPrintPreview_SetFrame(шхобъ, wxObject.SafePtr(значение)); }
+        public Frame frame() { return cast(Frame)FindObject(wxPrintPreview_GetFrame(шхобъ), &Frame.Нов); }
 
         //-----------------------------------------------------------------------------
 
-        public Window Canvas() { return cast(Window)FindObject(wxPrintPreview_GetCanvas(wxobj), &Window.New); }
-        public void Canvas(Window value) { wxPrintPreview_SetCanvas(wxobj, wxObject.SafePtr(value)); }
+        public Окно Canvas() { return cast(Окно)FindObject(wxPrintPreview_GetCanvas(шхобъ), &Окно.Нов); }
+        public проц Canvas(Окно значение) { wxPrintPreview_SetCanvas(шхобъ, wxObject.SafePtr(значение)); }
 
         //-----------------------------------------------------------------------------
 
-        public bool PaintPage(Window canvas, inout DC dc)
+        public бул PaintPage(Окно canvas, inout DC dc)
         {
-            return wxPrintPreview_PaintPage(wxobj, wxObject.SafePtr(canvas), wxObject.SafePtr(dc));
-        }
-
-        //-----------------------------------------------------------------------------
-
-        public bool DrawBlankPage(Window canvas, inout DC dc)
-        {
-            return wxPrintPreview_DrawBlankPage(wxobj, wxObject.SafePtr(canvas), wxObject.SafePtr(dc));
+            return wxPrintPreview_PaintPage(шхобъ, wxObject.SafePtr(canvas), wxObject.SafePtr(dc));
         }
 
         //-----------------------------------------------------------------------------
 
-        public bool RenderPage(int pageNum)
+        public бул DrawBlankPage(Окно canvas, inout DC dc)
         {
-            return wxPrintPreview_RenderPage(wxobj, pageNum);
+            return wxPrintPreview_DrawBlankPage(шхобъ, wxObject.SafePtr(canvas), wxObject.SafePtr(dc));
         }
 
         //-----------------------------------------------------------------------------
 
-        public PrintDialogData printDialogData() { return cast(PrintDialogData)FindObject(wxPrintPreview_GetPrintDialogData(wxobj), &PrintDialogData.New); }
-
-        //-----------------------------------------------------------------------------
-
-        public void Zoom(int value) { wxPrintPreview_SetZoom(wxobj, value); }
-        public int Zoom() { return wxPrintPreview_GetZoom(wxobj); }
-
-        //-----------------------------------------------------------------------------
-
-        public int MaxPage() { return wxPrintPreview_GetMaxPage(wxobj); }
-
-        public int MinPage() { return wxPrintPreview_GetMinPage(wxobj); }
-
-        //-----------------------------------------------------------------------------
-
-        public bool Ok() { return wxPrintPreview_Ok(wxobj); }
-        public void Ok(bool value) { wxPrintPreview_SetOk(wxobj, value); }
-
-        //-----------------------------------------------------------------------------
-
-        public bool Print(bool interactive)
+        public бул RenderPage(цел pageNum)
         {
-            return wxPrintPreview_Print(wxobj, interactive);
+            return wxPrintPreview_RenderPage(шхобъ, pageNum);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void DetermineScaling()
+        public PrintDialogData printDialogData() { return cast(PrintDialogData)FindObject(wxPrintPreview_GetPrintDialogData(шхобъ), &PrintDialogData.Нов); }
+
+        //-----------------------------------------------------------------------------
+
+        public проц Zoom(цел значение) { wxPrintPreview_SetZoom(шхобъ, значение); }
+        public цел Zoom() { return wxPrintPreview_GetZoom(шхобъ); }
+
+        //-----------------------------------------------------------------------------
+
+        public цел MaxPage() { return wxPrintPreview_GetMaxPage(шхобъ); }
+
+        public цел MinPage() { return wxPrintPreview_GetMinPage(шхобъ); }
+
+        //-----------------------------------------------------------------------------
+
+        public бул Ок() { return wxPrintPreview_Ok(шхобъ); }
+        public проц Ок(бул значение) { wxPrintPreview_SetOk(шхобъ, значение); }
+
+        //-----------------------------------------------------------------------------
+
+        public бул Print(бул interactive)
         {
-            wxPrintPreview_DetermineScaling(wxobj);
+            return wxPrintPreview_Print(шхобъ, interactive);
+        }
+
+        //-----------------------------------------------------------------------------
+
+        public проц DetermineScaling()
+        {
+            wxPrintPreview_DetermineScaling(шхобъ);
         }
     }
 
 		//! \cond EXTERN
-        static extern (C) IntPtr wxPreviewFrame_ctor(IntPtr preview, IntPtr parent, string title, inout Point pos, inout Size size, uint style, string name);
-        static extern (C) void   wxPreviewFrame_Initialize(IntPtr self);
-        static extern (C) void   wxPreviewFrame_CreateCanvas(IntPtr self);
-        static extern (C) void   wxPreviewFrame_CreateControlBar(IntPtr self);
+        static extern (C) ЦУк wxPreviewFrame_ctor(ЦУк preview, ЦУк родитель, ткст title, inout Точка поз, inout Размер size, бцел стиль, ткст имя);
+        static extern (C) проц   wxPreviewFrame_Initialize(ЦУк сам);
+        static extern (C) проц   wxPreviewFrame_CreateCanvas(ЦУк сам);
+        static extern (C) проц   wxPreviewFrame_CreateControlBar(ЦУк сам);
 		//! \endcond
 
         //-----------------------------------------------------------------------------
@@ -161,40 +161,40 @@ public import wx.Printer;
     alias PreviewFrame wxPreviewFrame;
     public class PreviewFrame : Frame
     {
-        private this(IntPtr wxobj) 
-            { super(wxobj); }
+        private this(ЦУк шхобъ) 
+            { super(шхобъ); }
 
-        public this(PrintPreview preview, Window parent, string title = "Print Preview", Point pos = wxDefaultPosition, Size size = wxDefaultSize, int style = wxDEFAULT_FRAME_STYLE, string name = "frame")
-            { this(wxPreviewFrame_ctor(wxObject.SafePtr(preview), wxObject.SafePtr(parent), title, pos, size, cast(uint)style, name)); }
+        public this(PrintPreview preview, Окно родитель, ткст title = "Print Preview", Точка поз = wxDefaultPosition, Размер size = wxDefaultSize, цел стиль = wxDEFAULT_FRAME_STYLE, ткст имя = "frame")
+            { this(wxPreviewFrame_ctor(wxObject.SafePtr(preview), wxObject.SafePtr(родитель), title, поз, size, cast(бцел)стиль, имя)); }
 
         //-----------------------------------------------------------------------------
 
-        public void Initialize()
+        public проц Инициализуй()
         {
-            wxPreviewFrame_Initialize(wxobj);
+            wxPreviewFrame_Initialize(шхобъ);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void CreateCanvas()
+        public проц CreateCanvas()
         {
-            wxPreviewFrame_CreateCanvas(wxobj);
+            wxPreviewFrame_CreateCanvas(шхобъ);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void CreateControlBar()
+        public проц CreateControlBar()
         {
-            wxPreviewFrame_CreateControlBar(wxobj);
+            wxPreviewFrame_CreateControlBar(шхобъ);
         }
     }
 
 		//! \cond EXTERN
-        static extern (C) IntPtr wxPreviewControlBar_ctor(IntPtr preview, int buttons, IntPtr parent, inout Point pos, inout Size size, uint style, string name);
-        static extern (C) void   wxPreviewControlBar_CreateButtons(IntPtr self);
-        static extern (C) void   wxPreviewControlBar_SetZoomControl(IntPtr self, int zoom);
-        static extern (C) int    wxPreviewControlBar_GetZoomControl(IntPtr self);
-        static extern (C) IntPtr wxPreviewControlBar_GetPrintPreview(IntPtr self);
+        static extern (C) ЦУк wxPreviewControlBar_ctor(ЦУк preview, цел buttons, ЦУк родитель, inout Точка поз, inout Размер size, бцел стиль, ткст имя);
+        static extern (C) проц   wxPreviewControlBar_CreateButtons(ЦУк сам);
+        static extern (C) проц   wxPreviewControlBar_SetZoomControl(ЦУк сам, цел zoom);
+        static extern (C) цел    wxPreviewControlBar_GetZoomControl(ЦУк сам);
+        static extern (C) ЦУк wxPreviewControlBar_GetPrintPreview(ЦУк сам);
 		//! \endcond
 
         //-----------------------------------------------------------------------------
@@ -202,52 +202,52 @@ public import wx.Printer;
     alias PreviewControlBar wxPreviewControlBar;
     public class PreviewControlBar : Panel
     {
-        const int wxPREVIEW_PRINT       =  1;
-        const int wxPREVIEW_PREVIOUS    =  2;
-        const int wxPREVIEW_NEXT        =  4;
-        const int wxPREVIEW_ZOOM        =  8;
-        const int wxPREVIEW_FIRST       = 16;
-        const int wxPREVIEW_LAST        = 32;
-        const int wxPREVIEW_GOTO        = 64;
+        const цел wxPREVIEW_PRINT       =  1;
+        const цел wxPREVIEW_PREVIOUS    =  2;
+        const цел wxPREVIEW_NEXT        =  4;
+        const цел wxPREVIEW_ZOOM        =  8;
+        const цел wxPREVIEW_FIRST       = 16;
+        const цел wxPREVIEW_LAST        = 32;
+        const цел wxPREVIEW_GOTO        = 64;
 
-        const int wxPREVIEW_DEFAULT     = wxPREVIEW_PREVIOUS|wxPREVIEW_NEXT|wxPREVIEW_ZOOM
+        const цел wxPREVIEW_DEFAULT     = wxPREVIEW_PREVIOUS|wxPREVIEW_NEXT|wxPREVIEW_ZOOM
                           |wxPREVIEW_FIRST|wxPREVIEW_GOTO|wxPREVIEW_LAST;
 
         // Ids for controls
-        const int wxID_PREVIEW_CLOSE      = 1;
-        const int wxID_PREVIEW_NEXT       = 2;
-        const int wxID_PREVIEW_PREVIOUS   = 3;
-        const int wxID_PREVIEW_PRINT      = 4;
-        const int wxID_PREVIEW_ZOOM       = 5;
-        const int wxID_PREVIEW_FIRST      = 6;
-        const int wxID_PREVIEW_LAST       = 7;
-        const int wxID_PREVIEW_GOTO       = 8;
+        const цел wxID_PREVIEW_CLOSE      = 1;
+        const цел wxID_PREVIEW_NEXT       = 2;
+        const цел wxID_PREVIEW_PREVIOUS   = 3;
+        const цел wxID_PREVIEW_PRINT      = 4;
+        const цел wxID_PREVIEW_ZOOM       = 5;
+        const цел wxID_PREVIEW_FIRST      = 6;
+        const цел wxID_PREVIEW_LAST       = 7;
+        const цел wxID_PREVIEW_GOTO       = 8;
     
-        private this(IntPtr wxobj)
-            { super(wxobj); }
+        private this(ЦУк шхобъ)
+            { super(шхобъ); }
 
-        public this(PrintPreview preview, int buttons, Window parent, Point pos=wxDefaultPosition, Size size=wxDefaultSize, int style=wxTAB_TRAVERSAL, string name="panel")
-            { this(wxPreviewControlBar_ctor(wxObject.SafePtr(preview), buttons, wxObject.SafePtr(parent), pos, size, cast(uint)style, name)); }
+        public this(PrintPreview preview, цел buttons, Окно родитель, Точка поз=wxDefaultPosition, Размер size=wxDefaultSize, цел стиль=wxTAB_TRAVERSAL, ткст имя="panel")
+            { this(wxPreviewControlBar_ctor(wxObject.SafePtr(preview), buttons, wxObject.SafePtr(родитель), поз, size, cast(бцел)стиль, имя)); }
 
         //-----------------------------------------------------------------------------
 
-        public void CreateButtons()
+        public проц CreateButtons()
         {
-            wxPreviewControlBar_CreateButtons(wxobj);
+            wxPreviewControlBar_CreateButtons(шхобъ);
         }
 
         //-----------------------------------------------------------------------------
 
-        public int ZoomControl() { return wxPreviewControlBar_GetZoomControl(wxobj); }
-        public void ZoomControl(int value) { wxPreviewControlBar_SetZoomControl(wxobj, value); }
+        public цел ZoomControl() { return wxPreviewControlBar_GetZoomControl(шхобъ); }
+        public проц ZoomControl(цел значение) { wxPreviewControlBar_SetZoomControl(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public PrintPreview printPreview() { return cast(PrintPreview)FindObject(wxPreviewControlBar_GetPrintPreview(wxobj), &PrintPreview.New); }
+        public PrintPreview printPreview() { return cast(PrintPreview)FindObject(wxPreviewControlBar_GetPrintPreview(шхобъ), &PrintPreview.Нов); }
     }
 
 		//! \cond EXTERN
-        static extern (C) IntPtr wxPreviewCanvas_ctor(IntPtr preview, IntPtr parent, inout Point pos, inout Size size, uint style, string name);
+        static extern (C) ЦУк wxPreviewCanvas_ctor(ЦУк preview, ЦУк родитель, inout Точка поз, inout Размер size, бцел стиль, ткст имя);
 		//! \endcond
 
         //-----------------------------------------------------------------------------
@@ -255,9 +255,9 @@ public import wx.Printer;
     alias PreviewCanvas wxPreviewCanvas;
     public class PreviewCanvas : ScrolledWindow
     {
-        private this(IntPtr wxobj) 
-            { super(wxobj); }
+        private this(ЦУк шхобъ) 
+            { super(шхобъ); }
 
-        public this(PrintPreview preview, Window parent, Point pos = wxDefaultPosition, Size size = wxDefaultSize, int style = 0, string name = "canvas")
-            { this(wxPreviewCanvas_ctor(wxObject.SafePtr(preview), wxObject.SafePtr(parent), pos, size, cast(uint)style, name)); }
+        public this(PrintPreview preview, Окно родитель, Точка поз = wxDefaultPosition, Размер size = wxDefaultSize, цел стиль = 0, ткст имя = "canvas")
+            { this(wxPreviewCanvas_ctor(wxObject.SafePtr(preview), wxObject.SafePtr(родитель), поз, size, cast(бцел)стиль, имя)); }
     }

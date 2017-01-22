@@ -7,7 +7,7 @@
 // (C) 2006 Joe Zuccarello
 // License: Public domain.
 //
-// $Id: FileNameFunc.d,v 1.1 2007/08/21 20:55:45 afb Exp $
+// $Ид: FileNameFunc.d,v 1.1 2007/08/21 20:55:45 afb Exp $
 //-----------------------------------------------------------------------------
 
 
@@ -20,12 +20,12 @@ static assert(0);
 else // Phobos
 {
 import std.file;
-import std.path;
+import std.путь;
 import std.regexp;
-import std.string;
+import std.ткст;
 }
 
-private static const char[] wSep = r"\",
+private static const сим[] wSep = к"\",
                             lSep = "/",
                             rSeps = "[\\\\/]";  // For regexp use
 
@@ -34,10 +34,10 @@ version(DigitalMars)
 		version=Unix;
 
 /**
-  * Returns a normalized absolutized path.
+  * Returns a normalized absolutized путь.
   *
-  * If the path is not absolute, it will be joined with the current working directory.  If it is an
-  * absolute path, nothing will be joined with it.  In either case, the path will also be checked to
+  * If the путь is not absolute, it will be joined with the current working directory.  If it is an
+  * absolute путь, nothing will be joined with it.  In either case, the путь will also be checked to
   * see if it is normalized.  If it's not, it will be normalized.
   *
   * Note: This function does not handle UNC paths.
@@ -46,7 +46,7 @@ version(DigitalMars)
   *
   * Date: February 15, 2006
   *
-  * Returns: A normalized absolutized path.
+  * Returns: A normalized absolutized путь.
   *
   * Version:
   *
@@ -57,9 +57,9 @@ version(DigitalMars)
   * version(Windows)
   * {
   *	// Assume c:\ is the current working directory
-  *	absPath(r"file") => "c:\file"
-  *	absPath(r"c:\d/src\project") => "c:\d\src\project"
-  *	absPath(r".\dir\file\..\dir2\file2") => "c:\dir\dir2\file2"
+  *	absPath(к"file") => "c:\file"
+  *	absPath(к"c:\d/src\project") => "c:\d\src\project"
+  *	absPath(к".\dir\file\..\dir2\file2") => "c:\dir\dir2\file2"
   * }
   * version(linux)
   * {
@@ -70,33 +70,33 @@ version(DigitalMars)
   * }
   * ---------
   */
-char[] absPath(char[] path)
+сим[] absPath(сим[] путь)
 out(result)
 {
 	assert(isNormPath(result));
 }
 body
 {
-	bool changed;
+	бул changed;
 
 	version(Windows)
 	{
-		// Path is not absolute
-		//if (std.regexp.find(path, "^[a-zA-Z]*:\\\\") == -1)
-		if (isabs(path) == false)
+		// Путь is not absolute
+		//if (std.regexp.find(путь, "^[a-zA-Z]*:\\\\") == -1)
+		if (isabs(путь) == нет)
 		{
-			path = std.path.join(getcwd(), path);
-			changed = true;
+			путь = std.путь.join(getcwd(), путь);
+			changed = да;
 		}
 	}
 	else version(Unix)
 	{
-		// Path is not absolute
-		//if (path[0..1] != r"\" && path[0..1] != "/")
-		if (isabs(path) == false)
+		// Путь is not absolute
+		//if (путь[0..1] != к"\" && путь[0..1] != "/")
+		if (isabs(путь) == нет)
 		{
-			path = std.path.join(getcwd(), path);
-			changed = true;
+			путь = std.путь.join(getcwd(), путь);
+			changed = да;
 		}
 	}
 	else
@@ -105,27 +105,27 @@ body
 		static assert(0);
 	}
 
-	// Normalize the path
-	if (isNormPath(path) == false)
+	// Normalize the путь
+	if (isNormPath(путь) == нет)
 	{
-		path = normPath(path);
-		changed = true;
+		путь = normPath(путь);
+		changed = да;
 	}
 
-	if (changed == true)
+	if (changed == да)
 	{
-		return path.dup;
+		return путь.dup;
 	}
 	else
 	{
-		return path;
+		return путь;
 	}
 }
 
 /**
-  * Test whether a path is normalized.
+  * Test whether a путь is normalized.
   *
-  * Use this to test whether a path is normalized.
+  * Use this to test whether a путь is normalized.
   *
   * Note: This function does not handle UNC paths.
   *
@@ -133,7 +133,7 @@ body
   *
   * Date: February 15, 2006
   *
-  * Returns: true/false whether a path is normalized.
+  * Returns: да/нет whether a путь is normalized.
   *
   * Version:
   *
@@ -143,67 +143,67 @@ body
   * ---------
   * version(Windows)
   * {
-  *	 isNormPath(r"directory1\..\directory2\file\.") => false
-  *	 // This one returns true, because there's no parent directory to collapse to.
-  *	 isNormPath(r"..\directory\file") => true
+  *	 isNormPath(к"directory1\..\directory2\file\.") => нет
+  *	 // This one returns да, because there's no родитель directory to collapse to.
+  *	 isNormPath(к"..\directory\file") => да
   * }
   * version(linux)
   * {
-  *	 isNormPath("/dir/../file") => false
-  *	 isNormPath("/file") => true
+  *	 isNormPath("/dir/../file") => нет
+  *	 isNormPath("/file") => да
   * }
   * ---------
   */
-bool isNormPath(char[] path)
+бул isNormPath(сим[] путь)
 {
 	RegExp re;
 
 	version(Windows)
 	{
 	 	// Special cases
-		if (path == "." || path == ".." || (path == r"\" || path == "/") ||
-	     std.regexp.find(path, "^\\.\\." ~ "(" ~ rSeps ~ "\\.\\.)+") != -1 ||
-	     std.regexp.find(path, "^[a-zA-Z]*:" ~ rSeps ~ "$") != -1)
+		if (путь == "." || путь == ".." || (путь == к"\" || путь == "/") ||
+	     std.regexp.find(путь, "^\\.\\." ~ "(" ~ rSeps ~ "\\.\\.)+") != -1 ||
+	     std.regexp.find(путь, "^[a-zA-Z]*:" ~ rSeps ~ "$") != -1)
 		{
-			return true;
+			return да;
 		}
 		else
 		{
-			// Look for the following.  If found, then this is not a normalized path
-			if (std.regexp.find(path, rSeps ~ "$") != -1 ||
-			    std.regexp.find(path, rSeps ~ "\\.\\." ~ "(" ~ rSeps ~ "|$)") != -1 ||
-			    std.regexp.find(path, rSeps ~ "\\." ~ "(" ~ rSeps ~ "|$)") != -1 ||
-			    std.regexp.find(path, "^\\." ~ rSeps) != -1 || std.regexp.find(path, rSeps ~ "{2,}") != -1)
+			// Look for the following.  If found, then this is not a normalized путь
+			if (std.regexp.find(путь, rSeps ~ "$") != -1 ||
+			    std.regexp.find(путь, rSeps ~ "\\.\\." ~ "(" ~ rSeps ~ "|$)") != -1 ||
+			    std.regexp.find(путь, rSeps ~ "\\." ~ "(" ~ rSeps ~ "|$)") != -1 ||
+			    std.regexp.find(путь, "^\\." ~ rSeps) != -1 || std.regexp.find(путь, rSeps ~ "{2,}") != -1)
 			{
-				return false;
+				return нет;
 			}
 			else
 			{
-				return true;
+				return да;
 			}
 		}
 	}
 	else version(Unix)
 	{
 		// Special cases
-		if (path == "." || path == ".." || (path == r"\" || path == "/") ||
-		    std.regexp.find(path, "^\\.\\." ~ "(" ~ rSeps ~ "\\.\\.)+") != -1)
+		if (путь == "." || путь == ".." || (путь == к"\" || путь == "/") ||
+		    std.regexp.find(путь, "^\\.\\." ~ "(" ~ rSeps ~ "\\.\\.)+") != -1)
 		{
-			return true;
+			return да;
 		}
 		else
 		{
-			// Look for the following.  If found, then this is not a normalized path
-			if (std.regexp.find(path, lSep ~ "$") != -1 ||
-			    std.regexp.find(path, lSep ~ "\\.\\." ~ "(" ~ lSep ~ "|$)") != -1 ||
-			    std.regexp.find(path, lSep ~ "\\." ~ "(" ~ lSep ~ "|$)") != -1 ||
-			    std.regexp.find(path, "^\\." ~ lSep) != -1 || std.regexp.find(path, lSep ~ "{2,}") != -1)
+			// Look for the following.  If found, then this is not a normalized путь
+			if (std.regexp.find(путь, lSep ~ "$") != -1 ||
+			    std.regexp.find(путь, lSep ~ "\\.\\." ~ "(" ~ lSep ~ "|$)") != -1 ||
+			    std.regexp.find(путь, lSep ~ "\\." ~ "(" ~ lSep ~ "|$)") != -1 ||
+			    std.regexp.find(путь, "^\\." ~ lSep) != -1 || std.regexp.find(путь, lSep ~ "{2,}") != -1)
 			{
-				return false;
+				return нет;
 			}
 			else
 			{
-				return true;
+				return да;
 			}
 		}
 	}
@@ -215,9 +215,9 @@ bool isNormPath(char[] path)
 }
 
 /**
-  * Normalizes a path.
+  * Normalizes a путь.
   *
-  * This will normalize a path by collapsing redundant separators and parent/current directory
+  * This will normalize a путь by collapsing redundant separators and родитель/current directory
   * references.  It will also remove any trailing separators and normalize separators as appropriate
   * for the OS.
   *
@@ -229,7 +229,7 @@ bool isNormPath(char[] path)
   *
   * Date: February 15, 2006
   *
-  * Returns: A normalized path.
+  * Returns: A normalized путь.
   *
   * Version:
   *
@@ -241,55 +241,55 @@ bool isNormPath(char[] path)
   * normPath("/dir..../file/./") => "/dir..../file"
   * ---------
   */
-char[] normPath(char[] path)
+сим[] normPath(сим[] путь)
 out(result)
 {
 	assert(isNormPath(result));
 }
 body
 {
-	int pcIdx, pcIdx2;
-	char[][] pathComps;  // path components after splitting
-	char[] result, drive;
+	цел pcIdx, pcIdx2;
+	сим[][] pathComps;  // путь components after splitting
+	сим[] result, drive;
 
 	// Normalize the separators for the os
-	path = normSep(path);
+	путь = normSep(путь);
 
 	// Sanity check.  No need to process a separator, curdir or pardir reference.
-	if (path != sep && path != curdir && path != pardir)
+	if (путь != sep && путь != curdir && путь != pardir)
 	{
-		// Remove the drive from the path
+		// Remove the drive from the путь
 		version(Windows)
 		{
-			int idx = std.string.find(path, ":");
-			drive ~= idx != -1 ? path[0..(idx + 1)] : "";
+			цел idx = std.ткст.find(путь, ":");
+			drive ~= idx != -1 ? путь[0..(idx + 1)] : "";
 			if (idx != -1)
 			{
-				if ((idx + 1) < path.length)
+				if ((idx + 1) < путь.length)
 				{
-					path = path[(idx + 1)..$];
+					путь = путь[(idx + 1)..$];
 				}
 				else
 				{
-					path = "";
+					путь = "";
 				}
 			}
 		}
 
 		// Remove repeating separators
-		path = std.string.squeeze(path, sep);
+		путь = std.ткст.squeeze(путь, sep);
 
 		// If there's an initial separator even after a drive, save it off
-		if (path != "")
+		if (путь != "")
 		{
-			if (path[0..1] == sep)
+			if (путь[0..1] == sep)
 			{
 				drive ~= sep;
 			}
 		}
 
-		// Split the path components
-		pathComps = std.string.split(path, sep);
+		// Split the путь components
+		pathComps = std.ткст.split(путь, sep);
 
 		while (pcIdx < pathComps.length)
 		{
@@ -380,7 +380,7 @@ body
 		}
 
 		// Delete any blank chunks out of the array for joining later
-		for (int i = 0; i < pathComps.length; i++)
+		for (цел i = 0; i < pathComps.length; i++)
 		{
 			if (pathComps[i] == "")
 			{
@@ -407,12 +407,12 @@ body
 			}
 		}
 
-		result = std.string.join(pathComps, sep);
+		result = std.ткст.join(pathComps, sep);
 	}
-	// Path was either a separator, curdir or pardir reference
+	// Путь was either a separator, curdir or pardir reference
 	else
 	{
-		result = path;
+		result = путь;
 	}
 
 
@@ -430,17 +430,17 @@ body
 
 /**
   *
-  * Normalizes the separators in a path.
+  * Normalizes the separators in a путь.
   *
   * Use this to normalize separators as appropriate for the operating system in use.  On Windows,
-  * forward slashes * will be converted to backward slashes.  On Linux, the path will just be
+  * forward slashes * will be converted to backward slashes.  On Linux, the путь will just be
   * returned.
   *
   * Authors: Joe Zuccarello
   *
   * Date: February 15, 2006
   *
-  * Returns: Normalized separators for a path.
+  * Returns: Normalized separators for a путь.
   *
   * Version:
   *
@@ -450,33 +450,33 @@ body
   * ---------
   * version(Windows)
   * {
-  *	normSep(r"c:/directory\file") => "c:\directory\file"
+  *	normSep(к"c:/directory\file") => "c:\directory\file"
   * }
   * version(linux)
   * {
-  *	normSep(r"/dir1\dir2\dir3/file") => "/dir1\dir2\dir3/file"
+  *	normSep(к"/dir1\dir2\dir3/file") => "/dir1\dir2\dir3/file"
   * }
   * ---------
   */
-char[] normSep(char[] path)
+сим[] normSep(сим[] путь)
 {
 	version(Windows)
 	{
 		// Convert separators
-		if (std.regexp.find(path, lSep) != -1)
+		if (std.regexp.find(путь, lSep) != -1)
 		{
-			path = std.string.replace(path, lSep, wSep);
+			путь = std.ткст.replace(путь, lSep, wSep);
 
-			return path.dup;
+			return путь.dup;
 		}
 		else
 		{
-			return path;
+			return путь;
 		}
 	}
 	else version(Unix)
 	{
-		return path;
+		return путь;
 	}
 	else
 	{

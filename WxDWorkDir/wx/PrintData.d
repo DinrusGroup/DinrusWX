@@ -4,13 +4,13 @@
 // based on
 // wx.NET - PrintData.cs
 //
-/// The wxPrint data wrapper classes.
+/// The wxPrint данные wrapper classes.
 //
 // Written by Bryan Bulten (bryan@bulten.ca)
 // (C) 2003 Bryan Bulten
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: PrintData.d,v 1.10 2007/01/28 23:06:37 afb Exp $
+// $Ид: PrintData.d,v 1.10 2007/01/28 23:06:37 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.PrintData;
@@ -112,41 +112,41 @@ public import wx.common;
     }
 
 		//! \cond EXTERN
-        static extern (C) IntPtr wxPageSetupDialogData_ctor();
-        static extern (C) IntPtr wxPageSetupDialogData_ctorPrintSetup(IntPtr dialogData);
-        static extern (C) IntPtr wxPageSetupDialogData_ctorPrintData(IntPtr printData);
-        static extern (C) void wxPageSetupDialogData_GetPaperSize(IntPtr self, inout Size size);
-        static extern (C) int wxPageSetupDialogData_GetPaperId(IntPtr self);
-        static extern (C) void wxPageSetupDialogData_GetMinMarginTopLeft(IntPtr self, inout Point pt);
-        static extern (C) void wxPageSetupDialogData_GetMinMarginBottomRight(IntPtr self, inout Point pt);
-        static extern (C) void wxPageSetupDialogData_GetMarginTopLeft(IntPtr self, inout Point pt);
-        static extern (C) void wxPageSetupDialogData_GetMarginBottomRight(IntPtr self, inout Point pt);
-        static extern (C) bool wxPageSetupDialogData_GetDefaultMinMargins(IntPtr self);
-        static extern (C) bool wxPageSetupDialogData_GetEnableMargins(IntPtr self);
-        static extern (C) bool wxPageSetupDialogData_GetEnableOrientation(IntPtr self);
-        static extern (C) bool wxPageSetupDialogData_GetEnablePaper(IntPtr self);
-        static extern (C) bool wxPageSetupDialogData_GetEnablePrinter(IntPtr self);
-        static extern (C) bool wxPageSetupDialogData_GetDefaultInfo(IntPtr self);
-        static extern (C) bool wxPageSetupDialogData_GetEnableHelp(IntPtr self);
-        static extern (C) bool wxPageSetupDialogData_Ok(IntPtr self);
-        static extern (C) void wxPageSetupDialogData_SetPaperSize(IntPtr self, inout Size sz);
-        static extern (C) void wxPageSetupDialogData_SetPaperId(IntPtr self, int id);
-        static extern (C) void wxPageSetupDialogData_SetPaperSize(IntPtr self, int id);
-        static extern (C) void wxPageSetupDialogData_SetMinMarginTopLeft(IntPtr self, inout Point pt);
-        static extern (C) void wxPageSetupDialogData_SetMinMarginBottomRight(IntPtr self, inout Point pt);
-        static extern (C) void wxPageSetupDialogData_SetMarginTopLeft(IntPtr self, inout Point pt);
-        static extern (C) void wxPageSetupDialogData_SetMarginBottomRight(IntPtr self, inout Point pt);
-        static extern (C) void wxPageSetupDialogData_SetDefaultMinMargins(IntPtr self, bool flag);
-        static extern (C) void wxPageSetupDialogData_SetDefaultInfo(IntPtr self, bool flag);
-        static extern (C) void wxPageSetupDialogData_EnableMargins(IntPtr self, bool flag);
-        static extern (C) void wxPageSetupDialogData_EnableOrientation(IntPtr self, bool flag);
-        static extern (C) void wxPageSetupDialogData_EnablePaper(IntPtr self, bool flag);
-        static extern (C) void wxPageSetupDialogData_EnablePrinter(IntPtr self, bool flag);
-        static extern (C) void wxPageSetupDialogData_EnableHelp(IntPtr self, bool flag);
-        static extern (C) void wxPageSetupDialogData_CalculateIdFromPaperSize(IntPtr self);
-        static extern (C) void wxPageSetupDialogData_CalculatePaperSizeFromId(IntPtr self);
-        static extern (C) IntPtr wxPageSetupDialogData_GetPrintData(IntPtr self);
-        static extern (C) void wxPageSetupDialogData_SetPrintData(IntPtr self, IntPtr printData);
+        static extern (C) ЦУк wxPageSetupDialogData_ctor();
+        static extern (C) ЦУк wxPageSetupDialogData_ctorPrintSetup(ЦУк dialogData);
+        static extern (C) ЦУк wxPageSetupDialogData_ctorPrintData(ЦУк printData);
+        static extern (C) проц wxPageSetupDialogData_GetPaperSize(ЦУк сам, inout Размер size);
+        static extern (C) цел wxPageSetupDialogData_GetPaperId(ЦУк сам);
+        static extern (C) проц wxPageSetupDialogData_GetMinMarginTopLeft(ЦУк сам, inout Точка pt);
+        static extern (C) проц wxPageSetupDialogData_GetMinMarginBottomRight(ЦУк сам, inout Точка pt);
+        static extern (C) проц wxPageSetupDialogData_GetMarginTopLeft(ЦУк сам, inout Точка pt);
+        static extern (C) проц wxPageSetupDialogData_GetMarginBottomRight(ЦУк сам, inout Точка pt);
+        static extern (C) бул wxPageSetupDialogData_GetDefaultMinMargins(ЦУк сам);
+        static extern (C) бул wxPageSetupDialogData_GetEnableMargins(ЦУк сам);
+        static extern (C) бул wxPageSetupDialogData_GetEnableOrientation(ЦУк сам);
+        static extern (C) бул wxPageSetupDialogData_GetEnablePaper(ЦУк сам);
+        static extern (C) бул wxPageSetupDialogData_GetEnablePrinter(ЦУк сам);
+        static extern (C) бул wxPageSetupDialogData_GetDefaultInfo(ЦУк сам);
+        static extern (C) бул wxPageSetupDialogData_GetEnableHelp(ЦУк сам);
+        static extern (C) бул wxPageSetupDialogData_Ok(ЦУк сам);
+        static extern (C) проц wxPageSetupDialogData_SetPaperSize(ЦУк сам, inout Размер sz);
+        static extern (C) проц wxPageSetupDialogData_SetPaperId(ЦУк сам, цел ид);
+        static extern (C) проц wxPageSetupDialogData_SetPaperSize(ЦУк сам, цел ид);
+        static extern (C) проц wxPageSetupDialogData_SetMinMarginTopLeft(ЦУк сам, inout Точка pt);
+        static extern (C) проц wxPageSetupDialogData_SetMinMarginBottomRight(ЦУк сам, inout Точка pt);
+        static extern (C) проц wxPageSetupDialogData_SetMarginTopLeft(ЦУк сам, inout Точка pt);
+        static extern (C) проц wxPageSetupDialogData_SetMarginBottomRight(ЦУк сам, inout Точка pt);
+        static extern (C) проц wxPageSetupDialogData_SetDefaultMinMargins(ЦУк сам, бул flag);
+        static extern (C) проц wxPageSetupDialogData_SetDefaultInfo(ЦУк сам, бул flag);
+        static extern (C) проц wxPageSetupDialogData_EnableMargins(ЦУк сам, бул flag);
+        static extern (C) проц wxPageSetupDialogData_EnableOrientation(ЦУк сам, бул flag);
+        static extern (C) проц wxPageSetupDialogData_EnablePaper(ЦУк сам, бул flag);
+        static extern (C) проц wxPageSetupDialogData_EnablePrinter(ЦУк сам, бул flag);
+        static extern (C) проц wxPageSetupDialogData_EnableHelp(ЦУк сам, бул flag);
+        static extern (C) проц wxPageSetupDialogData_CalculateIdFromPaperSize(ЦУк сам);
+        static extern (C) проц wxPageSetupDialogData_CalculatePaperSizeFromId(ЦУк сам);
+        static extern (C) ЦУк wxPageSetupDialogData_GetPrintData(ЦУк сам);
+        static extern (C) проц wxPageSetupDialogData_SetPrintData(ЦУк сам, ЦУк printData);
 		//! \endcond
 
         //-----------------------------------------------------------------------------
@@ -154,8 +154,8 @@ public import wx.common;
     alias PageSetupDialogData wxPageSetupDialogData;
     public class PageSetupDialogData : wxObject
     {
-        public this(IntPtr wxobj) 
-            { super(wxobj); }
+        public this(ЦУк шхобъ) 
+            { super(шхобъ); }
 
         public this()
             { this(wxPageSetupDialogData_ctor()); }
@@ -164,154 +164,154 @@ public import wx.common;
         public  this(PrintData printData)
             { this(wxPageSetupDialogData_ctorPrintData(wxObject.SafePtr(printData))); }
 
-	public static wxObject New(IntPtr ptr) { return new PageSetupDialogData(ptr); }
+	public static wxObject Нов(ЦУк ptr) { return new PageSetupDialogData(ptr); }
         //-----------------------------------------------------------------------------
 
-        public Size paperSize() { 
-                Size size;
-                wxPageSetupDialogData_GetPaperSize(wxobj, size);
+        public Размер paperSize() { 
+                Размер size;
+                wxPageSetupDialogData_GetPaperSize(шхобъ, size);
                 return size;
             }
-        public void paperSize(Size value) { wxPageSetupDialogData_SetPaperSize(wxobj, value); }
+        public проц paperSize(Размер значение) { wxPageSetupDialogData_SetPaperSize(шхобъ, значение); }
 
-        public PaperSize PaperId() { return cast(PaperSize)wxPageSetupDialogData_GetPaperId(wxobj); }
-        public void PaperId(PaperSize value) { wxPageSetupDialogData_SetPaperId(wxobj, cast(int)value); }
+        public PaperSize PaperId() { return cast(PaperSize)wxPageSetupDialogData_GetPaperId(шхобъ); }
+        public проц PaperId(PaperSize значение) { wxPageSetupDialogData_SetPaperId(шхобъ, cast(цел)значение); }
 
         //-----------------------------------------------------------------------------
 
-        public Point MinMarginTopLeft() { 
-                Point pt;
-                wxPageSetupDialogData_GetMinMarginTopLeft(wxobj, pt);
+        public Точка MinMarginTopLeft() { 
+                Точка pt;
+                wxPageSetupDialogData_GetMinMarginTopLeft(шхобъ, pt);
                 return pt;
             }
-        public void MinMarginTopLeft(Point value) { wxPageSetupDialogData_SetMinMarginTopLeft(wxobj, value); }
+        public проц MinMarginTopLeft(Точка значение) { wxPageSetupDialogData_SetMinMarginTopLeft(шхобъ, значение); }
 
-        public Point MinMarginBottomRight() { 
-                Point pt;
-                wxPageSetupDialogData_GetMinMarginBottomRight(wxobj, pt);
+        public Точка MinMarginBottomRight() { 
+                Точка pt;
+                wxPageSetupDialogData_GetMinMarginBottomRight(шхобъ, pt);
                 return pt;
             }
-        public void MinMarginBottomRight(Point value) { wxPageSetupDialogData_SetMinMarginBottomRight(wxobj, value); }
+        public проц MinMarginBottomRight(Точка значение) { wxPageSetupDialogData_SetMinMarginBottomRight(шхобъ, значение); }
 
-        public Point MarginTopLeft() { 
-                Point pt;
-                wxPageSetupDialogData_GetMarginTopLeft(wxobj, pt);
+        public Точка MarginTopLeft() { 
+                Точка pt;
+                wxPageSetupDialogData_GetMarginTopLeft(шхобъ, pt);
                 return pt;
             }
-        public void MarginTopLeft(Point value) { wxPageSetupDialogData_SetMarginTopLeft(wxobj, value); }
+        public проц MarginTopLeft(Точка значение) { wxPageSetupDialogData_SetMarginTopLeft(шхобъ, значение); }
 
-        public Point MarginBottomRight() {
-                Point pt;
-                wxPageSetupDialogData_GetMarginBottomRight(wxobj, pt);
+        public Точка MarginBottomRight() {
+                Точка pt;
+                wxPageSetupDialogData_GetMarginBottomRight(шхобъ, pt);
                 return pt;
             } 
-        public void MarginBottomRight(Point value) { wxPageSetupDialogData_SetMarginBottomRight(wxobj, value); }
+        public проц MarginBottomRight(Точка значение) { wxPageSetupDialogData_SetMarginBottomRight(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public bool DefaultMinMargins() { return wxPageSetupDialogData_GetDefaultMinMargins(wxobj); }
-        public void DefaultMinMargins(bool value) { wxPageSetupDialogData_SetDefaultMinMargins(wxobj, value); }
+        public бул DefaultMinMargins() { return wxPageSetupDialogData_GetDefaultMinMargins(шхобъ); }
+        public проц DefaultMinMargins(бул значение) { wxPageSetupDialogData_SetDefaultMinMargins(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public bool EnableOrientation() { return wxPageSetupDialogData_GetEnableOrientation(wxobj); }
-        public void EnableOrientation(bool value) { wxPageSetupDialogData_EnableOrientation(wxobj, value); }
+        public бул EnableOrientation() { return wxPageSetupDialogData_GetEnableOrientation(шхобъ); }
+        public проц EnableOrientation(бул значение) { wxPageSetupDialogData_EnableOrientation(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public bool EnablePaper() { return wxPageSetupDialogData_GetEnablePaper(wxobj); }
-        public void EnablePaper(bool value) { wxPageSetupDialogData_EnablePaper(wxobj, value); }
+        public бул EnablePaper() { return wxPageSetupDialogData_GetEnablePaper(шхобъ); }
+        public проц EnablePaper(бул значение) { wxPageSetupDialogData_EnablePaper(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public bool EnablePrinter() { return wxPageSetupDialogData_GetEnablePrinter(wxobj); }
-        public void EnablePrinter(bool value) { wxPageSetupDialogData_EnablePrinter(wxobj, value); }
+        public бул EnablePrinter() { return wxPageSetupDialogData_GetEnablePrinter(шхобъ); }
+        public проц EnablePrinter(бул значение) { wxPageSetupDialogData_EnablePrinter(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public bool DefaultInfo() { return wxPageSetupDialogData_GetDefaultInfo(wxobj); }
-        public void DefaultInfo(bool value) { wxPageSetupDialogData_SetDefaultInfo(wxobj, value); }
+        public бул DefaultInfo() { return wxPageSetupDialogData_GetDefaultInfo(шхобъ); }
+        public проц DefaultInfo(бул значение) { wxPageSetupDialogData_SetDefaultInfo(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public bool EnableHelp() { return wxPageSetupDialogData_GetEnableHelp(wxobj); }
-        public void EnableHelp(bool value) { wxPageSetupDialogData_EnableHelp(wxobj, value); }
+        public бул EnableHelp() { return wxPageSetupDialogData_GetEnableHelp(шхобъ); }
+        public проц EnableHelp(бул значение) { wxPageSetupDialogData_EnableHelp(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public bool Ok()
+        public бул Ок()
         {
-            return wxPageSetupDialogData_Ok(wxobj);
+            return wxPageSetupDialogData_Ok(шхобъ);
         }
 
         //-----------------------------------------------------------------------------
 
-        public bool EnableMargins() { return wxPageSetupDialogData_GetEnableMargins(wxobj); }
-        public void EnableMargins(bool value) { wxPageSetupDialogData_EnableMargins(wxobj, value); }
+        public бул EnableMargins() { return wxPageSetupDialogData_GetEnableMargins(шхобъ); }
+        public проц EnableMargins(бул значение) { wxPageSetupDialogData_EnableMargins(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public void CalculateIdFromPaperSize()
+        public проц CalculateIdFromPaperSize()
         {
-            wxPageSetupDialogData_CalculateIdFromPaperSize(wxobj);
+            wxPageSetupDialogData_CalculateIdFromPaperSize(шхобъ);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void CalculatePaperSizeFromId()
+        public проц CalculatePaperSizeFromId()
         {
-            wxPageSetupDialogData_CalculatePaperSizeFromId(wxobj);
+            wxPageSetupDialogData_CalculatePaperSizeFromId(шхобъ);
         }
 
         //-----------------------------------------------------------------------------
 
-        public PrintData printData() { return cast(PrintData)FindObject(wxPageSetupDialogData_GetPrintData(wxobj), &PrintData.New); }
-        public void printData(PrintData value) { wxPageSetupDialogData_SetPrintData(wxobj, wxObject.SafePtr(value)); }
+        public PrintData printData() { return cast(PrintData)FindObject(wxPageSetupDialogData_GetPrintData(шхобъ), &PrintData.Нов); }
+        public проц printData(PrintData значение) { wxPageSetupDialogData_SetPrintData(шхобъ, wxObject.SafePtr(значение)); }
 
         //-----------------------------------------------------------------------------
 /+
-        public static implicit operator PageSetupDialogData (PrintData data)
+        public static implicit operator PageSetupDialogData (PrintData данные)
         {
-            return new this(data);
+            return new this(данные);
         }
 +/
     }
 
 		//! \cond EXTERN
-        static extern (C) IntPtr wxPrintDialogData_ctor();
-        static extern (C) IntPtr wxPrintDialogData_ctorDialogData(IntPtr dialogData);
-        static extern (C) IntPtr wxPrintDialogData_ctorPrintData(IntPtr printData);
-        static extern (C) int wxPrintDialogData_GetFromPage(IntPtr self);
-        static extern (C) int wxPrintDialogData_GetToPage(IntPtr self);
-        static extern (C) int wxPrintDialogData_GetMinPage(IntPtr self);
-        static extern (C) int wxPrintDialogData_GetMaxPage(IntPtr self);
-        static extern (C) int wxPrintDialogData_GetNoCopies(IntPtr self);
-        static extern (C) bool wxPrintDialogData_GetAllPages(IntPtr self);
-        static extern (C) bool wxPrintDialogData_GetSelection(IntPtr self);
-        static extern (C) bool wxPrintDialogData_GetCollate(IntPtr self);
-        static extern (C) bool wxPrintDialogData_GetPrintToFile(IntPtr self);
-        static extern (C) bool wxPrintDialogData_GetSetupDialog(IntPtr self);
-        static extern (C) void wxPrintDialogData_SetFromPage(IntPtr self, int v);
-        static extern (C) void wxPrintDialogData_SetToPage(IntPtr self, int v);
-        static extern (C) void wxPrintDialogData_SetMinPage(IntPtr self, int v);
-        static extern (C) void wxPrintDialogData_SetMaxPage(IntPtr self, int v);
-        static extern (C) void wxPrintDialogData_SetNoCopies(IntPtr self, int v);
-        static extern (C) void wxPrintDialogData_SetAllPages(IntPtr self, bool flag);
-        static extern (C) void wxPrintDialogData_SetSelection(IntPtr self, bool flag);
-        static extern (C) void wxPrintDialogData_SetCollate(IntPtr self, bool flag);
-        static extern (C) void wxPrintDialogData_SetPrintToFile(IntPtr self, bool flag);
-        static extern (C) void wxPrintDialogData_SetSetupDialog(IntPtr self, bool flag);
-        static extern (C) void wxPrintDialogData_EnablePrintToFile(IntPtr self, bool flag);
-        static extern (C) void wxPrintDialogData_EnableSelection(IntPtr self, bool flag);
-        static extern (C) void wxPrintDialogData_EnablePageNumbers(IntPtr self, bool flag);
-        static extern (C) void wxPrintDialogData_EnableHelp(IntPtr self, bool flag);
-        static extern (C) bool wxPrintDialogData_GetEnablePrintToFile(IntPtr self);
-        static extern (C) bool wxPrintDialogData_GetEnableSelection(IntPtr self);
-        static extern (C) bool wxPrintDialogData_GetEnablePageNumbers(IntPtr self);
-        static extern (C) bool wxPrintDialogData_GetEnableHelp(IntPtr self);
-        static extern (C) bool wxPrintDialogData_Ok(IntPtr self);
-        static extern (C) IntPtr wxPrintDialogData_GetPrintData(IntPtr self);
-        static extern (C) void wxPrintDialogData_SetPrintData(IntPtr self, IntPtr printData);
+        static extern (C) ЦУк wxPrintDialogData_ctor();
+        static extern (C) ЦУк wxPrintDialogData_ctorDialogData(ЦУк dialogData);
+        static extern (C) ЦУк wxPrintDialogData_ctorPrintData(ЦУк printData);
+        static extern (C) цел wxPrintDialogData_GetFromPage(ЦУк сам);
+        static extern (C) цел wxPrintDialogData_GetToPage(ЦУк сам);
+        static extern (C) цел wxPrintDialogData_GetMinPage(ЦУк сам);
+        static extern (C) цел wxPrintDialogData_GetMaxPage(ЦУк сам);
+        static extern (C) цел wxPrintDialogData_GetNoCopies(ЦУк сам);
+        static extern (C) бул wxPrintDialogData_GetAllPages(ЦУк сам);
+        static extern (C) бул wxPrintDialogData_GetSelection(ЦУк сам);
+        static extern (C) бул wxPrintDialogData_GetCollate(ЦУк сам);
+        static extern (C) бул wxPrintDialogData_GetPrintToFile(ЦУк сам);
+        static extern (C) бул wxPrintDialogData_GetSetupDialog(ЦУк сам);
+        static extern (C) проц wxPrintDialogData_SetFromPage(ЦУк сам, цел v);
+        static extern (C) проц wxPrintDialogData_SetToPage(ЦУк сам, цел v);
+        static extern (C) проц wxPrintDialogData_SetMinPage(ЦУк сам, цел v);
+        static extern (C) проц wxPrintDialogData_SetMaxPage(ЦУк сам, цел v);
+        static extern (C) проц wxPrintDialogData_SetNoCopies(ЦУк сам, цел v);
+        static extern (C) проц wxPrintDialogData_SetAllPages(ЦУк сам, бул flag);
+        static extern (C) проц wxPrintDialogData_SetSelection(ЦУк сам, бул flag);
+        static extern (C) проц wxPrintDialogData_SetCollate(ЦУк сам, бул flag);
+        static extern (C) проц wxPrintDialogData_SetPrintToFile(ЦУк сам, бул flag);
+        static extern (C) проц wxPrintDialogData_SetSetupDialog(ЦУк сам, бул flag);
+        static extern (C) проц wxPrintDialogData_EnablePrintToFile(ЦУк сам, бул flag);
+        static extern (C) проц wxPrintDialogData_EnableSelection(ЦУк сам, бул flag);
+        static extern (C) проц wxPrintDialogData_EnablePageNumbers(ЦУк сам, бул flag);
+        static extern (C) проц wxPrintDialogData_EnableHelp(ЦУк сам, бул flag);
+        static extern (C) бул wxPrintDialogData_GetEnablePrintToFile(ЦУк сам);
+        static extern (C) бул wxPrintDialogData_GetEnableSelection(ЦУк сам);
+        static extern (C) бул wxPrintDialogData_GetEnablePageNumbers(ЦУк сам);
+        static extern (C) бул wxPrintDialogData_GetEnableHelp(ЦУк сам);
+        static extern (C) бул wxPrintDialogData_Ok(ЦУк сам);
+        static extern (C) ЦУк wxPrintDialogData_GetPrintData(ЦУк сам);
+        static extern (C) проц wxPrintDialogData_SetPrintData(ЦУк сам, ЦУк printData);
 		//! \endcond
 
     alias PrintDialogData wxPrintDialogData;
@@ -319,8 +319,8 @@ public import wx.common;
     {
         //-----------------------------------------------------------------------------
 
-        public this(IntPtr wxobj)
-            { super(wxobj); }
+        public this(ЦУк шхобъ)
+            { super(шхобъ); }
 
         public this()
             { this(wxPrintDialogData_ctor()); }
@@ -328,125 +328,125 @@ public import wx.common;
             { this(wxPrintDialogData_ctorDialogData(wxObject.SafePtr(dialogData))); }
         public this(PrintData printData)
             { this(wxPrintDialogData_ctorPrintData(wxObject.SafePtr(printData))); }
-	public static wxObject New(IntPtr ptr) { return new PrintDialogData(ptr); }
+	public static wxObject Нов(ЦУк ptr) { return new PrintDialogData(ptr); }
 
         //-----------------------------------------------------------------------------
 
-        public int FromPage() { return wxPrintDialogData_GetFromPage(wxobj); }
-        public void FromPage(int value) { wxPrintDialogData_SetFromPage(wxobj, value); }
+        public цел FromPage() { return wxPrintDialogData_GetFromPage(шхобъ); }
+        public проц FromPage(цел значение) { wxPrintDialogData_SetFromPage(шхобъ, значение); }
 
-        public int ToPage() { return wxPrintDialogData_GetToPage(wxobj); }
-        public void ToPage(int value) { wxPrintDialogData_SetToPage(wxobj, value); }
-
-        //-----------------------------------------------------------------------------
-
-        public int MinPage() { return wxPrintDialogData_GetMinPage(wxobj); }
-        public void MinPage(int value) { wxPrintDialogData_SetMinPage(wxobj, value); }
-
-        public int MaxPage() { return wxPrintDialogData_GetMaxPage(wxobj); }
-        public void MaxPage(int value) { wxPrintDialogData_SetMaxPage(wxobj, value); }
+        public цел ToPage() { return wxPrintDialogData_GetToPage(шхобъ); }
+        public проц ToPage(цел значение) { wxPrintDialogData_SetToPage(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public int NoCopies() { return wxPrintDialogData_GetNoCopies(wxobj); }
-        public void NoCopies(int value) { wxPrintDialogData_SetNoCopies(wxobj, value); }
+        public цел MinPage() { return wxPrintDialogData_GetMinPage(шхобъ); }
+        public проц MinPage(цел значение) { wxPrintDialogData_SetMinPage(шхобъ, значение); }
+
+        public цел MaxPage() { return wxPrintDialogData_GetMaxPage(шхобъ); }
+        public проц MaxPage(цел значение) { wxPrintDialogData_SetMaxPage(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public bool AllPages() { return wxPrintDialogData_GetAllPages(wxobj); }
-        public void AllPages(bool value) { wxPrintDialogData_SetAllPages(wxobj, value); }
-
-        public bool Selection() { return wxPrintDialogData_GetSelection(wxobj); }
-        public void Selection(bool value) { wxPrintDialogData_SetSelection(wxobj, value); }
-
-        public bool Collate() { return wxPrintDialogData_GetCollate(wxobj); }
-        public void Collate(bool value) { wxPrintDialogData_SetCollate(wxobj, value); }
-
-        public bool PrintToFile() { return wxPrintDialogData_GetPrintToFile(wxobj); }
-        public void PrintToFile(bool value) { wxPrintDialogData_SetPrintToFile(wxobj, value); }
+        public цел NoCopies() { return wxPrintDialogData_GetNoCopies(шхобъ); }
+        public проц NoCopies(цел значение) { wxPrintDialogData_SetNoCopies(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public bool SetupDialog() { return wxPrintDialogData_GetSetupDialog(wxobj); }
-        public void SetupDialog(bool value) { wxPrintDialogData_SetSetupDialog(wxobj, value); }
+        public бул AllPages() { return wxPrintDialogData_GetAllPages(шхобъ); }
+        public проц AllPages(бул значение) { wxPrintDialogData_SetAllPages(шхобъ, значение); }
+
+        public бул Selection() { return wxPrintDialogData_GetSelection(шхобъ); }
+        public проц Selection(бул значение) { wxPrintDialogData_SetSelection(шхобъ, значение); }
+
+        public бул Collate() { return wxPrintDialogData_GetCollate(шхобъ); }
+        public проц Collate(бул значение) { wxPrintDialogData_SetCollate(шхобъ, значение); }
+
+        public бул PrintToFile() { return wxPrintDialogData_GetPrintToFile(шхобъ); }
+        public проц PrintToFile(бул значение) { wxPrintDialogData_SetPrintToFile(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public void EnablePrintToFile(bool value) { wxPrintDialogData_EnablePrintToFile(wxobj, value); }
-        public bool EnablePrintToFile() { return wxPrintDialogData_GetEnablePrintToFile(wxobj); }
+        public бул SetupDialog() { return wxPrintDialogData_GetSetupDialog(шхобъ); }
+        public проц SetupDialog(бул значение) { wxPrintDialogData_SetSetupDialog(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public void EnableSelection(bool value) { wxPrintDialogData_EnableSelection(wxobj, value); }
-        public bool EnableSelection() { return wxPrintDialogData_GetEnableSelection(wxobj); }
+        public проц EnablePrintToFile(бул значение) { wxPrintDialogData_EnablePrintToFile(шхобъ, значение); }
+        public бул EnablePrintToFile() { return wxPrintDialogData_GetEnablePrintToFile(шхобъ); }
 
         //-----------------------------------------------------------------------------
 
-        public void EnablePageNumbers(bool value) { wxPrintDialogData_EnablePageNumbers(wxobj, value); }
-        public bool EnablePageNumbers() { return wxPrintDialogData_GetEnablePageNumbers(wxobj); }
+        public проц EnableSelection(бул значение) { wxPrintDialogData_EnableSelection(шхобъ, значение); }
+        public бул EnableSelection() { return wxPrintDialogData_GetEnableSelection(шхобъ); }
 
         //-----------------------------------------------------------------------------
 
-        public void EnableHelp(bool value) { wxPrintDialogData_EnableHelp(wxobj, value); }
-        public bool EnableHelp() { return wxPrintDialogData_GetEnableHelp(wxobj); }
+        public проц EnablePageNumbers(бул значение) { wxPrintDialogData_EnablePageNumbers(шхобъ, значение); }
+        public бул EnablePageNumbers() { return wxPrintDialogData_GetEnablePageNumbers(шхобъ); }
 
         //-----------------------------------------------------------------------------
 
-        public bool Ok()
+        public проц EnableHelp(бул значение) { wxPrintDialogData_EnableHelp(шхобъ, значение); }
+        public бул EnableHelp() { return wxPrintDialogData_GetEnableHelp(шхобъ); }
+
+        //-----------------------------------------------------------------------------
+
+        public бул Ок()
         {
-            return wxPrintDialogData_Ok(wxobj);
+            return wxPrintDialogData_Ok(шхобъ);
         }
 
         //-----------------------------------------------------------------------------
 
-        public PrintData printData() { return cast(PrintData)FindObject(wxPrintDialogData_GetPrintData(wxobj), &PrintData.New); }
-        public void printData(PrintData value) { wxPrintDialogData_SetPrintData(wxobj, wxObject.SafePtr(value)); }
+        public PrintData printData() { return cast(PrintData)FindObject(wxPrintDialogData_GetPrintData(шхобъ), &PrintData.Нов); }
+        public проц printData(PrintData значение) { wxPrintDialogData_SetPrintData(шхобъ, wxObject.SafePtr(значение)); }
     }
 
 		//! \cond EXTERN
-        static extern (C) IntPtr wxPrintData_ctor();
-        static extern (C) IntPtr wxPrintData_ctorPrintData(IntPtr printData);
-        static extern (C) int wxPrintData_GetNoCopies(IntPtr self);
-        static extern (C) bool wxPrintData_GetCollate(IntPtr self);
-        static extern (C) int wxPrintData_GetOrientation(IntPtr self);
-        static extern (C) bool wxPrintData_Ok(IntPtr self);
-        static extern (C) IntPtr wxPrintData_GetPrinterName(IntPtr self);
-        static extern (C) bool wxPrintData_GetColour(IntPtr self);
-        static extern (C) int wxPrintData_GetDuplex(IntPtr self);
-        static extern (C) int wxPrintData_GetPaperId(IntPtr self);
-        static extern (C) void wxPrintData_GetPaperSize(IntPtr self, inout Size sz);
-        static extern (C) int wxPrintData_GetQuality(IntPtr self);
-        static extern (C) void wxPrintData_SetNoCopies(IntPtr self, int v);
-        static extern (C) void wxPrintData_SetCollate(IntPtr self, bool flag);
-       // static extern (C) void wxPrintData_SetOrientation(IntPtr self, int orient);
-        static extern (C) void wxPrintData_SetPrinterName(IntPtr self, string name);
-        static extern (C) void wxPrintData_SetColour(IntPtr self, bool colour);
-        static extern (C) void wxPrintData_SetDuplex(IntPtr self, int duplex);
-        static extern (C) void wxPrintData_SetPaperId(IntPtr self, int sizeId);
-        static extern (C) void wxPrintData_SetPaperSize(IntPtr self, inout Size sz);
-        static extern (C) void wxPrintData_SetQuality(IntPtr self, int quality);
-        static extern (C) IntPtr wxPrintData_GetPrinterCommand(IntPtr self);
-        static extern (C) IntPtr wxPrintData_GetPrinterOptions(IntPtr self);
-        static extern (C) IntPtr wxPrintData_GetPreviewCommand(IntPtr self);
-        static extern (C) IntPtr wxPrintData_GetFilename(IntPtr self);
-        static extern (C) IntPtr wxPrintData_GetFontMetricPath(IntPtr self);
-        static extern (C) double wxPrintData_GetPrinterScaleX(IntPtr self);
-        static extern (C) double wxPrintData_GetPrinterScaleY(IntPtr self);
-        static extern (C) int wxPrintData_GetPrinterTranslateX(IntPtr self);
-        static extern (C) int wxPrintData_GetPrinterTranslateY(IntPtr self);
-        static extern (C) int wxPrintData_GetPrintMode(IntPtr self);
-        static extern (C) void wxPrintData_SetPrinterCommand(IntPtr self, string command);
-        static extern (C) void wxPrintData_SetPrinterOptions(IntPtr self, string options);
-        static extern (C) void wxPrintData_SetPreviewCommand(IntPtr self, string command);
-        static extern (C) void wxPrintData_SetFilename(IntPtr self, string filename);
-        static extern (C) void wxPrintData_SetFontMetricPath(IntPtr self, string path);
-        static extern (C) void wxPrintData_SetPrinterScaleX(IntPtr self, double x);
-        static extern (C) void wxPrintData_SetPrinterScaleY(IntPtr self, double y);
-        static extern (C) void wxPrintData_SetPrinterScaling(IntPtr self, double x, double y);
-        static extern (C) void wxPrintData_SetPrinterTranslateX(IntPtr self, int x);
-        static extern (C) void wxPrintData_SetPrinterTranslateY(IntPtr self, int y);
-        static extern (C) void wxPrintData_SetPrinterTranslation(IntPtr self, int x, int y);
-        static extern (C) void wxPrintData_SetPrintMode(IntPtr self, int printMode);
+        static extern (C) ЦУк wxPrintData_ctor();
+        static extern (C) ЦУк wxPrintData_ctorPrintData(ЦУк printData);
+        static extern (C) цел wxPrintData_GetNoCopies(ЦУк сам);
+        static extern (C) бул wxPrintData_GetCollate(ЦУк сам);
+        static extern (C) цел wxPrintData_GetOrientation(ЦУк сам);
+        static extern (C) бул wxPrintData_Ok(ЦУк сам);
+        static extern (C) ЦУк wxPrintData_GetPrinterName(ЦУк сам);
+        static extern (C) бул wxPrintData_GetColour(ЦУк сам);
+        static extern (C) цел wxPrintData_GetDuplex(ЦУк сам);
+        static extern (C) цел wxPrintData_GetPaperId(ЦУк сам);
+        static extern (C) проц wxPrintData_GetPaperSize(ЦУк сам, inout Размер sz);
+        static extern (C) цел wxPrintData_GetQuality(ЦУк сам);
+        static extern (C) проц wxPrintData_SetNoCopies(ЦУк сам, цел v);
+        static extern (C) проц wxPrintData_SetCollate(ЦУк сам, бул flag);
+       // static extern (C) проц wxPrintData_SetOrientation(ЦУк сам, цел orient);
+        static extern (C) проц wxPrintData_SetPrinterName(ЦУк сам, ткст имя);
+        static extern (C) проц wxPrintData_SetColour(ЦУк сам, бул colour);
+        static extern (C) проц wxPrintData_SetDuplex(ЦУк сам, цел duplex);
+        static extern (C) проц wxPrintData_SetPaperId(ЦУк сам, цел sizeId);
+        static extern (C) проц wxPrintData_SetPaperSize(ЦУк сам, inout Размер sz);
+        static extern (C) проц wxPrintData_SetQuality(ЦУк сам, цел quality);
+        static extern (C) ЦУк wxPrintData_GetPrinterCommand(ЦУк сам);
+        static extern (C) ЦУк wxPrintData_GetPrinterOptions(ЦУк сам);
+        static extern (C) ЦУк wxPrintData_GetPreviewCommand(ЦУк сам);
+        static extern (C) ЦУк wxPrintData_GetFilename(ЦУк сам);
+        static extern (C) ЦУк wxPrintData_GetFontMetricPath(ЦУк сам);
+        static extern (C) дво wxPrintData_GetPrinterScaleX(ЦУк сам);
+        static extern (C) дво wxPrintData_GetPrinterScaleY(ЦУк сам);
+        static extern (C) цел wxPrintData_GetPrinterTranslateX(ЦУк сам);
+        static extern (C) цел wxPrintData_GetPrinterTranslateY(ЦУк сам);
+        static extern (C) цел wxPrintData_GetPrintMode(ЦУк сам);
+        static extern (C) проц wxPrintData_SetPrinterCommand(ЦУк сам, ткст command);
+        static extern (C) проц wxPrintData_SetPrinterOptions(ЦУк сам, ткст options);
+        static extern (C) проц wxPrintData_SetPreviewCommand(ЦУк сам, ткст command);
+        static extern (C) проц wxPrintData_SetFilename(ЦУк сам, ткст фимя);
+        static extern (C) проц wxPrintData_SetFontMetricPath(ЦУк сам, ткст путь);
+        static extern (C) проц wxPrintData_SetPrinterScaleX(ЦУк сам, дво x);
+        static extern (C) проц wxPrintData_SetPrinterScaleY(ЦУк сам, дво y);
+        static extern (C) проц wxPrintData_SetPrinterScaling(ЦУк сам, дво x, дво y);
+        static extern (C) проц wxPrintData_SetPrinterTranslateX(ЦУк сам, цел x);
+        static extern (C) проц wxPrintData_SetPrinterTranslateY(ЦУк сам, цел y);
+        static extern (C) проц wxPrintData_SetPrinterTranslation(ЦУк сам, цел x, цел y);
+        static extern (C) проц wxPrintData_SetPrintMode(ЦУк сам, цел printMode);
 		//! \endcond
 
         //-----------------------------------------------------------------------------
@@ -454,134 +454,134 @@ public import wx.common;
     alias PrintData wxPrintData;
     public class PrintData : wxObject
     {
-        public this(IntPtr wxobj) 
-            { super(wxobj); }
+        public this(ЦУк шхобъ) 
+            { super(шхобъ); }
 
         public this()
             { this(wxPrintData_ctor()); }
         public this(PrintData printData)
             { this(wxPrintData_ctorPrintData(wxObject.SafePtr(printData))); }
 
-        public static wxObject New(IntPtr ptr) { return new PrintData(ptr); }
+        public static wxObject Нов(ЦУк ptr) { return new PrintData(ptr); }
 
         //-----------------------------------------------------------------------------
 
-        public int NoCopies() { return wxPrintData_GetNoCopies(wxobj); }
-        public void NoCopies(int value) { wxPrintData_SetNoCopies(wxobj, value); }
+        public цел NoCopies() { return wxPrintData_GetNoCopies(шхобъ); }
+        public проц NoCopies(цел значение) { wxPrintData_SetNoCopies(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public bool Collate() { return wxPrintData_GetCollate(wxobj); }
-        public void Collate(bool value) { wxPrintData_SetCollate(wxobj, value); }
+        public бул Collate() { return wxPrintData_GetCollate(шхобъ); }
+        public проц Collate(бул значение) { wxPrintData_SetCollate(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public int Orientation() { return wxPrintData_GetOrientation(wxobj); }
-       // public void Orientation(int value) { wxPrintData_SetOrientation(wxobj, value); }
+        public цел Ориентация() { return wxPrintData_GetOrientation(шхобъ); }
+       // public проц Ориентация(цел значение) { wxPrintData_SetOrientation(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public bool Ok()
+        public бул Ок()
         {
-            return wxPrintData_Ok(wxobj);
+            return wxPrintData_Ok(шхобъ);
         }
 
         //-----------------------------------------------------------------------------
 
-        public string PrinterName() { return cast(string) new wxString(wxPrintData_GetPrinterName(wxobj), true); }
-        public void PrinterName(string value) { wxPrintData_SetPrinterName(wxobj, value); }
+        public ткст PrinterName() { return cast(ткст) new wxString(wxPrintData_GetPrinterName(шхобъ), да); }
+        public проц PrinterName(ткст значение) { wxPrintData_SetPrinterName(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public bool Colour() { return wxPrintData_GetColour(wxobj); }
-        public void Colour(bool value) { wxPrintData_SetColour(wxobj, value); }
+        public бул Цвет() { return wxPrintData_GetColour(шхобъ); }
+        public проц Цвет(бул значение) { wxPrintData_SetColour(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public DuplexMode Duplex() { return cast(DuplexMode)wxPrintData_GetDuplex(wxobj); }
-        public void Duplex(DuplexMode value) { wxPrintData_SetDuplex(wxobj, cast(int)value); }
+        public DuplexMode Duplex() { return cast(DuplexMode)wxPrintData_GetDuplex(шхобъ); }
+        public проц Duplex(DuplexMode значение) { wxPrintData_SetDuplex(шхобъ, cast(цел)значение); }
 
         //-----------------------------------------------------------------------------
 
-        public PaperSize PaperId() { return cast(PaperSize)wxPrintData_GetPaperId(wxobj); }
-        public void PaperId(PaperSize value) { wxPrintData_SetPaperId(wxobj, cast(int)value); }
+        public PaperSize PaperId() { return cast(PaperSize)wxPrintData_GetPaperId(шхобъ); }
+        public проц PaperId(PaperSize значение) { wxPrintData_SetPaperId(шхобъ, cast(цел)значение); }
 
         //-----------------------------------------------------------------------------
 
-        public Size paperSize() { 
-                Size sz;
-                wxPrintData_GetPaperSize(wxobj, sz);
+        public Размер paperSize() { 
+                Размер sz;
+                wxPrintData_GetPaperSize(шхобъ, sz);
                 return sz;
             }
-        public void paperSize(Size value) { wxPrintData_SetPaperSize(wxobj, value); }
+        public проц paperSize(Размер значение) { wxPrintData_SetPaperSize(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public PrintQuality Quality() { return cast(PrintQuality)wxPrintData_GetQuality(wxobj); }
-        public void Quality(PrintQuality value) { wxPrintData_SetQuality(wxobj, cast(int)value); }
+        public PrintQuality Quality() { return cast(PrintQuality)wxPrintData_GetQuality(шхобъ); }
+        public проц Quality(PrintQuality значение) { wxPrintData_SetQuality(шхобъ, cast(цел)значение); }
 
         //-----------------------------------------------------------------------------
 
-        public string PrinterCommand() { return cast(string) new wxString(wxPrintData_GetPrinterCommand(wxobj), true); }
-        public void PrinterCommand(string value) { wxPrintData_SetPrinterCommand(wxobj, value); }
+        public ткст PrinterCommand() { return cast(ткст) new wxString(wxPrintData_GetPrinterCommand(шхобъ), да); }
+        public проц PrinterCommand(ткст значение) { wxPrintData_SetPrinterCommand(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public string PrinterOptions() { return cast(string) new wxString(wxPrintData_GetPrinterOptions(wxobj), true); }
-        public void PrinterOptions(string value) { wxPrintData_SetPrinterOptions(wxobj, value); }
+        public ткст PrinterOptions() { return cast(ткст) new wxString(wxPrintData_GetPrinterOptions(шхобъ), да); }
+        public проц PrinterOptions(ткст значение) { wxPrintData_SetPrinterOptions(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public string PreviewCommand() { return cast(string) new wxString(wxPrintData_GetPreviewCommand(wxobj), true); }
-        public void PreviewCommand(string value) { wxPrintData_SetPreviewCommand(wxobj, value); }
+        public ткст PreviewCommand() { return cast(ткст) new wxString(wxPrintData_GetPreviewCommand(шхобъ), да); }
+        public проц PreviewCommand(ткст значение) { wxPrintData_SetPreviewCommand(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public string Filename() { return cast(string) new wxString(wxPrintData_GetFilename(wxobj), true); }
-        public void Filename(string value) { wxPrintData_SetFilename(wxobj, value); }
+        public ткст Filename() { return cast(ткст) new wxString(wxPrintData_GetFilename(шхобъ), да); }
+        public проц Filename(ткст значение) { wxPrintData_SetFilename(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public string FontMetricPath() { return cast(string) new wxString(wxPrintData_GetFontMetricPath(wxobj), true); }
-        public void FontMetricPath(string value) { wxPrintData_SetFontMetricPath(wxobj, value); }
+        public ткст FontMetricPath() { return cast(ткст) new wxString(wxPrintData_GetFontMetricPath(шхобъ), да); }
+        public проц FontMetricPath(ткст значение) { wxPrintData_SetFontMetricPath(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public double PrinterScaleX() { return wxPrintData_GetPrinterScaleX(wxobj); }
-        public void PrinterScaleX(double value) { wxPrintData_SetPrinterScaleX(wxobj, value); }
+        public дво PrinterScaleX() { return wxPrintData_GetPrinterScaleX(шхобъ); }
+        public проц PrinterScaleX(дво значение) { wxPrintData_SetPrinterScaleX(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public double PrinterScaleY() { return wxPrintData_GetPrinterScaleY(wxobj); }
-        public void PrinterScaleY(double value) { wxPrintData_SetPrinterScaleY(wxobj, value); }
+        public дво PrinterScaleY() { return wxPrintData_GetPrinterScaleY(шхобъ); }
+        public проц PrinterScaleY(дво значение) { wxPrintData_SetPrinterScaleY(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public int PrinterTranslateX() { return wxPrintData_GetPrinterTranslateX(wxobj); }
-        public void PrinterTranslateX(int value) { wxPrintData_SetPrinterTranslateX(wxobj, value); }
+        public цел PrinterTranslateX() { return wxPrintData_GetPrinterTranslateX(шхобъ); }
+        public проц PrinterTranslateX(цел значение) { wxPrintData_SetPrinterTranslateX(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public int PrinterTranslateY() { return wxPrintData_GetPrinterTranslateY(wxobj); }
-        public void PrinterTranslateY(int value) { wxPrintData_SetPrinterTranslateY(wxobj, value); }
+        public цел PrinterTranslateY() { return wxPrintData_GetPrinterTranslateY(шхобъ); }
+        public проц PrinterTranslateY(цел значение) { wxPrintData_SetPrinterTranslateY(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public PrintMode printMode() { return cast(PrintMode)wxPrintData_GetPrintMode(wxobj); }
-        public void printMode(PrintMode value) { wxPrintData_SetPrintMode(wxobj, cast(int)value); }
+        public PrintMode printMode() { return cast(PrintMode)wxPrintData_GetPrintMode(шхобъ); }
+        public проц printMode(PrintMode значение) { wxPrintData_SetPrintMode(шхобъ, cast(цел)значение); }
 
         //-----------------------------------------------------------------------------
 
-        public void SetPrinterScaling(double x, double y)
+        public проц SetPrinterScaling(дво x, дво y)
         {
-            wxPrintData_SetPrinterScaling(wxobj, x, y);
+            wxPrintData_SetPrinterScaling(шхобъ, x, y);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void SetPrinterTranslation(int x, int y)
+        public проц SetPrinterTranslation(цел x, цел y)
         {
-            wxPrintData_SetPrinterTranslation(wxobj, x, y);
+            wxPrintData_SetPrinterTranslation(шхобъ, x, y);
         }
     }
 

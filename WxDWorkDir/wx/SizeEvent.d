@@ -10,7 +10,7 @@
 // (C) 2004 by Alexander Olk
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: SizeEvent.d,v 1.9 2006/11/17 15:21:00 afb Exp $
+// $Ид: SizeEvent.d,v 1.9 2006/11/17 15:21:00 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.SizeEvent;
@@ -18,58 +18,58 @@ public import wx.common;
 public import wx.Event;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxSizeEvent_ctor();
-		static extern (C) IntPtr wxSizeEvent_ctorSize(inout Size sz,int winid);
-		static extern (C) IntPtr wxSizeEvent_ctorRect(inout Rect sz,int winid);
-		static extern (C) void wxSizeEvent_GetSize(IntPtr self, out Size size);
-		static extern (C) void wxSizeEvent_GetRect(IntPtr self, out Rect rect);
-		static extern (C) void wxSizeEvent_SetRect(IntPtr self, inout Rect rect);
+		static extern (C) ЦУк wxSizeEvent_ctor();
+		static extern (C) ЦУк wxSizeEvent_ctorSize(inout Размер sz,цел winid);
+		static extern (C) ЦУк wxSizeEvent_ctorRect(inout Rect sz,цел winid);
+		static extern (C) проц wxSizeEvent_GetSize(ЦУк сам, out Размер size);
+		static extern (C) проц wxSizeEvent_GetRect(ЦУк сам, out Rect прям);
+		static extern (C) проц wxSizeEvent_SetRect(ЦУк сам, inout Rect прям);
 		//! \endcond
 		
 		//-----------------------------------------------------------------------------
 
 	alias SizeEvent wxSizeEvent;
-	public class SizeEvent : Event
+	public class SizeEvent : Событие
 	{
-		public this(IntPtr wxobj) 
-			{ super(wxobj); }
+		public this(ЦУк шхобъ) 
+			{ super(шхобъ); }
 
 		public this()
 			{ this(wxSizeEvent_ctor()); }
 
-		public this(Size sz,int winid = 0)
+		public this(Размер sz,цел winid = 0)
 			{ this(wxSizeEvent_ctorSize(sz,winid)); }
 
-		public this(Rectangle rect,int winid = 0)
-			{ this(wxSizeEvent_ctorRect(rect,winid)); }
+		public this(Прямоугольник прям,цел winid = 0)
+			{ this(wxSizeEvent_ctorRect(прям,winid)); }
 
 
 		//-----------------------------------------------------------------------------	
 		
-		public Size size()
+		public Размер size()
 			{
-				Size size;
-				wxSizeEvent_GetSize(wxobj, size);
+				Размер size;
+				wxSizeEvent_GetSize(шхобъ, size);
 				return size;
 			}
 
-		public Rectangle rect()
+		public Прямоугольник прям()
 			{
-				Rectangle rect;
-				wxSizeEvent_GetRect(wxobj, rect);
-				return rect;
+				Прямоугольник прям;
+				wxSizeEvent_GetRect(шхобъ, прям);
+				return прям;
 			}
 
-		public void rect(Rectangle rect)
+		public проц прям(Прямоугольник прям)
 			{
-				wxSizeEvent_SetRect(wxobj, rect);
+				wxSizeEvent_SetRect(шхобъ, прям);
 			}
 
 
-		private static Event New(IntPtr obj) { return new SizeEvent(obj); }
+		private static Событие Нов(ЦУк объ) { return new SizeEvent(объ); }
 
 		static this()
 		{
-			AddEventType(wxEVT_SIZE,                            &SizeEvent.New);
+			ДобавьТипСоб(wxEVT_SIZE,                            &SizeEvent.Нов);
 		}
 	}

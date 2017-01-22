@@ -1,4 +1,4 @@
-//------------------------------------------------------------------------
+﻿//------------------------------------------------------------------------
 // wxD - Display.d
 // (C) 2005 bero <berobero@users.sourceforge.net>
 // based on
@@ -18,7 +18,7 @@
 //      under both wxWidgets display sample and my port.
 //    + IsPrimary is wrong, at least on WIN32: assumes display #0
 //      is primary, which may not be the case. For example, I have
-//      three horizontally aligned displays. wxWidgets numbers them
+//      three горизонтально aligned displays. wxWidgets numbers them
 //      0, 1, 2. But it's #1 is actually the primary, not 0. Note also
 //      that the numbering scheme differs from how windows numbers
 //      them, which has more to do with the display adapter used. This
@@ -35,24 +35,24 @@ public import wx.Window;
 //version(LDC) { pragma(ldc, "verbose") }
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxDisplay_ctor(int index);
-		//static extern (C) IntPtr wxDisplay_ctor(inout VideoMode mode);
-		static extern (C) int wxDisplay_GetCount();
-		static extern (C) int wxDisplay_GetFromPoint(inout Point pt);
-		static extern (C) int wxDisplay_GetFromWindow(IntPtr window);
-		static extern (C) void wxDisplay_GetGeometry(IntPtr self, out Rectangle rect);
-		static extern (C) IntPtr wxDisplay_GetName(IntPtr self);
-		static extern (C) bool wxDisplay_IsPrimary(IntPtr self);
-		static extern (C) void wxDisplay_GetCurrentMode(IntPtr self, out VideoMode mode);
-		static extern (C) bool wxDisplay_ChangeMode(IntPtr self, VideoMode mode);
+		static extern (C) ЦУк wxDisplay_ctor(цел индекс);
+		//static extern (C) ЦУк wxDisplay_ctor(inout VideoMode mode);
+		static extern (C) цел wxDisplay_GetCount();
+		static extern (C) цел wxDisplay_GetFromPoint(inout Точка pt);
+		static extern (C) цел wxDisplay_GetFromWindow(ЦУк окно);
+		static extern (C) проц wxDisplay_GetGeometry(ЦУк сам, out Прямоугольник прям);
+		static extern (C) ЦУк wxDisplay_GetName(ЦУк сам);
+		static extern (C) бул wxDisplay_IsPrimary(ЦУк сам);
+		static extern (C) проц wxDisplay_GetCurrentMode(ЦУк сам, out VideoMode mode);
+		static extern (C) бул wxDisplay_ChangeMode(ЦУк сам, VideoMode mode);
 
 
-		static extern (C) int wxDisplay_GetNumModes(IntPtr self, VideoMode mode);
-		static extern (C) void wxDisplay_GetModes(IntPtr self, VideoMode mode, inout VideoMode[] modes);
+		static extern (C) цел wxDisplay_GetNumModes(ЦУк сам, VideoMode mode);
+		static extern (C) проц wxDisplay_GetModes(ЦУк сам, VideoMode mode, inout VideoMode[] modes);
 
 		
-		static extern (C) void wxDisplay_ResetMode(IntPtr self);
-		static extern (C) void wxDisplay_dtor(IntPtr self);
+		static extern (C) проц wxDisplay_ResetMode(ЦУк сам);
+		static extern (C) проц wxDisplay_dtor(ЦУк сам);
 		//! \endcond
 
 	alias Display wxDisplay;
@@ -63,45 +63,45 @@ public import wx.Window;
 		// Symbolic constant used by all Find()-like functions returning positive
 		// integer on success as failure indicator. While this is global in
 		// wxWidgets it makes more sense to be in each class that uses it??? 
-		// Or maybe move it to Window.cs.
-		public const int wxNOT_FOUND = -1;
+		// Or maybe move it to Окно.cs.
+		public const цел wxNOT_FOUND = -1;
 		
 		//------------------------------------------------------------------------
 		
-		public this(IntPtr wxobj)
+		public this(ЦУк шхобъ)
 		{ 
-			super(wxobj);
+			super(шхобъ);
 		}
 			
-		private this(IntPtr wxobj, bool memOwn)
+		private this(ЦУк шхобъ, бул memOwn)
 		{ 
-			super(wxobj);
+			super(шхобъ);
 			this.memOwn = memOwn;
 		}
 
 		//------------------------------------------------------------------------
 
-		public this(int index)
-			{ this(wxDisplay_ctor(index), true); }
+		public this(цел индекс)
+			{ this(wxDisplay_ctor(индекс), да); }
 
 		//------------------------------------------------------------------------
 
 		//public this(VideoMode mode)
-		//	{ this(wxDisplay_ctor(mode), true); }
+		//	{ this(wxDisplay_ctor(mode), да); }
 			
 		//---------------------------------------------------------------------
 
-		override protected void dtor() { wxDisplay_dtor(wxobj); }
+		override protected проц dtor() { wxDisplay_dtor(шхобъ); }
 
 		//------------------------------------------------------------------------
-		static int Count() { return wxDisplay_GetCount(); }
+		static цел Счёт() { return wxDisplay_GetCount(); }
 
 		// an array of all Displays indexed by display number
 		public static Display[] GetDisplays()
 		{
-			int count = Count;
-			Display[] displays = new Display[count];
-			for (int i = 0; i < count; i++)
+			цел счёт = Счёт;
+			Display[] displays = new Display[счёт];
+			for (цел i = 0; i < счёт; i++)
 			{
 				displays[i] = new Display(i);
 			}
@@ -116,30 +116,30 @@ public import wx.Window;
 		}
 
 		// An array of the VideoModes that match mode. A match occurs when
-		// the resolution and depth matches and the refresh frequency in 
+		// the resolution and глубина matches and the refresh frequency in 
 		// equal to or greater than mode.RefreshFrequency.
 		/+virtual+/ public VideoMode[] GetModes(VideoMode mode)
 		{
-			int num_modes = wxDisplay_GetNumModes(wxobj, mode);
+			цел num_modes = wxDisplay_GetNumModes(шхобъ, mode);
 			VideoMode[] modes = new VideoMode[num_modes];
-			wxDisplay_GetModes(wxobj, mode, modes);
+			wxDisplay_GetModes(шхобъ, mode, modes);
 			return modes;
 		}
 
 
 		//------------------------------------------------------------------------
 
-		public static int GetFromPoint(Point pt)
+		public static цел GetFromPoint(Точка pt)
 		{
 			return wxDisplay_GetFromPoint(pt);
 		}
 
 		//------------------------------------------------------------------------
 
-		/+virtual+/ public int GetFromWindow(Window window)
+		/+virtual+/ public цел GetFromWindow(Окно окно)
 		{
 			version(__WXMSW__){
-				return wxDisplay_GetFromWindow(wxObject.SafePtr(window));
+				return wxDisplay_GetFromWindow(wxObject.SafePtr(окно));
 			} else {
 				throw new Exception("Display.GetFromWindow is only available on WIN32");
 			} // version(__WXMSW__)
@@ -147,25 +147,25 @@ public import wx.Window;
 
 		//------------------------------------------------------------------------
 
-		/+virtual+/ public Rectangle Geometry()
+		/+virtual+/ public Прямоугольник Geometry()
 		{
-			Rectangle rect;
-			wxDisplay_GetGeometry(wxobj, rect);
-			return rect;
+			Прямоугольник прям;
+			wxDisplay_GetGeometry(шхобъ, прям);
+			return прям;
 		}
 
 		//------------------------------------------------------------------------
 
-		/+virtual+/ public string Name()
+		/+virtual+/ public ткст Имя()
 		{
-			return cast(string) new wxString(wxDisplay_GetName(wxobj), true);
+			return cast(ткст) new wxString(wxDisplay_GetName(шхобъ), да);
 		}
 
 		//------------------------------------------------------------------------
 
-		/+virtual+/ public bool IsPrimary()
+		/+virtual+/ public бул IsPrimary()
 		{
-			return wxDisplay_IsPrimary(wxobj);
+			return wxDisplay_IsPrimary(шхобъ);
 		}
 
 		//------------------------------------------------------------------------
@@ -174,22 +174,22 @@ public import wx.Window;
 		/+virtual+/ public VideoMode CurrentMode()
 		{
 			VideoMode mode;
-			wxDisplay_GetCurrentMode(wxobj, mode);
+			wxDisplay_GetCurrentMode(шхобъ, mode);
 			return mode;
 		}
 
 		//------------------------------------------------------------------------
 
-		/+virtual+/ public bool ChangeMode(VideoMode mode)
+		/+virtual+/ public бул ChangeMode(VideoMode mode)
 		{
-			return wxDisplay_ChangeMode(wxobj, mode);
+			return wxDisplay_ChangeMode(шхобъ, mode);
 		}
 
 		//------------------------------------------------------------------------
 
-		/+virtual+/ public void ResetMode()
+		/+virtual+/ public проц ResetMode()
 		{
-			wxDisplay_ResetMode(wxobj);
+			wxDisplay_ResetMode(шхобъ);
 		}
 
 		//------------------------------------------------------------------------

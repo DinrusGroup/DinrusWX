@@ -8,28 +8,28 @@
 // (C) 2004 by Alexander Olk
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: HtmlListBox.d,v 1.10 2008/04/24 07:18:58 afb Exp $
+// $Ид: HtmlListBox.d,v 1.10 2008/04/24 07:18:58 afb Exp $
 //-----------------------------------------------------------------------------
 
 import wx.wx;
-private import std.string;
+private import std.ткст;
 
 
 	public class MyHtmlListBox : HtmlListBox
 	{
 		//---------------------------------------------------------------------
 		
-		protected bool m_change;
+		protected бул m_change;
 		
 		//---------------------------------------------------------------------
 		
-		public this( Window parent )
-			{ this( parent, false ); }
+		public this( Окно родитель )
+			{ this( родитель, нет ); }
 			
-		public this( Window parent, bool multi )
+		public this( Окно родитель, бул multi )
 		{
-			super( parent, -1, wxDefaultPosition, wxDefaultSize, multi ? ListBox.wxLB_MULTIPLE : 0 );
-			m_change = true;
+			super( родитель, -1, wxDefaultPosition, wxDefaultSize, multi ? ListBox.wxLB_MULTIPLE : 0 );
+			m_change = да;
 			
 			SetMargins( 5, 5 );
 			
@@ -40,27 +40,27 @@ private import std.string;
 		
 		//---------------------------------------------------------------------
 		
-		public void ChangeSelFg(bool value)
+		public проц ChangeSelFg(бул значение)
 		{
-			m_change = value;
+			m_change = значение;
 		}
 		
 		//---------------------------------------------------------------------
 		
-		private static char[] tohex(ubyte value) {
-			char buf[2];
-			buf[0] = hexdigits[value/16];
-			buf[1] = hexdigits[value%16];
+		private static сим[] tohex(ббайт значение) {
+			сим buf[2];
+			buf[0] = hexdigits[значение/16];
+			buf[1] = hexdigits[значение%16];
 			return buf.dup;
 		}
 		
-		private static uint abs(int value) { return value<0?-value:value; }
+		private static бцел abs(цел значение) { return значение<0?-значение:значение; }
 		
-		protected override string OnGetItem( int n )
+		protected override ткст OnGetItem( цел n )
 		{
-			int level = ( n % 6 ) + 1;
+			цел level = ( n % 6 ) + 1;
 		
-			return std.string.format("<h%d><font color=#%02x%02x%02x>Item</font> <b>%d</b></h%d>",
+			return std.ткст.format("<h%d><шрифт color=#%02x%02x%02x>Элемент</шрифт> <с>%d</с></h%d>",
 				level,
 				abs(n - 192) % 256,
 				abs(n - 256) % 256,
@@ -71,24 +71,24 @@ private import std.string;
 		
 		//---------------------------------------------------------------------
 		
-		protected override void OnDrawSeparator( DC dc, Rectangle rect, int n )   
+		protected override проц OnDrawSeparator( DC dc, Прямоугольник прям, цел n )   
 		{	
 			MyFrame mp = cast(MyFrame)Parent;
 			
 			if ( mp.menuBar.IsChecked( MyFrame.Cmd.HtmlLbox_DrawSeparator ) )
 			{
-				dc.pen = Pen.wxBLACK_DASHED_PEN;
-				dc.DrawLine( rect.X, rect.Y, rect.Right - 1, rect.Y );
-				dc.DrawLine( rect.X, rect.Bottom - 1, rect.Right - 1, rect.Bottom - 1 );
+				dc.перо = Перо.wxBLACK_DASHED_PEN;
+				dc.РисуйЛинию( прям.X, прям.Y, прям.Right - 1, прям.Y );
+				dc.РисуйЛинию( прям.X, прям.Bottom - 1, прям.Right - 1, прям.Bottom - 1 );
 			}
 			
 		}
 		
 		//---------------------------------------------------------------------
 		
-		protected override Colour GetSelectedTextColour( Colour colFg )
+		protected override Цвет GetSelectedTextColour( Цвет цветПП )
 		{
-			return m_change ? super.GetSelectedTextColour( colFg ) : colFg;
+			return m_change ? super.GetSelectedTextColour( цветПП ) : цветПП;
 		}
 	}
 	
@@ -114,35 +114,35 @@ private import std.string;
 		
 		//---------------------------------------------------------------------
 		
-		public this( Window parent, string title, Point pos, Size size ) 
+		public this( Окно родитель, ткст title, Точка поз, Размер size ) 
 		{
-			super( parent, -1, title, pos, size );
-			icon = new Icon( "../Samples/HtmlListBox/mondrian.png" );
+			super( родитель, -1, title, поз, size );
+			иконка = new Icon( "../Samples/HtmlListBox/mondrian.png" );
 			
-			Menu menuFile = new Menu();
+			Меню menuFile = new Меню();
 			menuFile.Append( Cmd.HtmlLbox_Quit, "E&xit\tAlt-X", "Quit this program" );
 			
-			Menu menuHLbox = new Menu();
-			menuHLbox.Append( Cmd.HtmlLbox_SetMargins, "Set &margins...\tCtrl-G", "Change the margins around the items" );
+			Меню menuHLbox = new Меню();
+			menuHLbox.Append( Cmd.HtmlLbox_SetMargins, "Установи &margins...\tCtrl-G", "Change the margins around the items" );
 			menuHLbox.AppendCheckItem( Cmd.HtmlLbox_DrawSeparator, "&Draw separators\tCtrl-D", "Toggle drawing separators between cells" );
 			menuHLbox.AppendSeparator();
 			menuHLbox.AppendCheckItem( Cmd.HtmlLbox_ToggleMulti, "&Multiple selection\tCtrl-M", "Toggle multiple selection on/off" );
 			menuHLbox.AppendSeparator();
 			menuHLbox.Append( Cmd.HtmlLbox_SelectAll, "Select &all items\tCtrl-A" );
 			menuHLbox.AppendSeparator();
-			menuHLbox.Append( Cmd.HtmlLbox_SetBgCol, "Set &background...\tCtrl-B" );
-			menuHLbox.Append( Cmd.HtmlLbox_SetSelBgCol, "Set &selection background...\tCtrl-S" );
+			menuHLbox.Append( Cmd.HtmlLbox_SetBgCol, "Установи &background...\tCtrl-B" );
+			menuHLbox.Append( Cmd.HtmlLbox_SetSelBgCol, "Установи &selection background...\tCtrl-S" );
 			menuHLbox.AppendCheckItem( Cmd.HtmlLbox_SetSelFgCol, "Keep &foreground in selection\tCtrl-F" );
 			
-			Menu helpMenu = new Menu();
+			Меню helpMenu = new Меню();
 			helpMenu.Append( Cmd.HtmlLbox_About, "&About...\tF1", "Show about dialog" );
 			
 			MenuBar menuBar = new MenuBar();
 			menuBar.Append( menuFile, "&File" );
 			menuBar.Append( menuHLbox, "&Listbox" );
-			menuBar.Append( helpMenu, "&Help" );
+			menuBar.Append( helpMenu, "&Справка" );
 			
-			menuBar.Check( Cmd.HtmlLbox_DrawSeparator, true );
+			menuBar.Check( Cmd.HtmlLbox_DrawSeparator, да );
 			
 			this.menuBar = menuBar;
 			
@@ -150,13 +150,13 @@ private import std.string;
 			StatusText = "Welcome to wxWidgets!";
 			
 			m_hlbox = new MyHtmlListBox( this );
-			TextCtrl text = new TextCtrl( this, -1, "", wxDefaultPosition, wxDefaultSize, TextCtrl.wxTE_MULTILINE );
+			TextCtrl текст = new TextCtrl( this, -1, "", wxDefaultPosition, wxDefaultSize, TextCtrl.wxTE_MULTILINE );
 			
-			Log.SetActiveTarget( text ); 
+			Log.SetActiveTarget( текст ); 
 			
-			BoxSizer sizer = new BoxSizer( Orientation.wxHORIZONTAL );
-			sizer.Add( m_hlbox, 1, Stretch.wxGROW );
-			sizer.Add( text, 1, Stretch.wxGROW );
+			BoxSizer sizer = new BoxSizer( Ориентация.wxHORIZONTAL );
+			sizer.Добавь( m_hlbox, 1, Stretch.wxGROW );
+			sizer.Добавь( текст, 1, Stretch.wxGROW );
 			
 			this.sizer = sizer;
 			
@@ -181,14 +181,14 @@ private import std.string;
 		
 		//---------------------------------------------------------------------
 		
-		public void OnQuit( Object sender, Event e )
+		public проц OnQuit( Объект sender, Событие e )
 		{
-			Close();
+			Закрой();
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void OnAbout( Object sender, Event e )
+		public проц OnAbout( Объект sender, Событие e )
 		{
 			MessageBox( this, "This sample shows wxHtmlListBox class.\n" 
 				"\n" 
@@ -198,12 +198,12 @@ private import std.string;
 		
 		//---------------------------------------------------------------------
 		
-		public void OnSetMargins( Object sender, Event e )
+		public проц OnSetMargins( Объект sender, Событие e )
 		{
 			long margin = GetNumberFromUser(
 				"Enter the margins to use for the listbox items.",
 				"Margin: ",
-				"HtmlLbox: Set the margins",
+				"HtmlLbox: Установи the margins",
 				0, 0, 20,
 				this
 			);
@@ -217,14 +217,14 @@ private import std.string;
 		
 		//---------------------------------------------------------------------
 		
-		public void OnDrawSeparator( Object sender, Event e )
+		public проц OnDrawSeparator( Объект sender, Событие e )
 		{
 			m_hlbox.RefreshAll();
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void OnToggleMulti( Object sender, Event e )
+		public проц OnToggleMulti( Объект sender, Событие e )
 		{
 			CommandEvent evt = cast(CommandEvent) e;
 			
@@ -232,62 +232,62 @@ private import std.string;
 			sizer.Detach( m_hlbox );
 			
 			m_hlbox = new MyHtmlListBox( this, evt.IsChecked );
-			sizer.Prepend( m_hlbox, 1, Stretch.wxGROW, 0, null );
+			sizer.Prepend( m_hlbox, 1, Stretch.wxGROW, 0, пусто );
 			
 			sizer.Layout();
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void OnSelectAll( Object sender, Event e )
+		public проц OnSelectAll( Объект sender, Событие e )
 		{
 			m_hlbox.SelectAll();
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void OnSetBgCol( Object sender, Event e )
+		public проц OnSetBgCol( Объект sender, Событие e )
 		{
-			ColourData data = new ColourData();
+			ColourData данные = new ColourData();
 
-			data.colour = m_hlbox.BackgroundColour;
-			data.ChooseFull = true;
+			данные.colour = m_hlbox.ЦветЗП;
+			данные.ChooseFull = да;
 			
-			ColourDialog cd = new ColourDialog( this, data );
+			ColourDialog cd = new ColourDialog( this, данные );
 			cd.Title = "Choose the background colour";
 			
 			if ( cd.ShowModal() == wxID_OK )
 			{
-				Colour col = cd.colourData.colour;
+				Цвет col = cd.colourData.colour;
 			
-				if ( col.Ok() )
+				if ( col.Ок() )
 				{
-					m_hlbox.BackgroundColour = col;
+					m_hlbox.ЦветЗП = col;
 					m_hlbox.Refresh();
 				
-					StatusText = "Background colour changed.";
+					StatusText = "Фон colour changed.";
 				}
 			}
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void OnSetSelBgCol( Object sender, Event e )
+		public проц OnSetSelBgCol( Объект sender, Событие e )
 		{
-			ColourData data = new ColourData();
+			ColourData данные = new ColourData();
 
-			data.colour = m_hlbox.BackgroundColour;
-			data.ChooseFull = true;
+			данные.colour = m_hlbox.ЦветЗП;
+			данные.ChooseFull = да;
 			
-			ColourDialog cd = new ColourDialog( this, data );
+			ColourDialog cd = new ColourDialog( this, данные );
 			cd.Title = "Choose the selection background colour";
 			
 			if ( cd.ShowModal() == wxID_OK )
 			{
-				Colour col = cd.colourData.colour;
+				Цвет col = cd.colourData.colour;
 			
 			
-				if ( col.Ok() )
+				if ( col.Ок() )
 				{
 					m_hlbox.SelectionBackground = col;
 					m_hlbox.Refresh();
@@ -299,7 +299,7 @@ private import std.string;
 		
 		//---------------------------------------------------------------------
 		
-		public void OnSetSelFgCol( Object sender, Event e )
+		public проц OnSetSelFgCol( Объект sender, Событие e )
 		{
 			CommandEvent evt = cast(CommandEvent) e;
 			
@@ -309,7 +309,7 @@ private import std.string;
 		
 		//---------------------------------------------------------------------
 		
-		public void OnUpdateUISelectAll( Object sender, Event e )
+		public проц OnUpdateUISelectAll( Объект sender, Событие e )
 		{
 			UpdateUIEvent evt = cast(UpdateUIEvent) e;
 			
@@ -318,7 +318,7 @@ private import std.string;
 		
 		//---------------------------------------------------------------------
 		
-		public void OnLboxSelect( Object sender, Event e )
+		public проц OnLboxSelect( Объект sender, Событие e )
 		{
 			CommandEvent evt = cast(CommandEvent) e;
 			
@@ -326,22 +326,22 @@ private import std.string;
 			
 			if ( m_hlbox.HasMultipleSelection )
 			{
-				string s = "";
-				bool first = true;
-				uint cookie = 0;
+				ткст s = "";
+				бул first = да;
+				бцел cookie = 0;
 				
-				for ( int item = m_hlbox.GetFirstSelected( cookie ); item != -1/*wxNOT_FOUND*/; item = m_hlbox.GetNextSelected( cookie ) )
+				for ( цел элемент = m_hlbox.GetFirstSelected( cookie ); элемент != -1/*wxNOT_FOUND*/; элемент = m_hlbox.GetNextSelected( cookie ) )
 				{
 					if ( first )
 					{
-						first = false;
+						first = нет;
 					}
 					else
 					{
 						s ~= ", ";
 					}
 					
-					s ~= std.string.toString(item);
+					s ~= std.ткст.toString(элемент);
 					
 				}
 				
@@ -354,38 +354,38 @@ private import std.string;
 		
 		//---------------------------------------------------------------------
 		
-		public void OnLboxDClick( Object sender, Event e )
+		public проц OnLboxDClick( Объект sender, Событие e )
 		{
 			CommandEvent evt = cast(CommandEvent) e;
 			
-			Log.LogMessage( "Listbox item {0} double clicked.", evt.Int );
+			Log.LogMessage( "Listbox элемент {0} дво clicked.", evt.Int );
 		}
 	}
 	
 	//---------------------------------------------------------------------
 
-	public class HTLBox : App
+	public class HTLBox : Прил
 	{
-		public override bool OnInit()
+		public override бул ПриИниц()
 		{
-			MyFrame frame = new MyFrame( null, "HtmListBox sample", Point( -1, -1 ), Size( 400, 500 ) );
-			frame.Show( true );
+			MyFrame frame = new MyFrame( пусто, "HtmListBox sample", Точка( -1, -1 ), Размер( 400, 500 ) );
+			frame.Show( да );
 
-			return true;
+			return да;
 		}
 
 		//---------------------------------------------------------------------
 
 		
-		static void Main()
+		static проц Main()
 		{
-			HTLBox app = new HTLBox();
-			app.Run();
+			HTLBox прил = new HTLBox();
+			прил.Пуск();
 		}
 	}	
 
 
-void main()
+проц main()
 {
 	HTLBox.Main();
 }

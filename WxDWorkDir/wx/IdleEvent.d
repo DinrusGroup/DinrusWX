@@ -1,4 +1,4 @@
-//-----------------------------------------------------------------------------
+﻿//-----------------------------------------------------------------------------
 // wxD - IdleEvent.d
 // (C) 2005 bero <berobero@users.sourceforge.net>
 // based on
@@ -10,7 +10,7 @@
 // (C) 2004 by Alexander Olk
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: IdleEvent.d,v 1.9 2006/11/17 15:21:00 afb Exp $
+// $Ид: IdleEvent.d,v 1.9 2006/11/17 15:21:00 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.IdleEvent;
@@ -28,61 +28,61 @@ public import wx.Window;
 	//-----------------------------------------------------------------------------
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxIdleEvent_ctor();
-		static extern (C) void   wxIdleEvent_RequestMore(IntPtr self, bool needMore);
-		static extern (C) bool   wxIdleEvent_MoreRequested(IntPtr self);
+		static extern (C) ЦУк wxIdleEvent_ctor();
+		static extern (C) проц   wxIdleEvent_RequestMore(ЦУк сам, бул needMore);
+		static extern (C) бул   wxIdleEvent_MoreRequested(ЦУк сам);
 		
-		static extern (C) void   wxIdleEvent_SetMode(IdleMode mode);
+		static extern (C) проц   wxIdleEvent_SetMode(IdleMode mode);
 		static extern (C) IdleMode wxIdleEvent_GetMode();
-		static extern (C) bool   wxIdleEvent_CanSend(IntPtr win);
+		static extern (C) бул   wxIdleEvent_CanSend(ЦУк окн);
 		//! \endcond
 		
 		//-----------------------------------------------------------------------------
 
 	alias IdleEvent wxIdleEvent;
-	public class IdleEvent : Event
+	public class IdleEvent : Событие
 	{
-		public this(IntPtr wxobj) 
-			{ super(wxobj); }
+		public this(ЦУк шхобъ) 
+			{ super(шхобъ); }
 
 		public this()
 			{ this(wxIdleEvent_ctor()); }
 
 		//-----------------------------------------------------------------------------	
 		
-		public void RequestMore()
+		public проц RequestMore()
 		{
-			RequestMore(true);
+			RequestMore(да);
 		}
 		
-		public void RequestMore(bool needMore)
+		public проц RequestMore(бул needMore)
 		{
-			wxIdleEvent_RequestMore(wxobj, needMore);
+			wxIdleEvent_RequestMore(шхобъ, needMore);
 		}
 		
 		//-----------------------------------------------------------------------------	
 		
-		public bool MoreRequested()
+		public бул MoreRequested()
 		{
-			return wxIdleEvent_MoreRequested(wxobj);
+			return wxIdleEvent_MoreRequested(шхобъ);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
 		static IdleMode Mode() { return wxIdleEvent_GetMode(); }
-		static void Mode(IdleMode value) { wxIdleEvent_SetMode(value); }
+		static проц Mode(IdleMode значение) { wxIdleEvent_SetMode(значение); }
 		
 		//-----------------------------------------------------------------------------
 		
-		public static bool CanSend(Window win)
+		public static бул CanSend(Окно окн)
 		{
-			return wxIdleEvent_CanSend(wxObject.SafePtr(win));
+			return wxIdleEvent_CanSend(wxObject.SafePtr(окн));
 		}
 
-		private static Event New(IntPtr obj) { return new IdleEvent(obj); }
+		private static Событие Нов(ЦУк объ) { return new IdleEvent(объ); }
 
 		static this()
 		{
-			AddEventType(wxEVT_IDLE, 				&IdleEvent.New);
+			ДобавьТипСоб(wxEVT_IDLE, 				&IdleEvent.Нов);
 		}
 	}

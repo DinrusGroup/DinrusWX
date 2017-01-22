@@ -1,4 +1,4 @@
-//-----------------------------------------------------------------------------
+﻿//-----------------------------------------------------------------------------
 // wxD - ClientData.d
 // (C) 2005 bero <berobero.sourceforge.net>
 // based on
@@ -10,16 +10,16 @@
 // (C) 2003 Bryan Bulten
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: ClientData.d,v 1.10 2007/01/28 23:06:36 afb Exp $
+// $Ид: ClientData.d,v 1.10 2007/01/28 23:06:36 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.ClientData;
 public import wx.common;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxClientData_ctor();
-		static extern (C) void wxClientData_dtor(IntPtr self);
-		static extern (C) void wxClientData_RegisterDisposable(IntPtr self, Virtual_Dispose onDispose);
+		static extern (C) ЦУк wxClientData_ctor();
+		static extern (C) проц wxClientData_dtor(ЦУк сам);
+		static extern (C) проц wxClientData_RegisterDisposable(ЦУк сам, Virtual_Dispose onDispose);
 		//! \endcond
 		
 		//---------------------------------------------------------------------
@@ -27,37 +27,37 @@ public import wx.common;
 	alias ClientData wxClientData;
 	public class ClientData : wxObject
 	{
-		public this(IntPtr wxobj)
+		public this(ЦУк шхобъ)
 		{ 
-			super(wxobj);
+			super(шхобъ);
 		}
 		
-		private this(IntPtr wxobj, bool memOwn)
+		private this(ЦУк шхобъ, бул memOwn)
 		{ 
-			super(wxobj);
+			super(шхобъ);
 			this.memOwn = memOwn;
 		}
 
 		public this()
 		{ 
-			this(wxClientData_ctor(), true);
-			wxClientData_RegisterDisposable(wxobj, &VirtualDispose);
+			this(wxClientData_ctor(), да);
+			wxClientData_RegisterDisposable(шхобъ, &VirtualDispose);
 		}
 			
 		//---------------------------------------------------------------------
 				
-		override protected void dtor() { wxClientData_dtor(wxobj); }
+		override protected проц dtor() { wxClientData_dtor(шхобъ); }
 
-		static wxObject New(IntPtr ptr) { return new ClientData(ptr); }
+		static wxObject Нов(ЦУк ptr) { return new ClientData(ptr); }
 	}
     
 	//---------------------------------------------------------------------
     
 		//! \cond EXTERN
-		static extern (C) IntPtr wxStringClientData_ctor(string data);
-		static extern (C) void   wxStringClientData_dtor(IntPtr self);
-		static extern (C) void   wxStringClientData_SetData(IntPtr self, string data);
-		static extern (C) IntPtr wxStringClientData_GetData(IntPtr self);
+		static extern (C) ЦУк wxStringClientData_ctor(ткст данные);
+		static extern (C) проц   wxStringClientData_dtor(ЦУк сам);
+		static extern (C) проц   wxStringClientData_SetData(ЦУк сам, ткст данные);
+		static extern (C) ЦУк wxStringClientData_GetData(ЦУк сам);
 		//! \endcond
 		
 		//---------------------------------------------------------------------
@@ -66,28 +66,28 @@ public import wx.common;
 	public class StringClientData : ClientData
 	{
 		public this()
-			{ this(wxStringClientData_ctor(""), true); }
+			{ this(wxStringClientData_ctor(""), да); }
 			
-		public this(string data)
-			{ this(wxStringClientData_ctor(data), true); }
+		public this(ткст данные)
+			{ this(wxStringClientData_ctor(данные), да); }
 			
-		public this(IntPtr wxobj)
+		public this(ЦУк шхобъ)
 		{ 
-			super(wxobj);
+			super(шхобъ);
 		}
 			
-		private this(IntPtr wxobj, bool memOwn)
+		private this(ЦУк шхобъ, бул memOwn)
 		{ 
-			super(wxobj);
+			super(шхобъ);
 			this.memOwn = memOwn;
 		}
 		
 		//---------------------------------------------------------------------
 				
-		override protected void dtor() { wxStringClientData_dtor(wxobj); }
+		override protected проц dtor() { wxStringClientData_dtor(шхобъ); }
 		//---------------------------------------------------------------------
 		
-		public string Data() { return cast(string) new wxString(wxStringClientData_GetData(wxobj), true); }
-		public void Data(string value) { wxStringClientData_SetData(wxobj, value); }
+		public ткст Data() { return cast(ткст) new wxString(wxStringClientData_GetData(шхобъ), да); }
+		public проц Data(ткст значение) { wxStringClientData_SetData(шхобъ, значение); }
 	}
 

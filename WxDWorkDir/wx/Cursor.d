@@ -1,4 +1,4 @@
-//-----------------------------------------------------------------------------
+﻿//-----------------------------------------------------------------------------
 // wxD - Cursor.d
 // (C) 2005 bero <berobero.sourceforge.net>
 // based on
@@ -10,7 +10,7 @@
 // (C) 2003 by 379, Inc.
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: Cursor.d,v 1.9 2006/11/17 15:20:59 afb Exp $
+// $Ид: Cursor.d,v 1.9 2006/11/17 15:20:59 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.Cursor;
@@ -53,36 +53,36 @@ public import wx.Bitmap;
 		//-----------------------------------------------------------------------------
 		
 		//! \cond EXTERN
-		static extern (C) IntPtr wxCursor_ctorById(StockCursor id);
-		static extern (C) IntPtr wxCursor_ctorImage(IntPtr image);
-		static extern (C) IntPtr wxCursor_ctorCopy(IntPtr cursor);
+		static extern (C) ЦУк wxCursor_ctorById(StockCursor ид);
+		static extern (C) ЦУк wxCursor_ctorImage(ЦУк рисунок);
+		static extern (C) ЦУк wxCursor_ctorCopy(ЦУк cursor);
 
-		static extern (C) bool   wxCursor_Ok(IntPtr self);
+		static extern (C) бул   wxCursor_Ok(ЦУк сам);
 		
-		static extern (C) void   wxCursor_SetCursor(IntPtr cursor);
+		static extern (C) проц   wxCursor_SetCursor(ЦУк cursor);
 		//! \endcond
 
 		//---------------------------------------------------------------------
 		
 	alias Cursor wxCursor;
-	public class Cursor : Bitmap
+	public class Cursor : Битмап
 	{
 		public static Cursor wxSTANDARD_CURSOR;
 		public static Cursor wxHOURGLASS_CURSOR;
 		public static Cursor wxCROSS_CURSOR;
 		public static Cursor wxNullCursor;
 
-		public this(IntPtr wxobj)
-			{ super(wxobj);}
+		public this(ЦУк шхобъ)
+			{ super(шхобъ);}
 
-		public this(StockCursor id)
+		public this(StockCursor ид)
 		{
-			super(wxCursor_ctorById(id));
+			super(wxCursor_ctorById(ид));
 		}
 
-		public this(Image image)
+		public this(Рисунок рисунок)
 		{
-			super(wxCursor_ctorImage(wxObject.SafePtr(image)));
+			super(wxCursor_ctorImage(wxObject.SafePtr(рисунок)));
 		}
 
 		public this(Cursor cursor)
@@ -90,7 +90,7 @@ public import wx.Bitmap;
 			super(wxCursor_ctorCopy(wxObject.SafePtr(cursor)));
 		}
 /+
-		override public void Dispose()
+		override public проц Dispose()
 		{
 			if (this !== wxSTANDARD_CURSOR
 			&&  this !== wxHOURGLASS_CURSOR
@@ -101,14 +101,14 @@ public import wx.Bitmap;
 +/
 		//---------------------------------------------------------------------
 
-		public override bool Ok()
+		public override бул Ок()
 		{
-			return wxCursor_Ok(wxobj);
+			return wxCursor_Ok(шхобъ);
 		}
 
 		//---------------------------------------------------------------------
 		
-		public static void SetCursor(Cursor cursor)
+		public static проц SetCursor(Cursor cursor)
 		{
 			wxCursor_SetCursor(wxObject.SafePtr(cursor));
 		}

@@ -1,10 +1,10 @@
 /////////////////////////////////////////////////////////////////////////////
-// Name:        samples/drawing/Drawing.d
+// Имя:        samples/drawing/Drawing.d
 // Purpose:     shows and tests DC features
 // Author:      Robert Roebling
 // Ported by:   Heromyth 2007-6-3
 // Created:     04/01/98
-// RCS-ID:      $Id: Drawing.d,v 1.2 2007/06/11 06:42:06 afb Exp $
+// RCS-ИД:      $Ид: Drawing.d,v 1.2 2007/06/11 06:42:06 afb Exp $
 // Copyright:   (c) Robert Roebling
 // Licence:     wxWindows licence
 /////////////////////////////////////////////////////////////////////////////
@@ -17,14 +17,14 @@ import wx.wx;
 
 import std.math;
 
-typedef int wxCoord;
+typedef цел wxCoord;
 typedef byte wxDash;
 
 // ----------------------------------------------------------------------------
 // ressources
 // ----------------------------------------------------------------------------
 
-// the application icon
+// the application иконка
 
 
 // ----------------------------------------------------------------------------
@@ -70,7 +70,7 @@ enum MapMode
 // global variables
 // ----------------------------------------------------------------------------
 
-static Bitmap gs_bmpNoMask,
+static Битмап gs_bmpNoMask,
                 gs_bmpWithColMask,
                 gs_bmpMask,
                 gs_bmpWithMask,
@@ -82,54 +82,54 @@ static Bitmap gs_bmpNoMask,
 // private classes
 // ----------------------------------------------------------------------------
 
-// Define a new application type, each program should derive a class from App
-class Drawing : public App
+// Define a new application тип, each program should derive a class from Прил
+class Drawing : public Прил
 {
 public:
     // override base class virtuals
     // ----------------------------
 
 // `Main program' equivalent: the program execution "starts" here
-    public override bool OnInit()
+    public override бул ПриИниц()
     {
-        // Create the main application window
+        // Create the main application окно
         MyFrame frame = new MyFrame("Drawing sample",
-                                     Point(50, 50), Size(550, 340));
+                                     Точка(50, 50), Размер(550, 340));
 
-        // Show it and tell the application that it's our main window
-        frame.Show(true);
-        TopWindow(frame);
+        // Show it and tell the application that it's our main окно
+        frame.Show(да);
+        ТопОкно(frame);
 
         if ( !LoadImages() )
         {
             Log temp = new Log();
-            temp.LogError("Can't load one of the bitmap files needed 
-            for this sample from the current or parent 
+            temp.LogError("Can't load one of the битмап files needed 
+            for this sample from the current or родитель 
             directory, please copy them there.");
 
             // stop here
             DeleteBitmaps();
 
-            return false;
+            return нет;
         }
 
         // ok, continue
-        return true;
+        return да;
     }
 
-    public override int OnExit() { DeleteBitmaps(); return 0; }
+    public override цел ПриВыходе() { DeleteBitmaps(); return 0; }
 
 		//---------------------------------------------------------------------
 
-		static void Main()
+		static проц Main()
 		{
-			Drawing app = new Drawing();
-			app.Run();
+			Drawing прил = new Drawing();
+			прил.Пуск();
 		}
 
 
 
-    protected void DeleteBitmaps()
+    protected проц DeleteBitmaps()
     {
         delete gs_bmpNoMask;
         delete gs_bmpWithColMask;
@@ -142,63 +142,63 @@ public:
     }
 
 
-    protected bool LoadImages()
+    protected бул LoadImages()
     {
-        gs_bmpNoMask = new Bitmap();
-        gs_bmpWithColMask = new Bitmap();
-        gs_bmpMask = new Bitmap();
-        gs_bmpWithMask = new Bitmap();
-        gs_bmp4 = new Bitmap();
-        gs_bmp4_mono = new Bitmap();
-        gs_bmp36 = new Bitmap();
+        gs_bmpNoMask = new Битмап();
+        gs_bmpWithColMask = new Битмап();
+        gs_bmpMask = new Битмап();
+        gs_bmpWithMask = new Битмап();
+        gs_bmp4 = new Битмап();
+        gs_bmp4_mono = new Битмап();
+        gs_bmp36 = new Битмап();
 
 /*
         wxPathList pathList;
-        pathList.Add(("."));
-        pathList.Add((".."));
+        pathList.Добавь(("."));
+        pathList.Добавь((".."));
 */
 
-        // string path = pathList.FindValidPath(("pat4.bmp"));
-        string path = "../Samples/Drawing/pat4.bmp";
-        if ( !path )
-            return false;
+        // ткст путь = pathList.FindValidPath(("pat4.bmp"));
+        ткст путь = "../Samples/Drawing/pat4.bmp";
+        if ( !путь )
+            return нет;
 
-        /* 4 colour bitmap */
-        gs_bmp4.LoadFile(path, BitmapType.wxBITMAP_TYPE_BMP);
-        /* turn into mono-bitmap */
-        gs_bmp4_mono.LoadFile(path, BitmapType.wxBITMAP_TYPE_BMP);
-        Mask mask4 = new Mask(gs_bmp4_mono, Colour.wxBLACK);
-        gs_bmp4_mono.mask(mask4);
+        /* 4 colour битмап */
+        gs_bmp4.ЗагрузиФайл(путь, ТипБитмапа.wxBITMAP_TYPE_BMP);
+        /* turn into mono-битмап */
+        gs_bmp4_mono.ЗагрузиФайл(путь, ТипБитмапа.wxBITMAP_TYPE_BMP);
+        Маска mask4 = new Маска(gs_bmp4_mono, Цвет.wxBLACK);
+        gs_bmp4_mono.маска(mask4);
 
-        // path = pathList.FindValidPath(("pat36.bmp"));
-        path = "../Samples/Drawing/pat36.bmp";
-        if ( !path )
-            return false;
-        gs_bmp36.LoadFile(path, BitmapType.wxBITMAP_TYPE_BMP);
-        Mask mask36 = new Mask(gs_bmp36, Colour.wxBLACK);
-        gs_bmp36.mask(mask36);
+        // путь = pathList.FindValidPath(("pat36.bmp"));
+        путь = "../Samples/Drawing/pat36.bmp";
+        if ( !путь )
+            return нет;
+        gs_bmp36.ЗагрузиФайл(путь, ТипБитмапа.wxBITMAP_TYPE_BMP);
+        Маска mask36 = new Маска(gs_bmp36, Цвет.wxBLACK);
+        gs_bmp36.маска(mask36);
 
-        // path = pathList.FindValidPath(("image.bmp"));
-        path = "../Samples/Drawing/image.bmp";
-        if ( !path )
-            return false;
-        gs_bmpNoMask.LoadFile(path, BitmapType.wxBITMAP_TYPE_BMP);
-        gs_bmpWithMask.LoadFile(path, BitmapType.wxBITMAP_TYPE_BMP);
-        gs_bmpWithColMask.LoadFile(path, BitmapType.wxBITMAP_TYPE_BMP);
+        // путь = pathList.FindValidPath(("рисунок.bmp"));
+        путь = "../Samples/Drawing/рисунок.bmp";
+        if ( !путь )
+            return нет;
+        gs_bmpNoMask.ЗагрузиФайл(путь, ТипБитмапа.wxBITMAP_TYPE_BMP);
+        gs_bmpWithMask.ЗагрузиФайл(путь, ТипБитмапа.wxBITMAP_TYPE_BMP);
+        gs_bmpWithColMask.ЗагрузиФайл(путь, ТипБитмапа.wxBITMAP_TYPE_BMP);
 
-        // path = pathList.FindValidPath(("mask.bmp"));
-        path = "../Samples/Drawing/mask.bmp";
-        if ( !path )
-            return false;
-        gs_bmpMask.LoadFile(path, BitmapType.wxBITMAP_TYPE_BMP);
+        // путь = pathList.FindValidPath(("маска.bmp"));
+        путь = "../Samples/Drawing/маска.bmp";
+        if ( !путь )
+            return нет;
+        gs_bmpMask.ЗагрузиФайл(путь, ТипБитмапа.wxBITMAP_TYPE_BMP);
 
-        Mask mask = new Mask(gs_bmpMask, Colour.wxBLACK);
-        gs_bmpWithMask.mask(mask);
+        Маска маска = new Маска(gs_bmpMask, Цвет.wxBLACK);
+        gs_bmpWithMask.маска(маска);
 
-        mask = new Mask(gs_bmpWithColMask, Colour.wxWHITE);
-        gs_bmpWithColMask.mask(mask);
+        маска = new Маска(gs_bmpWithColMask, Цвет.wxWHITE);
+        gs_bmpWithColMask.маска(маска);
 
-        return true;
+        return да;
     }
 
 };
@@ -206,9 +206,9 @@ public:
 // Create a new application object: this macro will allow wxWidgets to create
 // the application object during program execution (it's better than using a
 // static object for many reasons) and also declares the accessor function
-// wxGetApp() which will return the reference of the right type (i.e. Drawing and
-// not App)
-int main()
+// wxGetApp() which will return the reference of the right тип (i.e. Drawing and
+// not Прил)
+цел main()
 {
 	Drawing.Main();
 	return 0;
@@ -217,25 +217,25 @@ int main()
 
 
 
-// Define a new frame type: this is going to be our main frame
+// Define a new frame тип: this is going to be our main frame
 class MyFrame : public Frame
 {
 
     // frame ructor
-    this( string title,  Point pos,  Size size)
+    this( ткст title,  Точка поз,  Размер size)
     {
-        super(null, wxID_ANY, title, pos, size,
+        super(пусто, wxID_ANY, title, поз, size,
                      wxDEFAULT_FRAME_STYLE | wxNO_FULL_REPAINT_ON_RESIZE);
-        // set the frame icon
-        icon = new Icon("../Samples/Drawing/mondrian.png");
+        // set the frame иконка
+        иконка = new Icon("../Samples/Drawing/mondrian.png");
 
-        Menu menuFile = new Menu();
+        Меню menuFile = new Меню();
         menuFile.Append(File_ShowDefault, "&Default screen\tF1");
-        menuFile.Append(File_ShowText, "&Text screen\tF2");
+        menuFile.Append(File_ShowText, "&Текст screen\tF2");
         menuFile.Append(File_ShowLines, "&Lines screen\tF3");
         menuFile.Append(File_ShowBrushes, "&Brushes screen\tF4");
         menuFile.Append(File_ShowPolygons, "&Polygons screen\tF5");
-        menuFile.Append(File_ShowMask, "&Mask screen\tF6");
+        menuFile.Append(File_ShowMask, "&Маска screen\tF6");
         menuFile.Append(File_ShowOps, "&ROP screen\tF7");
         menuFile.Append(File_ShowRegions, "Re&gions screen\tF8");
         menuFile.Append(File_ShowCircles, "&Circles screen\tF9");
@@ -254,53 +254,53 @@ class MyFrame : public Frame
         menuFile.AppendSeparator();
         menuFile.Append(File_Quit, "E&xit\tAlt-X", "Quit this program");
 
-        Menu menuMapMode = new Menu();
+        Меню menuMapMode = new Меню();
         menuMapMode.Append( MapMode_Text, "&TEXT map mode" );
         menuMapMode.Append( MapMode_Lometric, "&LOMETRIC map mode" );
         menuMapMode.Append( MapMode_Twips, "T&WIPS map mode" );
         menuMapMode.Append( MapMode_Points, "&POINTS map mode" );
         menuMapMode.Append( MapMode_Metric, "&METRIC map mode" );
 
-        Menu menuUserScale = new Menu();
-        menuUserScale.Append( UserScale_StretchHoriz, "Stretch &horizontally\tCtrl-H" );
-        menuUserScale.Append( UserScale_ShrinkHoriz, "Shrin&k horizontally\tCtrl-G" );
+        Меню menuUserScale = new Меню();
+        menuUserScale.Append( UserScale_StretchHoriz, "Stretch &горизонтально\tCtrl-H" );
+        menuUserScale.Append( UserScale_ShrinkHoriz, "Shrin&k горизонтально\tCtrl-G" );
         menuUserScale.Append( UserScale_StretchVertic, "Stretch &vertically\tCtrl-V" );
         menuUserScale.Append( UserScale_ShrinkVertic, "&Shrink vertically\tCtrl-W" );
         menuUserScale.AppendSeparator();
         menuUserScale.Append( UserScale_Restore, "&Restore to normal\tCtrl-0" );
 
-        Menu menuAxis = new Menu();
-        menuAxis.AppendCheckItem( AxisMirror_Horiz, "Mirror horizontally\tCtrl-M" );
-        menuAxis.AppendCheckItem( AxisMirror_Vertic, "Mirror vertically\tCtrl-N" );
+        Меню menuAxis = new Меню();
+        menuAxis.AppendCheckItem( AxisMirror_Horiz, "Зеркало горизонтально\tCtrl-M" );
+        menuAxis.AppendCheckItem( AxisMirror_Vertic, "Зеркало vertically\tCtrl-N" );
 
-        Menu menuLogical = new Menu();
+        Меню menuLogical = new Меню();
         menuLogical.Append( LogicalOrigin_MoveDown, "Move &down\tCtrl-D" );
         menuLogical.Append( LogicalOrigin_MoveUp, "Move &up\tCtrl-U" );
         menuLogical.Append( LogicalOrigin_MoveLeft, "Move &right\tCtrl-L" );
         menuLogical.Append( LogicalOrigin_MoveRight, "Move &left\tCtrl-R" );
         menuLogical.AppendSeparator();
-        menuLogical.Append( LogicalOrigin_Set, ("Set to (&100, 100)\tShift-Ctrl-1") );
+        menuLogical.Append( LogicalOrigin_Set, ("Установи to (&100, 100)\tShift-Ctrl-1") );
         menuLogical.Append( LogicalOrigin_Restore, "&Restore to normal\tShift-Ctrl-0" );
 
-        Menu menuColour = new Menu();
+        Меню menuColour = new Меню();
 
-        menuColour.Append( Colour_TextForeground, "Text &foreground..." );
-        menuColour.Append( Colour_TextBackground, "Text &background..." );
-        menuColour.Append( Colour_Background, "Background &colour..." );
+        menuColour.Append( Colour_TextForeground, "Текст &foreground..." );
+        menuColour.Append( Colour_TextBackground, "Текст &background..." );
+        menuColour.Append( Colour_Background, "Фон &colour..." );
 
         menuColour.AppendCheckItem( Colour_BackgroundMode, "&Opaque/transparent\tCtrl-B" );
         menuColour.AppendCheckItem( Colour_TextureBackgound, "Draw textured back&ground\tCtrl-T" );
 
-        // now append the freshly created menu to the menu bar...
+        // now append the freshly created меню to the меню bar...
         MenuBar menuBar = new MenuBar();
         menuBar.Append(menuFile, "&File");
         menuBar.Append(menuMapMode, "&Mode");
-        menuBar.Append(menuUserScale, "&Scale");
+        menuBar.Append(menuUserScale, "&Масштабируй");
         menuBar.Append(menuAxis, "&Axis");
         menuBar.Append(menuLogical, "&Origin");
         menuBar.Append(menuColour, "&Colours");
 
-        // ... and attach this menu bar to the frame
+        // ... and attach this меню bar to the frame
         this.menuBar = menuBar;
 
 
@@ -315,19 +315,19 @@ class MyFrame : public Frame
         m_yUserScale = 1.0;
         m_xLogicalOrigin = 0;
         m_yLogicalOrigin = 0;
-        m_xAxisReversed = false;
-        m_yAxisReversed = false;
-        m_backgroundMode = FillStyle.wxSOLID;
-        m_colourForeground = Colour.wxRED;
-        m_colourBackground = Colour.wxBLUE;
-        m_textureBackground = false;
+        m_xAxisReversed = нет;
+        m_yAxisReversed = нет;
+        m_backgroundMode = СтильЗаливки.wxSOLID;
+        m_colourForeground = Цвет.wxRED;
+        m_colourBackground = Цвет.wxBLUE;
+        m_textureBackground = нет;
 
          m_canvas = new MyCanvas( this );
         m_canvas.SetScrollbars( 10, 10, 100, 240 );
 
 // the event tables connect the wxWidgets events with the functions (event
 // handlers) which process them. It can be also done at run-time, but for the
-// simple menu events like this the static method is much simpler.
+// simple меню events like this the static method is much simpler.
 
     EVT_MENU      (File_Quit,     &OnQuit);
     EVT_MENU      (File_About,    &OnAbout);
@@ -343,17 +343,17 @@ class MyFrame : public Frame
     }
 
     // event handlers (these functions should _not_ be virtual)
-    void OnQuit(Object sender, Event e)
+    проц OnQuit(Объект sender, Событие e)
     {
         // CommandEvent event = cast(CommandEvent) e;
-        // true is to force the frame to close
-        Close(true);
+        // да is to force the frame to close
+        Закрой(да);
     }
 
-    void OnAbout(Object sender, Event e)
+    проц OnAbout(Объект sender, Событие e)
     {
         // CommandEvent event = cast(CommandEvent) e;
-        string msg;
+        ткст msg;
         msg = ("This is the about dialog of the drawing sample.\n
                     This sample tests various primitive drawing functions\n
                     (without any attempts to prevent flicker).\n
@@ -364,31 +364,31 @@ class MyFrame : public Frame
     }
 
 
-    void OnClip(Object sender, Event e)
+    проц OnClip(Объект sender, Событие e)
     {
         CommandEvent event = cast(CommandEvent) e;
         m_canvas.Clip(event.IsChecked());
     }
 
 
-    void OnGraphicContext(Object sender, Event e)
+    проц OnGraphicContext(Объект sender, Событие e)
     {
         CommandEvent event = cast(CommandEvent) e;
         m_canvas.UseGraphicContext(event.IsChecked());
     }
 
 
-    void OnShow(Object sender, Event e)
+    проц OnShow(Объект sender, Событие e)
     {
         CommandEvent event = cast(CommandEvent) e;
-        m_canvas.ToShow(cast(ScreenToShow)(event.ID() - MenuShow_First));
+        m_canvas.ToShow(cast(ScreenToShow)(event.ИД() - MenuShow_First));
     }
 
 
-    void OnOption(Object sender, Event e)
+    проц OnOption(Объект sender, Событие e)
     {
         CommandEvent event = cast(CommandEvent) e;
-        switch (event.ID())
+        switch (event.ИД())
         {
             case MapMode_Text:
                 m_mapMode = MapMode.wxMM_TEXT;
@@ -460,9 +460,9 @@ class MyFrame : public Frame
                 break;
             case Colour_Background:
                 {
-                    Colour col = SelectColour();
-//                    if ( col.Ok() )
-                    if ( col !is null )
+                    Цвет col = SelectColour();
+//                    if ( col.Ок() )
+                    if ( col !is пусто )
                     {
                         m_backgroundBrush.colour(col);
                     }
@@ -471,8 +471,8 @@ class MyFrame : public Frame
 
 
             case Colour_BackgroundMode:
-                m_backgroundMode = m_backgroundMode == FillStyle.wxSOLID ? FillStyle.wxTRANSPARENT
-                                                               : FillStyle.wxSOLID;
+                m_backgroundMode = m_backgroundMode == СтильЗаливки.wxSOLID ? СтильЗаливки.wxTRANSPARENT
+                                                               : СтильЗаливки.wxSOLID;
                 break;
 
             case Colour_TextureBackgound:
@@ -488,11 +488,11 @@ class MyFrame : public Frame
     }
 
 
-    Colour SelectColour()
+    Цвет SelectColour()
     {
-        Colour col;
-        ColourData data;
-        ColourDialog dialog = new ColourDialog(this, data);
+        Цвет col;
+        ColourData данные;
+        ColourDialog dialog = new ColourDialog(this, данные);
 
         if ( dialog.ShowModal() == wxID_OK )
         {
@@ -503,7 +503,7 @@ class MyFrame : public Frame
     }
 
 
-    void PrepareDC(DC dc)
+    проц PrepareDC(DC dc)
     {
         dc.SetLogicalOrigin( m_xLogicalOrigin, m_yLogicalOrigin );
         dc.SetAxisOrientation( !m_xAxisReversed, m_yAxisReversed );
@@ -511,18 +511,18 @@ class MyFrame : public Frame
         dc.MapMode( m_mapMode );
     }
 
-    FillStyle         m_backgroundMode;
-    bool         m_textureBackground;
-    int         m_mapMode;
-    double      m_xUserScale;
-    double      m_yUserScale;
-    int         m_xLogicalOrigin;
-    int         m_yLogicalOrigin;
-    bool        m_xAxisReversed,
+    СтильЗаливки         m_backgroundMode;
+    бул         m_textureBackground;
+    цел         m_mapMode;
+    дво      m_xUserScale;
+    дво      m_yUserScale;
+    цел         m_xLogicalOrigin;
+    цел         m_yLogicalOrigin;
+    бул        m_xAxisReversed,
                 m_yAxisReversed;
-    Colour      m_colourForeground,    // these are _text_ colours
+    Цвет      m_colourForeground,    // these are _text_ colours
                 m_colourBackground;
-    Brush       m_backgroundBrush;
+    Кисть       m_backgroundBrush;
     MyCanvas   m_canvas;
 
 
@@ -536,23 +536,23 @@ class MyFrame : public Frame
 class MyCanvas: public ScrolledWindow
 {
 
-    this( MyFrame parent )
+    this( MyFrame родитель )
     {
 
-    super(parent, wxID_ANY, wxDefaultPosition, wxDefaultSize,
+    super(родитель, wxID_ANY, wxDefaultPosition, wxDefaultSize,
                            wxHSCROLL | wxVSCROLL | wxNO_FULL_REPAINT_ON_RESIZE);
 
 
-    m_owner = parent;
+    m_owner = родитель;
     m_show = ScreenToShow.Show_Default;
-    // m_smile_bmp = new Bitmap(smile_xpm);
-    m_smile_bmp = new Bitmap("../Samples/Drawing/smile.xpm", BitmapType.wxBITMAP_TYPE_XPM);
-    //m_smile_bmp = null;
+    // m_smile_bmp = new Битмап(smile_xpm);
+    m_smile_bmp = new Битмап("../Samples/Drawing/smile.xpm", ТипБитмапа.wxBITMAP_TYPE_XPM);
+    //m_smile_bmp = пусто;
 
     m_std_icon = ArtProvider.GetIcon( ArtID.wxART_INFORMATION );
-    m_clip = false;
+    m_clip = нет;
 
-    m_useContext = false;
+    m_useContext = нет;
 
 // the event tables connect the wxWidgets events with the functions (event
 // handlers) which process them.
@@ -561,7 +561,7 @@ class MyCanvas: public ScrolledWindow
 
     }
 
-    void OnPaint(Object sender, Event e)
+    проц OnPaint(Объект sender, Событие e)
     {
         PaintEvent event = cast(PaintEvent) e;
 
@@ -569,29 +569,29 @@ class MyCanvas: public ScrolledWindow
         PrepareDC(dc);
         m_owner.PrepareDC(dc);
 
-        dc.BackgroundMode( m_owner.m_backgroundMode );
+        dc.ФоновыйРежим( m_owner.m_backgroundMode );
 
 
-        if(m_owner.m_backgroundBrush !is null)
-//            MessageBox("m_owner.m_backgroundBrush is null");
+        if(m_owner.m_backgroundBrush !is пусто)
+//            MessageBox("m_owner.m_backgroundBrush is пусто");
 //        else
-            dc.Background( m_owner.m_backgroundBrush );
+            dc.Фон( m_owner.m_backgroundBrush );
 
 
-//        if ( m_owner.m_colourForeground.Ok() )
-        if ( m_owner.m_colourForeground !is null )
-            dc.TextForeground( m_owner.m_colourForeground );
-//        if ( m_owner.m_colourBackground.Ok() )
-        if ( m_owner.m_colourBackground !is null )
-            dc.TextBackground( m_owner.m_colourBackground );
+//        if ( m_owner.m_colourForeground.Ок() )
+        if ( m_owner.m_colourForeground !is пусто )
+            dc.ППланТекста( m_owner.m_colourForeground );
+//        if ( m_owner.m_colourBackground.Ок() )
+        if ( m_owner.m_colourBackground !is пусто )
+            dc.ЗПланТекста( m_owner.m_colourBackground );
 
         if ( m_owner.m_textureBackground) {
-//            if ( ! m_owner.m_backgroundBrush.Ok() ) 
-            if ( m_owner.m_backgroundBrush is null ) 
+//            if ( ! m_owner.m_backgroundBrush.Ок() ) 
+            if ( m_owner.m_backgroundBrush is пусто ) 
             {
-                Colour clr = new Colour(0,128,0);
-                Brush b = new Brush(clr, FillStyle.wxSOLID);
-                dc.Background(b);
+                Цвет clr = new Цвет(0,128,0);
+                Кисть с = new Кисть(clr, СтильЗаливки.wxSOLID);
+                dc.Фон(с);
             }
         }
 
@@ -603,9 +603,9 @@ class MyCanvas: public ScrolledWindow
 
         if ( m_owner.m_textureBackground )
         {
-            dc.pen( Pen.wxMEDIUM_GREY_PEN);
-            for ( int i = 0; i < 200; i++ )
-                dc.DrawLine(0, i*10, i*10, 0);
+            dc.перо( Перо.wxMEDIUM_GREY_PEN);
+            for ( цел i = 0; i < 200; i++ )
+                dc.РисуйЛинию(0, i*10, i*10, 0);
         }
 
 
@@ -629,7 +629,7 @@ class MyCanvas: public ScrolledWindow
                 break;
 
             case ScreenToShow.Show_Text:
-                DrawText(dc);
+                РисуйТекст(dc);
                 break;
 
             case ScreenToShow.Show_Lines:
@@ -674,18 +674,18 @@ class MyCanvas: public ScrolledWindow
     }
 
 
-    void OnMouseMove(Object sender, Event e)
+    проц OnMouseMove(Объект sender, Событие e)
     {
 
         ClientDC dc = new ClientDC(this);
         PrepareDC(dc);
         m_owner.PrepareDC(dc);
         MouseEvent event = cast(MouseEvent) e;
-        Point pos = event.Position();
-        long x = dc.DeviceToLogicalX( pos.X );
-        long y = dc.DeviceToLogicalY( pos.Y );
+        Точка поз = event.Положение();
+        long x = dc.DeviceToLogicalX( поз.X );
+        long y = dc.DeviceToLogicalY( поз.Y );
 
-        string str = "Current mouse position: " ~ std.string.toString(x) ~ ", " ~ std.string.toString(y );
+        ткст str = "Current mouse position: " ~ std.ткст.toString(x) ~ ", " ~ std.ткст.toString(y );
         m_owner.StatusText = str;
 
 //        wxUnusedVar(event);
@@ -693,50 +693,50 @@ class MyCanvas: public ScrolledWindow
     }
 
 
-    void ToShow(ScreenToShow show) { m_show = show; Refresh(); }
+    проц ToShow(ScreenToShow show) { m_show = show; Refresh(); }
 
     // set or remove the clipping region
-    void Clip(bool clip) { m_clip = clip; Refresh(); }
+    проц Clip(бул clip) { m_clip = clip; Refresh(); }
 
-    void UseGraphicContext(bool use) { m_useContext = use; Refresh(); }
+    проц UseGraphicContext(бул use) { m_useContext = use; Refresh(); }
 
 
 
-    void DrawTestLines( int x, int y, int width, DC dc )
+    проц DrawTestLines( цел x, цел y, цел ширина, DC dc )
     {
-        dc.pen( new Pen( "black", width, FillStyle.wxSOLID) );
-        dc.brush( Brush.wxRED_BRUSH );
-        dc.DrawText(("Testing lines of width " ~ std.string.toString(width)), x + 10, y - 10);
-        dc.DrawRectangle( x+10, y+10, 100, 190 );
+        dc.перо( new Перо( "black", ширина, СтильЗаливки.wxSOLID) );
+        dc.кисть( Кисть.wxRED_BRUSH );
+        dc.РисуйТекст(("Testing lines of ширина " ~ std.ткст.toString(ширина)), x + 10, y - 10);
+        dc.РисуйПрям( x+10, y+10, 100, 190 );
 
-        dc.DrawText(("Solid/dot/short dash/long dash/dot dash"), x + 150, y + 10);
-        dc.pen( new Pen( "black", width, FillStyle.wxSOLID) );
-        dc.DrawLine( x+20, y+20, 100, y+20 );
-        dc.pen( new Pen( "black", width, FillStyle.wxDOT) );
-        dc.DrawLine( x+20, y+30, 100, y+30 );
-        dc.pen( new Pen( "black", width, FillStyle.wxSHORT_DASH) );
-        dc.DrawLine( x+20, y+40, 100, y+40 );
-//        dc.pen( new Pen( "black", width, FillStyle.wxLONG_DASH) );
-//        dc.DrawLine( x+20, y+50, 100, y+50 );
-        dc.pen( new Pen( "black", width, FillStyle.wxDOT_DASH) );
-        dc.DrawLine( x+20, y+60, 100, y+60 );
+        dc.РисуйТекст(("Solid/dot/short dash/long dash/dot dash"), x + 150, y + 10);
+        dc.перо( new Перо( "black", ширина, СтильЗаливки.wxSOLID) );
+        dc.РисуйЛинию( x+20, y+20, 100, y+20 );
+        dc.перо( new Перо( "black", ширина, СтильЗаливки.wxDOT) );
+        dc.РисуйЛинию( x+20, y+30, 100, y+30 );
+        dc.перо( new Перо( "black", ширина, СтильЗаливки.wxSHORT_DASH) );
+        dc.РисуйЛинию( x+20, y+40, 100, y+40 );
+//        dc.перо( new Перо( "black", ширина, СтильЗаливки.wxLONG_DASH) );
+//        dc.РисуйЛинию( x+20, y+50, 100, y+50 );
+        dc.перо( new Перо( "black", ширина, СтильЗаливки.wxDOT_DASH) );
+        dc.РисуйЛинию( x+20, y+60, 100, y+60 );
 
-        dc.DrawText(("Misc hatches"), x + 150, y + 70);
-        dc.pen( new Pen( "black", width, FillStyle.wxBDIAGONAL_HATCH) );
-        dc.DrawLine( x+20, y+70, 100, y+70 );
-        dc.pen( new Pen( "black", width, FillStyle.wxCROSSDIAG_HATCH) );
-        dc.DrawLine( x+20, y+80, 100, y+80 );
-        dc.pen( new Pen( "black", width, FillStyle.wxFDIAGONAL_HATCH) );
-        dc.DrawLine( x+20, y+90, 100, y+90 );
-        dc.pen( new Pen( "black", width, FillStyle.wxCROSS_HATCH) );
-        dc.DrawLine( x+20, y+100, 100, y+100 );
-        dc.pen( new Pen( "black", width, FillStyle.wxHORIZONTAL_HATCH) );
-        dc.DrawLine( x+20, y+110, 100, y+110 );
-        dc.pen( new Pen( "black", width, FillStyle.wxVERTICAL_HATCH) );
-        dc.DrawLine( x+20, y+120, 100, y+120 );
+        dc.РисуйТекст(("Misc hatches"), x + 150, y + 70);
+        dc.перо( new Перо( "black", ширина, СтильЗаливки.wxBDIAGONAL_HATCH) );
+        dc.РисуйЛинию( x+20, y+70, 100, y+70 );
+        dc.перо( new Перо( "black", ширина, СтильЗаливки.wxCROSSDIAG_HATCH) );
+        dc.РисуйЛинию( x+20, y+80, 100, y+80 );
+        dc.перо( new Перо( "black", ширина, СтильЗаливки.wxFDIAGONAL_HATCH) );
+        dc.РисуйЛинию( x+20, y+90, 100, y+90 );
+        dc.перо( new Перо( "black", ширина, СтильЗаливки.wxCROSS_HATCH) );
+        dc.РисуйЛинию( x+20, y+100, 100, y+100 );
+        dc.перо( new Перо( "black", ширина, СтильЗаливки.wxHORIZONTAL_HATCH) );
+        dc.РисуйЛинию( x+20, y+110, 100, y+110 );
+        dc.перо( new Перо( "black", ширина, СтильЗаливки.wxVERTICAL_HATCH) );
+        dc.РисуйЛинию( x+20, y+120, 100, y+120 );
 
-        dc.DrawText(("User dash"), x + 150, y + 140);
-        Pen ud = new Pen( "black", width, FillStyle.wxUSER_DASH );
+        dc.РисуйТекст(("User dash"), x + 150, y + 140);
+        Перо ud = new Перо( "black", ширина, СтильЗаливки.wxUSER_DASH );
         wxDash dash1[6];
         dash1[0] = 8;  // Long dash  <---------+
         dash1[1] = 2;  // Short gap            |
@@ -745,60 +745,60 @@ class MyCanvas: public ScrolledWindow
         dash1[4] = 3;  // Short dash           |
         dash1[5] = 2;  // Short gap and repeat +
         // ud.SetDashes( 6, dash1 );
-        dc.pen( ud );
-        dc.DrawLine( x+20, y+140, 100, y+140 );
+        dc.перо( ud );
+        dc.РисуйЛинию( x+20, y+140, 100, y+140 );
         dash1[0] = 5;  // Make first dash shorter
         // ud.SetDashes( 6, dash1 );
-        dc.pen( ud );
-        dc.DrawLine( x+20, y+150, 100, y+150 );
+        dc.перо( ud );
+        dc.РисуйЛинию( x+20, y+150, 100, y+150 );
         dash1[2] = 5;  // Make second dash longer
         // ud.SetDashes( 6, dash1 );
-        dc.pen( ud );
-        dc.DrawLine( x+20, y+160, 100, y+160 );
+        dc.перо( ud );
+        dc.РисуйЛинию( x+20, y+160, 100, y+160 );
         dash1[4] = 5;  // Make third dash longer
         // ud.SetDashes( 6, dash1 );
-        dc.pen( ud );
-        dc.DrawLine( x+20, y+170, 100, y+170 );
+        dc.перо( ud );
+        dc.РисуйЛинию( x+20, y+170, 100, y+170 );
     }
 
 
-    void DrawTestPoly(DC dc)
+    проц DrawTestPoly(DC dc)
     {
-        Brush brushHatch = new Brush( Colour.wxRED, FillStyle.wxFDIAGONAL_HATCH);
-        dc.brush(brushHatch);
+        Кисть brushHatch = new Кисть( Цвет.wxRED, СтильЗаливки.wxFDIAGONAL_HATCH);
+        dc.кисть(brushHatch);
 
-        Point[5] star;
-        star[0] = Point(100, 60);
-        star[1] = Point(60, 150);
-        star[2] = Point(160, 100);
-        star[3] = Point(40, 100);
-        star[4] = Point(140, 150);
+        Точка[5] star;
+        star[0] = Точка(100, 60);
+        star[1] = Точка(60, 150);
+        star[2] = Точка(160, 100);
+        star[3] = Точка(40, 100);
+        star[4] = Точка(140, 150);
 
-        dc.DrawText(("You should see two (irregular) stars below, the left one hatched"), 10, 10);
-        dc.DrawText(("except for the central region and the right one entirely hatched"), 10, 30);
-        dc.DrawText(("The third star only has a hatched outline"), 10, 50);
+        dc.РисуйТекст(("You should see two (irregular) stars below, the left one hatched"), 10, 10);
+        dc.РисуйТекст(("except for the central region and the right one entirely hatched"), 10, 30);
+        dc.РисуйТекст(("The third star only has a hatched outline"), 10, 50);
 
-        dc.DrawPolygon(star.length, star, 0, 30);
-        dc.DrawPolygon(star.length, star, 160, 30, FillStyle.wxWINDING_RULE);
+        dc.РисуйМногоуг(star.length, star, 0, 30);
+        dc.РисуйМногоуг(star.length, star, 160, 30, СтильЗаливки.wxWINDING_RULE);
 
-        Point[10] star2;
-        star2[0] = Point(0, 100);
-        star2[1] = Point(-59, -81);
-        star2[2] = Point(95, 31);
-        star2[3] = Point(-95, 31);
-        star2[4] = Point(59, -81);
-        star2[5] = Point(0, 80);
-        star2[6] = Point(-47, -64);
-        star2[7] = Point(76, 24);
-        star2[8] = Point(-76, 24);
-        star2[9] = Point(47, -64);
-        int[2] count = [5, 5];
+        Точка[10] star2;
+        star2[0] = Точка(0, 100);
+        star2[1] = Точка(-59, -81);
+        star2[2] = Точка(95, 31);
+        star2[3] = Точка(-95, 31);
+        star2[4] = Точка(59, -81);
+        star2[5] = Точка(0, 80);
+        star2[6] = Точка(-47, -64);
+        star2[7] = Точка(76, 24);
+        star2[8] = Точка(-76, 24);
+        star2[9] = Точка(47, -64);
+        цел[2] счёт = [5, 5];
 
-//        dc.DrawPolyPolygon( count.length, count, star2, 450, 150);
+//        dc.DrawPolyPolygon( счёт.length, счёт, star2, 450, 150);
     }
 
 
-    void DrawTestBrushes(DC dc)
+    проц DrawTestBrushes(DC dc)
     {
         static  wxCoord WIDTH = 200;
         static  wxCoord HEIGHT = 80;
@@ -806,101 +806,101 @@ class MyCanvas: public ScrolledWindow
         wxCoord x = 10,
                 y = 10;
 
-        dc.brush( new Brush( Colour.wxGREEN, FillStyle.wxSOLID) );
-        dc.DrawRectangle(x, y, WIDTH, HEIGHT);
-        dc.DrawText( "Solid green", x + 10, y + 10);
+        dc.кисть( new Кисть( Цвет.wxGREEN, СтильЗаливки.wxSOLID) );
+        dc.РисуйПрям(x, y, WIDTH, HEIGHT);
+        dc.РисуйТекст( "Solid зелёный", x + 10, y + 10);
 
         y += HEIGHT;
-        dc.brush( new Brush(Colour.wxRED, FillStyle.wxCROSSDIAG_HATCH) );
-        dc.DrawRectangle(x, y, WIDTH, HEIGHT);
-        dc.DrawText(("Hatched red"), x + 10, y + 10);
+        dc.кисть( new Кисть(Цвет.wxRED, СтильЗаливки.wxCROSSDIAG_HATCH) );
+        dc.РисуйПрям(x, y, WIDTH, HEIGHT);
+        dc.РисуйТекст(("Hatched красный"), x + 10, y + 10);
 
         y += HEIGHT;
-        dc.brush( new Brush(gs_bmpMask));
-        dc.DrawRectangle(x, y, WIDTH, HEIGHT);
-        dc.DrawText(("Stipple mono"), x + 10, y + 10);
+        dc.кисть( new Кисть(gs_bmpMask));
+        dc.РисуйПрям(x, y, WIDTH, HEIGHT);
+        dc.РисуйТекст(("Stipple mono"), x + 10, y + 10);
 
         y += HEIGHT;
-        dc.brush( new Brush(gs_bmpNoMask));
-        dc.DrawRectangle(x, y, WIDTH, HEIGHT);
-        dc.DrawText(("Stipple colour"), x + 10, y + 10);
+        dc.кисть( new Кисть(gs_bmpNoMask));
+        dc.РисуйПрям(x, y, WIDTH, HEIGHT);
+        dc.РисуйТекст(("Stipple colour"), x + 10, y + 10);
     }
 
 
-    void DrawText(DC dc)
+    проц РисуйТекст(DC dc)
     {
-        // set underlined font for testing
-        dc.font( new Font(12, FontFamily.wxMODERN, FontStyle.wxNORMAL, FontWeight.wxNORMAL, true) );
-        dc.DrawText( "This is text", 110, 10 );
-        dc.DrawRotatedText( "That is text", 20, 10, -45 );
+        // set underlined шрифт for testing
+        dc.шрифт( new Шрифт(12, FontFamily.wxMODERN, FontStyle.wxNORMAL, FontWeight.wxNORMAL, да) );
+        dc.РисуйТекст( "This is текст", 110, 10 );
+        dc.DrawRotatedText( "That is текст", 20, 10, -45 );
 
         // use wxSWISS_FONT and not FontFamily.wxNORMAL_FONT as the latter can't be rotated
         // under Win9x (it is not TrueType)
-        dc.font( Font.wxSWISS_FONT );
+        dc.шрифт( Шрифт.wxSWISS_FONT );
 
-        //wxString text;
-        string text;
-        dc.BackgroundMode(FillStyle.wxTRANSPARENT);
+        //wxString текст;
+        ткст текст;
+        dc.ФоновыйРежим(СтильЗаливки.wxTRANSPARENT);
 
-        for ( int n = -180; n < 180; n += 30 )
+        for ( цел n = -180; n < 180; n += 30 )
         {
-            // text.Printf(("     %d rotated text"), n);
-            text = "     %d rotated text";
-            dc.DrawRotatedText(text , 400, 400, n);
+            // текст.Printf(("     %d rotated текст"), n);
+            текст = "     %d rotated текст";
+            dc.DrawRotatedText(текст , 400, 400, n);
         }
 
-        dc.font( new Font( 18, FontFamily.wxSWISS, FontStyle.wxNORMAL, FontWeight.wxNORMAL ) );
+        dc.шрифт( new Шрифт( 18, FontFamily.wxSWISS, FontStyle.wxNORMAL, FontWeight.wxNORMAL ) );
 
-        dc.DrawText( "This is Swiss 18pt text.", 110, 40 );
+        dc.РисуйТекст( "This is Swiss 18pt текст.", 110, 40 );
 
-        int length;
-        int height;
-        int descent;
-        int externalLeading;
-        dc.GetTextExtent( "This is Swiss 18pt text.", length, height, descent, externalLeading, null);
-        //text.Printf( "Dimensions are length %ld, height %ld, descent %ld", length, height, descent );
-        text = "Dimensions are length %ld, height %ld, descent %ld";
-        dc.DrawText( text, 110, 80 );
+        цел length;
+        цел высота;
+        цел descent;
+        цел externalLeading;
+        dc.GetTextExtent( "This is Swiss 18pt текст.", length, высота, descent, externalLeading, пусто);
+        //текст.Printf( "Dimensions are length %ld, высота %ld, descent %ld", length, высота, descent );
+        текст = "Dimensions are length %ld, высота %ld, descent %ld";
+        dc.РисуйТекст( текст, 110, 80 );
 
-        //text.Printf( ("CharHeight() returns: %d"), dc.CharHeight() );
-        text = "CharHeight() returns: %d";
-        dc.DrawText( text, 110, 120 );
+        //текст.Printf( ("CharHeight() returns: %d"), dc.CharHeight() );
+        текст = "CharHeight() returns: %d";
+        dc.РисуйТекст( текст, 110, 120 );
 
-        dc.DrawRectangle( 100, 40, 4, height );
+        dc.РисуйПрям( 100, 40, 4, высота );
 
         // test the logical function effect
         wxCoord y = 150;
         dc.LogicalFunction(Logic.wxINVERT);
-        dc.DrawText( "There should be no text below", 110, 150 );
-        dc.DrawRectangle( 110, y, 100, height );
+        dc.РисуйТекст( "There should be no текст below", 110, 150 );
+        dc.РисуйПрям( 110, y, 100, высота );
 
         // twice drawn inverted should result in invisible
-        y += height;
-        dc.DrawText( "Invisible text", 110, y );
-        dc.DrawRectangle( 110, y, 100, height );
-        dc.DrawText( "Invisible text", 110, y );
-        dc.DrawRectangle( 110, y, 100, height );
+        y += высота;
+        dc.РисуйТекст( "Invisible текст", 110, y );
+        dc.РисуйПрям( 110, y, 100, высота );
+        dc.РисуйТекст( "Invisible текст", 110, y );
+        dc.РисуйПрям( 110, y, 100, высота );
         dc.LogicalFunction(Logic.wxCOPY);
 
-        y += height;
-        dc.DrawRectangle( 110, y, 100, height );
-        dc.DrawText( "Visible text", 110, y );
+        y += высота;
+        dc.РисуйПрям( 110, y, 100, высота );
+        dc.РисуйТекст( "Visible текст", 110, y );
     }
 
 
-    void DrawImages(DC dc)
+    проц DrawImages(DC dc)
     {
-        dc.DrawText(("original image"), 0, 0);
-        dc.DrawBitmap(gs_bmpNoMask, 0, 20, 0);
-        dc.DrawText(("with colour mask"), 0, 100);
-        dc.DrawBitmap(gs_bmpWithColMask, 0, 120, true);
-        dc.DrawText(("the mask image"), 0, 200);
-        dc.DrawBitmap(gs_bmpMask, 0, 220, 0);
-        dc.DrawText(("masked image"), 0, 300);
-        dc.DrawBitmap(gs_bmpWithMask, 0, 320, true);
+        dc.РисуйТекст(("original рисунок"), 0, 0);
+        dc.РисуйБитмап(gs_bmpNoMask, 0, 20, 0);
+        dc.РисуйТекст(("with colour маска"), 0, 100);
+        dc.РисуйБитмап(gs_bmpWithColMask, 0, 120, да);
+        dc.РисуйТекст(("the маска рисунок"), 0, 200);
+        dc.РисуйБитмап(gs_bmpMask, 0, 220, 0);
+        dc.РисуйТекст(("masked рисунок"), 0, 300);
+        dc.РисуйБитмап(gs_bmpWithMask, 0, 320, да);
 
-        int cx = gs_bmpWithColMask.Width(),
-            cy = gs_bmpWithColMask.Height();
+        цел cx = gs_bmpWithColMask.Ширина(),
+            cy = gs_bmpWithColMask.Высота();
 
         MemoryDC memDC = new MemoryDC();
 
@@ -910,21 +910,21 @@ class MyCanvas: public ScrolledWindow
             wxCoord x = cast(wxCoord) (120 + 150*(n%4)),
                     y =  cast(wxCoord) (20 + 100*(n/4));
 
-            dc.DrawText(rasterOperations[n].name, x, y - 20);
-            dc.Blit(x, y, cx, cy, memDC, 0, 0, rasterOperations[n].rop, true);
+            dc.РисуйТекст(rasterOperations[n].имя, x, y - 20);
+            dc.Blit(x, y, cx, cy, memDC, 0, 0, rasterOperations[n].rop, да);
         }
-        memDC.SelectObject(Bitmap.wxNullBitmap);
+        memDC.SelectObject(Битмап.wxNullBitmap);
     }
 
 
-    void DrawWithLogicalOps(DC dc)
+    проц DrawWithLogicalOps(DC dc)
     {
         static  wxCoord w = 60;
         static  wxCoord h = 60;
 
-        // reuse the text colour here
-        dc.pen( new Pen(m_owner.m_colourForeground, 1, FillStyle.wxSOLID));
-        dc.brush( Brush.wxTRANSPARENT_BRUSH );
+        // reuse the текст colour here
+        dc.перо( new Перо(m_owner.m_colourForeground, 1, СтильЗаливки.wxSOLID));
+        dc.кисть( Кисть.wxTRANSPARENT_BRUSH );
 
         size_t n;
         for ( n = 0; n < rasterOperations.length; n++ )
@@ -932,176 +932,176 @@ class MyCanvas: public ScrolledWindow
             wxCoord x = cast(wxCoord) (20 + 150*(n%4)),
                     y = cast(wxCoord) (20 + 100*(n/4));
 
-            dc.DrawText(rasterOperations[n].name, x, y - 20);
+            dc.РисуйТекст(rasterOperations[n].имя, x, y - 20);
             dc.LogicalFunction(rasterOperations[n].rop);
-            dc.DrawRectangle(x, y, w, h);
-            dc.DrawLine(x, y, x + w, y + h);
-            dc.DrawLine(x + w, y, x, y + h);
+            dc.РисуйПрям(x, y, w, h);
+            dc.РисуйЛинию(x, y, x + w, y + h);
+            dc.РисуйЛинию(x + w, y, x, y + h);
         }
 
         // now some filled rectangles
-        dc.brush( new Brush(m_owner.m_colourForeground, FillStyle.wxSOLID));
+        dc.кисть( new Кисть(m_owner.m_colourForeground, СтильЗаливки.wxSOLID));
 
         for ( n = 0; n < rasterOperations.length; n++ )
         {
             wxCoord x = cast(wxCoord) (20 + 150*(n%4)),
                     y = cast(wxCoord) (500 + 100*(n/4));
 
-            dc.DrawText(rasterOperations[n].name, x, y - 20);
+            dc.РисуйТекст(rasterOperations[n].имя, x, y - 20);
             dc.LogicalFunction(rasterOperations[n].rop);
-            dc.DrawRectangle(x, y, w, h);
+            dc.РисуйПрям(x, y, w, h);
         }
     }
 
 /+++++
-    void DrawAlpha(DC dc)
+    проц DrawAlpha(DC dc)
     {
 
         GCDC dc = new GCDC( this );
         PrepareDC( dc );
 
 
-        double margin = 20 ;
-        double width = 180 ;
-        double radius = 30 ;
+        дво margin = 20 ;
+        дво ширина = 180 ;
+        дво radius = 30 ;
         
-        dc.pen( new Pen( new Colour( 128, 0, 0 ),12, FillStyle.wxSOLID));
-        dc.brush( new Brush( new Colour( 255, 0, 0 ),FillStyle.wxSOLID));
+        dc.перо( new Перо( new Цвет( 128, 0, 0 ),12, СтильЗаливки.wxSOLID));
+        dc.кисть( new Кисть( new Цвет( 255, 0, 0 ),СтильЗаливки.wxSOLID));
         
-        wx.common.Rect r = wx.common.Rect( cast(int) margin, cast(int)(margin+width*0.66), cast(int) width, cast(int)width) ;
+        wx.common.Rect к = wx.common.Rect( cast(цел) margin, cast(цел)(margin+ширина*0.66), cast(цел) ширина, cast(цел)ширина) ;
 
         
-        dc.DrawRoundedRectangle( r.X, r.Y, r.Width, r.Width, radius ) ;
+        dc.РисуйОкруглыйПрям( к.X, к.Y, к.Ширина, к.Ширина, radius ) ;
         
-        dc.pen( new Pen( new Colour( 0, 0, 128 ),12, FillStyle.wxSOLID));
-        dc.brush( new Brush( new Colour( 0, 0, 255 ),FillStyle.wxSOLID));
+        dc.перо( new Перо( new Цвет( 0, 0, 128 ),12, СтильЗаливки.wxSOLID));
+        dc.кисть( new Кисть( new Цвет( 0, 0, 255 ),СтильЗаливки.wxSOLID));
         
-        //r.Offset( width * 0.8 , - width * 0.66 ) ;
+        //к.Offset( ширина * 0.8 , - ширина * 0.66 ) ;
         
-        dc.DrawRoundedRectangle( r.X, r.Y, r.Width, r.Width, radius ) ;
+        dc.РисуйОкруглыйПрям( к.X, к.Y, к.Ширина, к.Ширина, radius ) ;
         
-        dc.pen( new Pen( new Colour( 128, 128, 0 ),12, FillStyle.wxSOLID));
-        dc.brush( new Brush( new Colour( 192, 192, 0 ),FillStyle.wxSOLID));
+        dc.перо( new Перо( new Цвет( 128, 128, 0 ),12, СтильЗаливки.wxSOLID));
+        dc.кисть( new Кисть( new Цвет( 192, 192, 0 ),СтильЗаливки.wxSOLID));
 
-        //r.Offset( width * 0.8 , width *0.5 ) ;
+        //к.Offset( ширина * 0.8 , ширина *0.5 ) ;
         
-        dc.DrawRoundedRectangle( r.X, r.Y, r.Width, r.Width, radius ) ;
+        dc.РисуйОкруглыйПрям( к.X, к.Y, к.Ширина, к.Ширина, radius ) ;
         
-        dc.pen( Pen.wxTRANSPARENT_PEN ) ;
-        dc.brush( new Brush( new Colour( 255,255,128 ) ) );
-        dc.DrawRoundedRectangle( 0 , cast(int)(margin + width / 2) , cast(int) width * 3 , 100 , radius) ;
+        dc.перо( Перо.wxTRANSPARENT_PEN ) ;
+        dc.кисть( new Кисть( new Цвет( 255,255,128 ) ) );
+        dc.РисуйОкруглыйПрям( 0 , cast(цел)(margin + ширина / 2) , cast(цел) ширина * 3 , 100 , radius) ;
         
-        dc.TextForeground( new Colour(255,255,0 ) );
-        dc.font( new Font( 40, FontFamily.wxSWISS, FontStyle.wxITALIC, FontWeight.wxNORMAL ) );
-        dc.DrawText( "Hello!", 120, 80 );
+        dc.ППланТекста( new Цвет(255,255,0 ) );
+        dc.шрифт( new Шрифт( 40, FontFamily.wxSWISS, FontStyle.wxITALIC, FontWeight.wxNORMAL ) );
+        dc.РисуйТекст( "Hello!", 120, 80 );
     }
 +++++/
 
-    void DrawRegions(DC dc)
+    проц DrawRegions(DC dc)
     {
-        dc.DrawText(("You should see a red rect partly covered by a cyan one on the left"), 10, 5);
-        dc.DrawText(("and 5 smileys from which 4 are partially clipped on the right"),
+        dc.РисуйТекст(("You should see a красный прям partly covered by a cyan one on the left"), 10, 5);
+        dc.РисуйТекст(("and 5 smileys from which 4 are partially clipped on the right"),
                     10, 5 + (cast(WindowDC)dc).CharHeight());
-        dc.DrawText(("The second copy should be identical but right part of it should be offset by 10 pixels."),
+        dc.РисуйТекст(("The second copy should be identical but right part of it should be offset by 10 pixels."),
                     10, 5 + 2*(cast(WindowDC)dc).CharHeight());
 
-        DrawRegionsHelper(dc, 10, true);
-        DrawRegionsHelper(dc, 350, false);
+        DrawRegionsHelper(dc, 10, да);
+        DrawRegionsHelper(dc, 350, нет);
     }
 
 
 
-    void DrawCircles(DC dc)
+    проц DrawCircles(DC dc)
     {
-        int x = 100,
+        цел x = 100,
             y = 100,
-            r = 20;
+            к = 20;
 
-        dc.pen( Pen.wxRED_PEN );
-        dc.brush( Brush.wxGREEN_BRUSH );
+        dc.перо( Перо.wxRED_PEN );
+        dc.кисть( Кисть.wxGREEN_BRUSH );
 
-        dc.DrawText(("Some circles"), 0, y);
-        dc.DrawCircle(x, y, r);
-        dc.DrawCircle(x + 2*r, y, r);
-        dc.DrawCircle(x + 4*r, y, r);
+        dc.РисуйТекст(("Some circles"), 0, y);
+        dc.DrawCircle(x, y, к);
+        dc.DrawCircle(x + 2*к, y, к);
+        dc.DrawCircle(x + 4*к, y, к);
 
-        y += 2*r;
-        dc.DrawText(("And ellipses"), 0, y);
-        dc.DrawEllipse(x - r, y, 2*r, r);
-        dc.DrawEllipse(x + r, y, 2*r, r);
-        dc.DrawEllipse(x + 3*r, y, 2*r, r);
+        y += 2*к;
+        dc.РисуйТекст(("And ellipses"), 0, y);
+        dc.РисуйЭллипс(x - к, y, 2*к, к);
+        dc.РисуйЭллипс(x + к, y, 2*к, к);
+        dc.РисуйЭллипс(x + 3*к, y, 2*к, к);
 
-        y += 2*r;
-        dc.DrawText(("And arcs"), 0, y);
-        dc.DrawArc(x - r, y, x + r, y, x, y);
-        dc.DrawArc(x + 4*r, y, x + 2*r, y, x + 3*r, y);
-        dc.DrawArc(x + 5*r, y, x + 5*r, y, x + 6*r, y);
+        y += 2*к;
+        dc.РисуйТекст(("And arcs"), 0, y);
+        dc.DrawArc(x - к, y, x + к, y, x, y);
+        dc.DrawArc(x + 4*к, y, x + 2*к, y, x + 3*к, y);
+        dc.DrawArc(x + 5*к, y, x + 5*к, y, x + 6*к, y);
 
-        y += 2*r;
-        dc.DrawEllipticArc(x - r, y, 2*r, r, 0, 90);
-        dc.DrawEllipticArc(x + r, y, 2*r, r, 90, 180);
-        dc.DrawEllipticArc(x + 3*r, y, 2*r, r, 180, 270);
-        dc.DrawEllipticArc(x + 5*r, y, 2*r, r, 270, 360);
+        y += 2*к;
+        dc.DrawEllipticArc(x - к, y, 2*к, к, 0, 90);
+        dc.DrawEllipticArc(x + к, y, 2*к, к, 90, 180);
+        dc.DrawEllipticArc(x + 3*к, y, 2*к, к, 180, 270);
+        dc.DrawEllipticArc(x + 5*к, y, 2*к, к, 270, 360);
         
-        // same as above, just transparent brush
+        // same as above, just transparent кисть
         
-        dc.pen( Pen.wxRED_PEN );
-        dc.brush( Brush.wxTRANSPARENT_BRUSH );
+        dc.перо( Перо.wxRED_PEN );
+        dc.кисть( Кисть.wxTRANSPARENT_BRUSH );
 
-        y += 2*r;
-        dc.DrawText(("Some circles"), 0, y);
-        dc.DrawCircle(x, y, r);
-        dc.DrawCircle(x + 2*r, y, r);
-        dc.DrawCircle(x + 4*r, y, r);
+        y += 2*к;
+        dc.РисуйТекст(("Some circles"), 0, y);
+        dc.DrawCircle(x, y, к);
+        dc.DrawCircle(x + 2*к, y, к);
+        dc.DrawCircle(x + 4*к, y, к);
 
-        y += 2*r;
-        dc.DrawText(("And ellipses"), 0, y);
-        dc.DrawEllipse(x - r, y, 2*r, r);
-        dc.DrawEllipse(x + r, y, 2*r, r);
-        dc.DrawEllipse(x + 3*r, y, 2*r, r);
+        y += 2*к;
+        dc.РисуйТекст(("And ellipses"), 0, y);
+        dc.РисуйЭллипс(x - к, y, 2*к, к);
+        dc.РисуйЭллипс(x + к, y, 2*к, к);
+        dc.РисуйЭллипс(x + 3*к, y, 2*к, к);
 
-        y += 2*r;
-        dc.DrawText(("And arcs"), 0, y);
-        dc.DrawArc(x - r, y, x + r, y, x, y);
-        dc.DrawArc(x + 4*r, y, x + 2*r, y, x + 3*r, y);
-        dc.DrawArc(x + 5*r, y, x + 5*r, y, x + 6*r, y);
+        y += 2*к;
+        dc.РисуйТекст(("And arcs"), 0, y);
+        dc.DrawArc(x - к, y, x + к, y, x, y);
+        dc.DrawArc(x + 4*к, y, x + 2*к, y, x + 3*к, y);
+        dc.DrawArc(x + 5*к, y, x + 5*к, y, x + 6*к, y);
 
-        y += 2*r;
-        dc.DrawEllipticArc(x - r, y, 2*r, r, 0, 90);
-        dc.DrawEllipticArc(x + r, y, 2*r, r, 90, 180);
-        dc.DrawEllipticArc(x + 3*r, y, 2*r, r, 180, 270);
-        dc.DrawEllipticArc(x + 5*r, y, 2*r, r, 270, 360);
+        y += 2*к;
+        dc.DrawEllipticArc(x - к, y, 2*к, к, 0, 90);
+        dc.DrawEllipticArc(x + к, y, 2*к, к, 90, 180);
+        dc.DrawEllipticArc(x + 3*к, y, 2*к, к, 180, 270);
+        dc.DrawEllipticArc(x + 5*к, y, 2*к, к, 270, 360);
         
     }
 
 
-    void DrawSplines(DC dc)
+    проц DrawSplines(DC dc)
     {
 
-        dc.DrawText(("Some splines"), 10, 5);
+        dc.РисуйТекст(("Some splines"), 10, 5);
 
         // values are hardcoded rather than randomly generated
         // so the output can be compared between native
         // implementations on platforms with different random
         // generators
 
-         int R = 300;
-         Point center = Point( R + 20, R + 20 );
-         int angles[7] = [ 0, 10, 33, 77, 13, 145, 90 ];
-         int radii[5] = [ 100 , 59, 85, 33, 90 ];
-         const int N = 200;
-        Point[N] pts;
+         цел R = 300;
+         Точка center = Точка( R + 20, R + 20 );
+         цел angles[7] = [ 0, 10, 33, 77, 13, 145, 90 ];
+         цел radii[5] = [ 100 , 59, 85, 33, 90 ];
+         const цел N = 200;
+        Точка[N] pts;
 
         // background spline calculation
-        uint radius_pos = 0;
-        uint angle_pos = 0;
-        int angle = 0;
-        for ( int i = 0; i < N; i++ )
+        бцел radius_pos = 0;
+        бцел angle_pos = 0;
+        цел угол = 0;
+        for ( цел i = 0; i < N; i++ )
         {
-            angle += angles[ angle_pos ];
-            int r = R * radii[ radius_pos ] / 100;
-            pts[ i ].X = center.X + cast(wxCoord)( r * cos( PI * angle / 180.0) );
-            pts[ i ].Y = center.Y + cast(wxCoord)( r * sin( PI * angle / 180.0) );
+            угол += angles[ angle_pos ];
+            цел к = R * radii[ radius_pos ] / 100;
+            pts[ i ].X = center.X + cast(wxCoord)( к * cos( PI * угол / 180.0) );
+            pts[ i ].Y = center.Y + cast(wxCoord)( к * sin( PI * угол / 180.0) );
 
             angle_pos++;
             if ( angle_pos >= angles.length ) angle_pos = 0;
@@ -1111,61 +1111,61 @@ class MyCanvas: public ScrolledWindow
         }
 
         // background spline drawing
-        dc.pen( Pen.wxRED_PEN );
+        dc.перо( Перо.wxRED_PEN );
         dc.DrawSpline( pts);
 
         // less detailed spline calculation
-        Point letters[4][5];
+        Точка letters[4][5];
         // w
-        letters[0][0] = Point( 0,1); //  O           O
-        letters[0][1] = Point( 1,3); //   *         *
-        letters[0][2] = Point( 2,2); //    *   O   *
-        letters[0][3] = Point( 3,3); //     * * * *
-        letters[0][4] = Point( 4,1); //      O   O
+        letters[0][0] = Точка( 0,1); //  O           O
+        letters[0][1] = Точка( 1,3); //   *         *
+        letters[0][2] = Точка( 2,2); //    *   O   *
+        letters[0][3] = Точка( 3,3); //     * * * *
+        letters[0][4] = Точка( 4,1); //      O   O
         // x1
-        letters[1][0] = Point( 5,1); //  O*O
-        letters[1][1] = Point( 6,1); //     *
-        letters[1][2] = Point( 7,2); //      O
-        letters[1][3] = Point( 8,3); //       *
-        letters[1][4] = Point( 9,3); //        O*O
+        letters[1][0] = Точка( 5,1); //  O*O
+        letters[1][1] = Точка( 6,1); //     *
+        letters[1][2] = Точка( 7,2); //      O
+        letters[1][3] = Точка( 8,3); //       *
+        letters[1][4] = Точка( 9,3); //        O*O
         // x2
-        letters[2][0] = Point( 5,3); //        O*O
-        letters[2][1] = Point( 6,3); //       *
-        letters[2][2] = Point( 7,2); //      O
-        letters[2][3] = Point( 8,1); //     *
-        letters[2][4] = Point( 9,1); //  O*O
+        letters[2][0] = Точка( 5,3); //        O*O
+        letters[2][1] = Точка( 6,3); //       *
+        letters[2][2] = Точка( 7,2); //      O
+        letters[2][3] = Точка( 8,1); //     *
+        letters[2][4] = Точка( 9,1); //  O*O
         // W
-        letters[3][0] = Point(10,0); //  O           O
-        letters[3][1] = Point(11,3); //   *         *
-        letters[3][2] = Point(12,1); //    *   O   *
-        letters[3][3] = Point(13,3); //     * * * *
-        letters[3][4] = Point(14,0); //      O   O
+        letters[3][0] = Точка(10,0); //  O           O
+        letters[3][1] = Точка(11,3); //   *         *
+        letters[3][2] = Точка(12,1); //    *   O   *
+        letters[3][3] = Точка(13,3); //     * * * *
+        letters[3][4] = Точка(14,0); //      O   O
 
-         int dx = 2 * R / letters[3][4].X;
-         int h[4] = [ -R/2, 0, R/4, R/2 ];
+         цел dx = 2 * R / letters[3][4].X;
+         цел h[4] = [ -R/2, 0, R/4, R/2 ];
 
-        for ( int m = 0; m < 4; m++ )
+        for ( цел m = 0; m < 4; m++ )
         {
-            for ( int n = 0; n < 5; n++ )
+            for ( цел n = 0; n < 5; n++ )
             {
                 letters[m][n].X = center.X - R + letters[m][n].X * dx;
                 letters[m][n].Y = center.X + h[ letters[m][n].Y ];
             }
 
-            dc.pen( new Pen( "blue", 1, FillStyle.wxDOT) );
+            dc.перо( new Перо( "синий", 1, СтильЗаливки.wxDOT) );
             dc.DrawLines(letters[m]);
-            dc.pen( new Pen( "black", 4, FillStyle.wxSOLID) );
+            dc.перо( new Перо( "black", 4, СтильЗаливки.wxSOLID) );
             dc.DrawSpline(letters[m]);
         }
 
 
-        dc.DrawText(("Splines not supported."), 10, 5);
+        dc.РисуйТекст(("Splines not supported."), 10, 5);
 
     }
 
 
 
-    void DrawDefault(DC dc)
+    проц DrawDefault(DC dc)
     {
         // mark the origin
         dc.DrawCircle(0, 0, 10);
@@ -1173,10 +1173,10 @@ class MyCanvas: public ScrolledWindow
 
         // GetPixel and FloodFill not supported by Mac OS X CoreGraphics
         // (FloodFill uses Blit from a non-MemoryDC)
-        //flood fill using brush, starting at 1,1 and replacing whatever colour we find there
-        dc.brush( new Brush(new Colour(128,128,0), FillStyle.wxSOLID));
+        //flood fill using кисть, starting at 1,1 and replacing whatever colour we find there
+        dc.кисть( new Кисть(new Цвет(128,128,0), СтильЗаливки.wxSOLID));
 
-        Colour tmpColour = new Colour();
+        Цвет tmpColour = new Цвет();
         dc.GetPixel(1,1, tmpColour);
         dc.FloodFill(1,1, tmpColour, FloodStyle.wxFLOOD_SURFACE);
 
@@ -1185,271 +1185,271 @@ class MyCanvas: public ScrolledWindow
         dc.DrawCheckMark(25, 80, 30, 30);
         dc.DrawCheckMark(60, 80, 60, 60);
 
-        // this is the test for "blitting bitmap into DC damages selected brush" bug
-        wxCoord rectSize =cast(wxCoord)( m_std_icon.Width() + 10);
+        // this is the test for "blitting битмап into DC damages selected кисть" bug
+        wxCoord rectSize =cast(wxCoord)( m_std_icon.Ширина() + 10);
 
         wxCoord x = 100;
-        dc.pen( Pen.wxTRANSPARENT_PEN);
+        dc.перо( Перо.wxTRANSPARENT_PEN);
 
-        dc.brush( Brush.wxGREEN_BRUSH );
-        dc.DrawRectangle(x, 10, rectSize, rectSize);
+        dc.кисть( Кисть.wxGREEN_BRUSH );
+        dc.РисуйПрям(x, 10, rectSize, rectSize);
 
-        dc.DrawBitmap(m_smile_bmp, x + 5, 15, true);
+        dc.РисуйБитмап(m_smile_bmp, x + 5, 15, да);
         x += rectSize + 10;
-        dc.DrawRectangle(x, 10, rectSize, rectSize);
+        dc.РисуйПрям(x, 10, rectSize, rectSize);
 
         dc.DrawIcon(m_std_icon, x + 5, 15);
         x += rectSize + 10;
-        dc.DrawRectangle(x, 10, rectSize, rectSize);
+        dc.РисуйПрям(x, 10, rectSize, rectSize);
 
-        // test for "transparent" bitmap drawing (it intersects with the last
+        // test for "transparent" битмап drawing (it intersects with the last
         // rectangle above)
-        //dc.brush( Brush.wxTRANSPARENT_BRUSH );
+        //dc.кисть( Кисть.wxTRANSPARENT_BRUSH );
 
-        if (m_smile_bmp.Ok())
-            dc.DrawBitmap(m_smile_bmp, x + rectSize - 20, rectSize - 10, true);
+        if (m_smile_bmp.Ок())
+            dc.РисуйБитмап(m_smile_bmp, x + rectSize - 20, rectSize - 10, да);
 
-        dc.brush( Brush.wxBLACK_BRUSH );
-        dc.DrawRectangle( 0, 160, 1000, 300 );
+        dc.кисть( Кисть.wxBLACK_BRUSH );
+        dc.РисуйПрям( 0, 160, 1000, 300 );
 
         // draw lines
-        Bitmap bitmap = new Bitmap(20,70);
+        Битмап битмап = new Битмап(20,70);
         MemoryDC memdc = new MemoryDC();
-        memdc.SelectObject( bitmap );
-        memdc.brush( Brush.wxBLACK_BRUSH );
-        memdc.pen( Pen.wxWHITE_PEN );
-        memdc.DrawRectangle(0,0,20,70);
-        memdc.DrawLine( 10,0,10,70 );
+        memdc.SelectObject( битмап );
+        memdc.кисть( Кисть.wxBLACK_BRUSH );
+        memdc.перо( Перо.wxWHITE_PEN );
+        memdc.РисуйПрям(0,0,20,70);
+        memdc.РисуйЛинию( 10,0,10,70 );
 
         // to the right
-        Pen pen = Pen.wxRED_PEN;
-        memdc.pen(pen);
-        memdc.DrawLine( 10, 5,10, 5 );
-        memdc.DrawLine( 10,10,11,10 );
-        memdc.DrawLine( 10,15,12,15 );
-        memdc.DrawLine( 10,20,13,20 );
+        Перо перо = Перо.wxRED_PEN;
+        memdc.перо(перо);
+        memdc.РисуйЛинию( 10, 5,10, 5 );
+        memdc.РисуйЛинию( 10,10,11,10 );
+        memdc.РисуйЛинию( 10,15,12,15 );
+        memdc.РисуйЛинию( 10,20,13,20 );
 
     /*
-        memdc.pen( Pen.wxRED_PEN );
-        memdc.DrawLine( 12, 5,12, 5 );
-        memdc.DrawLine( 12,10,13,10 );
-        memdc.DrawLine( 12,15,14,15 );
-        memdc.DrawLine( 12,20,15,20 );
+        memdc.перо( Перо.wxRED_PEN );
+        memdc.РисуйЛинию( 12, 5,12, 5 );
+        memdc.РисуйЛинию( 12,10,13,10 );
+        memdc.РисуйЛинию( 12,15,14,15 );
+        memdc.РисуйЛинию( 12,20,15,20 );
     */
 
         // same to the left
-        memdc.DrawLine( 10,25,10,25 );
-        memdc.DrawLine( 10,30, 9,30 );
-        memdc.DrawLine( 10,35, 8,35 );
-        memdc.DrawLine( 10,40, 7,40 );
+        memdc.РисуйЛинию( 10,25,10,25 );
+        memdc.РисуйЛинию( 10,30, 9,30 );
+        memdc.РисуйЛинию( 10,35, 8,35 );
+        memdc.РисуйЛинию( 10,40, 7,40 );
 
         // XOR draw lines
-        dc.pen( Pen.wxWHITE_PEN );
+        dc.перо( Перо.wxWHITE_PEN );
         memdc.LogicalFunction( Logic.wxINVERT );
-        memdc.pen( Pen.wxWHITE_PEN );
-        memdc.DrawLine( 10,50,10,50 );
-        memdc.DrawLine( 10,55,11,55 );
-        memdc.DrawLine( 10,60,12,60 );
-        memdc.DrawLine( 10,65,13,65 );
+        memdc.перо( Перо.wxWHITE_PEN );
+        memdc.РисуйЛинию( 10,50,10,50 );
+        memdc.РисуйЛинию( 10,55,11,55 );
+        memdc.РисуйЛинию( 10,60,12,60 );
+        memdc.РисуйЛинию( 10,65,13,65 );
 
-        memdc.DrawLine( 12,50,12,50 );
-        memdc.DrawLine( 12,55,13,55 );
-        memdc.DrawLine( 12,60,14,60 );
-        memdc.DrawLine( 12,65,15,65 );
+        memdc.РисуйЛинию( 12,50,12,50 );
+        memdc.РисуйЛинию( 12,55,13,55 );
+        memdc.РисуйЛинию( 12,60,14,60 );
+        memdc.РисуйЛинию( 12,65,15,65 );
 
-        memdc.SelectObject( Bitmap.wxNullBitmap );
-        dc.DrawBitmap( bitmap, 10, 170 );
-        wxImage image = bitmap.ConvertToImage();
-        image.Rescale( 60,210 );
-        bitmap = new Bitmap(image);
-        dc.DrawBitmap( bitmap, 50, 170 );
-
-        // test the rectangle outline drawing - there should be one pixel between
-        // the rect and the lines
-        dc.pen( Pen.wxWHITE_PEN);
-        dc.brush( Brush.wxTRANSPARENT_BRUSH );
-        dc.DrawRectangle(150, 170, 49, 29);
-        dc.DrawRectangle(200, 170, 49, 29);
-        dc.pen( Pen.wxWHITE_PEN );
-        dc.DrawLine(250, 210, 250, 170);
-        dc.DrawLine(260, 200, 150, 200);
-
-        // test the rectangle filled drawing - there should be one pixel between
-        // the rect and the lines
-        dc.pen(Pen.wxTRANSPARENT_PEN);
-        dc.brush( Brush.wxWHITE_BRUSH );
-        dc.DrawRectangle(300, 170, 49, 29);
-        dc.DrawRectangle(350, 170, 49, 29);
-        dc.pen( Pen.wxWHITE_PEN );
-        dc.DrawLine(400, 170, 400, 210);
-        dc.DrawLine(300, 200, 410, 200);
-
-        // a few more tests of this kind
-        dc.pen( Pen.wxRED_PEN );
-        dc.brush( Brush.wxWHITE_BRUSH );
-        dc.DrawRectangle(300, 220, 1, 1);
-        dc.DrawRectangle(310, 220, 2, 2);
-        dc.DrawRectangle(320, 220, 3, 3);
-        dc.DrawRectangle(330, 220, 4, 4);
-
-        dc.pen(Pen.wxTRANSPARENT_PEN);
-        dc.brush( Brush.wxWHITE_BRUSH );
-        dc.DrawRectangle(300, 230, 1, 1);
-        dc.DrawRectangle(310, 230, 2, 2);
-        dc.DrawRectangle(320, 230, 3, 3);
-        dc.DrawRectangle(330, 230, 4, 4);
-
-        // and now for filled rect with outline
-        dc.pen( Pen.wxRED_PEN );
-        dc.brush( Brush.wxWHITE_BRUSH );
-        dc.DrawRectangle(500, 170, 49, 29);
-        dc.DrawRectangle(550, 170, 49, 29);
-        dc.pen( Pen.wxWHITE_PEN );
-        dc.DrawLine(600, 170, 600, 210);
-        dc.DrawLine(500, 200, 610, 200);
+        memdc.SelectObject( Битмап.wxNullBitmap );
+        dc.РисуйБитмап( битмап, 10, 170 );
+        wxImage рисунок = битмап.ConvertToImage();
+        рисунок.Ремасштабируй( 60,210 );
+        битмап = new Битмап(рисунок);
+        dc.РисуйБитмап( битмап, 50, 170 );
 
         // test the rectangle outline drawing - there should be one pixel between
-        // the rect and the lines
-        dc.pen( Pen.wxWHITE_PEN );
-        dc.brush( Brush.wxTRANSPARENT_BRUSH );
-        dc.DrawRoundedRectangle(150, 270, 49, 29, 6);
-        dc.DrawRoundedRectangle(200, 270, 49, 29, 6);
-        dc.pen( Pen.wxWHITE_PEN );
-        dc.DrawLine(250, 270, 250, 310);
-        dc.DrawLine(150, 300, 260, 300);
+        // the прям and the lines
+        dc.перо( Перо.wxWHITE_PEN);
+        dc.кисть( Кисть.wxTRANSPARENT_BRUSH );
+        dc.РисуйПрям(150, 170, 49, 29);
+        dc.РисуйПрям(200, 170, 49, 29);
+        dc.перо( Перо.wxWHITE_PEN );
+        dc.РисуйЛинию(250, 210, 250, 170);
+        dc.РисуйЛинию(260, 200, 150, 200);
 
         // test the rectangle filled drawing - there should be one pixel between
-        // the rect and the lines
-        dc.pen(Pen.wxTRANSPARENT_PEN);
-        dc.brush( Brush.wxWHITE_BRUSH );
-        dc.DrawRoundedRectangle(300, 270, 49, 29, 6);
-        dc.DrawRoundedRectangle(350, 270, 49, 29, 6);
-        dc.pen( Pen.wxWHITE_PEN );
-        dc.DrawLine(400, 270, 400, 310);
-        dc.DrawLine(300, 300, 410, 300);
+        // the прям and the lines
+        dc.перо(Перо.wxTRANSPARENT_PEN);
+        dc.кисть( Кисть.wxWHITE_BRUSH );
+        dc.РисуйПрям(300, 170, 49, 29);
+        dc.РисуйПрям(350, 170, 49, 29);
+        dc.перо( Перо.wxWHITE_PEN );
+        dc.РисуйЛинию(400, 170, 400, 210);
+        dc.РисуйЛинию(300, 200, 410, 200);
+
+        // a few more tests of this вид
+        dc.перо( Перо.wxRED_PEN );
+        dc.кисть( Кисть.wxWHITE_BRUSH );
+        dc.РисуйПрям(300, 220, 1, 1);
+        dc.РисуйПрям(310, 220, 2, 2);
+        dc.РисуйПрям(320, 220, 3, 3);
+        dc.РисуйПрям(330, 220, 4, 4);
+
+        dc.перо(Перо.wxTRANSPARENT_PEN);
+        dc.кисть( Кисть.wxWHITE_BRUSH );
+        dc.РисуйПрям(300, 230, 1, 1);
+        dc.РисуйПрям(310, 230, 2, 2);
+        dc.РисуйПрям(320, 230, 3, 3);
+        dc.РисуйПрям(330, 230, 4, 4);
+
+        // and now for filled прям with outline
+        dc.перо( Перо.wxRED_PEN );
+        dc.кисть( Кисть.wxWHITE_BRUSH );
+        dc.РисуйПрям(500, 170, 49, 29);
+        dc.РисуйПрям(550, 170, 49, 29);
+        dc.перо( Перо.wxWHITE_PEN );
+        dc.РисуйЛинию(600, 170, 600, 210);
+        dc.РисуйЛинию(500, 200, 610, 200);
+
+        // test the rectangle outline drawing - there should be one pixel between
+        // the прям and the lines
+        dc.перо( Перо.wxWHITE_PEN );
+        dc.кисть( Кисть.wxTRANSPARENT_BRUSH );
+        dc.РисуйОкруглыйПрям(150, 270, 49, 29, 6);
+        dc.РисуйОкруглыйПрям(200, 270, 49, 29, 6);
+        dc.перо( Перо.wxWHITE_PEN );
+        dc.РисуйЛинию(250, 270, 250, 310);
+        dc.РисуйЛинию(150, 300, 260, 300);
+
+        // test the rectangle filled drawing - there should be one pixel between
+        // the прям and the lines
+        dc.перо(Перо.wxTRANSPARENT_PEN);
+        dc.кисть( Кисть.wxWHITE_BRUSH );
+        dc.РисуйОкруглыйПрям(300, 270, 49, 29, 6);
+        dc.РисуйОкруглыйПрям(350, 270, 49, 29, 6);
+        dc.перо( Перо.wxWHITE_PEN );
+        dc.РисуйЛинию(400, 270, 400, 310);
+        dc.РисуйЛинию(300, 300, 410, 300);
 
         // Added by JACS to demonstrate bizarre behaviour.
-        // With a size of 70, we get a missing red RHS,
-        // and the height is too small, so we get yellow
+        // With a size of 70, we get a missing красный RHS,
+        // and the высота is too small, so we get yellow
         // showing. With a size of 40, it draws as expected:
-        // it just shows a white rectangle with red outline.
-        int totalWidth = 70;
-        int totalHeight = 70;
-        Bitmap bitmap2 = new Bitmap(totalWidth, totalHeight);
+        // it just shows a white rectangle with красный outline.
+        цел totalWidth = 70;
+        цел totalHeight = 70;
+        Битмап bitmap2 = new Битмап(totalWidth, totalHeight);
 
         MemoryDC memdc2 = new MemoryDC();
         memdc2.SelectObject(bitmap2);
 
-        Colour clr = new Colour(255, 255, 0);
-        Brush yellowBrush = new Brush(clr, FillStyle.wxSOLID);
-        memdc2.Background( yellowBrush );
-        memdc2.Clear();
+        Цвет clr = new Цвет(255, 255, 0);
+        Кисть yellowBrush = new Кисть(clr, СтильЗаливки.wxSOLID);
+        memdc2.Фон( yellowBrush );
+        memdc2.Очисть();
 
 
 
-        Pen yellowPen = new Pen(clr, 1, FillStyle.wxSOLID);
+        Перо yellowPen = new Перо(clr, 1, СтильЗаливки.wxSOLID);
 
-        // Now draw a white rectangle with red outline. It should
+        // Now draw a white rectangle with красный outline. It should
         // entirely eclipse the yellow background.
-        memdc2.pen( Pen.wxRED_PEN );
-        memdc2.brush(Brush.wxWHITE_BRUSH);
+        memdc2.перо( Перо.wxRED_PEN );
+        memdc2.кисть(Кисть.wxWHITE_BRUSH);
 
-        memdc2.DrawRectangle(0, 0, totalWidth, totalHeight);
+        memdc2.РисуйПрям(0, 0, totalWidth, totalHeight);
 
-        memdc2.pen( Pen.wxNullPen );
-        memdc2.brush( Brush.wxNullBrush );
-        memdc2.SelectObject( Bitmap.wxNullBitmap );
+        memdc2.перо( Перо.wxNullPen );
+        memdc2.кисть( Кисть.wxNullBrush );
+        memdc2.SelectObject( Битмап.wxNullBitmap );
 
-        dc.DrawBitmap(bitmap2, 500, 270);
+        dc.РисуйБитмап(bitmap2, 500, 270);
 
         // Repeat, but draw directly on dc
-        // Draw a yellow rectangle filling the bitmap
+        // Draw a yellow rectangle filling the битмап
 
-        x = 600; int y = 270;
-        dc.pen(yellowPen);
-        dc.brush( yellowBrush );
-        dc.DrawRectangle(x, y, totalWidth, totalHeight);
+        x = 600; цел y = 270;
+        dc.перо(yellowPen);
+        dc.кисть( yellowBrush );
+        dc.РисуйПрям(x, y, totalWidth, totalHeight);
 
-        // Now draw a white rectangle with red outline. It should
+        // Now draw a white rectangle with красный outline. It should
         // entirely eclipse the yellow background.
-        dc.pen( Pen.wxRED_PEN );
-        dc.brush(Brush.wxWHITE_BRUSH);
+        dc.перо( Перо.wxRED_PEN );
+        dc.кисть(Кисть.wxWHITE_BRUSH);
 
-        dc.DrawRectangle(x, y, totalWidth, totalHeight);
+        dc.РисуйПрям(x, y, totalWidth, totalHeight);
 
     }
 
 
-    void DrawGradients(DC dc)
+    проц DrawGradients(DC dc)
     {
-        static  int TEXT_HEIGHT = 15;
+        static  цел TEXT_HEIGHT = 15;
         Log tempLog = new Log();
         tempLog.LogMessage("Sorry! This function has not been implemented by wxD.");
 
 /+++++
         // LHS: linear
-        Rect r = {10, 10, 50, 50};
-        dc.DrawText(("wxRIGHT"), r.X, r.Y);
-        r.Offset(0, TEXT_HEIGHT);
-        //dc.GradientFillLinear(r, wxWHITE, wxBLUE, wxRIGHT);
+        Rect к = {10, 10, 50, 50};
+        dc.РисуйТекст(("wxRIGHT"), к.X, к.Y);
+        к.Offset(0, TEXT_HEIGHT);
+        //dc.GradientFillLinear(к, wxWHITE, wxBLUE, wxRIGHT);
 
-        r.Offset(0, r.Height + 10);
-        dc.DrawText(("wxLEFT"), r.X, r.Y);
-        r.Offset(0, TEXT_HEIGHT);
-        //dc.GradientFillLinear(r, *wxWHITE, *wxBLUE, wxLEFT);
+        к.Offset(0, к.Высота + 10);
+        dc.РисуйТекст(("wxLEFT"), к.X, к.Y);
+        к.Offset(0, TEXT_HEIGHT);
+        //dc.GradientFillLinear(к, *wxWHITE, *wxBLUE, wxLEFT);
 
-        r.Offset(0, r.Height + 10);
-        dc.DrawText(("wxDOWN"), r.X, r.Y);
-        r.Offset(0, TEXT_HEIGHT);
-        //dc.GradientFillLinear(r, *wxWHITE, *wxBLUE, wxDOWN);
+        к.Offset(0, к.Высота + 10);
+        dc.РисуйТекст(("wxDOWN"), к.X, к.Y);
+        к.Offset(0, TEXT_HEIGHT);
+        //dc.GradientFillLinear(к, *wxWHITE, *wxBLUE, wxDOWN);
 
-        r.Offset(0, r.Height + 10);
-        dc.DrawText(("wxUP"), r.X, r.Y);
-        r.Offset(0, TEXT_HEIGHT);
-        //dc.GradientFillLinear(r, *wxWHITE, *wxBLUE, wxUP);
+        к.Offset(0, к.Высота + 10);
+        dc.РисуйТекст(("wxUP"), к.X, к.Y);
+        к.Offset(0, TEXT_HEIGHT);
+        //dc.GradientFillLinear(к, *wxWHITE, *wxBLUE, wxUP);
 
 
         // RHS: concentric
-        r = new Rect(200, 10, 50, 50);
-        dc.DrawText(("Blue inside"), r.X, r.Y);
-        r.Offset(0, TEXT_HEIGHT);
-        //dc.GradientFillConcentric(r, *wxBLUE, *wxWHITE);
+        к = new Rect(200, 10, 50, 50);
+        dc.РисуйТекст(("Синий inside"), к.X, к.Y);
+        к.Offset(0, TEXT_HEIGHT);
+        //dc.GradientFillConcentric(к, *wxBLUE, *wxWHITE);
 
-        r.Offset(0, r.Height + 10);
-        dc.DrawText(("White inside"), r.X, r.Y);
-        r.Offset(0, TEXT_HEIGHT);
-        //dc.GradientFillConcentric(r, *wxWHITE, *wxBLUE);
+        к.Offset(0, к.Высота + 10);
+        dc.РисуйТекст(("White inside"), к.X, к.Y);
+        к.Offset(0, TEXT_HEIGHT);
+        //dc.GradientFillConcentric(к, *wxWHITE, *wxBLUE);
 
-        r.Offset(0, r.Height + 10);
-        dc.DrawText(("Blue in top left corner"), r.X, r.Y);
-        r.Offset(0, TEXT_HEIGHT);
-        //dc.GradientFillConcentric(r, *wxBLUE, *wxWHITE, Point(0, 0));
+        к.Offset(0, к.Высота + 10);
+        dc.РисуйТекст(("Синий in top left corner"), к.X, к.Y);
+        к.Offset(0, TEXT_HEIGHT);
+        //dc.GradientFillConcentric(к, *wxBLUE, *wxWHITE, Точка(0, 0));
 
-        r.Offset(0, r.Height + 10);
-        dc.DrawText(("Blue in bottom right corner"), r.X, r.Y);
-        r.Offset(0, TEXT_HEIGHT);
-        //dc.GradientFillConcentric(r, *wxBLUE, *wxWHITE, Point(r.Width, r.Height));
+        к.Offset(0, к.Высота + 10);
+        dc.РисуйТекст(("Синий in bottom right corner"), к.X, к.Y);
+        к.Offset(0, TEXT_HEIGHT);
+        //dc.GradientFillConcentric(к, *wxBLUE, *wxWHITE, Точка(к.Ширина, к.Высота));
 +++++/
     }
 
-    void DrawRegionsHelper(DC dc, wxCoord x, bool firstTime)
+    проц DrawRegionsHelper(DC dc, wxCoord x, бул firstTime)
     {
         wxCoord y = 100;
 
         dc.DestroyClippingRegion();
-        dc.brush( Brush.wxWHITE_BRUSH );
-        dc.pen( Pen.wxTRANSPARENT_PEN );
-        dc.DrawRectangle( x, y, 310, 310 );
+        dc.кисть( Кисть.wxWHITE_BRUSH );
+        dc.перо( Перо.wxTRANSPARENT_PEN );
+        dc.РисуйПрям( x, y, 310, 310 );
 
         dc.SetClippingRegion( x + 10, y + 10, 100, 270 );
 
-        dc.brush( Brush.wxRED_BRUSH );
-        dc.DrawRectangle( x, y, 310, 310 );
+        dc.кисть( Кисть.wxRED_BRUSH );
+        dc.РисуйПрям( x, y, 310, 310 );
 
         dc.SetClippingRegion( x + 10, y + 10, 100, 100 );
 
-        dc.brush( Brush.wxCYAN_BRUSH );
-        dc.DrawRectangle( x, y, 310, 310 );
+        dc.кисть( Кисть.wxCYAN_BRUSH );
+        dc.РисуйПрям( x, y, 310, 310 );
 
         dc.DestroyClippingRegion();
 
@@ -1463,16 +1463,16 @@ class MyCanvas: public ScrolledWindow
 
         dc.SetClippingRegion(region);
 
-        dc.brush( Brush.wxGREY_BRUSH );
-        dc.DrawRectangle( x, y, 310, 310 );
+        dc.кисть( Кисть.wxGREY_BRUSH );
+        dc.РисуйПрям( x, y, 310, 310 );
 
-        if (m_smile_bmp.Ok())
+        if (m_smile_bmp.Ок())
         {
-            dc.DrawBitmap( m_smile_bmp, x + 150, y + 150, true );
-            dc.DrawBitmap( m_smile_bmp, x + 130, y + 10,  true );
-            dc.DrawBitmap( m_smile_bmp, x + 130, y + 280, true );
-            dc.DrawBitmap( m_smile_bmp, x + 100, y + 70,  true );
-            dc.DrawBitmap( m_smile_bmp, x + 200, y + 70,  true );
+            dc.РисуйБитмап( m_smile_bmp, x + 150, y + 150, да );
+            dc.РисуйБитмап( m_smile_bmp, x + 130, y + 10,  да );
+            dc.РисуйБитмап( m_smile_bmp, x + 130, y + 280, да );
+            dc.РисуйБитмап( m_smile_bmp, x + 100, y + 70,  да );
+            dc.РисуйБитмап( m_smile_bmp, x + 200, y + 70,  да );
         }
     }
 
@@ -1482,11 +1482,11 @@ private
     MyFrame m_owner;
 
     ScreenToShow m_show;
-    Bitmap     m_smile_bmp;
+    Битмап     m_smile_bmp;
     Icon       m_std_icon;
-    bool         m_clip;
+    бул         m_clip;
 
-    bool         m_useContext ;
+    бул         m_useContext ;
 
 
     }
@@ -1496,10 +1496,10 @@ private
 // ants
 // ----------------------------------------------------------------------------
 
-// IDs for the controls and the menu commands
+// IDs for the controls and the меню commands
 enum
 {
-    // menu items
+    // меню items
     File_Quit = MenuIDs.wxID_EXIT,
     File_About = MenuIDs.wxID_ABOUT,
 
@@ -1564,7 +1564,7 @@ enum
 
 struct rasterOp
 {
-     string name;
+     ткст имя;
     Logic           rop;
 };
 

@@ -1,4 +1,4 @@
-//-----------------------------------------------------------------------------
+﻿//-----------------------------------------------------------------------------
 // wxD - ContextMenuEvent.d
 // (C) 2005 bero <berobero@users.sourceforge.net>
 // based on
@@ -10,7 +10,7 @@
 // (C) 2004 by Alexander Olk
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: ContextMenuEvent.d,v 1.9 2006/11/17 15:20:59 afb Exp $
+// $Ид: ContextMenuEvent.d,v 1.9 2006/11/17 15:20:59 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.ContextMenuEvent;
@@ -20,9 +20,9 @@ public import wx.CommandEvent;
 public import wx.Window;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxContextMenuEvent_ctor(int type,int winid, inout Point pos);
-		static extern (C) void   wxContextMenuEvent_GetPosition(IntPtr self, inout Point pos);
-		static extern (C) void   wxContextMenuEvent_SetPosition(IntPtr self, inout Point pos);
+		static extern (C) ЦУк wxContextMenuEvent_ctor(цел тип,цел winid, inout Точка поз);
+		static extern (C) проц   wxContextMenuEvent_GetPosition(ЦУк сам, inout Точка поз);
+		static extern (C) проц   wxContextMenuEvent_SetPosition(ЦУк сам, inout Точка поз);
 		//! \endcond
 		
 		//-----------------------------------------------------------------------------
@@ -30,26 +30,26 @@ public import wx.Window;
 	alias ContextMenuEvent wxContextMenuEvent;
 	public class ContextMenuEvent : CommandEvent
 	{
-		public this(IntPtr wxobj) 
-			{ super(wxobj); }
+		public this(ЦУк шхобъ) 
+			{ super(шхобъ); }
 
-		public this(EventType type = wxEVT_NULL, int winid = 0,Point pt = Window.wxDefaultPosition)
-			{ this(wxContextMenuEvent_ctor(type,winid,pt)); }
+		public this(ТипСобытия тип = wxEVT_NULL, цел winid = 0,Точка pt = Окно.wxDefaultPosition)
+			{ this(wxContextMenuEvent_ctor(тип,winid,pt)); }
 
 		//-----------------------------------------------------------------------------	
 		
-		public Point Position() { 
-				Point p;
-				wxContextMenuEvent_GetPosition(wxobj, p); 
+		public Точка Положение() { 
+				Точка p;
+				wxContextMenuEvent_GetPosition(шхобъ, p); 
 				return p;
 			}
 			
-		public void Position(Point value) { wxContextMenuEvent_SetPosition(wxobj, value); }
+		public проц Положение(Точка значение) { wxContextMenuEvent_SetPosition(шхобъ, значение); }
 
-		private static Event New(IntPtr obj) { return new ContextMenuEvent(obj); }
+		private static Событие Нов(ЦУк объ) { return new ContextMenuEvent(объ); }
 
 		static this()
 		{
-			AddEventType(wxEVT_CONTEXT_MENU,			&ContextMenuEvent.New);
+			ДобавьТипСоб(wxEVT_CONTEXT_MENU,			&ContextMenuEvent.Нов);
 		}
 	}

@@ -10,7 +10,7 @@
 // (C) 2003 Bryan Bulten
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: SpinCtrl.d,v 1.11 2007/11/27 08:19:20 afb Exp $
+// $Ид: SpinCtrl.d,v 1.11 2007/11/27 08:19:20 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.SpinCtrl;
@@ -18,14 +18,14 @@ public import wx.common;
 public import wx.Control;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxSpinCtrl_ctor();
-		static extern (C) bool   wxSpinCtrl_Create(IntPtr self, IntPtr parent, int id, string value, inout Point pos, inout Size size, uint style, int min, int max, int initial, string name);
-		static extern (C) int    wxSpinCtrl_GetValue(IntPtr self);
-		static extern (C) int    wxSpinCtrl_GetMin(IntPtr self);
-		static extern (C) int    wxSpinCtrl_GetMax(IntPtr self);
-		static extern (C) void   wxSpinCtrl_SetValueStr(IntPtr self, string value);
-		static extern (C) void   wxSpinCtrl_SetValue(IntPtr self, int val);
-		static extern (C) void   wxSpinCtrl_SetRange(IntPtr self, int min, int max);
+		static extern (C) ЦУк wxSpinCtrl_ctor();
+		static extern (C) бул   wxSpinCtrl_Create(ЦУк сам, ЦУк родитель, цел ид, ткст значение, inout Точка поз, inout Размер size, бцел стиль, цел min, цел max, цел initial, ткст имя);
+		static extern (C) цел    wxSpinCtrl_GetValue(ЦУк сам);
+		static extern (C) цел    wxSpinCtrl_GetMin(ЦУк сам);
+		static extern (C) цел    wxSpinCtrl_GetMax(ЦУк сам);
+		static extern (C) проц   wxSpinCtrl_SetValueStr(ЦУк сам, ткст значение);
+		static extern (C) проц   wxSpinCtrl_SetValue(ЦУк сам, цел val);
+		static extern (C) проц   wxSpinCtrl_SetRange(ЦУк сам, цел min, цел max);
 		//! \endcond
 	
 		//---------------------------------------------------------------------
@@ -34,82 +34,82 @@ public import wx.Control;
 	public class SpinCtrl : Control 
 	{
 		// These are duplicated in SpinButton.cs (for easier access)
-		public const int wxSP_HORIZONTAL       = Orientation.wxHORIZONTAL;
-		public const int wxSP_VERTICAL         = Orientation.wxVERTICAL;
-		public const int wxSP_ARROW_KEYS       = 0x1000;
-		public const int wxSP_WRAP             = 0x2000;
+		public const цел wxSP_HORIZONTAL       = Ориентация.wxHORIZONTAL;
+		public const цел wxSP_VERTICAL         = Ориентация.wxVERTICAL;
+		public const цел wxSP_ARROW_KEYS       = 0x1000;
+		public const цел wxSP_WRAP             = 0x2000;
 	
 		//---------------------------------------------------------------------
 		
-		public this(IntPtr wxobj) 
-			{ super(wxobj);}
+		public this(ЦУк шхобъ) 
+			{ super(шхобъ);}
 
 		public this()
 			{ super(wxSpinCtrl_ctor()); }
 
-		public this(Window parent,
-			int id /*= wxID_ANY*/,
-			string value = "",
-			Point pos = wxDefaultPosition,
-			Size size = wxDefaultSize,
-			int style = wxSP_ARROW_KEYS,
-			int min = 0, int max = 100, int initial = 0,
-			string name = "SpinCtrl")
+		public this(Окно родитель,
+			цел ид /*= wxID_ANY*/,
+			ткст значение = "",
+			Точка поз = wxDefaultPosition,
+			Размер size = wxDefaultSize,
+			цел стиль = wxSP_ARROW_KEYS,
+			цел min = 0, цел max = 100, цел initial = 0,
+			ткст имя = "SpinCtrl")
 		{
 			super(wxSpinCtrl_ctor());
-			if(!Create(parent, id, value, pos, size, style, min, max, initial, name))
+			if(!Create(родитель, ид, значение, поз, size, стиль, min, max, initial, имя))
 			{
 				throw new InvalidOperationException("Failed to create SpinCtrl");
 			}
 		}
 		
-		public static wxObject New(IntPtr wxobj) { return new SpinCtrl(wxobj); }
+		public static wxObject Нов(ЦУк шхобъ) { return new SpinCtrl(шхобъ); }
 	
 		//---------------------------------------------------------------------
-		// ctors with self created id
+		// ctors with сам created ид
 		
-		public this(Window parent,
-			string value = "",
-			Point pos = wxDefaultPosition,
-			Size size = wxDefaultSize,
-			int style = wxSP_ARROW_KEYS,
-			int min = 0, int max = 100, int initial = 0,
-			string name = "SpinCtrl")
-			{ this(parent, Window.UniqueID, value, pos, size, style, min, max, initial, name);}
+		public this(Окно родитель,
+			ткст значение = "",
+			Точка поз = wxDefaultPosition,
+			Размер size = wxDefaultSize,
+			цел стиль = wxSP_ARROW_KEYS,
+			цел min = 0, цел max = 100, цел initial = 0,
+			ткст имя = "SpinCtrl")
+			{ this(родитель, Окно.UniqueID, значение, поз, size, стиль, min, max, initial, имя);}
 		
 		//---------------------------------------------------------------------
 
-		public bool Create(Window parent, int id, string value, Point pos, Size size, int style, int min, int max, int initial, string name)
+		public бул Create(Окно родитель, цел ид, ткст значение, Точка поз, Размер size, цел стиль, цел min, цел max, цел initial, ткст имя)
 		{
-			return wxSpinCtrl_Create(wxobj, wxObject.SafePtr(parent), id, 
-					value, pos, size, cast(uint)style, min,
-					max, initial, name);
+			return wxSpinCtrl_Create(шхобъ, wxObject.SafePtr(родитель), ид, 
+					значение, поз, size, cast(бцел)стиль, min,
+					max, initial, имя);
 		}
 
 		//---------------------------------------------------------------------
 
-		public int Value() { return wxSpinCtrl_GetValue(wxobj); }
-		public void Value(int value) { wxSpinCtrl_SetValue(wxobj, value); }
+		public цел Value() { return wxSpinCtrl_GetValue(шхобъ); }
+		public проц Value(цел значение) { wxSpinCtrl_SetValue(шхобъ, значение); }
 
-		public void SetValue(string val)
+		public проц SetValue(ткст val)
 		{
-			wxSpinCtrl_SetValueStr(wxobj, val);
+			wxSpinCtrl_SetValueStr(шхобъ, val);
 		}
 
 		//---------------------------------------------------------------------
         
-		public int Max() { return wxSpinCtrl_GetMax(wxobj); }
+		public цел Max() { return wxSpinCtrl_GetMax(шхобъ); }
 
-		public int Min() { return wxSpinCtrl_GetMin(wxobj); }
+		public цел Min() { return wxSpinCtrl_GetMin(шхобъ); }
 
-		public void SetRange(int min, int max)
+		public проц SetRange(цел min, цел max)
 		{
-			wxSpinCtrl_SetRange(wxobj, min, max);
+			wxSpinCtrl_SetRange(шхобъ, min, max);
 		}
 
 		//---------------------------------------------------------------------
 
-		public override void UpdateUI_Add(EventListener value) { AddCommandListener(Event.wxEVT_COMMAND_SPINCTRL_UPDATED, ID, value, this); }
-		public override void UpdateUI_Remove(EventListener value) { RemoveHandler(value, this); }
+		public override проц UpdateUI_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_COMMAND_SPINCTRL_UPDATED, ИД, значение, this); }
+		public override проц UpdateUI_Remove(EventListener значение) { RemoveHandler(значение, this); }
 	}
 

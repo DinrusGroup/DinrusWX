@@ -8,12 +8,12 @@
 // (C) 2003 by Alexander Olk
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: Notebook.d,v 1.10 2008/03/03 19:50:10 afb Exp $
+// $Ид: Notebook.d,v 1.10 2008/03/03 19:50:10 afb Exp $
 //-----------------------------------------------------------------------------
 
 import wx.wx;
-private import std.string;
-alias std.string.find indexOf;
+private import std.ткст;
+alias std.ткст.find indexOf;
 
 	public class MyFrame : Frame
 	{
@@ -29,22 +29,22 @@ alias std.string.find indexOf;
 			ID_NOTEBOOK
 		}
 		
-		public const int ORIENT_TOP = 0;
-		public const int ORIENT_BOTTOM = 1;
-		public const int ORIENT_LEFT = 2;
-		public const int ORIENT_RIGHT = 3;
-		public const int ORIENT_MAX = 4;		
+		public const цел ORIENT_TOP = 0;
+		public const цел ORIENT_BOTTOM = 1;
+		public const цел ORIENT_LEFT = 2;
+		public const цел ORIENT_RIGHT = 3;
+		public const цел ORIENT_MAX = 4;		
 		
 		private Panel m_panel;
 		private RadioBox m_radioOrient;
 		private CheckBox m_chkShowImages;
 		
-		private Button m_btnAddPage;
-		private Button m_btnInsertPage;
-		private Button m_btnDeleteCurPage;
-		private Button m_btnDeleteLastPage;
-		private Button m_btnNextPage;
-		private Button m_btnExit;
+		private Кнопка m_btnAddPage;
+		private Кнопка m_btnInsertPage;
+		private Кнопка m_btnDeleteCurPage;
+		private Кнопка m_btnDeleteLastPage;
+		private Кнопка m_btnNextPage;
+		private Кнопка m_btnExit;
 		
 		private MyNotebook m_notebook;
 		private TextCtrl m_text;
@@ -54,33 +54,33 @@ alias std.string.find indexOf;
 		private NotebookSizer m_sizerNotebook;
 		private ImageList m_imageList;
 		
-		public static int s_pageAdded = 0;
-		public static int s_pageIns = 0;
-		public static int s_numNotebookEvents = 0;
-		public static int s_nPages = -1;
-		public static int s_nSel = -1;
+		public static цел s_pageAdded = 0;
+		public static цел s_pageIns = 0;
+		public static цел s_numNotebookEvents = 0;
+		public static цел s_nPages = -1;
+		public static цел s_nSel = -1;
 		
 		//---------------------------------------------------------------------
 
-		public this( string title, Point pos, Size size )
+		public this( ткст title, Точка поз, Размер size )
 		{
-			super( title, pos, size );
-			Size imageSize = Size( 32, 32 );
+			super( title, поз, size );
+			Размер imageSize = Размер( 32, 32 );
 			
-			m_imageList = new ImageList( imageSize.Width, imageSize.Height );
+			m_imageList = new ImageList( imageSize.Ширина, imageSize.Высота );
 			
-			m_imageList.Add( ArtProvider.GetIcon( ArtID.wxART_INFORMATION, ArtClient.wxART_OTHER, imageSize ) );
+			m_imageList.Добавь( ArtProvider.GetIcon( ArtID.wxART_INFORMATION, ArtClient.wxART_OTHER, imageSize ) );
 			
-			m_imageList.Add( ArtProvider.GetIcon( ArtID.wxART_QUESTION, ArtClient.wxART_OTHER, imageSize ) );
+			m_imageList.Добавь( ArtProvider.GetIcon( ArtID.wxART_QUESTION, ArtClient.wxART_OTHER, imageSize ) );
 			
-			m_imageList.Add( ArtProvider.GetIcon( ArtID.wxART_WARNING, ArtClient.wxART_OTHER, imageSize ) );
+			m_imageList.Добавь( ArtProvider.GetIcon( ArtID.wxART_WARNING, ArtClient.wxART_OTHER, imageSize ) );
 			
-			m_imageList.Add( ArtProvider.GetIcon( ArtID.wxART_ERROR, ArtClient.wxART_OTHER, imageSize ) );
+			m_imageList.Добавь( ArtProvider.GetIcon( ArtID.wxART_ERROR, ArtClient.wxART_OTHER, imageSize ) );
 			
 			m_panel = new Panel( this, -1, wxDefaultPosition, wxDefaultSize,
 				wxTAB_TRAVERSAL | wxCLIP_CHILDREN | wxNO_BORDER );
 			
-			string[] strOrientations =
+			ткст[] strOrientations =
 			[
 				"&Top",
 				"&Bottom",
@@ -97,17 +97,17 @@ alias std.string.find indexOf;
 			
 			m_chkShowImages = new CheckBox( m_panel, ID_CONTROLS.ID_CHK_SHOWIMAGES, "&Show images" );
 			
-			m_btnAddPage = new Button( m_panel, ID_CONTROLS.ID_BTN_ADD_PAGE, "&Add page" );
+			m_btnAddPage = new Кнопка( m_panel, ID_CONTROLS.ID_BTN_ADD_PAGE, "&Добавь page" );
 			
-			m_btnInsertPage = new Button( m_panel, ID_CONTROLS.ID_BTN_INSERT_PAGE, "&Insert page" );
+			m_btnInsertPage = new Кнопка( m_panel, ID_CONTROLS.ID_BTN_INSERT_PAGE, "&Insert page" );
 			
-			m_btnDeleteCurPage = new Button( m_panel, ID_CONTROLS.ID_BTN_DELETE_CUR_PAGE, "&Delete current page" );
+			m_btnDeleteCurPage = new Кнопка( m_panel, ID_CONTROLS.ID_BTN_DELETE_CUR_PAGE, "&Delete current page" );
 			
-			m_btnDeleteLastPage = new Button( m_panel, ID_CONTROLS.ID_BTN_DELETE_LAST_PAGE, "Delete las&t page" );
+			m_btnDeleteLastPage = new Кнопка( m_panel, ID_CONTROLS.ID_BTN_DELETE_LAST_PAGE, "Delete las&t page" );
 			
-			m_btnNextPage = new Button( m_panel, ID_CONTROLS.ID_BTN_NEXT_PAGE, "&Next page" );
+			m_btnNextPage = new Кнопка( m_panel, ID_CONTROLS.ID_BTN_NEXT_PAGE, "&Next page" );
 			
-			m_btnExit = new Button( m_panel, wxID_OK, "&Exit" );
+			m_btnExit = new Кнопка( m_panel, wxID_OK, "&Exit" );
 			m_btnExit.SetDefault();
 			
 			m_notebook = new MyNotebook( m_panel, ID_CONTROLS.ID_NOTEBOOK );
@@ -119,41 +119,41 @@ alias std.string.find indexOf;
 			
 			m_notebook.CreateInitialPages();
 			
-			m_sizerFrame = new BoxSizer( Orientation.wxVERTICAL );
+			m_sizerFrame = new BoxSizer( Ориентация.wxVERTICAL );
 			
-			m_sizerTop = new BoxSizer( Orientation.wxHORIZONTAL );
+			m_sizerTop = new BoxSizer( Ориентация.wxHORIZONTAL );
 			
-			BoxSizer sizerLeft = new BoxSizer( Orientation.wxVERTICAL );
+			BoxSizer sizerLeft = new BoxSizer( Ориентация.wxVERTICAL );
 			
-			sizerLeft.Add( m_radioOrient, 0, Stretch.wxEXPAND );
-			sizerLeft.Add( m_chkShowImages, 0, Stretch.wxEXPAND | Direction.wxTOP, 4 );
+			sizerLeft.Добавь( m_radioOrient, 0, Stretch.wxEXPAND );
+			sizerLeft.Добавь( m_chkShowImages, 0, Stretch.wxEXPAND | Direction.wxTOP, 4 );
 			
-			//sizerLeft.Add( 0, 0, 1 );
+			//sizerLeft.Добавь( 0, 0, 1 );
 			
-			sizerLeft.Add( m_btnAddPage, 0, Stretch.wxEXPAND | ( Direction.wxTOP | Direction.wxBOTTOM ), 4 );
-			sizerLeft.Add( m_btnInsertPage, 0, Stretch.wxEXPAND | ( Direction.wxTOP | Direction.wxBOTTOM ), 4 );
-			sizerLeft.Add( m_btnDeleteCurPage, 0, Stretch.wxEXPAND | ( Direction.wxTOP | Direction.wxBOTTOM ), 4 );
-			sizerLeft.Add( m_btnDeleteLastPage, 0, Stretch.wxEXPAND | ( Direction.wxTOP | Direction.wxBOTTOM ), 4 );
-			sizerLeft.Add( m_btnNextPage, 0, Stretch.wxEXPAND | ( Direction.wxTOP | Direction.wxBOTTOM ), 4 );
+			sizerLeft.Добавь( m_btnAddPage, 0, Stretch.wxEXPAND | ( Direction.wxTOP | Direction.wxBOTTOM ), 4 );
+			sizerLeft.Добавь( m_btnInsertPage, 0, Stretch.wxEXPAND | ( Direction.wxTOP | Direction.wxBOTTOM ), 4 );
+			sizerLeft.Добавь( m_btnDeleteCurPage, 0, Stretch.wxEXPAND | ( Direction.wxTOP | Direction.wxBOTTOM ), 4 );
+			sizerLeft.Добавь( m_btnDeleteLastPage, 0, Stretch.wxEXPAND | ( Direction.wxTOP | Direction.wxBOTTOM ), 4 );
+			sizerLeft.Добавь( m_btnNextPage, 0, Stretch.wxEXPAND | ( Direction.wxTOP | Direction.wxBOTTOM ), 4 );
 			
-			//sizerLeft.Add( 0, 0, 1 );
+			//sizerLeft.Добавь( 0, 0, 1 );
 			
-			sizerLeft.Add( m_btnExit, 0, Stretch.wxEXPAND );
+			sizerLeft.Добавь( m_btnExit, 0, Stretch.wxEXPAND );
 			
-			m_sizerTop.Add( sizerLeft, 0, Stretch.wxEXPAND | Direction.wxALL, 4 );
+			m_sizerTop.Добавь( sizerLeft, 0, Stretch.wxEXPAND | Direction.wxALL, 4 );
 			
-			m_sizerFrame.Add( m_sizerTop, 1, Stretch.wxEXPAND );
-			m_sizerFrame.Add( m_text, 0, Stretch.wxEXPAND );
+			m_sizerFrame.Добавь( m_sizerTop, 1, Stretch.wxEXPAND );
+			m_sizerFrame.Добавь( m_text, 0, Stretch.wxEXPAND );
 			
 			ReInitNotebook();
 			
 			m_panel.sizer = m_sizerFrame;
 			
-			m_panel.AutoLayout = true;
+			m_panel.AutoLayout = да;
 			
 			m_sizerFrame.Fit( this );
 			
-			Centre( Orientation.wxBOTH );
+			Centre( Ориентация.wxBOTH );
 			
 			EVT_RADIOBOX( ID_CONTROLS.ID_RADIO_ORIENT, & OnCheckOrRadioBox) ;
 			EVT_CHECKBOX( ID_CONTROLS.ID_CHK_SHOWIMAGES, & OnCheckOrRadioBox ) ;
@@ -174,31 +174,31 @@ alias std.string.find indexOf;
 			EVT_IDLE( & OnIdle ) ;
 		}
 		
-		public void ReInitNotebook()
+		public проц ReInitNotebook()
 		{
-			long flags = 0;
+			long флаги = 0;
 			
 			switch ( m_radioOrient.Selection )
 			{
 				default: Log.LogError( "unknown notebook orientation" ); break;
 				case ORIENT_TOP :
-					flags = Notebook.wxNB_TOP;
+					флаги = Notebook.wxNB_TOP;
 					break;
 				case ORIENT_BOTTOM :
-					flags = Notebook.wxNB_BOTTOM;
+					флаги = Notebook.wxNB_BOTTOM;
 					break;
 				case ORIENT_LEFT :
-					flags = Notebook.wxNB_LEFT;
+					флаги = Notebook.wxNB_LEFT;
 					break;
 				case ORIENT_RIGHT :
-					flags = Notebook.wxNB_RIGHT;
+					флаги = Notebook.wxNB_RIGHT;
 					break;
 			}
 			
 			MyNotebook notebook = m_notebook;
 			
 			m_notebook = new MyNotebook( m_panel, ID_CONTROLS.ID_NOTEBOOK,
-				wxDefaultPosition, wxDefaultSize, flags );
+				wxDefaultPosition, wxDefaultSize, флаги );
 			
 			if ( m_chkShowImages.IsChecked )
 			{
@@ -207,16 +207,16 @@ alias std.string.find indexOf;
 			
 			if ( notebook )
 			{
-				int sel = notebook.Selection;
+				цел sel = notebook.Selection;
 				
-				int count = notebook.PageCount;
+				цел счёт = notebook.PageCount;
 				
-				for ( int n = 0; n < count; n++ )
+				for ( цел n = 0; n < счёт; n++ )
 				{
-					string str = notebook.GetPageText( n );
+					ткст str = notebook.GetPageText( n );
 					
-					Window page = m_notebook.CreatePage( str );
-					m_notebook.AddPage( page, str, false, m_notebook.IconIndex );
+					Окно page = m_notebook.CreatePage( str );
+					m_notebook.AddPage( page, str, нет, m_notebook.IconIndex );
 				}
 				
 				if ( m_sizerNotebook )
@@ -225,7 +225,7 @@ alias std.string.find indexOf;
 				}
 				
 				notebook.Dispose();
-				notebook = null;
+				notebook = пусто;
 				
 				if ( sel != -1 )
 				{
@@ -234,36 +234,36 @@ alias std.string.find indexOf;
 			}
 			
 			m_sizerNotebook = new NotebookSizer( m_notebook );
-			m_sizerTop.Add( m_sizerNotebook, 1, Stretch.wxEXPAND | Direction.wxALL, 4 );
+			m_sizerTop.Добавь( m_sizerNotebook, 1, Stretch.wxEXPAND | Direction.wxALL, 4 );
 			m_sizerTop.Layout();
 		}
 		
-		public void OnCheckOrRadioBox( Object sender, Event e )
+		public проц OnCheckOrRadioBox( Объект sender, Событие e )
 		{
 			ReInitNotebook();
 		}
 		
-		public void OnButtonAddPage( Object sender, Event e )
+		public проц OnButtonAddPage( Объект sender, Событие e )
 		{
 			Panel panel = new Panel( m_notebook, -1 );
-			new Button( panel, -1, "First button", Point( 10, 10 ), Size( -1, -1 ) );
-			new Button( panel, -1, "Second button", Point( 50, 100 ), Size( -1, -1 ) );
+			new Кнопка( panel, -1, "First button", Точка( 10, 10 ), Размер( -1, -1 ) );
+			new Кнопка( panel, -1, "Second button", Точка( 50, 100 ), Размер( -1, -1 ) );
 			
-			m_notebook.AddPage( panel, "Added " ~ .toString( ++s_pageAdded), true, m_notebook.IconIndex );
+			m_notebook.AddPage( panel, "Added " ~ .toString( ++s_pageAdded), да, m_notebook.IconIndex );
 		}
 		
-		public void OnButtonInsertPage( Object sender, Event e )
+		public проц OnButtonInsertPage( Объект sender, Событие e )
 		{
 			Panel panel = m_notebook.CreateUserCreatedPage();
 			
-			m_notebook.InsertPage( 0, panel, "Inserted " ~ .toString( ++s_pageIns), false, m_notebook.IconIndex );
+			m_notebook.InsertPage( 0, panel, "Inserted " ~ .toString( ++s_pageIns), нет, m_notebook.IconIndex );
 			
 			m_notebook.Selection = 0;
 		}
 		
-		public void OnButtonDeleteCurPage( Object sender, Event e )
+		public проц OnButtonDeleteCurPage( Объект sender, Событие e )
 		{
-			int sel = m_notebook.Selection;
+			цел sel = m_notebook.Selection;
 			
 			if ( sel != -1 )
 			{
@@ -271,9 +271,9 @@ alias std.string.find indexOf;
 			}
 		}
 		
-		public void OnButtonDeleteLastPage( Object sender, Event e )
+		public проц OnButtonDeleteLastPage( Объект sender, Событие e )
 		{
-			int page = m_notebook.PageCount;
+			цел page = m_notebook.PageCount;
 			
 			if ( page != 0 )
 			{
@@ -281,31 +281,31 @@ alias std.string.find indexOf;
 			}
 		}
 		
-		public void OnButtonNextPage( Object sender, Event e )
+		public проц OnButtonNextPage( Объект sender, Событие e )
 		{
-			m_notebook.AdvanceSelection( true );
+			m_notebook.AdvanceSelection( да );
 		}
 		
-		public void OnButtonExit( Object sender, Event e )
+		public проц OnButtonExit( Объект sender, Событие e )
 		{
-			Close();
+			Закрой();
 		}
 		
-		public void OnNotebook( Object sender, Event e )
+		public проц OnNotebook( Объект sender, Событие e )
 		{
-			string str = "Unknown notebook event";
+			ткст str = "Unknown notebook event";
 			
 			NotebookEvent ne = cast(NotebookEvent) e;
 			
-			int eventType = ne.eventType;
+			цел ТипСоб = ne.ТипСоб;
 			
-			if ( eventType == Event.wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGED )
+			if ( ТипСоб == Событие.wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGED )
 			{
 				str = "Notebook changed";
 			}
-			else if ( eventType == Event.wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGING )
+			else if ( ТипСоб == Событие.wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGING )
 			{
-				int idx = ne.OldSelection;
+				цел idx = ne.OldSelection;
 				
 				if ( idx != -1 && m_notebook.GetPageText( idx ) == "Veto" )
 				{
@@ -323,35 +323,35 @@ alias std.string.find indexOf;
 				str = "Notebook changing";
 			}
 			
-			Log.LogMessage( "Notebook event #{0}: {1} ({2})", s_numNotebookEvents++, str, eventType );
+			Log.LogMessage( "Notebook event #{0}: {1} ({2})", s_numNotebookEvents++, str, ТипСоб );
 			
 			m_text.SetInsertionPointEnd();
 			
-			ne.Skip();
+			ne.Пропусти();
 		}
 		
-		public void OnUpdateUIBtnDeleteCurPage( Object sender, Event e )
+		public проц OnUpdateUIBtnDeleteCurPage( Объект sender, Событие e )
 		{
 			UpdateUIEvent ue = cast(UpdateUIEvent) e;
 			ue.Enabled = m_notebook.Selection != -1;
 		}
 		
-		public void OnUpdateUIBtnDeleteLastPage( Object sender, Event e )
+		public проц OnUpdateUIBtnDeleteLastPage( Объект sender, Событие e )
 		{
 			UpdateUIEvent ue = cast(UpdateUIEvent) e;
 			ue.Enabled = m_notebook.PageCount != 0;
 		}
 		
-		public void OnIdle( Object sender, Event e )
+		public проц OnIdle( Объект sender, Событие e )
 		{
-			int nPages = m_notebook.PageCount;
-			int nSel = m_notebook.Selection;
+			цел nPages = m_notebook.PageCount;
+			цел nSel = m_notebook.Selection;
 			if ( nPages != s_nPages || nSel != s_nSel )
 			{
 				s_nPages = nPages;
 				s_nSel = nSel;
 				
-				string title = "Notebook (" ~ .toString(nPages) ~ " pages, selection: " ~ .toString(nSel) ~ ")";
+				ткст title = "Notebook (" ~ .toString(nPages) ~ " pages, selection: " ~ .toString(nSel) ~ ")";
 				
 				Title = title;
 			}
@@ -362,34 +362,34 @@ alias std.string.find indexOf;
 	
 	public class MyNotebook : Notebook
 	{
-		public this( Window parent, int id )
-			{ this( parent, id, wxDefaultPosition, wxDefaultSize, 0 ); }
+		public this( Окно родитель, цел ид )
+			{ this( родитель, ид, wxDefaultPosition, wxDefaultSize, 0 ); }
 		
-		public this( Window parent, int id, Point pos, Size size, long style )
+		public this( Окно родитель, цел ид, Точка поз, Размер size, long стиль )
 		{
-			super ( parent, id, pos, size, style );
+			super ( родитель, ид, поз, size, стиль );
 		}
 		
-		public void CreateInitialPages()
+		public проц CreateInitialPages()
 		{
-			Panel panel = null;
+			Panel panel = пусто;
 			
 			panel = CreateRadioButtonsPage();
-			AddPage( panel, "Radiobuttons", false, IconIndex );
+			AddPage( panel, "Radiobuttons", нет, IconIndex );
 			
 			panel = CreateVetoPage();
-			AddPage( panel, "Veto", false, IconIndex );
+			AddPage( panel, "Veto", нет, IconIndex );
 			
 			panel = CreateBigButtonPage();
-			AddPage( panel, "Maximized button", false, IconIndex );
+			AddPage( panel, "Maximized button", нет, IconIndex );
 			
 			panel = CreateInsertPage();
-			InsertPage( 0, panel, "Inserted", false, IconIndex );
+			InsertPage( 0, panel, "Inserted", нет, IconIndex );
 			
 			Selection = 1;
 		}
 		
-		public Panel CreatePage( string pageName )
+		public Panel CreatePage( ткст pageName )
 		{
 			if ( pageName.indexOf( "Inserted " ) != -1 || pageName.indexOf( "Added " ) != -1 )
 			{
@@ -423,16 +423,16 @@ alias std.string.find indexOf;
 		{
 			Panel panel = new Panel( this );
 			
-			new Button( panel, -1, "Button", Point( 10, 10 ), Size( -1, -1 ) );
+			new Кнопка( panel, -1, "Кнопка", Точка( 10, 10 ), Размер( -1, -1 ) );
 			
 			return panel;
 		}
 		
-		public int IconIndex()
+		public цел IconIndex()
 		{
 				if ( Images )
 				{
-					int nImages = Images.ImageCount;
+					цел nImages = Images.ImageCount;
 					if ( nImages > 0 )
 					{
 						return PageCount % nImages;
@@ -445,9 +445,9 @@ alias std.string.find indexOf;
 		{
 			Panel panel = new Panel( this );
 			
-			panel.BackgroundColour = new Colour( "MAROON" );
+			panel.ЦветЗП = new Цвет( "MAROON" );
 			
-			new StaticText( panel, -1, "This page has been inserted, not added.", Point( 10, 10 ) );
+			new StaticText( panel, -1, "This page has been inserted, not added.", Точка( 10, 10 ) );
 			
 			return panel;
 		}
@@ -456,19 +456,19 @@ alias std.string.find indexOf;
 		{
 			Panel panel = new Panel( this );
 			
-			string[] animals = [ "Fox", "Hare", "Rabbit", "Sabre-toothed tiger", "Rex" ];
+			ткст[] animals = [ "Fox", "Hare", "Rabbit", "Sabre-toothed tiger", "Rex" ];
 			
 			RadioBox radiobox1 = new RadioBox( panel, -1, "Choose one", 
 				wxDefaultPosition, wxDefaultSize, animals, 2, RadioBox.wxRA_SPECIFY_ROWS );
 			
-			string[] computers = [ "Amiga", "Commodore 64", "PET", "Another" ];
+			ткст[] computers = [ "Amiga", "Commodore 64", "PET", "Another" ];
 			
 			RadioBox radiobox2 = new RadioBox( panel, -1, "Choose your favourite",
 				wxDefaultPosition, wxDefaultSize, computers, 0, RadioBox.wxRA_SPECIFY_COLS );
 			
-			BoxSizer sizerPanel = new BoxSizer( Orientation.wxVERTICAL );
-			sizerPanel.Add( radiobox1, 2, Stretch.wxEXPAND );
-			sizerPanel.Add( radiobox2, 1, Stretch.wxEXPAND );
+			BoxSizer sizerPanel = new BoxSizer( Ориентация.wxVERTICAL );
+			sizerPanel.Добавь( radiobox1, 2, Stretch.wxEXPAND );
+			sizerPanel.Добавь( radiobox2, 1, Stretch.wxEXPAND );
 			panel.sizer = sizerPanel;
 			
 			return panel;
@@ -478,7 +478,7 @@ alias std.string.find indexOf;
 		{
 			Panel panel = new Panel( this );
 			
-			new StaticText( panel, -1, "This page intentionally left blank", Point( 10, 10 ) );
+			new StaticText( panel, -1, "This page intentionally left blank", Точка( 10, 10 ) );
 			
 			return panel;
 		}
@@ -487,10 +487,10 @@ alias std.string.find indexOf;
 		{
 			Panel panel = new Panel( this );
 			
-			Button buttonBig = new Button( panel, -1, "Maximized button", Point( 0, 0 ), Size( 480, 360 ) );
+			Кнопка buttonBig = new Кнопка( panel, -1, "Maximized button", Точка( 0, 0 ), Размер( 480, 360 ) );
 			
-			BoxSizer sizerPanel = new BoxSizer( Orientation.wxVERTICAL );
-			sizerPanel.Add( buttonBig, 1, Stretch.wxEXPAND );
+			BoxSizer sizerPanel = new BoxSizer( Ориентация.wxVERTICAL );
+			sizerPanel.Добавь( buttonBig, 1, Stretch.wxEXPAND );
 			panel.sizer = sizerPanel;
 			
 			return panel;
@@ -499,28 +499,28 @@ alias std.string.find indexOf;
 	
 	//---------------------------------------------------------------------
 
-	public class NOTEBOOK : App
+	public class NOTEBOOK : Прил
 	{
-		public override bool OnInit()
+		public override бул ПриИниц()
 		{
-			MyFrame frame = new MyFrame( "Notebook sample", Window.wxDefaultPosition, Window.wxDefaultSize );
-			frame.Show( true );
+			MyFrame frame = new MyFrame( "Notebook sample", Окно.wxDefaultPosition, Окно.wxDefaultSize );
+			frame.Show( да );
 
-			return true;
+			return да;
 		}
 
 		//---------------------------------------------------------------------
 
 		
-		static void Main()
+		static проц Main()
 		{
-			NOTEBOOK app = new NOTEBOOK();
-			app.Run();
+			NOTEBOOK прил = new NOTEBOOK();
+			прил.Пуск();
 		}
 	}
 
 
-void main()
+проц main()
 {
 	NOTEBOOK.Main();
 }

@@ -10,13 +10,13 @@
 // (C) 2003 Bryan Bulten
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: SystemSettings.d,v 1.9 2006/11/17 15:21:01 afb Exp $
+// $Ид: SystemSettings.d,v 1.9 2006/11/17 15:21:01 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.SystemSettings;
 public import wx.common;
 public import wx.Colour;
-public import wx.Font;
+public import wx.Шрифт;
 
     public enum SystemFont
     {
@@ -131,13 +131,13 @@ public import wx.Font;
     }
 
 		//! \cond EXTERN
-        static extern (C) int    wxSystemSettings_GetScreenType();
-        static extern (C) void   wxSystemSettings_SetScreenType(int screen);
+        static extern (C) цел    wxSystemSettings_GetScreenType();
+        static extern (C) проц   wxSystemSettings_SetScreenType(цел screen);
 
-        static extern (C) IntPtr wxSystemSettings_GetColour(int index);
-        static extern (C) IntPtr wxSystemSettings_GetFont(int index);
-        static extern (C) int    wxSystemSettings_GetMetric(int index);
-        static extern (C) bool   wxSystemSettings_HasFeature(int index);
+        static extern (C) ЦУк wxSystemSettings_GetColour(цел индекс);
+        static extern (C) ЦУк wxSystemSettings_GetFont(цел индекс);
+        static extern (C) цел    wxSystemSettings_GetMetric(цел индекс);
+        static extern (C) бул   wxSystemSettings_HasFeature(цел индекс);
 		//! \endcond
 
         //-----------------------------------------------------------------------------
@@ -145,36 +145,36 @@ public import wx.Font;
     alias SystemSettings wxSystemSettings;
     public class SystemSettings
     {
-        public static Colour GetColour(SystemColour index)
+        public static Цвет GetColour(SystemColour индекс)
         {
-            return new Colour(wxSystemSettings_GetColour(cast(int)index), true);
+            return new Цвет(wxSystemSettings_GetColour(cast(цел)индекс), да);
         }
 
         //-----------------------------------------------------------------------------
 
-        public static Font GetFont(SystemFont index)
+        public static Шрифт GetFont(SystemFont индекс)
         {
-            return new Font(wxSystemSettings_GetFont(cast(int)index));
+            return new Шрифт(wxSystemSettings_GetFont(cast(цел)индекс));
         }
 
         //-----------------------------------------------------------------------------
 
-        public static int GetMetric(SystemMetric index)
+        public static цел GetMetric(SystemMetric индекс)
         {
-            return wxSystemSettings_GetMetric(cast(int)index);
+            return wxSystemSettings_GetMetric(cast(цел)индекс);
         }
 
         //-----------------------------------------------------------------------------
 
-        public static bool HasFeature(SystemFeature index)
+        public static бул HasFeature(SystemFeature индекс)
         {
-            return wxSystemSettings_HasFeature(cast(int)index);
+            return wxSystemSettings_HasFeature(cast(цел)индекс);
         }
 
         //-----------------------------------------------------------------------------
 
         static SystemScreenType ScreenType() { return cast(SystemScreenType)wxSystemSettings_GetScreenType(); }
-        static void ScreenType(SystemScreenType value) { wxSystemSettings_SetScreenType(cast(int)value); }
+        static проц ScreenType(SystemScreenType значение) { wxSystemSettings_SetScreenType(cast(цел)значение); }
 
         //-----------------------------------------------------------------------------
     }

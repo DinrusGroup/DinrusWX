@@ -1,4 +1,4 @@
-//-----------------------------------------------------------------------------
+﻿//-----------------------------------------------------------------------------
 // wxD - GLCanvas.d
 // (C) 2006 afb <afb@users.sourceforge.net>
 // 
@@ -6,7 +6,7 @@
 //
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: GLCanvas.d,v 1.7 2008/09/26 09:31:17 afb Exp $
+// $Ид: GLCanvas.d,v 1.7 2008/09/26 09:31:17 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.GLCanvas;
@@ -19,37 +19,37 @@ public import wx.Palette;
 	//---------------------------------------------------------------------------
 	
 	// The generic GL implementation doesn't support most of these options,
-	// such as stereo, auxiliary buffers, alpha channel, and accum buffer.
+	// such as stereo, auxiliary buffers, альфа channel, and accum buffer.
 	// Other implementations may actually support them.
 	
 	enum
 	{
-		WX_GL_RGBA=1,          /* use true color palette */
+		WX_GL_RGBA=1,          /* use да color палитра */
 		WX_GL_BUFFER_SIZE,     /* bits for buffer if not WX_GL_RGBA */
 		WX_GL_LEVEL,           /* 0 for main buffer, >0 for overlay, <0 for underlay */
 		WX_GL_DOUBLEBUFFER,    /* use doublebuffer */
 		WX_GL_STEREO,          /* use stereoscopic display */
 		WX_GL_AUX_BUFFERS,     /* number of auxiliary buffers */
-		WX_GL_MIN_RED,         /* use red buffer with most bits (> MIN_RED bits) */
-		WX_GL_MIN_GREEN,       /* use green buffer with most bits (> MIN_GREEN bits) */
-		WX_GL_MIN_BLUE,        /* use blue buffer with most bits (> MIN_BLUE bits) */
-		WX_GL_MIN_ALPHA,       /* use blue buffer with most bits (> MIN_ALPHA bits) */
+		WX_GL_MIN_RED,         /* use красный buffer with most bits (> MIN_RED bits) */
+		WX_GL_MIN_GREEN,       /* use зелёный buffer with most bits (> MIN_GREEN bits) */
+		WX_GL_MIN_BLUE,        /* use синий buffer with most bits (> MIN_BLUE bits) */
+		WX_GL_MIN_ALPHA,       /* use синий buffer with most bits (> MIN_ALPHA bits) */
 		WX_GL_DEPTH_SIZE,      /* bits for Z-buffer (0,16,32) */
 		WX_GL_STENCIL_SIZE,    /* bits for stencil buffer */
-		WX_GL_MIN_ACCUM_RED,   /* use red accum buffer with most bits (> MIN_ACCUM_RED bits) */
-		WX_GL_MIN_ACCUM_GREEN, /* use green buffer with most bits (> MIN_ACCUM_GREEN bits) */
-		WX_GL_MIN_ACCUM_BLUE,  /* use blue buffer with most bits (> MIN_ACCUM_BLUE bits) */
-		WX_GL_MIN_ACCUM_ALPHA  /* use blue buffer with most bits (> MIN_ACCUM_ALPHA bits) */
+		WX_GL_MIN_ACCUM_RED,   /* use красный accum buffer with most bits (> MIN_ACCUM_RED bits) */
+		WX_GL_MIN_ACCUM_GREEN, /* use зелёный buffer with most bits (> MIN_ACCUM_GREEN bits) */
+		WX_GL_MIN_ACCUM_BLUE,  /* use синий buffer with most bits (> MIN_ACCUM_BLUE bits) */
+		WX_GL_MIN_ACCUM_ALPHA  /* use синий buffer with most bits (> MIN_ACCUM_ALPHA bits) */
 	}
 
 	//-----------------------------------------------------------------------------
 
 		//! \cond EXTERN
-		static extern (C) void wxGLContext_SetCurrent(IntPtr self, IntPtr canvas);
-		static extern (C) void wxGLContext_Update(IntPtr self);
-		static extern (C) void wxGLContext_SetColour(IntPtr self, string colour);
-		static extern (C) void wxGLContext_SwapBuffers(IntPtr self);
-		static extern (C) IntPtr wxGLContext_GetWindow(IntPtr self);
+		static extern (C) проц wxGLContext_SetCurrent(ЦУк сам, ЦУк canvas);
+		static extern (C) проц wxGLContext_Update(ЦУк сам);
+		static extern (C) проц wxGLContext_SetColour(ЦУк сам, ткст colour);
+		static extern (C) проц wxGLContext_SwapBuffers(ЦУк сам);
+		static extern (C) ЦУк wxGLContext_GetWindow(ЦУк сам);
 		//! \endcond
 
 		//-----------------------------------------------------------------------------
@@ -57,106 +57,106 @@ public import wx.Palette;
 	alias GLContext wxGLContext;
 	public class GLContext : wxObject
 	{
-		public this(IntPtr wxobj)
+		public this(ЦУк шхобъ)
 		{ 
-			super(wxobj);
+			super(шхобъ);
 		}
 		
-		public void SetCurrent(GLCanvas canvas = null)
+		public проц SetCurrent(GLCanvas canvas = пусто)
 		{
-			wxGLContext_SetCurrent(wxobj, wxObject.SafePtr(canvas));
+			wxGLContext_SetCurrent(шхобъ, wxObject.SafePtr(canvas));
 		}
 
-		public void Update()
+		public проц Обнови()
 		{
-			wxGLContext_Update(wxobj);
+			wxGLContext_Update(шхобъ);
 		}
 		
-		public void SetColour(string colour)
+		public проц УстЦвет(ткст colour)
 		{
-			wxGLContext_SetColour(wxobj, colour);
+			wxGLContext_SetColour(шхобъ, colour);
 		}
 
-		public void SwapBuffers()
+		public проц SwapBuffers()
 		{
-			wxGLContext_SwapBuffers(wxobj);
+			wxGLContext_SwapBuffers(шхобъ);
 		}
 
-		public Window window()
+		public Окно окно()
 		{
-			return new Window( wxGLContext_GetWindow(wxobj) );
+			return new Окно( wxGLContext_GetWindow(шхобъ) );
 		}
 	}
 
 		//-----------------------------------------------------------------------------
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxGLCanvas_ctor(IntPtr parent, int id, inout Point pos, inout Size size, uint style, string name, int* attribList, inout Palette palette);
-		static extern (C) IntPtr wxGLCanvas_ctor2(IntPtr parent, IntPtr shared_, int id, inout Point pos, inout Size size, uint style, string name, int* attribList, inout Palette palette);
-		static extern (C) IntPtr wxGLCanvas_ctor3(IntPtr parent, IntPtr shared_, int id, inout Point pos, inout Size size, uint style, string name, int* attribList, inout Palette palette);
+		static extern (C) ЦУк wxGLCanvas_ctor(ЦУк родитель, цел ид, inout Точка поз, inout Размер size, бцел стиль, ткст имя, цел* attribList, inout Палитра палитра);
+		static extern (C) ЦУк wxGLCanvas_ctor2(ЦУк родитель, ЦУк shared_, цел ид, inout Точка поз, inout Размер size, бцел стиль, ткст имя, цел* attribList, inout Палитра палитра);
+		static extern (C) ЦУк wxGLCanvas_ctor3(ЦУк родитель, ЦУк shared_, цел ид, inout Точка поз, inout Размер size, бцел стиль, ткст имя, цел* attribList, inout Палитра палитра);
 
-		static extern (C) void wxGLCanvas_SetCurrent(IntPtr self);
-		static extern (C) void wxGLCanvas_UpdateContext(IntPtr self);
-		static extern (C) void wxGLCanvas_SetColour(IntPtr self, string colour);
-		static extern (C) void wxGLCanvas_SwapBuffers(IntPtr self);
-		static extern (C) IntPtr wxGLCanvas_GetContext(IntPtr self);
+		static extern (C) проц wxGLCanvas_SetCurrent(ЦУк сам);
+		static extern (C) проц wxGLCanvas_UpdateContext(ЦУк сам);
+		static extern (C) проц wxGLCanvas_SetColour(ЦУк сам, ткст colour);
+		static extern (C) проц wxGLCanvas_SwapBuffers(ЦУк сам);
+		static extern (C) ЦУк wxGLCanvas_GetContext(ЦУк сам);
 		//! \endcond
 		
 		//-----------------------------------------------------------------------------
 
 	alias GLCanvas wxGLCanvas;
-	public class GLCanvas : Window
+	public class GLCanvas : Окно
 	{
-		public static Palette wxNullPalette = null;
-		const string wxGLCanvasStr = "GLCanvas";
+		public static Палитра wxNullPalette = пусто;
+		const ткст wxGLCanvasStr = "GLCanvas";
 
-		public this(Window parent, int id, Point pos=wxDefaultPosition, Size size=wxDefaultSize, int style=0, string name=wxGLCanvasStr,int* attribList=null, Palette palette=wxNullPalette)
-			{ this(wxGLCanvas_ctor(wxObject.SafePtr(parent), id, pos, size, style, name, attribList, palette), true); }
+		public this(Окно родитель, цел ид, Точка поз=wxDefaultPosition, Размер size=wxDefaultSize, цел стиль=0, ткст имя=wxGLCanvasStr,цел* attribList=пусто, Палитра палитра=wxNullPalette)
+			{ this(wxGLCanvas_ctor(wxObject.SafePtr(родитель), ид, поз, size, стиль, имя, attribList, палитра), да); }
 		
-		public this(Window parent, GLContext shared_, int id, Point pos=wxDefaultPosition, Size size=wxDefaultSize, int style=0, string name=wxGLCanvasStr,int* attribList=null, Palette palette=wxNullPalette)
-			{ this(wxGLCanvas_ctor2(wxObject.SafePtr(parent), wxObject.SafePtr(shared_), id, pos, size, style, name, attribList, palette), true); }
+		public this(Окно родитель, GLContext shared_, цел ид, Точка поз=wxDefaultPosition, Размер size=wxDefaultSize, цел стиль=0, ткст имя=wxGLCanvasStr,цел* attribList=пусто, Палитра палитра=wxNullPalette)
+			{ this(wxGLCanvas_ctor2(wxObject.SafePtr(родитель), wxObject.SafePtr(shared_), ид, поз, size, стиль, имя, attribList, палитра), да); }
 		
-		public this(Window parent, GLCanvas shared_, int id, Point pos=wxDefaultPosition, Size size=wxDefaultSize, int style=0, string name=wxGLCanvasStr,int* attribList=null, Palette palette=wxNullPalette)
-			{ this(wxGLCanvas_ctor3(wxObject.SafePtr(parent), wxObject.SafePtr(shared_), id, pos, size, style, name, attribList, palette), true); }
+		public this(Окно родитель, GLCanvas shared_, цел ид, Точка поз=wxDefaultPosition, Размер size=wxDefaultSize, цел стиль=0, ткст имя=wxGLCanvasStr,цел* attribList=пусто, Палитра палитра=wxNullPalette)
+			{ this(wxGLCanvas_ctor3(wxObject.SafePtr(родитель), wxObject.SafePtr(shared_), ид, поз, size, стиль, имя, attribList, палитра), да); }
 
-		public this(Window parent, Point pos=wxDefaultPosition, Size size=wxDefaultSize, int style=0, string name=wxGLCanvasStr,int* attribList=null, Palette palette=wxNullPalette)
-			{ this(parent, Window.UniqueID, pos, size, style, name, attribList, palette); }
+		public this(Окно родитель, Точка поз=wxDefaultPosition, Размер size=wxDefaultSize, цел стиль=0, ткст имя=wxGLCanvasStr,цел* attribList=пусто, Палитра палитра=wxNullPalette)
+			{ this(родитель, Окно.UniqueID, поз, size, стиль, имя, attribList, палитра); }
 
-		public this(IntPtr wxobj) 
+		public this(ЦУк шхобъ) 
 		{
-			super(wxobj);
+			super(шхобъ);
 		}
 		
-		private this(IntPtr wxobj, bool memOwn)
+		private this(ЦУк шхобъ, бул memOwn)
 		{ 
-			super(wxobj);
+			super(шхобъ);
 			this.memOwn = memOwn;
 		}
 
-		public void SetCurrent()
+		public проц SetCurrent()
 		{
-			wxGLCanvas_SetCurrent(wxobj);
+			wxGLCanvas_SetCurrent(шхобъ);
 		}
 
-		public void UpdateContext()
+		public проц UpdateContext()
 		{
-			wxGLCanvas_UpdateContext(wxobj);
+			wxGLCanvas_UpdateContext(шхобъ);
 		}
 		
-		public void SetColour(string colour)
+		public проц УстЦвет(ткст colour)
 		{
-			wxGLCanvas_SetColour(wxobj, colour);
+			wxGLCanvas_SetColour(шхобъ, colour);
 		}
 
-		public void SwapBuffers()
+		public проц SwapBuffers()
 		{
-			wxGLCanvas_SwapBuffers(wxobj);
+			wxGLCanvas_SwapBuffers(шхобъ);
 		}
 
 		public GLContext context()
 		{
-			IntPtr wxctx = wxGLCanvas_GetContext(wxobj);
-			return wxctx ? new GLContext(wxctx) : null;
+			ЦУк wxctx = wxGLCanvas_GetContext(шхобъ);
+			return wxctx ? new GLContext(wxctx) : пусто;
 		}
 		
 	}

@@ -1,4 +1,4 @@
-//-----------------------------------------------------------------------------
+﻿//-----------------------------------------------------------------------------
 // wxD - CheckBox.d
 // (C) 2005 bero <berobero.sourceforge.net>
 // based on
@@ -10,7 +10,7 @@
 // (C) 2003 by 379, Inc.
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: CheckBox.d,v 1.9 2006/11/17 15:20:59 afb Exp $
+// $Ид: CheckBox.d,v 1.9 2006/11/17 15:20:59 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.CheckBox;
@@ -27,16 +27,16 @@ public import wx.Control;
 	//---------------------------------------------------------------------
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxCheckBox_ctor();
-		static extern (C) bool   wxCheckBox_Create(IntPtr self, IntPtr parent, int id, string label, inout Point pos, inout Size size, uint style, IntPtr val, string name);
-		static extern (C) bool   wxCheckBox_GetValue(IntPtr self);
-		static extern (C) void   wxCheckBox_SetValue(IntPtr self, bool state);
-		static extern (C) bool   wxCheckBox_IsChecked(IntPtr self);
+		static extern (C) ЦУк wxCheckBox_ctor();
+		static extern (C) бул   wxCheckBox_Create(ЦУк сам, ЦУк родитель, цел ид, ткст надпись, inout Точка поз, inout Размер size, бцел стиль, ЦУк val, ткст имя);
+		static extern (C) бул   wxCheckBox_GetValue(ЦУк сам);
+		static extern (C) проц   wxCheckBox_SetValue(ЦУк сам, бул state);
+		static extern (C) бул   wxCheckBox_IsChecked(ЦУк сам);
 		
-		static extern (C) CheckBoxState wxCheckBox_Get3StateValue(IntPtr self);
-		static extern (C) void wxCheckBox_Set3StateValue(IntPtr self, CheckBoxState state);
-		static extern (C) bool wxCheckBox_Is3State(IntPtr self);
-		static extern (C) bool wxCheckBox_Is3rdStateAllowedForUser(IntPtr self);
+		static extern (C) CheckBoxState wxCheckBox_Get3StateValue(ЦУк сам);
+		static extern (C) проц wxCheckBox_Set3StateValue(ЦУк сам, CheckBoxState state);
+		static extern (C) бул wxCheckBox_Is3State(ЦУк сам);
+		static extern (C) бул wxCheckBox_Is3rdStateAllowedForUser(ЦУк сам);
 		//! \endcond
 
 		//---------------------------------------------------------------------
@@ -44,77 +44,77 @@ public import wx.Control;
 	alias CheckBox wxCheckBox;
 	public class CheckBox : Control
 	{
-		public const int wxCHK_2STATE           = 0x0000;
-		public const int wxCHK_3STATE           = 0x1000;
-		public const int wxCHK_ALLOW_3RD_STATE_FOR_USER           = 0x2000;
-		public const string wxCheckBoxNameStr = "checkbox";
+		public const цел wxCHK_2STATE           = 0x0000;
+		public const цел wxCHK_3STATE           = 0x1000;
+		public const цел wxCHK_ALLOW_3RD_STATE_FOR_USER           = 0x2000;
+		public const ткст wxCheckBoxNameStr = "checkbox";
 	
-		public this(IntPtr wxobj) 
-			{ super(wxobj);}
+		public this(ЦУк шхобъ) 
+			{ super(шхобъ);}
 			
 		public this()
 			{ this(wxCheckBox_ctor()); }
 
-		public this(Window parent, int id, string label, Point pos = wxDefaultPosition, Size size = wxDefaultSize, int style =0, Validator val=null, string name = wxCheckBoxNameStr)
+		public this(Окно родитель, цел ид, ткст надпись, Точка поз = wxDefaultPosition, Размер size = wxDefaultSize, цел стиль =0, Validator val=пусто, ткст имя = wxCheckBoxNameStr)
 		{
 			this(wxCheckBox_ctor());
-			if (!wxCheckBox_Create(wxobj, wxObject.SafePtr(parent), id,
-			                       label, pos, size, cast(uint)style, wxObject.SafePtr(val), name))
+			if (!wxCheckBox_Create(шхобъ, wxObject.SafePtr(родитель), ид,
+			                       надпись, поз, size, cast(бцел)стиль, wxObject.SafePtr(val), имя))
 			{
 				throw new InvalidOperationException("failed to create checkbox");
 			}
 		}
 		
-		public static wxObject New(IntPtr wxobj)
+		public static wxObject Нов(ЦУк шхобъ)
 		{
-			return new CheckBox(wxobj);
+			return new CheckBox(шхобъ);
 		}
 
 		//---------------------------------------------------------------------
-		// ctors with self created id
+		// ctors with сам created ид
 		
-		public this(Window parent, string label, Point pos = wxDefaultPosition, Size size = wxDefaultSize, int style =0, Validator val=null, string name = wxCheckBoxNameStr)
-			{ this(parent, Window.UniqueID, label, pos, size, style, val, name);}
+		public this(Окно родитель, ткст надпись, Точка поз = wxDefaultPosition, Размер size = wxDefaultSize, цел стиль =0, Validator val=пусто, ткст имя = wxCheckBoxNameStr)
+			{ this(родитель, Окно.UniqueID, надпись, поз, size, стиль, val, имя);}
 		
 		//---------------------------------------------------------------------
 
-		public bool Create(Window parent, int id, string label, inout Point pos, inout Size size,
-			int style, Validator val, string name)
+		public бул Create(Окно родитель, цел ид, ткст надпись, inout Точка поз, inout Размер size,
+			цел стиль, Validator val, ткст имя)
 		{
-			return wxCheckBox_Create(wxobj, wxObject.SafePtr(parent), id,
-			                       label, pos, size, cast(uint)style, wxObject.SafePtr(val), name);
+			return wxCheckBox_Create(шхобъ, wxObject.SafePtr(родитель), ид,
+			                       надпись, поз, size, cast(бцел)стиль, wxObject.SafePtr(val), имя);
 		}
 
 		//---------------------------------------------------------------------
 
-		public bool Value() { return wxCheckBox_GetValue(wxobj); }
-		public void Value(bool value) { wxCheckBox_SetValue(wxobj, value); }
+		public бул Value() { return wxCheckBox_GetValue(шхобъ); }
+		public проц Value(бул значение) { wxCheckBox_SetValue(шхобъ, значение); }
 
 		//---------------------------------------------------------------------
 
-		public bool IsChecked() { return wxCheckBox_IsChecked(wxobj); }
+		public бул IsChecked() { return wxCheckBox_IsChecked(шхобъ); }
 		
 		//---------------------------------------------------------------------
 		
-		public CheckBoxState ThreeStateValue() { return wxCheckBox_Get3StateValue(wxobj); }
-		public void ThreeStateValue(CheckBoxState value) { wxCheckBox_Set3StateValue(wxobj, value); }
+		public CheckBoxState ThreeStateValue() { return wxCheckBox_Get3StateValue(шхобъ); }
+		public проц ThreeStateValue(CheckBoxState значение) { wxCheckBox_Set3StateValue(шхобъ, значение); }
 		
 		//---------------------------------------------------------------------
 		
-		public bool Is3State()
+		public бул Is3State()
 		{
-			return wxCheckBox_Is3State(wxobj);
+			return wxCheckBox_Is3State(шхобъ);
 		}
 
 		//---------------------------------------------------------------------
 		
-		public bool Is3rdStateAllowedForUser()
+		public бул Is3rdStateAllowedForUser()
 		{
-			return wxCheckBox_Is3rdStateAllowedForUser(wxobj);
+			return wxCheckBox_Is3rdStateAllowedForUser(шхобъ);
 		}
 		
 		//---------------------------------------------------------------------
         
-		public void Clicked_Add(EventListener value) { AddCommandListener(Event.wxEVT_COMMAND_CHECKBOX_CLICKED, ID, value, this); }
-		public void Clicked_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц Clicked_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_COMMAND_CHECKBOX_CLICKED, ИД, значение, this); }
+		public проц Clicked_Remove(EventListener значение) { RemoveHandler(значение, this); }
 	}

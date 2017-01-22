@@ -8,11 +8,11 @@
 // (C) 2004 by Alexander Olk
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: Internat.d,v 1.10 2008/03/03 20:12:44 afb Exp $
+// $Ид: Internat.d,v 1.10 2008/03/03 20:12:44 afb Exp $
 //-----------------------------------------------------------------------------
 
 import wx.wx;
-private import std.string;
+private import std.ткст;
 
 	public class MyFrame : Frame
 	{
@@ -35,16 +35,16 @@ private import std.string;
 
 		public this(Locale locale)
 		{
-			super( null, -1, _("International wxWidgets App") );
+			super( пусто, -1, _("International wxWidgets Прил") );
 			m_locale = locale;
 			
-			// Set the window icon
+			// Установи the окно иконка
 
-			icon = new Icon("../Samples/Internat/mondrian.png");
+			иконка = new Icon("../Samples/Internat/mondrian.png");
 
-			// Set up a menu
+			// Установи up a меню
 
-			Menu fileMenu = new Menu();
+			Меню fileMenu = new Меню();
 			fileMenu.AppendWL( Cmd.About, _("&About..."), &OnAbout) ;
 			fileMenu.AppendSeparator();
 			fileMenu.AppendWL( Cmd.Quit, _("E&xit"), &OnQuit) ;
@@ -57,23 +57,23 @@ private import std.string;
 
 		//---------------------------------------------------------------------
 
-		public void OnQuit(Object sender, Event e)
+		public проц OnQuit(Объект sender, Событие e)
 		{
-			Close();
+			Закрой();
 		}
 
 		//---------------------------------------------------------------------
 
-		public void OnAbout(Object sender, Event e)
+		public проц OnAbout(Объект sender, Событие e)
 		{
-			string locale = m_locale.GetLocale();
-			string sysname = m_locale.SysName;
-			string canname = m_locale.CanonicalName;
+			ткст locale = m_locale.GetLocale();
+			ткст sysname = m_locale.SysName;
+			ткст canname = m_locale.CanonicalName;
 			
-			string localeInfo = std.string.format( _("Language: %s\nSystem locale name:\n%s\nCanonical locale name: %s\n"),
+			ткст localeInfo = std.ткст.format( _("Language: %s\nSystem locale имя:\n%s\nCanonical locale имя: %s\n"),
 					locale, sysname, canname );
 		
-			string msg = _("I18n sample\n(c) 1998, 1999 Vadim Zeitlin and Julian Smart");
+			ткст msg = _("I18n sample\n(c) 1998, 1999 Vadim Zeitlin and Julian Smart");
 			msg ~= _("\nPorted 2005 to wxD by BERO\n\n");
 			msg ~= localeInfo;
 			MessageBox(this, msg, _("About Internat"), Dialog.wxOK | Dialog.wxICON_INFORMATION);
@@ -82,7 +82,7 @@ private import std.string;
 
 
 
-	public class Internat : App
+	public class Internat : Прил
 	{
 		public static Language[] langIds =
 		[
@@ -101,15 +101,15 @@ private import std.string;
 	
 		protected Locale m_locale;
 		
-		public string[] st_args;
+		public ткст[] st_args;
 	
 		//---------------------------------------------------------------------
 
-		public override bool OnInit()
+		public override бул ПриИниц()
 		{
 			m_locale = new Locale();
 
-			int lng = -1;
+			цел lng = -1;
 			
 			if ( st_args.length == 1 )
 			{
@@ -118,7 +118,7 @@ private import std.string;
 			
 			if ( lng == -1 )
 			{
-				string[] langNames =
+				ткст[] langNames =
 				[
 					"System default",
 					"French",
@@ -142,26 +142,26 @@ private import std.string;
 			if (m_locale.AddCatalog( "../Samples/Internat/internat" )) {}
 		
 			MyFrame frame = new MyFrame(m_locale);
-			frame.Show(true);
+			frame.Show(да);
 
-			return true;
+			return да;
 		}
 
 		//---------------------------------------------------------------------
 
 		
-		static void Main( string[] args )
+		static проц Main( ткст[] args )
 		{
-			Internat app = new Internat();
-			app.st_args = args;
-			app.Run();
+			Internat прил = new Internat();
+			прил.st_args = args;
+			прил.Пуск();
 		}
 
 		//---------------------------------------------------------------------
 	}
 
 
-void main(string[] args)
+проц main(ткст[] args)
 {
 	Internat.Main(args);
 }

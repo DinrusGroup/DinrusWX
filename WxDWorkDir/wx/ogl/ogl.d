@@ -6,7 +6,7 @@
 //
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: ogl.d,v 1.2 2007/01/29 20:30:51 afb Exp $
+// $Ид: ogl.d,v 1.2 2007/01/29 20:30:51 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.ogl.ogl;

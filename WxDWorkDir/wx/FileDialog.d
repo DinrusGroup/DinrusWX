@@ -1,4 +1,4 @@
-//-----------------------------------------------------------------------------
+﻿//-----------------------------------------------------------------------------
 // wxD - FileDialog.d
 // (C) 2005 bero <berobero@users.sourceforge.net>
 // (C) 2005 afb <afb@users.sourceforge.net>
@@ -11,7 +11,7 @@
 // (C) 2003 Achim Breunig
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: FileDialog.d,v 1.11 2007/04/17 15:24:20 afb Exp $
+// $Ид: FileDialog.d,v 1.11 2007/04/17 15:24:20 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.FileDialog;
@@ -25,39 +25,39 @@ version (Tango)
 }
 else // Phobos
 {
-private import std.string;
+private import std.ткст;
 }
 //! \endcond
 
 		//! \cond EXTERN
-        static extern (C) IntPtr wxFileDialog_ctor(IntPtr parent, string message, string defaultDir, string defaultFile, string wildcard, uint style, inout Point pos);
-        static extern (C) void   wxFileDialog_dtor(IntPtr self);
+        static extern (C) ЦУк wxFileDialog_ctor(ЦУк родитель, ткст message, ткст defaultDir, ткст defaultFile, ткст wildcard, бцел стиль, inout Точка поз);
+        static extern (C) проц   wxFileDialog_dtor(ЦУк сам);
 
-        static extern (C) IntPtr wxFileDialog_GetDirectory(IntPtr self);
-        static extern (C) void   wxFileDialog_SetDirectory(IntPtr self, string dir);
+        static extern (C) ЦУк wxFileDialog_GetDirectory(ЦУк сам);
+        static extern (C) проц   wxFileDialog_SetDirectory(ЦУк сам, ткст dir);
 
-        static extern (C) IntPtr wxFileDialog_GetFilename(IntPtr self);
-        static extern (C) void   wxFileDialog_SetFilename(IntPtr self, string filename);
+        static extern (C) ЦУк wxFileDialog_GetFilename(ЦУк сам);
+        static extern (C) проц   wxFileDialog_SetFilename(ЦУк сам, ткст фимя);
 
-        static extern (C) IntPtr wxFileDialog_GetPath(IntPtr self);
-        static extern (C) void   wxFileDialog_SetPath(IntPtr self, string path);
+        static extern (C) ЦУк wxFileDialog_GetPath(ЦУк сам);
+        static extern (C) проц   wxFileDialog_SetPath(ЦУк сам, ткст путь);
 
-        static extern (C) void   wxFileDialog_SetFilterIndex(IntPtr self, int filterIndex);
-        static extern (C) int    wxFileDialog_GetFilterIndex(IntPtr self);
+        static extern (C) проц   wxFileDialog_SetFilterIndex(ЦУк сам, цел filterIndex);
+        static extern (C) цел    wxFileDialog_GetFilterIndex(ЦУк сам);
 
-        static extern (C) IntPtr wxFileDialog_GetWildcard(IntPtr self);
-        static extern (C) void   wxFileDialog_SetWildcard(IntPtr self, string wildcard);
+        static extern (C) ЦУк wxFileDialog_GetWildcard(ЦУк сам);
+        static extern (C) проц   wxFileDialog_SetWildcard(ЦУк сам, ткст wildcard);
 
-        static extern (C) void   wxFileDialog_SetMessage(IntPtr self, string message);
-        static extern (C) IntPtr wxFileDialog_GetMessage(IntPtr self);
+        static extern (C) проц   wxFileDialog_SetMessage(ЦУк сам, ткст message);
+        static extern (C) ЦУк wxFileDialog_GetMessage(ЦУк сам);
 
-        static extern (C) int    wxFileDialog_ShowModal(IntPtr self);
+        static extern (C) цел    wxFileDialog_ShowModal(ЦУк сам);
 
-        static extern (C) int    wxFileDialog_GetStyle(IntPtr self);
-        static extern (C) void   wxFileDialog_SetStyle(IntPtr self, int style);
+        static extern (C) цел    wxFileDialog_GetStyle(ЦУк сам);
+        static extern (C) проц   wxFileDialog_SetStyle(ЦУк сам, цел стиль);
 
-        static extern (C) IntPtr wxFileDialog_GetPaths(IntPtr self);
-        static extern (C) IntPtr wxFileDialog_GetFilenames(IntPtr self);
+        static extern (C) ЦУк wxFileDialog_GetPaths(ЦУк сам);
+        static extern (C) ЦУк wxFileDialog_GetFilenames(ЦУк сам);
 		//! \endcond
 
         //---------------------------------------------------------------------
@@ -65,134 +65,134 @@ private import std.string;
     alias FileDialog wxFileDialog;
     public class FileDialog : Dialog
     {
-        public const int wxOPEN              = 0x0001;
-        public const int wxSAVE              = 0x0002;
-        public const int wxOVERWRITE_PROMPT  = 0x0004;
-        public const int wxHIDE_READONLY     = 0x0008;
-        public const int wxFILE_MUST_EXIST   = 0x0010;
-        public const int wxMULTIPLE          = 0x0020;
-        public const int wxCHANGE_DIR        = 0x0040;
+        public const цел wxOPEN              = 0x0001;
+        public const цел wxSAVE              = 0x0002;
+        public const цел wxOVERWRITE_PROMPT  = 0x0004;
+        public const цел wxHIDE_READONLY     = 0x0008;
+        public const цел wxFILE_MUST_EXIST   = 0x0010;
+        public const цел wxMULTIPLE          = 0x0020;
+        public const цел wxCHANGE_DIR        = 0x0040;
 
-	public const string wxFileSelectorPromptStr = "Select a file";
+	public const ткст wxFileSelectorPromptStr = "Select a file";
 	version(__WXMSW__) {
-		public const string wxFileSelectorDefaultWildcardStr = "*.*";
+		public const ткст wxFileSelectorDefaultWildcardStr = "*.*";
 	} else {
-		public const string wxFileSelectorDefaultWildcardStr = "*";
+		public const ткст wxFileSelectorDefaultWildcardStr = "*";
 	}
 
-        public this(IntPtr wxobj)
-            { super(wxobj); }
+        public this(ЦУк шхобъ)
+            { super(шхобъ); }
 
-        public this(Window parent, string message = wxFileSelectorPromptStr, string defaultDir = "", string defaultFile = "", string wildcard = wxFileSelectorDefaultWildcardStr , int style = 0, Point pos = wxDefaultPosition)
-            { this(wxFileDialog_ctor(wxObject.SafePtr(parent), message, defaultDir, defaultFile, wildcard, cast(uint)style, pos)); }
-
-        //---------------------------------------------------------------------
-
-        public string Directory() { return cast(string) new wxString(wxFileDialog_GetDirectory(wxobj), true); }
-        public void Directory(string value) { wxFileDialog_SetDirectory(wxobj, value); }
-
-        public string Filename() { return cast(string) new wxString(wxFileDialog_GetFilename(wxobj), true); }
-        public void Filename(string value) { wxFileDialog_SetFilename(wxobj, value); }
-
-        public string Path() { return cast(string) new wxString(wxFileDialog_GetPath(wxobj), true); }
-        public void Path(string value) { wxFileDialog_SetPath(wxobj, value); }
-
-        public void FilterIndex(int value) { wxFileDialog_SetFilterIndex(wxobj,value); }
-        public int FilterIndex() { return wxFileDialog_GetFilterIndex(wxobj); }
-
-        public void Message(string value) { wxFileDialog_SetMessage(wxobj,value); }
-        public string Message() { return cast(string) new wxString(wxFileDialog_GetMessage(wxobj), true); }
+        public this(Окно родитель, ткст message = wxFileSelectorPromptStr, ткст defaultDir = "", ткст defaultFile = "", ткст wildcard = wxFileSelectorDefaultWildcardStr , цел стиль = 0, Точка поз = wxDefaultPosition)
+            { this(wxFileDialog_ctor(wxObject.SafePtr(родитель), message, defaultDir, defaultFile, wildcard, cast(бцел)стиль, поз)); }
 
         //---------------------------------------------------------------------
 
-        public override int ShowModal()
+        public ткст Directory() { return cast(ткст) new wxString(wxFileDialog_GetDirectory(шхобъ), да); }
+        public проц Directory(ткст значение) { wxFileDialog_SetDirectory(шхобъ, значение); }
+
+        public ткст Filename() { return cast(ткст) new wxString(wxFileDialog_GetFilename(шхобъ), да); }
+        public проц Filename(ткст значение) { wxFileDialog_SetFilename(шхобъ, значение); }
+
+        public ткст Путь() { return cast(ткст) new wxString(wxFileDialog_GetPath(шхобъ), да); }
+        public проц Путь(ткст значение) { wxFileDialog_SetPath(шхобъ, значение); }
+
+        public проц FilterIndex(цел значение) { wxFileDialog_SetFilterIndex(шхобъ,значение); }
+        public цел FilterIndex() { return wxFileDialog_GetFilterIndex(шхобъ); }
+
+        public проц Message(ткст значение) { wxFileDialog_SetMessage(шхобъ,значение); }
+        public ткст Message() { return cast(ткст) new wxString(wxFileDialog_GetMessage(шхобъ), да); }
+
+        //---------------------------------------------------------------------
+
+        public override цел ShowModal()
         {
-            return wxFileDialog_ShowModal(wxobj);
+            return wxFileDialog_ShowModal(шхобъ);
         }
 
         //---------------------------------------------------------------------
 
-        public string Wildcard() { return cast(string) new wxString(wxFileDialog_GetWildcard(wxobj), true); }
-        public void Wildcard(string value) { wxFileDialog_SetWildcard(wxobj, value); }
+        public ткст Wildcard() { return cast(ткст) new wxString(wxFileDialog_GetWildcard(шхобъ), да); }
+        public проц Wildcard(ткст значение) { wxFileDialog_SetWildcard(шхобъ, значение); }
 
-        public int Style() { return cast(int)wxFileDialog_GetStyle(wxobj); }
-        public void Style(int value) { wxFileDialog_SetStyle(wxobj, cast(int)value); }
+        public цел Style() { return cast(цел)wxFileDialog_GetStyle(шхобъ); }
+        public проц Style(цел значение) { wxFileDialog_SetStyle(шхобъ, cast(цел)значение); }
 
         //---------------------------------------------------------------------
 
-        public string[] Paths() { return (new ArrayString(wxFileDialog_GetPaths(wxobj), true)).toArray(); }
+        public ткст[] Paths() { return (new МасТкст(wxFileDialog_GetPaths(шхобъ), да)).вМассив(); }
 
-        public string[] Filenames() { return (new ArrayString(wxFileDialog_GetFilenames(wxobj), true)).toArray(); }
+        public ткст[] Именаф() { return (new МасТкст(wxFileDialog_GetFilenames(шхобъ), да)).вМассив(); }
     }
 
 	//! \cond EXTERN
-	static extern (C) IntPtr wxFileSelector_func(string message, string default_path, string default_filename, string default_extension, string wildcard, int flags, IntPtr parent, int x, int y);
-	static extern (C) IntPtr wxFileSelectorEx_func(string message, string default_path, string default_filename,int *indexDefaultExtension, string wildcard, int flags, IntPtr parent, int x, int y);
-	static extern (C) IntPtr wxLoadFileSelector_func(string what, string extension, string default_name, IntPtr parent);
-	static extern (C) IntPtr wxSaveFileSelector_func(string what, string extension, string default_name, IntPtr parent);
+	static extern (C) ЦУк wxFileSelector_func(ткст message, ткст default_path, ткст default_filename, ткст default_extension, ткст wildcard, цел флаги, ЦУк родитель, цел x, цел y);
+	static extern (C) ЦУк wxFileSelectorEx_func(ткст message, ткст default_path, ткст default_filename,цел *indexDefaultExtension, ткст wildcard, цел флаги, ЦУк родитель, цел x, цел y);
+	static extern (C) ЦУк wxLoadFileSelector_func(ткст what, ткст extension, ткст default_name, ЦУк родитель);
+	static extern (C) ЦУк wxSaveFileSelector_func(ткст what, ткст extension, ткст default_name, ЦУк родитель);
 	//! \endcond
 
-string FileSelector(
-	string message = FileDialog.wxFileSelectorPromptStr,
-	string default_path = null,
-	string default_filename = null,
-	string default_extension = null,
-	string wildcard = FileDialog.wxFileSelectorDefaultWildcardStr,
-	int flags = 0,
-	Window parent = null, int x = -1, int y = -1)
+ткст FileSelector(
+	ткст message = FileDialog.wxFileSelectorPromptStr,
+	ткст default_path = пусто,
+	ткст default_filename = пусто,
+	ткст default_extension = пусто,
+	ткст wildcard = FileDialog.wxFileSelectorDefaultWildcardStr,
+	цел флаги = 0,
+	Окно родитель = пусто, цел x = -1, цел y = -1)
 {
-	return cast(string) new wxString(wxFileSelector_func(
+	return cast(ткст) new wxString(wxFileSelector_func(
 		message,
 		default_path,
 		default_filename,
 		default_extension,
 		wildcard,
-		flags,
-		wxObject.SafePtr(parent),x,y), true);
+		флаги,
+		wxObject.SafePtr(родитель),x,y), да);
 }
 
-string FileSelectorEx(
-	string message = FileDialog.wxFileSelectorPromptStr,
-	string default_path = null,
-	string default_filename = null,
-	int *indexDefaultExtension = null,
-	string wildcard = FileDialog.wxFileSelectorDefaultWildcardStr,
-	int flags = 0,
-	Window parent = null, int x = -1, int y = -1)
+ткст FileSelectorEx(
+	ткст message = FileDialog.wxFileSelectorPromptStr,
+	ткст default_path = пусто,
+	ткст default_filename = пусто,
+	цел *indexDefaultExtension = пусто,
+	ткст wildcard = FileDialog.wxFileSelectorDefaultWildcardStr,
+	цел флаги = 0,
+	Окно родитель = пусто, цел x = -1, цел y = -1)
 {
-	return cast(string) new wxString(wxFileSelectorEx_func(
+	return cast(ткст) new wxString(wxFileSelectorEx_func(
 		message,
 		default_path,
 		default_filename,
 		indexDefaultExtension,
 		wildcard,
-		flags,
-		wxObject.SafePtr(parent),x,y), true);
+		флаги,
+		wxObject.SafePtr(родитель),x,y), да);
 }
 
-string LoadFileSelector(
-	string what,
-	string extension,
-	string default_name = null,
-	Window parent = null)
+ткст LoadFileSelector(
+	ткст what,
+	ткст extension,
+	ткст default_name = пусто,
+	Окно родитель = пусто)
 {
-	return cast(string) new wxString(wxLoadFileSelector_func(
+	return cast(ткст) new wxString(wxLoadFileSelector_func(
 		what,
 		extension,
 		default_name,
-		wxObject.SafePtr(parent)), true);
+		wxObject.SafePtr(родитель)), да);
 }
 
-string SaveFileSelector(
-	string what,
-	string extension,
-	string default_name = null,
-	Window parent = null)
+ткст SaveFileSelector(
+	ткст what,
+	ткст extension,
+	ткст default_name = пусто,
+	Окно родитель = пусто)
 {
-	return cast(string) new wxString(wxSaveFileSelector_func(
+	return cast(ткст) new wxString(wxSaveFileSelector_func(
 		what,
 		extension,
 		default_name,
-		wxObject.SafePtr(parent)), true);
+		wxObject.SafePtr(родитель)), да);
 }
 

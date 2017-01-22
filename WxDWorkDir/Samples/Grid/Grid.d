@@ -8,11 +8,11 @@
 // (C) 2004 by Alexander Olk
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: Grid.d,v 1.10 2008/03/03 20:12:13 afb Exp $
+// $Ид: Grid.d,v 1.10 2008/03/03 20:12:13 afb Exp $
 //-----------------------------------------------------------------------------
 
 import wx.wx;
-private import std.string;
+private import std.ткст;
 
 	public class GridFrame : Frame
 	{
@@ -74,9 +74,9 @@ private import std.string;
 		
 		private Grid grid;
 		private TextCtrl logWin;
-		private string logBuf;
+		private ткст logBuf;
 		
-		public bool m_addToSel = false;
+		public бул m_addToSel = нет;
 		
 		public static long s_sizeGrid = 10000;
 		
@@ -84,22 +84,22 @@ private import std.string;
 		
 		public this()
 		{
-			super( null, -1, "wxWidgets grid class demo", wxDefaultPosition, wxDefaultSize );
-			icon = new Icon( "../Samples/Grid/mondrian.png" );
+			super( пусто, -1, "wxWidgets grid class demo", wxDefaultPosition, wxDefaultSize );
+			иконка = new Icon( "../Samples/Grid/mondrian.png" );
 			
-			int gridW = 600;
-			int gridH = 300;
-			int logW = gridW;
-			int logH = 100;
+			цел gridW = 600;
+			цел gridH = 300;
+			цел logW = gridW;
+			цел logH = 100;
 			
-			Menu fileMenu = new Menu();
+			Меню fileMenu = new Меню();
 			fileMenu.Append( Cmd.ID_VTABLE, "&Virtual table test\tCtrl-V" );
 			fileMenu.Append( Cmd.ID_BUGS_TABLE, "&Bugs table test\tCtrl-B" );
 			fileMenu.Append( Cmd.ID_SMALL_GRID, "&Small Grid test\tCtrl-S" );
 			fileMenu.AppendSeparator();
 			fileMenu.Append( Cmd.ID_EXIT, "E&xit\tAlt-X" );
 
-			Menu viewMenu = new Menu();
+			Меню viewMenu = new Меню();
 			viewMenu.AppendCheckItem( Cmd.ID_TOGGLEROWLABELS,  "&Row labels", "" );
 			viewMenu.AppendCheckItem( Cmd.ID_TOGGLECOLLABELS,  "&Col labels", "" );
 			viewMenu.AppendCheckItem( Cmd.ID_TOGGLEEDIT,  "&Editable", "" );
@@ -107,43 +107,43 @@ private import std.string;
 			viewMenu.AppendCheckItem( Cmd.ID_TOGGLECOLSIZING, "C&ol drag-resize", "" );
 			viewMenu.AppendCheckItem( Cmd.ID_TOGGLEGRIDSIZING, "&Grid drag-resize", "" );
 			viewMenu.AppendCheckItem( Cmd.ID_TOGGLEGRIDLINES, "&Grid Lines", "" );
-			viewMenu.Append( Cmd.ID_SET_HIGHLIGHT_WIDTH, "&Set Cell Highlight Width...", "" );
-			viewMenu.Append( Cmd.ID_SET_RO_HIGHLIGHT_WIDTH, "&Set Cell RO Highlight Width...", "" );
+			viewMenu.Append( Cmd.ID_SET_HIGHLIGHT_WIDTH, "&Установи Cell Highlight Ширина...", "" );
+			viewMenu.Append( Cmd.ID_SET_RO_HIGHLIGHT_WIDTH, "&Установи Cell RO Highlight Ширина...", "" );
 			viewMenu.Append( Cmd.ID_AUTOSIZECOLS, "&Auto-size cols" );
 			viewMenu.AppendCheckItem( Cmd.ID_CELLOVERFLOW, "&Overflow cells", "" );
 			viewMenu.AppendCheckItem( Cmd.ID_RESIZECELL, "&Resize cell (7,1)", "" );
 
-			Menu rowLabelMenu = new Menu();
+			Меню rowLabelMenu = new Меню();
 
-			viewMenu.Append( Cmd.ID_ROWLABELALIGN, "R&ow label alignment", rowLabelMenu, "Change alignment of row labels" );
+			viewMenu.Append( Cmd.ID_ROWLABELALIGN, "R&ow надпись alignment", rowLabelMenu, "Change alignment of row labels" );
 
 			rowLabelMenu.Append( Cmd.ID_ROWLABELHORIZALIGN, "&Horizontal" );
 			rowLabelMenu.Append( Cmd.ID_ROWLABELVERTALIGN, "&Vertical" );
 
-			Menu colLabelMenu = new Menu();
+			Меню colLabelMenu = new Меню();
 
 			viewMenu.Append( Cmd.ID_COLLABELALIGN, "Col l&abel alignment", colLabelMenu, "Change alignment of col labels" );
 
 			colLabelMenu.Append( Cmd.ID_COLLABELHORIZALIGN, "&Horizontal" );
 			colLabelMenu.Append( Cmd.ID_COLLABELVERTALIGN, "&Vertical" );
 
-			Menu colMenu = new Menu();
-			colMenu.Append( Cmd.ID_SETLABELCOLOUR, "Set &label colour..." );
-			colMenu.Append( Cmd.ID_SETLABELTEXTCOLOUR, "Set label &text colour..." );
-			colMenu.Append( Cmd.ID_SETLABEL_FONT, "Set label fo&nt..." );
+			Меню colMenu = new Меню();
+			colMenu.Append( Cmd.ID_SETLABELCOLOUR, "Установи &надпись colour..." );
+			colMenu.Append( Cmd.ID_SETLABELTEXTCOLOUR, "Установи надпись &текст colour..." );
+			colMenu.Append( Cmd.ID_SETLABEL_FONT, "Установи надпись fo&nt..." );
 			colMenu.Append( Cmd.ID_GRIDLINECOLOUR, "&Grid line colour..." );
-			colMenu.Append( Cmd.ID_SET_CELL_FG_COLOUR, "Set cell &foreground colour..." );
-			colMenu.Append( Cmd.ID_SET_CELL_BG_COLOUR, "Set cell &background colour..." );
+			colMenu.Append( Cmd.ID_SET_CELL_FG_COLOUR, "Установи cell &foreground colour..." );
+			colMenu.Append( Cmd.ID_SET_CELL_BG_COLOUR, "Установи cell &background colour..." );
 
-			Menu editMenu = new Menu();
+			Меню editMenu = new Меню();
 			editMenu.Append( Cmd.ID_INSERTROW, "Insert &row" );
 			editMenu.Append( Cmd.ID_INSERTCOL, "Insert &column" );
 			editMenu.Append( Cmd.ID_DELETEROW, "Delete selected ro&ws" );
 			editMenu.Append( Cmd.ID_DELETECOL, "Delete selected co&ls" );
 			editMenu.Append( Cmd.ID_CLEARGRID, "Cl&ear grid cell contents" );
 
-			Menu selectMenu = new Menu();
-			selectMenu.AppendCheckItem( Cmd.ID_SELECT_UNSELECT, "Add new cells to the selection",
+			Меню selectMenu = new Меню();
+			selectMenu.AppendCheckItem( Cmd.ID_SELECT_UNSELECT, "Добавь new cells to the selection",
 				"When off, old selection is deselected before selecting the new cells" );
 			selectMenu.Append( Cmd.ID_SELECT_ALL, "Select all" );
 			selectMenu.Append( Cmd.ID_SELECT_ROW, "Select row 2" );
@@ -154,7 +154,7 @@ private import std.string;
 			selectMenu.Append( Cmd.ID_DESELECT_COL, "Deselect col 2" );
 			selectMenu.Append( Cmd.ID_DESELECT_CELL, "Deselect cell (3, 1)" );
 			
-			Menu selectionMenu = new Menu();
+			Меню selectionMenu = new Меню();
 			selectMenu.Append( Cmd.ID_CHANGESEL, "Change &selection mode", selectionMenu, "Change selection mode" );
 
 			selectionMenu.Append( Cmd.ID_SELCELLS, "Select &Cells" );
@@ -162,7 +162,7 @@ private import std.string;
 			selectionMenu.Append( Cmd.ID_SELCOLS, "Select C&ols" );
 
 
-			Menu helpMenu = new Menu();
+			Меню helpMenu = new Меню();
 			helpMenu.Append( Cmd.ID_ABOUT, "&About wxGrid demo" );
 
 			MenuBar menuBar = new MenuBar();
@@ -171,13 +171,13 @@ private import std.string;
 			menuBar.Append( colMenu,  "&Colours" );
 			menuBar.Append( editMenu, "&Edit" );
 			menuBar.Append( selectMenu, "&Select" );
-			menuBar.Append( helpMenu, "&Help" );
+			menuBar.Append( helpMenu, "&Справка" );
 
 			this.menuBar = menuBar ;	
 			
-			grid = new Grid( this, -1, Point( 0, 0 ), Size( 400, 300 ) );
+			grid = new Grid( this, -1, Точка( 0, 0 ), Размер( 400, 300 ) );
 			
-			logWin = new TextCtrl( this, -1, "", Point( 0, gridH + 20 ), Size( logW, logH ), TextCtrl.wxTE_MULTILINE );
+			logWin = new TextCtrl( this, -1, "", Точка( 0, gridH + 20 ), Размер( logW, logH ), TextCtrl.wxTE_MULTILINE );
 			
 			Log.SetActiveTarget( logWin ); 
 			
@@ -185,14 +185,14 @@ private import std.string;
 			grid.AppendRows( 100 );
 			grid.AppendCols( 100 );
 			
-			int ir = grid.NumberRows;
+			цел ir = grid.NumberRows;
 			grid.DeleteRows( 0, ir );
 			grid.AppendRows( ir );
 			
 			grid.SetRowSize( 0, 60 );
 			grid.SetCellValue( 0, 0, "Ctrl+Home\nwill go to\nthis cell" );
 			
-			grid.SetCellValue( 0, 1, "A long piece of text to demonstrate wrapping." );
+			grid.SetCellValue( 0, 1, "A long piece of текст to demonstrate wrapping." );
 			grid.SetCellRenderer( 0 , 1, new GridCellAutoWrapStringRenderer() );
 			grid.SetCellEditor( 0,  1 , new GridCellAutoWrapStringEditor() );
 
@@ -208,17 +208,17 @@ private import std.string;
 			grid.SetCellValue( 99, 99, "Ctrl+End\nwill go to\nthis cell" );
 			grid.SetCellValue( 1, 0, "This default cell will overflow into neighboring cells, but not if you turn overflow off." );
 
-			grid.SetCellTextColour( 1, 2, Colour.wxRED );
-			grid.SetCellBackgroundColour( 1, 2, Colour.wxGREEN );
+			grid.SetCellTextColour( 1, 2, Цвет.wxRED );
+			grid.SetCellBackgroundColour( 1, 2, Цвет.wxGREEN );
 
 			grid.SetCellValue( 1, 4, "I'm in the middle" );
 
-			grid.SetCellValue( 2, 2, "red" );
+			grid.SetCellValue( 2, 2, "красный" );
 
-			grid.SetCellTextColour( 2, 2, Colour.wxRED );
-			grid.SetCellValue( 3, 3, "green on grey" );
-			grid.SetCellTextColour( 3, 3, Colour.wxGREEN );
-			grid.SetCellBackgroundColour( 3, 3, Colour.wxLIGHT_GREY );
+			grid.SetCellTextColour( 2, 2, Цвет.wxRED );
+			grid.SetCellValue( 3, 3, "зелёный on grey" );
+			grid.SetCellTextColour( 3, 3, Цвет.wxGREEN );
+			grid.SetCellBackgroundColour( 3, 3, Цвет.wxLIGHT_GREY );
 
 			grid.SetCellValue( 4, 4, "a weird looking cell" );
 			grid.SetCellAlignment( 4, 4, Alignment.wxALIGN_CENTRE, Alignment.wxALIGN_CENTRE );
@@ -229,19 +229,19 @@ private import std.string;
 			grid.SetCellEditor( 3, 0, new GridCellBoolEditor() );	
 			
 			GridCellAttr attr = new GridCellAttr();
-			attr.TextColour = Colour.wxBLUE;
+			attr.TextColour = Цвет.wxBLUE;
 			grid.SetColAttr( 5, attr );
 			attr = new GridCellAttr();	
-			attr.BackgroundColour = Colour.wxRED;
+			attr.ЦветЗП = Цвет.wxRED;
 			grid.SetRowAttr( 5, attr );
 
 			grid.SetCellValue( 2, 4, "a wider column" );
 			grid.SetColSize( 4, 120 );
 			grid.SetColMinimalWidth( 4, 120 );
 
-			grid.SetCellTextColour( 5, 8, Colour.wxGREEN );
+			grid.SetCellTextColour( 5, 8, Цвет.wxGREEN );
 			grid.SetCellValue( 5, 8, "Bg from row attr\nText col from cell attr" );
-			grid.SetCellValue( 5, 5, "Bg from row attr Text col from col attr and this text is so long that it covers over many many empty cells but is broken by one that isn't" );
+			grid.SetCellValue( 5, 5, "Bg from row attr Текст col from col attr and this текст is so long that it covers over many many empty cells but is broken by one that isn't" );
 
 			grid.SetColFormatFloat( 6 );
 			grid.SetCellValue( 0, 6, "3.1415" );
@@ -253,7 +253,7 @@ private import std.string;
 			grid.SetCellValue( 1, 7, "1415" );
 			grid.SetCellValue( 2, 7, "12345.67890" );
 
-			string[] choices =
+			ткст[] choices =
 			[
 				"Please select a choice",
 				"This takes two cells",
@@ -263,18 +263,18 @@ private import std.string;
 			grid.SetCellEditor( 4, 0, new GridCellChoiceEditor( choices ) );
 			grid.SetCellSize( 4, 0, 1, 2 );
 			grid.SetCellValue( 4, 0, choices[0] );
-			grid.SetCellOverflow( 4, 0, false );
+			grid.SetCellOverflow( 4, 0, нет );
 
 			grid.SetCellSize( 7, 1, 3, 4 );
 			grid.SetCellAlignment( 7, 1, Alignment.wxALIGN_CENTRE, Alignment.wxALIGN_CENTRE );
 			grid.SetCellValue( 7, 1, "Big box!" );
 
-			BoxSizer topSizer = new BoxSizer( Orientation.wxVERTICAL );
-			topSizer.Add( grid, 1, Stretch.wxEXPAND );
+			BoxSizer topSizer = new BoxSizer( Ориентация.wxVERTICAL );
+			topSizer.Добавь( grid, 1, Stretch.wxEXPAND );
 
-			topSizer.Add( logWin, 0, Stretch.wxEXPAND );
+			topSizer.Добавь( logWin, 0, Stretch.wxEXPAND );
 
-			AutoLayout = true;
+			AutoLayout = да;
 			this.sizer = topSizer ;
 
 			topSizer.Fit( this );
@@ -345,19 +345,19 @@ private import std.string;
 			
 		}
 		
-		public void SetDefaults()
+		public проц SetDefaults()
 		{
-			menuBar.Check( Cmd.ID_TOGGLEROWLABELS, true );
-			menuBar.Check( Cmd.ID_TOGGLECOLLABELS, true );
-			menuBar.Check( Cmd.ID_TOGGLEEDIT, true );
-			menuBar.Check( Cmd.ID_TOGGLEROWSIZING, true );
-			menuBar.Check( Cmd.ID_TOGGLECOLSIZING, true );
-			menuBar.Check( Cmd.ID_TOGGLEGRIDSIZING, true );
-			menuBar.Check( Cmd.ID_TOGGLEGRIDLINES, true );
-			menuBar.Check( Cmd.ID_CELLOVERFLOW, true );
+			menuBar.Check( Cmd.ID_TOGGLEROWLABELS, да );
+			menuBar.Check( Cmd.ID_TOGGLECOLLABELS, да );
+			menuBar.Check( Cmd.ID_TOGGLEEDIT, да );
+			menuBar.Check( Cmd.ID_TOGGLEROWSIZING, да );
+			menuBar.Check( Cmd.ID_TOGGLECOLSIZING, да );
+			menuBar.Check( Cmd.ID_TOGGLEGRIDSIZING, да );
+			menuBar.Check( Cmd.ID_TOGGLEGRIDLINES, да );
+			menuBar.Check( Cmd.ID_CELLOVERFLOW, да );
 		}
 		
-		public void ToggleRowLabels( Object sender, Event e )
+		public проц ToggleRowLabels( Объект sender, Событие e )
 		{
 			if ( menuBar.IsChecked( Cmd.ID_TOGGLEROWLABELS ) )
 			{
@@ -369,7 +369,7 @@ private import std.string;
 			}
 		}
 		
-		public void ToggleColLabels( Object sender, Event e )
+		public проц ToggleColLabels( Объект sender, Событие e )
 		{
 			if ( menuBar.IsChecked( Cmd.ID_TOGGLECOLLABELS ) )
 			{
@@ -381,46 +381,46 @@ private import std.string;
 			}			
 		}
 		
-		public void ToggleEditing( Object sender, Event e )
+		public проц ToggleEditing( Объект sender, Событие e )
 		{
 			grid.IsEditable = menuBar.IsChecked( Cmd. ID_TOGGLEEDIT );
 		}
 
-		public void ToggleRowSizing( Object sender, Event e )
+		public проц ToggleRowSizing( Объект sender, Событие e )
 		{
 			grid.DragRowSizeEnabled = menuBar.IsChecked( Cmd.ID_TOGGLEROWSIZING );			
 		}
 
-		public void ToggleColSizing( Object sender, Event e )
+		public проц ToggleColSizing( Объект sender, Событие e )
 		{
 			grid.DragColSizeEnabled = menuBar.IsChecked( Cmd.ID_TOGGLECOLSIZING );
 			
 		}
 
-		public void ToggleGridSizing( Object sender, Event e )
+		public проц ToggleGridSizing( Объект sender, Событие e )
 		{
 			grid.DragGridSizeEnabled = menuBar.IsChecked( Cmd.ID_TOGGLEGRIDSIZING );			
 		}
 
-		public void ToggleGridLines( Object sender, Event e )
+		public проц ToggleGridLines( Объект sender, Событие e )
 		{
 			grid.GridLinesEnabled = menuBar.IsChecked( Cmd.ID_TOGGLEGRIDLINES );			
 		}
 
-		public void AutoSizeCols( Object sender, Event e )
+		public проц AutoSizeCols( Объект sender, Событие e )
 		{
 			grid.AutoSizeColumns();
 			grid.Refresh();			
 		}
 
-		public void CellOverflow( Object sender, Event e )
+		public проц CellOverflow( Объект sender, Событие e )
 		{
 			CommandEvent ce = cast(CommandEvent) e;
 			grid.DefaultCellOverflow = ce.IsChecked;
 			grid.Refresh();
 		}
 
-		public void ResizeCell( Object sender, Event e )
+		public проц ResizeCell( Объект sender, Событие e )
 		{
 			CommandEvent ce = cast(CommandEvent) e;
 			
@@ -432,51 +432,51 @@ private import std.string;
 			grid.Refresh();
 		}
 
-		public void SetLabelColour( Object sender, Event e )
+		public проц SetLabelColour( Объект sender, Событие e )
 		{
 			ColourDialog dlg = new ColourDialog(this);
 			if ( dlg.ShowModal() == wxID_OK )
 			{
 				ColourData retData = dlg.colourData;
-				Colour colour = retData.colour;
+				Цвет colour = retData.colour;
 
 				grid.LabelBackgroundColour = colour;
 			}			
 		}
 		
-		public void SetLabelTextColour( Object sender, Event e )
+		public проц SetLabelTextColour( Объект sender, Событие e )
 		{
 			ColourDialog dlg = new ColourDialog(this);
 			if ( dlg.ShowModal() == wxID_OK )
 			{
 				ColourData retData = dlg.colourData;
-				Colour colour = retData.colour;
+				Цвет colour = retData.colour;
 
 				grid.LabelTextColour = colour;
 			}				
 		}		
 		
-		public void SetLabelFont( Object sender, Event e )
+		public проц SetLabelFont( Объект sender, Событие e )
 		{
-			FontData data = new FontData();
-			data.InitialFont = grid.LabelFont;
+			FontData данные = new FontData();
+			данные.InitialFont = grid.LabelFont;
 			
-			FontDialog fd = new FontDialog(this, data);
+			FontDialog fd = new FontDialog(this, данные);
 			
 			if ( fd.ShowModal() == wxID_OK )
 			{			
-				Font font = fd.fontData.ChosenFont;
-				if ( font.Ok )
+				Шрифт шрифт = fd.fontData.ChosenFont;
+				if ( шрифт.Ок )
 				{
-					grid.LabelFont = font;
+					grid.LabelFont = шрифт;
 				}
 			}
 			
 		}		
 
-		public void SetRowLabelHorizAlignment( Object sender, Event e )
+		public проц SetRowLabelHorizAlignment( Объект sender, Событие e )
 		{
-			int horiz, vert;
+			цел horiz, vert;
 			grid.GetRowLabelAlignment( horiz, vert );
 
 			switch ( horiz )
@@ -497,9 +497,9 @@ private import std.string;
 			grid.SetRowLabelAlignment( horiz, -1 );			
 		}		
 
-		public void SetRowLabelVertAlignment( Object sender, Event e )
+		public проц SetRowLabelVertAlignment( Объект sender, Событие e )
 		{
-			int horiz, vert;
+			цел horiz, vert;
 			grid.GetRowLabelAlignment( horiz, vert );
 
 			switch ( vert )
@@ -520,9 +520,9 @@ private import std.string;
 			grid.SetRowLabelAlignment( -1, vert );			
 		}		
 
-		public void SetColLabelHorizAlignment( Object sender, Event e )
+		public проц SetColLabelHorizAlignment( Объект sender, Событие e )
 		{
-			int horiz, vert;
+			цел horiz, vert;
 			grid.GetColLabelAlignment( horiz, vert );
 
 			switch ( horiz )
@@ -543,9 +543,9 @@ private import std.string;
 			grid.SetColLabelAlignment( horiz, -1 );			
 		}		
 
-		public void SetColLabelVertAlignment( Object sender, Event e )
+		public проц SetColLabelVertAlignment( Объект sender, Событие e )
 		{
-			int horiz, vert;
+			цел horiz, vert;
 			grid.GetColLabelAlignment( horiz, vert );
 
 			switch ( vert )
@@ -566,34 +566,34 @@ private import std.string;
 			grid.SetColLabelAlignment( -1, vert );			
 		}		
 
-		public void SetGridLineColour( Object sender, Event e )
+		public проц SetGridLineColour( Объект sender, Событие e )
 		{
 			ColourDialog dlg = new ColourDialog(this);
 			if ( dlg.ShowModal() == wxID_OK )
 			{
 				ColourData retData = dlg.colourData;
-				Colour colour = retData.colour;
+				Цвет colour = retData.colour;
 
 				grid.GridLineColour = colour;
 			}							
 		}		
 		
-		public void InsertRow( Object sender, Event e )
+		public проц InsertRow( Объект sender, Событие e )
 		{
 			grid.InsertRows( grid.GridCursorRow, 1 );			
 		}		
 
-		public void InsertCol( Object sender, Event e )
+		public проц InsertCol( Объект sender, Событие e )
 		{
 			grid.InsertCols( grid.GridCursorCol, 1 );
 		}		
 
-		public void DeleteSelectedRows( Object sender, Event e )
+		public проц DeleteSelectedRows( Объект sender, Событие e )
 		{
 			if ( grid.IsSelection )
 			{
 				grid.BeginBatch();
-				for ( int n = 0; n < grid.NumberRows; )
+				for ( цел n = 0; n < grid.NumberRows; )
 					if ( grid.IsInSelection( n , 0 ) )
 						grid.DeleteRows( n, 1 );
 					else
@@ -602,12 +602,12 @@ private import std.string;
 			}			
 		}		
 
-		public void DeleteSelectedCols( Object sender, Event e )
+		public проц DeleteSelectedCols( Объект sender, Событие e )
 		{
 			if ( grid.IsSelection )
 			{
 				grid.BeginBatch();
-				for ( int n = 0; n < grid.NumberCols; )
+				for ( цел n = 0; n < grid.NumberCols; )
 					if ( grid.IsInSelection( 0 , n ) )
 						grid.DeleteCols( n, 1 );
 					else
@@ -616,35 +616,35 @@ private import std.string;
 			}			
 		}		
 		
-		public void ClearGrid( Object sender, Event e )
+		public проц ClearGrid( Объект sender, Событие e )
 		{
 			grid.ClearGrid();
 		}		
 		
-		public void SelectCells( Object sender, Event e )
+		public проц SelectCells( Объект sender, Событие e )
 		{
 			grid.SelectionMode = GridSelectionMode.wxGridSelectCells;
 		}		
 		
-		public void SelectRows( Object sender, Event e )
+		public проц SelectRows( Объект sender, Событие e )
 		{
 			grid.SelectionMode = GridSelectionMode.wxGridSelectRows;
 		}		
 
-		public void SelectCols( Object sender, Event e )
+		public проц SelectCols( Объект sender, Событие e )
 		{
 			grid.SelectionMode = GridSelectionMode.wxGridSelectColumns;
 		}		
 
-		public void SetCellFgColour( Object sender, Event e )
+		public проц SetCellFgColour( Объект sender, Событие e )
 		{
 			ColourDialog dlg = new ColourDialog(this);
 			if ( dlg.ShowModal() == wxID_OK )
 			{
 				ColourData retData = dlg.colourData;
-				Colour colour = retData.colour;
+				Цвет colour = retData.colour;
 
-				if ( colour.Ok() )
+				if ( colour.Ок() )
 				{
 					grid.DefaultCellTextColour = colour;
 					grid.Refresh();
@@ -652,24 +652,24 @@ private import std.string;
 			}										
 		}		
 
-		public void SetCellBgColour( Object sender, Event e )
+		public проц SetCellBgColour( Объект sender, Событие e )
 		{
 			ColourDialog dlg = new ColourDialog(this);
 			if ( dlg.ShowModal() == wxID_OK )
 			{
 				ColourData retData = dlg.colourData;
-				Colour colour = retData.colour;
+				Цвет colour = retData.colour;
 
-				if ( colour.Ok() )
+				if ( colour.Ок() )
 				{
 					grid.DefaultCellBackgroundColour = colour;
-					Rectangle r = Rectangle( 0, 0, grid.size.Width, grid.size.Height );
-					grid.Refresh( true, r);
+					Прямоугольник к = Прямоугольник( 0, 0, grid.size.Ширина, grid.size.Высота );
+					grid.Refresh( да, к);
 				}
 			}													
 		}		
 	
-		public void About( Object sender, Event e )
+		public проц About( Объект sender, Событие e )
 		{
 			MessageBox( "\n\nwxGrid demo \n\n" ~
 				"Ported to wxD \nby BERO\n" ,
@@ -677,95 +677,95 @@ private import std.string;
 				Dialog.wxOK );			
 		}		
 
-		public void OnQuit( Object sender, Event e )
+		public проц OnQuit( Объект sender, Событие e )
 		{
-			Close( true );
+			Закрой( да );
 		}		
 
-		public void OnVTable( Object sender, Event e )
+		public проц OnVTable( Объект sender, Событие e )
 		{
-			s_sizeGrid = GetNumberFromUser( "Size of the table to create",
-                                     "Size: ",
+			s_sizeGrid = GetNumberFromUser( "Размер of the table to create",
+                                     "Размер: ",
                                      "wxGridDemo question",
                                      s_sizeGrid,
                                      0, 32000, this);
 				
 			if ( s_sizeGrid != -1 )
 			{
-				BigGridFrame win = new BigGridFrame( s_sizeGrid );
-				win.Show( true );
+				BigGridFrame окн = new BigGridFrame( s_sizeGrid );
+				окн.Show( да );
 			}
 		}		
 		
-		public void OnBugsTable( Object sender, Event e )
+		public проц OnBugsTable( Объект sender, Событие e )
 		{
 			BugsGridFrame frame = new BugsGridFrame();
-			frame.Show( true );
+			frame.Show( да );
 		}		
 		
-		public void OnSmallGrid( Object sender, Event e )
+		public проц OnSmallGrid( Объект sender, Событие e )
 		{
-			Frame frame = new Frame( null, -1, "A Small Grid", wxDefaultPosition, Size( 640, 480 ) );
+			Frame frame = new Frame( пусто, -1, "A Small Grid", wxDefaultPosition, Размер( 640, 480 ) );
 			Panel panel = new Panel( frame, -1 );
-			Grid agrid = new Grid( panel, -1, Point( 10, 10 ), Size( 400, 400 ), wxWANTS_CHARS | wxSIMPLE_BORDER );
+			Grid agrid = new Grid( panel, -1, Точка( 10, 10 ), Размер( 400, 400 ), wxWANTS_CHARS | wxSIMPLE_BORDER );
 			agrid.CreateGrid( 3, 3 );
-			frame.Show( true );
+			frame.Show( да );
 		}		
 		
-		public void DeselectCell( Object sender, Event e )
+		public проц DeselectCell( Объект sender, Событие e )
 		{
 			grid.DeselectCell( 3, 1 );
 		}		
 
-		public void DeselectCol( Object sender, Event e )
+		public проц DeselectCol( Объект sender, Событие e )
 		{
 			grid.DeselectCol( 2 );
 		}		
 		
-		public void DeselectRow( Object sender, Event e )
+		public проц DeselectRow( Объект sender, Событие e )
 		{
 			grid.DeselectRow( 2 );
 		}		
 	
-		public void DeselectAll( Object sender, Event e )
+		public проц DeselectAll( Объект sender, Событие e )
 		{
 			grid.ClearSelection();
 		}		
 
-		public void SelectCell( Object sender, Event e )
+		public проц SelectCell( Объект sender, Событие e )
 		{
 			grid.SelectBlock( 3, 1, 3, 1, m_addToSel );
 		}		
 		
-		public void SelectCol( Object sender, Event e )
+		public проц SelectCol( Объект sender, Событие e )
 		{
 			grid.SelectCol( 2, m_addToSel );
 		}		
 		
-		public void SelectRow( Object sender, Event e )
+		public проц SelectRow( Объект sender, Событие e )
 		{
 			grid.SelectRow( 2, m_addToSel );
 		}		
 
-		public void SelectAll( Object sender, Event e )
+		public проц SelectAll( Объект sender, Событие e )
 		{
 			grid.SelectAll();
 		}		
 		
-		public void OnAddToSelectToggle( Object sender, Event e )
+		public проц OnAddToSelectToggle( Объект sender, Событие e )
 		{
 			CommandEvent ce = cast(CommandEvent) e;
 			m_addToSel = ce.IsChecked;
 		}		
 
-		public void OnSetHighlightWidth( Object sender, Event e )
+		public проц OnSetHighlightWidth( Объект sender, Событие e )
 		{
-			string[] choices = [ "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" ];
+			ткст[] choices = [ "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" ];
 
-			SingleChoiceDialog dlg = new SingleChoiceDialog(this, "Choose the thickness of the highlight pen:",
-				"Pen Width", choices);
+			SingleChoiceDialog dlg = new SingleChoiceDialog(this, "Choose the thickness of the highlight перо:",
+				"Перо Ширина", choices);
 
-			int current = grid.CellHighlightPenWidth;
+			цел current = grid.CellHighlightPenWidth;
 			dlg.Selection = current;
 			if ( dlg.ShowModal() == wxID_OK ) 
 			{
@@ -773,14 +773,14 @@ private import std.string;
 			}			
 		}		
 
-		public void OnSetROHighlightWidth( Object sender, Event e )
+		public проц OnSetROHighlightWidth( Объект sender, Событие e )
 		{
-			string[] choices = [ "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" ];
+			ткст[] choices = [ "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" ];
 
-			SingleChoiceDialog dlg = new SingleChoiceDialog(this, "Choose the thickness of the highlight pen:",
-				"Pen Width", choices);
+			SingleChoiceDialog dlg = new SingleChoiceDialog(this, "Choose the thickness of the highlight перо:",
+				"Перо Ширина", choices);
 
-			int current = grid.CellHighlightROPenWidth;
+			цел current = grid.CellHighlightROPenWidth;
 			dlg.Selection = current ;
 			if ( dlg.ShowModal() == wxID_OK ) 
 			{
@@ -788,33 +788,33 @@ private import std.string;
 			}			
 		}		
 		
-		public void OnLabelLeftClick( Object sender, Event e )
+		public проц OnLabelLeftClick( Объект sender, Событие e )
 		{
 			GridEvent ge = cast(GridEvent) e;
 			
 			if ( ge.Row != -1 )
 			{
-				logBuf = "Left click on row label " ~ .toString(ge.Row);
+				logBuf = "Left click on row надпись " ~ .toString(ge.Row);
 			}
 			else if ( ge.Col != -1 )
 			{
-				logBuf = "Left click on col label " ~ .toString(ge.Col);
+				logBuf = "Left click on col надпись " ~ .toString(ge.Col);
 			}
 			else
 			{
-				logBuf = "Left click on corner label";
+				logBuf = "Left click on corner надпись";
 			}
 
-			if ( ge.ShiftDown ) logBuf ~= " (shift down)";
-			if ( ge.ControlDown ) logBuf ~= " (control down)";
+			if ( ge.НажатШифт ) logBuf ~= " (shift down)";
+			if ( ge.НажатКонтрол ) logBuf ~= " (control down)";
 			Log.LogMessage( logBuf );
 
 			// you must call event skip if you want default grid processing
 			
-			ge.Skip();			
+			ge.Пропусти();			
 		}		
 		
-		public void OnCellLeftClick( Object sender, Event e )
+		public проц OnCellLeftClick( Объект sender, Событие e )
 		{
 			GridEvent ge = cast(GridEvent) e;
 			logBuf = "Left click at row " ~ .toString(ge.Row) ~ " col " ~ .toString(ge.Col);
@@ -823,28 +823,28 @@ private import std.string;
 			// you must call event skip if you want default grid processing
 			// (cell highlighting etc.)
 			
-			ge.Skip();			
+			ge.Пропусти();			
 		}		
 
-		public void OnRowSize( Object sender, Event e )
+		public проц OnRowSize( Объект sender, Событие e )
 		{
 			GridSizeEvent ge = cast(GridSizeEvent) e;
 			logBuf = "Resized row " ~ .toString(ge.RowOrCol);
 			Log.LogMessage( logBuf );
 
-			ge.Skip();			
+			ge.Пропусти();			
 		}		
 		
-		public void OnColSize( Object sender, Event e )
+		public проц OnColSize( Объект sender, Событие e )
 		{
 			GridSizeEvent ge = cast(GridSizeEvent) e;
 			logBuf = "Resized col " ~ .toString(ge.RowOrCol);
 			Log.LogMessage( logBuf );
 
-			ge.Skip();			
+			ge.Пропусти();			
 		}		
 
-		public void OnSelectCell( Object sender, Event e )
+		public проц OnSelectCell( Объект sender, Событие e )
 		{
 			GridEvent ge = cast(GridEvent) e;
 			if ( ge.Selecting )
@@ -854,19 +854,19 @@ private import std.string;
 				
 			logBuf ~= "cell at row " ~ .toString(ge.Row) ~
 				" col " ~ .toString(ge.Col) ~
-				" ( ControlDown: " ~ ( ge.ControlDown ? "T":"F" ) ~
-				", ShiftDown: " ~ (ge.ShiftDown ? "T":"F") ~
-				", AltDown: " ~ (ge.AltDown ? "T":"F") ~
-				", MetaDown: " ~ (ge.MetaDown ? "T":"F") ~ " )";
+				" ( НажатКонтрол: " ~ ( ge.НажатКонтрол ? "T":"F" ) ~
+				", НажатШифт: " ~ (ge.НажатШифт ? "T":"F") ~
+				", НажатАльт: " ~ (ge.НажатАльт ? "T":"F") ~
+				", НажатМета: " ~ (ge.НажатМета ? "T":"F") ~ " )";
 				
 			Log.LogMessage( logBuf );
 
-			// you must call Skip() if you want the default processing
+			// you must call Пропусти() if you want the default processing
 			// to occur in wxGrid
-			ge.Skip();			
+			ge.Пропусти();			
 		}		
 		
-		public void OnRangeSelected( Object sender, Event e )
+		public проц OnRangeSelected( Объект sender, Событие e )
 		{
 			GridRangeSelectEvent ge = cast(GridRangeSelectEvent) e;
 			
@@ -879,17 +879,17 @@ private import std.string;
 				" col " ~ .toString(ge.LeftCol) ~
 				" to row " ~ .toString(ge.BottomRow) ~
 				" col " ~ .toString(ge.RightCol) ~
-				" ( ControlDown: " ~ (ge.ControlDown ? "T":"F") ~
-				", ShiftDown: " ~ (ge.ShiftDown ? "T":"F") ~
-				", AltDown: " ~ (ge.AltDown ? "T":"F") ~
-				", MetaDown: " ~ (ge.MetaDown ? "T":"F") ~ " )";
+				" ( НажатКонтрол: " ~ (ge.НажатКонтрол ? "T":"F") ~
+				", НажатШифт: " ~ (ge.НажатШифт ? "T":"F") ~
+				", НажатАльт: " ~ (ge.НажатАльт ? "T":"F") ~
+				", НажатМета: " ~ (ge.НажатМета ? "T":"F") ~ " )";
 				
 			Log.LogMessage( logBuf );
 
-			ge.Skip();			
+			ge.Пропусти();			
 		}		
 
-		public void OnCellValueChanged( Object sender, Event e )
+		public проц OnCellValueChanged( Объект sender, Событие e )
 		{
 			GridEvent ge = cast(GridEvent) e;
 			
@@ -899,10 +899,10 @@ private import std.string;
 
 				Log.LogMessage( logBuf );
 
-			ge.Skip();			
+			ge.Пропусти();			
 		}		
 
-		public void OnEditorShown( Object sender, Event e )
+		public проц OnEditorShown( Объект sender, Событие e )
 		{
 			GridEvent ge = cast(GridEvent) e;
 			if ( ( ge.Col == 4 ) &&
@@ -917,10 +917,10 @@ private import std.string;
 			
 			Log.LogMessage( "Cell editor shown." );
 
-			ge.Skip();
+			ge.Пропусти();
 		}		
 
-		public void OnEditorHidden( Object sender, Event e )
+		public проц OnEditorHidden( Объект sender, Событие e )
 		{
 			GridEvent ge = cast(GridEvent) e;
 			if ( ( ge.Col == 4 ) &&
@@ -935,7 +935,7 @@ private import std.string;
 
 			Log.LogMessage( "Cell editor hidden." );
 
-			ge.Skip();			
+			ge.Пропусти();			
 		}				
 	}
 	
@@ -954,7 +954,7 @@ private import std.string;
 			Col_Max
 		}
 		
-		const public string[] severities =
+		const public ткст[] severities =
 		[
 			"wishlist",
 			"minor",
@@ -965,17 +965,17 @@ private import std.string;
 		
 		public this()
 		{
-			super( null, -1, "Bugs table", wxDefaultPosition, Size( 500, 300 ) );
+			super( пусто, -1, "Bugs table", wxDefaultPosition, Размер( 500, 300 ) );
 			Grid grid = new Grid( this, -1, wxDefaultPosition );
 			GridTableBase table = new BugsGridTable();
 			table.SetAttrProvider( new MyGridCellAttrProvider() );
-			grid.SetTable(table, true);
+			grid.SetTable(table, да);
 
 			GridCellAttr attrRO    = new GridCellAttr();
 			GridCellAttr attrRange = new GridCellAttr();
 			GridCellAttr attrCombo = new GridCellAttr();
 
-			attrRO.ReadOnly  = true;
+			attrRO.ReadOnly  = да;
 			attrRange.Editor = new GridCellNumberEditor( 1, 5 );
 			attrCombo.Editor = new GridCellChoiceEditor( severities );
 
@@ -1017,17 +1017,17 @@ private import std.string;
 		
 		public class BugsGridData
 		{
-			public int id;
-			public string summary;
+			public цел ид;
+			public ткст summary;
 			public Severity severity;
-			public int prio;
-			public string platform;
-			public bool opened;
+			public цел prio;
+			public ткст platform;
+			public бул opened;
 			
-            public this(int id, string summary, Severity severity, 
-                                int prio, string platform, bool opened)
+            public this(цел ид, ткст summary, Severity severity, 
+                                цел prio, ткст platform, бул opened)
 			{
-				this.id = id;
+				this.ид = ид;
 				this.summary = summary;
 				this.severity = severity;
 				this.prio = prio;
@@ -1036,7 +1036,7 @@ private import std.string;
 			}
 		}
 		
-		public static string[] severities =
+		public static ткст[] severities =
 		[
 			"wishlist",
 			"minor",
@@ -1045,9 +1045,9 @@ private import std.string;
 			"critical"
 		];
 		
-		public static string[] headers =
+		public static ткст[] headers =
 		[
-			"Id",
+			"Ид",
 			"Summary",
 			"Severity",
 			"Priority",
@@ -1060,28 +1060,28 @@ private import std.string;
 		public this() 
 		{
 			super();
-			gs_dataBugsGrid[0] = new BugsGridData( 18, "foo doesn't work", Severity.Sev_Major, 1, "wxMSW", true );
-			gs_dataBugsGrid[1] = new BugsGridData( 27, "bar crashes", Severity.Sev_Critical, 1, "all", false );
-			gs_dataBugsGrid[2] = new BugsGridData( 45, "printing is slow", Severity.Sev_Minor, 3, "wxMSW", true );
-			gs_dataBugsGrid[3] = new BugsGridData( 68, "Rectangle() fails", Severity.Sev_Normal, 1, "wxMSW", false );
+			gs_dataBugsGrid[0] = new BugsGridData( 18, "foo doesn't work", Severity.Sev_Major, 1, "wxMSW", да );
+			gs_dataBugsGrid[1] = new BugsGridData( 27, "bar crashes", Severity.Sev_Critical, 1, "all", нет );
+			gs_dataBugsGrid[2] = new BugsGridData( 45, "printing is slow", Severity.Sev_Minor, 3, "wxMSW", да );
+			gs_dataBugsGrid[3] = new BugsGridData( 68, "Прямоугольник() fails", Severity.Sev_Normal, 1, "wxMSW", нет );
 		}
 		
-		public override int GetNumberRows()
+		public override цел GetNumberRows()
 		{
 			return gs_dataBugsGrid.length;
 		}
 		
-		public override int GetNumberCols()
+		public override цел GetNumberCols()
 		{
 			return Columns.Col_Max;
 		}
 		
-		public override bool IsEmptyCell( int row, int col )
+		public override бул IsEmptyCell( цел row, цел col )
 		{
-			return false;
+			return нет;
 		}
 		
-		public override string GetValue( int row, int col )
+		public override ткст GetValue( цел row, цел col )
 		{
 			BugsGridData gd = gs_dataBugsGrid[row];
 			
@@ -1106,7 +1106,7 @@ private import std.string;
 			return "";				
 		}
 		
-		public override void SetValue( int row, int col, string value)
+		public override проц SetValue( цел row, цел col, ткст значение)
 		{
 			BugsGridData gd = gs_dataBugsGrid[row];
 
@@ -1120,10 +1120,10 @@ private import std.string;
 
 				case Columns.Col_Severity:
 				{
-					int n;
+					цел n;
 					for ( n = 0; n < severities.length; n++ )
 					{
-						if ( severities[n] == value )
+						if ( severities[n] == значение )
 						{
 							gd.severity = cast(Severity)n;
 							break;
@@ -1132,28 +1132,28 @@ private import std.string;
 
 					if ( n == severities.length )
 					{
-						Log.LogWarning( "Invalid severity value '{0}'.", value );
+						Log.LogWarning( "Invalid severity значение '{0}'.", значение );
 						gd.severity = Severity.Sev_Normal;
 					}
 				}
 				break;
 
 				case Columns.Col_Summary:
-					gd.summary = value;
+					gd.summary = значение;
 				break;
 
 				case Columns.Col_Platform:
-					gd.platform = value;
+					gd.platform = значение;
 				break;
 			}			
 		}
 		
-		public override string GetColLabelValue( int col )
+		public override ткст GetColLabelValue( цел col )
 		{
 			return headers[col];
 		}
 		
-		public override string GetTypeName( int row, int col )
+		public override ткст GetTypeName( цел row, цел col )
 		{
 			switch ( col )
 			{
@@ -1164,28 +1164,28 @@ private import std.string;
 					return "long";
 
 				case Columns.Col_Severity:
-					return "string:80";
+					return "ткст:80";
 
 				case Columns.Col_Summary:
-					return "string:80";
+					return "ткст:80";
 
 				case Columns.Col_Platform:
 					return "choice:all,MSW,GTK,other";
 
 				case Columns.Col_Opened:
-					return "bool";
+					return "бул";
 			}
 
 			return "";			
 		}
 		
-		public override bool CanGetValueAs( int row, int col, string typeName )
+		public override бул CanGetValueAs( цел row, цел col, ткст typeName )
 		{
-			if ( typeName == "string" )
+			if ( typeName == "ткст" )
 			{
-				return true;
+				return да;
 			}
-			else if ( typeName == "bool" )
+			else if ( typeName == "бул" )
 			{
 				return col == Columns.Col_Opened;
 			}
@@ -1195,23 +1195,23 @@ private import std.string;
 			}
 			else
 			{
-				return false;
+				return нет;
 			}			
 		}
 		
-		public override bool CanSetValueAs( int row, int col, string typeName )
+		public override бул CanSetValueAs( цел row, цел col, ткст typeName )
 		{
 			return CanGetValueAs(row, col, typeName);
 		}
 
-		public override int GetValueAsLong( int row, int col )
+		public override цел GetValueAsLong( цел row, цел col )
 		{
 			BugsGridData gd = gs_dataBugsGrid[row];
 			
 			switch ( col )
 			{
 				case Columns.Col_Id:
-					return gd.id;
+					return gd.ид;
 
 				case Columns.Col_Priority:
 					return gd.prio;
@@ -1225,7 +1225,7 @@ private import std.string;
 			}			
 		}
 		
-		public override bool GetValueAsBool( int row, int col )
+		public override бул GetValueAsBool( цел row, цел col )
 		{
 			if ( col == Columns.Col_Opened )
 			{
@@ -1235,11 +1235,11 @@ private import std.string;
 			{
 				Log.LogError( "unexpected column" );
 
-				return false;
+				return нет;
 			}			
 		} 
 
-		public override void SetValueAsLong( int row, int col, int value )
+		public override проц SetValueAsLong( цел row, цел col, цел значение )
 		{
 			BugsGridData gd = gs_dataBugsGrid[row];
 			
@@ -1247,7 +1247,7 @@ private import std.string;
 			switch ( col )
 			{
 				case Columns.Col_Priority:
-					gd.prio = value;
+					gd.prio = значение;
 				break;
 
 				default:
@@ -1256,11 +1256,11 @@ private import std.string;
 			}			
 		}
 		
-		public override void SetValueAsBool( int row, int col, bool value )
+		public override проц SetValueAsBool( цел row, цел col, бул значение )
 		{
 			if ( col == Columns.Col_Opened )
 			{
-				gs_dataBugsGrid[row].opened = value;
+				gs_dataBugsGrid[row].opened = значение;
 			}
 			else
 			{
@@ -1278,17 +1278,17 @@ private import std.string;
 		public this()
 		{
 			m_attrForOddRows = new GridCellAttr();
-			m_attrForOddRows.BackgroundColour = Colour.wxLIGHT_GREY;
+			m_attrForOddRows.ЦветЗП = Цвет.wxLIGHT_GREY;
 		}
 		
-		public override GridCellAttr GetAttr( int row, int col, GridCellAttr.AttrKind kind)
+		public override GridCellAttr GetAttr( цел row, цел col, GridCellAttr.AttrKind вид)
 		{
 		
-			GridCellAttr attr = super.GetAttr(row, col, kind);
+			GridCellAttr attr = super.GetAttr(row, col, вид);
 
 			if ( ( row % 2 ) > 0 )
 			{
-				if ( attr is null )
+				if ( attr is пусто )
 				{
 					attr = m_attrForOddRows;
 					attr.IncRef();
@@ -1300,7 +1300,7 @@ private import std.string;
 						GridCellAttr attrNew = attr.Clone();
 						attr.DecRef();
 						attr = attrNew;
-						attr.BackgroundColour = Colour.wxLIGHT_GREY;
+						attr.ЦветЗП = Цвет.wxLIGHT_GREY;
 					}
 				}
 			}
@@ -1316,13 +1316,13 @@ private import std.string;
 		public this()
 			
 			{ super(); };
-		public override void Draw(Grid grid, GridCellAttr attr, DC dc, Rectangle rect, int row, int col, bool isSelected)
+		public override проц Draw(Grid grid, GridCellAttr attr, DC dc, Прямоугольник прям, цел row, цел col, бул isSelected)
 		{
-			Draw(grid, attr, dc, rect, row, col, isSelected);
+			Draw(grid, attr, dc, прям, row, col, isSelected);
 			
-			dc.pen = Pen.wxGREEN_PEN;
-			dc.brush = Brush.wxTRANSPARENT_BRUSH;
-			dc.DrawEllipse( rect.X, rect.Y, rect.Width, rect.Height );
+			dc.перо = Перо.wxGREEN_PEN;
+			dc.кисть = Кисть.wxTRANSPARENT_BRUSH;
+			dc.РисуйЭллипс( прям.X, прям.Y, прям.Ширина, прям.Высота );
 		}
 	}
 	
@@ -1335,11 +1335,11 @@ private import std.string;
 		
 		public this(long sizeGrid)
 		{
-			super(null, -1, "Plugin Virtual Table", wxDefaultPosition, Size( 500, 450 ) );
+			super(пусто, -1, "Plugin Virtual Table", wxDefaultPosition, Размер( 500, 450 ) );
 			m_grid = new Grid( this, -1, wxDefaultPosition, wxDefaultSize );
 			m_table = new BigGridTable( sizeGrid );
 			 
-			m_grid.SetTable( m_table, true );
+			m_grid.SetTable( m_table, да );
 		}
 	}
 	
@@ -1355,55 +1355,55 @@ private import std.string;
 			m_sizeGrid = sizeGrid;
 		}
 		
-		public override int GetNumberRows()
+		public override цел GetNumberRows()
 		{
 			return m_sizeGrid;
 		}
 		
-		public override int GetNumberCols()
+		public override цел GetNumberCols()
 		{
 			return m_sizeGrid;
 		}
 		
-		public override string GetValue( int row, int col )
+		public override ткст GetValue( цел row, цел col )
 		{
-			string ret = "(" ~ .toString(row) ~ ", " ~ .toString(col) ~ ")";
+			ткст ret = "(" ~ .toString(row) ~ ", " ~ .toString(col) ~ ")";
 			return ret;
 		}
 		
-		public override void SetValue( int row, int col, string val )
+		public override проц SetValue( цел row, цел col, ткст val )
 		{
 		}
 		
-		public override bool IsEmptyCell( int row, int col )
+		public override бул IsEmptyCell( цел row, цел col )
 		{
-			return false;
+			return нет;
 		}
 	}
 	
 	//---------------------------------------------------------------------
 
-	public class GridApp : App
+	public class GridApp : Прил
 	{
-		public override bool OnInit()
+		public override бул ПриИниц()
 		{
 			GridFrame frame = new GridFrame();
-			frame.Show( true );
+			frame.Show( да );
 
-			return true;
+			return да;
 		}
 
 		//---------------------------------------------------------------------
 
 		
-		static void Main()
+		static проц Main()
 		{
-			GridApp app = new GridApp();
-			app.Run();
+			GridApp прил = new GridApp();
+			прил.Пуск();
 		}
 	}	
 
-void main()
+проц main()
 {
 	GridApp.Main();
 }

@@ -1,112 +1,112 @@
 //-----------------------------------------------------------------------------
-// wxD/Samples - Font.d
+// wxD/Samples - Шрифт.d
 //
-// wxD "Font" sample.
+// wxD "Шрифт" sample.
 //
 // Written by Alexander Olk (xenomorph2@onlinehome.de)
 // Modified by BERO <berobero@users.sourceforge.net>
 // (C) 2003 Alexander Olk
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: Font.d,v 1.11 2008/03/03 20:04:19 afb Exp $
+// $Ид: Шрифт.d,v 1.11 2008/03/03 20:04:19 afb Exp $
 //-----------------------------------------------------------------------------
 
 import wx.wx;
 private import std.stream;
-private import std.string;
-alias std.string.find indexOf;
+private import std.ткст;
+alias std.ткст.find indexOf;
 
-	public class MyCanvas : Window
+	public class MyCanvas : Окно
 	{
-		private Colour m_colour;
-		private Font m_font;
+		private Цвет m_colour;
+		private Шрифт m_font;
 		
 		//---------------------------------------------------------------------
 		
-		public this( Window parent )
+		public this( Окно родитель )
 		{
-			super( parent );
-			m_colour = Colour.wxRED;
-			m_font = Font.wxNORMAL_FONT;
+			super( родитель );
+			m_colour = Цвет.wxRED;
+			m_font = Шрифт.wxNORMAL_FONT;
 			
 			EVT_PAINT( & OnPaint ) ;
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public Font TextFont() { return m_font; }
-		public void TextFont(Font value) { m_font = value; }
+		public Шрифт TextFont() { return m_font; }
+		public проц TextFont(Шрифт значение) { m_font = значение; }
 		
 		//---------------------------------------------------------------------
 		
-		public Colour colour() { return m_colour; }
-		public void   colour(Colour value) { m_colour = value; }
+		public Цвет colour() { return m_colour; }
+		public проц   colour(Цвет значение) { m_colour = значение; }
 		
 		//---------------------------------------------------------------------
 		
-		public void OnPaint( Object sender, Event e )
+		public проц OnPaint( Объект sender, Событие e )
 		{
 			PaintDC dc = new PaintDC( this );
 			PrepareDC( dc );
 			
-			dc.Background = new Brush( "white",FillStyle.wxSOLID );
-			dc.Clear();
+			dc.Фон = new Кисть( "white",СтильЗаливки.wxSOLID );
+			dc.Очисть();
 			
-			int hLine = dc.CharHeight;
+			цел hLine = dc.CharHeight;
 			
-			int x = 5;
-			int y = 5;
+			цел x = 5;
+			цел y = 5;
 			
-			string fontinfo = "Font size is " ~ .toString(m_font.PointSize) ~ " points, family: " ~
+			ткст fontinfo = "Шрифт size is " ~ .toString(m_font.PointSize) ~ " points, family: " ~
 				.toString(m_font.FamilyString.ptr) ~ ", encoding: " ~ FontMapper.GetEncodingDescription( m_font.Encoding );
 				
-			dc.DrawText( fontinfo, x, y );
+			dc.РисуйТекст( fontinfo, x, y );
 			y += hLine;
 			
 			fontinfo = "Style: " ~ m_font.StyleString ~ ", weight: " ~ m_font.WeightString ~
-				", fixed width: " ~ (m_font.IsFixedWidth ? "yes" : "no");
+				", fixed ширина: " ~ (m_font.IsFixedWidth ? "yes" : "no");
 				
-			dc.DrawText( fontinfo, x, y );
+			dc.РисуйТекст( fontinfo, x, y );
 			y += hLine;
 			
-			if ( m_font.Ok )
+			if ( m_font.Ок )
 			{
-				IntPtr info = m_font.NativeFontInfo;
-				if ( info != IntPtr.init )
+				ЦУк info = m_font.NativeFontInfo;
+				if ( info != ЦУк.init )
 				{
-					string fontDesc = m_font.NativeFontInfoUserDesc;
-					fontinfo = "Native font info: " ~ fontDesc;
+					ткст fontDesc = m_font.NativeFontInfoUserDesc;
+					fontinfo = "Native шрифт info: " ~ fontDesc;
 					
-					dc.DrawText( fontinfo, x, y );
+					dc.РисуйТекст( fontinfo, x, y );
 					y += hLine;
 				}
 			}
 			
 			y += hLine;
 			
-			dc.font = m_font;
-			dc.TextForeground = m_colour;
+			dc.шрифт = m_font;
+			dc.ППланТекста = m_colour;
 			
-			int maxCharWidth;
-			int maxCharHeight;
+			цел maxCharWidth;
+			цел maxCharHeight;
 			
 			dc.GetTextExtent( "W", maxCharWidth, maxCharHeight );
 			
-			int w = maxCharWidth + 5;
-			int h = maxCharHeight + 4;
+			цел w = maxCharWidth + 5;
+			цел h = maxCharHeight + 4;
 			
-			for ( int i = 0; i < 7; i++)
+			for ( цел i = 0; i < 7; i++)
 			{
-				for ( int j = 0; j < 32; j++ )
+				for ( цел j = 0; j < 32; j++ )
 				{
-					char c = cast(char)( 32 * ( i + 1 ) + j );
+					сим c = cast(сим)( 32 * ( i + 1 ) + j );
 					
-					int charWidth;
-					int charHeight;
+					цел charWidth;
+					цел charHeight;
 					
-					string s = .toString(c);
+					ткст s = .toString(c);
 					dc.GetTextExtent( s, charWidth, charHeight );
-					dc.DrawText( 
+					dc.РисуйТекст( 
 						s, 
 						x + w * j + ( maxCharWidth - charWidth ) / 2 + 1, 
 						y + h * i + ( maxCharHeight - charHeight ) / 2 
@@ -114,20 +114,20 @@ alias std.string.find indexOf;
 				}
 			}
 			
-			dc.pen = new Pen( new Colour( "blue" ), 1, FillStyle.wxSOLID );
+			dc.перо = new Перо( new Цвет( "синий" ), 1, СтильЗаливки.wxSOLID );
 			
-			int l;
+			цел l;
 			
 			for ( l = 0; l < 8; l++ )
 			{
-				int yl = y + h * l - 2;
-				dc.DrawLine( x - 2, yl, x + 32 * w - 1, yl );
+				цел yl = y + h * l - 2;
+				dc.РисуйЛинию( x - 2, yl, x + 32 * w - 1, yl );
 			}
 			
 			for ( l = 0; l < 33; l++ )
 			{
-				int xl = x + w * l - 2;
-				dc.DrawLine( xl, y - 2, xl, y + 7 * h - 1 );
+				цел xl = x + w * l - 2;
+				dc.РисуйЛинию( xl, y - 2, xl, y + 7 * h - 1 );
 			}
 			
 			dc.Dispose(); //needed
@@ -145,56 +145,56 @@ alias std.string.find indexOf;
 		
 		//---------------------------------------------------------------------
 		
-		protected int m_fontSize;
+		protected цел m_fontSize;
 		
 		protected TextCtrl m_textctrl;
 		protected MyCanvas m_canvas;
 		
-		public static string s_dir="";
-		public static string s_file="";
+		public static ткст s_dir="";
+		public static ткст s_file="";
 		
 		//---------------------------------------------------------------------
 	
-		public this( string title, Point pos, Size size )
+		public this( ткст title, Точка поз, Размер size )
 		{
-			super( title, pos, size );
-			icon = new Icon( "../Samples/Font/mondrian.png" );
+			super( title, поз, size );
+			иконка = new Icon( "../Samples/Шрифт/mondrian.png" );
 			
 			m_fontSize = 12;
 			
-			Menu menuFile = new Menu();
+			Меню menuFile = new Меню();
 			menuFile.Append( Cmd.Font_ViewMsg, "&View...\tCtrl-V", "View an email message file" );
 			menuFile.AppendSeparator();
 			menuFile.Append( Cmd.Font_About, "&About...\tCtrl-A", "Show about dialog" );
 			menuFile.AppendSeparator();
 			menuFile.Append( Cmd.Font_Quit, "E&xit\tAlt-X", "Quit this program" );
 			
-			Menu menuFont = new Menu();
-			menuFont.Append( Cmd.Font_IncSize, "&Increase font size by 2 points\tCtrl-I" );
-			menuFont.Append( Cmd.Font_DecSize, "&Decrease font size by 2 points\tCtrl-D" );
+			Меню menuFont = new Меню();
+			menuFont.Append( Cmd.Font_IncSize, "&Increase шрифт size by 2 points\tCtrl-I" );
+			menuFont.Append( Cmd.Font_DecSize, "&Decrease шрифт size by 2 points\tCtrl-D" );
 			menuFont.AppendSeparator();
 			menuFont.AppendCheckItem( Cmd.Font_Bold, "&Bold\tCtrl-B", "Toggle bold state" );
 			menuFont.AppendCheckItem( Cmd.Font_Italic, "&Oblique\tCtrl-O", "Toggle italic state" );
 			menuFont.AppendCheckItem( Cmd.Font_Underlined, "&Underlined\tCtrl-U", "Toggle underlined state" );
 			
 			menuFont.AppendSeparator();
-			menuFont.Append( Cmd.Font_CheckNativeToFromString, "Check Native Font Info To/From String" );
+			menuFont.Append( Cmd.Font_CheckNativeToFromString, "Check Native Шрифт Info To/From String" );
 			
-			Menu menuSelect = new Menu();
-			menuSelect.Append( Cmd.Font_Choose, "&Select font...\tCtrl-S", "Select a standard font" );
+			Меню menuSelect = new Меню();
+			menuSelect.Append( Cmd.Font_Choose, "&Select шрифт...\tCtrl-S", "Select a standard шрифт" );
 			
-			Menu menuStdFonts = new Menu();
-			menuStdFonts.Append( Cmd.Font_wxNORMAL_FONT, "wxNORMAL_FONT", "Normal font used by wxWidgets" );
-			menuStdFonts.Append( Cmd.Font_wxSMALL_FONT,  "wxSMALL_FONT",  "Small font used by wxWidgets" );
-			menuStdFonts.Append( Cmd.Font_wxITALIC_FONT, "wxITALIC_FONT", "Italic font used by wxWidgets" );
-			menuStdFonts.Append( Cmd.Font_wxSWISS_FONT,  "wxSWISS_FONT",  "Swiss font used by wxWidgets" );
+			Меню menuStdFonts = new Меню();
+			menuStdFonts.Append( Cmd.Font_wxNORMAL_FONT, "wxNORMAL_FONT", "Normal шрифт used by wxWidgets" );
+			menuStdFonts.Append( Cmd.Font_wxSMALL_FONT,  "wxSMALL_FONT",  "Small шрифт used by wxWidgets" );
+			menuStdFonts.Append( Cmd.Font_wxITALIC_FONT, "wxITALIC_FONT", "Italic шрифт used by wxWidgets" );
+			menuStdFonts.Append( Cmd.Font_wxSWISS_FONT,  "wxSWISS_FONT",  "Swiss шрифт used by wxWidgets" );
 			menuSelect.Append(-2, "Standar&d fonts", menuStdFonts, "" );
 
 			menuSelect.AppendSeparator();
-			menuSelect.Append( Cmd.Font_EnumFamilies, "Enumerate font &families\tCtrl-F" );
-			menuSelect.Append( Cmd.Font_EnumFixedFamilies, "Enumerate fi&xed font families\tCtrl-X" );
+			menuSelect.Append( Cmd.Font_EnumFamilies, "Enumerate шрифт &families\tCtrl-F" );
+			menuSelect.Append( Cmd.Font_EnumFixedFamilies, "Enumerate fi&xed шрифт families\tCtrl-X" );
 			menuSelect.Append( Cmd.Font_EnumEncodings, "Enumerate &encodings\tCtrl-E" );
-			menuSelect.Append( Cmd.Font_EnumFamiliesForEncoding, "Find font for en&coding...\tCtrl-C", "Find font families for given encoding" );
+			menuSelect.Append( Cmd.Font_EnumFamiliesForEncoding, "Find шрифт for en&coding...\tCtrl-C", "Find шрифт families for given encoding" );
 			
 			MenuBar menuBar = new MenuBar();
 			menuBar.Append( menuFile, "&File" );
@@ -206,7 +206,7 @@ alias std.string.find indexOf;
 			SplitterWindow splitter = new SplitterWindow( this );
 			
 			m_textctrl = new TextCtrl( splitter, -1, 
-				"Paste text here to see how it looks\nlike in the given font",
+				"Вставь текст here to see how it looks\nlike in the given шрифт",
 				wxDefaultPosition, wxDefaultSize,
 				TextCtrl.wxTE_MULTILINE );
 			
@@ -215,7 +215,7 @@ alias std.string.find indexOf;
 			splitter.SplitHorizontally( m_textctrl, m_canvas, 100 );
 			
 			CreateStatusBar();
-			StatusText = "Welcome to wxWidgets font demo!";	
+			StatusText = "Welcome to wxWidgets шрифт demo!";	
 			
 			EVT_MENU( Cmd.Font_Quit,  & OnQuit ) ;
 			EVT_MENU( Cmd.Font_ViewMsg, & OnViewMsg ) ;
@@ -243,55 +243,55 @@ alias std.string.find indexOf;
 		
 		//---------------------------------------------------------------------
 		
-		public void OnQuit( Object sender, Event e )
+		public проц OnQuit( Объект sender, Событие e )
 		{
-			Close();
+			Закрой();
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void OnViewMsg( Object sender, Event e )
+		public проц OnViewMsg( Объект sender, Событие e )
 		{
-			FileDialog dialog = new FileDialog( this, "Open an email message file", s_dir, s_file, "*" );
+			FileDialog dialog = new FileDialog( this, "Открой an email message file", s_dir, s_file, "*" );
 			if ( dialog.ShowModal() != wxID_OK ) return;
 			
 			s_dir = dialog.Directory;
 			s_file = dialog.Filename;
 			
-			string filename = dialog.Path;
-			string message;
+			ткст фимя = dialog.Путь;
+			ткст message;
 
 			try
 			{
-				message = cast(string)std.file.read(filename);
+				message = cast(ткст)std.file.read(фимя);
 			}
 			catch (Exception ex)
 			{
 				return;
 			}
 						
-			string charset;
+			ткст charset;
 			
-			string prefix = "Content-Type: text/plain; charset=";
+			ткст prefix = "Content-Тип: текст/plain; charset=";
 			
-			int pos = message.indexOf( prefix );
+			цел поз = message.indexOf( prefix );
 			
-			if ( pos == -1 )
+			if ( поз == -1 )
 			{
-				Log.LogError( "The file '%s' doesn't contain charset information.", filename );
+				Log.LogError( "The file '%s' doesn't contain charset information.", фимя );
 				return;
 			}
 			
-			pos += prefix.length + 1; 
+			поз += prefix.length + 1; 
 			
-			int pos2 = pos;
+			цел pos2 = поз;
 			
 			while ( message[pos2] != '"' )
 			{
 				pos2++;
 			}
 						
-			charset = message[pos..pos2];
+			charset = message[поз..pos2];
 			
 			FontEncoding fontenc = FontMapper.Get.CharsetToEncoding( charset );
 			if ( fontenc == FontEncoding.wxFONTENCODING_SYSTEM )
@@ -300,7 +300,7 @@ alias std.string.find indexOf;
 				return;
 			}
 			
-			m_textctrl.LoadFile( filename );
+			m_textctrl.ЗагрузиФайл( фимя );
 			
 			if ( fontenc == FontEncoding.wxFONTENCODING_UTF8 || 
 				!FontMapper.Get.IsEncodingAvailable(fontenc) )
@@ -329,14 +329,14 @@ alias std.string.find indexOf;
 				}
 			}
 			
-			if ( !DoEnumerateFamilies( false, fontenc, true ) )
+			if ( !DoEnumerateFamilies( нет, fontenc, да ) )
 			{
-				Font font = new Font( 12, FontFamily.wxDEFAULT, FontStyle.wxNORMAL,
-					FontWeight.wxNORMAL, false, "", fontenc );
+				Шрифт шрифт = new Шрифт( 12, FontFamily.wxDEFAULT, FontStyle.wxNORMAL,
+					FontWeight.wxNORMAL, нет, "", fontenc );
 				
-				if ( font.Ok )
+				if ( шрифт.Ок )
 				{
-					DoChangeFont( font );
+					DoChangeFont( шрифт );
 				}
 				else
 				{
@@ -348,95 +348,95 @@ alias std.string.find indexOf;
 		
 		//---------------------------------------------------------------------
 		
-		public void OnAbout( Object sender, Event e )
+		public проц OnAbout( Объект sender, Событие e )
 		{
-			MessageBox( this, "wxWidgets font demo\n(c) 1999 Vadim Zeitlin\nPorted to wxD by BERO",
-				"About Font", Dialog.wxOK | Dialog.wxICON_INFORMATION );
+			MessageBox( this, "wxWidgets шрифт demo\n(c) 1999 Vadim Zeitlin\nPorted to wxD by BERO",
+				"About Шрифт", Dialog.wxOK | Dialog.wxICON_INFORMATION );
 		}		
 		
 		//---------------------------------------------------------------------
 		
-		public void OnIncFont( Object sender, Event e )
+		public проц OnIncFont( Объект sender, Событие e )
 		{
 			DoResizeFont( +2 ); 
 		}		
 		
 		//---------------------------------------------------------------------
 		
-		public void OnDecFont( Object sender, Event e )
+		public проц OnDecFont( Объект sender, Событие e )
 		{
 			DoResizeFont( -2 );
 		}		
 		
 		//---------------------------------------------------------------------
 		
-		public void OnBold( Object sender, Event e )
+		public проц OnBold( Объект sender, Событие e )
 		{
 			CommandEvent ce = cast(CommandEvent) e;
-			Font font = m_canvas.TextFont;
+			Шрифт шрифт = m_canvas.TextFont;
 			
-			font.Weight = ce.IsChecked ? FontWeight.wxBOLD : FontWeight.wxNORMAL ;
-			DoChangeFont( font );
+			шрифт.Weight = ce.IsChecked ? FontWeight.wxBOLD : FontWeight.wxNORMAL ;
+			DoChangeFont( шрифт );
 		}		
 		
 		//---------------------------------------------------------------------
 		
-		public void OnItalic( Object sender, Event e )
+		public проц OnItalic( Объект sender, Событие e )
 		{
 			CommandEvent ce = cast(CommandEvent) e;
-			Font font = m_canvas.TextFont;
+			Шрифт шрифт = m_canvas.TextFont;
 			
-			font.Style = ce.IsChecked ? FontStyle.wxITALIC : FontStyle.wxNORMAL ;
-			DoChangeFont( font );
+			шрифт.Style = ce.IsChecked ? FontStyle.wxITALIC : FontStyle.wxNORMAL ;
+			DoChangeFont( шрифт );
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void OnUnderline( Object sender, Event e )
+		public проц OnUnderline( Объект sender, Событие e )
 		{
 			CommandEvent ce = cast(CommandEvent) e;
-			Font font = m_canvas.TextFont;
+			Шрифт шрифт = m_canvas.TextFont;
 			
-			font.Underlined = ce.IsChecked;
-			DoChangeFont( font );
+			шрифт.Underlined = ce.IsChecked;
+			DoChangeFont( шрифт );
 		}		
 		
 		//---------------------------------------------------------------------
 		
-		public void OnwxPointerFont( Object sender, Event e )
+		public проц OnwxPointerFont( Объект sender, Событие e )
 		{
-			Font font;
+			Шрифт шрифт;
 			
-			switch ( e.ID )
+			switch ( e.ИД )
 			{
-				case Cmd.Font_wxNORMAL_FONT : font = Font.wxNORMAL_FONT; break;
-				case Cmd.Font_wxSMALL_FONT : font = Font.wxSMALL_FONT; break;
-				case Cmd.Font_wxITALIC_FONT : font = Font.wxITALIC_FONT; break;
-				case Cmd.Font_wxSWISS_FONT : font = Font.wxSWISS_FONT; break;
-				default : font = Font.wxNORMAL_FONT; break;
+				case Cmd.Font_wxNORMAL_FONT : шрифт = Шрифт.wxNORMAL_FONT; break;
+				case Cmd.Font_wxSMALL_FONT : шрифт = Шрифт.wxSMALL_FONT; break;
+				case Cmd.Font_wxITALIC_FONT : шрифт = Шрифт.wxITALIC_FONT; break;
+				case Cmd.Font_wxSWISS_FONT : шрифт = Шрифт.wxSWISS_FONT; break;
+				default : шрифт = Шрифт.wxNORMAL_FONT; break;
 			}
 			
-			menuBar.Check( Cmd.Font_Bold, false );
-			menuBar.Check( Cmd.Font_Italic, false );
-			menuBar.Check( Cmd.Font_Underlined, false );
+			menuBar.Check( Cmd.Font_Bold, нет );
+			menuBar.Check( Cmd.Font_Italic, нет );
+			menuBar.Check( Cmd.Font_Underlined, нет );
 			
-			DoChangeFont( font );
+			DoChangeFont( шрифт );
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void OnCheckNativeToFromString( Object sender, Event e )
+		public проц OnCheckNativeToFromString( Объект sender, Событие e )
 		{
-			string fontinfo = m_canvas.TextFont.NativeFontInfoDesc;
+			ткст fontinfo = m_canvas.TextFont.NativeFontInfoDesc;
 			
 			if ( fontinfo.length == 0 )
 			{
-				Log.LogError( "Native font info string is empty!" );
+				Log.LogError( "Native шрифт info ткст is empty!" );
 			}
 			else
 			{
-				Font font = Font.New( fontinfo );
-				if ( fontinfo != font.NativeFontInfoDesc )
+				Шрифт шрифт = Шрифт.Нов( fontinfo );
+				if ( fontinfo != шрифт.NativeFontInfoDesc )
 					Log.LogError( "wxNativeFontInfo toString()/FromString() broken!" );
 				else
 					Log.LogMessage( "wxNativeFontInfo works: " ~ fontinfo );
@@ -445,30 +445,30 @@ alias std.string.find indexOf;
 		
 		//---------------------------------------------------------------------
 		
-		public void OnSelectFont( Object sender, Event e )
+		public проц OnSelectFont( Объект sender, Событие e )
 		{
-			FontData data = new FontData();
-			data.InitialFont = m_canvas.TextFont;
-			data.colour = m_canvas.colour;
+			FontData данные = new FontData();
+			данные.InitialFont = m_canvas.TextFont;
+			данные.colour = m_canvas.colour;
 			
-			FontDialog dialog = new FontDialog( this, data );
+			FontDialog dialog = new FontDialog( this, данные );
 			if ( dialog.ShowModal() == wxID_OK )
 			{
 				FontData refData = dialog.fontData;
-				Font font = refData.ChosenFont;
-				Colour colour = refData.colour;
+				Шрифт шрифт = refData.ChosenFont;
+				Цвет colour = refData.colour;
 				
-				DoChangeFont( font, colour );
+				DoChangeFont( шрифт, colour );
 				
-				menuBar.Check( Cmd.Font_Bold, font.Weight == FontWeight.wxBOLD );
-				menuBar.Check( Cmd.Font_Italic, font.Style == FontStyle.wxITALIC );
-				menuBar.Check( Cmd.Font_Underlined, font.Underlined );
+				menuBar.Check( Cmd.Font_Bold, шрифт.Weight == FontWeight.wxBOLD );
+				menuBar.Check( Cmd.Font_Italic, шрифт.Style == FontStyle.wxITALIC );
+				menuBar.Check( Cmd.Font_Underlined, шрифт.Underlined );
 			}
 		}		
 		
 		//---------------------------------------------------------------------
 		
-		public void OnEnumerateFamiliesForEncoding( Object sender, Event e )
+		public проц OnEnumerateFamiliesForEncoding( Объект sender, Событие e )
 		{
 			 const FontEncoding[] encodings = 
 			 [
@@ -483,7 +483,7 @@ alias std.string.find indexOf;
 				FontEncoding.wxFONTENCODING_CP1252,
 			];
 			
-			 string[] encodingNames =
+			 ткст[] encodingNames =
 			 [
 				"Western European (ISO-8859-1)",
 				"Central European (ISO-8859-2)",
@@ -496,10 +496,10 @@ alias std.string.find indexOf;
 				"Windows Western European (CP 1252)",
 			];
 			
-			string result = GetSingleChoice( "Choose an encoding", "Font demo", encodingNames );
+			ткст result = GetSingleChoice( "Choose an encoding", "Шрифт demo", encodingNames );
 
-			int n = -1;
-			for ( int i = 0; i < encodingNames.length; i++ )
+			цел n = -1;
+			for ( цел i = 0; i < encodingNames.length; i++ )
 				if ( encodingNames[i] == result )
 					{
 						n = i;
@@ -508,48 +508,48 @@ alias std.string.find indexOf;
 					
 			if ( n != -1 )
 			{
-				DoEnumerateFamilies( false, encodings[n] );
+				DoEnumerateFamilies( нет, encodings[n] );
 			}
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void OnEnumerateFamilies( Object sender, Event e )
+		public проц OnEnumerateFamilies( Объект sender, Событие e )
 		{
-			DoEnumerateFamilies( false );
+			DoEnumerateFamilies( нет );
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void OnEnumerateFixedFamilies( Object sender, Event e )
+		public проц OnEnumerateFixedFamilies( Объект sender, Событие e )
 		{
-			DoEnumerateFamilies( true );
+			DoEnumerateFamilies( да );
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void OnEnumerateEncodings( Object sender, Event e )
+		public проц OnEnumerateEncodings( Объект sender, Событие e )
 		{
 			MyEncodingEnumerator fontEnumerator = new MyEncodingEnumerator();
 			
 			fontEnumerator.EnumerateEncodings("");
 			
-			Log.LogMessage( "Enumerating all available encodings:\n{0}", fontEnumerator.Text );
+			Log.LogMessage( "Enumerating all available encodings:\n{0}", fontEnumerator.Текст );
 		}		
 		
 		//---------------------------------------------------------------------
 		
-		protected bool DoEnumerateFamilies( bool fixedWidthOnly )
+		protected бул DoEnumerateFamilies( бул fixedWidthOnly )
 		{
-			return DoEnumerateFamilies( fixedWidthOnly, FontEncoding.wxFONTENCODING_SYSTEM, false );
+			return DoEnumerateFamilies( fixedWidthOnly, FontEncoding.wxFONTENCODING_SYSTEM, нет );
 		}
 		
-		protected bool DoEnumerateFamilies( bool fixedWidthOnly, FontEncoding encoding )
+		protected бул DoEnumerateFamilies( бул fixedWidthOnly, FontEncoding encoding )
 		{
-			return DoEnumerateFamilies( fixedWidthOnly, encoding, false );
+			return DoEnumerateFamilies( fixedWidthOnly, encoding, нет );
 		}
 		
-		protected bool DoEnumerateFamilies( bool fixedWidthOnly, FontEncoding encoding, bool silent)
+		protected бул DoEnumerateFamilies( бул fixedWidthOnly, FontEncoding encoding, бул silent)
 		{
 			MyFontEnumerator fontEnumerator = new MyFontEnumerator();
 			
@@ -557,27 +557,27 @@ alias std.string.find indexOf;
 			
 			if ( fontEnumerator.GotAny )
 			{
-				int nFacenames = fontEnumerator.Facenames.length;
+				цел nFacenames = fontEnumerator.Facenames.length;
 				if ( !silent )
 				{
 					Log.LogStatus( "Found {0} {1}fonts", nFacenames, 
-						fixedWidthOnly ? "fixed width" : "" );
+						fixedWidthOnly ? "fixed ширина" : "" );
 				}
 				
-				string facename;
+				ткст facename;
 				if ( silent) 
 				{
 					facename = fontEnumerator.Facenames[0];
 				}
 				else
 				{
-					string[] facenames = new string[nFacenames];
-					int n;
+					ткст[] facenames = new ткст[nFacenames];
+					цел n;
 					for ( n = 0; n < nFacenames; n++ )
 						facenames[n] = fontEnumerator.Facenames[n];
 						
-					facename = GetSingleChoice( "Choose a facename", "Font demo", facenames );
-					/*for ( int i = 0; i < facenames.length; i ++ )
+					facename = GetSingleChoice( "Choose a facename", "Шрифт demo", facenames );
+					/*for ( цел i = 0; i < facenames.length; i ++ )
 						if ( facenames[i].Equals( result ) )
 							{
 								n = i;
@@ -590,49 +590,49 @@ alias std.string.find indexOf;
 				
 				if ( !( facename.length == 0 ) )
 				{
-					Font font = new Font( 12, FontFamily.wxDEFAULT, FontStyle.wxNORMAL, FontWeight.wxNORMAL, false, facename, encoding );
+					Шрифт шрифт = new Шрифт( 12, FontFamily.wxDEFAULT, FontStyle.wxNORMAL, FontWeight.wxNORMAL, нет, facename, encoding );
 					
-					DoChangeFont( font );
+					DoChangeFont( шрифт );
 				}
 				
-				return true;
+				return да;
 			}
 			else if ( !silent )
 			{
 				Log.LogWarning( "No such fonts found." );
 			}
 			
-			return false;
+			return нет;
 		}
 		
 		//---------------------------------------------------------------------
 		
-		protected void DoResizeFont( int diff )
+		protected проц DoResizeFont( цел diff )
 		{
-			Font font = m_canvas.TextFont;
+			Шрифт шрифт = m_canvas.TextFont;
 			
-			font.PointSize = font.PointSize + diff;
-			DoChangeFont( font );
+			шрифт.PointSize = шрифт.PointSize + diff;
+			DoChangeFont( шрифт );
 		}
 		
 		//---------------------------------------------------------------------
 		
-		protected void DoChangeFont( Font font )
+		protected проц DoChangeFont( Шрифт шрифт )
 		{
-			DoChangeFont( font, null );
+			DoChangeFont( шрифт, пусто );
 		}
 		
-		protected void DoChangeFont( Font font, Colour col)
+		protected проц DoChangeFont( Шрифт шрифт, Цвет col)
 		{
-			m_canvas.TextFont = font;
+			m_canvas.TextFont = шрифт;
 			if ( col )
-				if ( col.Ok() )
+				if ( col.Ок() )
 					m_canvas.colour = col;
 			m_canvas.Refresh();
-			m_textctrl.font = font;
+			m_textctrl.шрифт = шрифт;
 			if ( col )
-				if ( col.Ok() )
-					m_textctrl.ForegroundColour = col;
+				if ( col.Ок() )
+					m_textctrl.ЦветПП = col;
 		}
 	}
 	
@@ -640,7 +640,7 @@ alias std.string.find indexOf;
 	
 	public class MyFontEnumerator : FontEnumerator
 	{
-		private string[] m_facenames;
+		private ткст[] m_facenames;
 		
 		//---------------------------------------------------------------------
 		
@@ -651,27 +651,27 @@ alias std.string.find indexOf;
 		
 		//---------------------------------------------------------------------
 			
-		public bool GotAny()
+		public бул GotAny()
 		{
 			return ( m_facenames.length > 0 );
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public string[] Facenames()
+		public ткст[] Facenames()
 		{
 			return m_facenames;
 		}
 		 
 		//---------------------------------------------------------------------
 		
-		public override bool OnFacename( string facename )
+		public override бул OnFacename( ткст facename )
 		{ 
 			version (D_Version2)
 			m_facenames ~= facename.idup;
 			else
 			m_facenames ~= facename.dup;
-			return true;
+			return да;
 		}
 		
 	}
@@ -680,8 +680,8 @@ alias std.string.find indexOf;
 	
 	public class MyEncodingEnumerator : FontEnumerator
 	{
-		private int m_n;
-		private string m_text;
+		private цел m_n;
+		private ткст m_text;
 		
 		//---------------------------------------------------------------------	
 		
@@ -690,47 +690,47 @@ alias std.string.find indexOf;
 			{ super(); }
 		//---------------------------------------------------------------------	
 			
-		public string Text()
+		public ткст Текст()
 		{
 			return m_text;
 		}
 		
 		//---------------------------------------------------------------------	
 		 
-		public override bool OnFontEncoding( string facename, 
-			string encoding )
+		public override бул OnFontEncoding( ткст facename, 
+			ткст encoding )
 		{
-			string text = "Encoding " ~ .toString(++m_n) ~ ": " ~ encoding ~ " (available in facename '" ~ facename ~ "')\n";
+			ткст текст = "Encoding " ~ .toString(++m_n) ~ ": " ~ encoding ~ " (available in facename '" ~ facename ~ "')\n";
 			
-			m_text ~= text;
-			return true;
+			m_text ~= текст;
+			return да;
 		}
 	}
 	
 	//---------------------------------------------------------------------	
 
-	public class FONT : App
+	public class FONT : Прил
 	{
-		public override bool OnInit()
+		public override бул ПриИниц()
 		{
-			FontFrame frame = new FontFrame( "Font wxWidgets App", Point( 50, 50 ), Size( 600,400 ) );
-			frame.Show( true );
+			FontFrame frame = new FontFrame( "Шрифт wxWidgets Прил", Точка( 50, 50 ), Размер( 600,400 ) );
+			frame.Show( да );
 			
-			return true;
+			return да;
 		}
 
 	//---------------------------------------------------------------------
 	
 		
-		static void Main()
+		static проц Main()
 		{
-			FONT app = new FONT();
-			app.Run();
+			FONT прил = new FONT();
+			прил.Пуск();
 		}
 	}	
 
 
-void main()
+проц main()
 {
 	FONT.Main();
 }

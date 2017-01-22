@@ -2,13 +2,13 @@ version (Tango)
 {
 import tango.io.Console;
 
-char[] FORMAT(char[] str, ...) { return "Tango"; }
-void PRINT(char[] str) { Cout(str).newline; }
+сим[] FORMAT(сим[] str, ...) { return "Tango"; }
+проц PRINT(сим[] str) { Cout(str).newline; }
 }
 else // Phobos
 {
 private import std.stdio;
-private import std.string;
+private import std.ткст;
 
 alias format FORMAT;
 alias writefln PRINT;
@@ -18,12 +18,12 @@ import wx.wx;
 
 public class MyFrame : wxFrame
 {
-	public this(string title)
+	public this(ткст title)
 	{
 		super(title, wxDefaultPosition, wxDefaultSize);
 
-		int p, major, minor;
-		string platform;
+		цел p, major, minor;
+		ткст platform;
 		
 		p = wxGetOsVersion(major, minor);
 		if (p == OS_WINDOWS_9X || p == OS_WINDOWS_NT)
@@ -40,7 +40,7 @@ public class MyFrame : wxFrame
 		CreateStatusBar();
 		SetStatusText(FORMAT("%s-%0x%s%0x", platform, major,".",minor));
 
-		wxStaticText text = new wxStaticText(this, wxGetOsDescription()
+		wxStaticText текст = new wxStaticText(this, wxGetOsDescription()
 			~ " " ~ (UNICODE ? "Unicode" : (ANSI ? "ANSI" : "Unknown")),
 			wxDefaultPosition, wxDefaultSize, Alignment.wxALIGN_CENTRE);
   	}
@@ -48,15 +48,15 @@ public class MyFrame : wxFrame
 
 class MyApp : wxApp
 {
-	public override bool OnInit()
+	public override бул ПриИниц()
 	{
        MyFrame frame = new MyFrame("wxPlatform");
-       frame.Show(true);
-       return true;
+       frame.Show(да);
+       return да;
 	}
 }
 
-int main()
+цел main()
 {
 	version(__WXMSW__)
 		PRINT("__WXMSW__");
@@ -67,7 +67,7 @@ int main()
 	version(__WXX11__)
 		PRINT("__WXX11__");
 
-	MyApp app = new MyApp();
-	app.Run();
+	MyApp прил = new MyApp();
+	прил.Пуск();
 	return 0;
 }

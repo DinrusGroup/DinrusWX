@@ -10,7 +10,7 @@
 // (C) 2003 Bryan Bulten
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: MiniFrame.d,v 1.10 2007/11/27 08:19:20 afb Exp $
+// $Ид: MiniFrame.d,v 1.10 2007/11/27 08:19:20 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.MiniFrame;
@@ -18,8 +18,8 @@ public import wx.common;
 public import wx.Frame;
 
 		//! \cond EXTERN
-        static extern (C) IntPtr wxMiniFrame_ctor();
-        static extern (C) bool   wxMiniFrame_Create(IntPtr self, IntPtr parent, int id, string title, inout Point pos, inout Size size, uint style, string name);
+        static extern (C) ЦУк wxMiniFrame_ctor();
+        static extern (C) бул   wxMiniFrame_Create(ЦУк сам, ЦУк родитель, цел ид, ткст title, inout Точка поз, inout Размер size, бцел стиль, ткст имя);
 		//! \endcond
 
         //-----------------------------------------------------------------------------
@@ -29,40 +29,40 @@ public import wx.Frame;
     {
         enum { wxDEFAULT_MINIFRAME_STYLE = wxCAPTION | wxCLIP_CHILDREN | wxRESIZE_BORDER }
     
-        public this(IntPtr wxobj) 
-            { super(wxobj); }
+        public this(ЦУк шхобъ) 
+            { super(шхобъ); }
 
         public this()
             { this(wxMiniFrame_ctor()); }
 
-        public this(Window parent, int id, string title, Point pos=wxDefaultPosition, Size size=wxDefaultSize, int style=wxDEFAULT_MINIFRAME_STYLE, string name=wxFrameNameStr)
+        public this(Окно родитель, цел ид, ткст title, Точка поз=wxDefaultPosition, Размер size=wxDefaultSize, цел стиль=wxDEFAULT_MINIFRAME_STYLE, ткст имя=wxFrameNameStr)
         {
         	this();
-            if (!Create(parent, id, title, pos, size, style, name))
+            if (!Create(родитель, ид, title, поз, size, стиль, имя))
             {
                 throw new InvalidOperationException("Could not create MiniFrame");
             }
         }
 	
 	//---------------------------------------------------------------------
-		// ctors with self created id
+		// ctors with сам created ид
 	
-        public this(Window parent, string title, Point pos=wxDefaultPosition, Size size=wxDefaultSize, int style=wxDEFAULT_MINIFRAME_STYLE, string name=wxFrameNameStr)
-	    { this(parent, Window.UniqueID, title, pos, size, style, name);}
+        public this(Окно родитель, ткст title, Точка поз=wxDefaultPosition, Размер size=wxDefaultSize, цел стиль=wxDEFAULT_MINIFRAME_STYLE, ткст имя=wxFrameNameStr)
+	    { this(родитель, Окно.UniqueID, title, поз, size, стиль, имя);}
 	
 	//-----------------------------------------------------------------------------
 
-        public override bool Create(Window parent, int id, string title, inout Point pos, inout Size size, int style, string name)
+        public override бул Create(Окно родитель, цел ид, ткст title, inout Точка поз, inout Размер size, цел стиль, ткст имя)
         {
-            return wxMiniFrame_Create(wxobj, wxObject.SafePtr(parent), id, title, pos, size, style, name);
+            return wxMiniFrame_Create(шхобъ, wxObject.SafePtr(родитель), ид, title, поз, size, стиль, имя);
         }
 
         //-----------------------------------------------------------------------------
 
         // Helper constructors
 
-        public this(string title, Point pos=wxDefaultPosition, Size size=wxDefaultSize, int style=wxDEFAULT_MINIFRAME_STYLE)
-            { this(null, -1, title, pos, size, style); }
+        public this(ткст title, Точка поз=wxDefaultPosition, Размер size=wxDefaultSize, цел стиль=wxDEFAULT_MINIFRAME_STYLE)
+            { this(пусто, -1, title, поз, size, стиль); }
 
         //-----------------------------------------------------------------------------
     }

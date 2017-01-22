@@ -10,7 +10,7 @@
 // (C) 2003 Bryan Bulten
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: Panel.d,v 1.10 2007/04/19 19:45:25 afb Exp $
+// $Ид: Panel.d,v 1.10 2007/04/19 19:45:25 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.Panel;
@@ -19,63 +19,63 @@ public import wx.Window;
 public import wx.Button;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxPanel_ctor();
-		static extern (C) IntPtr wxPanel_ctor2(IntPtr parent, int id, inout Point pos, inout Size size, uint style, string name);
-		static extern (C) bool wxPanel_Create(IntPtr self, IntPtr parent, int id, inout Point pos, inout Size size, uint style, string name);
-		static extern (C) void wxPanel_InitDialog(IntPtr self);
-		static extern (C) IntPtr wxPanel_GetDefaultItem(IntPtr self);
-		static extern (C) void wxPanel_SetDefaultItem(IntPtr self, IntPtr btn);
+		static extern (C) ЦУк wxPanel_ctor();
+		static extern (C) ЦУк wxPanel_ctor2(ЦУк родитель, цел ид, inout Точка поз, inout Размер size, бцел стиль, ткст имя);
+		static extern (C) бул wxPanel_Create(ЦУк сам, ЦУк родитель, цел ид, inout Точка поз, inout Размер size, бцел стиль, ткст имя);
+		static extern (C) проц wxPanel_InitDialog(ЦУк сам);
+		static extern (C) ЦУк wxPanel_GetDefaultItem(ЦУк сам);
+		static extern (C) проц wxPanel_SetDefaultItem(ЦУк сам, ЦУк btn);
 		//! \endcond
 
 	alias Panel wxPanel;
-	/// A panel is a window on which controls are placed. It is usually
+	/// A panel is a окно on which controls are placed. It is usually
 	/// placed within a frame. It contains minimal extra functionality over and
-	/// above its parent class wxWindow; its main purpose is to be similar in
+	/// above its родитель class wxWindow; its main purpose is to be similar in
 	/// appearance and functionality to a dialog, but with the flexibility of
-	/// having any window as a parent.
-	public class Panel : Window
+	/// having any окно as a родитель.
+	public class Panel : Окно
 	{
 		//---------------------------------------------------------------------
 		
-		public this(IntPtr wxobj) 
-			{ super(wxobj);}
+		public this(ЦУк шхобъ) 
+			{ super(шхобъ);}
 		
 		public this()
 			{ super(wxPanel_ctor());}
 
-		public this(Window parent, int id /*= wxID_ANY*/, Point pos = wxDefaultPosition, Size size = wxDefaultSize, int style = wxTAB_TRAVERSAL|wxNO_BORDER, string name = wxPanelNameStr)
-			{ super(wxPanel_ctor2(wxObject.SafePtr(parent), id, pos, size, style, name));}
+		public this(Окно родитель, цел ид /*= wxID_ANY*/, Точка поз = wxDefaultPosition, Размер size = wxDefaultSize, цел стиль = wxTAB_TRAVERSAL|wxNO_BORDER, ткст имя = wxPanelNameStr)
+			{ super(wxPanel_ctor2(wxObject.SafePtr(родитель), ид, поз, size, стиль, имя));}
 			
 		//---------------------------------------------------------------------
-		// ctors with self created id
+		// ctors with сам created ид
 		
-		public this(Window parent, Point pos=wxDefaultPosition, Size size=wxDefaultSize, int style=wxTAB_TRAVERSAL|wxNO_BORDER, string name=wxPanelNameStr)
-			{ this(parent, Window.UniqueID, pos, size, style, name);}
+		public this(Окно родитель, Точка поз=wxDefaultPosition, Размер size=wxDefaultSize, цел стиль=wxTAB_TRAVERSAL|wxNO_BORDER, ткст имя=wxPanelNameStr)
+			{ this(родитель, Окно.UniqueID, поз, size, стиль, имя);}
 		
 		//---------------------------------------------------------------------
 		
-		public bool Create(Window parent, int id, inout Point pos, inout Size size, int style, string name)
+		public бул Create(Окно родитель, цел ид, inout Точка поз, inout Размер size, цел стиль, ткст имя)
 		{
-			return wxPanel_Create(wxobj, wxObject.SafePtr(parent), id, pos, size, style, name);
+			return wxPanel_Create(шхобъ, wxObject.SafePtr(родитель), ид, поз, size, стиль, имя);
 		}
 
 		//---------------------------------------------------------------------
 
-		public Button DefaultItem() 
+		public Кнопка DefaultItem() 
 			{
-				IntPtr btn = wxPanel_GetDefaultItem(wxobj);
-				return (btn != IntPtr.init) ? new Button(btn) : null;
+				ЦУк btn = wxPanel_GetDefaultItem(шхобъ);
+				return (btn != ЦУк.init) ? new Кнопка(btn) : пусто;
 			}
-		public void DefaultItem(Button value) 
+		public проц DefaultItem(Кнопка значение) 
 			{
-				wxPanel_SetDefaultItem(wxobj, value.wxobj);
+				wxPanel_SetDefaultItem(шхобъ, значение.шхобъ);
 			}
 
 		//---------------------------------------------------------------------
 
-		public override void InitDialog()
+		public override проц InitDialog()
 		{
-			wxPanel_InitDialog(wxobj);
+			wxPanel_InitDialog(шхобъ);
 		}
 
 		//---------------------------------------------------------------------

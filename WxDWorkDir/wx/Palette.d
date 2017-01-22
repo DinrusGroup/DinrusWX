@@ -1,8 +1,8 @@
 //-----------------------------------------------------------------------------
-// wxD - Palette.d
+// wxD - Палитра.d
 // (C) 2005 bero <berobero@users.sourceforge.net>
 // based on
-// wx.NET - Palette.cs
+// wx.NET - Палитра.cs
 //
 /// The wxPalette wrapper class.
 //
@@ -17,58 +17,58 @@ public import wx.common;
 public import wx.GDIObject;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxPalette_ctor();
-		static extern (C) void wxPalette_dtor(IntPtr self);
-		static extern (C) bool wxPalette_Ok(IntPtr self);
-		static extern (C) bool wxPalette_Create(IntPtr self, int n, inout ubyte red, inout ubyte green, inout ubyte blue);
-		static extern (C) int wxPalette_GetPixel(IntPtr self, ubyte red, ubyte green, ubyte blue);
-		static extern (C) bool wxPalette_GetRGB(IntPtr self, int pixel, out ubyte red, out ubyte green, out ubyte blue);
+		static extern (C) ЦУк wxPalette_ctor();
+		static extern (C) проц wxPalette_dtor(ЦУк сам);
+		static extern (C) бул wxPalette_Ok(ЦУк сам);
+		static extern (C) бул wxPalette_Create(ЦУк сам, цел n, inout ббайт красный, inout ббайт зелёный, inout ббайт синий);
+		static extern (C) цел wxPalette_GetPixel(ЦУк сам, ббайт красный, ббайт зелёный, ббайт синий);
+		static extern (C) бул wxPalette_GetRGB(ЦУк сам, цел pixel, out ббайт красный, out ббайт зелёный, out ббайт синий);
 		//! \endcond
 
-	alias Palette wxPalette;
-	public class Palette : GDIObject
+	alias Палитра wxPalette;
+	public class Палитра : GDIObject
 	{
-		public static Palette wxNullPalette;
+		public static Палитра wxNullPalette;
 		//---------------------------------------------------------------------
 
 		public this()
 			{ this(wxPalette_ctor());}
 
-		public this(IntPtr wxobj)
-			{ super(wxobj);}
+		public this(ЦУк шхобъ)
+			{ super(шхобъ);}
 
-		public this(int n, inout ubyte r, inout ubyte g, inout ubyte b)
+		public this(цел n, inout ббайт к, inout ббайт з, inout ббайт с)
 		{
 			this(wxPalette_ctor());
-			if (!wxPalette_Create(wxobj, n, r, g, b))
+			if (!wxPalette_Create(шхобъ, n, к, з, с))
 			{
-				throw new InvalidOperationException("Failed to create Palette");
+				throw new InvalidOperationException("Failed to create Палитра");
 			}
 		}
 
-		public bool Create(int n, inout ubyte r, inout ubyte g, inout ubyte b)
+		public бул Create(цел n, inout ббайт к, inout ббайт з, inout ббайт с)
 		{
-			return wxPalette_Create(wxobj, n, r, g, b);
+			return wxPalette_Create(шхобъ, n, к, з, с);
 		}
 
-		public static wxObject New(IntPtr ptr) { return new Palette(ptr); }
+		public static wxObject Нов(ЦУк ptr) { return new Палитра(ptr); }
 		//---------------------------------------------------------------------
 
-		public bool Ok()
+		public бул Ок()
 		{
-			return wxPalette_Ok(wxobj);
+			return wxPalette_Ok(шхобъ);
 		}
 
 		//---------------------------------------------------------------------
 
-		public int GetPixel(ubyte red, ubyte green, ubyte blue)
+		public цел GetPixel(ббайт красный, ббайт зелёный, ббайт синий)
 		{
-			return wxPalette_GetPixel(wxobj, red, green, blue);
+			return wxPalette_GetPixel(шхобъ, красный, зелёный, синий);
 		}
 
-		public bool GetRGB(int pixel, out ubyte red, out ubyte green, out ubyte blue)
+		public бул GetRGB(цел pixel, out ббайт красный, out ббайт зелёный, out ббайт синий)
 		{
-			return wxPalette_GetRGB(wxobj, pixel, red, green, blue);
+			return wxPalette_GetRGB(шхобъ, pixel, красный, зелёный, синий);
 		}
 
 		//---------------------------------------------------------------------

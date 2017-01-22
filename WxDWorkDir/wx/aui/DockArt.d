@@ -7,7 +7,7 @@
 // Written by David Gileadi <gileadis@gmail.com>
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: DockArt.d,v 1.4 2007/12/07 13:41:27 afb Exp $
+// $Ид: DockArt.d,v 1.4 2007/12/07 13:41:27 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.aui.DockArt;
@@ -19,28 +19,28 @@ public import wx.wx;
 //-----------------------------------------------------------------------------
 
 //! \cond EXTERN
-extern (C) alias int function(DockArt obj, int id) Virtual_GetMetric;
-extern (C) alias void function(DockArt obj, int id, int new_val) Virtual_SetMetric;
-extern (C) alias void function(DockArt obj, int id, IntPtr font) Virtual_SetFont;
-extern (C) alias IntPtr function(DockArt obj, int id) Virtual_GetFont;
-extern (C) alias IntPtr function(DockArt obj, int id) Virtual_GetColour;
-extern (C) alias void function(DockArt obj, int id, IntPtr colour) Virtual_SetColour;
-extern (C) alias IntPtr function(DockArt obj, int id) Virtual_GetColor;
-extern (C) alias void function(DockArt obj, int id, IntPtr color) Virtual_SetColor;
-extern (C) alias void function(DockArt obj, IntPtr dc, int orientation, inout Rectangle rect) Virtual_DrawSash;
-extern (C) alias void function(DockArt obj, IntPtr dc, int orientation, inout Rectangle rect) Virtual_DrawBackground;
-extern (C) alias void function(DockArt obj, IntPtr dc, string text, inout Rectangle rect, IntPtr pane) Virtual_DrawCaption;
-extern (C) alias void function(DockArt obj, IntPtr dc, inout Rectangle rect, IntPtr pane) Virtual_DrawGripper;
-extern (C) alias void function(DockArt obj, IntPtr dc, inout Rectangle rect, IntPtr pane) Virtual_DrawBorder;
-extern (C) alias void function(DockArt obj, IntPtr dc, int button, int button_state, inout Rectangle rect, IntPtr pane) Virtual_DrawPaneButton;
+extern (C) alias цел function(DockArt объ, цел ид) Virtual_GetMetric;
+extern (C) alias проц function(DockArt объ, цел ид, цел new_val) Virtual_SetMetric;
+extern (C) alias проц function(DockArt объ, цел ид, ЦУк шрифт) Virtual_SetFont;
+extern (C) alias ЦУк function(DockArt объ, цел ид) Virtual_GetFont;
+extern (C) alias ЦУк function(DockArt объ, цел ид) Virtual_GetColour;
+extern (C) alias проц function(DockArt объ, цел ид, ЦУк colour) Virtual_SetColour;
+extern (C) alias ЦУк function(DockArt объ, цел ид) Virtual_GetColor;
+extern (C) alias проц function(DockArt объ, цел ид, ЦУк color) Virtual_SetColor;
+extern (C) alias проц function(DockArt объ, ЦУк dc, цел orientation, inout Прямоугольник прям) Virtual_DrawSash;
+extern (C) alias проц function(DockArt объ, ЦУк dc, цел orientation, inout Прямоугольник прям) Virtual_DrawBackground;
+extern (C) alias проц function(DockArt объ, ЦУк dc, ткст текст, inout Прямоугольник прям, ЦУк pane) Virtual_DrawCaption;
+extern (C) alias проц function(DockArt объ, ЦУк dc, inout Прямоугольник прям, ЦУк pane) Virtual_DrawGripper;
+extern (C) alias проц function(DockArt объ, ЦУк dc, inout Прямоугольник прям, ЦУк pane) Virtual_DrawBorder;
+extern (C) alias проц function(DockArt объ, ЦУк dc, цел button, цел button_state, inout Прямоугольник прям, ЦУк pane) Virtual_DrawPaneButton;
 
 //-----------------------------------------------------------------------------
 
-static extern (C) IntPtr wxDockArt_ctor();
-static extern (C) void wxDockArt_dtor(IntPtr self);
-static extern (C) IntPtr wxDefaultDockArt_ctor();
-static extern (C) void wxDefaultDockArt_dtor(IntPtr self);
-static extern (C) void wxDockArt_RegisterVirtual(IntPtr self, DockArt obj,
+static extern (C) ЦУк wxDockArt_ctor();
+static extern (C) проц wxDockArt_dtor(ЦУк сам);
+static extern (C) ЦУк wxDefaultDockArt_ctor();
+static extern (C) проц wxDefaultDockArt_dtor(ЦУк сам);
+static extern (C) проц wxDockArt_RegisterVirtual(ЦУк сам, DockArt объ,
                       Virtual_GetMetric getMetric,
                       Virtual_SetMetric setMetric,
                       Virtual_SetFont setFont,
@@ -55,20 +55,20 @@ static extern (C) void wxDockArt_RegisterVirtual(IntPtr self, DockArt obj,
                       Virtual_DrawGripper drawGripper,
                       Virtual_DrawBorder drawBorder,
                       Virtual_DrawPaneButton drawPaneButton);
-static extern (C) int wxDockArt_GetMetric(IntPtr self, int id);
-static extern (C) void wxDockArt_SetMetric(IntPtr self, int id, int new_val);
-static extern (C) void wxDockArt_SetFont(IntPtr self, int id, IntPtr font);
-static extern (C) IntPtr wxDockArt_GetFont(IntPtr self, int id);
-static extern (C) IntPtr wxDockArt_GetColour(IntPtr self, int id);
-static extern (C) void wxDockArt_SetColour(IntPtr self, int id, IntPtr colour);
-static extern (C) IntPtr wxDockArt_GetColor(IntPtr self, int id);
-static extern (C) void wxDockArt_SetColor(IntPtr self, int id, IntPtr color);
-static extern (C) void wxDockArt_DrawSash(IntPtr self, IntPtr dc, int orientation, inout Rectangle rect);
-static extern (C) void wxDockArt_DrawBackground(IntPtr self, IntPtr dc, int orientation, inout Rectangle rect);
-static extern (C) void wxDockArt_DrawCaption(IntPtr self, IntPtr dc, string text, inout Rectangle rect, IntPtr pane);
-static extern (C) void wxDockArt_DrawGripper(IntPtr self, IntPtr dc, inout Rectangle rect, IntPtr pane);
-static extern (C) void wxDockArt_DrawBorder(IntPtr self, IntPtr dc, inout Rectangle rect, IntPtr pane);
-static extern (C) void wxDockArt_DrawPaneButton(IntPtr self, IntPtr dc, int button, int button_state, inout Rectangle rect, IntPtr pane);
+static extern (C) цел wxDockArt_GetMetric(ЦУк сам, цел ид);
+static extern (C) проц wxDockArt_SetMetric(ЦУк сам, цел ид, цел new_val);
+static extern (C) проц wxDockArt_SetFont(ЦУк сам, цел ид, ЦУк шрифт);
+static extern (C) ЦУк wxDockArt_GetFont(ЦУк сам, цел ид);
+static extern (C) ЦУк wxDockArt_GetColour(ЦУк сам, цел ид);
+static extern (C) проц wxDockArt_SetColour(ЦУк сам, цел ид, ЦУк colour);
+static extern (C) ЦУк wxDockArt_GetColor(ЦУк сам, цел ид);
+static extern (C) проц wxDockArt_SetColor(ЦУк сам, цел ид, ЦУк color);
+static extern (C) проц wxDockArt_DrawSash(ЦУк сам, ЦУк dc, цел orientation, inout Прямоугольник прям);
+static extern (C) проц wxDockArt_DrawBackground(ЦУк сам, ЦУк dc, цел orientation, inout Прямоугольник прям);
+static extern (C) проц wxDockArt_DrawCaption(ЦУк сам, ЦУк dc, ткст текст, inout Прямоугольник прям, ЦУк pane);
+static extern (C) проц wxDockArt_DrawGripper(ЦУк сам, ЦУк dc, inout Прямоугольник прям, ЦУк pane);
+static extern (C) проц wxDockArt_DrawBorder(ЦУк сам, ЦУк dc, inout Прямоугольник прям, ЦУк pane);
+static extern (C) проц wxDockArt_DrawPaneButton(ЦУк сам, ЦУк dc, цел button, цел button_state, inout Прямоугольник прям, ЦУк pane);
 //! \endcond
 
 //-----------------------------------------------------------------------------
@@ -79,11 +79,11 @@ alias DockArt wxDockArt;
 /// manager to have plugable look-and-feels
 public class DockArt : wxObject
 {
-	IntPtr proxy;
+	ЦУк proxy;
 
-    public this(IntPtr wxobj)
+    public this(ЦУк шхобъ)
     {
-      super(wxobj);
+      super(шхобъ);
       proxy = wxDockArt_ctor();
       wxDockArt_RegisterVirtual(proxy, this,
                       &staticGetMetric,
@@ -102,108 +102,108 @@ public class DockArt : wxObject
                       &staticDrawPaneButton);
     }
 
-    override protected void dtor()
+    override protected проц dtor()
     {
 		wxDockArt_dtor(proxy);
 	}
 	
-    extern (C) protected static int staticGetMetric(DockArt obj, int id) { return obj.GetMetric(id); }
-    extern (C) protected static void staticSetMetric(DockArt obj, int id, int new_val) { obj.SetMetric(id, new_val); }
-    extern (C) protected static void staticSetFont(DockArt obj, int id, IntPtr font)
+    extern (C) protected static цел staticGetMetric(DockArt объ, цел ид) { return объ.GetMetric(ид); }
+    extern (C) protected static проц staticSetMetric(DockArt объ, цел ид, цел new_val) { объ.SetMetric(ид, new_val); }
+    extern (C) protected static проц staticSetFont(DockArt объ, цел ид, ЦУк шрифт)
     {
-      wxObject o = FindObject(font);
-      Font f = (o)? cast(Font)o : new Font(font);
-      obj.SetFont(id, f);
+      wxObject o = FindObject(шрифт);
+      Шрифт f = (o)? cast(Шрифт)o : new Шрифт(шрифт);
+      объ.SetFont(ид, f);
     }
-    extern (C) protected static IntPtr staticGetFont(DockArt obj, int id) { return wxObject.SafePtr(obj.GetFont(id)); }
-    extern (C) protected static IntPtr staticGetColour(DockArt obj, int id) { return wxObject.SafePtr(obj.GetColour(id)); }
-    extern (C) protected static void staticSetColour(DockArt obj, int id, IntPtr colour)
+    extern (C) protected static ЦУк staticGetFont(DockArt объ, цел ид) { return wxObject.SafePtr(объ.GetFont(ид)); }
+    extern (C) protected static ЦУк staticGetColour(DockArt объ, цел ид) { return wxObject.SafePtr(объ.GetColour(ид)); }
+    extern (C) protected static проц staticSetColour(DockArt объ, цел ид, ЦУк colour)
     {
       wxObject o = FindObject(colour);
-      Colour c = (o)? cast(Colour)o : new Colour(colour);
-      obj.SetColour(id, c);
+      Цвет c = (o)? cast(Цвет)o : new Цвет(colour);
+      объ.УстЦвет(ид, c);
     }
-    extern (C) protected static IntPtr staticGetColor(DockArt obj, int id) { return wxObject.SafePtr(obj.GetColor(id)); }
-    extern (C) protected static void staticSetColor(DockArt obj, int id, IntPtr color)
+    extern (C) protected static ЦУк staticGetColor(DockArt объ, цел ид) { return wxObject.SafePtr(объ.GetColor(ид)); }
+    extern (C) protected static проц staticSetColor(DockArt объ, цел ид, ЦУк color)
     {
       wxObject o = FindObject(color);
-      Colour c = (o)? cast(Colour)o : new Colour(color);
-      obj.SetColor(id, c);
+      Цвет c = (o)? cast(Цвет)o : new Цвет(color);
+      объ.SetColor(ид, c);
     }
-    extern (C) protected static void staticDrawSash(DockArt obj, IntPtr dc, int orientation, inout Rectangle rect)
+    extern (C) protected static проц staticDrawSash(DockArt объ, ЦУк dc, цел orientation, inout Прямоугольник прям)
     {
       wxObject o = FindObject(dc);
       DC d = (o)? cast(DC)o : new DC(dc);
-      obj.DrawSash(d, orientation, rect);
+      объ.DrawSash(d, orientation, прям);
     }
-    extern (C) protected static void staticDrawBackground(DockArt obj, IntPtr dc, int orientation, inout Rectangle rect)
+    extern (C) protected static проц staticDrawBackground(DockArt объ, ЦУк dc, цел orientation, inout Прямоугольник прям)
     {
       wxObject o = FindObject(dc);
       DC d = (o)? cast(DC)o : new DC(dc);
-      obj.DrawBackground(d, orientation, rect);
+      объ.DrawBackground(d, orientation, прям);
     }
-    extern (C) protected static void staticDrawCaption(DockArt obj, IntPtr dc, string text, inout Rectangle rect, IntPtr pane)
-    {
-      wxObject o = FindObject(dc);
-      DC d = (o)? cast(DC)o : new DC(dc);
-      o = FindObject(pane);
-      PaneInfo p = (o)? cast(PaneInfo)o : new PaneInfo(pane);
-      obj.DrawCaption(d, text, rect, p);
-    }
-    extern (C) protected static void staticDrawGripper(DockArt obj, IntPtr dc, inout Rectangle rect, IntPtr pane)
+    extern (C) protected static проц staticDrawCaption(DockArt объ, ЦУк dc, ткст текст, inout Прямоугольник прям, ЦУк pane)
     {
       wxObject o = FindObject(dc);
       DC d = (o)? cast(DC)o : new DC(dc);
       o = FindObject(pane);
       PaneInfo p = (o)? cast(PaneInfo)o : new PaneInfo(pane);
-      obj.DrawGripper(d, rect, p);
+      объ.DrawCaption(d, текст, прям, p);
     }
-    extern (C) protected static void staticDrawBorder(DockArt obj, IntPtr dc, inout Rectangle rect, IntPtr pane)
+    extern (C) protected static проц staticDrawGripper(DockArt объ, ЦУк dc, inout Прямоугольник прям, ЦУк pane)
     {
       wxObject o = FindObject(dc);
       DC d = (o)? cast(DC)o : new DC(dc);
       o = FindObject(pane);
       PaneInfo p = (o)? cast(PaneInfo)o : new PaneInfo(pane);
-      obj.DrawBorder(d, rect, p);
+      объ.DrawGripper(d, прям, p);
     }
-    extern (C) protected static void staticDrawPaneButton(DockArt obj, IntPtr dc, int button, int button_state, inout Rectangle rect, IntPtr pane)
+    extern (C) protected static проц staticDrawBorder(DockArt объ, ЦУк dc, inout Прямоугольник прям, ЦУк pane)
     {
       wxObject o = FindObject(dc);
       DC d = (o)? cast(DC)o : new DC(dc);
       o = FindObject(pane);
       PaneInfo p = (o)? cast(PaneInfo)o : new PaneInfo(pane);
-      obj.DrawPaneButton(d, button, button_state, rect, p);
+      объ.DrawBorder(d, прям, p);
+    }
+    extern (C) protected static проц staticDrawPaneButton(DockArt объ, ЦУк dc, цел button, цел button_state, inout Прямоугольник прям, ЦУк pane)
+    {
+      wxObject o = FindObject(dc);
+      DC d = (o)? cast(DC)o : new DC(dc);
+      o = FindObject(pane);
+      PaneInfo p = (o)? cast(PaneInfo)o : new PaneInfo(pane);
+      объ.DrawPaneButton(d, button, button_state, прям, p);
     }
 
-    public int GetMetric(int id) { return wxDockArt_GetMetric(wxobj, id); }
-    public void SetMetric(int id, int new_val) { wxDockArt_SetMetric(wxobj, id, new_val); }
-    public void SetFont(int id, wxFont font) { wxDockArt_SetFont(wxobj, id, wxObject.SafePtr(font)); }
-    public Font GetFont(int id)
+    public цел GetMetric(цел ид) { return wxDockArt_GetMetric(шхобъ, ид); }
+    public проц SetMetric(цел ид, цел new_val) { wxDockArt_SetMetric(шхобъ, ид, new_val); }
+    public проц SetFont(цел ид, wxFont шрифт) { wxDockArt_SetFont(шхобъ, ид, wxObject.SafePtr(шрифт)); }
+    public Шрифт GetFont(цел ид)
     {
-      IntPtr ptr = wxDockArt_GetFont(wxobj, id);
+      ЦУк ptr = wxDockArt_GetFont(шхобъ, ид);
       wxObject o = FindObject(ptr);
-      return (o)? cast(Font)o : new Font(ptr);
+      return (o)? cast(Шрифт)o : new Шрифт(ptr);
     }
-    public Colour GetColour(int id)
+    public Цвет GetColour(цел ид)
     {
-      IntPtr ptr = wxDockArt_GetColour(wxobj, id);
+      ЦУк ptr = wxDockArt_GetColour(шхобъ, ид);
       wxObject o = FindObject(ptr);
-      return (o)? cast(Colour)o : new Colour(ptr);
+      return (o)? cast(Цвет)o : new Цвет(ptr);
     }
-    public void SetColour(int id, Colour colour) { wxDockArt_SetColour(wxobj, id, wxObject.SafePtr(colour)); }
-    public Colour GetColor(int id)
+    public проц УстЦвет(цел ид, Цвет colour) { wxDockArt_SetColour(шхобъ, ид, wxObject.SafePtr(colour)); }
+    public Цвет GetColor(цел ид)
     {
-      IntPtr ptr = wxDockArt_GetColor(wxobj, id);
+      ЦУк ptr = wxDockArt_GetColor(шхобъ, ид);
       wxObject o = FindObject(ptr);
-      return (o)? cast(Colour)o : new Colour(ptr);
+      return (o)? cast(Цвет)o : new Цвет(ptr);
     }
-    public void SetColor(int id, Colour color) { wxDockArt_SetColor(wxobj, id, wxObject.SafePtr(color)); }
-    public void DrawSash(DC dc, int orientation, Rectangle rect) { wxDockArt_DrawSash(wxobj, wxObject.SafePtr(dc), orientation, rect); }
-    public void DrawBackground(DC dc, int orientation, Rectangle rect) { wxDockArt_DrawBackground(wxobj, wxObject.SafePtr(dc), orientation, rect); }
-    public void DrawCaption(DC dc, string text, Rectangle rect, PaneInfo pane) { wxDockArt_DrawCaption(wxobj, wxObject.SafePtr(dc), text, rect, wxObject.SafePtr(pane)); }
-    public void DrawGripper(DC dc, Rectangle rect, PaneInfo pane) { wxDockArt_DrawGripper(wxobj, wxObject.SafePtr(dc), rect, wxObject.SafePtr(pane)); }
-    public void DrawBorder(DC dc, Rectangle rect, PaneInfo pane) { wxDockArt_DrawBorder(wxobj, wxObject.SafePtr(dc), rect, wxObject.SafePtr(pane)); }
-    public void DrawPaneButton(DC dc, int button, int button_state, Rectangle rect, PaneInfo pane) { wxDockArt_DrawPaneButton(wxobj, wxObject.SafePtr(dc), button, button_state, rect, wxObject.SafePtr(pane)); }
+    public проц SetColor(цел ид, Цвет color) { wxDockArt_SetColor(шхобъ, ид, wxObject.SafePtr(color)); }
+    public проц DrawSash(DC dc, цел orientation, Прямоугольник прям) { wxDockArt_DrawSash(шхобъ, wxObject.SafePtr(dc), orientation, прям); }
+    public проц DrawBackground(DC dc, цел orientation, Прямоугольник прям) { wxDockArt_DrawBackground(шхобъ, wxObject.SafePtr(dc), orientation, прям); }
+    public проц DrawCaption(DC dc, ткст текст, Прямоугольник прям, PaneInfo pane) { wxDockArt_DrawCaption(шхобъ, wxObject.SafePtr(dc), текст, прям, wxObject.SafePtr(pane)); }
+    public проц DrawGripper(DC dc, Прямоугольник прям, PaneInfo pane) { wxDockArt_DrawGripper(шхобъ, wxObject.SafePtr(dc), прям, wxObject.SafePtr(pane)); }
+    public проц DrawBorder(DC dc, Прямоугольник прям, PaneInfo pane) { wxDockArt_DrawBorder(шхобъ, wxObject.SafePtr(dc), прям, wxObject.SafePtr(pane)); }
+    public проц DrawPaneButton(DC dc, цел button, цел button_state, Прямоугольник прям, PaneInfo pane) { wxDockArt_DrawPaneButton(шхобъ, wxObject.SafePtr(dc), button, button_state, прям, wxObject.SafePtr(pane)); }
 }
 
 alias DefaultDockArt wxDefaultDockArt;
@@ -216,8 +216,8 @@ public class DefaultDockArt : DockArt
       super(wxDefaultDockArt_ctor());
 	}
 	
-    override protected void dtor()
+    override protected проц dtor()
     {
-      wxDefaultDockArt_dtor(wxobj);
+      wxDefaultDockArt_dtor(шхобъ);
 	}
 }

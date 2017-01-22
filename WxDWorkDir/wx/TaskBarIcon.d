@@ -2,11 +2,11 @@
 // wxD - TaskBarIcon.d
 // (C) 2007
 // 
-/// wxTaskBarIcon, represents a taskbar icon.
+/// wxTaskBarIcon, represents a taskbar иконка.
 //
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: TaskBarIcon.d,v 1.2 2007/09/08 09:21:54 afb Exp $
+// $Ид: TaskBarIcon.d,v 1.2 2007/09/08 09:21:54 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.TaskBarIcon;
@@ -16,43 +16,43 @@ public import wx.Icon;
 public import wx.Menu;
 
 //! \cond EXTERN
-static extern (C) EventType wxTaskBarIcon_EVT_TASKBAR_MOVE();
-static extern (C) EventType wxTaskBarIcon_EVT_TASKBAR_LEFT_DOWN();
-static extern (C) EventType wxTaskBarIcon_EVT_TASKBAR_LEFT_UP();
-static extern (C) EventType wxTaskBarIcon_EVT_TASKBAR_RIGHT_DOWN();
-static extern (C) EventType wxTaskBarIcon_EVT_TASKBAR_RIGHT_UP();
-static extern (C) EventType wxTaskBarIcon_EVT_TASKBAR_LEFT_DCLICK();
-static extern (C) EventType wxTaskBarIcon_EVT_TASKBAR_RIGHT_DCLICK();
+static extern (C) ТипСобытия wxTaskBarIcon_EVT_TASKBAR_MOVE();
+static extern (C) ТипСобытия wxTaskBarIcon_EVT_TASKBAR_LEFT_DOWN();
+static extern (C) ТипСобытия wxTaskBarIcon_EVT_TASKBAR_LEFT_UP();
+static extern (C) ТипСобытия wxTaskBarIcon_EVT_TASKBAR_RIGHT_DOWN();
+static extern (C) ТипСобытия wxTaskBarIcon_EVT_TASKBAR_RIGHT_UP();
+static extern (C) ТипСобытия wxTaskBarIcon_EVT_TASKBAR_LEFT_DCLICK();
+static extern (C) ТипСобытия wxTaskBarIcon_EVT_TASKBAR_RIGHT_DCLICK();
 //! \endcond
 
 extern (C) {
-alias IntPtr function (TaskBarIcon) Virtual_CreatePopupMenu;
+alias ЦУк function (TaskBarIcon) Virtual_CreatePopupMenu;
 }
 		
 //! \cond EXTERN
-static extern (C) IntPtr wxTaskBarIcon_ctor();
-static extern (C) IntPtr wxTaskBarIcon_ctor2(int iconType);
-static extern (C) void   wxTaskBarIcon_RegisterVirtual(IntPtr self, TaskBarIcon obj, 
+static extern (C) ЦУк wxTaskBarIcon_ctor();
+static extern (C) ЦУк wxTaskBarIcon_ctor2(цел iconType);
+static extern (C) проц   wxTaskBarIcon_RegisterVirtual(ЦУк сам, TaskBarIcon объ, 
 	Virtual_CreatePopupMenu popmenu);
-static extern (C) IntPtr wxTaskBarIcon_dtor(IntPtr self);
+static extern (C) ЦУк wxTaskBarIcon_dtor(ЦУк сам);
 
-static extern (C) IntPtr wxTaskBarIcon_BaseCreatePopupMenu(IntPtr self);
-static extern (C) bool wxTaskBarIcon_IsIconInstalled(IntPtr self);
-static extern (C) bool wxTaskBarIcon_IsOk(IntPtr self);
-static extern (C) bool wxTaskBarIcon_PopupMenu(IntPtr self, IntPtr menu);
-static extern (C) bool wxTaskBarIcon_RemoveIcon(IntPtr self);
-static extern (C) bool wxTaskBarIcon_SetIcon(IntPtr self, IntPtr icon, string tooltip);
+static extern (C) ЦУк wxTaskBarIcon_BaseCreatePopupMenu(ЦУк сам);
+static extern (C) бул wxTaskBarIcon_IsIconInstalled(ЦУк сам);
+static extern (C) бул wxTaskBarIcon_IsOk(ЦУк сам);
+static extern (C) бул wxTaskBarIcon_PopupMenu(ЦУк сам, ЦУк меню);
+static extern (C) бул wxTaskBarIcon_RemoveIcon(ЦУк сам);
+static extern (C) бул wxTaskBarIcon_SetIcon(ЦУк сам, ЦУк иконка, ткст tooltip);
 //! \endcond
 
 //! \cond EXTERN
-static extern (C) IntPtr wxTaskBarIconEvent_ctor(int commandType, IntPtr tbIcon);
-static extern (C) IntPtr wxTaskBarIconEvent_Clone(IntPtr self);
+static extern (C) ЦУк wxTaskBarIconEvent_ctor(цел commandType, ЦУк tbIcon);
+static extern (C) ЦУк wxTaskBarIconEvent_Clone(ЦУк сам);
 //! \endcond
 		
 //-----------------------------------------------------------------------------
 
 alias TaskBarIconType wxTaskBarIconType;
-/// type of taskbar item to create
+/// тип of taskbar элемент to create
 enum TaskBarIconType
 {
 	 DEFAULT_TYPE
@@ -61,13 +61,13 @@ enum TaskBarIconType
 alias TaskBarIcon wxTaskBarIcon;
 public class TaskBarIcon : EvtHandler
 {
-	public static /*readonly*/ EventType wxEVT_TASKBAR_MOVE;
-	public static /*readonly*/ EventType wxEVT_TASKBAR_LEFT_DOWN;
-	public static /*readonly*/ EventType wxEVT_TASKBAR_LEFT_UP;
-	public static /*readonly*/ EventType wxEVT_TASKBAR_RIGHT_DOWN;
-	public static /*readonly*/ EventType wxEVT_TASKBAR_RIGHT_UP;
-	public static /*readonly*/ EventType wxEVT_TASKBAR_LEFT_DCLICK;
-	public static /*readonly*/ EventType wxEVT_TASKBAR_RIGHT_DCLICK;
+	public static /*readonly*/ ТипСобытия wxEVT_TASKBAR_MOVE;
+	public static /*readonly*/ ТипСобытия wxEVT_TASKBAR_LEFT_DOWN;
+	public static /*readonly*/ ТипСобытия wxEVT_TASKBAR_LEFT_UP;
+	public static /*readonly*/ ТипСобытия wxEVT_TASKBAR_RIGHT_DOWN;
+	public static /*readonly*/ ТипСобытия wxEVT_TASKBAR_RIGHT_UP;
+	public static /*readonly*/ ТипСобытия wxEVT_TASKBAR_LEFT_DCLICK;
+	public static /*readonly*/ ТипСобытия wxEVT_TASKBAR_RIGHT_DCLICK;
 
 	static this()
 	{
@@ -79,111 +79,111 @@ public class TaskBarIcon : EvtHandler
 		wxEVT_TASKBAR_LEFT_DCLICK = wxTaskBarIcon_EVT_TASKBAR_LEFT_DCLICK();
 		wxEVT_TASKBAR_RIGHT_DCLICK = wxTaskBarIcon_EVT_TASKBAR_RIGHT_DCLICK();
 
-		Event.AddEventType(wxEVT_TASKBAR_MOVE,         &TaskBarIconEvent.New);
-		Event.AddEventType(wxEVT_TASKBAR_LEFT_DOWN,    &TaskBarIconEvent.New);
-		Event.AddEventType(wxEVT_TASKBAR_LEFT_UP,      &TaskBarIconEvent.New);
-		Event.AddEventType(wxEVT_TASKBAR_RIGHT_DOWN,   &TaskBarIconEvent.New);
-		Event.AddEventType(wxEVT_TASKBAR_RIGHT_UP,     &TaskBarIconEvent.New);
-		Event.AddEventType(wxEVT_TASKBAR_LEFT_DCLICK,  &TaskBarIconEvent.New);
-		Event.AddEventType(wxEVT_TASKBAR_RIGHT_DCLICK, &TaskBarIconEvent.New);
+		Событие.ДобавьТипСоб(wxEVT_TASKBAR_MOVE,         &TaskBarIconEvent.Нов);
+		Событие.ДобавьТипСоб(wxEVT_TASKBAR_LEFT_DOWN,    &TaskBarIconEvent.Нов);
+		Событие.ДобавьТипСоб(wxEVT_TASKBAR_LEFT_UP,      &TaskBarIconEvent.Нов);
+		Событие.ДобавьТипСоб(wxEVT_TASKBAR_RIGHT_DOWN,   &TaskBarIconEvent.Нов);
+		Событие.ДобавьТипСоб(wxEVT_TASKBAR_RIGHT_UP,     &TaskBarIconEvent.Нов);
+		Событие.ДобавьТипСоб(wxEVT_TASKBAR_LEFT_DCLICK,  &TaskBarIconEvent.Нов);
+		Событие.ДобавьТипСоб(wxEVT_TASKBAR_RIGHT_DCLICK, &TaskBarIconEvent.Нов);
 	}
 
 	public this()
-		{ this(wxTaskBarIcon_ctor(), true); }
+		{ this(wxTaskBarIcon_ctor(), да); }
 
 	public this(TaskBarIconType iconType)
-		{ this(wxTaskBarIcon_ctor2(cast(int)iconType), true); }
+		{ this(wxTaskBarIcon_ctor2(cast(цел)iconType), да); }
 
-	public this(IntPtr wxobj) 
+	public this(ЦУк шхобъ) 
 	{
-		super(wxobj);
+		super(шхобъ);
 
-		wxTaskBarIcon_RegisterVirtual(wxobj, this, &staticCreatePopupMenu);
+		wxTaskBarIcon_RegisterVirtual(шхобъ, this, &staticCreatePopupMenu);
 	}
 		
-	private this(IntPtr wxobj, bool memOwn)
+	private this(ЦУк шхобъ, бул memOwn)
 	{ 
-		super(wxobj);
+		super(шхобъ);
 		this.memOwn = memOwn;
 
-		wxTaskBarIcon_RegisterVirtual(wxobj, this, &staticCreatePopupMenu);
+		wxTaskBarIcon_RegisterVirtual(шхобъ, this, &staticCreatePopupMenu);
 	}
 
-	override protected void dtor() { wxTaskBarIcon_dtor(wxobj); }
+	override protected проц dtor() { wxTaskBarIcon_dtor(шхобъ); }
 		
 	//---------------------------------------------------------------------
 		
-	static extern(C) private IntPtr staticCreatePopupMenu(TaskBarIcon obj)
+	static extern(C) private ЦУк staticCreatePopupMenu(TaskBarIcon объ)
 	{
-		return wxObject.SafePtr(obj.CreatePopupMenu());
+		return wxObject.SafePtr(объ.CreatePopupMenu());
 	}
-	protected /+virtual+/ Menu CreatePopupMenu()
+	protected /+virtual+/ Меню CreatePopupMenu()
 	{
-		return cast(Menu)FindObject(wxTaskBarIcon_BaseCreatePopupMenu(wxobj));
+		return cast(Меню)FindObject(wxTaskBarIcon_BaseCreatePopupMenu(шхобъ));
 	}
 
 	//---------------------------------------------------------------------
 		
-	public bool IsIconInstalled()
+	public бул IsIconInstalled()
 	{
-		return wxTaskBarIcon_IsIconInstalled(wxobj);
+		return wxTaskBarIcon_IsIconInstalled(шхобъ);
 	}
 
-	public bool IsOk()
+	public бул IsOk()
 	{
-		return wxTaskBarIcon_IsOk(wxobj);
+		return wxTaskBarIcon_IsOk(шхобъ);
 	}
 
-	public bool PopupMenu(Menu menu)
+	public бул PopupMenu(Меню меню)
 	{
-		return wxTaskBarIcon_PopupMenu(wxobj, wxObject.SafePtr(menu));
+		return wxTaskBarIcon_PopupMenu(шхобъ, wxObject.SafePtr(меню));
 	}
 
-	public bool RemoveIcon()
+	public бул RemoveIcon()
 	{
-		return wxTaskBarIcon_RemoveIcon(wxobj);
+		return wxTaskBarIcon_RemoveIcon(шхобъ);
 	}
 
-	public bool SetIcon(Icon icon, string tooltip = "")
+	public бул SetIcon(Icon иконка, ткст tooltip = "")
 	{
-		return wxTaskBarIcon_SetIcon(wxobj, wxObject.SafePtr(icon), tooltip);
+		return wxTaskBarIcon_SetIcon(шхобъ, wxObject.SafePtr(иконка), tooltip);
 	}
 
-	public void Move_Add(EventListener value) { AddEventListener(wxEVT_TASKBAR_MOVE, value, this); }
-	public void Move_Remove(EventListener value) { RemoveHandler(value, this); }
+	public проц Move_Add(EventListener значение) { AddEventListener(wxEVT_TASKBAR_MOVE, значение, this); }
+	public проц Move_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-	public void LeftDown_Add(EventListener value) { AddEventListener(wxEVT_TASKBAR_LEFT_DOWN, value, this); }
-	public void LeftDown_Remove(EventListener value) { RemoveHandler(value, this); }
+	public проц LeftDown_Add(EventListener значение) { AddEventListener(wxEVT_TASKBAR_LEFT_DOWN, значение, this); }
+	public проц LeftDown_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-	public void LeftUp_Add(EventListener value) { AddEventListener(wxEVT_TASKBAR_LEFT_UP, value, this); }
-	public void LeftUp_Remove(EventListener value) { RemoveHandler(value, this); }
+	public проц LeftUp_Add(EventListener значение) { AddEventListener(wxEVT_TASKBAR_LEFT_UP, значение, this); }
+	public проц LeftUp_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-	public void RightDown_Add(EventListener value) { AddEventListener(wxEVT_TASKBAR_RIGHT_DOWN, value, this); }
-	public void RightDown_Remove(EventListener value) { RemoveHandler(value, this); }
+	public проц RightDown_Add(EventListener значение) { AddEventListener(wxEVT_TASKBAR_RIGHT_DOWN, значение, this); }
+	public проц RightDown_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-	public void RightUp_Add(EventListener value) { AddEventListener(wxEVT_TASKBAR_RIGHT_UP, value, this); }
-	public void RightUp_Remove(EventListener value) { RemoveHandler(value, this); }
+	public проц RightUp_Add(EventListener значение) { AddEventListener(wxEVT_TASKBAR_RIGHT_UP, значение, this); }
+	public проц RightUp_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-	public void LeftDClick_Add(EventListener value) { AddEventListener(wxEVT_TASKBAR_LEFT_DCLICK, value, this); }
-	public void LeftDClick_Remove(EventListener value) { RemoveHandler(value, this); }
+	public проц LeftDClick_Add(EventListener значение) { AddEventListener(wxEVT_TASKBAR_LEFT_DCLICK, значение, this); }
+	public проц LeftDClick_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-	public void RightDClick_Add(EventListener value) { AddEventListener(wxEVT_TASKBAR_RIGHT_DCLICK, value, this); }
-	public void RightDClick_Remove(EventListener value) { RemoveHandler(value, this); }
+	public проц RightDClick_Add(EventListener значение) { AddEventListener(wxEVT_TASKBAR_RIGHT_DCLICK, значение, this); }
+	public проц RightDClick_Remove(EventListener значение) { RemoveHandler(значение, this); }
 }
 
 alias TaskBarIconEvent wxTaskBarIconEvent;
-public class TaskBarIconEvent : Event
+public class TaskBarIconEvent : Событие
 {
-	public this(IntPtr wxobj)
-		{ super(wxobj); }
+	public this(ЦУк шхобъ)
+		{ super(шхобъ); }
 
-	public this(EventType type, TaskBarIcon tbIcon)
-		{ super(wxTaskBarIconEvent_ctor(type, wxObject.SafePtr(tbIcon))); }
+	public this(ТипСобытия тип, TaskBarIcon tbIcon)
+		{ super(wxTaskBarIconEvent_ctor(тип, wxObject.SafePtr(tbIcon))); }
 
-	public Event Clone()
+	public Событие Clone()
 	{
-		return new TaskBarIconEvent(wxTaskBarIconEvent_Clone(wxobj));
+		return new TaskBarIconEvent(wxTaskBarIconEvent_Clone(шхобъ));
 	}
 
-	private static Event New(IntPtr obj) { return new TaskBarIconEvent(obj); }
+	private static Событие Нов(ЦУк объ) { return new TaskBarIconEvent(объ); }
 }

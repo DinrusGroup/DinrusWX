@@ -2,8 +2,8 @@
 import wx.wx;
 
     /**
-     * Class to display a list of images.  The scrolled window helps us with
-     * managing scrollbars when the window's contents are too large to be
+     * Class to display a list of images.  The scrolled окно helps us with
+     * managing scrollbars when the окно's contents are too large to be
      * displayed.
      */
     public class ImageList : ScrolledWindow
@@ -11,18 +11,18 @@ import wx.wx;
         private ImageViewer m_viewer;
 
         /**
-         * Sets up the image list.
+         * Sets up the рисунок list.
          *
-         * The base class is initialized with a default window position,
-         * and a static size of width = 150, The '-1' for height means that
-         * the height of the window is unconstrained.
+         * The base class is initialized with a default окно position,
+         * and a static size of ширина = 150, The '-1' for высота means that
+         * the высота of the окно is unconstrained.
          */
-        public this(Window parent, ImageViewer viewer)
+        public this(Окно родитель, ImageViewer viewer)
         {
-            super(parent, -1, wxDefaultPosition, Size(140, -1));
+            super(родитель, -1, wxDefaultPosition, Размер(140, -1));
             m_viewer = viewer;
 
-            // A flex grid sizer will be used to align the images horizontally.
+            // A flex grid sizer will be used to align the images горизонтально.
             // This is used, because the flex grid allows for entries to be
             // of various sizes.
             FlexGridSizer sizer = new FlexGridSizer(1, 0, 0);
@@ -31,70 +31,70 @@ import wx.wx;
 
             Sizer = sizer;
 
-            // Initialize the scrollbars
+            // Инициализуй the scrollbars
             SetScrollbars(0, 1, 0, 0);
         }
 
         /**
-         * Lists the images in the given list of image file names.
+         * Lists the images in the given list of рисунок file names.
          */
-        public void ListImages(string[] images)
+        public проц ListImages(ткст[] images)
         {
-            // Clear our list
+            // Очисть our list
             ClearImages();
 
-            // Add the images
+            // Добавь the images
 		    Console.WriteLine("Adding images ...");
-            foreach(string imageFile in images) {
+            foreach(ткст imageFile in images) {
 
 				Console.WriteLine("   + " ~ imageFile);
-                // Create a thumbnail will display the image
+                // Create a thumbnail will display the рисунок
                 Thumbnail thumb = new Thumbnail(this, imageFile);
                 
                 // Hook in our event handler
                 thumb.ThumbnailClicked = 
                     new Thumbnail.ThumbnailClick(OnThumbnailClicked);
 
-                // Add the bitmap button to the sizer.
-                Sizer.Add(thumb, 1, Stretch.wxEXPAND);
+                // Добавь the битмап button to the sizer.
+                Sizer.Добавь(thumb, 1, Stretch.wxEXPAND);
 
-                // A horizontal static line is used to help seperate the 
+                // A horizontal static line is used to справка seperate the 
                 // images in the list.
                 StaticLine line = new StaticLine(this, -1, wxDefaultPosition, 
                                                  wxDefaultSize, 
                                                  StaticLine.wxLI_HORIZONTAL);
 
                 // The static line is added with a small border on the bottom
-                Sizer.Add(line, 0, Stretch.wxEXPAND | Direction.wxBOTTOM, 3);
+                Sizer.Добавь(line, 0, Stretch.wxEXPAND | Direction.wxBOTTOM, 3);
 
-                // Fit inside tells the scrolled window to reset the scrollbars,
-                // so that the entire window's contents can be scrolled.
+                // Fit inside tells the scrolled окно to reset the scrollbars,
+                // so that the entire окно's contents can be scrolled.
                 FitInside();
             }
 
-            m_viewer.Bitmap = null;
+            m_viewer.Битмап = пусто;
         }
 
         /**
-         * Clear all the images in the list.
+         * Очисть all the images in the list.
          */
-        private void ClearImages()
+        private проц ClearImages()
         {
             // This will remove all the windows (images) that are in the sizer.
             // 
-            // The 'true' parameter tells the sizer to delete the windows as
-            // well.  If 'false' were given, we would have to manually do 
+            // The 'да' parameter tells the sizer to delete the windows as
+            // well.  If 'нет' were given, we would have to manually do 
             // this.
-            Sizer.Clear(true);
+            Sizer.Очисть(да);
 
             System.GC.Collect();
         }
 
-        public void OnThumbnailClicked(string fileName, Bitmap bmp)
+        public проц OnThumbnailClicked(ткст fileName, Битмап bmp)
         {
-            m_viewer.Bitmap = bmp;
+            m_viewer.Битмап = bmp;
 
-            // Set the main frame's title
+            // Установи the main frame's title
             Parent.Parent.Title = fileName;
         }
     }

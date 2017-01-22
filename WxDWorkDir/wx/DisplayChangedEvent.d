@@ -1,42 +1,27 @@
-//-----------------------------------------------------------------------------
-// wxD - DisplayChangedEvent.d
-// (C) 2005 bero <berobero@users.sourceforge.net>
-// based on
-// wx.NET - DisplayChangedEvent.cs
-//
-/// The wxDisplayChangedEvent wrapper class.
-//
-// Written by Alexander Olk (xenomorph2@onlinehome.de)
-// (C) 2004 by Alexander Olk
-// Licensed under the wxWidgets license, see LICENSE.txt for details.
-//
-// $Id: DisplayChangedEvent.d,v 1.9 2006/11/17 15:20:59 afb Exp $
-//-----------------------------------------------------------------------------
-
-module wx.DisplayChangedEvent;
+﻿module wx.DisplayChangedEvent;
 public import wx.common;
 
 public import wx.Event;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxDisplayChangedEvent_ctor();
+		static extern (C) ЦУк wxDisplayChangedEvent_ctor();
 		//! \endcond
 		
 		//-----------------------------------------------------------------------------
 
 	alias DisplayChangedEvent wxDisplayChangedEvent;
-	public class DisplayChangedEvent : Event
+	public class DisplayChangedEvent : Событие
 	{
-		public this(IntPtr wxobj) 
-			{ super(wxobj); }
+		public this(ЦУк шхобъ) 
+			{ super(шхобъ); }
 
 		public this()
 			{ this(wxDisplayChangedEvent_ctor()); }
 
-		private static Event New(IntPtr obj) { return new DisplayChangedEvent(obj); }
+		private static Событие Нов(ЦУк объ) { return new DisplayChangedEvent(объ); }
 
 		static this()
 		{
-			AddEventType(wxEVT_DISPLAY_CHANGED,			&DisplayChangedEvent.New);
+			ДобавьТипСоб(wxEVT_DISPLAY_CHANGED,			&DisplayChangedEvent.Нов);
 		}
 	}

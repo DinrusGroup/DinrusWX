@@ -1,4 +1,4 @@
-//-----------------------------------------------------------------------------
+﻿//-----------------------------------------------------------------------------
 // wxD - BitmapButton.d
 // (C) 2005 bero <berobero.sourceforge.net>
 // based on
@@ -10,7 +10,7 @@
 // (C) 2003 Robert Roebling
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: BitmapButton.d,v 1.11 2007/03/13 17:02:40 afb Exp $
+// $Ид: BitmapButton.d,v 1.11 2007/03/13 17:02:40 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.BitmapButton;
@@ -21,179 +21,179 @@ public import wx.Control;
 
 		//! \cond EXTERN
 		extern (C) {
-		alias void function(BitmapButton obj) Virtual_OnSetBitmap;
+		alias проц function(BitmapButton объ) Virtual_OnSetBitmap;
 		}
 		
-		static extern (C) IntPtr wxBitmapButton_ctor();
-		static extern (C) void   wxBitmapButton_RegisterVirtual(IntPtr self, BitmapButton obj,Virtual_OnSetBitmap onSetBitmap);
-		//static extern (C) void   wxBitmapButton_RegisterDisposable(IntPtr self, Virtual_Dispose onDispose);
-		static extern (C) bool   wxBitmapButton_Create(IntPtr self, IntPtr parent, int id, IntPtr label, inout Point pos, inout Size size, uint style, IntPtr validator, string name);
-	//	static extern (C) void   wxBitmapButton_SetDefault(IntPtr self);
+		static extern (C) ЦУк wxBitmapButton_ctor();
+		static extern (C) проц   wxBitmapButton_RegisterVirtual(ЦУк сам, BitmapButton объ,Virtual_OnSetBitmap onSetBitmap);
+		//static extern (C) проц   wxBitmapButton_RegisterDisposable(ЦУк сам, Virtual_Dispose onDispose);
+		static extern (C) бул   wxBitmapButton_Create(ЦУк сам, ЦУк родитель, цел ид, ЦУк надпись, inout Точка поз, inout Размер size, бцел стиль, ЦУк validator, ткст имя);
+	//	static extern (C) проц   wxBitmapButton_SetDefault(ЦУк сам);
 		
-		//static extern (C) void wxBitmapButton_SetLabel(IntPtr self, string label);
-		//static extern (C) IntPtr wxBitmapButton_GetLabel(IntPtr self);
+		//static extern (C) проц wxBitmapButton_SetLabel(ЦУк сам, ткст надпись);
+		//static extern (C) ЦУк wxBitmapButton_GetLabel(ЦУк сам);
 		
-		//static extern (C) bool wxBitmapButton_Enable(IntPtr self, bool enable);
+		//static extern (C) бул wxBitmapButton_Enable(ЦУк сам, бул enable);
 
-		//static extern (C) void   wxBitmapButton_SetBitmapLabel(IntPtr self, IntPtr bitmap);
-		//static extern (C) IntPtr wxBitmapButton_GetBitmapLabel(IntPtr self);
+		//static extern (C) проц   wxBitmapButton_SetBitmapLabel(ЦУк сам, ЦУк битмап);
+		//static extern (C) ЦУк wxBitmapButton_GetBitmapLabel(ЦУк сам);
 		
-		//static extern (C) void wxBitmapButton_SetBitmapSelected(IntPtr self, IntPtr bitmap);
-	//	static extern (C) IntPtr wxBitmapButton_GetBitmapSelected(IntPtr self);
+		//static extern (C) проц wxBitmapButton_SetBitmapSelected(ЦУк сам, ЦУк битмап);
+	//	static extern (C) ЦУк wxBitmapButton_GetBitmapSelected(ЦУк сам);
 
-		//static extern (C) void wxBitmapButton_SetBitmapFocus(IntPtr self, IntPtr bitmap);
-		//static extern (C) IntPtr wxBitmapButton_GetBitmapFocus(IntPtr self);
+		//static extern (C) проц wxBitmapButton_SetBitmapFocus(ЦУк сам, ЦУк битмап);
+		//static extern (C) ЦУк wxBitmapButton_GetBitmapFocus(ЦУк сам);
 
-	//	static extern (C) void wxBitmapButton_SetBitmapDisabled(IntPtr self, IntPtr bitmap);
-	//	static extern (C) IntPtr wxBitmapButton_GetBitmapDisabled(IntPtr self);
+	//	static extern (C) проц wxBitmapButton_SetBitmapDisabled(ЦУк сам, ЦУк битмап);
+	//	static extern (C) ЦУк wxBitmapButton_GetBitmapDisabled(ЦУк сам);
 		
-		//static extern (C) void wxBitmapButton_OnSetBitmap(IntPtr self);
+		//static extern (C) проц wxBitmapButton_OnSetBitmap(ЦУк сам);
 		
-		//static extern (C) void wxBitmapButton_ApplyParentThemeBackground(IntPtr self, IntPtr colour);
+		//static extern (C) проц wxBitmapButton_ApplyParentThemeBackground(ЦУк сам, ЦУк colour);
 		//! \endcond
 
 		//---------------------------------------------------------------------
 		
-		public const int wxBU_AUTODRAW      =  0x0004;
+		public const цел wxBU_AUTODRAW      =  0x0004;
 		
 		//---------------------------------------------------------------------
 		
 	alias BitmapButton wxBitmapButton;
 	public class BitmapButton : Control
 	{
-		public this(IntPtr wxobj) 
-			{ super(wxobj); }
+		public this(ЦУк шхобъ) 
+			{ super(шхобъ); }
 
 /+		public this()
 		{
 			this(wxBitmapButton_ctor());
-			wxBitmapButton_RegisterVirtual(wxobj, this, &staticOnSetBitmap);
+			wxBitmapButton_RegisterVirtual(шхобъ, this, &staticOnSetBitmap);
 		}
 
-		public this(Window parent, int id, Bitmap label)
-			{ this(parent, id, label, wxDefaultPosition, wxDefaultSize, 0, null, null); }
+		public this(Окно родитель, цел ид, Битмап надпись)
+			{ this(родитель, ид, надпись, wxDefaultPosition, wxDefaultSize, 0, пусто, пусто); }
 
-		public this(Window parent, int id, Bitmap label, Point pos)
-			{ this(parent, id, label, pos, wxDefaultSize, 0, null, null); }
+		public this(Окно родитель, цел ид, Битмап надпись, Точка поз)
+			{ this(родитель, ид, надпись, поз, wxDefaultSize, 0, пусто, пусто); }
 
-		public this(Window parent, int id, Bitmap label, Point pos, Size size)
-			{ this(parent, id, label, pos, size, 0, null, null); }
+		public this(Окно родитель, цел ид, Битмап надпись, Точка поз, Размер size)
+			{ this(родитель, ид, надпись, поз, size, 0, пусто, пусто); }
 
-		public this(Window parent, int id, Bitmap label, Point pos, Size size, int style)
-			{ this(parent, id, label, pos, size, style, null, null); }
+		public this(Окно родитель, цел ид, Битмап надпись, Точка поз, Размер size, цел стиль)
+			{ this(родитель, ид, надпись, поз, size, стиль, пусто, пусто); }
 
-		public this(Window parent, int id, Bitmap label, Point pos, Size size, int style, Validator validator)
-			{ this(parent, id, label, pos, size, style, validator, null); }
+		public this(Окно родитель, цел ид, Битмап надпись, Точка поз, Размер size, цел стиль, Validator validator)
+			{ this(родитель, ид, надпись, поз, size, стиль, validator, пусто); }
 
-		public this(Window parent, int id, Bitmap label, Point pos, Size size, int style, Validator validator, string name)
+		public this(Окно родитель, цел ид, Битмап надпись, Точка поз, Размер size, цел стиль, Validator validator, ткст имя)
 		{
 			this();
 			
-			if (!Create(parent, id, label, pos, size, style, validator, name))
+			if (!Create(родитель, ид, надпись, поз, size, стиль, validator, имя))
 			{
 				throw new InvalidOperationException("Failed to create BitmapButton");
 			}
 		}
 		
-		public static wxObject New(IntPtr wxobj) { return new BitmapButton(wxobj); }
+		public static wxObject Нов(ЦУк шхобъ) { return new BitmapButton(шхобъ); }
 	
 		//---------------------------------------------------------------------
-		// ctors with self created id
+		// ctors with сам created ид
 			
-		public this(Window parent, Bitmap label)
-			{ this(parent, Window.UniqueID, label, wxDefaultPosition, wxDefaultSize, 0, null, null); }
+		public this(Окно родитель, Битмап надпись)
+			{ this(родитель, Окно.UniqueID, надпись, wxDefaultPosition, wxDefaultSize, 0, пусто, пусто); }
 
-		public this(Window parent, Bitmap label, Point pos)
-			{ this(parent, Window.UniqueID, label, pos, wxDefaultSize, 0, null, null); }
+		public this(Окно родитель, Битмап надпись, Точка поз)
+			{ this(родитель, Окно.UniqueID, надпись, поз, wxDefaultSize, 0, пусто, пусто); }
 
-		public this(Window parent, Bitmap label, Point pos, Size size)
-			{ this(parent, Window.UniqueID, label, pos, size, 0, null, null); }
+		public this(Окно родитель, Битмап надпись, Точка поз, Размер size)
+			{ this(родитель, Окно.UniqueID, надпись, поз, size, 0, пусто, пусто); }
 
-		public this(Window parent, Bitmap label, Point pos, Size size, int style)
-			{ this(parent, Window.UniqueID, label, pos, size, style, null, null); }
+		public this(Окно родитель, Битмап надпись, Точка поз, Размер size, цел стиль)
+			{ this(родитель, Окно.UniqueID, надпись, поз, size, стиль, пусто, пусто); }
 
-		public this(Window parent, Bitmap label, Point pos, Size size, int style, Validator validator)
-			{ this(parent, Window.UniqueID, label, pos, size, style, validator, null); }
+		public this(Окно родитель, Битмап надпись, Точка поз, Размер size, цел стиль, Validator validator)
+			{ this(родитель, Окно.UniqueID, надпись, поз, size, стиль, validator, пусто); }
 
-		public this(Window parent, Bitmap label, Point pos, Size size, int style, Validator validator, string name)
-			{ this(parent, Window.UniqueID, label, pos, size, style, validator, name);}
+		public this(Окно родитель, Битмап надпись, Точка поз, Размер size, цел стиль, Validator validator, ткст имя)
+			{ this(родитель, Окно.UniqueID, надпись, поз, size, стиль, validator, имя);}
 +/
 		//---------------------------------------------------------------------
 		
-		public bool Create(Window parent, int id, Bitmap label, Point pos, Size size, uint style, Validator validator, string name)
+		public бул Create(Окно родитель, цел ид, Битмап надпись, Точка поз, Размер size, бцел стиль, Validator validator, ткст имя)
 		{
-			return wxBitmapButton_Create(wxobj, wxObject.SafePtr(parent), id, wxObject.SafePtr(label), pos, size, style, wxObject.SafePtr(validator), name);
+			return wxBitmapButton_Create(шхобъ, wxObject.SafePtr(родитель), ид, wxObject.SafePtr(надпись), поз, size, стиль, wxObject.SafePtr(validator), имя);
 		}
 
 		//---------------------------------------------------------------------		
 /+
-		public void SetDefault()
+		public проц SetDefault()
 		{
-			wxBitmapButton_SetDefault(wxobj);
+			wxBitmapButton_SetDefault(шхобъ);
 		}
 		+/
 		//---------------------------------------------------------------------		
 /+		
-		public string StringLabel() { return cast(string) new wxString(wxBitmapButton_GetLabel(wxobj), true); }
-		public void StringLabel(string value) { wxBitmapButton_SetLabel(wxobj, value); }
+		public ткст StringLabel() { return cast(ткст) new wxString(wxBitmapButton_GetLabel(шхобъ), да); }
+		public проц StringLabel(ткст значение) { wxBitmapButton_SetLabel(шхобъ, значение); }
 		
-		public void SetLabel(string label)
+		public проц SetLabel(ткст надпись)
 		{
-			wxBitmapButton_SetLabel(wxobj, label);
+			wxBitmapButton_SetLabel(шхобъ, надпись);
 		}
 		
-		public string GetLabel()
+		public ткст GetLabel()
 		{
-			return cast(string) new wxString(wxBitmapButton_GetLabel(wxobj), true);
+			return cast(ткст) new wxString(wxBitmapButton_GetLabel(шхобъ), да);
 		}
 		+/
 		//---------------------------------------------------------------------
 /+		
-		public bool Enable()
+		public бул Enable()
 		{
-			return Enable(true);
+			return Enable(да);
 		}
 		
-		public bool Enable(bool enable)
+		public бул Enable(бул enable)
 		{
-			return wxBitmapButton_Enable(wxobj, enable);
+			return wxBitmapButton_Enable(шхобъ, enable);
 		}
 +/
 		//---------------------------------------------------------------------
 /+
-		public Bitmap BitmapLabel() { return cast(Bitmap)FindObject(wxBitmapButton_GetBitmapLabel(wxobj), &Bitmap.New); }
-		public void BitmapLabel(Bitmap value) { wxBitmapButton_SetBitmapLabel(wxobj, wxObject.SafePtr(value)); }
+		public Битмап BitmapLabel() { return cast(Битмап)FindObject(wxBitmapButton_GetBitmapLabel(шхобъ), &Битмап.Нов); }
+		public проц BitmapLabel(Битмап значение) { wxBitmapButton_SetBitmapLabel(шхобъ, wxObject.SafePtr(значение)); }
 		+/
 /+
-		public Bitmap Label() { return cast(Bitmap)FindObject(wxBitmapButton_GetBitmapLabel(wxobj), &Bitmap.New); }
-		public void Label(Bitmap value) { wxBitmapButton_SetBitmapLabel(wxobj, wxObject.SafePtr(value)); }
+		public Битмап Label() { return cast(Битмап)FindObject(wxBitmapButton_GetBitmapLabel(шхобъ), &Битмап.Нов); }
+		public проц Label(Битмап значение) { wxBitmapButton_SetBitmapLabel(шхобъ, wxObject.SafePtr(значение)); }
 +/
 		
 		//---------------------------------------------------------------------
 /+		
-		public Bitmap BitmapSelected() { return cast(Bitmap)FindObject(wxBitmapButton_GetBitmapSelected(wxobj), &Bitmap.New); }
-		public void BitmapSelected(Bitmap value) { wxBitmapButton_SetBitmapSelected(wxobj, wxObject.SafePtr(value)); }
+		public Битмап BitmapSelected() { return cast(Битмап)FindObject(wxBitmapButton_GetBitmapSelected(шхобъ), &Битмап.Нов); }
+		public проц BitmapSelected(Битмап значение) { wxBitmapButton_SetBitmapSelected(шхобъ, wxObject.SafePtr(значение)); }
 		+/
 		/+
-		public Bitmap BitmapFocus() { return cast(Bitmap)FindObject(wxBitmapButton_GetBitmapFocus(wxobj), &Bitmap.New); }
-		public void BitmapFocus(Bitmap value) { wxBitmapButton_SetBitmapFocus(wxobj, wxObject.SafePtr(value)); }
+		public Битмап BitmapFocus() { return cast(Битмап)FindObject(wxBitmapButton_GetBitmapFocus(шхобъ), &Битмап.Нов); }
+		public проц BitmapFocus(Битмап значение) { wxBitmapButton_SetBitmapFocus(шхобъ, wxObject.SafePtr(значение)); }
 
-		public Bitmap BitmapDisabled() { return cast(Bitmap)FindObject(wxBitmapButton_GetBitmapDisabled(wxobj), &Bitmap.New); }
-		public void BitmapDisabled(Bitmap value) { wxBitmapButton_SetBitmapDisabled(wxobj, wxObject.SafePtr(value)); }
+		public Битмап BitmapDisabled() { return cast(Битмап)FindObject(wxBitmapButton_GetBitmapDisabled(шхобъ), &Битмап.Нов); }
+		public проц BitmapDisabled(Битмап значение) { wxBitmapButton_SetBitmapDisabled(шхобъ, wxObject.SafePtr(значение)); }
 +/
 		//---------------------------------------------------------------------
 		//! \cond EXTERN
-/+		extern(C) private static void staticOnSetBitmap(BitmapButton obj) { return obj.OnSetBitmap(); }
+/+		extern(C) private static проц staticOnSetBitmap(BitmapButton объ) { return объ.OnSetBitmap(); }
 		//! \endcond
-		protected /+virtual+/ void OnSetBitmap()
+		protected /+virtual+/ проц OnSetBitmap()
 		{
-			wxBitmapButton_OnSetBitmap(wxobj);
+			wxBitmapButton_OnSetBitmap(шхобъ);
 		}
 		+/
 		//---------------------------------------------------------------------
 		
-		/*public /+virtual+/ void ApplyParentThemeBackground(Colour bg)
+		/*public /+virtual+/ проц ApplyParentThemeBackground(Цвет bg)
 		{
-			wxBitmapButton_ApplyParentThemeBackground(wxobj, wxObject.SafePtr(bg));
+			wxBitmapButton_ApplyParentThemeBackground(шхобъ, wxObject.SafePtr(bg));
 		}*/
 	}

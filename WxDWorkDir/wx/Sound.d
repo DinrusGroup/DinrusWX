@@ -6,7 +6,7 @@
 //
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: Sound.d,v 1.4 2006/11/17 15:21:00 afb Exp $
+// $Ид: Sound.d,v 1.4 2006/11/17 15:21:00 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.Sound;
@@ -16,21 +16,21 @@ public import wx.common;
 	// Constants for Sound.Play
 	//---------------------------------------------------------------------------
 	
-	const uint wxSOUND_SYNC = 0U;
-	const uint wxSOUND_ASYNC = 1U;
-	const uint wxSOUND_LOOP = 2U;
+	const бцел wxSOUND_SYNC = 0U;
+	const бцел wxSOUND_ASYNC = 1U;
+	const бцел wxSOUND_LOOP = 2U;
 
 	//-----------------------------------------------------------------------------
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxSound_ctor();
-		static extern (C) IntPtr wxSound_ctor2(string fileName, bool isResource);
-		static extern (C) IntPtr wxSound_ctor3(int size, ubyte* data);
-		static extern (C) IntPtr wxSound_dtor(IntPtr self);
+		static extern (C) ЦУк wxSound_ctor();
+		static extern (C) ЦУк wxSound_ctor2(ткст fileName, бул isResource);
+		static extern (C) ЦУк wxSound_ctor3(цел size, ббайт* данные);
+		static extern (C) ЦУк wxSound_dtor(ЦУк сам);
 
-		static extern (C) bool wxSound_Play(IntPtr self, uint flags);
-		static extern (C) void wxSound_Stop(IntPtr self);
-		static extern (C) bool wxSound_IsOk(IntPtr self);
+		static extern (C) бул wxSound_Play(ЦУк сам, бцел флаги);
+		static extern (C) проц wxSound_Stop(ЦУк сам);
+		static extern (C) бул wxSound_IsOk(ЦУк сам);
 		//! \endcond
 		
 		//-----------------------------------------------------------------------------
@@ -40,51 +40,51 @@ public import wx.common;
 	{
 
 		public this()
-			{ this(wxSound_ctor(), true); }
+			{ this(wxSound_ctor(), да); }
 		
-		public this(string fileName, bool isResource=false)
-			{ this(wxSound_ctor2(fileName, isResource), true); }
+		public this(ткст fileName, бул isResource=нет)
+			{ this(wxSound_ctor2(fileName, isResource), да); }
 		
-		public this(ubyte[] data)
-			{ this(wxSound_ctor3(data.length, data.ptr), true); }
+		public this(ббайт[] данные)
+			{ this(wxSound_ctor3(данные.length, данные.ptr), да); }
 
-		public this(IntPtr wxobj) 
+		public this(ЦУк шхобъ) 
 		{
-			super(wxobj);
+			super(шхобъ);
 		}
 		
-		private this(IntPtr wxobj, bool memOwn)
+		private this(ЦУк шхобъ, бул memOwn)
 		{ 
-			super(wxobj);
+			super(шхобъ);
 			this.memOwn = memOwn;
 		}
 
-		override protected void dtor() { wxSound_dtor(wxobj); }
+		override protected проц dtor() { wxSound_dtor(шхобъ); }
 
 		//---------------------------------------------------------------------
 				
-		public bool Play(uint flags=wxSOUND_ASYNC)
+		public бул Play(бцел флаги=wxSOUND_ASYNC)
 		{
-			return wxSound_Play(wxobj, flags);
+			return wxSound_Play(шхобъ, флаги);
 		}
 
-		public void Stop()
+		public проц Stop()
 		{
-			wxSound_Stop(wxobj);
+			wxSound_Stop(шхобъ);
 		}
 		
-		public bool IsOk()
+		public бул IsOk()
 		{
-			return wxSound_IsOk(wxobj);
+			return wxSound_IsOk(шхобъ);
 		}
 		
 		//---------------------------------------------------------------------
 
-	    // Plays sound from filename:
-		static bool Play(string filename, uint flags=wxSOUND_ASYNC)
+	    // Plays sound from фимя:
+		static бул Play(ткст фимя, бцел флаги=wxSOUND_ASYNC)
 		{
-		    Sound snd = new Sound(filename);
-		    return snd.IsOk() ? snd.Play(flags) : false;
+		    Sound snd = new Sound(фимя);
+		    return snd.IsOk() ? snd.Play(флаги) : нет;
 		}
 
 	}

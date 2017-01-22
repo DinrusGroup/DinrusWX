@@ -1,155 +1,140 @@
-//-----------------------------------------------------------------------------
-// wxD - DC.d
-// (C) 2005 bero <berobero@users.sourceforge.net>
-// based on
-// wx.NET - DC.cs
-//
-/// The wxDC wrapper class.
-//
-// Written by Jason Perkins (jason@379.com)
-// (C) 2003 by 379, Inc.
-// Licensed under the wxWidgets license, see LICENSE.txt for details.
-//
-// $Id: DC.d,v 1.10 2007/01/08 23:19:13 afb Exp $
-//-----------------------------------------------------------------------------
-
-
+﻿
 module wx.DC;
 public import wx.common;
 public import wx.Window;
-public import wx.Pen;
+public import wx.Перо;
 public import wx.Brush;
 public import wx.ArrayInt;
 
 		//! \cond EXTERN
-		static extern (C) void   wxDC_dtor(IntPtr self);
-		static extern (C) void   wxDC_DrawBitmap(IntPtr self, IntPtr bmp, int x, int y, bool transparent);
-		static extern (C) void   wxDC_DrawPolygon(IntPtr self, int n, Point* points, int xoffset, int yoffset, int fill_style);
-		static extern (C) void   wxDC_DrawLine(IntPtr self, int x1, int y1, int x2, int y2);
-		static extern (C) void   wxDC_DrawRectangle(IntPtr self, int x1, int y1, int x2, int y2);
-		static extern (C) void   wxDC_DrawText(IntPtr self, string text, int x, int y);
-		static extern (C) void   wxDC_DrawEllipse(IntPtr self, int x, int y, int width, int height);
-		static extern (C) void   wxDC_DrawPoint(IntPtr self, int x, int y);
-		static extern (C) void   wxDC_DrawRoundedRectangle(IntPtr self, int x, int y, int width, int height, double radius);
+		static extern (C) проц   wxDC_dtor(ЦУк сам);
+		static extern (C) проц   wxDC_DrawBitmap(ЦУк сам, ЦУк bmp, цел x, цел y, бул transparent);
+		static extern (C) проц   wxDC_DrawPolygon(ЦУк сам, цел n, Точка* points, цел xoffset, цел yoffset, цел fill_style);
+		static extern (C) проц   wxDC_DrawLine(ЦУк сам, цел x1, цел y1, цел x2, цел y2);
+		static extern (C) проц   wxDC_DrawRectangle(ЦУк сам, цел x1, цел y1, цел x2, цел y2);
+		static extern (C) проц   wxDC_DrawText(ЦУк сам, ткст текст, цел x, цел y);
+		static extern (C) проц   wxDC_DrawEllipse(ЦУк сам, цел x, цел y, цел ширина, цел высота);
+		static extern (C) проц   wxDC_DrawPoint(ЦУк сам, цел x, цел y);
+		static extern (C) проц   wxDC_DrawRoundedRectangle(ЦУк сам, цел x, цел y, цел ширина, цел высота, дво radius);
 	
-		static extern (C) void   wxDC_SetBackgroundMode(IntPtr self, FillStyle mode);
+		static extern (C) проц   wxDC_SetBackgroundMode(ЦУк сам, СтильЗаливки mode);
 	
-		static extern (C) void   wxDC_SetTextBackground(IntPtr self, IntPtr colour);
-		static extern (C) IntPtr wxDC_GetTextBackground(IntPtr self);
+		static extern (C) проц   wxDC_SetTextBackground(ЦУк сам, ЦУк colour);
+		static extern (C) ЦУк wxDC_GetTextBackground(ЦУк сам);
 	
-		static extern (C) void   wxDC_SetBrush(IntPtr self, IntPtr brush);
-		static extern (C) IntPtr wxDC_GetBrush(IntPtr self);
+		static extern (C) проц   wxDC_SetBrush(ЦУк сам, ЦУк кисть);
+		static extern (C) ЦУк wxDC_GetBrush(ЦУк сам);
 	
-		static extern (C) void   wxDC_SetBackground(IntPtr self, IntPtr brush);
-		static extern (C) IntPtr wxDC_GetBackground(IntPtr self);
+		static extern (C) проц   wxDC_SetBackground(ЦУк сам, ЦУк кисть);
+		static extern (C) ЦУк wxDC_GetBackground(ЦУк сам);
 	
-		static extern (C) void   wxDC_SetPen(IntPtr self, IntPtr pen);
-		static extern (C) IntPtr wxDC_GetPen(IntPtr self);
+		static extern (C) проц   wxDC_SetPen(ЦУк сам, ЦУк перо);
+		static extern (C) ЦУк wxDC_GetPen(ЦУк сам);
 	
-		static extern (C) void   wxDC_SetTextForeground(IntPtr self, IntPtr colour);
-		static extern (C) IntPtr wxDC_GetTextForeground(IntPtr self);
+		static extern (C) проц   wxDC_SetTextForeground(ЦУк сам, ЦУк colour);
+		static extern (C) ЦУк wxDC_GetTextForeground(ЦУк сам);
 	
-		static extern (C) void   wxDC_SetFont(IntPtr self, IntPtr font);
-		static extern (C) IntPtr wxDC_GetFont(IntPtr self);
+		static extern (C) проц   wxDC_SetFont(ЦУк сам, ЦУк шрифт);
+		static extern (C) ЦУк wxDC_GetFont(ЦУк сам);
 	
-		static extern (C) void   wxDC_GetTextExtent(IntPtr self, string str, out int x, out int y, out int descent, out int externalLeading, IntPtr theFont);
-		static extern (C) void   wxDC_Clear(IntPtr self);
+		static extern (C) проц   wxDC_GetTextExtent(ЦУк сам, ткст str, out цел x, out цел y, out цел descent, out цел externalLeading, ЦУк theFont);
+		static extern (C) проц   wxDC_Clear(ЦУк сам);
 	
-		static extern (C) void   wxDC_DestroyClippingRegion(IntPtr self);
-		static extern (C) void   wxDC_SetClippingRegion(IntPtr self, int x, int y, int width, int height);
-		static extern (C) void   wxDC_SetClippingRegionPos(IntPtr self, inout Point pos, inout Size size);
-		static extern (C) void   wxDC_SetClippingRegionRect(IntPtr self, inout Rectangle rect);
-		static extern (C) void   wxDC_SetClippingRegionReg(IntPtr self, IntPtr reg);
+		static extern (C) проц   wxDC_DestroyClippingRegion(ЦУк сам);
+		static extern (C) проц   wxDC_SetClippingRegion(ЦУк сам, цел x, цел y, цел ширина, цел высота);
+		static extern (C) проц   wxDC_SetClippingRegionPos(ЦУк сам, inout Точка поз, inout Размер size);
+		static extern (C) проц   wxDC_SetClippingRegionRect(ЦУк сам, inout Прямоугольник прям);
+		static extern (C) проц   wxDC_SetClippingRegionReg(ЦУк сам, ЦУк reg);
 	
-		static extern (C) int    wxDC_GetLogicalFunction(IntPtr self);
-		static extern (C) void   wxDC_SetLogicalFunction(IntPtr self, int func);
+		static extern (C) цел    wxDC_GetLogicalFunction(ЦУк сам);
+		static extern (C) проц   wxDC_SetLogicalFunction(ЦУк сам, цел func);
 	
-		static extern (C) bool   wxDC_BeginDrawing(IntPtr self);
-		static extern (C) bool   wxDC_Blit(IntPtr self, int xdest, int ydest, int width, int height, IntPtr source, int xsrc, int ysrc, int rop, bool useMask, int xsrcMask, int ysrcMask);
-		static extern (C) void   wxDC_EndDrawing(IntPtr self);
+		static extern (C) бул   wxDC_BeginDrawing(ЦУк сам);
+		static extern (C) бул   wxDC_Blit(ЦУк сам, цел xdest, цел ydest, цел ширина, цел высота, ЦУк source, цел xsrc, цел ysrc, цел rop, бул useMask, цел xsrcMask, цел ysrcMask);
+		static extern (C) проц   wxDC_EndDrawing(ЦУк сам);
 		
-		static extern (C) bool   wxDC_FloodFill(IntPtr self, int x, int y, IntPtr col, int style);
+		static extern (C) бул   wxDC_FloodFill(ЦУк сам, цел x, цел y, ЦУк col, цел стиль);
 		
-		static extern (C) bool   wxDC_GetPixel(IntPtr self, int x, int y, IntPtr col);
+		static extern (C) бул   wxDC_GetPixel(ЦУк сам, цел x, цел y, ЦУк col);
 		
-		static extern (C) void   wxDC_CrossHair(IntPtr self, int x, int y);
+		static extern (C) проц   wxDC_CrossHair(ЦУк сам, цел x, цел y);
 		
-		static extern (C) void   wxDC_DrawArc(IntPtr self, int x1, int y1, int x2, int y2, int xc, int yc);
+		static extern (C) проц   wxDC_DrawArc(ЦУк сам, цел x1, цел y1, цел x2, цел y2, цел xc, цел yc);
 		
-		static extern (C) void   wxDC_DrawCheckMark(IntPtr self, int x, int y, int width, int height);
+		static extern (C) проц   wxDC_DrawCheckMark(ЦУк сам, цел x, цел y, цел ширина, цел высота);
 		
-		static extern (C) void   wxDC_DrawEllipticArc(IntPtr self, int x, int y, int w, int h, double sa, double ea);
+		static extern (C) проц   wxDC_DrawEllipticArc(ЦУк сам, цел x, цел y, цел w, цел h, дво sa, дво ea);
 		
-		static extern (C) void   wxDC_DrawLines(IntPtr self, int n, Point* points, int xoffset, int yoffset);
+		static extern (C) проц   wxDC_DrawLines(ЦУк сам, цел n, Точка* points, цел xoffset, цел yoffset);
 		
-		static extern (C) void   wxDC_DrawCircle(IntPtr self, int x, int y, int radius);
+		static extern (C) проц   wxDC_DrawCircle(ЦУк сам, цел x, цел y, цел radius);
 		
-		static extern (C) void   wxDC_DrawIcon(IntPtr self, IntPtr icon, int x, int y);
+		static extern (C) проц   wxDC_DrawIcon(ЦУк сам, ЦУк иконка, цел x, цел y);
 		
-		static extern (C) void   wxDC_DrawRotatedText(IntPtr self, string text, int x, int y, double angle);
+		static extern (C) проц   wxDC_DrawRotatedText(ЦУк сам, ткст текст, цел x, цел y, дво угол);
 		
-		static extern (C) void   wxDC_DrawLabel(IntPtr self, string text, IntPtr image, inout Rectangle rect, int alignment, int indexAccel, inout Rectangle rectBounding);
-		static extern (C) void   wxDC_DrawLabel2(IntPtr self, string text, inout Rectangle rect, int alignment, int indexAccel);
+		static extern (C) проц   wxDC_DrawLabel(ЦУк сам, ткст текст, ЦУк рисунок, inout Прямоугольник прям, цел alignment, цел indexAccel, inout Прямоугольник rectBounding);
+		static extern (C) проц   wxDC_DrawLabel2(ЦУк сам, ткст текст, inout Прямоугольник прям, цел alignment, цел indexAccel);
 		
-		static extern (C) void   wxDC_DrawSpline(IntPtr self, int x1, int y1, int x2, int y2, int x3, int y3);
-		static extern (C) void   wxDC_DrawSpline2(IntPtr self, int n, Point* points);
+		static extern (C) проц   wxDC_DrawSpline(ЦУк сам, цел x1, цел y1, цел x2, цел y2, цел x3, цел y3);
+		static extern (C) проц   wxDC_DrawSpline2(ЦУк сам, цел n, Точка* points);
 		
-		static extern (C) bool   wxDC_StartDoc(IntPtr self, string message);
-		static extern (C) void   wxDC_EndDoc(IntPtr self);
-		static extern (C) void   wxDC_StartPage(IntPtr self);
-		static extern (C) void   wxDC_EndPage(IntPtr self);
+		static extern (C) бул   wxDC_StartDoc(ЦУк сам, ткст message);
+		static extern (C) проц   wxDC_EndDoc(ЦУк сам);
+		static extern (C) проц   wxDC_StartPage(ЦУк сам);
+		static extern (C) проц   wxDC_EndPage(ЦУк сам);
 		
-		static extern (C) void   wxDC_GetClippingBox(IntPtr self, out int x, out int y, out int w, out int h);
-		static extern (C) void   wxDC_GetClippingBox2(IntPtr self, out Rectangle rect);
+		static extern (C) проц   wxDC_GetClippingBox(ЦУк сам, out цел x, out цел y, out цел w, out цел h);
+		static extern (C) проц   wxDC_GetClippingBox2(ЦУк сам, out Прямоугольник прям);
 		
-		static extern (C) void   wxDC_GetMultiLineTextExtent(IntPtr self, string text, out int width, out int height, out int heightline, IntPtr font);
+		static extern (C) проц   wxDC_GetMultiLineTextExtent(ЦУк сам, ткст текст, out цел ширина, out цел высота, out цел heightline, ЦУк шрифт);
 		
-		static extern (C) bool   wxDC_GetPartialTextExtents(IntPtr self, string text, IntPtr widths);
+		static extern (C) бул   wxDC_GetPartialTextExtents(ЦУк сам, ткст текст, ЦУк widths);
 		
-		static extern (C) void   wxDC_GetSize(IntPtr self, out int width, out int height);
-		static extern (C) void   wxDC_GetSize2(IntPtr self, inout Size size);
-		static extern (C) void   wxDC_GetSizeMM(IntPtr self, out int width, out int height);
-		static extern (C) void   wxDC_GetSizeMM2(IntPtr self, inout Size size);
+		static extern (C) проц   wxDC_GetSize(ЦУк сам, out цел ширина, out цел высота);
+		static extern (C) проц   wxDC_GetSize2(ЦУк сам, inout Размер size);
+		static extern (C) проц   wxDC_GetSizeMM(ЦУк сам, out цел ширина, out цел высота);
+		static extern (C) проц   wxDC_GetSizeMM2(ЦУк сам, inout Размер size);
 		
-		static extern (C) int    wxDC_DeviceToLogicalX(IntPtr self, int x);
-		static extern (C) int    wxDC_DeviceToLogicalY(IntPtr self, int y);
-		static extern (C) int    wxDC_DeviceToLogicalXRel(IntPtr self, int x);
-		static extern (C) int    wxDC_DeviceToLogicalYRel(IntPtr self, int y);
-		static extern (C) int    wxDC_LogicalToDeviceX(IntPtr self, int x);
-		static extern (C) int    wxDC_LogicalToDeviceY(IntPtr self, int y);
-		static extern (C) int    wxDC_LogicalToDeviceXRel(IntPtr self, int x);
-		static extern (C) int    wxDC_LogicalToDeviceYRel(IntPtr self, int y);
+		static extern (C) цел    wxDC_DeviceToLogicalX(ЦУк сам, цел x);
+		static extern (C) цел    wxDC_DeviceToLogicalY(ЦУк сам, цел y);
+		static extern (C) цел    wxDC_DeviceToLogicalXRel(ЦУк сам, цел x);
+		static extern (C) цел    wxDC_DeviceToLogicalYRel(ЦУк сам, цел y);
+		static extern (C) цел    wxDC_LogicalToDeviceX(ЦУк сам, цел x);
+		static extern (C) цел    wxDC_LogicalToDeviceY(ЦУк сам, цел y);
+		static extern (C) цел    wxDC_LogicalToDeviceXRel(ЦУк сам, цел x);
+		static extern (C) цел    wxDC_LogicalToDeviceYRel(ЦУк сам, цел y);
 		
-		static extern (C) bool   wxDC_Ok(IntPtr self);
+		static extern (C) бул   wxDC_Ok(ЦУк сам);
 		
-		static extern (C) int    wxDC_GetBackgroundMode(IntPtr self);
+		static extern (C) цел    wxDC_GetBackgroundMode(ЦУк сам);
 		
-		static extern (C) int    wxDC_GetMapMode(IntPtr self);
-		static extern (C) void   wxDC_SetMapMode(IntPtr self, int mode);
+		static extern (C) цел    wxDC_GetMapMode(ЦУк сам);
+		static extern (C) проц   wxDC_SetMapMode(ЦУк сам, цел mode);
 		
-		static extern (C) void   wxDC_GetUserScale(IntPtr self, out double x, out double y);
-		static extern (C) void   wxDC_SetUserScale(IntPtr self, double x, double y);
+		static extern (C) проц   wxDC_GetUserScale(ЦУк сам, out дво x, out дво y);
+		static extern (C) проц   wxDC_SetUserScale(ЦУк сам, дво x, дво y);
 		
-		static extern (C) void   wxDC_GetLogicalScale(IntPtr self, out double x, out double y);
-		static extern (C) void   wxDC_SetLogicalScale(IntPtr self, double x, double y);
+		static extern (C) проц   wxDC_GetLogicalScale(ЦУк сам, out дво x, out дво y);
+		static extern (C) проц   wxDC_SetLogicalScale(ЦУк сам, дво x, дво y);
 		
-		static extern (C) void   wxDC_GetLogicalOrigin(IntPtr self, out int x, out int y);
-		static extern (C) void   wxDC_GetLogicalOrigin2(IntPtr self, inout Point pt);
-		static extern (C) void   wxDC_SetLogicalOrigin(IntPtr self, int x, int y);
+		static extern (C) проц   wxDC_GetLogicalOrigin(ЦУк сам, out цел x, out цел y);
+		static extern (C) проц   wxDC_GetLogicalOrigin2(ЦУк сам, inout Точка pt);
+		static extern (C) проц   wxDC_SetLogicalOrigin(ЦУк сам, цел x, цел y);
 		
-		static extern (C) void   wxDC_GetDeviceOrigin(IntPtr self, out int x, out int y);
-		static extern (C) void   wxDC_GetDeviceOrigin2(IntPtr self, inout Point pt);
-		static extern (C) void   wxDC_SetDeviceOrigin(IntPtr self, int x, int y);
+		static extern (C) проц   wxDC_GetDeviceOrigin(ЦУк сам, out цел x, out цел y);
+		static extern (C) проц   wxDC_GetDeviceOrigin2(ЦУк сам, inout Точка pt);
+		static extern (C) проц   wxDC_SetDeviceOrigin(ЦУк сам, цел x, цел y);
 		
-		static extern (C) void   wxDC_SetAxisOrientation(IntPtr self, bool xLeftRight, bool yBottomUp);
+		static extern (C) проц   wxDC_SetAxisOrientation(ЦУк сам, бул xLeftRight, бул yBottomUp);
 		
-		static extern (C) void   wxDC_CalcBoundingBox(IntPtr self, int x, int y);
-		static extern (C) void   wxDC_ResetBoundingBox(IntPtr self);
+		static extern (C) проц   wxDC_CalcBoundingBox(ЦУк сам, цел x, цел y);
+		static extern (C) проц   wxDC_ResetBoundingBox(ЦУк сам);
 		
-		static extern (C) int    wxDC_MinX(IntPtr self);
-		static extern (C) int    wxDC_MaxX(IntPtr self);
-		static extern (C) int    wxDC_MinY(IntPtr self);
-		static extern (C) int    wxDC_MaxY(IntPtr self);
+		static extern (C) цел    wxDC_MinX(ЦУк сам);
+		static extern (C) цел    wxDC_MaxX(ЦУк сам);
+		static extern (C) цел    wxDC_MinY(ЦУк сам);
+		static extern (C) цел    wxDC_MaxY(ЦУк сам);
 		//! \endcond
 
 	alias DC wxDC;
@@ -157,781 +142,781 @@ public import wx.ArrayInt;
 	{
 		//---------------------------------------------------------------------
 
-		public this(IntPtr wxobj) 
-			{ super(wxobj);}
+		public this(ЦУк шхобъ) 
+			{ super(шхобъ);}
 
-		override protected void dtor() { wxDC_dtor(wxobj); }
-
-		//---------------------------------------------------------------------
-
-		public void BackgroundMode(FillStyle value) { wxDC_SetBackgroundMode(wxobj, value); }
-		public FillStyle BackgroundMode() { return cast(FillStyle)wxDC_GetBackgroundMode(wxobj); }
+		override protected проц dtor() { wxDC_dtor(шхобъ); }
 
 		//---------------------------------------------------------------------
 
-		public void brush(Brush value) { wxDC_SetBrush(wxobj, wxObject.SafePtr(value)); }
-		public Brush brush() { return new Brush(wxDC_GetBrush(wxobj)); }
-
-		public void Background(Brush value) { wxDC_SetBackground(wxobj, wxObject.SafePtr(value)); }
-		public Brush Background() { return new Brush(wxDC_GetBackground(wxobj)); }
+		public проц ФоновыйРежим(СтильЗаливки значение) { wxDC_SetBackgroundMode(шхобъ, значение); }
+		public СтильЗаливки ФоновыйРежим() { return cast(СтильЗаливки)wxDC_GetBackgroundMode(шхобъ); }
 
 		//---------------------------------------------------------------------
 
-		public void DrawBitmap(Bitmap bmp, int x, int y, bool useMask)
-		{
-			wxDC_DrawBitmap(wxobj, wxObject.SafePtr(bmp), x, y, useMask);
-		}
-		
-		public void DrawBitmap(Bitmap bmp, int x, int y)
-		{
-			DrawBitmap(bmp, x, y, false);
-		}
-		
-		public void DrawBitmap(Bitmap bmp, Point pt, bool useMask)
-		{
-			DrawBitmap(bmp, pt.X, pt.Y, useMask);
-		}
-		
-		public void DrawBitmap(Bitmap bmp, Point pt)
-		{
-			DrawBitmap(bmp, pt.X, pt.Y, false);
-		}
+		public проц кисть(Кисть значение) { wxDC_SetBrush(шхобъ, wxObject.SafePtr(значение)); }
+		public Кисть кисть() { return new Кисть(wxDC_GetBrush(шхобъ)); }
+
+		public проц Фон(Кисть значение) { wxDC_SetBackground(шхобъ, wxObject.SafePtr(значение)); }
+		public Кисть Фон() { return new Кисть(wxDC_GetBackground(шхобъ)); }
 
 		//---------------------------------------------------------------------
 
-		public void DrawEllipse(int x, int y, int width, int height)
+		public проц РисуйБитмап(Битмап bmp, цел x, цел y, бул useMask)
 		{
-			wxDC_DrawEllipse(wxobj, x, y, width, height);
+			wxDC_DrawBitmap(шхобъ, wxObject.SafePtr(bmp), x, y, useMask);
 		}
 		
-		public void DrawEllipse(Point pt, Size sz)
+		public проц РисуйБитмап(Битмап bmp, цел x, цел y)
 		{
-			DrawEllipse(pt.X, pt.Y, sz.Width, sz.Height);
+			РисуйБитмап(bmp, x, y, нет);
 		}
 		
-		public void DrawEllipse(Rectangle rect)
+		public проц РисуйБитмап(Битмап bmp, Точка pt, бул useMask)
 		{
-			DrawEllipse(rect.X, rect.Y, rect.Width, rect.Height);
+			РисуйБитмап(bmp, pt.X, pt.Y, useMask);
+		}
+		
+		public проц РисуйБитмап(Битмап bmp, Точка pt)
+		{
+			РисуйБитмап(bmp, pt.X, pt.Y, нет);
 		}
 
 		//---------------------------------------------------------------------
 
-		public void DrawPoint(int x, int y)
+		public проц РисуйЭллипс(цел x, цел y, цел ширина, цел высота)
 		{
-			wxDC_DrawPoint(wxobj, x, y);
+			wxDC_DrawEllipse(шхобъ, x, y, ширина, высота);
 		}
 		
-		public void DrawPoint(Point pt)
+		public проц РисуйЭллипс(Точка pt, Размер sz)
 		{
-			DrawPoint(pt.X, pt.Y);
+			РисуйЭллипс(pt.X, pt.Y, sz.Ширина, sz.Высота);
+		}
+		
+		public проц РисуйЭллипс(Прямоугольник прям)
+		{
+			РисуйЭллипс(прям.X, прям.Y, прям.Ширина, прям.Высота);
 		}
 
 		//---------------------------------------------------------------------
 
-		public void DrawLine(Point p1, Point p2)
+		public проц РисуйТочку(цел x, цел y)
+		{
+			wxDC_DrawPoint(шхобъ, x, y);
+		}
+		
+		public проц РисуйТочку(Точка pt)
+		{
+			РисуйТочку(pt.X, pt.Y);
+		}
+
+		//---------------------------------------------------------------------
+
+		public проц РисуйЛинию(Точка p1, Точка p2)
 		{ 
-			DrawLine(p1.X, p1.Y, p2.X, p2.Y); 
+			РисуйЛинию(p1.X, p1.Y, p2.X, p2.Y); 
 		}
 
-		public void DrawLine(int x1, int y1, int x2, int y2)
+		public проц РисуйЛинию(цел x1, цел y1, цел x2, цел y2)
 		{
-			wxDC_DrawLine(wxobj, x1, y1, x2, y2);
+			wxDC_DrawLine(шхобъ, x1, y1, x2, y2);
 		}
 
 		//---------------------------------------------------------------------
 
-		public void DrawPolygon(Point[] points)
+		public проц РисуйМногоуг(Точка[] points)
 		{ 
-			DrawPolygon(points.length, points, 0, 0, FillStyle.wxODDEVEN_RULE); 
+			РисуйМногоуг(points.length, points, 0, 0, СтильЗаливки.wxODDEVEN_RULE); 
 		}
 		
-		public void DrawPolygon(Point[] points, int xoffset, int yoffset)
+		public проц РисуйМногоуг(Точка[] points, цел xoffset, цел yoffset)
 		{ 
-			DrawPolygon(points.length, points, xoffset, yoffset, FillStyle.wxODDEVEN_RULE); 
+			РисуйМногоуг(points.length, points, xoffset, yoffset, СтильЗаливки.wxODDEVEN_RULE); 
 		}
 		
-		public void DrawPolygon(Point[] points, int xoffset, int yoffset, FillStyle fill_style)
+		public проц РисуйМногоуг(Точка[] points, цел xoffset, цел yoffset, СтильЗаливки fill_style)
 		{ 
-			DrawPolygon(points.length, points, xoffset, yoffset, fill_style); 
+			РисуйМногоуг(points.length, points, xoffset, yoffset, fill_style); 
 		}
 
-		public void DrawPolygon(int n, Point[] points)
+		public проц РисуйМногоуг(цел n, Точка[] points)
 		{ 
-			DrawPolygon(n, points, 0, 0, FillStyle.wxODDEVEN_RULE); 
+			РисуйМногоуг(n, points, 0, 0, СтильЗаливки.wxODDEVEN_RULE); 
 		}
 		
-		public void DrawPolygon(int n, Point[] points, int xoffset, int yoffset)
+		public проц РисуйМногоуг(цел n, Точка[] points, цел xoffset, цел yoffset)
 		{ 
-			DrawPolygon(n, points, xoffset, yoffset, FillStyle.wxODDEVEN_RULE); 
+			РисуйМногоуг(n, points, xoffset, yoffset, СтильЗаливки.wxODDEVEN_RULE); 
 		}
 		
-		public void DrawPolygon(int n, Point[] points, int xoffset, int yoffset, FillStyle fill_style)
+		public проц РисуйМногоуг(цел n, Точка[] points, цел xoffset, цел yoffset, СтильЗаливки fill_style)
 		{
-			wxDC_DrawPolygon(wxobj, n, points.ptr, xoffset, yoffset, cast(int)fill_style);
+			wxDC_DrawPolygon(шхобъ, n, points.ptr, xoffset, yoffset, cast(цел)fill_style);
 		}
 
 		//---------------------------------------------------------------------
 
-		public void DrawRectangle(int x1, int y1, int x2, int y2)
+		public проц РисуйПрям(цел x1, цел y1, цел x2, цел y2)
 		{
-			wxDC_DrawRectangle(wxobj, x1, y1, x2, y2);
+			wxDC_DrawRectangle(шхобъ, x1, y1, x2, y2);
 		}
 		
-		public void DrawRectangle(Point pt, Size sz)
+		public проц РисуйПрям(Точка pt, Размер sz)
 		{
-			DrawRectangle(pt.X, pt.Y, sz.Width, sz.Height);
+			РисуйПрям(pt.X, pt.Y, sz.Ширина, sz.Высота);
 		} 
 
-		public void DrawRectangle(Rectangle rect)
+		public проц РисуйПрям(Прямоугольник прям)
 		{
-			wxDC_DrawRectangle(wxobj, rect.X, rect.Y, rect.Width, rect.Height);
+			wxDC_DrawRectangle(шхобъ, прям.X, прям.Y, прям.Ширина, прям.Высота);
 		}
 
 		//---------------------------------------------------------------------
 
-		public void DrawText(string text, int x, int y)
+		public проц РисуйТекст(ткст текст, цел x, цел y)
 		{
-			wxDC_DrawText(wxobj, text, x, y);
+			wxDC_DrawText(шхобъ, текст, x, y);
 		}
 
-		public void DrawText(string text, Point pos)
+		public проц РисуйТекст(ткст текст, Точка поз)
 		{
-			wxDC_DrawText(wxobj, text, pos.X, pos.Y);
+			wxDC_DrawText(шхобъ, текст, поз.X, поз.Y);
 		}
+		
+		//---------------------------------------------------------------------
+
+		public проц РисуйОкруглыйПрям(цел x, цел y, цел ширина, цел высота, дво radius)
+		{
+			wxDC_DrawRoundedRectangle(шхобъ, x, y, ширина, высота, radius);
+		}
+		
+		public проц РисуйОкруглыйПрям(Точка pt, Размер sz, дво radius)
+		{
+			РисуйОкруглыйПрям(pt.X, pt.Y, sz.Ширина, sz.Высота, radius);
+		}
+		
+		public проц РисуйОкруглыйПрям(Прямоугольник к, дво radius)
+		{
+			РисуйОкруглыйПрям(к.X, к.Y, к.Ширина, к.Высота, radius);
+		}
+
+		//---------------------------------------------------------------------
+
+		public проц перо(Перо значение) { wxDC_SetPen(шхобъ, значение.шхобъ); }
+		public Перо перо() { return cast(Перо)FindObject(wxDC_GetPen(шхобъ), &Перо.Нов); }
+
+		//---------------------------------------------------------------------
+
+		public Цвет ППланТекста() { return cast(Цвет)FindObject(wxDC_GetTextForeground(шхобъ), &Цвет.Нов); }
+		public проц ППланТекста(Цвет значение) { wxDC_SetTextForeground(шхобъ, wxObject.SafePtr(значение)); }
+
+		public Цвет ЗПланТекста() { return cast(Цвет)FindObject(wxDC_GetTextBackground(шхобъ), &Цвет.Нов); }
+		public проц ЗПланТекста(Цвет значение) { wxDC_SetTextBackground(шхобъ, wxObject.SafePtr(значение)); }
+
+		//---------------------------------------------------------------------
+
+		public Шрифт шрифт() { return cast(Шрифт)FindObject(wxDC_GetFont(шхобъ), &Шрифт.Нов); }
+		public проц шрифт(Шрифт значение) { wxDC_SetFont(шхобъ, wxObject.SafePtr(значение)); }
 		
 		//---------------------------------------------------------------------
 
-		public void DrawRoundedRectangle(int x, int y, int width, int height, double radius)
+		public /+virtual+/ проц Очисть()
 		{
-			wxDC_DrawRoundedRectangle(wxobj, x, y, width, height, radius);
-		}
-		
-		public void DrawRoundedRectangle(Point pt, Size sz, double radius)
-		{
-			DrawRoundedRectangle(pt.X, pt.Y, sz.Width, sz.Height, radius);
-		}
-		
-		public void DrawRoundedRectangle(Rectangle r, double radius)
-		{
-			DrawRoundedRectangle(r.X, r.Y, r.Width, r.Height, radius);
+			wxDC_Clear(шхобъ);
 		}
 
 		//---------------------------------------------------------------------
 
-		public void pen(Pen value) { wxDC_SetPen(wxobj, value.wxobj); }
-		public Pen pen() { return cast(Pen)FindObject(wxDC_GetPen(wxobj), &Pen.New); }
-
-		//---------------------------------------------------------------------
-
-		public Colour TextForeground() { return cast(Colour)FindObject(wxDC_GetTextForeground(wxobj), &Colour.New); }
-		public void TextForeground(Colour value) { wxDC_SetTextForeground(wxobj, wxObject.SafePtr(value)); }
-
-		public Colour TextBackground() { return cast(Colour)FindObject(wxDC_GetTextBackground(wxobj), &Colour.New); }
-		public void TextBackground(Colour value) { wxDC_SetTextBackground(wxobj, wxObject.SafePtr(value)); }
-
-		//---------------------------------------------------------------------
-
-		public Font font() { return cast(Font)FindObject(wxDC_GetFont(wxobj), &Font.New); }
-		public void font(Font value) { wxDC_SetFont(wxobj, wxObject.SafePtr(value)); }
-		
-		//---------------------------------------------------------------------
-
-		public /+virtual+/ void Clear()
-		{
-			wxDC_Clear(wxobj);
-		}
-
-		//---------------------------------------------------------------------
-
-		public void GetTextExtent(string str, out int x, out int y)
+		public проц GetTextExtent(ткст str, out цел x, out цел y)
 		{ 
 			// Ignoring these parameters
-			int descent;
-			int externalLeading;
+			цел descent;
+			цел externalLeading;
 
-			GetTextExtent(str, x, y, descent, externalLeading, null); 
+			GetTextExtent(str, x, y, descent, externalLeading, пусто); 
 		}
 
-		public void GetTextExtent(string str, out int x, out int y, out int descent, out int externalLeading, Font theFont)
+		public проц GetTextExtent(ткст str, out цел x, out цел y, out цел descent, out цел externalLeading, Шрифт theFont)
 		{
-			wxDC_GetTextExtent(wxobj, str, x, y, descent, externalLeading, wxObject.SafePtr(theFont));
-		}
-
-		//---------------------------------------------------------------------
-
-		public void DestroyClippingRegion()
-		{
-			wxDC_DestroyClippingRegion(wxobj);
+			wxDC_GetTextExtent(шхобъ, str, x, y, descent, externalLeading, wxObject.SafePtr(theFont));
 		}
 
 		//---------------------------------------------------------------------
 
-		public void SetClippingRegion(int x, int y, int width, int height)
+		public проц DestroyClippingRegion()
 		{
-			wxDC_SetClippingRegion(wxobj, x, y, width, height);
-		}
-
-		public void SetClippingRegion(Point pos, Size size)
-		{
-			wxDC_SetClippingRegionPos(wxobj, pos, size);
-		}
-
-		public void SetClippingRegion(Rectangle rect)
-		{
-			wxDC_SetClippingRegionRect(wxobj, rect);
-		}
-
-		public void SetClippingRegion(Region reg)
-		{
-			wxDC_SetClippingRegionReg(wxobj, wxObject.SafePtr(reg));
+			wxDC_DestroyClippingRegion(шхобъ);
 		}
 
 		//---------------------------------------------------------------------
 
-		public Logic LogicalFunction() { return cast(Logic)wxDC_GetLogicalFunction(wxobj); }
-		public void LogicalFunction(Logic value) { wxDC_SetLogicalFunction(wxobj, cast(int)value); }
-
-		//---------------------------------------------------------------------
-
-		public void BeginDrawing()
+		public проц SetClippingRegion(цел x, цел y, цел ширина, цел высота)
 		{
-			wxDC_BeginDrawing(wxobj);
+			wxDC_SetClippingRegion(шхобъ, x, y, ширина, высота);
+		}
+
+		public проц SetClippingRegion(Точка поз, Размер size)
+		{
+			wxDC_SetClippingRegionPos(шхобъ, поз, size);
+		}
+
+		public проц SetClippingRegion(Прямоугольник прям)
+		{
+			wxDC_SetClippingRegionRect(шхобъ, прям);
+		}
+
+		public проц SetClippingRegion(Region reg)
+		{
+			wxDC_SetClippingRegionReg(шхобъ, wxObject.SafePtr(reg));
 		}
 
 		//---------------------------------------------------------------------
 
-		public bool Blit(int xdest, int ydest, int width, int height, DC source, int xsrc, int ysrc, int rop, bool useMask, int xsrcMask, int ysrcMask)
+		public Logic LogicalFunction() { return cast(Logic)wxDC_GetLogicalFunction(шхобъ); }
+		public проц LogicalFunction(Logic значение) { wxDC_SetLogicalFunction(шхобъ, cast(цел)значение); }
+
+		//---------------------------------------------------------------------
+
+		public проц BeginDrawing()
 		{
-			return wxDC_Blit(wxobj, xdest, ydest, width, height, wxObject.SafePtr(source), xsrc, ysrc, rop, useMask, xsrcMask, ysrcMask);
+			wxDC_BeginDrawing(шхобъ);
+		}
+
+		//---------------------------------------------------------------------
+
+		public бул Blit(цел xdest, цел ydest, цел ширина, цел высота, DC source, цел xsrc, цел ysrc, цел rop, бул useMask, цел xsrcMask, цел ysrcMask)
+		{
+			return wxDC_Blit(шхобъ, xdest, ydest, ширина, высота, wxObject.SafePtr(source), xsrc, ysrc, rop, useMask, xsrcMask, ysrcMask);
 		}
 		
-		public bool Blit(int xdest, int ydest, int width, int height, DC source) 
+		public бул Blit(цел xdest, цел ydest, цел ширина, цел высота, DC source) 
 		{ 
-			return Blit(xdest, ydest, width, height, source, 0, 0, cast(int) Logic.wxCOPY, false, -1, -1); 
+			return Blit(xdest, ydest, ширина, высота, source, 0, 0, cast(цел) Logic.wxCOPY, нет, -1, -1); 
 		}
 		
-		public bool Blit(int xdest, int ydest, int width, int height, DC source, int xsrc, int ysrc)
+		public бул Blit(цел xdest, цел ydest, цел ширина, цел высота, DC source, цел xsrc, цел ysrc)
 		{
-			return Blit(xdest, ydest, width, height, source, xsrc, ysrc, cast(int)Logic.wxCOPY, false, -1, -1);
+			return Blit(xdest, ydest, ширина, высота, source, xsrc, ysrc, cast(цел)Logic.wxCOPY, нет, -1, -1);
 		}
 		
-		public bool Blit(int xdest, int ydest, int width, int height, DC source, int xsrc, int ysrc, int rop)
+		public бул Blit(цел xdest, цел ydest, цел ширина, цел высота, DC source, цел xsrc, цел ysrc, цел rop)
 		{
-			return Blit(xdest, ydest, width, height, source, xsrc, ysrc, rop, false, -1, -1);
+			return Blit(xdest, ydest, ширина, высота, source, xsrc, ysrc, rop, нет, -1, -1);
 		}
 		
-		public bool Blit(int xdest, int ydest, int width, int height, DC source, int xsrc, int ysrc, int rop, bool useMask)
+		public бул Blit(цел xdest, цел ydest, цел ширина, цел высота, DC source, цел xsrc, цел ysrc, цел rop, бул useMask)
 		{
-			return Blit(xdest, ydest, width, height, source, xsrc, ysrc, rop, useMask, -1, -1);
+			return Blit(xdest, ydest, ширина, высота, source, xsrc, ysrc, rop, useMask, -1, -1);
 		}
 		
-		public bool Blit(int xdest, int ydest, int width, int height, DC source, int xsrc, int ysrc, int rop, bool useMask, int xsrcMask)
+		public бул Blit(цел xdest, цел ydest, цел ширина, цел высота, DC source, цел xsrc, цел ysrc, цел rop, бул useMask, цел xsrcMask)
 		{
-			return Blit(xdest, ydest, width, height, source, xsrc, ysrc, rop, useMask, xsrcMask, -1);
+			return Blit(xdest, ydest, ширина, высота, source, xsrc, ysrc, rop, useMask, xsrcMask, -1);
 		}
 		
-		public bool Blit(Point destPt, Size sz, DC source, Point srcPt, int rop, bool useMask, Point srcPtMask)
+		public бул Blit(Точка destPt, Размер sz, DC source, Точка srcPt, цел rop, бул useMask, Точка srcPtMask)
 		{
-			return Blit(destPt.X, destPt.Y, sz.Width, sz.Height, source, srcPt.X, srcPt.Y, rop, useMask, srcPtMask.X, srcPtMask.Y);
+			return Blit(destPt.X, destPt.Y, sz.Ширина, sz.Высота, source, srcPt.X, srcPt.Y, rop, useMask, srcPtMask.X, srcPtMask.Y);
 		}
 		
-		public bool Blit(Point destPt, Size sz, DC source, Point srcPt)
+		public бул Blit(Точка destPt, Размер sz, DC source, Точка srcPt)
 		{
-			return Blit(destPt.X, destPt.Y, sz.Width, sz.Height, source, srcPt.X, srcPt.Y, cast(int)Logic.wxCOPY, false, -1, -1);
+			return Blit(destPt.X, destPt.Y, sz.Ширина, sz.Высота, source, srcPt.X, srcPt.Y, cast(цел)Logic.wxCOPY, нет, -1, -1);
 		}
 		
-		public bool Blit(Point destPt, Size sz, DC source, Point srcPt, int rop)
+		public бул Blit(Точка destPt, Размер sz, DC source, Точка srcPt, цел rop)
 		{
-			return Blit(destPt.X, destPt.Y, sz.Width, sz.Height, source, srcPt.X, srcPt.Y, rop, false, -1, -1);
+			return Blit(destPt.X, destPt.Y, sz.Ширина, sz.Высота, source, srcPt.X, srcPt.Y, rop, нет, -1, -1);
 		}
 		
-		public bool Blit(Point destPt, Size sz, DC source, Point srcPt, int rop, bool useMask)
+		public бул Blit(Точка destPt, Размер sz, DC source, Точка srcPt, цел rop, бул useMask)
 		{
-			return Blit(destPt.X, destPt.Y, sz.Width, sz.Height, source, srcPt.X, srcPt.Y, rop, useMask, -1, -1);
+			return Blit(destPt.X, destPt.Y, sz.Ширина, sz.Высота, source, srcPt.X, srcPt.Y, rop, useMask, -1, -1);
 		}
 
 		//---------------------------------------------------------------------
 
-		public void EndDrawing()
+		public проц EndDrawing()
 		{
-			wxDC_EndDrawing(wxobj);
+			wxDC_EndDrawing(шхобъ);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public bool FloodFill(int x, int y, Colour col)
+		public бул FloodFill(цел x, цел y, Цвет col)
 		{
 			return FloodFill(x, y, col, FloodStyle.wxFLOOD_SURFACE);
 		}
 		
-		public bool FloodFill(int x, int y, Colour col, int style)
+		public бул FloodFill(цел x, цел y, Цвет col, цел стиль)
 		{
-			return wxDC_FloodFill(wxobj, x, y, wxObject.SafePtr(col), style);
+			return wxDC_FloodFill(шхобъ, x, y, wxObject.SafePtr(col), стиль);
 		}
 		
-		public bool FloodFill(Point pt, Colour col)
+		public бул FloodFill(Точка pt, Цвет col)
 		{
 			return FloodFill(pt, col, FloodStyle.wxFLOOD_SURFACE);
 		}
 		
-		public bool FloodFill(Point pt, Colour col, int style)
+		public бул FloodFill(Точка pt, Цвет col, цел стиль)
 		{
-			return FloodFill(pt.X, pt.Y, col, style);
+			return FloodFill(pt.X, pt.Y, col, стиль);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public bool GetPixel(int x, int y, Colour col)
+		public бул GetPixel(цел x, цел y, Цвет col)
 		{
-			return wxDC_GetPixel(wxobj, x, y, wxObject.SafePtr(col));
+			return wxDC_GetPixel(шхобъ, x, y, wxObject.SafePtr(col));
 		}
 		
-		public bool GetPixel(Point pt, Colour col)
+		public бул GetPixel(Точка pt, Цвет col)
 		{
 			return GetPixel(pt.X, pt.Y, col);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void CrossHair(int x, int y)
+		public проц CrossHair(цел x, цел y)
 		{
-			wxDC_CrossHair(wxobj, x, y);
+			wxDC_CrossHair(шхобъ, x, y);
 		}
 		
-		public void CrossHair(Point pt)
+		public проц CrossHair(Точка pt)
 		{
 			CrossHair(pt.X, pt.Y);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void DrawArc(int x1, int y1, int x2, int y2, int xc, int yc)
+		public проц DrawArc(цел x1, цел y1, цел x2, цел y2, цел xc, цел yc)
 		{
-			wxDC_DrawArc(wxobj, x1, y1, x2, y2, xc, yc);
+			wxDC_DrawArc(шхобъ, x1, y1, x2, y2, xc, yc);
 		}
 		
-		public void DrawArc(Point pt1, Point pt2, Point centre)
+		public проц DrawArc(Точка pt1, Точка pt2, Точка centre)
 		{
 			DrawArc(pt1.X, pt1.Y, pt2.X, pt2.Y, centre.X, centre.Y);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void DrawCheckMark(int x, int y, int width, int height)
+		public проц DrawCheckMark(цел x, цел y, цел ширина, цел высота)
 		{
-			wxDC_DrawCheckMark(wxobj, x, y, width, height);
+			wxDC_DrawCheckMark(шхобъ, x, y, ширина, высота);
 		}
 		
-		public void DrawCheckMark(Rectangle rect)
+		public проц DrawCheckMark(Прямоугольник прям)
 		{
-			DrawCheckMark(rect.X, rect.Y, rect.Width, rect.Height);
-		}
-		
-		//---------------------------------------------------------------------
-		
-		public void DrawEllipticArc(int x, int y, int w, int h, double sa, double ea)
-		{
-			wxDC_DrawEllipticArc(wxobj, x, y, w, h, sa, ea);
-		}
-		
-		public void DrawEllipticArc(Point pt, Size sz, double sa, double ea)
-		{
-			DrawEllipticArc(pt.X, pt.Y, sz.Width, sz.Height, sa, ea);
+			DrawCheckMark(прям.X, прям.Y, прям.Ширина, прям.Высота);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void DrawLines(Point[] points, int xoffset, int yoffset)
+		public проц DrawEllipticArc(цел x, цел y, цел w, цел h, дво sa, дво ea)
 		{
-			wxDC_DrawLines(wxobj, points.length, points.ptr, xoffset, yoffset);
+			wxDC_DrawEllipticArc(шхобъ, x, y, w, h, sa, ea);
 		}
 		
-		public void DrawLines(Point[] points)
+		public проц DrawEllipticArc(Точка pt, Размер sz, дво sa, дво ea)
+		{
+			DrawEllipticArc(pt.X, pt.Y, sz.Ширина, sz.Высота, sa, ea);
+		}
+		
+		//---------------------------------------------------------------------
+		
+		public проц DrawLines(Точка[] points, цел xoffset, цел yoffset)
+		{
+			wxDC_DrawLines(шхобъ, points.length, points.ptr, xoffset, yoffset);
+		}
+		
+		public проц DrawLines(Точка[] points)
 		{
 			DrawLines(points, 0, 0);
 		}
 		
-		public void DrawLines(Point[] points, int xoffset)
+		public проц DrawLines(Точка[] points, цел xoffset)
 		{
 			DrawLines(points, xoffset, 0);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void DrawCircle(int x, int y, int radius)
+		public проц DrawCircle(цел x, цел y, цел radius)
 		{
-			wxDC_DrawCircle(wxobj, x, y, radius);
+			wxDC_DrawCircle(шхобъ, x, y, radius);
 		}
 		
-		public void DrawCircle(Point pt, int radius)
+		public проц DrawCircle(Точка pt, цел radius)
 		{
 			DrawCircle(pt.X, pt.Y, radius);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void DrawIcon(Icon icon, int x, int y)
+		public проц DrawIcon(Icon иконка, цел x, цел y)
 		{
-			wxDC_DrawIcon(wxobj, wxObject.SafePtr(icon), x, y);
+			wxDC_DrawIcon(шхобъ, wxObject.SafePtr(иконка), x, y);
 		}
 		
-		public void DrawIcon(Icon icon, Point pt)
+		public проц DrawIcon(Icon иконка, Точка pt)
 		{
-			DrawIcon(icon, pt.X, pt.Y);
-		}
-		
-		//---------------------------------------------------------------------
-		
-		public void DrawRotatedText(string text, int x, int y, double angle)
-		{
-			wxDC_DrawRotatedText(wxobj, text, x, y, angle);
-		}
-		
-		public void DrawRotatedText(string text, Point pt, double angle)
-		{
-			DrawRotatedText(text, pt.X, pt.Y, angle);
+			DrawIcon(иконка, pt.X, pt.Y);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public /+virtual+/ void DrawLabel(string text, Bitmap image, Rectangle rect, int alignment, int indexAccel, inout Rectangle rectBounding)
+		public проц DrawRotatedText(ткст текст, цел x, цел y, дво угол)
 		{
-			wxDC_DrawLabel(wxobj, text, wxObject.SafePtr(image), rect, alignment, indexAccel, rectBounding);
+			wxDC_DrawRotatedText(шхобъ, текст, x, y, угол);
 		}
 		
-		public /+virtual+/ void DrawLabel(string text, Bitmap image, Rectangle rect)
+		public проц DrawRotatedText(ткст текст, Точка pt, дво угол)
 		{
-			Rectangle dummy;
-			DrawLabel(text, image, rect, cast(int)(Alignment.wxALIGN_LEFT | Alignment.wxALIGN_TOP), -1, dummy);
-		}
-		
-		public /+virtual+/ void DrawLabel(string text, Bitmap image, Rectangle rect, int alignment)
-		{
-			Rectangle dummy;
-			DrawLabel(text, image, rect, alignment, -1, dummy);
-		}
-		
-		public /+virtual+/ void DrawLabel(string text, Bitmap image, Rectangle rect, int alignment, int indexAccel)
-		{
-			Rectangle dummy;
-			DrawLabel(text, image, rect, alignment, indexAccel, dummy);
+			DrawRotatedText(текст, pt.X, pt.Y, угол);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void DrawLabel(string text, Rectangle rect, int alignment, int indexAccel)
+		public /+virtual+/ проц DrawLabel(ткст текст, Битмап рисунок, Прямоугольник прям, цел alignment, цел indexAccel, inout Прямоугольник rectBounding)
 		{
-			wxDC_DrawLabel2(wxobj, text, rect, alignment, indexAccel);
+			wxDC_DrawLabel(шхобъ, текст, wxObject.SafePtr(рисунок), прям, alignment, indexAccel, rectBounding);
 		}
 		
-		public void DrawLabel(string text, Rectangle rect)
+		public /+virtual+/ проц DrawLabel(ткст текст, Битмап рисунок, Прямоугольник прям)
 		{
-			DrawLabel(text, rect, cast(int)(Alignment.wxALIGN_LEFT | Alignment.wxALIGN_TOP), -1);
+			Прямоугольник dummy;
+			DrawLabel(текст, рисунок, прям, cast(цел)(Alignment.wxALIGN_LEFT | Alignment.wxALIGN_TOP), -1, dummy);
 		}
 		
-		public void DrawLabel(string text, Rectangle rect, int alignment)
+		public /+virtual+/ проц DrawLabel(ткст текст, Битмап рисунок, Прямоугольник прям, цел alignment)
 		{
-			DrawLabel(text, rect, alignment, -1);
+			Прямоугольник dummy;
+			DrawLabel(текст, рисунок, прям, alignment, -1, dummy);
 		}
 		
-		//---------------------------------------------------------------------
-		
-		public void DrawSpline(int x1, int y1, int x2, int y2, int x3, int y3)
+		public /+virtual+/ проц DrawLabel(ткст текст, Битмап рисунок, Прямоугольник прям, цел alignment, цел indexAccel)
 		{
-			wxDC_DrawSpline(wxobj, x1, y1, x2, y2, x3, y3);
-		}
-		
-		public void DrawSpline(Point[] points)
-		{
-			wxDC_DrawSpline2(wxobj, points.length, points.ptr);
+			Прямоугольник dummy;
+			DrawLabel(текст, рисунок, прям, alignment, indexAccel, dummy);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public /+virtual+/ bool StartDoc(string message)
+		public проц DrawLabel(ткст текст, Прямоугольник прям, цел alignment, цел indexAccel)
 		{
-			return wxDC_StartDoc(wxobj, message);
+			wxDC_DrawLabel2(шхобъ, текст, прям, alignment, indexAccel);
+		}
+		
+		public проц DrawLabel(ткст текст, Прямоугольник прям)
+		{
+			DrawLabel(текст, прям, cast(цел)(Alignment.wxALIGN_LEFT | Alignment.wxALIGN_TOP), -1);
+		}
+		
+		public проц DrawLabel(ткст текст, Прямоугольник прям, цел alignment)
+		{
+			DrawLabel(текст, прям, alignment, -1);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public /+virtual+/ void EndDoc()
+		public проц DrawSpline(цел x1, цел y1, цел x2, цел y2, цел x3, цел y3)
 		{
-			wxDC_EndDoc(wxobj);
+			wxDC_DrawSpline(шхобъ, x1, y1, x2, y2, x3, y3);
+		}
+		
+		public проц DrawSpline(Точка[] points)
+		{
+			wxDC_DrawSpline2(шхобъ, points.length, points.ptr);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public /+virtual+/ void StartPage()
+		public /+virtual+/ бул StartDoc(ткст message)
 		{
-			wxDC_StartPage(wxobj);
+			return wxDC_StartDoc(шхобъ, message);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public /+virtual+/ void EndPage()
+		public /+virtual+/ проц EndDoc()
 		{
-			wxDC_EndPage(wxobj);
+			wxDC_EndDoc(шхобъ);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void GetClippingBox(out int x, out int y, out int w, out int h)
+		public /+virtual+/ проц StartPage()
 		{
-			wxDC_GetClippingBox(wxobj, x, y, w, h);
-		}
-		
-		public void GetClippingBox(out Rectangle rect)
-		{
-			wxDC_GetClippingBox2(wxobj, rect);
+			wxDC_StartPage(шхобъ);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public /+virtual+/ void GetMultiLineTextExtent(string text, out int width, out int height, out int heightline, Font font)
+		public /+virtual+/ проц EndPage()
 		{
-			wxDC_GetMultiLineTextExtent(wxobj, text, width, height, heightline, wxObject.SafePtr(font));
+			wxDC_EndPage(шхобъ);
 		}
 		
-		public /+virtual+/ void GetMultiLineTextExtent(string text, out int width, out int height)
+		//---------------------------------------------------------------------
+		
+		public проц GetClippingBox(out цел x, out цел y, out цел w, out цел h)
+		{
+			wxDC_GetClippingBox(шхобъ, x, y, w, h);
+		}
+		
+		public проц GetClippingBox(out Прямоугольник прям)
+		{
+			wxDC_GetClippingBox2(шхобъ, прям);
+		}
+		
+		//---------------------------------------------------------------------
+		
+		public /+virtual+/ проц GetMultiLineTextExtent(ткст текст, out цел ширина, out цел высота, out цел heightline, Шрифт шрифт)
+		{
+			wxDC_GetMultiLineTextExtent(шхобъ, текст, ширина, высота, heightline, wxObject.SafePtr(шрифт));
+		}
+		
+		public /+virtual+/ проц GetMultiLineTextExtent(ткст текст, out цел ширина, out цел высота)
 		{	
-			int heightline;
+			цел heightline;
 			
-			GetMultiLineTextExtent(text, width, height, heightline, null);
+			GetMultiLineTextExtent(текст, ширина, высота, heightline, пусто);
 		}
 		
-		public /+virtual+/ void GetMultiLineTextExtent(string text, out int width, out int height, out int heightline)
+		public /+virtual+/ проц GetMultiLineTextExtent(ткст текст, out цел ширина, out цел высота, out цел heightline)
 		{	
-			GetMultiLineTextExtent(text, width, height, heightline, null);
+			GetMultiLineTextExtent(текст, ширина, высота, heightline, пусто);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public bool GetPartialTextExtents(string text, int[] widths)
+		public бул GetPartialTextExtents(ткст текст, цел[] widths)
 		{
-			ArrayInt ai = new ArrayInt();
+			МассивЦел ai = new МассивЦел();
 			
-			for(int i = 0; i < widths.length; ++i)
-				ai.Add(widths[i]);
+			for(цел i = 0; i < widths.length; ++i)
+				ai.Добавь(widths[i]);
 				
-			return wxDC_GetPartialTextExtents(wxobj, text, ArrayInt.SafePtr(ai));
+			return wxDC_GetPartialTextExtents(шхобъ, текст, МассивЦел.SafePtr(ai));
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void GetSize(out int width, out int height)
+		public проц GetSize(out цел ширина, out цел высота)
 		{
-			wxDC_GetSize(wxobj, width, height);
+			wxDC_GetSize(шхобъ, ширина, высота);
 		}
 		
-		public Size size()
+		public Размер size()
 		{ 
-			Size size;
-			wxDC_GetSize2(wxobj, size);
+			Размер size;
+			wxDC_GetSize2(шхобъ, size);
 			return size;
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void GetSizeMM(out int width, out int height)
+		public проц GetSizeMM(out цел ширина, out цел высота)
 		{
-			wxDC_GetSizeMM(wxobj, width, height);
+			wxDC_GetSizeMM(шхобъ, ширина, высота);
 		}
 		
-		public Size SizeMM() { 
-				Size size;
-				wxDC_GetSizeMM2(wxobj, size);
+		public Размер SizeMM() { 
+				Размер size;
+				wxDC_GetSizeMM2(шхобъ, size);
 				return size;
 			}
 		
 		//---------------------------------------------------------------------
 		
-		public int DeviceToLogicalX(int x)
+		public цел DeviceToLogicalX(цел x)
 		{
-			return wxDC_DeviceToLogicalX(wxobj, x);
+			return wxDC_DeviceToLogicalX(шхобъ, x);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public int DeviceToLogicalY(int y)
+		public цел DeviceToLogicalY(цел y)
 		{
-			return wxDC_DeviceToLogicalY(wxobj, y);
+			return wxDC_DeviceToLogicalY(шхобъ, y);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public int DeviceToLogicalXRel(int x)
+		public цел DeviceToLogicalXRel(цел x)
 		{
-			return wxDC_DeviceToLogicalXRel(wxobj, x);
+			return wxDC_DeviceToLogicalXRel(шхобъ, x);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public int DeviceToLogicalYRel(int y)
+		public цел DeviceToLogicalYRel(цел y)
 		{
-			return wxDC_DeviceToLogicalYRel(wxobj, y);
+			return wxDC_DeviceToLogicalYRel(шхобъ, y);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public int LogicalToDeviceX(int x)
+		public цел LogicalToDeviceX(цел x)
 		{
-			return wxDC_LogicalToDeviceX(wxobj, x);
+			return wxDC_LogicalToDeviceX(шхобъ, x);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public int LogicalToDeviceY(int y)
+		public цел LogicalToDeviceY(цел y)
 		{
-			return wxDC_LogicalToDeviceY(wxobj, y);
+			return wxDC_LogicalToDeviceY(шхобъ, y);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public int LogicalToDeviceXRel(int x)
+		public цел LogicalToDeviceXRel(цел x)
 		{
-			return wxDC_LogicalToDeviceXRel(wxobj, x);
+			return wxDC_LogicalToDeviceXRel(шхобъ, x);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public int LogicalToDeviceYRel(int y)
+		public цел LogicalToDeviceYRel(цел y)
 		{
-			return wxDC_LogicalToDeviceYRel(wxobj, y);
+			return wxDC_LogicalToDeviceYRel(шхобъ, y);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public /+virtual+/ bool Ok() { return wxDC_Ok(wxobj); }
+		public /+virtual+/ бул Ок() { return wxDC_Ok(шхобъ); }
 		
 		//---------------------------------------------------------------------
 		
-		public int MapMode() { return wxDC_GetMapMode(wxobj); }
-		public void MapMode(int value) { wxDC_SetMapMode(wxobj, value); }
+		public цел MapMode() { return wxDC_GetMapMode(шхобъ); }
+		public проц MapMode(цел значение) { wxDC_SetMapMode(шхобъ, значение); }
 		
 		//---------------------------------------------------------------------
 		
-		public /+virtual+/ void GetUserScale(out double x, out double y)
+		public /+virtual+/ проц GetUserScale(out дво x, out дво y)
 		{
-			wxDC_GetUserScale(wxobj, x, y);
+			wxDC_GetUserScale(шхобъ, x, y);
 		}
 		
-		public /+virtual+/ void SetUserScale(double x, double y)
+		public /+virtual+/ проц SetUserScale(дво x, дво y)
 		{
-			wxDC_SetUserScale(wxobj, x, y);
-		}
-		
-		//---------------------------------------------------------------------
-		
-		public /+virtual+/ void GetLogicalScale(out double x, out double y)
-		{
-			wxDC_GetLogicalScale(wxobj, x, y);
-		}
-		
-		public /+virtual+/ void SetLogicalScale(double x, double y)
-		{
-			wxDC_SetLogicalScale(wxobj, x, y);
+			wxDC_SetUserScale(шхобъ, x, y);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void GetLogicalOrigin(out int x, out int y)
+		public /+virtual+/ проц GetLogicalScale(out дво x, out дво y)
 		{
-			wxDC_GetLogicalOrigin(wxobj, x, y);
+			wxDC_GetLogicalScale(шхобъ, x, y);
 		}
 		
-		public Point LogicalOrigin()
+		public /+virtual+/ проц SetLogicalScale(дво x, дво y)
 		{
-			Point pt;
-			wxDC_GetLogicalOrigin2(wxobj, pt);
+			wxDC_SetLogicalScale(шхобъ, x, y);
+		}
+		
+		//---------------------------------------------------------------------
+		
+		public проц GetLogicalOrigin(out цел x, out цел y)
+		{
+			wxDC_GetLogicalOrigin(шхобъ, x, y);
+		}
+		
+		public Точка LogicalOrigin()
+		{
+			Точка pt;
+			wxDC_GetLogicalOrigin2(шхобъ, pt);
 			return pt;
 		}
 		
-		public void SetLogicalOrigin(int x, int y)
+		public проц SetLogicalOrigin(цел x, цел y)
 		{
-			wxDC_SetLogicalOrigin(wxobj, x, y);
+			wxDC_SetLogicalOrigin(шхобъ, x, y);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void GetDeviceOrigin(out int x, out int y)
+		public проц GetDeviceOrigin(out цел x, out цел y)
 		{
-			wxDC_GetDeviceOrigin(wxobj, x, y);
+			wxDC_GetDeviceOrigin(шхобъ, x, y);
 		}
 		
-		public Point DeviceOrigin()
+		public Точка DeviceOrigin()
 		{
-			Point pt;
-			wxDC_GetDeviceOrigin2(wxobj, pt);
+			Точка pt;
+			wxDC_GetDeviceOrigin2(шхобъ, pt);
 			return pt;
 		}
 		
-		public void SetDeviceOrigin(int x, int y)
+		public проц SetDeviceOrigin(цел x, цел y)
 		{
-			wxDC_SetDeviceOrigin(wxobj, x, y);
+			wxDC_SetDeviceOrigin(шхобъ, x, y);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void SetAxisOrientation(bool xLeftRight, bool yBottomUp)
+		public проц SetAxisOrientation(бул xLeftRight, бул yBottomUp)
 		{
-			wxDC_SetAxisOrientation(wxobj, xLeftRight, yBottomUp);
+			wxDC_SetAxisOrientation(шхобъ, xLeftRight, yBottomUp);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public /+virtual+/ void CalcBoundingBox(int x, int y)
+		public /+virtual+/ проц CalcBoundingBox(цел x, цел y)
 		{
-			wxDC_CalcBoundingBox(wxobj, x, y);
+			wxDC_CalcBoundingBox(шхобъ, x, y);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void ResetBoundingBox()
+		public проц ResetBoundingBox()
 		{
-			wxDC_ResetBoundingBox(wxobj);
+			wxDC_ResetBoundingBox(шхобъ);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public int MinX() { return wxDC_MinX(wxobj); }
+		public цел MinX() { return wxDC_MinX(шхобъ); }
 		
 		//---------------------------------------------------------------------
 		
-		public int MaxX() { return wxDC_MaxX(wxobj); }
+		public цел MaxX() { return wxDC_MaxX(шхобъ); }
 		
 		//---------------------------------------------------------------------
 		
-		public int MinY() { return wxDC_MinY(wxobj); }
+		public цел MinY() { return wxDC_MinY(шхобъ); }
 		
 		//---------------------------------------------------------------------
 		
-		public int MaxY() { return wxDC_MaxY(wxobj); }
+		public цел MaxY() { return wxDC_MaxY(шхобъ); }
 
-		public static wxObject New(IntPtr ptr) { return new DC(ptr); }
+		public static wxObject Нов(ЦУк ptr) { return new DC(ptr); }
 	}
 	
 	//---------------------------------------------------------------------
 
 		//! \cond EXTERN
-		//static extern (C) IntPtr wxWindowDC_ctor();
-		static extern (C) IntPtr wxWindowDC_ctor(IntPtr win);
-		static extern (C) bool wxWindowDC_CanDrawBitmap(IntPtr self);
-		static extern (C) bool wxWindowDC_CanGetTextExtent(IntPtr self);
-		static extern (C) int wxWindowDC_GetCharWidth(IntPtr self);
-		static extern (C) int wxWindowDC_GetCharHeight(IntPtr self);
-		static extern (C) void wxWindowDC_Clear(IntPtr self);
-		static extern (C) void wxWindowDC_SetFont(IntPtr self, IntPtr font);
-		static extern (C) void wxWindowDC_SetPen(IntPtr self, IntPtr pen);
-		static extern (C) void wxWindowDC_SetBrush(IntPtr self, IntPtr brush);
-		static extern (C) void wxWindowDC_SetBackground(IntPtr self, IntPtr brush);
-		static extern (C) void wxWindowDC_SetLogicalFunction(IntPtr self, int func);
-		static extern (C) void wxWindowDC_SetTextForeground(IntPtr self, IntPtr colour);
-		static extern (C) void wxWindowDC_SetTextBackground(IntPtr self, IntPtr colour);
-		static extern (C) void wxWindowDC_SetBackgroundMode(IntPtr self, int mode);
-		static extern (C) void wxWindowDC_SetPalette(IntPtr self, IntPtr palette);
-		static extern (C) void wxWindowDC_GetPPI(IntPtr self, inout Size size);
-		static extern (C) int wxWindowDC_GetDepth(IntPtr self);
+		//static extern (C) ЦУк wxWindowDC_ctor();
+		static extern (C) ЦУк wxWindowDC_ctor(ЦУк окн);
+		static extern (C) бул wxWindowDC_CanDrawBitmap(ЦУк сам);
+		static extern (C) бул wxWindowDC_CanGetTextExtent(ЦУк сам);
+		static extern (C) цел wxWindowDC_GetCharWidth(ЦУк сам);
+		static extern (C) цел wxWindowDC_GetCharHeight(ЦУк сам);
+		static extern (C) проц wxWindowDC_Clear(ЦУк сам);
+		static extern (C) проц wxWindowDC_SetFont(ЦУк сам, ЦУк шрифт);
+		static extern (C) проц wxWindowDC_SetPen(ЦУк сам, ЦУк перо);
+		static extern (C) проц wxWindowDC_SetBrush(ЦУк сам, ЦУк кисть);
+		static extern (C) проц wxWindowDC_SetBackground(ЦУк сам, ЦУк кисть);
+		static extern (C) проц wxWindowDC_SetLogicalFunction(ЦУк сам, цел func);
+		static extern (C) проц wxWindowDC_SetTextForeground(ЦУк сам, ЦУк colour);
+		static extern (C) проц wxWindowDC_SetTextBackground(ЦУк сам, ЦУк colour);
+		static extern (C) проц wxWindowDC_SetBackgroundMode(ЦУк сам, цел mode);
+		static extern (C) проц wxWindowDC_SetPalette(ЦУк сам, ЦУк палитра);
+		static extern (C) проц wxWindowDC_GetPPI(ЦУк сам, inout Размер size);
+		static extern (C) цел wxWindowDC_GetDepth(ЦУк сам);
 		//! \endcond
 		
 		//---------------------------------------------------------------------
@@ -939,149 +924,149 @@ public import wx.ArrayInt;
 	alias WindowDC wxWindowDC;
 	public class WindowDC : DC
 	{
-		public this(IntPtr wxobj) 
-			{ super(wxobj); }
+		public this(ЦУк шхобъ) 
+			{ super(шхобъ); }
 			
-		private this(IntPtr wxobj, bool memOwn)
+		private this(ЦУк шхобъ, бул memOwn)
 		{ 
-			super(wxobj);
+			super(шхобъ);
 			this.memOwn = memOwn;
 		}
 		
 		//public this()
-		//	{ this(wxWindowDC_ctor(), true);}
+		//	{ this(wxWindowDC_ctor(), да);}
 			
-		public this(Window win)
-			{ this(wxWindowDC_ctor(wxObject.SafePtr(win)), true);}
+		public this(Окно окн)
+			{ this(wxWindowDC_ctor(wxObject.SafePtr(окн)), да);}
 			
 		//---------------------------------------------------------------------
 		
-		public bool CanDrawBitmap()
+		public бул CanDrawBitmap()
 		{
-			return wxWindowDC_CanDrawBitmap(wxobj);
+			return wxWindowDC_CanDrawBitmap(шхобъ);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public bool CanGetTextExtent()
+		public бул CanGetTextExtent()
 		{
-			return wxWindowDC_CanGetTextExtent(wxobj);
+			return wxWindowDC_CanGetTextExtent(шхобъ);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public int GetCharWidth()
+		public цел GetCharWidth()
 		{
-			return wxWindowDC_GetCharWidth(wxobj); 
+			return wxWindowDC_GetCharWidth(шхобъ); 
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public int GetCharHeight()
+		public цел GetCharHeight()
 		{
-			return wxWindowDC_GetCharHeight(wxobj); 
+			return wxWindowDC_GetCharHeight(шхобъ); 
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public int CharHeight() { return wxWindowDC_GetCharHeight(wxobj); }
+		public цел CharHeight() { return wxWindowDC_GetCharHeight(шхобъ); }
 		
 		//---------------------------------------------------------------------
 
-		public int CharWidth() { return wxWindowDC_GetCharWidth(wxobj); }
+		public цел CharWidth() { return wxWindowDC_GetCharWidth(шхобъ); }
 		
 		//---------------------------------------------------------------------
 		
-		public override void Clear()
+		public override проц Очисть()
 		{
-			wxWindowDC_Clear(wxobj);
+			wxWindowDC_Clear(шхобъ);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void SetFont(Font font)
+		public проц SetFont(Шрифт шрифт)
 		{
-			wxWindowDC_SetFont(wxobj, wxObject.SafePtr(font));
+			wxWindowDC_SetFont(шхобъ, wxObject.SafePtr(шрифт));
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void SetPen(Pen pen)
+		public проц SetPen(Перо перо)
 		{
-			wxWindowDC_SetPen(wxobj, wxObject.SafePtr(pen));
+			wxWindowDC_SetPen(шхобъ, wxObject.SafePtr(перо));
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void SetBrush(Brush brush)
+		public проц SetBrush(Кисть кисть)
 		{
-			wxWindowDC_SetBrush(wxobj, wxObject.SafePtr(brush));
+			wxWindowDC_SetBrush(шхобъ, wxObject.SafePtr(кисть));
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void SetBackground(Brush brush)
+		public проц SetBackground(Кисть кисть)
 		{
-			wxWindowDC_SetBackground(wxobj, wxObject.SafePtr(brush));
+			wxWindowDC_SetBackground(шхобъ, wxObject.SafePtr(кисть));
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void SetLogicalFunction(int func)
+		public проц SetLogicalFunction(цел func)
 		{
-			wxWindowDC_SetLogicalFunction(wxobj, func);
+			wxWindowDC_SetLogicalFunction(шхобъ, func);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void SetTextForeground(Colour colour)
+		public проц SetTextForeground(Цвет colour)
 		{
-			wxWindowDC_SetTextForeground(wxobj, wxObject.SafePtr(colour));
+			wxWindowDC_SetTextForeground(шхобъ, wxObject.SafePtr(colour));
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void SetTextBackground(Colour colour)
+		public проц SetTextBackground(Цвет colour)
 		{
-			wxWindowDC_SetTextBackground(wxobj, wxObject.SafePtr(colour));
+			wxWindowDC_SetTextBackground(шхобъ, wxObject.SafePtr(colour));
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void SetBackgroundMode(int mode)	
+		public проц SetBackgroundMode(цел mode)	
 		{
-			wxWindowDC_SetBackgroundMode(wxobj, mode);
+			wxWindowDC_SetBackgroundMode(шхобъ, mode);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void SetPalette(Palette palette)
+		public проц SetPalette(Палитра палитра)
 		{
-			wxWindowDC_SetPalette(wxobj, wxObject.SafePtr(palette));
+			wxWindowDC_SetPalette(шхобъ, wxObject.SafePtr(палитра));
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public Size GetPPI()
+		public Размер GetPPI()
 		{
-			Size sz;
-			wxWindowDC_GetPPI(wxobj, sz);
+			Размер sz;
+			wxWindowDC_GetPPI(шхобъ, sz);
 			return sz;
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public int GetDepth()
+		public цел GetDepth()
 		{
-			return wxWindowDC_GetDepth(wxobj);
+			return wxWindowDC_GetDepth(шхобъ);
 		}
 	}
 	
 		//---------------------------------------------------------------------
 
 		//! \cond EXTERN
-		//static extern (C) IntPtr wxClientDC_ctor();
-		static extern (C) IntPtr wxClientDC_ctor(IntPtr window);
+		//static extern (C) ЦУк wxClientDC_ctor();
+		static extern (C) ЦУк wxClientDC_ctor(ЦУк окно);
 		//! \endcond
 
 		//---------------------------------------------------------------------
@@ -1089,27 +1074,27 @@ public import wx.ArrayInt;
 	alias ClientDC wxClientDC;
 	public class ClientDC : WindowDC
 	{
-		public this(IntPtr wxobj) 
-			{ super(wxobj); }
+		public this(ЦУк шхобъ) 
+			{ super(шхобъ); }
 			
-		private this(IntPtr wxobj, bool memOwn)
+		private this(ЦУк шхобъ, бул memOwn)
 		{ 
-			super(wxobj);
+			super(шхобъ);
 			this.memOwn = memOwn;
 		}
 			
 	//	public this()
-		//	{ this(wxClientDC_ctor(), true);}
+		//	{ this(wxClientDC_ctor(), да);}
 
-		public this(Window window)
-			{ this(wxClientDC_ctor(wxObject.SafePtr(window)), true); }
+		public this(Окно окно)
+			{ this(wxClientDC_ctor(wxObject.SafePtr(окно)), да); }
 	}
     
 	//---------------------------------------------------------------------
 
 		//! \cond EXTERN
-		//static extern (C) IntPtr wxPaintDC_ctor();
-		static extern (C) IntPtr wxPaintDC_ctor(IntPtr window);
+		//static extern (C) ЦУк wxPaintDC_ctor();
+		static extern (C) ЦУк wxPaintDC_ctor(ЦУк окно);
 		//! \endcond
 
 		//---------------------------------------------------------------------
@@ -1117,18 +1102,18 @@ public import wx.ArrayInt;
 	alias PaintDC wxPaintDC;
 	public class PaintDC : WindowDC
 	{
-		public this(IntPtr wxobj) 
-			{ super(wxobj); }
+		public this(ЦУк шхобъ) 
+			{ super(шхобъ); }
 			
-		private this(IntPtr wxobj, bool memOwn)
+		private this(ЦУк шхобъ, бул memOwn)
 		{ 
-			super(wxobj);
+			super(шхобъ);
 			this.memOwn = memOwn;
 		}
 			
 	//	public this()
-			//{ this(wxPaintDC_ctor(), true); }
+			//{ this(wxPaintDC_ctor(), да); }
 			
-		public this(Window window)
-			{ this(wxPaintDC_ctor(wxObject.SafePtr(window)), true); }
+		public this(Окно окно)
+			{ this(wxPaintDC_ctor(wxObject.SafePtr(окно)), да); }
 	}

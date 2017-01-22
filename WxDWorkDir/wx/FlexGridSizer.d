@@ -1,4 +1,4 @@
-//-----------------------------------------------------------------------------
+﻿//-----------------------------------------------------------------------------
 // wxD - FlexGridSizer.d
 // (C) 2005 bero <berobero@users.sourceforge.net>
 // based on
@@ -10,7 +10,7 @@
 // (C) 2003 Bryan Bulten
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: FlexGridSizer.d,v 1.10 2007/10/24 07:53:34 afb Exp $
+// $Ид: FlexGridSizer.d,v 1.10 2007/10/24 07:53:34 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.FlexGridSizer;
@@ -24,18 +24,18 @@ public enum FlexSizerGrowMode{
 }
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxFlexGridSizer_ctor(int rows, int cols, int vgap, int hgap);
-		static extern (C) void wxFlexGridSizer_dtor(IntPtr self);
-		static extern (C) void wxFlexGridSizer_RecalcSizes(IntPtr self);
-		static extern (C) void wxFlexGridSizer_CalcMin(IntPtr self, inout Size size);
-		static extern (C) void wxFlexGridSizer_AddGrowableRow(IntPtr self, uint idx);
-		static extern (C) void wxFlexGridSizer_RemoveGrowableRow(IntPtr self, uint idx);
-		static extern (C) void wxFlexGridSizer_AddGrowableCol(IntPtr self, uint idx);
-		static extern (C) void wxFlexGridSizer_RemoveGrowableCol(IntPtr self, uint idx);
-                static extern (C) int wxFlexGridSizer_GetFlexibleDirection(IntPtr self);
-                static extern (C) void wxFlexGridSizer_SetFlexibleDirection(IntPtr self, int direction);
-static extern (C) FlexSizerGrowMode wxFlexGridSizer_GetNonFlexibleGrowMode(IntPtr self);
-static extern (C) void wxFlexGridSizer_SetNonFlexibleGrowMode(IntPtr self,FlexSizerGrowMode mode);
+		static extern (C) ЦУк wxFlexGridSizer_ctor(цел rows, цел cols, цел vgap, цел hgap);
+		static extern (C) проц wxFlexGridSizer_dtor(ЦУк сам);
+		static extern (C) проц wxFlexGridSizer_RecalcSizes(ЦУк сам);
+		static extern (C) проц wxFlexGridSizer_CalcMin(ЦУк сам, inout Размер size);
+		static extern (C) проц wxFlexGridSizer_AddGrowableRow(ЦУк сам, бцел idx);
+		static extern (C) проц wxFlexGridSizer_RemoveGrowableRow(ЦУк сам, бцел idx);
+		static extern (C) проц wxFlexGridSizer_AddGrowableCol(ЦУк сам, бцел idx);
+		static extern (C) проц wxFlexGridSizer_RemoveGrowableCol(ЦУк сам, бцел idx);
+                static extern (C) цел wxFlexGridSizer_GetFlexibleDirection(ЦУк сам);
+                static extern (C) проц wxFlexGridSizer_SetFlexibleDirection(ЦУк сам, цел direction);
+static extern (C) FlexSizerGrowMode wxFlexGridSizer_GetNonFlexibleGrowMode(ЦУк сам);
+static extern (C) проц wxFlexGridSizer_SetNonFlexibleGrowMode(ЦУк сам,FlexSizerGrowMode mode);
 		//! \endcond
 
 		//---------------------------------------------------------------------
@@ -43,74 +43,74 @@ static extern (C) void wxFlexGridSizer_SetNonFlexibleGrowMode(IntPtr self,FlexSi
 	alias FlexGridSizer wxFlexGridSizer;
 	public class FlexGridSizer : GridSizer
 	{
-		public this(IntPtr wxobj)
-			{ super(wxobj); }
+		public this(ЦУк шхобъ)
+			{ super(шхобъ); }
 
-        public this(int cols, int vgap, int hgap)
+        public this(цел cols, цел vgap, цел hgap)
             { this(0, cols, vgap, hgap); }
 
-		public this(int rows, int cols, int vgap, int hgap)
+		public this(цел rows, цел cols, цел vgap, цел hgap)
 			{ super(wxFlexGridSizer_ctor(rows, cols, vgap, hgap)); }
 
 		//---------------------------------------------------------------------
 
-		public override void RecalcSizes()
+		public override проц RecalcSizes()
 		{
-			wxFlexGridSizer_RecalcSizes(wxobj);
+			wxFlexGridSizer_RecalcSizes(шхобъ);
 		}
 
 		//---------------------------------------------------------------------
 
-		public override Size CalcMin()
+		public override Размер CalcMin()
 		{
-			Size size;
-			wxFlexGridSizer_CalcMin(wxobj, size);
+			Размер size;
+			wxFlexGridSizer_CalcMin(шхобъ, size);
 			return size;
 		}
 
 		//---------------------------------------------------------------------
 
-		public void AddGrowableRow(int idx)
+		public проц AddGrowableRow(цел idx)
 		{
-			wxFlexGridSizer_AddGrowableRow(wxobj, cast(uint)idx);
+			wxFlexGridSizer_AddGrowableRow(шхобъ, cast(бцел)idx);
 		}
 
-		public void RemoveGrowableRow(int idx)
+		public проц RemoveGrowableRow(цел idx)
 		{
-			wxFlexGridSizer_RemoveGrowableRow(wxobj, cast(uint)idx);
-		}
-
-		//---------------------------------------------------------------------
-
-		public void AddGrowableCol(int idx)
-		{
-			wxFlexGridSizer_AddGrowableCol(wxobj, cast(uint)idx);
-		}
-
-		public void RemoveGrowableCol(int idx)
-		{
-			wxFlexGridSizer_RemoveGrowableCol(wxobj, cast(uint)idx);
+			wxFlexGridSizer_RemoveGrowableRow(шхобъ, cast(бцел)idx);
 		}
 
 		//---------------------------------------------------------------------
 
-		public void SetFlexibleDirection(int direction)
+		public проц AddGrowableCol(цел idx)
 		{
-		  wxFlexGridSizer_SetFlexibleDirection(wxobj, direction);
+			wxFlexGridSizer_AddGrowableCol(шхобъ, cast(бцел)idx);
 		}
 
-		public int GetFlexibleDirection()
+		public проц RemoveGrowableCol(цел idx)
 		{
-		  return wxFlexGridSizer_GetFlexibleDirection(wxobj);
+			wxFlexGridSizer_RemoveGrowableCol(шхобъ, cast(бцел)idx);
 		}
 
 		//---------------------------------------------------------------------
 
-		public void SetNonFlexibleGrowMode(FlexSizerGrowMode mode){
-		  wxFlexGridSizer_SetNonFlexibleGrowMode(wxobj, mode);
+		public проц SetFlexibleDirection(цел direction)
+		{
+		  wxFlexGridSizer_SetFlexibleDirection(шхобъ, direction);
+		}
+
+		public цел GetFlexibleDirection()
+		{
+		  return wxFlexGridSizer_GetFlexibleDirection(шхобъ);
+		}
+
+		//---------------------------------------------------------------------
+
+		public проц SetNonFlexibleGrowMode(FlexSizerGrowMode mode){
+		  wxFlexGridSizer_SetNonFlexibleGrowMode(шхобъ, mode);
 		}
 
 		public FlexSizerGrowMode  GetNonFlexibleGrowMode(){
-		  return wxFlexGridSizer_GetNonFlexibleGrowMode(wxobj);
+		  return wxFlexGridSizer_GetNonFlexibleGrowMode(шхобъ);
 		}
 	}

@@ -10,7 +10,7 @@
 // (C) 2003 by 379, Inc.
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: Notebook.d,v 1.11 2007/03/13 17:02:41 afb Exp $
+// $Ид: Notebook.d,v 1.11 2007/03/13 17:02:41 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.Notebook;
@@ -20,91 +20,91 @@ public import wx.Control;
 public import wx.ImageList;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxNotebookEvent_ctor(int commandType, int id, int nSel, int nOldSel);
-		static extern (C) int    wxNotebookEvent_GetSelection(IntPtr self);
-		static extern (C) void   wxNotebookEvent_SetSelection(IntPtr self, int nSel);
-		static extern (C) int    wxNotebookEvent_GetOldSelection(IntPtr self);
-		static extern (C) void   wxNotebookEvent_SetOldSelection(IntPtr self, int nOldSel);
-		static extern (C) void wxNotebookEvent_Veto(IntPtr self);
-		static extern (C) void wxNotebookEvent_Allow(IntPtr self);
-		static extern (C) bool wxNotebookEvent_IsAllowed(IntPtr self);		
+		static extern (C) ЦУк wxNotebookEvent_ctor(цел commandType, цел ид, цел nSel, цел nOldSel);
+		static extern (C) цел    wxNotebookEvent_GetSelection(ЦУк сам);
+		static extern (C) проц   wxNotebookEvent_SetSelection(ЦУк сам, цел nSel);
+		static extern (C) цел    wxNotebookEvent_GetOldSelection(ЦУк сам);
+		static extern (C) проц   wxNotebookEvent_SetOldSelection(ЦУк сам, цел nOldSel);
+		static extern (C) проц wxNotebookEvent_Veto(ЦУк сам);
+		static extern (C) проц wxNotebookEvent_Allow(ЦУк сам);
+		static extern (C) бул wxNotebookEvent_IsAllowed(ЦУк сам);		
 		//! \endcond
 
 		//-----------------------------------------------------------------------------
 
 	alias NotebookEvent wxNotebookEvent;
-	public class NotebookEvent : Event
+	public class NotebookEvent : Событие
 	{
-		public this(IntPtr wxobj)
-			{ super(wxobj); }
+		public this(ЦУк шхобъ)
+			{ super(шхобъ); }
 
-		public this(int commandType, int id, int nSel, int nOldSel)
-			{ super(wxNotebookEvent_ctor(commandType, id, nSel, nOldSel)); }
-
-		//-----------------------------------------------------------------------------
-
-		public int Selection() { return wxNotebookEvent_GetSelection(wxobj); }
-		public void Selection(int value) { wxNotebookEvent_SetSelection(wxobj, value); }
+		public this(цел commandType, цел ид, цел nSel, цел nOldSel)
+			{ super(wxNotebookEvent_ctor(commandType, ид, nSel, nOldSel)); }
 
 		//-----------------------------------------------------------------------------
 
-		public int OldSelection() { return wxNotebookEvent_GetOldSelection(wxobj); }
-		public void OldSelection(int value) { wxNotebookEvent_SetOldSelection(wxobj, value); }
+		public цел Selection() { return wxNotebookEvent_GetSelection(шхобъ); }
+		public проц Selection(цел значение) { wxNotebookEvent_SetSelection(шхобъ, значение); }
+
+		//-----------------------------------------------------------------------------
+
+		public цел OldSelection() { return wxNotebookEvent_GetOldSelection(шхобъ); }
+		public проц OldSelection(цел значение) { wxNotebookEvent_SetOldSelection(шхобъ, значение); }
 		
 		//-----------------------------------------------------------------------------		
 		
-		public void Veto()
+		public проц Veto()
 		{
-			wxNotebookEvent_Veto(wxobj);
+			wxNotebookEvent_Veto(шхобъ);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public void Allow()
+		public проц Allow()
 		{
-			wxNotebookEvent_Allow(wxobj);
+			wxNotebookEvent_Allow(шхобъ);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public bool Allowed() { return wxNotebookEvent_IsAllowed(wxobj); }
+		public бул Allowed() { return wxNotebookEvent_IsAllowed(шхобъ); }
 
-		private static Event New(IntPtr obj) { return new NotebookEvent(obj); }
+		private static Событие Нов(ЦУк объ) { return new NotebookEvent(объ); }
 
 		static this()
 		{
 			wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGED = wxEvent_EVT_COMMAND_NOTEBOOK_PAGE_CHANGED();
 			wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGING = wxEvent_EVT_COMMAND_NOTEBOOK_PAGE_CHANGING();
 
-			AddEventType(wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGED,   &NotebookEvent.New);
-			AddEventType(wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGING,  &NotebookEvent.New);
+			ДобавьТипСоб(wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGED,   &NotebookEvent.Нов);
+			ДобавьТипСоб(wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGING,  &NotebookEvent.Нов);
 		}
 	}
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxNotebook_ctor();
-		static extern (C) bool   wxNotebook_AddPage(IntPtr self, IntPtr page, string text, bool select, int imageId);
-		static extern (C) bool   wxNotebook_Create(IntPtr self, IntPtr parent, int id, inout Point pos, inout Size size, uint style, string name);
-		static extern (C) int    wxNotebook_GetPageCount(IntPtr self);
-		static extern (C) IntPtr wxNotebook_GetPage(IntPtr self, int nPage);
-		static extern (C) int    wxNotebook_GetSelection(IntPtr self);
-		static extern (C) bool   wxNotebook_SetPageText(IntPtr self, int nPage, string strText);
-		static extern (C) IntPtr wxNotebook_GetPageText(IntPtr self, int nPage);
-		static extern (C) void   wxNotebook_SetImageList(IntPtr self, IntPtr imageList);
-		static extern (C) void   wxNotebook_AssignImageList(IntPtr self, IntPtr imageList);
-		static extern (C) IntPtr wxNotebook_GetImageList(IntPtr self);
-		static extern (C) int    wxNotebook_GetPageImage(IntPtr self, int nPage);
-		static extern (C) bool   wxNotebook_SetPageImage(IntPtr self, int nPage, int nImage);
-		static extern (C) int    wxNotebook_GetRowCount(IntPtr self);
-		static extern (C) void   wxNotebook_SetPageSize(IntPtr self, inout Size size);
-		static extern (C) void   wxNotebook_SetPadding(IntPtr self, inout Size padding);
-		static extern (C) void   wxNotebook_SetTabSize(IntPtr self, inout Size sz);
-		static extern (C) bool   wxNotebook_DeletePage(IntPtr self, int nPage);
-		static extern (C) bool   wxNotebook_RemovePage(IntPtr self, int nPage);
-		static extern (C) bool   wxNotebook_DeleteAllPages(IntPtr self);
-		static extern (C) bool   wxNotebook_InsertPage(IntPtr self, int nPage, IntPtr pPage, string strText, bool bSelect, int imageId);
-		static extern (C) int    wxNotebook_SetSelection(IntPtr self, int nPage);
-		static extern (C) void   wxNotebook_AdvanceSelection(IntPtr self, bool forward);
+		static extern (C) ЦУк wxNotebook_ctor();
+		static extern (C) бул   wxNotebook_AddPage(ЦУк сам, ЦУк page, ткст текст, бул select, цел imageId);
+		static extern (C) бул   wxNotebook_Create(ЦУк сам, ЦУк родитель, цел ид, inout Точка поз, inout Размер size, бцел стиль, ткст имя);
+		static extern (C) цел    wxNotebook_GetPageCount(ЦУк сам);
+		static extern (C) ЦУк wxNotebook_GetPage(ЦУк сам, цел nPage);
+		static extern (C) цел    wxNotebook_GetSelection(ЦУк сам);
+		static extern (C) бул   wxNotebook_SetPageText(ЦУк сам, цел nPage, ткст strText);
+		static extern (C) ЦУк wxNotebook_GetPageText(ЦУк сам, цел nPage);
+		static extern (C) проц   wxNotebook_SetImageList(ЦУк сам, ЦУк imageList);
+		static extern (C) проц   wxNotebook_AssignImageList(ЦУк сам, ЦУк imageList);
+		static extern (C) ЦУк wxNotebook_GetImageList(ЦУк сам);
+		static extern (C) цел    wxNotebook_GetPageImage(ЦУк сам, цел nPage);
+		static extern (C) бул   wxNotebook_SetPageImage(ЦУк сам, цел nPage, цел nImage);
+		static extern (C) цел    wxNotebook_GetRowCount(ЦУк сам);
+		static extern (C) проц   wxNotebook_SetPageSize(ЦУк сам, inout Размер size);
+		static extern (C) проц   wxNotebook_SetPadding(ЦУк сам, inout Размер padding);
+		static extern (C) проц   wxNotebook_SetTabSize(ЦУк сам, inout Размер sz);
+		static extern (C) бул   wxNotebook_DeletePage(ЦУк сам, цел nPage);
+		static extern (C) бул   wxNotebook_RemovePage(ЦУк сам, цел nPage);
+		static extern (C) бул   wxNotebook_DeleteAllPages(ЦУк сам);
+		static extern (C) бул   wxNotebook_InsertPage(ЦУк сам, цел nPage, ЦУк pPage, ткст strText, бул bSelect, цел imageId);
+		static extern (C) цел    wxNotebook_SetSelection(ЦУк сам, цел nPage);
+		static extern (C) проц   wxNotebook_AdvanceSelection(ЦУк сам, бул forward);
 		//! \endcond
 
 		//---------------------------------------------------------------------
@@ -112,155 +112,155 @@ public import wx.ImageList;
 	alias Notebook wxNotebook;
 	public class Notebook : Control
 	{
-		public const int wxNB_FIXEDWIDTH       = 0x0010;
-		public const int wxNB_TOP              = 0x0000;
-		public const int wxNB_LEFT             = 0x0020;
-		public const int wxNB_RIGHT            = 0x0040;
-		public const int wxNB_BOTTOM           = 0x0080;
-		public const int wxNB_MULTILINE        = 0x0100;
+		public const цел wxNB_FIXEDWIDTH       = 0x0010;
+		public const цел wxNB_TOP              = 0x0000;
+		public const цел wxNB_LEFT             = 0x0020;
+		public const цел wxNB_RIGHT            = 0x0040;
+		public const цел wxNB_BOTTOM           = 0x0080;
+		public const цел wxNB_MULTILINE        = 0x0100;
 	
-		public const string wxNOTEBOOK_NAME = "notebook";
+		public const ткст wxNOTEBOOK_NAME = "notebook";
 		//-----------------------------------------------------------------------------
 
-		public this(IntPtr wxobj) 
-			{ super(wxobj); }
+		public this(ЦУк шхобъ) 
+			{ super(шхобъ); }
 
 		public this()
 			{ super(wxNotebook_ctor()); }
 
-		public this(Window parent, int id, Point pos = wxDefaultPosition, Size size = wxDefaultSize, int style = 0, string name = wxNOTEBOOK_NAME)
+		public this(Окно родитель, цел ид, Точка поз = wxDefaultPosition, Размер size = wxDefaultSize, цел стиль = 0, ткст имя = wxNOTEBOOK_NAME)
 		{
 			super(wxNotebook_ctor());
-			if (!wxNotebook_Create(wxobj, wxObject.SafePtr(parent), id, pos, size, style, name)) 
+			if (!wxNotebook_Create(шхобъ, wxObject.SafePtr(родитель), ид, поз, size, стиль, имя)) 
 			{
 				throw new InvalidOperationException("Failed to create Notebook");
 			}
 		}
 
-		public static wxObject New(IntPtr wxobj) { return new Notebook(wxobj); }
+		public static wxObject Нов(ЦУк шхобъ) { return new Notebook(шхобъ); }
 	
 		//---------------------------------------------------------------------
-		// ctors with self created id
+		// ctors with сам created ид
 			
-		public this(Window parent, Point pos = wxDefaultPosition, Size size = wxDefaultSize, int style = 0, string name = wxNOTEBOOK_NAME)
-			{ this(parent, Window.UniqueID, pos, size, style, name);}
+		public this(Окно родитель, Точка поз = wxDefaultPosition, Размер size = wxDefaultSize, цел стиль = 0, ткст имя = wxNOTEBOOK_NAME)
+			{ this(родитель, Окно.UniqueID, поз, size, стиль, имя);}
         
 		//---------------------------------------------------------------------
 
-		// TODO: Switch window with NotebookPage
+		// TODO: Switch окно with NotebookPage
 
-		public bool AddPage(Window page, string text)
-		{ return AddPage(page, text, false, -1); }
+		public бул AddPage(Окно page, ткст текст)
+		{ return AddPage(page, текст, нет, -1); }
 		
-		public bool AddPage(Window page, string text, bool select)
-		{ return AddPage(page, text, select, -1); }
+		public бул AddPage(Окно page, ткст текст, бул select)
+		{ return AddPage(page, текст, select, -1); }
 		
-		public bool AddPage(Window page, string text, bool select, int imageId)
+		public бул AddPage(Окно page, ткст текст, бул select, цел imageId)
 		{
-			return wxNotebook_AddPage(wxobj, wxObject.SafePtr(page), text, select, imageId);
+			return wxNotebook_AddPage(шхобъ, wxObject.SafePtr(page), текст, select, imageId);
 		}
 
 		//---------------------------------------------------------------------
 
-		public void Images(ImageList value) { wxNotebook_SetImageList(wxobj, wxObject.SafePtr(value)); }
-		public ImageList Images() { return cast(ImageList)FindObject(wxNotebook_GetImageList(wxobj)); }
+		public проц Images(ImageList значение) { wxNotebook_SetImageList(шхобъ, wxObject.SafePtr(значение)); }
+		public ImageList Images() { return cast(ImageList)FindObject(wxNotebook_GetImageList(шхобъ)); }
 
 		//---------------------------------------------------------------------
 
-		public int PageCount() { return wxNotebook_GetPageCount(wxobj); }
+		public цел PageCount() { return wxNotebook_GetPageCount(шхобъ); }
 
-		// TODO: Switch window with NotebookPage
-		public Window GetPage(int page)
+		// TODO: Switch окно with NotebookPage
+		public Окно GetPage(цел page)
 		{
-			return cast(Window)FindObject(wxNotebook_GetPage(wxobj, page));
-		}
-
-		//---------------------------------------------------------------------
-
-		public int Selection() { return wxNotebook_GetSelection(wxobj); }
-		public void Selection(int value) { wxNotebook_SetSelection(wxobj, value); }
-
-		public void AdvanceSelection(bool forward)
-		{
-			wxNotebook_AdvanceSelection(wxobj, forward);
+			return cast(Окно)FindObject(wxNotebook_GetPage(шхобъ, page));
 		}
 
 		//---------------------------------------------------------------------
 
-		public bool SetPageText(int page, string text)
-		{
-			return wxNotebook_SetPageText(wxobj, page, text);
-		}
+		public цел Selection() { return wxNotebook_GetSelection(шхобъ); }
+		public проц Selection(цел значение) { wxNotebook_SetSelection(шхобъ, значение); }
 
-		public string GetPageText(int page)
+		public проц AdvanceSelection(бул forward)
 		{
-			return cast(string) new wxString(wxNotebook_GetPageText(wxobj, page), true);
-		}
-
-		//---------------------------------------------------------------------
-
-		public void AssignImageList(ImageList imageList)
-		{
-			wxNotebook_AssignImageList(wxobj, wxObject.SafePtr(imageList));
+			wxNotebook_AdvanceSelection(шхобъ, forward);
 		}
 
 		//---------------------------------------------------------------------
 
-		public int GetPageImage(int page)
+		public бул SetPageText(цел page, ткст текст)
 		{
-			return wxNotebook_GetPageImage(wxobj, page);
+			return wxNotebook_SetPageText(шхобъ, page, текст);
 		}
 
-		public bool SetPageImage(int page, int image)
+		public ткст GetPageText(цел page)
 		{
-			return wxNotebook_SetPageImage(wxobj, page, image);
-		}
-
-		//---------------------------------------------------------------------
-
-		public int RowCount() { return wxNotebook_GetRowCount(wxobj); }
-
-		//---------------------------------------------------------------------
-
-		public void PageSize(Size value) { wxNotebook_SetPageSize(wxobj, value); }
-
-		public void Padding(Size value) { wxNotebook_SetPadding(wxobj, value); }
-
-		public void TabSize(Size value) { wxNotebook_SetTabSize(wxobj, value); }
-
-		//---------------------------------------------------------------------
-
-		public bool DeletePage(int page)
-		{
-			return wxNotebook_DeletePage(wxobj, page);
-		}
-
-		public bool RemovePage(int page)
-		{
-			return wxNotebook_RemovePage(wxobj, page);
-		}
-
-		public bool DeleteAllPages()
-		{
-			return wxNotebook_DeleteAllPages(wxobj);
+			return cast(ткст) new wxString(wxNotebook_GetPageText(шхобъ, page), да);
 		}
 
 		//---------------------------------------------------------------------
 
-		// TODO: Switch window with NotebookPage
-		public bool InsertPage(int page, Window window, string text,
-							   bool select, int image)
+		public проц AssignImageList(ImageList imageList)
 		{
-			return wxNotebook_InsertPage(wxobj, page,
-										 wxObject.SafePtr(window), text, select,
-										 image);
+			wxNotebook_AssignImageList(шхобъ, wxObject.SafePtr(imageList));
 		}
 
 		//---------------------------------------------------------------------
 
-		public void PageChange_Add(EventListener value) { AddCommandListener(Event.wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGED, ID, value, this); }
-		public void PageChange_Remove(EventListener value) { RemoveHandler(value, this); }
+		public цел GetPageImage(цел page)
+		{
+			return wxNotebook_GetPageImage(шхобъ, page);
+		}
 
-		public void PageChanging_Add(EventListener value) { AddCommandListener(Event.wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGING, ID, value, this); }
-		public void PageChanging_Remove(EventListener value) { RemoveHandler(value, this); }
+		public бул SetPageImage(цел page, цел рисунок)
+		{
+			return wxNotebook_SetPageImage(шхобъ, page, рисунок);
+		}
+
+		//---------------------------------------------------------------------
+
+		public цел RowCount() { return wxNotebook_GetRowCount(шхобъ); }
+
+		//---------------------------------------------------------------------
+
+		public проц PageSize(Размер значение) { wxNotebook_SetPageSize(шхобъ, значение); }
+
+		public проц Padding(Размер значение) { wxNotebook_SetPadding(шхобъ, значение); }
+
+		public проц TabSize(Размер значение) { wxNotebook_SetTabSize(шхобъ, значение); }
+
+		//---------------------------------------------------------------------
+
+		public бул DeletePage(цел page)
+		{
+			return wxNotebook_DeletePage(шхобъ, page);
+		}
+
+		public бул RemovePage(цел page)
+		{
+			return wxNotebook_RemovePage(шхобъ, page);
+		}
+
+		public бул DeleteAllPages()
+		{
+			return wxNotebook_DeleteAllPages(шхобъ);
+		}
+
+		//---------------------------------------------------------------------
+
+		// TODO: Switch окно with NotebookPage
+		public бул InsertPage(цел page, Окно окно, ткст текст,
+							   бул select, цел рисунок)
+		{
+			return wxNotebook_InsertPage(шхобъ, page,
+										 wxObject.SafePtr(окно), текст, select,
+										 рисунок);
+		}
+
+		//---------------------------------------------------------------------
+
+		public проц PageChange_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGED, ИД, значение, this); }
+		public проц PageChange_Remove(EventListener значение) { RemoveHandler(значение, this); }
+
+		public проц PageChanging_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_COMMAND_NOTEBOOK_PAGE_CHANGING, ИД, значение, this); }
+		public проц PageChanging_Remove(EventListener значение) { RemoveHandler(значение, this); }
 	}

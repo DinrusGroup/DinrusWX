@@ -10,7 +10,7 @@
 // (C) 2003 by 379, Inc.
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: StaticText.d,v 1.11 2009/02/11 08:04:29 afb Exp $
+// $Ид: StaticText.d,v 1.11 2009/02/11 08:04:29 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.StaticText;
@@ -18,9 +18,9 @@ public import wx.common;
 public import wx.Control;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxStaticText_ctor();
-		static extern (C) bool   wxStaticText_Create(IntPtr self, IntPtr parent, int id, string label, inout Point pos, inout Size size, uint style, string name);
-		static extern (C) void   wxStaticText_Wrap(IntPtr self, int width);
+		static extern (C) ЦУк wxStaticText_ctor();
+		static extern (C) бул   wxStaticText_Create(ЦУк сам, ЦУк родитель, цел ид, ткст надпись, inout Точка поз, inout Размер size, бцел стиль, ткст имя);
+		static extern (C) проц   wxStaticText_Wrap(ЦУк сам, цел ширина);
 		//! \endcond
 
 		//---------------------------------------------------------------------
@@ -28,44 +28,44 @@ public import wx.Control;
 	alias StaticText wxStaticText;
 	public class StaticText : Control
 	{
-		public const int wxST_NO_AUTORESIZE = 0x0001;
+		public const цел wxST_NO_AUTORESIZE = 0x0001;
 	
-		public const string wxStaticTextNameStr = "message";
+		public const ткст wxStaticTextNameStr = "message";
 	
-		public this(IntPtr wxobj) 
-			{ super(wxobj);}
+		public this(ЦУк шхобъ) 
+			{ super(шхобъ);}
 
 		public this()
 			{ super(wxStaticText_ctor()); }
 
-		public this(Window parent, int id, string label, Point pos = wxDefaultPosition, Size size = wxDefaultSize, int style = 0, string name = wxStaticTextNameStr)
+		public this(Окно родитель, цел ид, ткст надпись, Точка поз = wxDefaultPosition, Размер size = wxDefaultSize, цел стиль = 0, ткст имя = wxStaticTextNameStr)
 		{
 			super(wxStaticText_ctor());
-			if (!Create(parent, id, label, pos, size, style, name))
+			if (!Create(родитель, ид, надпись, поз, size, стиль, имя))
 			{
 				throw new InvalidOperationException("Failed to create StaticText");
 			}
 		}
 
-		public static wxObject New(IntPtr wxobj) { return new StaticText(wxobj); }
+		public static wxObject Нов(ЦУк шхобъ) { return new StaticText(шхобъ); }
 		
 		//---------------------------------------------------------------------
-		// ctors with self created id
+		// ctors with сам created ид
 		
-		public this(Window parent, string label, Point pos = wxDefaultPosition, Size size = wxDefaultSize, int style = 0, string name = wxStaticTextNameStr)
-			{ this(parent, Window.UniqueID, label, pos, size, style, name);}
+		public this(Окно родитель, ткст надпись, Точка поз = wxDefaultPosition, Размер size = wxDefaultSize, цел стиль = 0, ткст имя = wxStaticTextNameStr)
+			{ this(родитель, Окно.UniqueID, надпись, поз, size, стиль, имя);}
 		
 		//---------------------------------------------------------------------
 
-		public bool Create(Window parent, int id, string label, inout Point pos, inout Size size, int style, string name)
+		public бул Create(Окно родитель, цел ид, ткст надпись, inout Точка поз, inout Размер size, цел стиль, ткст имя)
 		{
-			return wxStaticText_Create(wxobj, wxObject.SafePtr(parent), id, label, pos, size, cast(uint)style, name);
+			return wxStaticText_Create(шхобъ, wxObject.SafePtr(родитель), ид, надпись, поз, size, cast(бцел)стиль, имя);
 		}
 	
 		//---------------------------------------------------------------------
 
-		public void Wrap(int width)
+		public проц Wrap(цел ширина)
 		{
-			wxStaticText_Wrap(wxobj, width);
+			wxStaticText_Wrap(шхобъ, ширина);
 		}
 	}

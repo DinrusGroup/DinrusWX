@@ -10,7 +10,7 @@
 // (C) 2003 Bryan Bulten
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: MouseEvent.d,v 1.10 2008/05/07 06:15:51 afb Exp $
+// $Ид: MouseEvent.d,v 1.10 2008/05/07 06:15:51 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.MouseEvent;
@@ -20,206 +20,206 @@ public import wx.Event;
 public import wx.DC;
 
 		//! \cond EXTERN
-        static extern (C) IntPtr wxMouseEvent_ctor(int mouseType);
-        static extern (C) bool   wxMouseEvent_IsButton(IntPtr self);
-        static extern (C) bool   wxMouseEvent_ButtonDown(IntPtr self);
-	static extern (C) bool   wxMouseEvent_ButtonDown2(IntPtr self, int button);
-        static extern (C) bool   wxMouseEvent_ButtonDClick(IntPtr self, int but);
-        static extern (C) bool   wxMouseEvent_ButtonUp(IntPtr self, int but);
-        static extern (C) bool   wxMouseEvent_Button(IntPtr self, int but);
-        static extern (C) bool   wxMouseEvent_ButtonIsDown(IntPtr self, int but);
-        static extern (C) int    wxMouseEvent_GetButton(IntPtr self);
-        static extern (C) bool   wxMouseEvent_ControlDown(IntPtr self);
-        static extern (C) bool   wxMouseEvent_MetaDown(IntPtr self);
-        static extern (C) bool   wxMouseEvent_AltDown(IntPtr self);
-        static extern (C) bool   wxMouseEvent_ShiftDown(IntPtr self);
-        static extern (C) bool   wxMouseEvent_LeftDown(IntPtr self);
-        static extern (C) bool   wxMouseEvent_MiddleDown(IntPtr self);
-        static extern (C) bool   wxMouseEvent_RightDown(IntPtr self);
-        static extern (C) bool   wxMouseEvent_LeftUp(IntPtr self);
-        static extern (C) bool   wxMouseEvent_MiddleUp(IntPtr self);
-        static extern (C) bool   wxMouseEvent_RightUp(IntPtr self);
-        static extern (C) bool   wxMouseEvent_LeftDClick(IntPtr self);
-        static extern (C) bool   wxMouseEvent_MiddleDClick(IntPtr self);
-        static extern (C) bool   wxMouseEvent_RightDClick(IntPtr self);
-        static extern (C) bool   wxMouseEvent_LeftIsDown(IntPtr self);
-        static extern (C) bool   wxMouseEvent_MiddleIsDown(IntPtr self);
-        static extern (C) bool   wxMouseEvent_RightIsDown(IntPtr self);
-        static extern (C) bool   wxMouseEvent_Dragging(IntPtr self);
-        static extern (C) bool   wxMouseEvent_Moving(IntPtr self);
-        static extern (C) bool   wxMouseEvent_Entering(IntPtr self);
-        static extern (C) bool   wxMouseEvent_Leaving(IntPtr self);
-        static extern (C) void   wxMouseEvent_GetPosition(IntPtr self, inout Point pos);
-        static extern (C) void   wxMouseEvent_LogicalPosition(IntPtr self, IntPtr dc, inout Point pos);
-        static extern (C) int    wxMouseEvent_GetWheelRotation(IntPtr self);
-        static extern (C) int    wxMouseEvent_GetWheelDelta(IntPtr self);
-        static extern (C) int    wxMouseEvent_GetLinesPerAction(IntPtr self);
-        static extern (C) bool   wxMouseEvent_IsPageScroll(IntPtr self);
+        static extern (C) ЦУк wxMouseEvent_ctor(цел mouseType);
+        static extern (C) бул   wxMouseEvent_IsButton(ЦУк сам);
+        static extern (C) бул   wxMouseEvent_ButtonDown(ЦУк сам);
+	static extern (C) бул   wxMouseEvent_ButtonDown2(ЦУк сам, цел button);
+        static extern (C) бул   wxMouseEvent_ButtonDClick(ЦУк сам, цел but);
+        static extern (C) бул   wxMouseEvent_ButtonUp(ЦУк сам, цел but);
+        static extern (C) бул   wxMouseEvent_Button(ЦУк сам, цел but);
+        static extern (C) бул   wxMouseEvent_ButtonIsDown(ЦУк сам, цел but);
+        static extern (C) цел    wxMouseEvent_GetButton(ЦУк сам);
+        static extern (C) бул   wxMouseEvent_ControlDown(ЦУк сам);
+        static extern (C) бул   wxMouseEvent_MetaDown(ЦУк сам);
+        static extern (C) бул   wxMouseEvent_AltDown(ЦУк сам);
+        static extern (C) бул   wxMouseEvent_ShiftDown(ЦУк сам);
+        static extern (C) бул   wxMouseEvent_LeftDown(ЦУк сам);
+        static extern (C) бул   wxMouseEvent_MiddleDown(ЦУк сам);
+        static extern (C) бул   wxMouseEvent_RightDown(ЦУк сам);
+        static extern (C) бул   wxMouseEvent_LeftUp(ЦУк сам);
+        static extern (C) бул   wxMouseEvent_MiddleUp(ЦУк сам);
+        static extern (C) бул   wxMouseEvent_RightUp(ЦУк сам);
+        static extern (C) бул   wxMouseEvent_LeftDClick(ЦУк сам);
+        static extern (C) бул   wxMouseEvent_MiddleDClick(ЦУк сам);
+        static extern (C) бул   wxMouseEvent_RightDClick(ЦУк сам);
+        static extern (C) бул   wxMouseEvent_LeftIsDown(ЦУк сам);
+        static extern (C) бул   wxMouseEvent_MiddleIsDown(ЦУк сам);
+        static extern (C) бул   wxMouseEvent_RightIsDown(ЦУк сам);
+        static extern (C) бул   wxMouseEvent_Dragging(ЦУк сам);
+        static extern (C) бул   wxMouseEvent_Moving(ЦУк сам);
+        static extern (C) бул   wxMouseEvent_Entering(ЦУк сам);
+        static extern (C) бул   wxMouseEvent_Leaving(ЦУк сам);
+        static extern (C) проц   wxMouseEvent_GetPosition(ЦУк сам, inout Точка поз);
+        static extern (C) проц   wxMouseEvent_LogicalPosition(ЦУк сам, ЦУк dc, inout Точка поз);
+        static extern (C) цел    wxMouseEvent_GetWheelRotation(ЦУк сам);
+        static extern (C) цел    wxMouseEvent_GetWheelDelta(ЦУк сам);
+        static extern (C) цел    wxMouseEvent_GetLinesPerAction(ЦУк сам);
+        static extern (C) бул   wxMouseEvent_IsPageScroll(ЦУк сам);
 		//! \endcond
 
 		//----------------------------------------------------------------------------
 
     alias MouseEvent wxMouseEvent;
-    public class MouseEvent : Event
+    public class MouseEvent : Событие
     {
-		public this(IntPtr wxobj) 
-            { super(wxobj); }
+		public this(ЦУк шхобъ) 
+            { super(шхобъ); }
 
-        public this(EventType mouseType)
+        public this(ТипСобытия mouseType)
             { super(wxMouseEvent_ctor(mouseType)); }
 
 		//----------------------------------------------------------------------------
 
-        public bool IsButton() { return wxMouseEvent_IsButton(wxobj); }
+        public бул IsButton() { return wxMouseEvent_IsButton(шхобъ); }
 	
 	//----------------------------------------------------------------------------
 
-        public bool ButtonDown()
+        public бул ButtonDown()
         {
-            //get { return wxMouseEvent_ButtonDown(wxobj); }
+            //get { return wxMouseEvent_ButtonDown(шхобъ); }
 	    return ButtonDown(MouseButton.wxMOUSE_BTN_ANY);
         }
 	
-	public bool ButtonDown(MouseButton but)
+	public бул ButtonDown(MouseButton but)
 	{
-		return wxMouseEvent_ButtonDown2(wxobj, cast(int)but);
+		return wxMouseEvent_ButtonDown2(шхобъ, cast(цел)but);
 	}
 	
 	//----------------------------------------------------------------------------
 	
-	public bool ButtonDClick()
+	public бул ButtonDClick()
 	{
 		return ButtonDClick(MouseButton.wxMOUSE_BTN_ANY);
 	}
 
-        public bool ButtonDClick(MouseButton but)
+        public бул ButtonDClick(MouseButton but)
         {
-            return wxMouseEvent_ButtonDClick(wxobj, cast(int)but);
+            return wxMouseEvent_ButtonDClick(шхобъ, cast(цел)but);
         }
 	
 	//----------------------------------------------------------------------------
 	
-	public bool ButtonUp()
+	public бул ButtonUp()
 	{
 		return ButtonUp(MouseButton.wxMOUSE_BTN_ANY);
 	}
 
-        public bool ButtonUp(MouseButton but)
+        public бул ButtonUp(MouseButton but)
         {
-            return wxMouseEvent_ButtonUp(wxobj, cast(int)but);
+            return wxMouseEvent_ButtonUp(шхобъ, cast(цел)but);
         }
 	
 	//----------------------------------------------------------------------------
 
-        public bool Button(int but)
+        public бул Кнопка(цел but)
         {
-            return wxMouseEvent_Button(wxobj, but);
+            return wxMouseEvent_Button(шхобъ, but);
         }
 
-        public bool ButtonIsDown(int but)
+        public бул ButtonIsDown(цел but)
         {
-            return wxMouseEvent_ButtonIsDown(wxobj, but);
+            return wxMouseEvent_ButtonIsDown(шхобъ, but);
         }
 
-        public int Button()
+        public цел Кнопка()
         {
-            return wxMouseEvent_GetButton(wxobj);
+            return wxMouseEvent_GetButton(шхобъ);
         }
 
 		//----------------------------------------------------------------------------
 
-        public bool ControlDown() { return wxMouseEvent_ControlDown(wxobj); }
+        public бул НажатКонтрол() { return wxMouseEvent_ControlDown(шхобъ); }
 
-        public bool MetaDown() { return wxMouseEvent_MetaDown(wxobj); }
+        public бул НажатМета() { return wxMouseEvent_MetaDown(шхобъ); }
 
-        public bool AltDown() { return wxMouseEvent_AltDown(wxobj); }
+        public бул НажатАльт() { return wxMouseEvent_AltDown(шхобъ); }
 
-        public bool ShiftDown() { return wxMouseEvent_ShiftDown(wxobj); }
-
-		//----------------------------------------------------------------------------
-
-        public bool LeftDown() { return wxMouseEvent_LeftDown(wxobj); }
-
-        public bool MiddleDown() { return wxMouseEvent_MiddleDown(wxobj); }
-
-        public bool RightDown() { return wxMouseEvent_RightDown(wxobj); }
+        public бул НажатШифт() { return wxMouseEvent_ShiftDown(шхобъ); }
 
 		//----------------------------------------------------------------------------
 
-        public bool LeftUp() { return wxMouseEvent_LeftUp(wxobj); }
+        public бул LeftDown() { return wxMouseEvent_LeftDown(шхобъ); }
 
-        public bool MiddleUp() { return wxMouseEvent_MiddleUp(wxobj); }
+        public бул MiddleDown() { return wxMouseEvent_MiddleDown(шхобъ); }
 
-        public bool RightUp() { return wxMouseEvent_RightUp(wxobj); }
-
-		//----------------------------------------------------------------------------
-
-        public bool LeftDClick() { return wxMouseEvent_LeftDClick(wxobj); }
-
-        public bool MiddleDClick() { return wxMouseEvent_MiddleDClick(wxobj); }
-
-        public bool RightDClick() { return wxMouseEvent_RightDClick(wxobj); }
+        public бул RightDown() { return wxMouseEvent_RightDown(шхобъ); }
 
 		//----------------------------------------------------------------------------
 
-        public bool LeftIsDown() { return wxMouseEvent_LeftIsDown(wxobj); }
+        public бул LeftUp() { return wxMouseEvent_LeftUp(шхобъ); }
 
-        public bool MiddleIsDown() { return wxMouseEvent_MiddleIsDown(wxobj); }
+        public бул MiddleUp() { return wxMouseEvent_MiddleUp(шхобъ); }
 
-        public bool RightIsDown() { return wxMouseEvent_RightIsDown(wxobj); }
-
-		//----------------------------------------------------------------------------
-
-        public bool Dragging() { return wxMouseEvent_Dragging(wxobj); }
-
-        public bool Moving() { return wxMouseEvent_Moving(wxobj); }
-
-        public bool Entering() { return wxMouseEvent_Entering(wxobj); }
-
-        public bool Leaving() { return wxMouseEvent_Leaving(wxobj); }
+        public бул RightUp() { return wxMouseEvent_RightUp(шхобъ); }
 
 		//----------------------------------------------------------------------------
 
-        public Point Position() { 
-                Point pos;
-                wxMouseEvent_GetPosition(wxobj, pos);
-                return pos;
+        public бул LeftDClick() { return wxMouseEvent_LeftDClick(шхобъ); }
+
+        public бул MiddleDClick() { return wxMouseEvent_MiddleDClick(шхобъ); }
+
+        public бул RightDClick() { return wxMouseEvent_RightDClick(шхобъ); }
+
+		//----------------------------------------------------------------------------
+
+        public бул LeftIsDown() { return wxMouseEvent_LeftIsDown(шхобъ); }
+
+        public бул MiddleIsDown() { return wxMouseEvent_MiddleIsDown(шхобъ); }
+
+        public бул RightIsDown() { return wxMouseEvent_RightIsDown(шхобъ); }
+
+		//----------------------------------------------------------------------------
+
+        public бул Dragging() { return wxMouseEvent_Dragging(шхобъ); }
+
+        public бул Moving() { return wxMouseEvent_Moving(шхобъ); }
+
+        public бул Entering() { return wxMouseEvent_Entering(шхобъ); }
+
+        public бул Leaving() { return wxMouseEvent_Leaving(шхобъ); }
+
+		//----------------------------------------------------------------------------
+
+        public Точка Положение() { 
+                Точка поз;
+                wxMouseEvent_GetPosition(шхобъ, поз);
+                return поз;
             }
 
-        public Point LogicalPosition(DC dc)
+        public Точка LogicalPosition(DC dc)
         {
-			Point pos;
-            wxMouseEvent_LogicalPosition(wxobj, wxObject.SafePtr(dc), pos);
-			return pos;
+			Точка поз;
+            wxMouseEvent_LogicalPosition(шхобъ, wxObject.SafePtr(dc), поз);
+			return поз;
         }
 
 		//----------------------------------------------------------------------------
 
-        public int WheelRotation() { return wxMouseEvent_GetWheelRotation(wxobj); }
+        public цел WheelRotation() { return wxMouseEvent_GetWheelRotation(шхобъ); }
 
-        public int WheelDelta() { return wxMouseEvent_GetWheelDelta(wxobj); }
+        public цел WheelDelta() { return wxMouseEvent_GetWheelDelta(шхобъ); }
 
-        public int LinesPerAction() { return wxMouseEvent_GetLinesPerAction(wxobj); }
+        public цел LinesPerAction() { return wxMouseEvent_GetLinesPerAction(шхобъ); }
 
-        public bool IsPageScroll() { return wxMouseEvent_IsPageScroll(wxobj); }
+        public бул IsPageScroll() { return wxMouseEvent_IsPageScroll(шхобъ); }
 
 		//----------------------------------------------------------------------------
-		private static Event New(IntPtr obj) { return new MouseEvent(obj); }
+		private static Событие Нов(ЦУк объ) { return new MouseEvent(объ); }
 
 		static this()
 		{
-			AddEventType(wxEVT_LEFT_UP,                         &MouseEvent.New);
-			AddEventType(wxEVT_RIGHT_UP,                        &MouseEvent.New);
-			AddEventType(wxEVT_MIDDLE_UP,                       &MouseEvent.New);
-			AddEventType(wxEVT_ENTER_WINDOW,                    &MouseEvent.New);
-			AddEventType(wxEVT_LEAVE_WINDOW,                    &MouseEvent.New);
-			AddEventType(wxEVT_LEFT_DOWN,                       &MouseEvent.New);
-			AddEventType(wxEVT_MIDDLE_DOWN,                     &MouseEvent.New);
-			AddEventType(wxEVT_RIGHT_DOWN,                      &MouseEvent.New);
-			AddEventType(wxEVT_LEFT_DCLICK,                     &MouseEvent.New);
-			AddEventType(wxEVT_RIGHT_DCLICK,                    &MouseEvent.New);
-			AddEventType(wxEVT_MIDDLE_DCLICK,                   &MouseEvent.New);
-			AddEventType(wxEVT_MOUSEWHEEL,                      &MouseEvent.New);
-			AddEventType(wxEVT_MOTION,                              &MouseEvent.New);   		}
+			ДобавьТипСоб(wxEVT_LEFT_UP,                         &MouseEvent.Нов);
+			ДобавьТипСоб(wxEVT_RIGHT_UP,                        &MouseEvent.Нов);
+			ДобавьТипСоб(wxEVT_MIDDLE_UP,                       &MouseEvent.Нов);
+			ДобавьТипСоб(wxEVT_ENTER_WINDOW,                    &MouseEvent.Нов);
+			ДобавьТипСоб(wxEVT_LEAVE_WINDOW,                    &MouseEvent.Нов);
+			ДобавьТипСоб(wxEVT_LEFT_DOWN,                       &MouseEvent.Нов);
+			ДобавьТипСоб(wxEVT_MIDDLE_DOWN,                     &MouseEvent.Нов);
+			ДобавьТипСоб(wxEVT_RIGHT_DOWN,                      &MouseEvent.Нов);
+			ДобавьТипСоб(wxEVT_LEFT_DCLICK,                     &MouseEvent.Нов);
+			ДобавьТипСоб(wxEVT_RIGHT_DCLICK,                    &MouseEvent.Нов);
+			ДобавьТипСоб(wxEVT_MIDDLE_DCLICK,                   &MouseEvent.Нов);
+			ДобавьТипСоб(wxEVT_MOUSEWHEEL,                      &MouseEvent.Нов);
+			ДобавьТипСоб(wxEVT_MOTION,                              &MouseEvent.Нов);   		}
     }
 

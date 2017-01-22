@@ -8,7 +8,7 @@
 // (C) 2004 Alexander Olk
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: Xrcdemo.d,v 1.9 2006/11/17 15:20:59 afb Exp $
+// $Ид: Xrcdemo.d,v 1.9 2006/11/17 15:20:59 afb Exp $
 //-----------------------------------------------------------------------------
 
 import wx.wx;
@@ -16,13 +16,13 @@ import wx.wx;
 	public class XrcFrame : Frame
 	{
 		public this()
-			{ this( null ); }
+			{ this( пусто ); }
 			
-		public this( Window parent )			
+		public this( Окно родитель )			
 		{
-			XmlResource.Get().LoadFrame( this, parent, "main_frame" );
+			XmlResource.Get().LoadFrame( this, родитель, "main_frame" );
 			
-			icon = new Icon( "../Samples/Xrc/rc/appicon.ico" );
+			иконка = new Icon( "../Samples/Xrc/rc/appicon.ico" );
 			
 			menuBar = XmlResource.Get().LoadMenuBar( "main_menu" );
 			
@@ -45,14 +45,14 @@ import wx.wx;
 		
 		//---------------------------------------------------------------------	
 		
-		public void OnExitToolOrMenuCommand( Object sender, Event e )
+		public проц OnExitToolOrMenuCommand( Объект sender, Событие e )
 		{
-			Close(true);
+			Закрой(да);
 		}
 		
 		//---------------------------------------------------------------------	
 		
-		public void OnNonDerivedDialogToolOrMenuCommand( Object sender, Event e )
+		public проц OnNonDerivedDialogToolOrMenuCommand( Объект sender, Событие e )
 		{
 			Dialog dlg = XmlResource.Get().LoadDialog(this, "non_derived_dialog" ); 
 			
@@ -61,7 +61,7 @@ import wx.wx;
 		
 		//---------------------------------------------------------------------	
 		
-		public void OnDerivedDialogToolOrMenuCommand( Object sender, Event e )
+		public проц OnDerivedDialogToolOrMenuCommand( Объект sender, Событие e )
 		{
 			PreferencesDialog preferencesDialog = new PreferencesDialog( this );
 			
@@ -70,7 +70,7 @@ import wx.wx;
 		
 		//---------------------------------------------------------------------	
 		
-		public void OnWxGladeMenu( Object sender, Event e )
+		public проц OnWxGladeMenu( Объект sender, Событие e )
 		{
 		
 			/*Dialog dlg = XmlResource.Get().LoadDialog(this, "wxglade_dialog" ); 
@@ -84,20 +84,20 @@ import wx.wx;
 		
 		//---------------------------------------------------------------------	
 		
-		public void OnControlsToolOrMenuCommand( Object sender, Event e )
+		public проц OnControlsToolOrMenuCommand( Объект sender, Событие e )
 		{
 			Dialog dlg = XmlResource.Get().LoadDialog(this, "controls_dialog" );
 			
 			//ListCtrl lc = (ListCtrl)dlg.FindWindow( XmlResource.XRCID( "controls_listctrl" ), typeof( ListCtrl) );
 			
-			ListCtrl lc = cast(ListCtrl)XmlResource.XRCCTRL( dlg, "controls_listctrl", &ListCtrl.New );
+			ListCtrl lc = cast(ListCtrl)XmlResource.XRCCTRL( dlg, "controls_listctrl", &ListCtrl.Нов );
 			
-			lc.InsertColumn( 0, "Name", ListCtrl.wxLIST_FORMAT_LEFT, 200);
+			lc.InsertColumn( 0, "Имя", ListCtrl.wxLIST_FORMAT_LEFT, 200);
 			lc.InsertItem( 0, "Todd Hope" );
 			lc.InsertItem( 1, "Kim Wynd" );
 			lc.InsertItem( 2, "Leon Li" );
 			
-			TreeCtrl treectrl = cast(TreeCtrl)XmlResource.XRCCTRL(  dlg, "controls_treectrl", &TreeCtrl.New );
+			TreeCtrl treectrl = cast(TreeCtrl)XmlResource.XRCCTRL(  dlg, "controls_treectrl", &TreeCtrl.Нов );
 			
 			treectrl.AddRoot( "Godfather" );
 			
@@ -110,7 +110,7 @@ import wx.wx;
 		
 		//---------------------------------------------------------------------	
 		
-		public void OnUncenteredToolOrMenuCommand( Object sender, Event e )
+		public проц OnUncenteredToolOrMenuCommand( Объект sender, Событие e )
 		{
 			Dialog dlg = XmlResource.Get().LoadDialog( this, "uncentered_dialog" );
 			dlg.ShowModal();
@@ -118,7 +118,7 @@ import wx.wx;
 		
 		//---------------------------------------------------------------------	
 		
-		public void OnCustomClassToolOrMenuCommand( Object sender, Event e )
+		public проц OnCustomClassToolOrMenuCommand( Объект sender, Событие e )
 		{
 			Dialog dlg = XmlResource.Get().LoadDialog( this, "custom_class_dialog" );
 			
@@ -127,7 +127,7 @@ import wx.wx;
 									wxDefaultPosition,
 									wxDefaultSize,
 									ListCtrl.wxLC_REPORT,
-									null );
+									пусто );
 									
 			XmlResource.Get().AttachUnknownControl( "custom_control_placeholder", a_myResizableListCtrl );
 			
@@ -136,7 +136,7 @@ import wx.wx;
 		
 		//---------------------------------------------------------------------	
 		
-		public void OnPlatformPropertyToolOrMenuCommand( Object sender, Event e )
+		public проц OnPlatformPropertyToolOrMenuCommand( Объект sender, Событие e )
 		{
 			Dialog dlg = XmlResource.Get().LoadDialog( this, "platform_property_dialog" );
 			dlg.ShowModal();
@@ -144,7 +144,7 @@ import wx.wx;
 		
 		//---------------------------------------------------------------------	
 		
-		public void OnArtProviderToolOrMenuCommand( Object sender, Event e )
+		public проц OnArtProviderToolOrMenuCommand( Объект sender, Событие e )
 		{
 			Dialog dlg = XmlResource.Get().LoadDialog( this, "art_provider_dialog" );
 			dlg.ShowModal();
@@ -152,7 +152,7 @@ import wx.wx;
 		
 		//---------------------------------------------------------------------	
 		
-		public void OnVariableExpansionToolOrMenuCommand( Object sender, Event e )
+		public проц OnVariableExpansionToolOrMenuCommand( Объект sender, Событие e )
 		{
 			Dialog dlg = XmlResource.Get().LoadDialog( this, "variable_expansion_dialog" );
 			dlg.ShowModal();
@@ -160,9 +160,9 @@ import wx.wx;
 		
 		//---------------------------------------------------------------------	
 		
-		public void OnAboutToolOrMenuCommand( Object sender, Event e )
+		public проц OnAboutToolOrMenuCommand( Объект sender, Событие e )
 		{
-			string msg = "This is the about dialog of XML resources demo.\n" 
+			ткст msg = "This is the about dialog of XML resources demo.\n" 
 					"Ported to D by BERO";
 			MessageBox( this, msg, "About XML resources demo", Dialog.wxOK | Dialog.wxICON_INFORMATION );
 		}
@@ -172,9 +172,9 @@ import wx.wx;
 	
 	public class PreferencesDialog : Dialog
 	{
-		public this( Window parent )
+		public this( Окно родитель )
 		{
-			XmlResource.Get().LoadDialog( this, parent, "derived_dialog" );
+			XmlResource.Get().LoadDialog( this, родитель, "derived_dialog" );
 		
 			EVT_BUTTON( XmlResource.XRCID( "my_button" ), & OnMyButtonClicked ) ;
 			EVT_UPDATE_UI( XmlResource.XRCID( "my_checkbox" ), & OuUpdateUIMyCheckbox ) ;
@@ -183,23 +183,23 @@ import wx.wx;
 		
 		//---------------------------------------------------------------------	
 		
-		public void OnMyButtonClicked( Object sender, Event e )
+		public проц OnMyButtonClicked( Объект sender, Событие e )
 		{
-			MessageBox( this, "You cliecked on My Button", "", Dialog.wxOK  | Dialog.wxICON_INFORMATION );
+			MessageBox( this, "You cliecked on My Кнопка", "", Dialog.wxOK  | Dialog.wxICON_INFORMATION );
 		}
 		
 		//---------------------------------------------------------------------	
 		
-		public void OuUpdateUIMyCheckbox( Object sender, Event e )
+		public проц OuUpdateUIMyCheckbox( Объект sender, Событие e )
 		{
-			 bool myCheckBoxIsChecked = ( cast(CheckBox)XmlResource.XRCCTRL(  this, "my_checkbox", &CheckBox.New ) ).IsChecked;
+			 бул myCheckBoxIsChecked = ( cast(CheckBox)XmlResource.XRCCTRL(  this, "my_checkbox", &CheckBox.Нов ) ).IsChecked;
 			 
-			 ( cast(TextCtrl)XmlResource.XRCCTRL( this, "my_textctrl", &TextCtrl.New ) ).Enable( myCheckBoxIsChecked );
+			 ( cast(TextCtrl)XmlResource.XRCCTRL( this, "my_textctrl", &TextCtrl.Нов ) ).Enable( myCheckBoxIsChecked );
 		}
 		
 		//---------------------------------------------------------------------	
 		
-		public void OnOK( Object sender, Event e )
+		public проц OnOK( Объект sender, Событие e )
 		{
 			MessageDialog md = new MessageDialog( this, "Press OK to close Derived dialog, or Cancel to abort",
 					"Overriding base class OK button handler", Dialog.wxOK | Dialog.wxCANCEL | Dialog.wxCENTER );
@@ -221,9 +221,9 @@ import wx.wx;
 		
 		//---------------------------------------------------------------------	
 	
-		public this( Window parent, int id, Point pos, Size size, long style, Validator validator)
+		public this( Окно родитель, цел ид, Точка поз, Размер size, long стиль, Validator validator)
 		{
-			super( parent, id, pos, size, style, validator, "myResizableListCtrl" );
+			super( родитель, ид, поз, size, стиль, validator, "myResizableListCtrl" );
 			InsertColumn( COL.RECORD_COLUMN, "Record", ListCtrl.wxLIST_FORMAT_LEFT, 140 );
 			InsertColumn( COL.ACTION_COLUMN, "Action", ListCtrl.wxLIST_FORMAT_LEFT, 70 );
 			InsertColumn( COL.PRIORITY_COLUMN, "Priority", ListCtrl.wxLIST_FORMAT_LEFT, 70 );
@@ -234,39 +234,39 @@ import wx.wx;
 		
 		//---------------------------------------------------------------------	
 		
-		public void ContextSensitiveMenu( Object sender, Event e )
+		public проц ContextSensitiveMenu( Объект sender, Событие e )
 		{
 			MouseEvent me = cast(MouseEvent) e;
 		
-			Menu a_menu = new Menu();
+			Меню a_menu = new Меню();
 			
-			a_menu.Append( Cmd.PU_ADD_RECORD, "Add a new record" );
+			a_menu.Append( Cmd.PU_ADD_RECORD, "Добавь a new record" );
 			a_menu.Append( Cmd.PU_EDIT_RECORD, "Edit selected record..." );
 			a_menu.Append( Cmd.PU_DELETE_RECORD, "Delete selected record" );
 			
 			if ( SelectedItemCount == 0 )
 			{
-				a_menu.Enable( Cmd.PU_EDIT_RECORD, false );
-				a_menu.Enable( Cmd.PU_DELETE_RECORD, false );
+				a_menu.Enable( Cmd.PU_EDIT_RECORD, нет );
+				a_menu.Enable( Cmd.PU_DELETE_RECORD, нет );
 			}
 			
-			PopupMenu( a_menu, me.Position );
+			PopupMenu( a_menu, me.Положение );
 		}
 		
 		//---------------------------------------------------------------------	
 		
-		protected void OnSize( Object sender, Event e )
+		protected проц OnSize( Объект sender, Событие e )
 		{
 			SetColumnWidths();
-			e.Skip();
+			e.Пропусти();
 		}
 		
 		//---------------------------------------------------------------------	
 		
-		public void SetColumnWidths()
+		public проц SetColumnWidths()
 		{
-			//int leftmostColumnWidth = Size.Width;
-			int leftmostColumnWidth = Width;
+			//цел leftmostColumnWidth = Размер.Ширина;
+			цел leftmostColumnWidth = Ширина;
 			
 			leftmostColumnWidth -= GetColumnWidth( COL.ACTION_COLUMN );
 			leftmostColumnWidth -= GetColumnWidth( COL.PRIORITY_COLUMN );
@@ -281,34 +281,34 @@ import wx.wx;
 	
 	public class wxGladeDialog : Dialog
 	{
-		public this( Window parent )
+		public this( Окно родитель )
 		{
-			XmlResource.Get().LoadDialog( this, parent, "wxglade_dialog" );
+			XmlResource.Get().LoadDialog( this, родитель, "wxglade_dialog" );
 		
 			EVT_BUTTON( wxID_OK, & OnOK ) ;
 		}
 		
 		//---------------------------------------------------------------------	
 		
-		public void OnOK( Object sender, Event e)
+		public проц OnOK( Объект sender, Событие e)
 		{
-			Close();
+			Закрой();
 		}
 	}
 	
 	//---------------------------------------------------------------------	
 
-	public class Xrcdemo : App
+	public class Xrcdemo : Прил
 	{
 		//---------------------------------------------------------------------
 
-		public override bool OnInit()
+		public override бул ПриИниц()
 		{
-			Image.InitAllHandlers();
+			Рисунок.ИницВсеОбработчики();
 			
-			XmlResource.Get().InitAllHandlers();
+			XmlResource.Get().ИницВсеОбработчики();
 			
-			XmlResource.Get().Load( "../Samples/Xrc/rc/menu.xrc" );
+			XmlResource.Get().Load( "../Samples/Xrc/rc/меню.xrc" );
 			
 			XmlResource.Get().Load( "../Samples/Xrc/rc/toolbar.xrc" );
 			
@@ -333,24 +333,24 @@ import wx.wx;
 			XmlResource.Get().Load( "../Samples/Xrc/rc/wxglade.xrc" );
 			
 			XrcFrame frame = new XrcFrame();
-			frame.Show(true);
+			frame.Show(да);
 
-			return true;
+			return да;
 		}
 
 		//---------------------------------------------------------------------
 
 		
-		static void Main()
+		static проц Main()
 		{
-			Xrcdemo app = new Xrcdemo();			
-			app.Run();
+			Xrcdemo прил = new Xrcdemo();			
+			прил.Пуск();
 		}
 
 		//---------------------------------------------------------------------
 	}
 
-void main()
+проц main()
 {
 	Xrcdemo.Main();
 }

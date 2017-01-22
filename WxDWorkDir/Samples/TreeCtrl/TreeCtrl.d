@@ -8,46 +8,46 @@
 // (C) 2003 by 379, Inc.
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: TreeCtrl.d,v 1.9 2006/11/17 15:20:59 afb Exp $
+// $Ид: TreeCtrl.d,v 1.9 2006/11/17 15:20:59 afb Exp $
 //-----------------------------------------------------------------------------
 
 import wx.wx;
-private import std.string;
+private import std.ткст;
 
-	public class TreeTestApp : App
+	public class TreeTestApp : Прил
 	{
-		static bool showImages = true;
-// 		static bool showButtons = false;
+		static бул showImages = да;
+// 		static бул showButtons = нет;
 
 		//---------------------------------------------------------------------
 
 		
-		static void Main()
+		static проц Main()
 		{
-			TreeTestApp app = new TreeTestApp();
-			app.Run();
+			TreeTestApp прил = new TreeTestApp();
+			прил.Пуск();
 		}
 
 		//---------------------------------------------------------------------
 
-		public override bool OnInit()
+		public override бул ПриИниц()
 		{
-			MyFrame frame = new MyFrame("TreeCtrl Test", Point(50,50), Size(450,600));
-			frame.Show(true);
-			return true;
+			MyFrame frame = new MyFrame("TreeCtrl Test", Точка(50,50), Размер(450,600));
+			frame.Show(да);
+			return да;
 		}
 
 		//---------------------------------------------------------------------
 
-		public static bool ShowImages() { return showImages; }
-		public static void ShowImages(bool value) { showImages = value; }
+		public static бул ShowImages() { return showImages; }
+		public static проц ShowImages(бул значение) { showImages = значение; }
 		
 		//---------------------------------------------------------------------
 
-// 		public static bool ShowButtons
+// 		public static бул ShowButtons
 // 		{
 // 			get { return showButtons; }
-// 			set { showButtons = value; }
+// 			set { showButtons = значение; }
 // 		}
 	}
 
@@ -106,23 +106,23 @@ private import std.string;
 		
 		public TextCtrl m_textCtrl;
 		
-		public static int s_num = 0;
+		public static цел s_num = 0;
 
 		//---------------------------------------------------------------------
 
-		public this(string title, Point pos, Size size)
+		public this(ткст title, Точка поз, Размер size)
 		{
-			super(title, pos, size);
-			BackgroundColour = new Colour(255, 255, 255);
+			super(title, поз, size);
+			ЦветЗП = new Цвет(255, 255, 255);
 		
-			icon = new Icon("../Samples/TreeCtrl/mondrian.png");
+			иконка = new Icon("../Samples/TreeCtrl/mondrian.png");
 
-			// Set up a menu
+			// Установи up a меню
 
-			Menu fileMenu = new Menu();
-			Menu style_menu = new Menu();
-			Menu tree_menu = new Menu();
-			Menu item_menu = new Menu();
+			Меню fileMenu = new Меню();
+			Меню style_menu = new Меню();
+			Меню tree_menu = new Меню();
+			Меню item_menu = new Меню();
 
 			fileMenu.Append(Cmd.TreeTest_About, "&About...\tF1");
 			fileMenu.AppendSeparator();
@@ -130,72 +130,72 @@ private import std.string;
 			
 			style_menu.AppendCheckItem(Cmd.TreeTest_TogButtons, "Toggle &normal buttons");
 			style_menu.AppendCheckItem(Cmd.TreeTest_TogTwist, "Toggle &twister buttons");
-			style_menu.AppendCheckItem(Cmd.TreeTest_ToggleButtons, "Toggle image &buttons");
+			style_menu.AppendCheckItem(Cmd.TreeTest_ToggleButtons, "Toggle рисунок &buttons");
 			style_menu.AppendSeparator();
 			style_menu.AppendCheckItem(Cmd.TreeTest_TogLines, "Toggle &connecting lines");
 			style_menu.AppendCheckItem(Cmd.TreeTest_TogRootLines, "Toggle &lines at root");
 			style_menu.AppendCheckItem(Cmd.TreeTest_TogHideRoot, "Toggle &hidden root");
-			style_menu.AppendCheckItem(Cmd.TreeTest_TogBorder, "Toggle &item border");
+			style_menu.AppendCheckItem(Cmd.TreeTest_TogBorder, "Toggle &элемент border");
 			style_menu.AppendCheckItem(Cmd.TreeTest_TogFullHighlight, "Toggle &full row highlight");
 			style_menu.AppendCheckItem(Cmd.TreeTest_TogEdit, "Toggle &edit mode");
 			style_menu.AppendCheckItem(Cmd.TreeTest_ToggleSel, "Toggle &selection mode");
 			style_menu.AppendCheckItem(Cmd.TreeTest_ToggleImages, "Toggle show ima&ges");
-			style_menu.Append(Cmd.TreeTest_SetImageSize, "Set image si&ze...");
+			style_menu.Append(Cmd.TreeTest_SetImageSize, "Установи рисунок si&ze...");
 			style_menu.AppendSeparator();
-			style_menu.Append(Cmd.TreeTest_SetFgColour, "Set &foreground colour...");
-			style_menu.Append(Cmd.TreeTest_SetBgColour, "Set &background colour...");
+			style_menu.Append(Cmd.TreeTest_SetFgColour, "Установи &foreground colour...");
+			style_menu.Append(Cmd.TreeTest_SetBgColour, "Установи &background colour...");
 			style_menu.AppendSeparator();
 			style_menu.Append(Cmd.TreeTest_ResetStyle, "&Reset to default\tF10");
 
 			tree_menu.Append(Cmd.TreeTest_Recreate, "&Recreate the tree");
 			tree_menu.Append(Cmd.TreeTest_CollapseAndReset, "C&ollapse and reset");
 			tree_menu.AppendSeparator();
-			tree_menu.Append(Cmd.TreeTest_AddItem, "Append a &new item");
-			tree_menu.Append(Cmd.TreeTest_InsertItem, "&Insert a new item");
-			tree_menu.Append(Cmd.TreeTest_Delete, "&Delete this item");
+			tree_menu.Append(Cmd.TreeTest_AddItem, "Append a &new элемент");
+			tree_menu.Append(Cmd.TreeTest_InsertItem, "&Insert a new элемент");
+			tree_menu.Append(Cmd.TreeTest_Delete, "&Delete this элемент");
 			tree_menu.Append(Cmd.TreeTest_DeleteChildren, "Delete &children");
 			tree_menu.Append(Cmd.TreeTest_DeleteAll, "Delete &all items");
-			tree_menu.Append(Cmd.TreeTest_SelectRoot, "Select root item");
+			tree_menu.Append(Cmd.TreeTest_SelectRoot, "Select root элемент");
 			tree_menu.AppendSeparator();
-			tree_menu.Append(Cmd.TreeTest_Count, "Count children of current item");
-			tree_menu.Append(Cmd.TreeTest_CountRec, "Recursively count children of current item");
+			tree_menu.Append(Cmd.TreeTest_Count, "Счёт children of current элемент");
+			tree_menu.Append(Cmd.TreeTest_CountRec, "Recursively счёт children of current элемент");
 			tree_menu.AppendSeparator();
-			tree_menu.Append(Cmd.TreeTest_Sort, "Sort children of current item");
+			tree_menu.Append(Cmd.TreeTest_Sort, "Sort children of current элемент");
 			tree_menu.Append(Cmd.TreeTest_SortRev, "Sort in reversed order");
 			tree_menu.AppendSeparator();
-			tree_menu.Append(Cmd.TreeTest_EnsureVisible, "Make the last item &visible");
+			tree_menu.Append(Cmd.TreeTest_EnsureVisible, "Make the last элемент &visible");
 			tree_menu.AppendSeparator();
-			tree_menu.Append(Cmd.TreeTest_IncIndent, "Add 5 points to indentation\tAlt-I");
+			tree_menu.Append(Cmd.TreeTest_IncIndent, "Добавь 5 points to indentation\tAlt-I");
 			tree_menu.Append(Cmd.TreeTest_DecIndent, "Reduce indentation by 5 points\tAlt-R");
 			tree_menu.AppendSeparator();
-			tree_menu.Append(Cmd.TreeTest_IncSpacing, "Add 5 points to spacing\tCtrl-I");
+			tree_menu.Append(Cmd.TreeTest_IncSpacing, "Добавь 5 points to spacing\tCtrl-I");
 			tree_menu.Append(Cmd.TreeTest_DecSpacing, "Reduce spacing by 5 points\tCtrl-R");
 
-			item_menu.Append(Cmd.TreeTest_Dump, "&Dump item children");
-			item_menu.Append(Cmd.TreeTest_Rename, "&Rename item...");
+			item_menu.Append(Cmd.TreeTest_Dump, "&Dump элемент children");
+			item_menu.Append(Cmd.TreeTest_Rename, "&Rename элемент...");
 
 			item_menu.AppendSeparator();
-			item_menu.Append(Cmd.TreeTest_SetBold, "Make item &bold");
-			item_menu.Append(Cmd.TreeTest_ClearBold, "Make item &not bold");
+			item_menu.Append(Cmd.TreeTest_SetBold, "Make элемент &bold");
+			item_menu.Append(Cmd.TreeTest_ClearBold, "Make элемент &not bold");
 			item_menu.AppendSeparator();
-			item_menu.Append(Cmd.TreeTest_ToggleIcon, "Toggle the item's &icon");
+			item_menu.Append(Cmd.TreeTest_ToggleIcon, "Toggle the элемент's &иконка");
 
 			item_menu.AppendSeparator();
 			item_menu.Append(Cmd.TreeTest_DumpSelected, "Dump selected items\tAlt-D");
-			item_menu.Append(Cmd.TreeTest_Select, "Select current item\tAlt-S");
+			item_menu.Append(Cmd.TreeTest_Select, "Select current элемент\tAlt-S");
 			item_menu.Append(Cmd.TreeTest_Unselect, "Unselect everything\tAlt-U");
 
 			MenuBar menuBar = new MenuBar();
 			menuBar.Append(fileMenu, "&File");
 			menuBar.Append(style_menu, "&Style");
 			menuBar.Append(tree_menu, "&Tree");
-			menuBar.Append(item_menu, "&Item");
+			menuBar.Append(item_menu, "&Элемент");
 			this.menuBar = menuBar;
 			
 			m_textCtrl = new TextCtrl(this, -1, "", wxDefaultPosition, wxDefaultSize, 
 				TextCtrl.wxTE_MULTILINE | TextCtrl.wxSUNKEN_BORDER);
 
-			// Set up a status bar
+			// Установи up a status bar
 
 			CreateStatusBar(2);
 			StatusText = "";
@@ -204,11 +204,11 @@ private import std.string;
 
 			CreateTreeWithDefaultStyle();
 			
-			menuBar.Check(Cmd.TreeTest_ToggleImages, true);
+			menuBar.Check(Cmd.TreeTest_ToggleImages, да);
 			
 			Log.SetActiveTarget( m_textCtrl ); 
 
-			// Set up the event table
+			// Установи up the event table
 
 			EVT_MENU(Cmd.TreeTest_Quit,  &OnQuit);
 			EVT_MENU(Cmd.TreeTest_About, &OnAbout);
@@ -255,56 +255,56 @@ private import std.string;
 		
 		~this()
 		{
-			Log.SetActiveTarget(null);
+			Log.SetActiveTarget(пусто);
 		}
 
 		//---------------------------------------------------------------------
 
-		public void CreateTreeWithDefaultStyle()
+		public проц CreateTreeWithDefaultStyle()
 		{
-			long style = TreeCtrl.wxTR_DEFAULT_STYLE | TreeCtrl.wxTR_EDIT_LABELS;
-			CreateTree(style | Border.wxBORDER_SUNKEN);
+			long стиль = TreeCtrl.wxTR_DEFAULT_STYLE | TreeCtrl.wxTR_EDIT_LABELS;
+			CreateTree(стиль | Border.wxBORDER_SUNKEN);
 			
 			MenuBar mbar = menuBar;
 			
-			mbar.Check(Cmd.TreeTest_TogButtons, (style & TreeCtrl.wxTR_HAS_BUTTONS) != 0);
-			mbar.Check(Cmd.TreeTest_TogButtons, (style & TreeCtrl.wxTR_TWIST_BUTTONS) != 0);
-			mbar.Check(Cmd.TreeTest_TogLines, (style & TreeCtrl.wxTR_NO_LINES) == 0);
-			mbar.Check(Cmd.TreeTest_TogRootLines, (style & TreeCtrl.wxTR_LINES_AT_ROOT) != 0);
-			mbar.Check(Cmd.TreeTest_TogHideRoot, (style & TreeCtrl.wxTR_HIDE_ROOT) != 0);
-			mbar.Check(Cmd.TreeTest_TogEdit, (style & TreeCtrl.wxTR_EDIT_LABELS) != 0);
-			mbar.Check(Cmd.TreeTest_TogBorder, (style & TreeCtrl.wxTR_ROW_LINES) != 0);
-			mbar.Check(Cmd.TreeTest_TogFullHighlight, (style & TreeCtrl.wxTR_FULL_ROW_HIGHLIGHT) != 0);
+			mbar.Check(Cmd.TreeTest_TogButtons, (стиль & TreeCtrl.wxTR_HAS_BUTTONS) != 0);
+			mbar.Check(Cmd.TreeTest_TogButtons, (стиль & TreeCtrl.wxTR_TWIST_BUTTONS) != 0);
+			mbar.Check(Cmd.TreeTest_TogLines, (стиль & TreeCtrl.wxTR_NO_LINES) == 0);
+			mbar.Check(Cmd.TreeTest_TogRootLines, (стиль & TreeCtrl.wxTR_LINES_AT_ROOT) != 0);
+			mbar.Check(Cmd.TreeTest_TogHideRoot, (стиль & TreeCtrl.wxTR_HIDE_ROOT) != 0);
+			mbar.Check(Cmd.TreeTest_TogEdit, (стиль & TreeCtrl.wxTR_EDIT_LABELS) != 0);
+			mbar.Check(Cmd.TreeTest_TogBorder, (стиль & TreeCtrl.wxTR_ROW_LINES) != 0);
+			mbar.Check(Cmd.TreeTest_TogFullHighlight, (стиль & TreeCtrl.wxTR_FULL_ROW_HIGHLIGHT) != 0);
 		}
 
 		//---------------------------------------------------------------------
 
-		public void CreateTree(long style)
+		public проц CreateTree(long стиль)
 		{
-			m_treeCtrl = new MyTreeCtrl(this, Cmd.TreeTest_Ctrl, wxDefaultPosition, wxDefaultSize, style);
+			m_treeCtrl = new MyTreeCtrl(this, Cmd.TreeTest_Ctrl, wxDefaultPosition, wxDefaultSize, стиль);
 			Resize();
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void TogStyle(int id, long flag)
+		public проц TogStyle(цел ид, long flag)
 		{
-			long style = m_treeCtrl.WindowStyle ^ flag;
+			long стиль = m_treeCtrl.WindowStyle ^ flag;
 			//delete m_treeCtrl;
-			CreateTree(style);
+			CreateTree(стиль);
 
-			menuBar.Check(id, (style & flag) != 0);
+			menuBar.Check(ид, (стиль & flag) != 0);
 		}
 
 		//---------------------------------------------------------------------
 		
-		public void OnIdle(Object sender, Event e)
+		public проц OnIdle(Объект sender, Событие e)
 		{
 			if (m_treeCtrl)
 			{
 				TreeItemId idRoot = m_treeCtrl.RootItem;
 			
-				string s = "Root/last item is ";
+				ткст s = "Root/last элемент is ";
 				s ~= m_treeCtrl.IsVisible(idRoot) ? "" : "not ";
 				s ~= "visible/";
 				s ~= m_treeCtrl.IsVisible(m_treeCtrl.GetLastChild(idRoot)) ? "" : "not ";
@@ -313,118 +313,118 @@ private import std.string;
 				SetStatusText(s, 1);
 			}
 		      
-			e.Skip();
+			e.Пропусти();
 		}
 		
 		//---------------------------------------------------------------------
 
-		public void OnQuit(Object sender, Event e)
+		public проц OnQuit(Объект sender, Событие e)
 		{
-			Close();
+			Закрой();
 		}
 
 		//---------------------------------------------------------------------
 
-		public void OnAbout(Object sender, Event e)
+		public проц OnAbout(Объект sender, Событие e)
 		{
-			string msg = "Tree test sample\n(c) Julian Smart 1997, Vadim Zeitlin 1998\nPorted to wxD by Jason Perkins and Alexander Olk";
+			ткст msg = "Tree test sample\n(c) Julian Smart 1997, Vadim Zeitlin 1998\nPorted to wxD by Jason Perkins and Alexander Olk";
 			MessageBox(this, msg, "About Tree Test", Dialog.wxOK | Dialog.wxICON_INFORMATION);
 		}
 
 		//---------------------------------------------------------------------
 
-		public void Resize()
+		public проц Resize()
 		{
-			Size size = ClientSize;
-			m_treeCtrl.SetSize(0, 0, size.Width, size.Height * 2/3);
-			m_textCtrl.SetSize(0, 2 * size.Height/3, size.Width, size.Height/3);
+			Размер size = ClientSize;
+			m_treeCtrl.УстРазм(0, 0, size.Ширина, size.Высота * 2/3);
+			m_textCtrl.УстРазм(0, 2 * size.Высота/3, size.Ширина, size.Высота/3);
 		}
 
 		//---------------------------------------------------------------------
 		
-		public void OnTogButtons(Object sender, Event e)
+		public проц OnTogButtons(Объект sender, Событие e)
 		{
-			TogStyle(e.ID, TreeCtrl.wxTR_HAS_BUTTONS);
+			TogStyle(e.ИД, TreeCtrl.wxTR_HAS_BUTTONS);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void OnSize(Object sender, Event e)
+		public проц OnSize(Объект sender, Событие e)
 		{
 			if ( m_treeCtrl && m_textCtrl )
 			{
 				Resize();
 			}
 
-			e.Skip();
+			e.Пропусти();
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void OnRename(Object sender, Event e)
+		public проц OnRename(Объект sender, Событие e)
 		{
-			TreeItemId item = m_treeCtrl.Selection;
+			TreeItemId элемент = m_treeCtrl.Selection;
 
-			CHECK_ITEM( item );
+			CHECK_ITEM( элемент );
 
-			m_treeCtrl.EditLabel(item);
+			m_treeCtrl.EditLabel(элемент);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void OnCount(Object sender, Event e)
+		public проц OnCount(Объект sender, Событие e)
 		{
-			TreeItemId item = m_treeCtrl.Selection;
+			TreeItemId элемент = m_treeCtrl.Selection;
 
-			CHECK_ITEM( item );
+			CHECK_ITEM( элемент );
 
-			int i = m_treeCtrl.GetChildrenCount( item, false );
+			цел i = m_treeCtrl.GetChildrenCount( элемент, нет );
 
 			Log.LogMessage(.toString(i) ~ " children");
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void OnCountRec(Object sender, Event e)
+		public проц OnCountRec(Объект sender, Событие e)
 		{
-			TreeItemId item = m_treeCtrl.Selection;
+			TreeItemId элемент = m_treeCtrl.Selection;
 
-			CHECK_ITEM( item );
+			CHECK_ITEM( элемент );
 
-			int i = m_treeCtrl.GetChildrenCount( item );
+			цел i = m_treeCtrl.GetChildrenCount( элемент );
 
 			Log.LogMessage(.toString(i) ~ " children");
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void OnDump(Object sender, Event e)
+		public проц OnDump(Объект sender, Событие e)
 		{
 			TreeItemId root = m_treeCtrl.Selection;
 			
 			CHECK_ITEM( root );
 
-			m_treeCtrl.GetItemsRecursively(root, IntPtr.init);
+			m_treeCtrl.GetItemsRecursively(root, ЦУк.init);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void OnToggleSel(Object sender, Event e)
+		public проц OnToggleSel(Объект sender, Событие e)
 		{
-			TogStyle(e.ID, TreeCtrl.wxTR_MULTIPLE);
+			TogStyle(e.ИД, TreeCtrl.wxTR_MULTIPLE);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void OnDumpSelected(Object sender, Event e)
+		public проц OnDumpSelected(Объект sender, Событие e)
 		{
 			TreeItemId[] array = m_treeCtrl.Selections();
 
-			int count = array.length;
+			цел счёт = array.length;
 			
-			Log.LogMessage(.toString(count) ~ " items selected");
+			Log.LogMessage(.toString(счёт) ~ " items selected");
 
-			for ( int n = 0; n < count; n++ )
+			for ( цел n = 0; n < счёт; n++ )
 			{
 				Log.LogMessage(m_treeCtrl.GetItemText(array[n]));
 			}
@@ -432,82 +432,82 @@ private import std.string;
 		
 		//---------------------------------------------------------------------
 		
-		public void OnSelect(Object sender, Event e)
+		public проц OnSelect(Объект sender, Событие e)
 		{
 			m_treeCtrl.SelectItem(m_treeCtrl.Selection);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void OnSelectRoot(Object sender, Event e)
+		public проц OnSelectRoot(Объект sender, Событие e)
 		{
 			m_treeCtrl.SelectItem(m_treeCtrl.RootItem);
 		}
 
 		//---------------------------------------------------------------------
 
-		public void OnUnselect(Object sender, Event e)
+		public проц OnUnselect(Объект sender, Событие e)
 		{
 			m_treeCtrl.UnselectAll();
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void OnSetBold(Object sender, Event e)
+		public проц OnSetBold(Объект sender, Событие e)
 		{
-			DoSetBold(true);
+			DoSetBold(да);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void OnClearBold(Object sender, Event e)
+		public проц OnClearBold(Объект sender, Событие e)
 		{
-			DoSetBold(false);
+			DoSetBold(нет);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void DoSetBold(bool bold)
+		public проц DoSetBold(бул bold)
 		{
-			TreeItemId item = m_treeCtrl.Selection;
+			TreeItemId элемент = m_treeCtrl.Selection;
 
-			CHECK_ITEM( item );
+			CHECK_ITEM( элемент );
 
-			m_treeCtrl.SetItemBold(item, bold);
+			m_treeCtrl.SetItemBold(элемент, bold);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void OnDelete(Object sender, Event e)
+		public проц OnDelete(Объект sender, Событие e)
 		{
-			TreeItemId item = m_treeCtrl.Selection;
+			TreeItemId элемент = m_treeCtrl.Selection;
 
-			CHECK_ITEM( item );
+			CHECK_ITEM( элемент );
 
-			m_treeCtrl.Delete(item);
+			m_treeCtrl.Delete(элемент);
 		}
 
 		//---------------------------------------------------------------------
 
-		public void OnDeleteChildren(Object sender, Event e)
+		public проц OnDeleteChildren(Объект sender, Событие e)
 		{
-			TreeItemId item = m_treeCtrl.Selection;
+			TreeItemId элемент = m_treeCtrl.Selection;
 
-			CHECK_ITEM( item );
+			CHECK_ITEM( элемент );
 
-			m_treeCtrl.DeleteChildren(item);
+			m_treeCtrl.DeleteChildren(элемент);
 		}
 
 		//---------------------------------------------------------------------
 
-		public void OnDeleteAll(Object sender, Event e)
+		public проц OnDeleteAll(Объект sender, Событие e)
 		{
 			m_treeCtrl.DeleteAllItems();
 		}
 
 		//---------------------------------------------------------------------
 
-		public void OnRecreate(Object sender, Event e)
+		public проц OnRecreate(Объект sender, Событие e)
 		{
 			OnDeleteAll(this, e);
 			m_treeCtrl.AddTestItemsToTree(5, 2);
@@ -515,180 +515,180 @@ private import std.string;
 		
 		//---------------------------------------------------------------------
 		
-		public void OnSetImageSize(Object sender, Event e)
+		public проц OnSetImageSize(Объект sender, Событие e)
 		{
-			int size = GetNumberFromUser("Enter the size for the images to use",
-					"Size: ",
+			цел size = GetNumberFromUser("Enter the size for the images to use",
+					"Размер: ",
 					"TreeCtrl sample",
 					m_treeCtrl.ImageSize);
 			if ( size == -1 )
 				return;
 
 			m_treeCtrl.CreateImageList(size);
-			TreeTestApp.ShowImages = true;
+			TreeTestApp.ShowImages = да;
 		}
 		
 		//---------------------------------------------------------------------
 
-		public void OnToggleImages(Object sender, Event e)
+		public проц OnToggleImages(Объект sender, Событие e)
 		{
 			if ( TreeTestApp.ShowImages )
 			{
 				m_treeCtrl.CreateImageList(-1);
-				TreeTestApp.ShowImages = false;
+				TreeTestApp.ShowImages = нет;
 			}
 			else
 			{
 				m_treeCtrl.CreateImageList(0);
-				TreeTestApp.ShowImages = true;
+				TreeTestApp.ShowImages = да;
 			}
 		}
 		
 		//---------------------------------------------------------------------
 		
-// 		public void OnToggleButtons(Object sender, Event e)
+// 		public проц OnToggleButtons(Объект sender, Событие e)
 // 		{
 // 			if ( TreeTestApp.ShowButtons )
 // 			{
 // 				m_treeCtrl.CreateButtonsImageList(-1);
-// 				TreeTestApp.ShowButtons = false;
+// 				TreeTestApp.ShowButtons = нет;
 // 			}
 // 			else
 // 			{
 // 				m_treeCtrl.CreateButtonsImageList(15);
-// 				TreeTestApp.ShowButtons = true;
+// 				TreeTestApp.ShowButtons = да;
 // 			}
 // 		}
 
 		//---------------------------------------------------------------------
 		
-		public void OnCollapseAndReset(Object sender, Event e)
+		public проц OnCollapseAndReset(Объект sender, Событие e)
 		{
 			m_treeCtrl.CollapseAndReset(m_treeCtrl.RootItem);
 		}
 
 		//---------------------------------------------------------------------
 
-		public void OnEnsureVisible(Object sender, Event e)
+		public проц OnEnsureVisible(Объект sender, Событие e)
 		{
 			m_treeCtrl.DoEnsureVisible();
 		}
 
 		//---------------------------------------------------------------------
 
-		public void OnInsertItem(Object sender, Event e)
+		public проц OnInsertItem(Объект sender, Событие e)
 		{
-			int image = TreeTestApp.ShowImages ? MyTreeCtrl.TreeIcon.File : -1;
-			m_treeCtrl.InsertItem(m_treeCtrl.RootItem, image, "2nd item");
+			цел рисунок = TreeTestApp.ShowImages ? MyTreeCtrl.TreeIcon.File : -1;
+			m_treeCtrl.InsertItem(m_treeCtrl.RootItem, рисунок, "2nd элемент");
 		}
 
 		//---------------------------------------------------------------------
 
-		public void OnAddItem(Object sender, Event e)
+		public проц OnAddItem(Объект sender, Событие e)
 		{
-			string text = "Item #" ~ .toString(++s_num);
+			ткст текст = "Элемент #" ~ .toString(++s_num);
 
-			m_treeCtrl.AppendItem(m_treeCtrl.RootItem, text);
+			m_treeCtrl.AppendItem(m_treeCtrl.RootItem, текст);
 		}
 
 		//---------------------------------------------------------------------
 
-		public void OnIncIndent(Object sender, Event e)
+		public проц OnIncIndent(Объект sender, Событие e)
 		{
-			uint indent = m_treeCtrl.Indent;
+			бцел indent = m_treeCtrl.Indent;
 			if (indent < 100)
 				m_treeCtrl.Indent = indent + 5;
 		}
 
 		//---------------------------------------------------------------------
 
-		public void OnDecIndent(Object sender, Event e)
+		public проц OnDecIndent(Объект sender, Событие e)
 		{
-			uint indent = m_treeCtrl.Indent;
+			бцел indent = m_treeCtrl.Indent;
 			if (indent > 10)
 				m_treeCtrl.Indent = indent-5;
 		}
 
 		//---------------------------------------------------------------------
 
-		public void OnIncSpacing(Object sender, Event e)
+		public проц OnIncSpacing(Объект sender, Событие e)
 		{
-			uint indent = m_treeCtrl.Spacing;
+			бцел indent = m_treeCtrl.Spacing;
 			if (indent < 100)
 				m_treeCtrl.Spacing = indent + 5;
 		}
 
 		//---------------------------------------------------------------------
 
-		public void OnDecSpacing(Object sender, Event e)
+		public проц OnDecSpacing(Объект sender, Событие e)
 		{
-			uint indent = m_treeCtrl.Spacing;
+			бцел indent = m_treeCtrl.Spacing;
 			if (indent > 10)
 				m_treeCtrl.Spacing = indent - 5;
 		}
 
 		//---------------------------------------------------------------------
 
-		public void OnToggleIcon(Object sender, Event e)
+		public проц OnToggleIcon(Объект sender, Событие e)
 		{
-			TreeItemId item = m_treeCtrl.Selection;
+			TreeItemId элемент = m_treeCtrl.Selection;
 
-			CHECK_ITEM( item );
+			CHECK_ITEM( элемент );
 
-			m_treeCtrl.DoToggleIcon(item);
+			m_treeCtrl.DoToggleIcon(элемент);
 		}
 		
 		//---------------------------------------------------------------------
 
-		public void OnSetFgColour(Object sender, Event e)
+		public проц OnSetFgColour(Объект sender, Событие e)
 		{
-			Colour col = GetColourFromUser(this, m_treeCtrl.ForegroundColour);
-			if ( col.Ok() )
-				m_treeCtrl.ForegroundColour = col;
+			Цвет col = GetColourFromUser(this, m_treeCtrl.ЦветПП);
+			if ( col.Ок() )
+				m_treeCtrl.ЦветПП = col;
 		}
 
 		//---------------------------------------------------------------------
 
-		public void OnSetBgColour(Object sender, Event e)
+		public проц OnSetBgColour(Объект sender, Событие e)
 		{
-			Colour col = GetColourFromUser(this, m_treeCtrl.BackgroundColour);
-			if ( col.Ok() )
-				m_treeCtrl.BackgroundColour = col;
+			Цвет col = GetColourFromUser(this, m_treeCtrl.ЦветЗП);
+			if ( col.Ок() )
+				m_treeCtrl.ЦветЗП = col;
 		}
 
 		
 		//---------------------------------------------------------------------
 		
-		public void OnSort(Object sender, Event e)
+		public проц OnSort(Объект sender, Событие e)
 		{
-			DoSort(false);
+			DoSort(нет);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void OnSortRev(Object sender, Event e)
+		public проц OnSortRev(Объект sender, Событие e)
 		{
-			DoSort(true);
+			DoSort(да);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void DoSort(bool reverse)
+		public проц DoSort(бул reverse)
 		{
-			TreeItemId item = m_treeCtrl.Selection;
+			TreeItemId элемент = m_treeCtrl.Selection;
 
-			CHECK_ITEM( item );
+			CHECK_ITEM( элемент );
 
-			m_treeCtrl.DoSortChildren(item, reverse);
+			m_treeCtrl.DoSortChildren(элемент, reverse);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void CHECK_ITEM(TreeItemId item)
+		public проц CHECK_ITEM(TreeItemId элемент)
 		{
-			if ( !item.IsOk() ) 
+			if ( !элемент.IsOk() ) 
 			{                                 
-				MessageBox(this, "Please select some item first!", 
+				MessageBox(this, "Please select some элемент first!", 
 						"Tree sample error",              
 						Dialog.wxOK | Dialog.wxICON_EXCLAMATION);
 				return;                                             
@@ -711,15 +711,15 @@ private import std.string;
 
 		TreeItemId m_lastItem;
 		TreeItemId m_draggedItem;
-		int        imageSize;
+		цел        imageSize;
 		
-		bool m_reverseSort;
+		бул m_reverseSort;
 
 		//---------------------------------------------------------------------
 
-		public this(Window parent, int id, Point pos, Size size, int style)
+		public this(Окно родитель, цел ид, Точка поз, Размер size, цел стиль)
 		{
-			super(parent, id, pos, size, style);
+			super(родитель, ид, поз, size, стиль);
 			CreateImageList(16);
 			AddTestItemsToTree(5, 2);
 			
@@ -745,11 +745,11 @@ private import std.string;
 
 		//---------------------------------------------------------------------
 
-		public void CreateImageList(int size)
+		public проц CreateImageList(цел size)
 		{
 			if (size == -1)      // signal to turn off images
 			{
-				SetImageList(null);
+				SetImageList(пусто);
 				return;
 			}
 
@@ -762,10 +762,10 @@ private import std.string;
 
 			ImageList images = new ImageList(size, size);
 
-			for (int i = 0; i < 5; ++i)
+			for (цел i = 0; i < 5; ++i)
 			{
-				Image image = new Image("../Samples/TreeCtrl/icon" ~ .toString(i) ~ ".png");
-				images.Add(new Bitmap(image.Rescale(size, size)));
+				Рисунок рисунок = new Рисунок("../Samples/TreeCtrl/иконка" ~ .toString(i) ~ ".png");
+				images.Добавь(new Битмап(рисунок.Ремасштабируй(size, size)));
 			}
 
 			AssignImageList(images);
@@ -773,116 +773,116 @@ private import std.string;
 
 		//---------------------------------------------------------------------
 
-		public void AddItemsRecursively(TreeItemId idParent, int numChildren, int depth, int folder)
+		public проц AddItemsRecursively(TreeItemId idParent, цел numChildren, цел глубина, цел folder)
 		{
-			if (depth > 0)
+			if (глубина > 0)
 			{
-				bool hasChildren = depth > 1;
+				бул hasChildren = глубина > 1;
 
-				for (int n = 0; n < numChildren; ++n)
+				for (цел n = 0; n < numChildren; ++n)
 				{
-					string str;
+					ткст str;
 
-					// at depth 1 elements won't have any more children
+					// at глубина 1 elements won't have any more children
 					if (hasChildren)
 						str ~= format("%s child %d", "Folder", n + 1);
 					else
 						str ~= format("%s child %d.%d", "File", folder, n + 1);
 
-					// here we pass to AppendItem() normal and selected item images (we
-					// suppose that selected image follows the normal one in the enum)
+					// here we pass to AppendItem() normal and selected элемент images (we
+					// suppose that selected рисунок follows the normal one in the enum)
 
-					int image, imageSel;
+					цел рисунок, imageSel;
 					if (TreeTestApp.ShowImages)
 					{
-						image = (depth == 1) ? TreeIcon.File : TreeIcon.Folder;
-						imageSel = image + 1;
+						рисунок = (глубина == 1) ? TreeIcon.File : TreeIcon.Folder;
+						imageSel = рисунок + 1;
 					}
 					else
 					{
-						image = -1;
+						рисунок = -1;
 						imageSel = -1;
 					}
 
-					TreeItemId id = AppendItem(idParent, str, image, imageSel,
+					TreeItemId ид = AppendItem(idParent, str, рисунок, imageSel,
 						new MyTreeItemData(str));
 
 					// and now we also set the expanded one (only for the folders)
 
 					if (hasChildren && TreeTestApp.ShowImages)
 					{
-						SetItemImage(id, TreeIcon.FolderOpened, TreeItemIcon.wxTreeItemIcon_Expanded);
+						SetItemImage(ид, TreeIcon.FolderOpened, TreeItemIcon.wxTreeItemIcon_Expanded);
 					}
 
 					// remember the last child for OnEnsureVisible()
 
 					if (!hasChildren && n == numChildren - 1)
 					{
-						m_lastItem = id;
+						m_lastItem = ид;
 					}
 
-					AddItemsRecursively(id, numChildren, depth - 1, n + 1);
+					AddItemsRecursively(ид, numChildren, глубина - 1, n + 1);
 				}
 			}
 		}
 
 		//---------------------------------------------------------------------
 
-		public void AddTestItemsToTree(int numChildren, int depth)
+		public проц AddTestItemsToTree(цел numChildren, цел глубина)
 		{
-			int image = TreeTestApp.ShowImages ? TreeIcon.Folder : -1;
-			TreeItemId rootId = AddRoot("Root", image, image,
-				new MyTreeItemData("Root item"));
-			if (image != -1)
+			цел рисунок = TreeTestApp.ShowImages ? TreeIcon.Folder : -1;
+			TreeItemId rootId = AddRoot("Root", рисунок, рисунок,
+				new MyTreeItemData("Root элемент"));
+			if (рисунок != -1)
 				SetItemImage(rootId, TreeIcon.FolderOpened, TreeItemIcon.wxTreeItemIcon_Expanded);
 
-			AddItemsRecursively(rootId, numChildren, depth, 0);
+			AddItemsRecursively(rootId, numChildren, глубина, 0);
 			
-			SetItemFont(rootId, Font.wxITALIC_FONT);
+			SetItemFont(rootId, Шрифт.wxITALIC_FONT);
 			
-			IntPtr cookie = IntPtr.init;
-			TreeItemId id = GetFirstChild(rootId, cookie);
-			SetItemTextColour(id, Colour.wxBLUE);
+			ЦУк cookie = ЦУк.init;
+			TreeItemId ид = GetFirstChild(rootId, cookie);
+			SetItemTextColour(ид, Цвет.wxBLUE);
 
-			id = GetNextChild(rootId, cookie);
-			id = GetNextChild(rootId, cookie);
-			SetItemTextColour(id, Colour.wxRED);
-			SetItemBackgroundColour(id, Colour.wxLIGHT_GREY);
+			ид = GetNextChild(rootId, cookie);
+			ид = GetNextChild(rootId, cookie);
+			SetItemTextColour(ид, Цвет.wxRED);
+			SetItemBackgroundColour(ид, Цвет.wxLIGHT_GREY);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void GetItemsRecursively(TreeItemId idParent, IntPtr cookie)
+		public проц GetItemsRecursively(TreeItemId idParent, ЦУк cookie)
 		{
-			TreeItemId id;
+			TreeItemId ид;
 
-			if ( cookie == IntPtr.init )
-				id = GetFirstChild(idParent, cookie);
+			if ( cookie == ЦУк.init )
+				ид = GetFirstChild(idParent, cookie);
 			else
-				id = GetNextChild(idParent, cookie);
+				ид = GetNextChild(idParent, cookie);
 
-			if ( !id.IsOk() )
+			if ( !ид.IsOk() )
 				return;
 
-			string text = GetItemText(id);
-			Log.LogMessage(text);
+			ткст текст = GetItemText(ид);
+			Log.LogMessage(текст);
 
-			if ( ItemHasChildren(id) )
-				GetItemsRecursively(id, IntPtr.init);
+			if ( ItemHasChildren(ид) )
+				GetItemsRecursively(ид, ЦУк.init);
 
 			GetItemsRecursively(idParent, cookie);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public int ImageSize()
+		public цел ImageSize()
 		{
 			return imageSize;
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void DoEnsureVisible()
+		public проц DoEnsureVisible()
 		{
 			if (m_lastItem.IsOk()) 
 				EnsureVisible(m_lastItem);
@@ -890,24 +890,24 @@ private import std.string;
 		
 		//---------------------------------------------------------------------
 		
-		public void DoToggleIcon(TreeItemId item)
+		public проц DoToggleIcon(TreeItemId элемент)
 		{
-			int image = GetItemImage(item);
-			image = image == TreeIcon.Folder ? TreeIcon.File
+			цел рисунок = GetItemImage(элемент);
+			рисунок = рисунок == TreeIcon.Folder ? TreeIcon.File
 								: TreeIcon.Folder;
 
-			SetItemImage(item, image);
+			SetItemImage(элемент, рисунок);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void OnBeginDrag(Object sender, Event e)
+		public проц OnBeginDrag(Объект sender, Событие e)
 		{
 			TreeEvent te = cast(TreeEvent)e;
 		
-			if ( te.Item != RootItem )
+			if ( te.Элемент != RootItem )
 			{
-				m_draggedItem = te.Item;
+				m_draggedItem = te.Элемент;
 
 				Log.LogMessage("OnBeginDrag: started dragging " ~ GetItemText(m_draggedItem));
 
@@ -915,26 +915,26 @@ private import std.string;
 			}
 			else
 			{
-				Log.LogMessage("OnBeginDrag: this item can't be dragged.");
+				Log.LogMessage("OnBeginDrag: this элемент can't be dragged.");
 			}
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void OnBeginRDrag(Object sender, Event e)
+		public проц OnBeginRDrag(Объект sender, Событие e)
 		{
 			Log.LogMessage("OnBeginRDrag");
-			e.Skip();
+			e.Пропусти();
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void OnEndDrag(Object sender, Event e)
+		public проц OnEndDrag(Объект sender, Событие e)
 		{
 			TreeEvent te = cast(TreeEvent)e;
 			
 			TreeItemId itemSrc = m_draggedItem;
-			TreeItemId itemDst = te.Item;
+			TreeItemId itemDst = te.Элемент;
 			//m_draggedItem = (wxTreeItemId)0l;
 
 			if ( itemDst.IsOk() && !ItemHasChildren(itemDst) )
@@ -949,25 +949,25 @@ private import std.string;
 				return;
 			}
 
-			string text = GetItemText(itemSrc);
-			Log.LogMessage("OnEndDrag: '" ~ text ~ "' copied to '" ~ GetItemText(itemDst) ~ "'.");
+			ткст текст = GetItemText(itemSrc);
+			Log.LogMessage("OnEndDrag: '" ~ текст ~ "' copied to '" ~ GetItemText(itemDst) ~ "'.");
 
-			int image = TreeTestApp.ShowImages ? TreeIcon.File : -1;
-			AppendItem(itemDst, text, image);
+			цел рисунок = TreeTestApp.ShowImages ? TreeIcon.File : -1;
+			AppendItem(itemDst, текст, рисунок);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void OnBeginLabelEdit(Object sender, Event e)
+		public проц OnBeginLabelEdit(Объект sender, Событие e)
 		{
 			TreeEvent te = cast(TreeEvent)e;
 			
 			Log.LogMessage("OnBeginLabelEdit");
 
-			TreeItemId itemId = te.Item;
+			TreeItemId itemId = te.Элемент;
 			if ( IsTestItem(itemId) )
 			{
-				MessageBox("You can't edit this item.");
+				MessageBox("You can't edit this элемент.");
 
 				te.Veto();
 			}
@@ -975,7 +975,7 @@ private import std.string;
 		
 		//---------------------------------------------------------------------
 		
-		public void OnEndLabelEdit(Object sender, Event e)
+		public проц OnEndLabelEdit(Объект sender, Событие e)
 		{
 			TreeEvent te = cast(TreeEvent)e;
 		
@@ -983,7 +983,7 @@ private import std.string;
 
 // 			if ( !te.Label.IsWord() )
 // 			{
-// 				MessageBox("The new label should be a single word.");
+// 				MessageBox("The new надпись should be a single word.");
 // 
 // 				te.Veto();
 // 			}
@@ -991,56 +991,56 @@ private import std.string;
 		
 		//---------------------------------------------------------------------
 		
-		public void OnDeleteItem(Object sender, Event e)
+		public проц OnDeleteItem(Объект sender, Событие e)
 		{
 // 			Log.LogMessage("OnDeleteItem");
-			e.Skip();
+			e.Пропусти();
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void OnSetInfo(Object sender, Event e)
+		public проц OnSetInfo(Объект sender, Событие e)
 		{
 			Log.LogMessage("OnSetInfo");
-			e.Skip();
+			e.Пропусти();
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void OnItemExpanded(Object sender, Event e)
+		public проц OnItemExpanded(Объект sender, Событие e)
 		{
 			Log.LogMessage("OnItemExpanded");
-			e.Skip();
+			e.Пропусти();
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void OnItemExpanding(Object sender, Event e)
+		public проц OnItemExpanding(Объект sender, Событие e)
 		{
 			Log.LogMessage("OnItemExpanding");
-			e.Skip();
+			e.Пропусти();
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void OnItemCollapsed(Object sender, Event e)
+		public проц OnItemCollapsed(Объект sender, Событие e)
 		{
 			Log.LogMessage("OnItemCollapsed");
-			e.Skip();
+			e.Пропусти();
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void OnItemCollapsing(Object sender, Event e)
+		public проц OnItemCollapsing(Объект sender, Событие e)
 		{
 			TreeEvent te = cast(TreeEvent)e;
 		
 			Log.LogMessage("OnItemCollapsing");
 
-			TreeItemId itemId = te.Item;
+			TreeItemId itemId = te.Элемент;
 			if ( IsTestItem(itemId) )
 			{
-				MessageBox("You can't collapse this item.");
+				MessageBox("You can't collapse this элемент.");
 
 				te.Veto();
 			}
@@ -1048,25 +1048,25 @@ private import std.string;
 		
 		//---------------------------------------------------------------------
 		
-		public void OnContextMenu(Object sender, Event e)
+		public проц OnContextMenu(Объект sender, Событие e)
 		{
 			ContextMenuEvent ce = cast(ContextMenuEvent)e;
 		
-			Point pt = ce.Position;
-			TreeItemId item = Selection;
+			Точка pt = ce.Положение;
+			TreeItemId элемент = Selection;
 			Log.LogMessage("OnContextMenu at screen coords (" ~ .toString(pt.X) ~ ", " ~ .toString(pt.Y) ~ ")");
 
 			if (pt.X==-1 && pt.Y==-1) 
 			{
-				if (item.IsOk())
+				if (элемент.IsOk())
 				{
-					Rectangle rect = Rectangle(0, 0, 0, 0);
-					GetBoundingRect(item, rect, true); 
-					pt = Point(rect.Left, rect.Top);
+					Прямоугольник прям = Прямоугольник(0, 0, 0, 0);
+					GetBoundingRect(элемент, прям, да); 
+					pt = Точка(прям.Left, прям.Top);
 				}
 				else
 				{
-					pt = Point(0, 0);
+					pt = Точка(0, 0);
 				}
 			}
 			else
@@ -1074,43 +1074,43 @@ private import std.string;
 				pt = ScreenToClient(pt);
 			}
 
-			ShowMenu(item, pt);
+			ShowMenu(элемент, pt);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void OnSelChanged(Object sender, Event e)
+		public проц OnSelChanged(Объект sender, Событие e)
 		{
 			Log.LogMessage("OnSelChanged");
-			e.Skip();
+			e.Пропусти();
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void OnSelChanging(Object sender, Event e)
+		public проц OnSelChanging(Объект sender, Событие e)
 		{
 			Log.LogMessage("OnSelChanging");
-			e.Skip();
+			e.Пропусти();
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void OnTreeKeyDown(Object sender, Event e)
+		public проц OnTreeKeyDown(Объект sender, Событие e)
 		{
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void OnItemActivated(Object sender, Event e)
+		public проц OnItemActivated(Объект sender, Событие e)
 		{
 			TreeEvent te = cast(TreeEvent)e;
 		
-			TreeItemId itemId = te.Item;
-			MyTreeItemData item = cast(MyTreeItemData)GetItemData(itemId);
+			TreeItemId itemId = te.Элемент;
+			MyTreeItemData элемент = cast(MyTreeItemData)GetItemData(itemId);
 
-			if ( item )
+			if ( элемент )
 			{
-				item.ShowInfo(this);
+				элемент.ShowInfo(this);
 			}
 
 			Log.LogMessage("OnItemActivated");
@@ -1118,68 +1118,68 @@ private import std.string;
 		
 		//---------------------------------------------------------------------
 		
-		public void OnRMouseDClick(Object sender, Event e)
+		public проц OnRMouseDClick(Объект sender, Событие e)
 		{
 			MouseEvent me = cast(MouseEvent)e;
 		
-			int flags = 0;
-			TreeItemId id = HitTest(me.Position, flags);
-			if ( id is null )
-				Log.LogMessage("No item under mouse");
+			цел флаги = 0;
+			TreeItemId ид = HitTest(me.Положение, флаги);
+			if ( ид is пусто )
+				Log.LogMessage("No элемент under mouse");
 			else
 			{
-				MyTreeItemData item = cast(MyTreeItemData)GetItemData(id);
-				if ( item )
-					Log.LogMessage("Item '" ~ item.Desc ~ "' under mouse");
+				MyTreeItemData элемент = cast(MyTreeItemData)GetItemData(ид);
+				if ( элемент )
+					Log.LogMessage("Элемент '" ~ элемент.Desc ~ "' under mouse");
 			}
 		}
 		
 		//---------------------------------------------------------------------
 		
-		private bool IsTestItem(TreeItemId item)
+		private бул IsTestItem(TreeItemId элемент)
 		{
-			return GetItemParent(item) == RootItem && (GetPrevSibling(item) is null);
+			return GetItemParent(элемент) == RootItem && (GetPrevSibling(элемент) is пусто);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void SetLastItem(TreeItemId id)
+		public проц SetLastItem(TreeItemId ид)
 		{
-			m_lastItem = id;
+			m_lastItem = ид;
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void ShowMenu(TreeItemId id, Point pt)
+		public проц ShowMenu(TreeItemId ид, Точка pt)
 		{
-			string title = "";
-			if ( id.IsOk() )
+			ткст title = "";
+			if ( ид.IsOk() )
 			{
-				title ~= "Menu for " ~ GetItemText(id);
+				title ~= "Меню for " ~ GetItemText(ид);
 			}
 			else
 			{
-				title = "Menu for no particular item";
+				title = "Меню for no particular элемент";
 			}
 
-			Menu menu = new Menu(title);
-			menu.Append(MyFrame.Cmd.TreeTest_About, "&About...");
-			menu.Append(MyFrame.Cmd.TreeTest_Dump, "&Dump");
+			Меню меню = new Меню(title);
+			меню.Append(MyFrame.Cmd.TreeTest_About, "&About...");
+			меню.Append(MyFrame.Cmd.TreeTest_Dump, "&Dump");
 
-			PopupMenu(menu, pt);
+			PopupMenu(меню, pt);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void DoSortChildren(TreeItemId item, bool reverse)
+		public проц DoSortChildren(TreeItemId элемент, бул reverse)
 		{
 			m_reverseSort = reverse;
-			super.SortChildren(item);
+			super.SortChildren(элемент);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public override int OnCompareItems(TreeItemId item1, TreeItemId item2)
+		public override цел OnCompareItems(TreeItemId item1, TreeItemId item2)
 		{
 			if ( m_reverseSort )
 			{
@@ -1196,11 +1196,11 @@ private import std.string;
 	
 	public class MyTreeItemData : TreeItemData
 	{
-		private string m_desc;
+		private ткст m_desc;
 		
 		//---------------------------------------------------------------------
 	
-		public this(string desc)
+		public this(ткст desc)
 		{
 			super();
 			m_desc = desc;
@@ -1208,33 +1208,33 @@ private import std.string;
 		
 		//---------------------------------------------------------------------
 		
-		public string Desc()
+		public ткст Desc()
 		{
 			return m_desc;
 		}
 		
-		protected string Bool2String(bool b)
+		protected ткст Bool2String(бул с)
 		{
-			return b ? "" : "not";
+			return с ? "" : "not";
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void ShowInfo(TreeCtrl tree)
+		public проц ShowInfo(TreeCtrl tree)
 		{
-			string msg = "Item '" ~ m_desc ~ "': ";
-			msg ~= Bool2String(tree.IsSelected(Id)) ~ "selected, ";
-			msg ~= Bool2String(tree.IsExpanded(Id)) ~ "expanded, ";
-			msg ~= Bool2String(tree.IsBold(Id)) ~ "bold,\n";
-			msg ~= .toString(tree.GetChildrenCount(Id)) ~ " children (";
-			msg ~= .toString(tree.GetChildrenCount(Id, false)) ~ " immediately under this item).";
+			ткст msg = "Элемент '" ~ m_desc ~ "': ";
+			msg ~= Bool2String(tree.IsSelected(Ид)) ~ "selected, ";
+			msg ~= Bool2String(tree.IsExpanded(Ид)) ~ "expanded, ";
+			msg ~= Bool2String(tree.IsBold(Ид)) ~ "bold,\n";
+			msg ~= .toString(tree.GetChildrenCount(Ид)) ~ " children (";
+			msg ~= .toString(tree.GetChildrenCount(Ид, нет)) ~ " immediately under this элемент).";
 		
 			Log.LogMessage(msg);
 		}
 	}
 
 
-void main()
+проц main()
 {
 	TreeTestApp.Main();
 }

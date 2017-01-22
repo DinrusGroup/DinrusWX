@@ -10,7 +10,7 @@
 // (C) 2003 Achim Breunig
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: XmlResource.d,v 1.11 2009/03/13 08:42:11 afb Exp $
+// $Ид: XmlResource.d,v 1.11 2009/03/13 08:42:11 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.XmlResource;
@@ -45,51 +45,51 @@ import stdrus;
 }
 //! \endcond
 
-	public enum XmlResourceFlags : int
+	public enum XmlResourceFlags : цел
 	{
 		XRC_USE_LOCALE     = 1,
 		XRC_NO_SUBCLASSING = 2
 	};
 
 		//! \cond EXTERN
-		static extern (C) void wxXmlResource_InitAllHandlers(IntPtr self);
-		static extern (C) bool wxXmlResource_Load(IntPtr self, string filemask);
-		static extern (C) bool wxXmlResource_LoadFromByteArray(IntPtr self, string filemask, IntPtr data, int length);
-		static extern (C) IntPtr wxXmlResource_LoadDialog(IntPtr self, IntPtr parent, string name);
-		static extern (C) bool wxXmlResource_LoadDialogDlg(IntPtr self, IntPtr dlg, IntPtr parent, string name);
-		static extern (C) int wxXmlResource_GetXRCID(string str_id);
-		static extern (C) IntPtr wxXmlResource_ctorByFilemask(string filemask, int flags);
-		static extern (C) IntPtr wxXmlResource_ctor(int flags);
-		static extern (C) uint wxXmlResource_GetVersion(IntPtr self);
-		static extern (C) bool wxXmlResource_LoadFrameWithFrame(IntPtr self, IntPtr frame, IntPtr parent, string name);
-		static extern (C) IntPtr wxXmlResource_LoadFrame(IntPtr self, IntPtr parent, string name);
-		static extern (C) IntPtr wxXmlResource_LoadBitmap(IntPtr self, string name);
-		static extern (C) IntPtr wxXmlResource_LoadIcon(IntPtr self, string name);
-		static extern (C) IntPtr wxXmlResource_LoadMenu(IntPtr self, string name);
-		static extern (C) IntPtr wxXmlResource_LoadMenuBarWithParent(IntPtr self, IntPtr parent, string name);
-		static extern (C) IntPtr wxXmlResource_LoadMenuBar(IntPtr self, string name);
-		static extern (C) bool wxXmlResource_LoadPanelWithPanel(IntPtr self, IntPtr panel, IntPtr parent, string name);
-		static extern (C) IntPtr wxXmlResource_LoadPanel(IntPtr self, IntPtr parent, string name);
-		static extern (C) IntPtr wxXmlResource_LoadToolBar(IntPtr self, IntPtr parent, string name);
-		static extern (C) int wxXmlResource_SetFlags(IntPtr self, int flags);
-		static extern (C) int wxXmlResource_GetFlags(IntPtr self);
-		static extern (C) void wxXmlResource_UpdateResources(IntPtr self);
-		static extern (C) int wxXmlResource_CompareVersion(IntPtr self, int major, int minor, int release, int revision);
-		static extern (C) bool wxXmlResource_AttachUnknownControl(IntPtr self, string name, IntPtr control, IntPtr parent);
+		static extern (C) проц wxXmlResource_InitAllHandlers(ЦУк сам);
+		static extern (C) бул wxXmlResource_Load(ЦУк сам, ткст filemask);
+		static extern (C) бул wxXmlResource_LoadFromByteArray(ЦУк сам, ткст filemask, ЦУк данные, цел length);
+		static extern (C) ЦУк wxXmlResource_LoadDialog(ЦУк сам, ЦУк родитель, ткст имя);
+		static extern (C) бул wxXmlResource_LoadDialogDlg(ЦУк сам, ЦУк dlg, ЦУк родитель, ткст имя);
+		static extern (C) цел wxXmlResource_GetXRCID(ткст str_id);
+		static extern (C) ЦУк wxXmlResource_ctorByFilemask(ткст filemask, цел флаги);
+		static extern (C) ЦУк wxXmlResource_ctor(цел флаги);
+		static extern (C) бцел wxXmlResource_GetVersion(ЦУк сам);
+		static extern (C) бул wxXmlResource_LoadFrameWithFrame(ЦУк сам, ЦУк frame, ЦУк родитель, ткст имя);
+		static extern (C) ЦУк wxXmlResource_LoadFrame(ЦУк сам, ЦУк родитель, ткст имя);
+		static extern (C) ЦУк wxXmlResource_LoadBitmap(ЦУк сам, ткст имя);
+		static extern (C) ЦУк wxXmlResource_LoadIcon(ЦУк сам, ткст имя);
+		static extern (C) ЦУк wxXmlResource_LoadMenu(ЦУк сам, ткст имя);
+		static extern (C) ЦУк wxXmlResource_LoadMenuBarWithParent(ЦУк сам, ЦУк родитель, ткст имя);
+		static extern (C) ЦУк wxXmlResource_LoadMenuBar(ЦУк сам, ткст имя);
+		static extern (C) бул wxXmlResource_LoadPanelWithPanel(ЦУк сам, ЦУк panel, ЦУк родитель, ткст имя);
+		static extern (C) ЦУк wxXmlResource_LoadPanel(ЦУк сам, ЦУк родитель, ткст имя);
+		static extern (C) ЦУк wxXmlResource_LoadToolBar(ЦУк сам, ЦУк родитель, ткст имя);
+		static extern (C) цел wxXmlResource_SetFlags(ЦУк сам, цел флаги);
+		static extern (C) цел wxXmlResource_GetFlags(ЦУк сам);
+		static extern (C) проц wxXmlResource_UpdateResources(ЦУк сам);
+		static extern (C) цел wxXmlResource_CompareVersion(ЦУк сам, цел major, цел minor, цел release, цел revision);
+		static extern (C) бул wxXmlResource_AttachUnknownControl(ЦУк сам, ткст имя, ЦУк control, ЦУк родитель);
 
 		//---------------------------------------------------------------------
 
 		extern (C) {
-		alias IntPtr function(string className) XmlSubclassCreate;
+		alias ЦУк function(ткст className) XmlSubclassCreate;
 		}
 
-		static extern (C) bool wxXmlSubclassFactory_ctor(XmlSubclassCreate create);
+		static extern (C) бул wxXmlSubclassFactory_ctor(XmlSubclassCreate create);
 		//! \endcond
 
 	alias XmlResource wxXmlResource;
 	public class XmlResource : wxObject
 	{
-		public static XmlResource globalXmlResource = null;
+		public static XmlResource globalXmlResource = пусто;
 	
 		//---------------------------------------------------------------------
     
@@ -98,7 +98,7 @@ import stdrus;
 			m_create = cast(XmlSubclassCreate)&XmlSubclassCreateCS;
 			wxXmlSubclassFactory_ctor(m_create);
 		}
-		private static void SetSubclassDefaults() {}
+		private static проц SetSubclassDefaults() {}
 
 /+
 		// Sets the default assembly/namespace based on the assembly from
@@ -107,18 +107,18 @@ import stdrus;
 		// Determines these by walking a stack trace. Normally 
 		// Assembly.GetCallingAssembly should work but in my tests it 
 		// returned the current assembly in the static constructor above.
-		private static void SetSubclassDefaults()
+		private static проц SetSubclassDefaults()
 		{
-			string my_assembly = Assembly.GetExecutingAssembly().GetName().Name;
+			ткст my_assembly = Assembly.GetExecutingAssembly().GetName().Имя;
 			StackTrace st = new StackTrace();
 			
-			for (int i = 0; i < st.FrameCount; ++i)
+			for (цел i = 0; i < st.FrameCount; ++i)
 			{
-				Type type = st.GetFrame(i).GetMethod().ReflectedType;
-				string st_assembly = type.Assembly.GetName().Name;
+				Тип тип = st.GetFrame(i).GetMethod().ReflectedType;
+				ткст st_assembly = тип.Assembly.GetName().Имя;
 				if (st_assembly != my_assembly)
 				{
-					_CallerNamespace = type.Namespace;
+					_CallerNamespace = тип.Namespace;
 					_CallerAssembly = st_assembly;
 					stdout.writeLine("Setting sub-class default assembly to {0}, namespace to {1}", _CallerAssembly, _CallerNamespace);
 					break;
@@ -131,22 +131,22 @@ import stdrus;
 		// will be used. This property is only used if an assembly is not
 		// specified in the XRC XML subclass property via the [assembly]class
 		// syntax.
-		static void SubclassAssembly(string value) { _SubclassAssembly = value; }
-		static string SubclassAssembly() { return _SubclassAssembly; }
-		static string _SubclassAssembly;
+		static проц SubclassAssembly(ткст значение) { _SubclassAssembly = значение; }
+		static ткст SubclassAssembly() { return _SubclassAssembly; }
+		static ткст _SubclassAssembly;
 
 		// Get/set the namespace that is pre-pended to class names in sub-classing.
-		// This is only used if class name does not have a dot (.) in it. If
+		// This is only used if class имя does not have a dot (.) in it. If
 		// this is not specified and the class does not already have a namespace
 		// specified, the namespace of the class which invoked the LoadXXX() method
 		// is used.
-		static void SubclassNamespace(string value) { _SubclassNamespace = value; }
-		static string SubclassNamespace() { return _SubclassNamespace; }
-		static string _SubclassNamespace;
+		static проц SubclassNamespace(ткст значение) { _SubclassNamespace = значение; }
+		static ткст SubclassNamespace() { return _SubclassNamespace; }
+		static ткст _SubclassNamespace;
 
 		// Defaults set via LoadXXX() methods
-		private static string _CallerAssembly;
-		private static string _CallerNamespace;
+		private static ткст _CallerAssembly;
+		private static ткст _CallerNamespace;
 +/
 
 		//---------------------------------------------------------------------
@@ -154,20 +154,20 @@ import stdrus;
 		public this()
 			{ this(XmlResourceFlags.XRC_USE_LOCALE);}
 
-		public this(IntPtr wxobj)
-			{ super(wxobj); }
+		public this(ЦУк шхобъ)
+			{ super(шхобъ); }
  
-		public this(XmlResourceFlags flags)
-			{ this(wxXmlResource_ctor(cast(int)flags)); }
+		public this(XmlResourceFlags флаги)
+			{ this(wxXmlResource_ctor(cast(цел)флаги)); }
 
-		public this(string filemask, XmlResourceFlags flags)
-			{ this(wxXmlResource_ctorByFilemask(filemask,cast(int)flags)); }
+		public this(ткст filemask, XmlResourceFlags флаги)
+			{ this(wxXmlResource_ctorByFilemask(filemask,cast(цел)флаги)); }
 	    
 		//---------------------------------------------------------------------
 	
 		public static XmlResource Get()
 		{
-			if (globalXmlResource is null)
+			if (globalXmlResource is пусто)
 			{
 				globalXmlResource = new XmlResource();
 			}
@@ -177,7 +177,7 @@ import stdrus;
 	
 		//---------------------------------------------------------------------	
 	
-		public static XmlResource Set(XmlResource res)
+		public static XmlResource Установи(XmlResource res)
 		{ 
 			XmlResource old = globalXmlResource;
 			globalXmlResource = res;
@@ -186,220 +186,220 @@ import stdrus;
 	
 		//---------------------------------------------------------------------
 
-		public void InitAllHandlers()
+		public проц ИницВсеОбработчики()
 		{
-			wxXmlResource_InitAllHandlers(wxobj);
+			wxXmlResource_InitAllHandlers(шхобъ);
 		}
 	
 		//---------------------------------------------------------------------
 
-		public bool Load(string filemask)
+		public бул Load(ткст filemask)
 		{
-			return wxXmlResource_Load(wxobj,filemask);
+			return wxXmlResource_Load(шхобъ,filemask);
 		}
 	
 		//---------------------------------------------------------------------
 
-		public Dialog LoadDialog(Window parent, string name)
+		public Dialog LoadDialog(Окно родитель, ткст имя)
 		{
 			SetSubclassDefaults();
-			IntPtr ptr = wxXmlResource_LoadDialog(wxobj,wxObject.SafePtr(parent),name);
-			if (ptr != IntPtr.init)
+			ЦУк ptr = wxXmlResource_LoadDialog(шхобъ,wxObject.SafePtr(родитель),имя);
+			if (ptr != ЦУк.init)
 				return new Dialog(ptr);
 			else
-				return null;
+				return пусто;
 		}
 	
 		//---------------------------------------------------------------------
         
-		public bool LoadDialog(Dialog dlg, Window parent, string name)
+		public бул LoadDialog(Dialog dlg, Окно родитель, ткст имя)
 		{
 			SetSubclassDefaults();
-			return wxXmlResource_LoadDialogDlg(wxobj,wxObject.SafePtr(dlg),wxObject.SafePtr(parent),name);
+			return wxXmlResource_LoadDialogDlg(шхобъ,wxObject.SafePtr(dlg),wxObject.SafePtr(родитель),имя);
 		}
 	
 		//---------------------------------------------------------------------
 
-		public static int GetXRCID(string str_id)
+		public static цел GetXRCID(ткст str_id)
 		{
 			return wxXmlResource_GetXRCID(str_id);
 		}
 	
 		//---------------------------------------------------------------------
 	
-		public static int XRCID(string str_id)
+		public static цел XRCID(ткст str_id)
 		{
 			return wxXmlResource_GetXRCID(str_id);
 		}
 	
 		//---------------------------------------------------------------------
 
-		public int Version() { return wxXmlResource_GetVersion(wxobj); }
+		public цел Version() { return wxXmlResource_GetVersion(шхобъ); }
 	
 		//---------------------------------------------------------------------
 
-		public bool LoadFrame(Frame frame, Window parent, string name)
+		public бул LoadFrame(Frame frame, Окно родитель, ткст имя)
 		{
 			SetSubclassDefaults();
-			return wxXmlResource_LoadFrameWithFrame(wxobj, wxObject.SafePtr(frame), wxObject.SafePtr(parent), name);
+			return wxXmlResource_LoadFrameWithFrame(шхобъ, wxObject.SafePtr(frame), wxObject.SafePtr(родитель), имя);
 		}
 	
 		//---------------------------------------------------------------------
 
-		public Frame LoadFrame(Window parent, string name)
+		public Frame LoadFrame(Окно родитель, ткст имя)
 		{
 			SetSubclassDefaults();
-			IntPtr ptr = wxXmlResource_LoadFrame(wxobj,wxObject.SafePtr(parent),name);
-			if (ptr != IntPtr.init)
+			ЦУк ptr = wxXmlResource_LoadFrame(шхобъ,wxObject.SafePtr(родитель),имя);
+			if (ptr != ЦУк.init)
 				return new Frame(ptr);
 			else
-				return null;
+				return пусто;
 		}
 	
 		//---------------------------------------------------------------------
 
-		public Menu LoadMenu(string name)
+		public Меню LoadMenu(ткст имя)
 		{
 			SetSubclassDefaults();
-			IntPtr ptr = wxXmlResource_LoadMenu(wxobj, name);
-			if (ptr != IntPtr.init)
-				return new Menu(ptr);
+			ЦУк ptr = wxXmlResource_LoadMenu(шхобъ, имя);
+			if (ptr != ЦУк.init)
+				return new Меню(ptr);
 			else
-				return null;
+				return пусто;
 		}
 	
 		//---------------------------------------------------------------------
 
-		public MenuBar LoadMenuBar(Window parent, string name)
+		public MenuBar LoadMenuBar(Окно родитель, ткст имя)
 		{
 			SetSubclassDefaults();
-			IntPtr ptr = wxXmlResource_LoadMenuBarWithParent(wxobj, wxObject.SafePtr(parent), name);
-			if (ptr != IntPtr.init)
+			ЦУк ptr = wxXmlResource_LoadMenuBarWithParent(шхобъ, wxObject.SafePtr(родитель), имя);
+			if (ptr != ЦУк.init)
 				return new MenuBar(ptr);
 			else
-				return null;
+				return пусто;
 		}
 	
 		//---------------------------------------------------------------------
 
-		public MenuBar LoadMenuBar(string name)
+		public MenuBar LoadMenuBar(ткст имя)
 		{
 			SetSubclassDefaults();
-			IntPtr ptr = wxXmlResource_LoadMenuBar(wxobj, name);
-			if (ptr != IntPtr.init)
+			ЦУк ptr = wxXmlResource_LoadMenuBar(шхобъ, имя);
+			if (ptr != ЦУк.init)
 				return new MenuBar(ptr);
 			else
-				return null;
+				return пусто;
 		}
 	
 		//---------------------------------------------------------------------
 
-		public bool LoadPanel(Panel panel, Window parent, string name)
+		public бул LoadPanel(Panel panel, Окно родитель, ткст имя)
 		{
 			SetSubclassDefaults();
-			return wxXmlResource_LoadPanelWithPanel(wxobj, wxObject.SafePtr(panel), wxObject.SafePtr(parent), name);
+			return wxXmlResource_LoadPanelWithPanel(шхобъ, wxObject.SafePtr(panel), wxObject.SafePtr(родитель), имя);
 		}
 	
 		//---------------------------------------------------------------------
 
-		public Panel LoadPanel(Window parent, string name)
+		public Panel LoadPanel(Окно родитель, ткст имя)
 		{
 			SetSubclassDefaults();
-			IntPtr ptr = wxXmlResource_LoadPanel(wxobj, wxObject.SafePtr(parent), name);
-			if (ptr != IntPtr.init)
+			ЦУк ptr = wxXmlResource_LoadPanel(шхобъ, wxObject.SafePtr(родитель), имя);
+			if (ptr != ЦУк.init)
 				return new Panel(ptr);
 			else
-				return null;
+				return пусто;
 		}
 	
 		//---------------------------------------------------------------------
 /+
-		public ToolBar LoadToolBar(Window parent, string name)
+		public ToolBar LoadToolBar(Окно родитель, ткст имя)
 		{
 			SetSubclassDefaults();
-			IntPtr ptr = wxXmlResource_LoadToolBar(wxobj, wxObject.SafePtr(parent), name);
-			if (ptr != IntPtr.init)
+			ЦУк ptr = wxXmlResource_LoadToolBar(шхобъ, wxObject.SafePtr(родитель), имя);
+			if (ptr != ЦУк.init)
 				return new ToolBar(ptr);
 			else
-				return null;
+				return пусто;
 		}
 	+/
 		//---------------------------------------------------------------------
 
-		public void Flags(XmlResourceFlags value) { wxXmlResource_SetFlags(wxobj, cast(int)value); }
-		public XmlResourceFlags Flags() { return cast(XmlResourceFlags)wxXmlResource_GetFlags(wxobj); }
+		public проц Флаги(XmlResourceFlags значение) { wxXmlResource_SetFlags(шхобъ, cast(цел)значение); }
+		public XmlResourceFlags Флаги() { return cast(XmlResourceFlags)wxXmlResource_GetFlags(шхобъ); }
 	
 		//---------------------------------------------------------------------
 	/+
-		public void UpdateResources()
+		public проц UpdateResources()
 		{
-			wxXmlResource_UpdateResources(wxobj);
+			wxXmlResource_UpdateResources(шхобъ);
 		}
 	+/
 		//---------------------------------------------------------------------
 	
-		public Bitmap LoadBitmap(string name)
+		public Битмап LoadBitmap(ткст имя)
 		{
-			return new Bitmap(wxXmlResource_LoadBitmap(wxobj, name));
+			return new Битмап(wxXmlResource_LoadBitmap(шхобъ, имя));
 		}
 	
 		//---------------------------------------------------------------------
 	
-		public Icon LoadIcon(string name)
+		public Icon LoadIcon(ткст имя)
 		{
-			return new Icon(wxXmlResource_LoadIcon(wxobj, name));
+			return new Icon(wxXmlResource_LoadIcon(шхобъ, имя));
 		}
 	
 		//---------------------------------------------------------------------
 	
-		public int CompareVersion(int major, int minor, int release, int revision)
+		public цел CompareVersion(цел major, цел minor, цел release, цел revision)
 		{
-			return wxXmlResource_CompareVersion(wxobj, major, minor, release, revision);
+			return wxXmlResource_CompareVersion(шхобъ, major, minor, release, revision);
 		}
 	
 		//---------------------------------------------------------------------
 	
-		public bool AttachUnknownControl(string name, Window control)
+		public бул AttachUnknownControl(ткст имя, Окно control)
 		{
-			return AttachUnknownControl(name, control, null);
+			return AttachUnknownControl(имя, control, пусто);
 		}
 	
-		public bool AttachUnknownControl(string name, Window control, Window parent)
+		public бул AttachUnknownControl(ткст имя, Окно control, Окно родитель)
 		{
-			return wxXmlResource_AttachUnknownControl(wxobj, name, wxObject.SafePtr(control), wxObject.SafePtr(parent));
+			return wxXmlResource_AttachUnknownControl(шхобъ, имя, wxObject.SafePtr(control), wxObject.SafePtr(родитель));
 		}
 	
 		//---------------------------------------------------------------------
  
-		public static wxObject XRCCTRL(Window window, string id, newfunc func)
+		public static wxObject XRCCTRL(Окно окно, ткст ид, newfunc func)
 		{
-			return window.FindWindow(XRCID(id), func);
+			return окно.FindWindow(XRCID(ид), func);
 		}
 
-        public static wxObject GetControl(Window window, string id, newfunc func)
+        public static wxObject GetControl(Окно окно, ткст ид, newfunc func)
         { 
-            return XRCCTRL(window, id, func); 
+            return XRCCTRL(окно, ид, func); 
         }
 		//---------------------------------------------------------------------
 		// XmlResource control subclassing
         
 		private static XmlSubclassCreate m_create; // = cast(XmlSubclassCreate)&XmlSubclassCreateCS;
-		//private static IntPtr function(string className) m_create = &XmlSubclassCreateCS;
+		//private static ЦУк function(ткст className) m_create = &XmlSubclassCreateCS;
 
-		extern(C) private static IntPtr XmlSubclassCreateCS(string className)
+		extern(C) private static ЦУк XmlSubclassCreateCS(ткст className)
 		{
 /+
-			string name = className;
-			string assembly = null;
+			ткст имя = className;
+			ткст assembly = пусто;
 			// Allow these two formats for for class names:
 			//   class
 			//   [assembly]class (specify assembly)
 
-			Match m = Regex.Match(name, "\\[(.+)\\]");
+			Match m = Regex.Match(имя, "\\[(.+)\\]");
 			if (m.Success)
 			{
 				assembly = m.Result("$1");
-				name = m.Result("$'");
+				имя = m.Result("$'");
 			}
 			else
 			{
@@ -407,43 +407,43 @@ import stdrus;
 			}
 
 			// Use caller's assembly?
-			if ((assembly == null) || (assembly == ""))
+			if ((assembly == пусто) || (assembly == ""))
 				assembly = _CallerAssembly;
 
 			// Tack on any namespace prefix to the class? Only if the 
 			// class does not already have a "." in it
-			if (name.IndexOf(".") == -1)
+			if (имя.IndexOf(".") == -1)
 			{
-				string ns = "";
+				ткст ns = "";
 				// Use caller's namespace?
-				if ((_SubclassNamespace == null) || (_SubclassNamespace == ""))
+				if ((_SubclassNamespace == пусто) || (_SubclassNamespace == ""))
 					ns = _CallerNamespace;
 				else
 					ns = _SubclassNamespace;
-				name = ns + "." + name;
+				имя = ns + "." + имя;
 			}
 
 			try 
 			{
-				stdout.writeLine("Attempting to create " ~ name ~ " from assembly " ~ assembly);
-			//	ObjectHandle handle = Activator.CreateInstance(assembly, name);
+				stdout.writeLine("Attempting to create " ~ имя ~ " from assembly " ~ assembly);
+			//	ObjectHandle handle = Activator.CreateInstance(assembly, имя);
 
-				if (handle === null) 
+				if (handle === пусто) 
 				{
-					return IntPtr.init;
+					return ЦУк.init;
 				}
 
 				wxObject o = cast(wxObject)handle.Unwrap();
-				return o.wxobj;
+				return o.шхобъ;
 			} 
 			catch (Exception e) 
 			{
 				stdout.writeLine(e);
 
-				return IntPtr.init;
+				return ЦУк.init;
 			}
 +/
-			return IntPtr.init;
+			return ЦУк.init;
 		}
 
 	}

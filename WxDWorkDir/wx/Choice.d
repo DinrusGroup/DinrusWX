@@ -1,8 +1,8 @@
-//-----------------------------------------------------------------------------
-// wxD - Choice.d
+﻿//-----------------------------------------------------------------------------
+// wxD - Выбор.d
 // (C) 2005 bero <berobero.sourceforge.net>
 // based on
-// wx.NET - Choice.cs
+// wx.NET - Выбор.cs
 //
 /// The wxChoice wrapper class.
 //
@@ -10,7 +10,7 @@
 // (C) 2003 Bryan Bulten
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: Choice.d,v 1.12 2007/02/10 10:48:18 afb Exp $
+// $Ид: Выбор.d,v 1.12 2007/02/10 10:48:18 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.Choice;
@@ -21,274 +21,274 @@ public import wx.IControlWithItems;
 public import wx.ArrayString;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxChoice_ctor();
-		static extern (C) bool   wxChoice_Create(IntPtr self, IntPtr parent, int id, inout Point pos, inout Size size, int n, string* choices, int style, IntPtr validator, string name);
-		static extern (C) void   wxChoice_dtor(IntPtr self);
+		static extern (C) ЦУк wxChoice_ctor();
+		static extern (C) бул   wxChoice_Create(ЦУк сам, ЦУк родитель, цел ид, inout Точка поз, inout Размер size, цел n, ткст* choices, цел стиль, ЦУк validator, ткст имя);
+		static extern (C) проц   wxChoice_dtor(ЦУк сам);
 
-		static extern (C) void   wxChoice_SetSelection(IntPtr self, int n);
-		static extern (C) bool   wxChoice_SetStringSelection(IntPtr self, string s);
-		static extern (C) IntPtr wxChoice_GetStringSelection(IntPtr self);
+		static extern (C) проц   wxChoice_SetSelection(ЦУк сам, цел n);
+		static extern (C) бул   wxChoice_SetStringSelection(ЦУк сам, ткст s);
+		static extern (C) ЦУк wxChoice_GetStringSelection(ЦУк сам);
 
-		static extern (C) void   wxChoice_SetColumns(IntPtr self, int n);
-		static extern (C) int    wxChoice_GetColumns(IntPtr self);
+		static extern (C) проц   wxChoice_SetColumns(ЦУк сам, цел n);
+		static extern (C) цел    wxChoice_GetColumns(ЦУк сам);
 
-		static extern (C) void   wxChoice_Command(IntPtr self, IntPtr evt);
-		static extern (C) int    wxChoice_GetCount(IntPtr self);
-		static extern (C) IntPtr wxChoice_GetString(IntPtr self, int n);
-		static extern (C) int    wxChoice_GetSelection(IntPtr self);
+		static extern (C) проц   wxChoice_Command(ЦУк сам, ЦУк evt);
+		static extern (C) цел    wxChoice_GetCount(ЦУк сам);
+		static extern (C) ЦУк wxChoice_GetString(ЦУк сам, цел n);
+		static extern (C) цел    wxChoice_GetSelection(ЦУк сам);
 
-		static extern (C) IntPtr wxChoice_GetClientData(IntPtr self, int n);
-		static extern (C) void   wxChoice_SetClientData(IntPtr self, int n, IntPtr data);
+		static extern (C) ЦУк wxChoice_GetClientData(ЦУк сам, цел n);
+		static extern (C) проц   wxChoice_SetClientData(ЦУк сам, цел n, ЦУк данные);
 
-		static extern (C) int    wxChoice_FindString(IntPtr self, string str);
+		static extern (C) цел    wxChoice_FindString(ЦУк сам, ткст str);
 		
-		static extern (C) void   wxChoice_Delete(IntPtr self, int n);
-		static extern (C) void   wxChoice_Clear(IntPtr self);
+		static extern (C) проц   wxChoice_Delete(ЦУк сам, цел n);
+		static extern (C) проц   wxChoice_Clear(ЦУк сам);
 
-		static extern (C) int   wxChoice_Append(IntPtr self, string item);
-		static extern (C) int   wxChoice_AppendData(IntPtr self, string item, IntPtr data);
+		static extern (C) цел   wxChoice_Append(ЦУк сам, ткст элемент);
+		static extern (C) цел   wxChoice_AppendData(ЦУк сам, ткст элемент, ЦУк данные);
 		
-		static extern (C)	void wxChoice_AppendString(IntPtr self, string item);
+		static extern (C)	проц wxChoice_AppendString(ЦУк сам, ткст элемент);
 		
-		static extern (C)	void wxChoice_AppendArrayString(IntPtr self, int n, string* strings);
+		static extern (C)	проц wxChoice_AppendArrayString(ЦУк сам, цел n, ткст* strings);
 		
-		static extern (C)	int wxChoice_Insert(IntPtr self, string item, int pos);
-		static extern (C)	int wxChoice_InsertClientData(IntPtr self, string item, int pos, IntPtr clientData);
+		static extern (C)	цел wxChoice_Insert(ЦУк сам, ткст элемент, цел поз);
+		static extern (C)	цел wxChoice_InsertClientData(ЦУк сам, ткст элемент, цел поз, ЦУк clientData);
 		
-		static extern (C)	IntPtr wxChoice_GetStrings(IntPtr self);
+		static extern (C)	ЦУк wxChoice_GetStrings(ЦУк сам);
 		
-		static extern (C)	void wxChoice_SetClientObject(IntPtr self, int n, IntPtr clientData);
-		static extern (C)	IntPtr wxChoice_GetClientObject(IntPtr self, int n);
-		static extern (C)	bool wxChoice_HasClientObjectData(IntPtr self);
-		static extern (C)	bool wxChoice_HasClientUntypedData(IntPtr self);
+		static extern (C)	проц wxChoice_SetClientObject(ЦУк сам, цел n, ЦУк clientData);
+		static extern (C)	ЦУк wxChoice_GetClientObject(ЦУк сам, цел n);
+		static extern (C)	бул wxChoice_HasClientObjectData(ЦУк сам);
+		static extern (C)	бул wxChoice_HasClientUntypedData(ЦУк сам);
 		
-		static extern (C) void wxChoice_SetString(IntPtr self, int n, string text);
+		static extern (C) проц wxChoice_SetString(ЦУк сам, цел n, ткст текст);
 		
-		static extern (C) void wxChoice_Select(IntPtr self, int n);
+		static extern (C) проц wxChoice_Select(ЦУк сам, цел n);
 		
-		static extern (C)	bool wxChoice_ShouldInheritColours(IntPtr self);
+		static extern (C)	бул wxChoice_ShouldInheritColours(ЦУк сам);
 		
-		static extern (C)	bool wxChoice_IsEmpty(IntPtr self);
+		static extern (C)	бул wxChoice_IsEmpty(ЦУк сам);
 		//! \endcond
 
 		//---------------------------------------------------------------------
 		
-	alias Choice wxChoice;
-	public class Choice : Control , IControlWithItems
+	alias Выбор wxChoice;
+	public class Выбор : Control , IControlWithItems
 	{
-		public const string wxChoiceNameStr = "choice";
+		public const ткст wxChoiceNameStr = "choice";
 	
-		public this(IntPtr wxobj) 
-			{ super(wxobj);}
+		public this(ЦУк шхобъ) 
+			{ super(шхобъ);}
 
 		public this()
 			{ super(wxChoice_ctor()); }
 
-		public this(Window parent, int id, Point pos, Size size, string[] choices = null, int style = 0, Validator val = null,string name = wxChoiceNameStr)
+		public this(Окно родитель, цел ид, Точка поз, Размер size, ткст[] choices = пусто, цел стиль = 0, Validator val = пусто,ткст имя = wxChoiceNameStr)
 		{
 			super(wxChoice_ctor());
-			if(!wxChoice_Create(wxobj, wxObject.SafePtr(parent), id, pos,
-								size, choices.length, choices.ptr, style, 
-								wxObject.SafePtr(validator), name)) 
+			if(!wxChoice_Create(шхобъ, wxObject.SafePtr(родитель), ид, поз,
+								size, choices.length, choices.ptr, стиль, 
+								wxObject.SafePtr(validator), имя)) 
 			{
 				throw new InvalidOperationException("Failed to create ListBox");
 			}
 		}
 		
-		public static wxObject New(IntPtr wxobj)
+		public static wxObject Нов(ЦУк шхобъ)
 		{
-			return new Choice(wxobj);
+			return new Выбор(шхобъ);
 		}
 	
 		//---------------------------------------------------------------------
-		// ctors with self created id
+		// ctors with сам created ид
 		
-		public this(Window parent, Point pos, Size size, string[] choices = null, int style = 0, Validator val = null,string name = wxChoiceNameStr)
-			{ this(parent, Window.UniqueID, pos, size, choices, style, validator, name);}
+		public this(Окно родитель, Точка поз, Размер size, ткст[] choices = пусто, цел стиль = 0, Validator val = пусто,ткст имя = wxChoiceNameStr)
+			{ this(родитель, Окно.UniqueID, поз, size, choices, стиль, validator, имя);}
 		
 		//---------------------------------------------------------------------
 
-		public bool Create(Window parent, int id, inout Point pos, inout Size size,
-						   string[] choices, int style, Validator validator,
-						   string name)
+		public бул Create(Окно родитель, цел ид, inout Точка поз, inout Размер size,
+						   ткст[] choices, цел стиль, Validator validator,
+						   ткст имя)
 		{
-			return wxChoice_Create(wxobj, wxObject.SafePtr(parent), id,
-								   pos, size, choices.length, choices.ptr, 
-								   cast(uint)style, wxObject.SafePtr(validator), name);
+			return wxChoice_Create(шхобъ, wxObject.SafePtr(родитель), ид,
+								   поз, size, choices.length, choices.ptr, 
+								   cast(бцел)стиль, wxObject.SafePtr(validator), имя);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public int Append(string item)
+		public цел Append(ткст элемент)
 		{
-			return wxChoice_Append(wxobj, item);
+			return wxChoice_Append(шхобъ, элемент);
 		}
 		
-		public int Append(string item, ClientData clientData)
+		public цел Append(ткст элемент, ClientData clientData)
 		{
-			return wxChoice_AppendData(wxobj, item, wxObject.SafePtr(clientData));
-		}
-		
-		//-----------------------------------------------------------------------------
-		
-		public void AppendString(string item)
-		{
-			wxChoice_AppendString(wxobj, item);
+			return wxChoice_AppendData(шхобъ, элемент, wxObject.SafePtr(clientData));
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public void Append(string[] strings)
+		public проц AppendString(ткст элемент)
 		{
-			wxChoice_AppendArrayString(wxobj, strings.length, strings.ptr);
+			wxChoice_AppendString(шхобъ, элемент);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public int Insert(string item, int pos)
+		public проц Append(ткст[] strings)
 		{
-			return wxChoice_Insert(wxobj, item, pos);
-		}
-		
-		public int Insert(string item, int pos, ClientData clientData)
-		{
-			return wxChoice_InsertClientData(wxobj, item, pos, wxObject.SafePtr(clientData));
+			wxChoice_AppendArrayString(шхобъ, strings.length, strings.ptr);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public string[] GetStrings()
+		public цел Insert(ткст элемент, цел поз)
 		{
-			return (new ArrayString(wxChoice_GetStrings(wxobj), true)).toArray();
+			return wxChoice_Insert(шхобъ, элемент, поз);
+		}
+		
+		public цел Insert(ткст элемент, цел поз, ClientData clientData)
+		{
+			return wxChoice_InsertClientData(шхобъ, элемент, поз, wxObject.SafePtr(clientData));
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public void SetClientObject(int n, ClientData clientData)
+		public ткст[] GetStrings()
 		{
-			wxChoice_SetClientObject(wxobj, n, wxObject.SafePtr(clientData));
-		}
-		
-		public ClientData GetClientObject(int n)
-		{
-			return cast(ClientData)FindObject(wxChoice_GetClientObject(wxobj, n), &ClientData.New);
+			return (new МасТкст(wxChoice_GetStrings(шхобъ), да)).вМассив();
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public bool HasClientObjectData()
+		public проц SetClientObject(цел n, ClientData clientData)
 		{
-			return wxChoice_HasClientObjectData(wxobj);
+			wxChoice_SetClientObject(шхобъ, n, wxObject.SafePtr(clientData));
+		}
+		
+		public ClientData GetClientObject(цел n)
+		{
+			return cast(ClientData)FindObject(wxChoice_GetClientObject(шхобъ, n), &ClientData.Нов);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public bool HasClientUntypedData()
+		public бул HasClientObjectData()
 		{
-			return wxChoice_HasClientUntypedData(wxobj);
-		}
-
-		//---------------------------------------------------------------------
-		
-		public int Selection() { return wxChoice_GetSelection(wxobj); }
-		public void Selection(int value) { wxChoice_SetSelection(wxobj, value); }
-		
-		public int GetSelection()
-		{
-			return wxChoice_GetSelection(wxobj);
-		}
-
-		//---------------------------------------------------------------------
-
-		public string StringSelection() { return cast(string) new wxString(wxChoice_GetStringSelection(wxobj), true); }
-		public void StringSelection(string value) { wxChoice_SetStringSelection(wxobj, value); }
-
-		//---------------------------------------------------------------------
-
-		public int Columns() { return wxChoice_GetColumns(wxobj); }
-		public void Columns(int value) { wxChoice_SetColumns(wxobj, value); }
-		
-		//---------------------------------------------------------------------
-
-		public void Command(Event evt)
-		{
-			wxChoice_Command(wxobj, wxObject.SafePtr(evt));
-		}
-
-		//---------------------------------------------------------------------
-		
-		public int Count() { return wxChoice_GetCount(wxobj); }
-		
-		//---------------------------------------------------------------------
-
-		public string GetString(int n)
-		{
-			return cast(string) new wxString(wxChoice_GetString(wxobj, n), true);
-		}
-
-		//---------------------------------------------------------------------
-
-		// TODO: Find way to pass data through C# object
-		
-		public ClientData GetClientData(int n)
-		{
-			return cast(ClientData)FindObject(wxChoice_GetClientData(wxobj, n));
-		}
-
-		public void SetClientData(int n, ClientData data)
-		{
-			wxChoice_SetClientData(wxobj, n, wxObject.SafePtr(data));
-		}
-
-		//---------------------------------------------------------------------
-
-		public int FindString(string str)
-		{
-			return wxChoice_FindString(wxobj, str);
-		}
-
-		//---------------------------------------------------------------------
-
-		public void Delete(int n)
-		{
-			wxChoice_Delete(wxobj, n);
-		}
-		
-		//---------------------------------------------------------------------
-
-		public void Clear()
-		{
-			wxChoice_Clear(wxobj);
-		}
-
-		//---------------------------------------------------------------------
-
-		public void SetString(int n, string str)
-		{
-			wxChoice_SetString(wxobj, n, str);
-		}
-		
-		//---------------------------------------------------------------------
-		
-		public void Select(int n)
-		{
-			wxChoice_Select(wxobj, n);
+			return wxChoice_HasClientObjectData(шхобъ);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public override bool ShouldInheritColours()
+		public бул HasClientUntypedData()
 		{
-			return wxChoice_ShouldInheritColours(wxobj);
+			return wxChoice_HasClientUntypedData(шхобъ);
+		}
+
+		//---------------------------------------------------------------------
+		
+		public цел Selection() { return wxChoice_GetSelection(шхобъ); }
+		public проц Selection(цел значение) { wxChoice_SetSelection(шхобъ, значение); }
+		
+		public цел GetSelection()
+		{
+			return wxChoice_GetSelection(шхобъ);
+		}
+
+		//---------------------------------------------------------------------
+
+		public ткст StringSelection() { return cast(ткст) new wxString(wxChoice_GetStringSelection(шхобъ), да); }
+		public проц StringSelection(ткст значение) { wxChoice_SetStringSelection(шхобъ, значение); }
+
+		//---------------------------------------------------------------------
+
+		public цел Columns() { return wxChoice_GetColumns(шхобъ); }
+		public проц Columns(цел значение) { wxChoice_SetColumns(шхобъ, значение); }
+		
+		//---------------------------------------------------------------------
+
+		public проц Command(Событие evt)
+		{
+			wxChoice_Command(шхобъ, wxObject.SafePtr(evt));
+		}
+
+		//---------------------------------------------------------------------
+		
+		public цел Счёт() { return wxChoice_GetCount(шхобъ); }
+		
+		//---------------------------------------------------------------------
+
+		public ткст GetString(цел n)
+		{
+			return cast(ткст) new wxString(wxChoice_GetString(шхобъ, n), да);
+		}
+
+		//---------------------------------------------------------------------
+
+		// TODO: Find way to pass данные through C# object
+		
+		public ClientData GetClientData(цел n)
+		{
+			return cast(ClientData)FindObject(wxChoice_GetClientData(шхобъ, n));
+		}
+
+		public проц SetClientData(цел n, ClientData данные)
+		{
+			wxChoice_SetClientData(шхобъ, n, wxObject.SafePtr(данные));
+		}
+
+		//---------------------------------------------------------------------
+
+		public цел FindString(ткст str)
+		{
+			return wxChoice_FindString(шхобъ, str);
+		}
+
+		//---------------------------------------------------------------------
+
+		public проц Delete(цел n)
+		{
+			wxChoice_Delete(шхобъ, n);
+		}
+		
+		//---------------------------------------------------------------------
+
+		public проц Очисть()
+		{
+			wxChoice_Clear(шхобъ);
+		}
+
+		//---------------------------------------------------------------------
+
+		public проц SetString(цел n, ткст str)
+		{
+			wxChoice_SetString(шхобъ, n, str);
+		}
+		
+		//---------------------------------------------------------------------
+		
+		public проц Select(цел n)
+		{
+			wxChoice_Select(шхобъ, n);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public bool Empty() { return wxChoice_IsEmpty(wxobj); }
+		public override бул ShouldInheritColours()
+		{
+			return wxChoice_ShouldInheritColours(шхобъ);
+		}
+		
+		//-----------------------------------------------------------------------------
+		
+		public бул Empty() { return wxChoice_IsEmpty(шхобъ); }
 
 		//---------------------------------------------------------------------
 
-		public void Selected_Add(EventListener value) { AddCommandListener(Event.wxEVT_COMMAND_CHOICE_SELECTED, ID, value, this); }
-		public void Selected_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц Selected_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_COMMAND_CHOICE_SELECTED, ИД, значение, this); }
+		public проц Selected_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
 	}

@@ -1,4 +1,4 @@
-//-----------------------------------------------------------------------------
+﻿//-----------------------------------------------------------------------------
 // wxD - ArtProvider.d
 // (C) 2005 bero <berobero.sourceforge.net>
 // based on
@@ -10,7 +10,7 @@
 // (C) 2003 by Alexander Olk
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: ArtProvider.d,v 1.9 2006/11/17 15:20:59 afb Exp $
+// $Ид: ArtProvider.d,v 1.9 2006/11/17 15:20:59 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.ArtProvider;
@@ -71,8 +71,8 @@ public import wx.Window;
 	//---------------------------------------------------------------------
 	
 		//! \cond EXTERN
-		static extern (C) IntPtr wxArtProvider_GetBitmap(int artid, int artclient, inout Size size);
-		static extern (C) IntPtr wxArtProvider_GetIcon(int artid, int artclient, inout Size size);
+		static extern (C) ЦУк wxArtProvider_GetBitmap(цел artid, цел artclient, inout Размер size);
+		static extern (C) ЦУк wxArtProvider_GetIcon(цел artid, цел artclient, inout Размер size);
 		//! \endcond
 		
 		//---------------------------------------------------------------------
@@ -80,35 +80,35 @@ public import wx.Window;
 	alias ArtProvider wxArtProvider;
 	public class ArtProvider
 	{
-		public static Bitmap GetBitmap(ArtID id)
+		public static Битмап GetBitmap(ArtID ид)
 		{
-			return GetBitmap(id, ArtClient.wxART_OTHER, Window.wxDefaultSize);
+			return GetBitmap(ид, ArtClient.wxART_OTHER, Окно.wxDefaultSize);
 		}				
 		
-		public static Bitmap GetBitmap(ArtID id, ArtClient client)
+		public static Битмап GetBitmap(ArtID ид, ArtClient client)
 		{
-			return GetBitmap(id, client, Window.wxDefaultSize);
+			return GetBitmap(ид, client, Окно.wxDefaultSize);
 		}		
 		
-		public static Bitmap GetBitmap(ArtID id, ArtClient client, Size size)
+		public static Битмап GetBitmap(ArtID ид, ArtClient client, Размер size)
 		{
-			return new Bitmap(wxArtProvider_GetBitmap(cast(int)id, cast(int)client, size));
+			return new Битмап(wxArtProvider_GetBitmap(cast(цел)ид, cast(цел)client, size));
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public static Icon GetIcon(ArtID id)
+		public static Icon GetIcon(ArtID ид)
 		{
-			return GetIcon(id, ArtClient.wxART_OTHER, Window.wxDefaultSize);
+			return GetIcon(ид, ArtClient.wxART_OTHER, Окно.wxDefaultSize);
 		}				
 		
-		public static Icon GetIcon(ArtID id, ArtClient client)
+		public static Icon GetIcon(ArtID ид, ArtClient client)
 		{
-			return GetIcon(id, client, Window.wxDefaultSize);
+			return GetIcon(ид, client, Окно.wxDefaultSize);
 		}				
 		
-		public static Icon GetIcon(ArtID id, ArtClient client, Size size)
+		public static Icon GetIcon(ArtID ид, ArtClient client, Размер size)
 		{
-			return new Icon(wxArtProvider_GetIcon(cast(int)id, cast(int)client, size));
+			return new Icon(wxArtProvider_GetIcon(cast(цел)ид, cast(цел)client, size));
 		}
 	}

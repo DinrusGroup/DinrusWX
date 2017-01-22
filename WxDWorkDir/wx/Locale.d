@@ -1,4 +1,4 @@
-//-----------------------------------------------------------------------------
+﻿//-----------------------------------------------------------------------------
 // wxD - Locale.d
 // (C) 2005 bero <berobero@users.sourceforge.net>
 // based on
@@ -10,12 +10,12 @@
 // (C) 2004 by Alexander Olk
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: Locale.d,v 1.10 2007/01/28 23:06:37 afb Exp $
+// $Ид: Locale.d,v 1.10 2007/01/28 23:06:37 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.Locale;
 public import wx.common;
-public import wx.Font;
+public import wx.Шрифт;
 
 	public enum Language
 	{
@@ -283,14 +283,14 @@ public import wx.Font;
 	//-----------------------------------------------------------------------------
 	
 		//! \cond EXTERN
-		static extern (C) IntPtr wxLanguageInfo_ctor();
-		static extern (C) void   wxLanguageInfo_dtor(IntPtr self);
-		static extern (C) void   wxLanguageInfo_SetLanguage(IntPtr self, int value);
-		static extern (C) int    wxLanguageInfo_GetLanguage(IntPtr self);
-		static extern (C) void   wxLanguageInfo_SetCanonicalName(IntPtr self, string name);
-		static extern (C) IntPtr wxLanguageInfo_GetCanonicalName(IntPtr self);
-		static extern (C) void   wxLanguageInfo_SetDescription(IntPtr self, string name);
-		static extern (C) IntPtr wxLanguageInfo_GetDescription(IntPtr self);
+		static extern (C) ЦУк wxLanguageInfo_ctor();
+		static extern (C) проц   wxLanguageInfo_dtor(ЦУк сам);
+		static extern (C) проц   wxLanguageInfo_SetLanguage(ЦУк сам, цел значение);
+		static extern (C) цел    wxLanguageInfo_GetLanguage(ЦУк сам);
+		static extern (C) проц   wxLanguageInfo_SetCanonicalName(ЦУк сам, ткст имя);
+		static extern (C) ЦУк wxLanguageInfo_GetCanonicalName(ЦУк сам);
+		static extern (C) проц   wxLanguageInfo_SetDescription(ЦУк сам, ткст имя);
+		static extern (C) ЦУк wxLanguageInfo_GetDescription(ЦУк сам);
 		//! \endcond
 		
 		//-----------------------------------------------------------------------------
@@ -298,68 +298,68 @@ public import wx.Font;
 	alias LanguageInfo wxLanguageInfo;
 	public class LanguageInfo : wxObject
 	{
-		public this(IntPtr wxobj)
+		public this(ЦУк шхобъ)
 		{
-			super(wxobj);
+			super(шхобъ);
 		}
 			
-		private this(IntPtr wxobj, bool memOwn)
+		private this(ЦУк шхобъ, бул memOwn)
 		{
-			super(wxobj);
+			super(шхобъ);
 			this.memOwn = memOwn;
 		}
 		
 		public this()
-			{ this(wxLanguageInfo_ctor(), true);}
+			{ this(wxLanguageInfo_ctor(), да);}
 		
 		
-		public static wxObject New(IntPtr ptr) { return new LanguageInfo(ptr); }
+		public static wxObject Нов(ЦУк ptr) { return new LanguageInfo(ptr); }
 		//---------------------------------------------------------------------
 
-		override protected void dtor() { wxLanguageInfo_dtor(wxobj); }
+		override protected проц dtor() { wxLanguageInfo_dtor(шхобъ); }
 		
 		//---------------------------------------------------------------------
 		
-		public int language() { return wxLanguageInfo_GetLanguage(wxobj); }
-		public void language(int value) { wxLanguageInfo_SetLanguage(wxobj, value); }
+		public цел language() { return wxLanguageInfo_GetLanguage(шхобъ); }
+		public проц language(цел значение) { wxLanguageInfo_SetLanguage(шхобъ, значение); }
 		
 		//---------------------------------------------------------------------
 		
-		public string CanonicalName() { return cast(string) new wxString(wxLanguageInfo_GetCanonicalName(wxobj), true); }
-		public void CanonicalName(string value) { wxLanguageInfo_SetCanonicalName(wxobj, value); }
+		public ткст CanonicalName() { return cast(ткст) new wxString(wxLanguageInfo_GetCanonicalName(шхобъ), да); }
+		public проц CanonicalName(ткст значение) { wxLanguageInfo_SetCanonicalName(шхобъ, значение); }
 		
 		//---------------------------------------------------------------------
 		
-		public string Description() { return cast(string) new wxString(wxLanguageInfo_GetDescription(wxobj), true); }
-		public void Description(string value) { wxLanguageInfo_SetDescription(wxobj, value); }
+		public ткст Description() { return cast(ткст) new wxString(wxLanguageInfo_GetDescription(шхобъ), да); }
+		public проц Description(ткст значение) { wxLanguageInfo_SetDescription(шхобъ, значение); }
 	}
 	
 	//-----------------------------------------------------------------------------
 	
 		//! \cond EXTERN
-		static extern (C) IntPtr wxLocale_ctor();
-		static extern (C) IntPtr wxLocale_ctor2(int language, int flags);
-		static extern (C) void   wxLocale_dtor(IntPtr self);
-		static extern (C) bool   wxLocale_Init(IntPtr self, int language, int flags);
-		static extern (C) bool   wxLocale_AddCatalog(IntPtr self, string szDomain);
-		static extern (C) bool   wxLocale_AddCatalog2(IntPtr self, string szDomain, int msgIdLanguage, string msgIdCharset);
-		static extern (C) void   wxLocale_AddCatalogLookupPathPrefix(IntPtr self, string prefix);
-		static extern (C) void   wxLocale_AddLanguage(IntPtr info);
-		static extern (C) IntPtr wxLocale_FindLanguageInfo(string locale);
-		static extern (C) IntPtr wxLocale_GetCanonicalName(IntPtr self);
-		static extern (C) int    wxLocale_GetLanguage(IntPtr self);
-		static extern (C) IntPtr wxLocale_GetLanguageInfo(int lang);
-		static extern (C) IntPtr wxLocale_GetLanguageName(int lang);
-		static extern (C) IntPtr wxLocale_GetLocale(IntPtr self);
-		static extern (C) IntPtr wxLocale_GetName(IntPtr self);
-		static extern (C) IntPtr wxLocale_GetString(IntPtr self, string szOrigString, string szDomain);
-		static extern (C) IntPtr wxLocale_GetHeaderValue(IntPtr self, string szHeader, string szDomain);
-		static extern (C) IntPtr wxLocale_GetSysName(IntPtr self);
-		static extern (C) int    wxLocale_GetSystemEncoding();
-		static extern (C) IntPtr wxLocale_GetSystemEncodingName();
-		static extern (C) int    wxLocale_GetSystemLanguage();
-		static extern (C) bool   wxLocale_IsLoaded(IntPtr self, string domain);
-		static extern (C) bool   wxLocale_IsOk(IntPtr self);
+		static extern (C) ЦУк wxLocale_ctor();
+		static extern (C) ЦУк wxLocale_ctor2(цел language, цел флаги);
+		static extern (C) проц   wxLocale_dtor(ЦУк сам);
+		static extern (C) бул   wxLocale_Init(ЦУк сам, цел language, цел флаги);
+		static extern (C) бул   wxLocale_AddCatalog(ЦУк сам, ткст szDomain);
+		static extern (C) бул   wxLocale_AddCatalog2(ЦУк сам, ткст szDomain, цел msgIdLanguage, ткст msgIdCharset);
+		static extern (C) проц   wxLocale_AddCatalogLookupPathPrefix(ЦУк сам, ткст prefix);
+		static extern (C) проц   wxLocale_AddLanguage(ЦУк info);
+		static extern (C) ЦУк wxLocale_FindLanguageInfo(ткст locale);
+		static extern (C) ЦУк wxLocale_GetCanonicalName(ЦУк сам);
+		static extern (C) цел    wxLocale_GetLanguage(ЦУк сам);
+		static extern (C) ЦУк wxLocale_GetLanguageInfo(цел lang);
+		static extern (C) ЦУк wxLocale_GetLanguageName(цел lang);
+		static extern (C) ЦУк wxLocale_GetLocale(ЦУк сам);
+		static extern (C) ЦУк wxLocale_GetName(ЦУк сам);
+		static extern (C) ЦУк wxLocale_GetString(ЦУк сам, ткст szOrigString, ткст szDomain);
+		static extern (C) ЦУк wxLocale_GetHeaderValue(ЦУк сам, ткст szHeader, ткст szDomain);
+		static extern (C) ЦУк wxLocale_GetSysName(ЦУк сам);
+		static extern (C) цел    wxLocale_GetSystemEncoding();
+		static extern (C) ЦУк wxLocale_GetSystemEncodingName();
+		static extern (C) цел    wxLocale_GetSystemLanguage();
+		static extern (C) бул   wxLocale_IsLoaded(ЦУк сам, ткст domain);
+		static extern (C) бул   wxLocale_IsOk(ЦУк сам);
 		//! \endcond
 		
 		//-----------------------------------------------------------------------------
@@ -367,140 +367,140 @@ public import wx.Font;
 	alias Locale wxLocale;
 	public class Locale : wxObject
 	{
-		public this(IntPtr wxobj)
+		public this(ЦУк шхобъ)
 		{
-			super(wxobj);
+			super(шхобъ);
 		}
 			
-		private this(IntPtr wxobj, bool memOwn)
+		private this(ЦУк шхобъ, бул memOwn)
 		{
-			super(wxobj);
+			super(шхобъ);
 			this.memOwn = memOwn;
 		}
 		
 		public this()
-			{ this(wxLocale_ctor(), true);}
+			{ this(wxLocale_ctor(), да);}
 			
-		public this(int language)
+		public this(цел language)
 			{ this(language, LocaleInitFlags.wxLOCALE_LOAD_DEFAULT | LocaleInitFlags.wxLOCALE_CONV_ENCODING);}
 			
-		public this(int language, LocaleInitFlags flags)
-			{ this(wxLocale_ctor2(language, cast(int)flags), true);}
+		public this(цел language, LocaleInitFlags флаги)
+			{ this(wxLocale_ctor2(language, cast(цел)флаги), да);}
 		
 		//---------------------------------------------------------------------
 
-		override protected void dtor() { wxLocale_dtor(wxobj); }
+		override protected проц dtor() { wxLocale_dtor(шхобъ); }
 		
 		//-----------------------------------------------------------------------------
 		
-		public bool Init()
+		public бул Init()
 		{
 			return Init(Language.wxLANGUAGE_DEFAULT, LocaleInitFlags.wxLOCALE_LOAD_DEFAULT | LocaleInitFlags.wxLOCALE_CONV_ENCODING);
 		}
 		
-		public bool Init(Language language)
+		public бул Init(Language language)
 		{
 			return Init(language,  LocaleInitFlags.wxLOCALE_LOAD_DEFAULT | LocaleInitFlags.wxLOCALE_CONV_ENCODING);
 		}
 		
-		public bool Init(Language language, LocaleInitFlags flags)
+		public бул Init(Language language, LocaleInitFlags флаги)
 		{
-			return wxLocale_Init(wxobj, cast(int)language, cast(int)flags);
+			return wxLocale_Init(шхобъ, cast(цел)language, cast(цел)флаги);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public bool AddCatalog(string szDomain)
+		public бул AddCatalog(ткст szDomain)
 		{
-			return wxLocale_AddCatalog(wxobj, szDomain);
+			return wxLocale_AddCatalog(шхобъ, szDomain);
 		}
 		
-		public bool AddCatalog(string szDomain, Language msgIdLanguage, string msgIdCharset)
+		public бул AddCatalog(ткст szDomain, Language msgIdLanguage, ткст msgIdCharset)
 		{
-			return wxLocale_AddCatalog2(wxobj, szDomain, cast(int)msgIdLanguage, msgIdCharset);
-		}
-		
-		//-----------------------------------------------------------------------------
-		
-		public void AddCatalogLookupPathPrefix(string prefix)
-		{
-			wxLocale_AddCatalogLookupPathPrefix(wxobj, prefix);
+			return wxLocale_AddCatalog2(шхобъ, szDomain, cast(цел)msgIdLanguage, msgIdCharset);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public static void AddLanguage(LanguageInfo info)
+		public проц AddCatalogLookupPathPrefix(ткст prefix)
+		{
+			wxLocale_AddCatalogLookupPathPrefix(шхобъ, prefix);
+		}
+		
+		//-----------------------------------------------------------------------------
+		
+		public static проц AddLanguage(LanguageInfo info)
 		{
 			wxLocale_AddLanguage(wxObject.SafePtr(info));
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public static LanguageInfo FindLanguageInfo(string locale)
+		public static LanguageInfo FindLanguageInfo(ткст locale)
 		{
-			return cast(LanguageInfo)FindObject(wxLocale_FindLanguageInfo(locale), &LanguageInfo.New);
+			return cast(LanguageInfo)FindObject(wxLocale_FindLanguageInfo(locale), &LanguageInfo.Нов);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public string CanonicalName() { return cast(string) new wxString(wxLocale_GetCanonicalName(wxobj), true); }
+		public ткст CanonicalName() { return cast(ткст) new wxString(wxLocale_GetCanonicalName(шхобъ), да); }
 		
 		//-----------------------------------------------------------------------------
 		
-		public Language language() { return cast(Language)wxLocale_GetLanguage(wxobj); }
+		public Language language() { return cast(Language)wxLocale_GetLanguage(шхобъ); }
 		
 		//-----------------------------------------------------------------------------
 		
 		public static LanguageInfo GetLanguageInfo(Language lang)
 		{
-			return cast(LanguageInfo)FindObject(wxLocale_GetLanguageInfo(cast(int)lang), &LanguageInfo.New);
+			return cast(LanguageInfo)FindObject(wxLocale_GetLanguageInfo(cast(цел)lang), &LanguageInfo.Нов);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public static string GetLanguageName(Language lang)
+		public static ткст GetLanguageName(Language lang)
 		{
-			return cast(string) new wxString(wxLocale_GetLanguageName(cast(int)lang), true);
+			return cast(ткст) new wxString(wxLocale_GetLanguageName(cast(цел)lang), да);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public string GetLocale()
+		public ткст GetLocale()
 		{
-			return cast(string) new wxString(wxLocale_GetLocale(wxobj), true);
+			return cast(ткст) new wxString(wxLocale_GetLocale(шхобъ), да);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public string Name() { return cast(string) new wxString(wxLocale_GetName(wxobj), true); }
+		public ткст Имя() { return cast(ткст) new wxString(wxLocale_GetName(шхобъ), да); }
 		
 		//-----------------------------------------------------------------------------
 		
-		public string GetString(string szOrigString)
+		public ткст GetString(ткст szOrigString)
 		{
-			return GetString(szOrigString, null);
+			return GetString(szOrigString, пусто);
 		}
 		
-		public string GetString(string szOrigString, string szDomain)
+		public ткст GetString(ткст szOrigString, ткст szDomain)
 		{
-			return cast(string) new wxString(wxLocale_GetString(wxobj, szOrigString, szDomain), true);
-		}
-		
-		//-----------------------------------------------------------------------------
-		
-		public string GetHeaderValue(string szHeader)
-		{
-			return GetHeaderValue(szHeader, null);
-		}
-		
-		public string GetHeaderValue(string szHeader, string szDomain)
-		{
-			return cast(string) new wxString(wxLocale_GetHeaderValue(wxobj, szHeader, szDomain), true);
+			return cast(ткст) new wxString(wxLocale_GetString(шхобъ, szOrigString, szDomain), да);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public string SysName() { return cast(string) new wxString(wxLocale_GetSysName(wxobj), true); }
+		public ткст GetHeaderValue(ткст szHeader)
+		{
+			return GetHeaderValue(szHeader, пусто);
+		}
+		
+		public ткст GetHeaderValue(ткст szHeader, ткст szDomain)
+		{
+			return cast(ткст) new wxString(wxLocale_GetHeaderValue(шхобъ, szHeader, szDomain), да);
+		}
+		
+		//-----------------------------------------------------------------------------
+		
+		public ткст SysName() { return cast(ткст) new wxString(wxLocale_GetSysName(шхобъ), да); }
 		
 		//-----------------------------------------------------------------------------
 		
@@ -508,7 +508,7 @@ public import wx.Font;
 		
 		//-----------------------------------------------------------------------------
 		
-		static string SystemEncodingName() { return cast(string) new wxString(wxLocale_GetSystemEncodingName(), true); }
+		static ткст SystemEncodingName() { return cast(ткст) new wxString(wxLocale_GetSystemEncodingName(), да); }
 		
 		//-----------------------------------------------------------------------------
 		
@@ -516,12 +516,12 @@ public import wx.Font;
 		
 		//-----------------------------------------------------------------------------
 		
-		public bool IsLoaded(string domain)
+		public бул IsLoaded(ткст domain)
 		{
-			return wxLocale_IsLoaded(wxobj, domain);
+			return wxLocale_IsLoaded(шхобъ, domain);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public bool IsOk() { return wxLocale_IsOk(wxobj); }
+		public бул IsOk() { return wxLocale_IsOk(шхобъ); }
 	}

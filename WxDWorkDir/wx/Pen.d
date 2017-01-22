@@ -1,8 +1,8 @@
 //-----------------------------------------------------------------------------
-// wxD - Pen.d
+// wxD - Перо.d
 // (C) 2005 bero <berobero@users.sourceforge.net>
 // based on
-// wx.NET - Pen.cs
+// wx.NET - Перо.cs
 //
 /// The wxPen wrapper class.
 //
@@ -10,65 +10,65 @@
 // (C) 2003 by 379, Inc.
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: Pen.d,v 1.9 2006/11/17 15:21:00 afb Exp $
+// $Ид: Перо.d,v 1.9 2006/11/17 15:21:00 afb Exp $
 //-----------------------------------------------------------------------------
 
-module wx.Pen;
+module wx.Перо;
 public import wx.common;
 public import wx.Defs;
 public import wx.GDIObject;
 public import wx.Colour;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxGDIObj_GetRedPen();
-		static extern (C) IntPtr wxGDIObj_GetCyanPen();
-		static extern (C) IntPtr wxGDIObj_GetGreenPen();
-		static extern (C) IntPtr wxGDIObj_GetBlackPen();
-		static extern (C) IntPtr wxGDIObj_GetWhitePen();
-		static extern (C) IntPtr wxGDIObj_GetTransparentPen();
-		static extern (C) IntPtr wxGDIObj_GetBlackDashedPen();
-		static extern (C) IntPtr wxGDIObj_GetGreyPen();
-		static extern (C) IntPtr wxGDIObj_GetMediumGreyPen();
-		static extern (C) IntPtr wxGDIObj_GetLightGreyPen();
+		static extern (C) ЦУк wxGDIObj_GetRedPen();
+		static extern (C) ЦУк wxGDIObj_GetCyanPen();
+		static extern (C) ЦУк wxGDIObj_GetGreenPen();
+		static extern (C) ЦУк wxGDIObj_GetBlackPen();
+		static extern (C) ЦУк wxGDIObj_GetWhitePen();
+		static extern (C) ЦУк wxGDIObj_GetTransparentPen();
+		static extern (C) ЦУк wxGDIObj_GetBlackDashedPen();
+		static extern (C) ЦУк wxGDIObj_GetGreyPen();
+		static extern (C) ЦУк wxGDIObj_GetMediumGreyPen();
+		static extern (C) ЦУк wxGDIObj_GetLightGreyPen();
 
-		static extern (C) IntPtr wxPen_ctor(IntPtr col, int width, FillStyle style);
-		static extern (C) IntPtr wxPen_ctorByName(string name, int width, FillStyle style);
+		static extern (C) ЦУк wxPen_ctor(ЦУк col, цел ширина, СтильЗаливки стиль);
+		static extern (C) ЦУк wxPen_ctorByName(ткст имя, цел ширина, СтильЗаливки стиль);
 	
-		static extern (C) IntPtr wxPen_GetColour(IntPtr self);
-		static extern (C) void   wxPen_SetColour(IntPtr self, IntPtr col);
+		static extern (C) ЦУк wxPen_GetColour(ЦУк сам);
+		static extern (C) проц   wxPen_SetColour(ЦУк сам, ЦУк col);
 	
-		static extern (C) void   wxPen_SetWidth(IntPtr self, int width);
-		static extern (C) int    wxPen_GetWidth(IntPtr self);
+		static extern (C) проц   wxPen_SetWidth(ЦУк сам, цел ширина);
+		static extern (C) цел    wxPen_GetWidth(ЦУк сам);
 		
-		static extern (C) int    wxPen_GetCap(IntPtr self);
-		static extern (C) int    wxPen_GetJoin(IntPtr self);
-		static extern (C) int    wxPen_GetStyle(IntPtr self);
-		static extern (C) bool   wxPen_Ok(IntPtr self);
-		static extern (C) void   wxPen_SetCap(IntPtr self, int capStyle);
-		static extern (C) void   wxPen_SetJoin(IntPtr self, int join_style);
-		static extern (C) void   wxPen_SetStyle(IntPtr self, int style);
+		static extern (C) цел    wxPen_GetCap(ЦУк сам);
+		static extern (C) цел    wxPen_GetJoin(ЦУк сам);
+		static extern (C) цел    wxPen_GetStyle(ЦУк сам);
+		static extern (C) бул   wxPen_Ok(ЦУк сам);
+		static extern (C) проц   wxPen_SetCap(ЦУк сам, цел capStyle);
+		static extern (C) проц   wxPen_SetJoin(ЦУк сам, цел join_style);
+		static extern (C) проц   wxPen_SetStyle(ЦУк сам, цел стиль);
 
 		//---------------------------------------------------------------------
-		static extern (C) IntPtr wxNullPen_Get();
+		static extern (C) ЦУк wxNullPen_Get();
 		//! \endcond
 
-	alias Pen wxPen;
-	public class Pen : GDIObject
+	alias Перо wxPen;
+	public class Перо : GDIObject
 	{
-		public static Pen wxRED_PEN;
-		public static Pen wxCYAN_PEN;
-		public static Pen wxGREEN_PEN;
-		public static Pen wxBLACK_PEN;
-		public static Pen wxWHITE_PEN;
-		public static Pen wxTRANSPARENT_PEN;
-		public static Pen wxBLACK_DASHED_PEN;
-		public static Pen wxGREY_PEN;
-		public static Pen wxMEDIUM_GREY_PEN;
-		public static Pen wxLIGHT_GREY_PEN;
-		public static Pen wxNullPen;
+		public static Перо wxRED_PEN;
+		public static Перо wxCYAN_PEN;
+		public static Перо wxGREEN_PEN;
+		public static Перо wxBLACK_PEN;
+		public static Перо wxWHITE_PEN;
+		public static Перо wxTRANSPARENT_PEN;
+		public static Перо wxBLACK_DASHED_PEN;
+		public static Перо wxGREY_PEN;
+		public static Перо wxMEDIUM_GREY_PEN;
+		public static Перо wxLIGHT_GREY_PEN;
+		public static Перо wxNullPen;
 
 /+
-		override public void Dispose()
+		override public проц Dispose()
 		{
 			if (this !== wxRED_PEN
 			&&  this !== wxCYAN_PEN
@@ -86,56 +86,56 @@ public import wx.Colour;
 +/
 		//---------------------------------------------------------------------
 
-		public this(IntPtr wxobj) 
-			{ super(wxobj); }
+		public this(ЦУк шхобъ) 
+			{ super(шхобъ); }
 
-		public this(string name) 
-			{ this(name, 1, FillStyle.wxSOLID); }
+		public this(ткст имя) 
+			{ this(имя, 1, СтильЗаливки.wxSOLID); }
 			
-		public this(string name, int width) 
-			{ this(name, width, FillStyle.wxSOLID); }
+		public this(ткст имя, цел ширина) 
+			{ this(имя, ширина, СтильЗаливки.wxSOLID); }
 			
-		public this(string name, int width, FillStyle style) 
-			{ super(wxPen_ctorByName(name, width, style)); }
+		public this(ткст имя, цел ширина, СтильЗаливки стиль) 
+			{ super(wxPen_ctorByName(имя, ширина, стиль)); }
 
-		public this(Colour colour) 
-			{ this(colour, 1, FillStyle.wxSOLID); }
+		public this(Цвет colour) 
+			{ this(colour, 1, СтильЗаливки.wxSOLID); }
 			
-		public this(Colour colour, int width) 
-			{ this(colour, width, FillStyle.wxSOLID); }
+		public this(Цвет colour, цел ширина) 
+			{ this(colour, ширина, СтильЗаливки.wxSOLID); }
 			
-		public this(Colour col, int width, FillStyle style)
-			{ super(wxPen_ctor(wxObject.SafePtr(col), width, style)); }
+		public this(Цвет col, цел ширина, СтильЗаливки стиль)
+			{ super(wxPen_ctor(wxObject.SafePtr(col), ширина, стиль)); }
 
 
 		//---------------------------------------------------------------------
         
-		public Colour colour() { return cast(Colour)FindObject(wxPen_GetColour(wxobj), &Colour.New); }
-		public void colour(Colour value) { wxPen_SetColour(wxobj, wxObject.SafePtr(value)); }
+		public Цвет colour() { return cast(Цвет)FindObject(wxPen_GetColour(шхобъ), &Цвет.Нов); }
+		public проц colour(Цвет значение) { wxPen_SetColour(шхобъ, wxObject.SafePtr(значение)); }
 
 		//---------------------------------------------------------------------
 
-		public int Width() { return wxPen_GetWidth(wxobj); }
-		public void Width(int value) { wxPen_SetWidth(wxobj, value); }
+		public цел Ширина() { return wxPen_GetWidth(шхобъ); }
+		public проц Ширина(цел значение) { wxPen_SetWidth(шхобъ, значение); }
 	
 		//---------------------------------------------------------------------
 	
-		public int Cap() { return wxPen_GetCap(wxobj); }
-		public void Cap(int value) { wxPen_SetCap(wxobj, value); }
+		public цел Cap() { return wxPen_GetCap(шхобъ); }
+		public проц Cap(цел значение) { wxPen_SetCap(шхобъ, значение); }
 	
 		//---------------------------------------------------------------------
 	
-		public int Join() { return wxPen_GetJoin(wxobj); }
-		public void Join(int value) { wxPen_SetJoin(wxobj, value); }
+		public цел Join() { return wxPen_GetJoin(шхобъ); }
+		public проц Join(цел значение) { wxPen_SetJoin(шхобъ, значение); }
 	
 		//---------------------------------------------------------------------
 	
-		public int Style() { return wxPen_GetStyle(wxobj); }
-		public void Style(int value) { wxPen_SetStyle(wxobj, value); }
+		public цел Style() { return wxPen_GetStyle(шхобъ); }
+		public проц Style(цел значение) { wxPen_SetStyle(шхобъ, значение); }
 	
 		//---------------------------------------------------------------------
 	
-		public bool Ok() { return wxPen_Ok(wxobj); }
+		public бул Ок() { return wxPen_Ok(шхобъ); }
 
-		static wxObject New(IntPtr ptr) { return new Pen(ptr); }
+		static wxObject Нов(ЦУк ptr) { return new Перо(ptr); }
 	}

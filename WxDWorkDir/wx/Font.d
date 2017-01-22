@@ -1,8 +1,8 @@
-//-----------------------------------------------------------------------------
-// wxD - Font.d
+﻿//-----------------------------------------------------------------------------
+// wxD - Шрифт.d
 // (C) 2005 bero <berobero@users.sourceforge.net>
 // based on
-// wx.NET - Font.cs
+// wx.NET - Шрифт.cs
 //
 /// The wxFont wrapper class.
 //
@@ -10,14 +10,14 @@
 // (C) 2003 Bryan Bulten
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: Font.d,v 1.12 2009/01/13 22:18:51 afb Exp $
+// $Ид: Шрифт.d,v 1.12 2009/01/13 22:18:51 afb Exp $
 //-----------------------------------------------------------------------------
 
-module wx.Font;
+module wx.Шрифт;
 public import wx.common;
 public import wx.GDIObject;
 
-	// Font encodings - taken from wx/fontenc.h
+	// Шрифт encodings - taken from wx/fontenc.h
 	// Author: Vadim Zeitlin, (C) Vadim Zeitlin
 	public enum FontEncoding
 	{
@@ -91,7 +91,7 @@ public import wx.GDIObject;
 
 	public enum FontFamily
 	{
-		// Text font families
+		// Текст шрифт families
 		wxDEFAULT    = 70,
 		wxDECORATIVE,
 		wxROMAN,
@@ -101,14 +101,14 @@ public import wx.GDIObject;
 		wxTELETYPE,  
 		wxMAX,
         
-		// Proportional or Fixed width fonts (not yet used)
+		// Proportional or Fixed ширина fonts (not yet used)
 		wxVARIABLE   = 80,
 		wxFIXED,
         
 		wxNORMAL     = 90,
 		wxLIGHT,
 		wxBOLD,
-		// Also wxNORMAL for normal (non-italic text)
+		// Also wxNORMAL for normal (non-italic текст)
 		wxITALIC,
 		wxSLANT
 	}
@@ -156,60 +156,60 @@ public import wx.GDIObject;
 	}
 
 		//! \cond EXTERN
-		static extern (C)        IntPtr wxFont_NORMAL_FONT();
-		static extern (C)        IntPtr wxFont_SMALL_FONT();
-		static extern (C)        IntPtr wxFont_ITALIC_FONT();
-		static extern (C)        IntPtr wxFont_SWISS_FONT();
-		static extern (C) IntPtr wxNullFont_Get();
+		static extern (C)        ЦУк wxFont_NORMAL_FONT();
+		static extern (C)        ЦУк wxFont_SMALL_FONT();
+		static extern (C)        ЦУк wxFont_ITALIC_FONT();
+		static extern (C)        ЦУк wxFont_SWISS_FONT();
+		static extern (C) ЦУк wxNullFont_Get();
 
-		static extern (C)        IntPtr wxFont_ctorDef();
-		static extern (C)        IntPtr wxFont_ctor(int pointSize, int family, int style, int weight, bool underline, string faceName, FontEncoding encoding);
-		static extern (C) void   wxFont_dtor(IntPtr self);
-		static extern (C) bool   wxFont_Ok(IntPtr self);
-		static extern (C) int    wxFont_GetPointSize(IntPtr self);
-		static extern (C) int    wxFont_GetFamily(IntPtr self);
-		static extern (C) int    wxFont_GetStyle(IntPtr self);
-		static extern (C) int    wxFont_GetWeight(IntPtr self);
-		static extern (C) bool   wxFont_GetUnderlined(IntPtr self);
-		static extern (C) IntPtr wxFont_GetFaceName(IntPtr self);
-		static extern (C) int    wxFont_GetEncoding(IntPtr self);
-		static extern (C)        IntPtr wxFont_GetNativeFontInfo(IntPtr self);
-		static extern (C) bool   wxFont_IsFixedWidth(IntPtr self);
-		static extern (C) IntPtr wxFont_GetNativeFontInfoDesc(IntPtr self);
-		static extern (C) IntPtr wxFont_GetNativeFontInfoUserDesc(IntPtr self);
-		static extern (C) void   wxFont_SetPointSize(IntPtr self, int pointSize);
-		static extern (C) void   wxFont_SetFamily(IntPtr self, int family);
-		static extern (C) void   wxFont_SetStyle(IntPtr self, int style);
-		static extern (C) void   wxFont_SetWeight(IntPtr self, int weight);
-		static extern (C) void   wxFont_SetFaceName(IntPtr self, string faceName);
-		static extern (C) void   wxFont_SetUnderlined(IntPtr self, bool underlined);
-		static extern (C) void   wxFont_SetEncoding(IntPtr self, int encoding);
-		static extern (C) void   wxFont_SetNativeFontInfoUserDesc(IntPtr self, IntPtr info);
-		static extern (C) IntPtr wxFont_GetFamilyString(IntPtr self);
-		static extern (C) IntPtr wxFont_GetStyleString(IntPtr self);
-		static extern (C) IntPtr wxFont_GetWeightString(IntPtr self);
-		static extern (C) void   wxFont_SetNoAntiAliasing(IntPtr self, bool no);
-		static extern (C) bool   wxFont_GetNoAntiAliasing(IntPtr self);
-		static extern (C) int    wxFont_GetDefaultEncoding();
-		static extern (C) void   wxFont_SetDefaultEncoding(int encoding);
+		static extern (C)        ЦУк wxFont_ctorDef();
+		static extern (C)        ЦУк wxFont_ctor(цел pointSize, цел family, цел стиль, цел weight, бул underline, ткст faceName, FontEncoding encoding);
+		static extern (C) проц   wxFont_dtor(ЦУк сам);
+		static extern (C) бул   wxFont_Ok(ЦУк сам);
+		static extern (C) цел    wxFont_GetPointSize(ЦУк сам);
+		static extern (C) цел    wxFont_GetFamily(ЦУк сам);
+		static extern (C) цел    wxFont_GetStyle(ЦУк сам);
+		static extern (C) цел    wxFont_GetWeight(ЦУк сам);
+		static extern (C) бул   wxFont_GetUnderlined(ЦУк сам);
+		static extern (C) ЦУк wxFont_GetFaceName(ЦУк сам);
+		static extern (C) цел    wxFont_GetEncoding(ЦУк сам);
+		static extern (C)        ЦУк wxFont_GetNativeFontInfo(ЦУк сам);
+		static extern (C) бул   wxFont_IsFixedWidth(ЦУк сам);
+		static extern (C) ЦУк wxFont_GetNativeFontInfoDesc(ЦУк сам);
+		static extern (C) ЦУк wxFont_GetNativeFontInfoUserDesc(ЦУк сам);
+		static extern (C) проц   wxFont_SetPointSize(ЦУк сам, цел pointSize);
+		static extern (C) проц   wxFont_SetFamily(ЦУк сам, цел family);
+		static extern (C) проц   wxFont_SetStyle(ЦУк сам, цел стиль);
+		static extern (C) проц   wxFont_SetWeight(ЦУк сам, цел weight);
+		static extern (C) проц   wxFont_SetFaceName(ЦУк сам, ткст faceName);
+		static extern (C) проц   wxFont_SetUnderlined(ЦУк сам, бул underlined);
+		static extern (C) проц   wxFont_SetEncoding(ЦУк сам, цел encoding);
+		static extern (C) проц   wxFont_SetNativeFontInfoUserDesc(ЦУк сам, ЦУк info);
+		static extern (C) ЦУк wxFont_GetFamilyString(ЦУк сам);
+		static extern (C) ЦУк wxFont_GetStyleString(ЦУк сам);
+		static extern (C) ЦУк wxFont_GetWeightString(ЦУк сам);
+		static extern (C) проц   wxFont_SetNoAntiAliasing(ЦУк сам, бул no);
+		static extern (C) бул   wxFont_GetNoAntiAliasing(ЦУк сам);
+		static extern (C) цел    wxFont_GetDefaultEncoding();
+		static extern (C) проц   wxFont_SetDefaultEncoding(цел encoding);
 	
-		static extern (C) IntPtr wxFont_New(string strNativeFontDesc);
+		static extern (C) ЦУк wxFont_New(ткст strNativeFontDesc);
 		//! \endcond
 
 		//---------------------------------------------------------------------
 
-	alias Font wxFont;
-	public class Font : GDIObject, ICloneable
+	alias Шрифт wxFont;
+	public class Шрифт : GDIObject, ICloneable
 	{
 		// in wxWidgets 2.8 fonts are dynamic, and crash if accessed too early
-		public static Font wxNORMAL_FONT() { return new Font(wxFont_NORMAL_FONT()); }
-		public static Font wxSMALL_FONT()  { return new Font(wxFont_SMALL_FONT()); }
-		public static Font wxITALIC_FONT() { return new Font(wxFont_ITALIC_FONT()); }
-		public static Font wxSWISS_FONT()  { return new Font(wxFont_SWISS_FONT()); }
-		public static Font wxNullFont;
+		public static Шрифт wxNORMAL_FONT() { return new Шрифт(wxFont_NORMAL_FONT()); }
+		public static Шрифт wxSMALL_FONT()  { return new Шрифт(wxFont_SMALL_FONT()); }
+		public static Шрифт wxITALIC_FONT() { return new Шрифт(wxFont_ITALIC_FONT()); }
+		public static Шрифт wxSWISS_FONT()  { return new Шрифт(wxFont_SWISS_FONT()); }
+		public static Шрифт wxNullFont;
 
 /+
-		override public void Dispose()
+		override public проц Dispose()
 		{
 			if (this !== wxNORMAL_FONT
 			&&  this !== wxSMALL_FONT
@@ -221,20 +221,20 @@ public import wx.GDIObject;
 +/
 		//---------------------------------------------------------------------
 
-		public this(IntPtr wxobj) 
-			{ super(wxobj); }
+		public this(ЦУк шхобъ) 
+			{ super(шхобъ); }
 			
-		public this(IntPtr wxobj, bool memOwn)
+		public this(ЦУк шхобъ, бул memOwn)
 		{ 
-			super(wxobj);
+			super(шхобъ);
 			this.memOwn = memOwn;
 		}
 
 		public this()
-			{ this(wxFont_ctorDef(), true); }
+			{ this(wxFont_ctorDef(), да); }
 
-		public this(int pointSize, FontFamily family, FontStyle style, FontWeight weight, bool underline = false, string face = "", FontEncoding encoding = FontEncoding.wxFONTENCODING_DEFAULT)
-			{ this(wxFont_ctor(pointSize, cast(int)family, cast(int)style, cast(int)weight, underline, face, encoding), true); }
+		public this(цел pointSize, FontFamily family, FontStyle стиль, FontWeight weight, бул underline = нет, ткст face = "", FontEncoding encoding = FontEncoding.wxFONTENCODING_DEFAULT)
+			{ this(wxFont_ctor(pointSize, cast(цел)family, cast(цел)стиль, cast(цел)weight, underline, face, encoding), да); }
 			
 		~this()
 		{
@@ -243,61 +243,61 @@ public import wx.GDIObject;
 
 		//---------------------------------------------------------------------
 
-		public int PointSize() { return wxFont_GetPointSize(wxobj); }
-		public void PointSize(int value) { wxFont_SetPointSize(wxobj, value); }
+		public цел PointSize() { return wxFont_GetPointSize(шхобъ); }
+		public проц PointSize(цел значение) { wxFont_SetPointSize(шхобъ, значение); }
 
-		public FontFamily Family() { return cast(FontFamily)wxFont_GetFamily(wxobj); }
-		public void Family(FontFamily value) { wxFont_SetFamily(wxobj, cast(int)value); }
+		public FontFamily Family() { return cast(FontFamily)wxFont_GetFamily(шхобъ); }
+		public проц Family(FontFamily значение) { wxFont_SetFamily(шхобъ, cast(цел)значение); }
 
-		public FontStyle Style() { return cast(FontStyle)wxFont_GetStyle(wxobj); }
-		public void Style(FontStyle value) { wxFont_SetStyle(wxobj, cast(int)value); }
+		public FontStyle Style() { return cast(FontStyle)wxFont_GetStyle(шхобъ); }
+		public проц Style(FontStyle значение) { wxFont_SetStyle(шхобъ, cast(цел)значение); }
 
-		public FontEncoding Encoding() { return cast(FontEncoding)wxFont_GetEncoding(wxobj); }
-		public void Encoding(FontEncoding value) { wxFont_SetEncoding(wxobj, cast(int)value); }
+		public FontEncoding Encoding() { return cast(FontEncoding)wxFont_GetEncoding(шхобъ); }
+		public проц Encoding(FontEncoding значение) { wxFont_SetEncoding(шхобъ, cast(цел)значение); }
 
-		public FontWeight Weight() { return cast(FontWeight)wxFont_GetWeight(wxobj); }
-		public void Weight(FontWeight value) { wxFont_SetWeight(wxobj, cast(int)value); }
+		public FontWeight Weight() { return cast(FontWeight)wxFont_GetWeight(шхобъ); }
+		public проц Weight(FontWeight значение) { wxFont_SetWeight(шхобъ, cast(цел)значение); }
 
-		public bool Underlined() { return wxFont_GetUnderlined(wxobj); }
-		public void Underlined(bool value) { wxFont_SetUnderlined(wxobj, value); }
+		public бул Underlined() { return wxFont_GetUnderlined(шхобъ); }
+		public проц Underlined(бул значение) { wxFont_SetUnderlined(шхобъ, значение); }
 
-		public string FaceName() { return cast(string) new wxString(wxFont_GetFaceName(wxobj), true); }
-		public void FaceName(string value) { wxFont_SetFaceName(wxobj, value); }
+		public ткст FaceName() { return cast(ткст) new wxString(wxFont_GetFaceName(шхобъ), да); }
+		public проц FaceName(ткст значение) { wxFont_SetFaceName(шхобъ, значение); }
 	
-		public string FamilyString() { return cast(string) new wxString(wxFont_GetFamilyString(wxobj), true); }
+		public ткст FamilyString() { return cast(ткст) new wxString(wxFont_GetFamilyString(шхобъ), да); }
 	
-		public string StyleString() { return cast(string) new wxString(wxFont_GetStyleString(wxobj), true); }
+		public ткст StyleString() { return cast(ткст) new wxString(wxFont_GetStyleString(шхобъ), да); }
 	
-		public string WeightString() { return cast(string) new wxString(wxFont_GetStyleString(wxobj), true); }
+		public ткст WeightString() { return cast(ткст) new wxString(wxFont_GetStyleString(шхобъ), да); }
 	
-		public bool IsFixedWidth() { return wxFont_IsFixedWidth(wxobj); }
+		public бул IsFixedWidth() { return wxFont_IsFixedWidth(шхобъ); }
 	
-		public bool Ok() { return wxFont_Ok(wxobj); }
+		public бул Ок() { return wxFont_Ok(шхобъ); }
 	
-		public IntPtr NativeFontInfo() { return wxFont_GetNativeFontInfo(wxobj); }
+		public ЦУк NativeFontInfo() { return wxFont_GetNativeFontInfo(шхобъ); }
 	
-		public string NativeFontInfoUserDesc() { return cast(string) new wxString(wxFont_GetNativeFontInfoUserDesc(wxobj), true); }
+		public ткст NativeFontInfoUserDesc() { return cast(ткст) new wxString(wxFont_GetNativeFontInfoUserDesc(шхобъ), да); }
 	
-		public string NativeFontInfoDesc() { return cast(string) new wxString(wxFont_GetNativeFontInfoDesc(wxobj), true); }
+		public ткст NativeFontInfoDesc() { return cast(ткст) new wxString(wxFont_GetNativeFontInfoDesc(шхобъ), да); }
 	
-		public static Font New(string strNativeFontDesc)
+		public static Шрифт Нов(ткст strNativeFontDesc)
 		{
-			return new Font(wxFont_New(strNativeFontDesc));
+			return new Шрифт(wxFont_New(strNativeFontDesc));
 		}
 
 		//---------------------------------------------------------------------
 
 		// Implement ICloneable to provide instance copy
-		public Object Clone()
+		public Объект Clone()
 		{
-			return new Font(this);
+			return new Шрифт(this);
 		}
 
-		// Constructor that copies font passed in
-		public this(Font other) 
+		// Constructor that copies шрифт passed in
+		public this(Шрифт other) 
 		{
 			this(other.PointSize,other.Family,other.Style,other.Weight,other.Underlined,other.FaceName,other.Encoding);
 		}
 
-		public static wxObject New(IntPtr ptr) { return new Font(ptr); }
+		public static wxObject Нов(ЦУк ptr) { return new Шрифт(ptr); }
 	}

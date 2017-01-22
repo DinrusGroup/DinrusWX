@@ -8,7 +8,7 @@
 // (C) 2003 Bryan Bulten
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: Printing.d,v 1.10 2008/04/24 07:24:52 afb Exp $
+// $Ид: Printing.d,v 1.10 2008/04/24 07:24:52 afb Exp $
 //-----------------------------------------------------------------------------
 
 import wx.wx;
@@ -18,26 +18,26 @@ import wx.wx;
 		enum Cmd { Print, PrintSetup, PageSetup, PrintPreview, About, Quit }
 
         private MyCanvas m_canvas;
-        private Font m_testFont;
+        private Шрифт m_testFont;
 
         private PrintData m_printData;
         private PageSetupDialogData m_pageSetupData;
 
-		public this(string title, Point pos, Size size)
+		public this(ткст title, Точка поз, Размер size)
 		{
-			super(title, pos, size);
+			super(title, поз, size);
             // Setup our canvas
 
             m_canvas = new MyCanvas(this);
 
-            // Setup the menu
+            // Setup the меню
 
             MenuBar menuBar = new MenuBar();
 
-            Menu fileMenu = new Menu();
+            Меню fileMenu = new Меню();
             fileMenu.Append(Cmd.Print, "&Print...\tCtrl+P", 
                             "Print the canvas");
-            fileMenu.Append(Cmd.PrintSetup, "Pr&int Setup...", 
+            fileMenu.Append(Cmd.PrintSetup, "Pr&цел Setup...", 
                             "Setup printer properties");
             fileMenu.Append(Cmd.PageSetup, "P&age Setup...",
                             "Page properties");
@@ -48,10 +48,10 @@ import wx.wx;
                             "Exit the printer demo");
             menuBar.Append(fileMenu, "&File");
 
-            Menu helpMenu = new Menu();
+            Меню helpMenu = new Меню();
             helpMenu.Append(Cmd.About, "About...",
                             "About this application");
-            menuBar.Append(helpMenu, "&Help");
+            menuBar.Append(helpMenu, "&Справка");
 
             this.menuBar = menuBar;
 
@@ -67,7 +67,7 @@ import wx.wx;
             m_printData     = new PrintData();
             m_pageSetupData = new PageSetupDialogData();
 
-            icon = new Icon("../Samples/Printing/mondrian.png");
+            иконка = new Icon("../Samples/Printing/mondrian.png");
 
             CreateStatusBar(2);
             StatusText = "Welcome to the Printing Demo!";
@@ -75,14 +75,14 @@ import wx.wx;
             Centre();
         }
 
-		public void OnPrint(Object sender, Event e)
+		public проц OnPrint(Объект sender, Событие e)
         {
             PrintDialogData printDialogData = new PrintDialogData(m_printData);
             Printer printer = new Printer(printDialogData);
 
             MyPrintout printout = new MyPrintout("My printout");
 
-            if (!printer.Print(this, printout, true)) {
+            if (!printer.Print(this, printout, да)) {
                 if (printer.LastError == PrinterError.wxPRINTER_ERROR) {
                     MessageBox(
                             "There was a problem printing.\n" 
@@ -100,17 +100,17 @@ import wx.wx;
             }
         }
 
-		public void OnPrintSetup(Object sender, Event e)
+		public проц OnPrintSetup(Объект sender, Событие e)
         {
             PrintDialog printerDialog = new PrintDialog(this, m_printData);
 
-            printerDialog.printDialogData.SetupDialog = true;
+            printerDialog.printDialogData.SetupDialog = да;
             printerDialog.ShowModal();
 
             m_printData = printerDialog.printDialogData.printData;
         }
 
-		public void OnPageSetup(Object sender, Event e)
+		public проц OnPageSetup(Объект sender, Событие e)
         {
             m_pageSetupData = new PageSetupDialogData(m_printData);
 
@@ -122,7 +122,7 @@ import wx.wx;
             m_pageSetupData = pageSetupDialog.PageSetupData;
         }
 
-		public void OnPrintPreview(Object sender, Event e)
+		public проц OnPrintPreview(Объект sender, Событие e)
         {
             // Pass two printout Objects: for preview, and possible printing.
             PrintDialogData printDialogData = new PrintDialogData(m_printData);
@@ -131,7 +131,7 @@ import wx.wx;
                 new PrintPreview(new MyPrintout(""), new MyPrintout(""), 
                                  printDialogData);
 
-            if (!preview.Ok)
+            if (!preview.Ок)
             {
                 MessageBox(
                         "There was a problem previewing.\n" ~ 
@@ -143,21 +143,21 @@ import wx.wx;
 
             PreviewFrame frame = 
                 new PreviewFrame(preview, this, "Demo Print Preview", 
-                                 Point(100, 100), Size(600, 650));
+                                 Точка(100, 100), Размер(600, 650));
 
             frame.Centre();
-            frame.Initialize();
-            frame.Show(true);
+            frame.Инициализуй();
+            frame.Show(да);
         }
 
-		public void OnQuit(Object sender, Event e)
+		public проц OnQuit(Объект sender, Событие e)
 		{
-			Close();
+			Закрой();
 		}
 
-		public void OnAbout(Object sender, Event e)
+		public проц OnAbout(Объект sender, Событие e)
 		{
-			string msg = "wxD printing demo\n" 
+			ткст msg = "wxD printing demo\n" 
                          "Written by Bryan Bulten\n\n" 
                          "Ported from the wxWidgets Printing \n" 
                          "Demo by BERO ";
@@ -166,30 +166,30 @@ import wx.wx;
                                        Dialog.wxOK | Dialog.wxICON_INFORMATION);
 		}
 
-        public static void Draw(DC dc)
+        public static проц Draw(DC dc)
         {
-            dc.Background = new Brush("White");
-            dc.Clear();
-            // TODO dc.Font = m_testFont);
+            dc.Фон = new Кисть("White");
+            dc.Очисть();
+            // TODO dc.Шрифт = m_testFont);
 
-            dc.BackgroundMode = FillStyle.wxTRANSPARENT;
+            dc.ФоновыйРежим = СтильЗаливки.wxTRANSPARENT;
 
-            dc.brush = new Brush("Cyan");
-            dc.pen = new Pen("Red");
+            dc.кисть = new Кисть("Cyan");
+            dc.перо = new Перо("Красный");
 
-            dc.DrawRectangle(0, 30, 200, 100);
-            dc.DrawText("Rectangle 200 by 100", 40, 40);
-            dc.DrawEllipse(50, 140, 100, 50);
-            dc.DrawText("Test message: this is in 10 point text", 10, 180);
+            dc.РисуйПрям(0, 30, 200, 100);
+            dc.РисуйТекст("Прямоугольник 200 by 100", 40, 40);
+            dc.РисуйЭллипс(50, 140, 100, 50);
+            dc.РисуйТекст("Test message: this is in 10 point текст", 10, 180);
 
-            string test = "Greek -- " ~
+            ткст test = "Greek -- " ~
                           "Hebrew -- " ~
                           "Japanese ()";
-            dc.DrawText(test, 10, 200); 
+            dc.РисуйТекст(test, 10, 200); 
 
-            dc.pen = new Pen("Black");
-            dc.DrawLine(0, 0, 200, 200);
-            dc.DrawLine(200, 0, 0, 200);
+            dc.перо = new Перо("Black");
+            dc.РисуйЛинию(0, 0, 200, 200);
+            dc.РисуйЛинию(200, 0, 0, 200);
 
             // TODO
             //Icon my_icon = new Icon("../Samples/Printing/mondrian.png");
@@ -202,10 +202,10 @@ import wx.wx;
         public this(Frame frame)
         { 
             super(frame) ;
-            BackgroundColour = new Colour("White");
+            ЦветЗП = new Цвет("White");
         }
 
-        public override void OnDraw(DC dc)
+        public override проц OnDraw(DC dc)
         {
             MyFrame.Draw(dc);
         }
@@ -213,10 +213,10 @@ import wx.wx;
 
     public class MyPrintout : Printout
     {
-        public this(string title)
+        public this(ткст title)
 
             { super(title); }
-        public override bool OnPrintPage(int page)
+        public override бул OnPrintPage(цел page)
         {
             DC dc = this.Dc;
             if (dc) {
@@ -229,59 +229,59 @@ import wx.wx;
                 //dc.SetDeviceOrigin(0, 0);
                 //dc.SetUserScale(1.0, 1.0);
 
-                return true;
+                return да;
             }
 
-            return false;
+            return нет;
         }
 
-        public override bool HasPage(int page)
+        public override бул HasPage(цел page)
         {
             return (page == 1 || page == 2);
         }
 
-        public override void GetPageInfo(inout int minPage, inout int maxPage, 
-                                         inout int selPageFrom, 
-                                         inout int selPageTo)
+        public override проц GetPageInfo(inout цел minPage, inout цел maxPage, 
+                                         inout цел selPageFrom, 
+                                         inout цел selPageTo)
         {
             minPage = 1; maxPage = 2;
             selPageFrom = 1; selPageTo = 2;
         }
 
-        private void DrawPageOne(DC dc)
+        private проц DrawPageOne(DC dc)
         {
-            // TODO: Scale graphics here 
+            // TODO: Масштабируй graphics here 
             
             MyFrame.Draw(dc);
         }
 
-        private void DrawPageTwo(DC dc)
+        private проц DrawPageTwo(DC dc)
         {
             // TODO: Draw something different here
         }
     }
 
-	public class MyApp : App
+	public class MyApp : Прил
 	{
-		public override bool OnInit()
+		public override бул ПриИниц()
 		{
 			MyFrame frame = new MyFrame("wxD Printing Demo", 
-                                        Point(50,50), Size(450,340));
-			frame.Show(true);
+                                        Точка(50,50), Размер(450,340));
+			frame.Show(да);
 
-			return true;
+			return да;
 		}
 
 		
-		static void Main()
+		static проц Main()
 		{
-			MyApp app = new MyApp();
-			app.Run();
+			MyApp прил = new MyApp();
+			прил.Пуск();
 		}
 	}
 
 
-void main()
+проц main()
 {
 	MyApp.Main();
 }

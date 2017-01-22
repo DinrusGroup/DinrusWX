@@ -1,4 +1,4 @@
-//-----------------------------------------------------------------------------
+﻿//-----------------------------------------------------------------------------
 // wxD - FontMisc.d
 // (C) 2005 bero <berobero@users.sourceforge.net>
 // based on
@@ -10,33 +10,33 @@
 // (C) 2003 Alexander Olk
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: FontMisc.d,v 1.10 2007/01/28 23:06:36 afb Exp $
+// $Ид: FontMisc.d,v 1.10 2007/01/28 23:06:36 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.FontMisc;
 public import wx.common;
-public import wx.Font;
+public import wx.Шрифт;
 public import wx.Window;
 public import wx.ArrayString;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxFontMapper_ctor();
-		static extern (C) void   wxFontMapper_dtor(IntPtr self);
+		static extern (C) ЦУк wxFontMapper_ctor();
+		static extern (C) проц   wxFontMapper_dtor(ЦУк сам);
 		
-		static extern (C) IntPtr wxFontMapper_Get();
-		static extern (C) IntPtr wxFontMapper_Set(IntPtr mapper);
-		static extern (C) int    wxFontMapper_GetSupportedEncodingsCount();
-		static extern (C) int    wxFontMapper_GetEncoding(int n);
-		static extern (C) IntPtr wxFontMapper_GetEncodingName(int encoding);
-		static extern (C) IntPtr wxFontMapper_GetEncodingDescription(int encoding);
-		static extern (C) int    wxFontMapper_GetEncodingFromName(string name);
+		static extern (C) ЦУк wxFontMapper_Get();
+		static extern (C) ЦУк wxFontMapper_Set(ЦУк mapper);
+		static extern (C) цел    wxFontMapper_GetSupportedEncodingsCount();
+		static extern (C) цел    wxFontMapper_GetEncoding(цел n);
+		static extern (C) ЦУк wxFontMapper_GetEncodingName(цел encoding);
+		static extern (C) ЦУк wxFontMapper_GetEncodingDescription(цел encoding);
+		static extern (C) цел    wxFontMapper_GetEncodingFromName(ткст имя);
 		
-		static extern (C) int    wxFontMapper_CharsetToEncoding(IntPtr self, string charset, bool interactive);
-		static extern (C) bool   wxFontMapper_IsEncodingAvailable(IntPtr self, int encoding, string facename);
-		static extern (C) bool   wxFontMapper_GetAltForEncoding(IntPtr self, int encoding, out int alt_encoding, string facename, bool interactive);
+		static extern (C) цел    wxFontMapper_CharsetToEncoding(ЦУк сам, ткст charset, бул interactive);
+		static extern (C) бул   wxFontMapper_IsEncodingAvailable(ЦУк сам, цел encoding, ткст facename);
+		static extern (C) бул   wxFontMapper_GetAltForEncoding(ЦУк сам, цел encoding, out цел alt_encoding, ткст facename, бул interactive);
 		
-		static extern (C) void   wxFontMapper_SetDialogParent(IntPtr self, IntPtr parent);
-		static extern (C) void   wxFontMapper_SetDialogTitle(IntPtr self, string title);
+		static extern (C) проц   wxFontMapper_SetDialogParent(ЦУк сам, ЦУк родитель);
+		static extern (C) проц   wxFontMapper_SetDialogTitle(ЦУк сам, ткст title);
 		//! \endcond
 		
 		//---------------------------------------------------------------------
@@ -46,7 +46,7 @@ public import wx.ArrayString;
 	{
 		private static FontMapper staticFontMapper;
 		
-		static void initialize()
+		static проц инициализуй()
 		{
 			if(!staticFontMapper)
 				staticFontMapper = new FontMapper(wxFontMapper_Get());
@@ -54,23 +54,23 @@ public import wx.ArrayString;
 		
 		//---------------------------------------------------------------------
 		
-		public this(IntPtr wxobj)
+		public this(ЦУк шхобъ)
 		{
-			super(wxobj);
+			super(шхобъ);
 		}
 			
-		private this(IntPtr wxobj, bool memOwn)
+		private this(ЦУк шхобъ, бул memOwn)
 		{ 
-			super(wxobj);
+			super(шхобъ);
 			this.memOwn = memOwn;
 		}
 			
 		public this()
-			{ this(wxFontMapper_ctor(), true);}
+			{ this(wxFontMapper_ctor(), да);}
 			
 		//---------------------------------------------------------------------
 				
-		override protected void dtor() { wxFontMapper_dtor(wxobj); }
+		override protected проц dtor() { wxFontMapper_dtor(шхобъ); }
 			
 		//---------------------------------------------------------------------
 		
@@ -78,105 +78,105 @@ public import wx.ArrayString;
 		
 		//---------------------------------------------------------------------
 		
-		public static FontMapper Set(FontMapper mapper)
+		public static FontMapper Установи(FontMapper mapper)
 		{
 			return new FontMapper(wxFontMapper_Set(wxObject.SafePtr(mapper)));
 		}
 		
 		//---------------------------------------------------------------------
 		
-		static int SupportedEncodingsCount() { return wxFontMapper_GetSupportedEncodingsCount(); }
+		static цел SupportedEncodingsCount() { return wxFontMapper_GetSupportedEncodingsCount(); }
 		
 		//---------------------------------------------------------------------
 		
-		public static FontEncoding GetEncoding(int n)
+		public static FontEncoding GetEncoding(цел n)
 		{
 			return cast(FontEncoding)wxFontMapper_GetEncoding(n);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public static string GetEncodingName(FontEncoding encoding)
+		public static ткст GetEncodingName(FontEncoding encoding)
 		{
-			return cast(string) new wxString(wxFontMapper_GetEncodingName(cast(int)encoding), true);
+			return cast(ткст) new wxString(wxFontMapper_GetEncodingName(cast(цел)encoding), да);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public static FontEncoding GetEncodingFromName(string name)
+		public static FontEncoding GetEncodingFromName(ткст имя)
 		{
-			return cast(FontEncoding)wxFontMapper_GetEncodingFromName(name);
+			return cast(FontEncoding)wxFontMapper_GetEncodingFromName(имя);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public FontEncoding CharsetToEncoding(string charset)
+		public FontEncoding CharsetToEncoding(ткст charset)
 		{
-			return cast(FontEncoding)CharsetToEncoding(charset, true);
+			return cast(FontEncoding)CharsetToEncoding(charset, да);
 		}
 		
-		public FontEncoding CharsetToEncoding(string charset, bool interactive)
+		public FontEncoding CharsetToEncoding(ткст charset, бул interactive)
 		{
-			return cast(FontEncoding)wxFontMapper_CharsetToEncoding(wxobj, charset, interactive);
+			return cast(FontEncoding)wxFontMapper_CharsetToEncoding(шхобъ, charset, interactive);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public bool IsEncodingAvailable(FontEncoding encoding)
+		public бул IsEncodingAvailable(FontEncoding encoding)
 		{
 			return IsEncodingAvailable(encoding, "");
 		}
 		
-		public bool IsEncodingAvailable(FontEncoding encoding, string facename)
+		public бул IsEncodingAvailable(FontEncoding encoding, ткст facename)
 		{
-			return wxFontMapper_IsEncodingAvailable(wxobj, cast(int)encoding, facename);
+			return wxFontMapper_IsEncodingAvailable(шхобъ, cast(цел)encoding, facename);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public bool GetAltForEncoding(FontEncoding encoding, out FontEncoding alt_encoding)
+		public бул GetAltForEncoding(FontEncoding encoding, out FontEncoding alt_encoding)
 		{
-			return GetAltForEncoding(encoding, alt_encoding, "", true);
+			return GetAltForEncoding(encoding, alt_encoding, "", да);
 		}
 		
-		public bool GetAltForEncoding(FontEncoding encoding, out FontEncoding alt_encoding, string facename)
+		public бул GetAltForEncoding(FontEncoding encoding, out FontEncoding alt_encoding, ткст facename)
 		{
-			return GetAltForEncoding(encoding, alt_encoding, facename, true);
+			return GetAltForEncoding(encoding, alt_encoding, facename, да);
 		}
 		
-		public bool GetAltForEncoding(FontEncoding encoding, out FontEncoding alt_encoding, string facename, bool interactive)
+		public бул GetAltForEncoding(FontEncoding encoding, out FontEncoding alt_encoding, ткст facename, бул interactive)
 		{
-			return wxFontMapper_GetAltForEncoding(wxobj, cast(int)encoding, alt_encoding, facename, interactive);
-		}
-		
-		//---------------------------------------------------------------------
-		
-		public static string GetEncodingDescription(FontEncoding encoding)
-		{
-			return cast(string) new wxString(wxFontMapper_GetEncodingDescription(cast(int)encoding), true);
+			return wxFontMapper_GetAltForEncoding(шхобъ, cast(цел)encoding, alt_encoding, facename, interactive);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void SetDialogParent(Window parent)
+		public static ткст GetEncodingDescription(FontEncoding encoding)
 		{
-			wxFontMapper_SetDialogParent(wxobj, wxObject.SafePtr(parent));
+			return cast(ткст) new wxString(wxFontMapper_GetEncodingDescription(cast(цел)encoding), да);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void SetDialogTitle(string title)
+		public проц SetDialogParent(Окно родитель)
 		{
-			wxFontMapper_SetDialogTitle(wxobj, title);
+			wxFontMapper_SetDialogParent(шхобъ, wxObject.SafePtr(родитель));
+		}
+		
+		//---------------------------------------------------------------------
+		
+		public проц SetDialogTitle(ткст title)
+		{
+			wxFontMapper_SetDialogTitle(шхобъ, title);
 		}
 	}
 	
 	//---------------------------------------------------------------------
 	
 		//! \cond EXTERN
-		static extern (C) IntPtr wxEncodingConverter_ctor();
-		static extern (C) bool wxEncodingConverter_Init(IntPtr self, int input_enc, int output_enc, int method);
-		static extern (C) IntPtr wxEncodingConverter_Convert(IntPtr self, string input);
+		static extern (C) ЦУк wxEncodingConverter_ctor();
+		static extern (C) бул wxEncodingConverter_Init(ЦУк сам, цел input_enc, цел output_enc, цел method);
+		static extern (C) ЦУк wxEncodingConverter_Convert(ЦУк сам, ткст input);
 		//! \endcond
 		
 		//---------------------------------------------------------------------
@@ -190,29 +190,29 @@ public import wx.ArrayString;
 			 wxCONVERT_SUBSTITUTE
 		}
 		
-		public this(IntPtr wxobj)
-			{ super(wxobj);}
+		public this(ЦУк шхобъ)
+			{ super(шхобъ);}
 			
 		public this()
 			{ super(wxEncodingConverter_ctor());}
 			
 		//---------------------------------------------------------------------
 		
-		public bool Init(FontEncoding input_enc, FontEncoding output_enc)
+		public бул Init(FontEncoding input_enc, FontEncoding output_enc)
 		{
-			return Init(input_enc, output_enc, cast(int)CONVERT.wxCONVERT_STRICT);
+			return Init(input_enc, output_enc, cast(цел)CONVERT.wxCONVERT_STRICT);
 		}
 		
-		public bool Init(FontEncoding input_enc, FontEncoding output_enc, int method)
+		public бул Init(FontEncoding input_enc, FontEncoding output_enc, цел method)
 		{
-			return wxEncodingConverter_Init(wxobj, cast(int)input_enc, cast(int)output_enc, method);
+			return wxEncodingConverter_Init(шхобъ, cast(цел)input_enc, cast(цел)output_enc, method);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public string Convert(string input)
+		public ткст Convert(ткст input)
 		{
-			return cast(string) new wxString(wxEncodingConverter_Convert(wxobj, input), true);
+			return cast(ткст) new wxString(wxEncodingConverter_Convert(шхобъ, input), да);
 		}
 	}
 	
@@ -220,21 +220,21 @@ public import wx.ArrayString;
 	
 		//! \cond EXTERN
 		extern (C) {
-		alias bool function(FontEnumerator obj, int encoding, bool fixedWidthOnly) Virtual_EnumerateFacenames;
-		alias bool function(FontEnumerator obj, IntPtr facename) Virtual_EnumerateEncodings;
-		alias bool function(FontEnumerator obj, IntPtr facename) Virtual_OnFacename;
-		alias bool function(FontEnumerator obj, IntPtr facename, IntPtr encoding) Virtual_OnFontEncoding;
+		alias бул function(FontEnumerator объ, цел encoding, бул fixedWidthOnly) Virtual_EnumerateFacenames;
+		alias бул function(FontEnumerator объ, ЦУк facename) Virtual_EnumerateEncodings;
+		alias бул function(FontEnumerator объ, ЦУк facename) Virtual_OnFacename;
+		alias бул function(FontEnumerator объ, ЦУк facename, ЦУк encoding) Virtual_OnFontEncoding;
 		}
 
-		static extern (C) IntPtr wxFontEnumerator_ctor();
-		static extern (C) void wxFontEnumerator_dtor(IntPtr self);
-		static extern (C) void wxFontEnumerator_RegisterVirtual(IntPtr self, FontEnumerator obj,Virtual_EnumerateFacenames enumerateFacenames, Virtual_EnumerateEncodings enumerateEncodings, Virtual_OnFacename onFacename, Virtual_OnFontEncoding onFontEncoding);
-		static extern (C) IntPtr wxFontEnumerator_GetFacenames(IntPtr self);
-		static extern (C) IntPtr wxFontEnumerator_GetEncodings(IntPtr self);
-		static extern (C) bool wxFontEnumerator_OnFacename(IntPtr self, string facename);
-		static extern (C) bool wxFontEnumerator_OnFontEncoding(IntPtr self, string facename, string encoding);
-		static extern (C) bool wxFontEnumerator_EnumerateFacenames(IntPtr self, int encoding, bool fixedWidthOnly);
-		static extern (C) bool wxFontEnumerator_EnumerateEncodings(IntPtr self, string facename);
+		static extern (C) ЦУк wxFontEnumerator_ctor();
+		static extern (C) проц wxFontEnumerator_dtor(ЦУк сам);
+		static extern (C) проц wxFontEnumerator_RegisterVirtual(ЦУк сам, FontEnumerator объ,Virtual_EnumerateFacenames enumerateFacenames, Virtual_EnumerateEncodings enumerateEncodings, Virtual_OnFacename onFacename, Virtual_OnFontEncoding onFontEncoding);
+		static extern (C) ЦУк wxFontEnumerator_GetFacenames(ЦУк сам);
+		static extern (C) ЦУк wxFontEnumerator_GetEncodings(ЦУк сам);
+		static extern (C) бул wxFontEnumerator_OnFacename(ЦУк сам, ткст facename);
+		static extern (C) бул wxFontEnumerator_OnFontEncoding(ЦУк сам, ткст facename, ткст encoding);
+		static extern (C) бул wxFontEnumerator_EnumerateFacenames(ЦУк сам, цел encoding, бул fixedWidthOnly);
+		static extern (C) бул wxFontEnumerator_EnumerateEncodings(ЦУк сам, ткст facename);
 		//! \endcond
 		
 		//---------------------------------------------------------------------
@@ -244,104 +244,104 @@ public import wx.ArrayString;
 	{
 		public this()
 		{
-			this(wxFontEnumerator_ctor(), true);
+			this(wxFontEnumerator_ctor(), да);
 
-			wxFontEnumerator_RegisterVirtual(wxobj,this,
+			wxFontEnumerator_RegisterVirtual(шхобъ,this,
 				&staticDoEnumerateFacenames,
 				&staticDoEnumerateEncodings,
 				&staticDoOnFacename,
 				&staticDoOnFontEncoding);			
 		}
 		
-		public this(IntPtr wxobj)
+		public this(ЦУк шхобъ)
 		{
-			super(wxobj);
+			super(шхобъ);
 		}
 		
-		private this(IntPtr wxobj, bool memOwn)
+		private this(ЦУк шхобъ, бул memOwn)
 		{ 
-			super(wxobj);
+			super(шхобъ);
 			this.memOwn = memOwn;
 		}
 		
 		//---------------------------------------------------------------------
 				
-		override protected void dtor() { wxFontEnumerator_dtor(wxobj); }
+		override protected проц dtor() { wxFontEnumerator_dtor(шхобъ); }
 			
 		//---------------------------------------------------------------------
 		
-		public string[] Facenames()
+		public ткст[] Facenames()
 		{
-			return (new ArrayString(wxFontEnumerator_GetFacenames(wxobj), true)).toArray();
+			return (new МасТкст(wxFontEnumerator_GetFacenames(шхобъ), да)).вМассив();
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public string[] Encodings()
+		public ткст[] Encodings()
 		{
-			return (new ArrayString(wxFontEnumerator_GetEncodings(wxobj), true)).toArray();
+			return (new МасТкст(wxFontEnumerator_GetEncodings(шхобъ), да)).вМассив();
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public /+virtual+/ bool OnFacename(string facename)
+		public /+virtual+/ бул OnFacename(ткст facename)
 		{
-			return wxFontEnumerator_OnFacename(wxobj, facename);
+			return wxFontEnumerator_OnFacename(шхобъ, facename);
 		}
 		
-		extern(C) private static bool staticDoOnFacename(FontEnumerator obj, IntPtr facename)
+		extern(C) private static бул staticDoOnFacename(FontEnumerator объ, ЦУк facename)
 		{
-			return obj.OnFacename(cast(string) new wxString(facename));
-		}
-		
-		//---------------------------------------------------------------------
-		
-		public /+virtual+/ bool OnFontEncoding(string facename, string encoding)
-		{
-			return wxFontEnumerator_OnFontEncoding(wxobj, facename, encoding);
-		}
-		
-		extern(C) private static bool staticDoOnFontEncoding(FontEnumerator obj, IntPtr facename, IntPtr encoding)
-		{
-			return obj.OnFontEncoding(cast(string) new wxString(facename), cast(string) new wxString(encoding));
+			return объ.OnFacename(cast(ткст) new wxString(facename));
 		}
 		
 		//---------------------------------------------------------------------
 		
-		/*public /+virtual+/ bool EnumerateFacenames()
+		public /+virtual+/ бул OnFontEncoding(ткст facename, ткст encoding)
 		{
-			return EnumerateFacenames(cast(int)FontEncoding.wxFONTENCODING_SYSTEM, false);
+			return wxFontEnumerator_OnFontEncoding(шхобъ, facename, encoding);
 		}
 		
-		public /+virtual+/ bool EnumerateFacenames(FontEncoding encoding)
+		extern(C) private static бул staticDoOnFontEncoding(FontEnumerator объ, ЦУк facename, ЦУк encoding)
 		{
-			return EnumerateFacenames(cast(int)encoding, false);
+			return объ.OnFontEncoding(cast(ткст) new wxString(facename), cast(ткст) new wxString(encoding));
+		}
+		
+		//---------------------------------------------------------------------
+		
+		/*public /+virtual+/ бул EnumerateFacenames()
+		{
+			return EnumerateFacenames(cast(цел)FontEncoding.wxFONTENCODING_SYSTEM, нет);
+		}
+		
+		public /+virtual+/ бул EnumerateFacenames(FontEncoding encoding)
+		{
+			return EnumerateFacenames(cast(цел)encoding, нет);
 		}*/
 		
-		public /+virtual+/ bool EnumerateFacenames(FontEncoding encoding, bool fixedWidthOnly)
+		public /+virtual+/ бул EnumerateFacenames(FontEncoding encoding, бул fixedWidthOnly)
 		{
-			return wxFontEnumerator_EnumerateFacenames(wxobj, cast(int)encoding, fixedWidthOnly);
+			return wxFontEnumerator_EnumerateFacenames(шхобъ, cast(цел)encoding, fixedWidthOnly);
 		}
 		
-		extern(C) private static bool staticDoEnumerateFacenames(FontEnumerator obj, int encoding, bool fixedWidthOnly)
+		extern(C) private static бул staticDoEnumerateFacenames(FontEnumerator объ, цел encoding, бул fixedWidthOnly)
 		{
-			return obj.EnumerateFacenames(cast(FontEncoding)encoding, fixedWidthOnly);
+			return объ.EnumerateFacenames(cast(FontEncoding)encoding, fixedWidthOnly);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		/*public /+virtual+/ bool EnumerateEncodings()
+		/*public /+virtual+/ бул EnumerateEncodings()
 		{
-			return EnumerateEncodings(IntPtr.init);
+			return EnumerateEncodings(ЦУк.init);
 		}*/
 		
-		public /+virtual+/ bool EnumerateEncodings(string facename)
+		public /+virtual+/ бул EnumerateEncodings(ткст facename)
 		{
-			return wxFontEnumerator_EnumerateEncodings(wxobj, facename);
+			return wxFontEnumerator_EnumerateEncodings(шхобъ, facename);
 		}
 		
-		extern(C) private static bool staticDoEnumerateEncodings(FontEnumerator obj, IntPtr facename)
+		extern(C) private static бул staticDoEnumerateEncodings(FontEnumerator объ, ЦУк facename)
 		{
-			return obj.EnumerateEncodings(cast(string) new wxString(facename));
+			return объ.EnumerateEncodings(cast(ткст) new wxString(facename));
 		}
 	}

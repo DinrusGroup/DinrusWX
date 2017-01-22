@@ -8,11 +8,11 @@
 // (C) 2003 Alexander Olk
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: Dnd.d,v 1.10 2008/03/03 20:11:15 afb Exp $
+// $Ид: Dnd.d,v 1.10 2008/03/03 20:11:15 afb Exp $
 //-----------------------------------------------------------------------------
 
 import wx.wx;
-private import std.string;
+private import std.ткст;
 
     public class DNDText : TextDropTarget
     {
@@ -28,10 +28,10 @@ private import std.string;
 		 
 	//---------------------------------------------------------------------
 
-        public override bool OnDropText(int x, int y, string text)
+        public override бул OnDropText(цел x, цел y, ткст текст)
         {
-            myOwner.Append(text);
-            return true;
+            myOwner.Append(текст);
+            return да;
         }
     }
 
@@ -51,17 +51,17 @@ private import std.string;
 		
 		//---------------------------------------------------------------------
 
-        public override bool OnDropFiles(int x, int y, string[] filenames)
+        public override бул OnDropFiles(цел x, цел y, ткст[] filenames)
         {
-	    	string str = .toString(filenames.length) ~ " files dropped";
+	    	ткст str = .toString(filenames.length) ~ " files dropped";
 		myOwner.Append(str);
 
-	    	for ( int i = 0; i < filenames.length; i++ )
+	    	for ( цел i = 0; i < filenames.length; i++ )
 	    	{
 	    		myOwner.Append(filenames[i]);
 	    	}
    
-		return true;
+		return да;
         }
     }
 	
@@ -72,66 +72,66 @@ private import std.string;
         enum Cmd { Menu_Drag, Menu_DragMoveDef, Menu_DragMoveAllow, Menu_About, Menu_Quit,
 			Menu_Clear, Menu_Help, Menu_Copy, Menu_Paste}
 
-        private ListBox m_ctrlText = null;
-	private ListBox m_ctrlFile = null;
+        private ListBox m_ctrlText = пусто;
+	private ListBox m_ctrlFile = пусто;
 		
-	private TextCtrl m_ctrlLog = null;
+	private TextCtrl m_ctrlLog = пусто;
 		
-	private Log m_pLog = null;
-	private Log m_pLogPrev = null;
+	private Log m_pLog = пусто;
+	private Log m_pLogPrev = пусто;
 		
-	private bool m_moveByDefault = false;
-	private bool m_moveAllow = true;
+	private бул m_moveByDefault = нет;
+	private бул m_moveAllow = да;
 	
-	public string m_strText;
+	public ткст m_strText;
 	
         //---------------------------------------------------------------------
 
-        public this(string title, Point pos, Size size)
+        public this(ткст title, Точка поз, Размер size)
         {
-            super(title, pos, size);
-            // Set the window icon and status bar
+            super(title, поз, size);
+            // Установи the окно иконка and status bar
 
-            icon = new Icon("../Dnd/mondrian.png");
+            иконка = new Icon("../Dnd/mondrian.png");
 
             CreateStatusBar();
             StatusText = "Welcome to the Dnd Sample!";						
 			
-            // Set up a menu
+            // Установи up a меню
 
-            Menu fileMenu = new Menu();
+            Меню fileMenu = new Меню();
 	    fileMenu.Append(Cmd.Menu_Drag, "&Test drag...");
 	    fileMenu.AppendCheckItem(Cmd.Menu_DragMoveDef, "&Move by default", "");
 	    fileMenu.AppendCheckItem(Cmd.Menu_DragMoveAllow, "&Allow moving", "");
 	    fileMenu.AppendSeparator();
 	    fileMenu.Append(Cmd.Menu_Quit, "E&xit\tCtrl-Q");
 			
-	    Menu logMenu = new Menu();
-	    logMenu.Append(Cmd.Menu_Clear, "Clear\tCtrl-L");
+	    Меню logMenu = new Меню();
+	    logMenu.Append(Cmd.Menu_Clear, "Очисть\tCtrl-L");
 
-            Menu helpMenu = new Menu();
-	    helpMenu.Append(Cmd.Menu_Help, "&Help");
+            Меню helpMenu = new Меню();
+	    helpMenu.Append(Cmd.Menu_Help, "&Справка");
 	    helpMenu.AppendSeparator();
             helpMenu.Append(Cmd.Menu_About, "&About"); 
 			
-	    Menu clipMenu = new Menu();
-	    clipMenu.Append(Cmd.Menu_Copy, "&Copy text\tCtrl-C");
-	    clipMenu.Append(Cmd.Menu_Paste, "&Paste text\tCtrl-V");
+	    Меню clipMenu = new Меню();
+	    clipMenu.Append(Cmd.Menu_Copy, "&Копируй текст\tCtrl-C");
+	    clipMenu.Append(Cmd.Menu_Paste, "&Вставь текст\tCtrl-V");
 
             MenuBar menuBar = new MenuBar();
             menuBar.Append(fileMenu, "&File");
 	    menuBar.Append(logMenu, "&Log");
-	    menuBar.Append(clipMenu, "&Clipboard");
-            menuBar.Append(helpMenu, "&Help");
+	    menuBar.Append(clipMenu, "&БуферОбмена");
+            menuBar.Append(helpMenu, "&Справка");
 
             this.menuBar = menuBar;
 			
-	    Point apos = Point(0, 0);
-	    Size asize = Size(300, 200); 
-	    Size bsize = Size(600,100);
+	    Точка apos = Точка(0, 0);
+	    Размер asize = Размер(300, 200); 
+	    Размер bsize = Размер(600,100);
 	    
-	    string[]  strFile = ["Drop files here!"];
-	    string[]  strText = ["Drop text on me"];
+	    ткст[]  strFile = ["Drop files here!"];
+	    ткст[]  strText = ["Drop текст on me"];
 			
 	    m_ctrlFile = new ListBox(this, -1, wxDefaultPosition, asize, strFile, ListBox.wxLB_HSCROLL | ListBox.wxLB_ALWAYS_SB);
 			
@@ -145,24 +145,24 @@ private import std.string;
 	    m_ctrlFile.dropTarget = new DNDFile(m_ctrlFile);
 	    m_ctrlText.dropTarget = new DNDText(m_ctrlText);	
 
-	    BoxSizer main_sizer = new BoxSizer( Orientation.wxVERTICAL );
-	    BoxSizer h_sizer = new BoxSizer( Orientation.wxHORIZONTAL );									
+	    BoxSizer main_sizer = new BoxSizer( Ориентация.wxVERTICAL );
+	    BoxSizer h_sizer = new BoxSizer( Ориентация.wxHORIZONTAL );									
 			
-	    h_sizer.Add(m_ctrlFile, 1, Direction.wxALL, 5 );			
-	    h_sizer.Add(m_ctrlText, 1, Direction.wxALL, 5 );
-	    main_sizer.Add(h_sizer,  0, Direction.wxALL, 0);
-	    main_sizer.Add(m_ctrlLog, 1, Direction.wxALL, 5);		
-	    main_sizer.Add(new BoxSizer(Orientation.wxHORIZONTAL), 1, Direction.wxALL, 5);
+	    h_sizer.Добавь(m_ctrlFile, 1, Direction.wxALL, 5 );			
+	    h_sizer.Добавь(m_ctrlText, 1, Direction.wxALL, 5 );
+	    main_sizer.Добавь(h_sizer,  0, Direction.wxALL, 0);
+	    main_sizer.Добавь(m_ctrlLog, 1, Direction.wxALL, 5);		
+	    main_sizer.Добавь(new BoxSizer(Ориентация.wxHORIZONTAL), 1, Direction.wxALL, 5);
 	    
-	    AutoLayout = true;
-	    SetSizer( main_sizer, true );
+	    AutoLayout = да;
+	    SetSizer( main_sizer, да );
 			
             main_sizer.Fit( this );
             main_sizer.SetSizeHints( this );		
 			
-	    menuBar.Check( Cmd.Menu_DragMoveAllow, true );
+	    menuBar.Check( Cmd.Menu_DragMoveAllow, да );
 			
-            // Set up the event table
+            // Установи up the event table
 
             EVT_MENU(Cmd.Menu_Quit,    &OnQuit);
             EVT_MENU(Cmd.Menu_About,   &OnAbout);
@@ -191,46 +191,46 @@ private import std.string;
 
         //---------------------------------------------------------------------
 
-        public void OnQuit(Object sender, Event e)
+        public проц OnQuit(Объект sender, Событие e)
         {
-            Close();
+            Закрой();
         }
 
         //---------------------------------------------------------------------
 
 
-        public void OnAbout(Object sender, Event e)
+        public проц OnAbout(Объект sender, Событие e)
         {
-            string msg = "This is the About dialog of the dnd sample.";
+            ткст msg = "This is the About dialog of the dnd sample.";
             MessageBox(this, msg, "About Dnd", Dialog.wxOK | Dialog.wxICON_INFORMATION);
         }
 
         //---------------------------------------------------------------------
 		
-	public void OnSize(Object sender, Event e)
+	public проц OnSize(Объект sender, Событие e)
 	{
 		Refresh();
 			
-		e.Skip();
+		e.Пропусти();
 	}
 		
 	//---------------------------------------------------------------------
 		
-	public void OnPaint(Object sender, Event e)
+	public проц OnPaint(Объект sender, Событие e)
 	{
-		Size cs = ClientSize;
+		Размер cs = ClientSize;
 		
 		PaintDC dc = new PaintDC(this);
 			
-		dc.font = new Font( 24, FontFamily.wxDECORATIVE, FontStyle.wxNORMAL, FontWeight.wxNORMAL, false, "charter");
-		dc.DrawText("Drag text from here!", 100, cs.Height - 50);
+		dc.шрифт = new Шрифт( 24, FontFamily.wxDECORATIVE, FontStyle.wxNORMAL, FontWeight.wxNORMAL, нет, "charter");
+		dc.РисуйТекст("Drag текст from here!", 100, cs.Высота - 50);
             
 		dc.Dispose();
 	}
 		
 	//---------------------------------------------------------------------
 		
-	public void OnUpdateUIMoveByDefault(Object sender, Event e)
+	public проц OnUpdateUIMoveByDefault(Объект sender, Событие e)
 	{
 		UpdateUIEvent ue = cast(UpdateUIEvent) e;
 		ue.Enabled = m_moveAllow;
@@ -238,33 +238,33 @@ private import std.string;
 		
 	//---------------------------------------------------------------------
 	
-	public void OnUpdateUIPasteText(Object sender, Event e)
+	public проц OnUpdateUIPasteText(Объект sender, Событие e)
 	{
 		UpdateUIEvent ue = cast(UpdateUIEvent) e;
-		ue.Enabled = Clipboard.TheClipboard.IsSupported(new DataFormat(DataFormatId.wxDF_TEXT));
+		ue.Enabled = БуферОбмена.TheClipboard.Поддерживается(new ФорматДанных(ИдФорматаДанных.wxDF_TEXT));
 	}
 		
 	//---------------------------------------------------------------------
 		
-	public void OnDrag(Object sender, Event e)
+	public проц OnDrag(Объект sender, Событие e)
 	{
-		string strText = GetTextFromUser(
-			"After you enter text in this dialog, press any mouse\n" 
+		ткст strText = GetTextFromUser(
+			"After you enter текст in this dialog, press any mouse\n" 
 			"button in the bottom (empty) part of the frame and \n" 
 			"drag it anywhere - you will be in fact dragging the\n" 
-			"text Object containing this text",
-         		"Please enter some text", m_strText, this);		
+			"текст Объект containing this текст",
+         		"Please enter some текст", m_strText, this);		
 
 		if ( strText.length > 0) 
 		{
-			m_strText = null;
+			m_strText = пусто;
 			m_strText = strText;
 		}
 	}
 		
 	//---------------------------------------------------------------------
 		
-	public void OnDragMoveByDefault(Object sender, Event e)
+	public проц OnDragMoveByDefault(Объект sender, Событие e)
 	{
 		CommandEvent ce = cast(CommandEvent) e;
 		m_moveByDefault = ce.IsChecked;
@@ -272,7 +272,7 @@ private import std.string;
 		
 	//---------------------------------------------------------------------
 		
-	public void OnDragMoveAllow(Object sender, Event e)
+	public проц OnDragMoveAllow(Объект sender, Событие e)
 	{
 		CommandEvent ce = cast(CommandEvent) e;
 		m_moveAllow = ce.IsChecked;		
@@ -280,63 +280,63 @@ private import std.string;
 		
 	//---------------------------------------------------------------------
 		
-	public void OnHelp(Object sender, Event e)
+	public проц OnHelp(Объект sender, Событие e)
 	{
 		MessageDialog md = new MessageDialog(this, 
-			"This small program demonstrates drag & drop support in wxD. The program window\n" 
+			"This small program demonstrates drag & drop support in wxD. The program окно\n" 
 			"consists of 3 parts: the bottom pane is for debug messages, so that you can see what's\n" 
                         "going on inside. The top part is split into 2 listboxes, the left one accepts files\n" 
-                        "and the right one accepts text.\n" 
+                        "and the right one accepts текст.\n" 
                         "\n" 
-                        "To test wxDropTarget: open wordpad (write.exe), select some text in it and drag it to\n" 
+                        "To test wxDropTarget: open wordpad (write.exe), select some текст in it and drag it to\n" 
                         "the right listbox (you'll notice the usual visual feedback, i.e. the cursor will change).\n" 
                         "Also, try dragging some files (you can select several at once) from Windows Explorer (or \n" 
-                        "File Manager) to the left pane. Hold down Ctrl/Shift keys when you drop text (doesn't \n" 
+                        "File Manager) to the left pane. Hold down Ctrl/Shift keys when you drop текст (doesn't \n" 
                         "work with files) and see what changes.\n" 
                         "\n" 
-                        "To test wxDropSource: just press any mouse button on the empty zone of the window and drag\n"
-                        "it to wordpad or any other droptarget accepting text (and of course you can just drag it\n" 
+                        "To test wxDropSource: just press any mouse button on the empty zone of the окно and drag\n"
+                        "it to wordpad or any other droptarget accepting текст (and of course you can just drag it\n" 
                         "to the right pane). Due to a lot of trace messages, the cursor might take some time to \n" 
-                        "change, don't release the mouse button until it does. You can change the string being\n" 
+                        "change, don't release the mouse button until it does. You can change the ткст being\n" 
                         "dragged in in \"File|Test drag...\" dialog.\n",
-                        "wxDnD Help");			
+                        "wxDnD Справка");			
 			
 		md.ShowModal();
 	}
 		
 	//---------------------------------------------------------------------
 		
-	public void OnLogClear(Object sender, Event e)
+	public проц OnLogClear(Объект sender, Событие e)
 	{
-		m_ctrlLog.Clear();
-		m_ctrlText.Clear();
-		m_ctrlFile.Clear();
+		m_ctrlLog.Очисть();
+		m_ctrlText.Очисть();
+		m_ctrlFile.Очисть();
 	}
 		
 	//---------------------------------------------------------------------
 		
-	public void OnLeftDown(Object sender, Event e)
+	public проц OnLeftDown(Объект sender, Событие e)
 	{
 		if (m_strText.length > 0)
 			{
-				TextDataObject textData = new TextDataObject( m_strText );
+				ОбъектТекстовыхДанных textData = new ОбъектТекстовыхДанных( m_strText );
 				
-				if (textData is null) 
+				if (textData is пусто) 
 				{
 					return;
 				}
 				
 				DropSource source = new DropSource(textData, this);
 																
-				int flags = Drag.wxDrag_CopyOnly;
+				цел флаги = Drag.wxDrag_CopyOnly;
 				if ( m_moveByDefault )
-					flags |= Drag.wxDrag_DefaultMove;
+					флаги |= Drag.wxDrag_DefaultMove;
 				else if ( m_moveAllow )
-					flags |= Drag.wxDrag_AllowMove;
+					флаги |= Drag.wxDrag_AllowMove;
 					
-				string result = "";
+				ткст result = "";
 				
-				switch ( source.DoDragDrop(flags) )
+				switch ( source.DoDragDrop(флаги) )
 				{
 					case DragResult.wxDragError:	result = "Error!";  break;
 					case DragResult.wxDragNone:     result = "Nothing"; break;
@@ -352,101 +352,101 @@ private import std.string;
 		
 		//---------------------------------------------------------------------
 		
-		public void OnRightDown(Object sender, Event e)
+		public проц OnRightDown(Объект sender, Событие e)
 		{
 			MouseEvent me = cast(MouseEvent) e;
 		
-			Menu menu = new Menu("Dnd sample menu");
+			Меню меню = new Меню("Dnd sample меню");
 			
-			menu.Append(Cmd.Menu_Drag, "&Test drag");
-			menu.AppendSeparator();
-			menu.Append(Cmd.Menu_About, "&About");
+			меню.Append(Cmd.Menu_Drag, "&Test drag");
+			меню.AppendSeparator();
+			меню.Append(Cmd.Menu_About, "&About");
 			
-			Point pos = me.Position;
-			PopupMenu( menu, pos);
+			Точка поз = me.Положение;
+			PopupMenu( меню, поз);
 		}
 		
 		//---------------------------------------------------------------------		
 		
-		public void OnCopy(Object sender, Event e)
+		public проц OnCopy(Объект sender, Событие e)
 		{
-			if ( !Clipboard.TheClipboard.Open() )
+			if ( !БуферОбмена.TheClipboard.Открой() )
 			{
 				Log.LogError("Can't open clipboard.");
 				return;
 			}
 			
-			if ( !Clipboard.TheClipboard.AddData(new TextDataObject(m_strText)) )
+			if ( !БуферОбмена.TheClipboard.ДобавьДанные(new ОбъектТекстовыхДанных(m_strText)) )
 			{
-				Log.LogError("Can't copy data to the clipboard");
+				Log.LogError("Can't copy данные to the clipboard");
 			}
 			else
 			{
-				Log.LogMessage("Text '%s' put on the clipboard", m_strText);
+				Log.LogMessage("Текст '%s' put on the clipboard", m_strText);
 			}
 			
-			Clipboard.TheClipboard.Close();
+			БуферОбмена.TheClipboard.Закрой();
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void OnPaste(Object sender, Event e)
+		public проц OnPaste(Объект sender, Событие e)
 		{
-			if ( !Clipboard.TheClipboard.Open() )
+			if ( !БуферОбмена.TheClipboard.Открой() )
 			{
 				Log.LogError("Can't open clipboard.");
 				return;
 			}
 			
-			if ( !Clipboard.TheClipboard.IsSupported(new DataFormat(DataFormatId.wxDF_TEXT)) )
+			if ( !БуферОбмена.TheClipboard.Поддерживается(new ФорматДанных(ИдФорматаДанных.wxDF_TEXT)) )
 			{
-				Log.LogWarning("No text data on clipboard");
-				Clipboard.TheClipboard.Close();
+				Log.LogWarning("No текст данные on clipboard");
+				БуферОбмена.TheClipboard.Закрой();
 				return;
 			}
 			
-			TextDataObject text = new TextDataObject();
-			if ( !Clipboard.TheClipboard.GetData(text) )
+			ОбъектТекстовыхДанных текст = new ОбъектТекстовыхДанных();
+			if ( !БуферОбмена.TheClipboard.ДайДанные(текст) )
 			{
-				Log.LogError("Can't paste data from the clipboard");
+				Log.LogError("Can't paste данные from the clipboard");
 			}
 			else
 			{
-				Log.LogMessage("Text '%s' pasted from the clipboard", text.Text);
+				Log.LogMessage("Текст '%s' pasted from the clipboard", текст.Текст);
 			}
 			
-			Clipboard.TheClipboard.Close();
+			БуферОбмена.TheClipboard.Закрой();
 		}
     }   
 	
 	//---------------------------------------------------------------------	
 
-    public class Dnd : App
+    public class Dnd : Прил
     {
         //---------------------------------------------------------------------
 
-        public override bool OnInit()
+        public override бул ПриИниц()
         {
-            DndFrame frame = new DndFrame("Dnd wxWidgets App", Point(10, 100), Size(650,340));
-            frame.Show(true);
+            DndFrame frame = new DndFrame("Dnd wxWidgets Прил", Точка(10, 100), Размер(650,340));
+            frame.Show(да);
 
-            return true;
+            return да;
         }
 
         //---------------------------------------------------------------------
 
         
-            static void Main()
+            static проц Main()
             {
-                Dnd app = new Dnd();
-                app.Run();
+                Dnd прил = new Dnd();
+                прил.Пуск();
             }
 
         //---------------------------------------------------------------------
     }
 
 
-void main()
+проц main()
 {
 	Dnd.Main();
 }

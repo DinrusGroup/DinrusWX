@@ -9,7 +9,7 @@
 // (C) 2006 afb <afb.sourceforge.net>
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: GLCube.d,v 1.6 2008/03/03 11:47:07 afb Exp $
+// $Ид: GLCube.d,v 1.6 2008/03/03 11:47:07 afb Exp $
 //-----------------------------------------------------------------------------
 
 import wx.wx;
@@ -20,9 +20,9 @@ import gl.gl;
 
 	public class TestGLCanvas : GLCanvas
 	{
-		public this(Window parent, TestGLCanvas other, int id, Point pos=wxDefaultPosition, Size size=wxDefaultSize, int style=0, string name="TestGLCanvas")
+		public this(Окно родитель, TestGLCanvas other, цел ид, Точка поз=wxDefaultPosition, Размер size=wxDefaultSize, цел стиль=0, ткст имя="TestGLCanvas")
 		{
-			super(parent, other ? other.context : null, id, pos, size, style, name);
+			super(родитель, other ? other.context : пусто, ид, поз, size, стиль, имя);
 
 			EVT_SIZE(&OnSize);
 			EVT_PAINT(&OnPaint);
@@ -30,14 +30,14 @@ import gl.gl;
 			EVT_ENTER_WINDOW(&OnEnterWindow);
 		}
 
-		public this(Window parent, int id, Point pos=wxDefaultPosition, Size size=wxDefaultSize, int style=0, string name="TestGLCanvas")
+		public this(Окно родитель, цел ид, Точка поз=wxDefaultPosition, Размер size=wxDefaultSize, цел стиль=0, ткст имя="TestGLCanvas")
 		{
-			this(parent, null, id, pos, size, style, name);
+			this(родитель, пусто, ид, поз, size, стиль, имя);
 		}
 
-		private uint gllist = 0;
+		private бцел gllist = 0;
 
-		private void Render()
+		private проц Render()
 		{
 		    if (!context()) return;
 
@@ -51,7 +51,7 @@ import gl.gl;
 			if (!init)
 			{
 				InitGL();
-				init = true;
+				init = да;
 			}
 
 			glMatrixMode(GL_PROJECTION);
@@ -59,7 +59,7 @@ import gl.gl;
 			glFrustum(-0.5f, 0.5f, -0.5f, 0.5f, 1.0f, 3.0f);
 			glMatrixMode(GL_MODELVIEW);
 		
-			/* clear color and depth buffers */
+			/* clear color and глубина buffers */
 			glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 		
 			if( gllist == 0 )
@@ -104,9 +104,9 @@ import gl.gl;
 	    	SwapBuffers();
 		}
 		
-		private bool init = false;
+		private бул init = нет;
 
-		private void InitGL()
+		private проц InitGL()
 		{
 		    SetCurrent();
 		
@@ -127,30 +127,30 @@ import gl.gl;
 			glEnable(GL_LIGHT0);
 		}
 
-		void OnEnterWindow(Object sender, Event e)
+		проц OnEnterWindow(Объект sender, Событие e)
 		{
     		SetFocus();
 		}
 
-		void OnPaint(Object sender, Event e)
+		проц OnPaint(Объект sender, Событие e)
 		{
-    		e.Skip();
+    		e.Пропусти();
     		Render();
 		}
 
-		void OnSize(Object sender, Event e)
+		проц OnSize(Объект sender, Событие e)
 		{
 			// set GL viewport (not called by wxGLCanvas::OnSize on all platforms...)
-			Size size = ClientSize();
+			Размер size = ClientSize();
 		
 			if (context())
 			{
 				SetCurrent();
-				glViewport(0, 0, cast(GLint) size.Width, cast(GLint) size.Height);
+				glViewport(0, 0, cast(GLint) size.Ширина, cast(GLint) size.Высота);
 			}
 		}
 
-		void OnEraseBackground(Object sender, Event e)
+		проц OnEraseBackground(Объект sender, Событие e)
 		{
  		  // Do nothing, to avoid flashing.
 		}
@@ -162,37 +162,37 @@ import gl.gl;
 
 		//---------------------------------------------------------------------
 
-		public this(Window parent, string title, Point pos, Size size, int style=wxDEFAULT_FRAME_STYLE)
+		public this(Окно родитель, ткст title, Точка поз, Размер size, цел стиль=wxDEFAULT_FRAME_STYLE)
 		{
-			super(parent, wxID_ANY, title, pos, size, style);
-			canvas = null;
+			super(родитель, wxID_ANY, title, поз, size, стиль);
+			canvas = пусто;
 
-			// Set the window icon
+			// Установи the окно иконка
 
-			icon = new Icon("../Samples/GLCube/mondrian.png");
+			иконка = new Icon("../Samples/GLCube/mondrian.png");
 
-			// Set up the event table
+			// Установи up the event table
 
-    		EVT_MENU( MenuIDs.wxID_EXIT, &OnExit);
-    		EVT_MENU( Cmd.Quit, &OnExit);
+    		EVT_MENU( MenuIDs.wxID_EXIT, &ПриВыходе);
+    		EVT_MENU( Cmd.Quit, &ПриВыходе);
     		EVT_MENU( MenuIDs.wxID_NEW, &OnNewWindow);
 		}
 		
-		public static MyFrame CreateWindow(MyFrame parentFrame = null, bool isCloneWindow = false)
+		public static MyFrame CreateWindow(MyFrame parentFrame = пусто, бул isCloneWindow = нет)
 		{
-			string str = "wxWidgets OpenGL Cube Sample";
+			ткст str = "wxWidgets OpenGL Cube Sample";
    			if (isCloneWindow) str ~= " - Clone";
  
- 		    MyFrame frame = new MyFrame(null, str, wxDefaultPosition,
- 		    	/* Size(400, 300) */ wxDefaultSize);
+ 		    MyFrame frame = new MyFrame(пусто, str, wxDefaultPosition,
+ 		    	/* Размер(400, 300) */ wxDefaultSize);
 
 			// Make a menubar
-			Menu winMenu = new Menu();
-			winMenu.Append(MenuIDs.wxID_EXIT, "&Close");
-			winMenu.Append(MenuIDs.wxID_NEW, "&New");
+			Меню winMenu = new Меню();
+			winMenu.Append(MenuIDs.wxID_EXIT, "&Закрой");
+			winMenu.Append(MenuIDs.wxID_NEW, "&Нов");
 
 			MenuBar menuBar = new MenuBar();
-			menuBar.Append(winMenu, "&Window");
+			menuBar.Append(winMenu, "&Окно");
 
 			frame.menuBar = menuBar;
 
@@ -209,27 +209,27 @@ import gl.gl;
    
 			// moved the Frame sizing to after canvas was added,
 			// since otherwise the frame showed empty on wxMac ?
-			frame.size = Size(400, 300);
+			frame.size = Размер(400, 300);
 
    			// Show the frame
-    		frame.Show(true);
+    		frame.Show(да);
 
 			return frame;
 		}
 
 		//---------------------------------------------------------------------
 
-		public void OnExit(Object sender, Event e)
+		public проц ПриВыходе(Объект sender, Событие e)
 		{
-    		// true is to force the frame to close
-			Close();
+    		// да is to force the frame to close
+			Закрой();
 		}
 
 		//---------------------------------------------------------------------
 
-		public void OnNewWindow(Object sender, Event e)
+		public проц OnNewWindow(Объект sender, Событие e)
 		{
-			CreateWindow(this, true);
+			CreateWindow(this, да);
 		}
 
 		//---------------------------------------------------------------------
@@ -238,30 +238,30 @@ import gl.gl;
 		TestGLCanvas canvas;
 	}
 
-	public class GLCube : App
+	public class GLCube : Прил
 	{
 		//---------------------------------------------------------------------
 
-		public override bool OnInit()
+		public override бул ПриИниц()
 		{
-   			 // Create the main frame window
-			MyFrame.CreateWindow(null);
+   			 // Create the main frame окно
+			MyFrame.CreateWindow(пусто);
 
-			return true;
+			return да;
 		}
 
 		//---------------------------------------------------------------------
 
-		static void Main()
+		static проц Main()
 		{
-			GLCube app = new GLCube();
-			app.Run();
+			GLCube прил = new GLCube();
+			прил.Пуск();
 		}
 
 		//---------------------------------------------------------------------
 	}
 
-int main()
+цел main()
 {
 	GLCube.Main();
 	return 0;

@@ -1,8 +1,8 @@
-//-----------------------------------------------------------------------------
-// wxD - ActivateEvent.d
+﻿//-----------------------------------------------------------------------------
+// wxD - СобАктивирования.d
 // (C) 2005 bero <berobero@users.sourceforge.net>
 // based on
-// wx.NET - ActivateEvent.cs
+// wx.NET - СобАктивирования.cs
 //
 /// The wxActivateEvent wrapper class.
 //
@@ -10,7 +10,7 @@
 // (C) 2004 by Alexander Olk
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: GdiCommon.d,v 1.11 2007/02/01 00:09:34 afb Exp $
+// $Ид: GdiCommon.d,v 1.11 2007/02/01 00:09:34 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.GdiCommon;
@@ -18,103 +18,103 @@ public import wx.common;
 public import wx.Bitmap;
 public import wx.Cursor;
 public import wx.Icon;
-public import wx.Pen;
+public import wx.Перо;
 public import wx.Brush;
-public import wx.Font;
+public import wx.Шрифт;
 public import wx.Colour;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxSTANDARD_CURSOR_Get();
-		static extern (C) IntPtr wxHOURGLASS_CURSOR_Get();
-		static extern (C) IntPtr wxCROSS_CURSOR_Get();
+		static extern (C) ЦУк wxSTANDARD_CURSOR_Get();
+		static extern (C) ЦУк wxHOURGLASS_CURSOR_Get();
+		static extern (C) ЦУк wxCROSS_CURSOR_Get();
 		
-		static extern (C) IntPtr wxGDIObj_GetRedPen();
-		static extern (C) IntPtr wxGDIObj_GetCyanPen();
-		static extern (C) IntPtr wxGDIObj_GetGreenPen();
-		static extern (C) IntPtr wxGDIObj_GetBlackPen();
-		static extern (C) IntPtr wxGDIObj_GetWhitePen();
-		static extern (C) IntPtr wxGDIObj_GetTransparentPen();
-		static extern (C) IntPtr wxGDIObj_GetBlackDashedPen();
-		static extern (C) IntPtr wxGDIObj_GetGreyPen();
-		static extern (C) IntPtr wxGDIObj_GetMediumGreyPen();
-		static extern (C) IntPtr wxGDIObj_GetLightGreyPen();
+		static extern (C) ЦУк wxGDIObj_GetRedPen();
+		static extern (C) ЦУк wxGDIObj_GetCyanPen();
+		static extern (C) ЦУк wxGDIObj_GetGreenPen();
+		static extern (C) ЦУк wxGDIObj_GetBlackPen();
+		static extern (C) ЦУк wxGDIObj_GetWhitePen();
+		static extern (C) ЦУк wxGDIObj_GetTransparentPen();
+		static extern (C) ЦУк wxGDIObj_GetBlackDashedPen();
+		static extern (C) ЦУк wxGDIObj_GetGreyPen();
+		static extern (C) ЦУк wxGDIObj_GetMediumGreyPen();
+		static extern (C) ЦУк wxGDIObj_GetLightGreyPen();
 
-		static extern (C) IntPtr wxBLUE_BRUSH_Get();
-		static extern (C) IntPtr wxGREEN_BRUSH_Get();
-		static extern (C) IntPtr wxWHITE_BRUSH_Get();
-		static extern (C) IntPtr wxBLACK_BRUSH_Get();
-		static extern (C) IntPtr wxGREY_BRUSH_Get();
-		static extern (C) IntPtr wxMEDIUM_GREY_BRUSH_Get();
-		static extern (C) IntPtr wxLIGHT_GREY_BRUSH_Get();
-		static extern (C) IntPtr wxTRANSPARENT_BRUSH_Get();
-		static extern (C) IntPtr wxCYAN_BRUSH_Get();
-		static extern (C) IntPtr wxRED_BRUSH_Get();
+		static extern (C) ЦУк wxBLUE_BRUSH_Get();
+		static extern (C) ЦУк wxGREEN_BRUSH_Get();
+		static extern (C) ЦУк wxWHITE_BRUSH_Get();
+		static extern (C) ЦУк wxBLACK_BRUSH_Get();
+		static extern (C) ЦУк wxGREY_BRUSH_Get();
+		static extern (C) ЦУк wxMEDIUM_GREY_BRUSH_Get();
+		static extern (C) ЦУк wxLIGHT_GREY_BRUSH_Get();
+		static extern (C) ЦУк wxTRANSPARENT_BRUSH_Get();
+		static extern (C) ЦУк wxCYAN_BRUSH_Get();
+		static extern (C) ЦУк wxRED_BRUSH_Get();
 
-		static extern (C) IntPtr wxNullBitmap_Get();
-		static extern (C) IntPtr wxNullIcon_Get();
-		static extern (C) IntPtr wxNullCursor_Get();
-		static extern (C) IntPtr wxNullPen_Get();
-		static extern (C) IntPtr wxNullBrush_Get();
-		static extern (C) IntPtr wxNullPalette_Get();
-		static extern (C) IntPtr wxNullFont_Get();
-		static extern (C) IntPtr wxNullColour_Get();
+		static extern (C) ЦУк wxNullBitmap_Get();
+		static extern (C) ЦУк wxNullIcon_Get();
+		static extern (C) ЦУк wxNullCursor_Get();
+		static extern (C) ЦУк wxNullPen_Get();
+		static extern (C) ЦУк wxNullBrush_Get();
+		static extern (C) ЦУк wxNullPalette_Get();
+		static extern (C) ЦУк wxNullFont_Get();
+		static extern (C) ЦУк wxNullColour_Get();
 		//! \endcond
 		
 
-	void InitializeStockObjects()
+	проц InitializeStockObjects()
 	{
 			Cursor.wxSTANDARD_CURSOR = new Cursor(wxSTANDARD_CURSOR_Get());
 			Cursor.wxHOURGLASS_CURSOR = new Cursor(wxHOURGLASS_CURSOR_Get());
 			Cursor.wxCROSS_CURSOR = new Cursor(wxCROSS_CURSOR_Get());
 
-			Pen.wxRED_PEN = new Pen(wxGDIObj_GetRedPen());
-			Pen.wxCYAN_PEN = new Pen(wxGDIObj_GetCyanPen());
-			Pen.wxGREEN_PEN = new Pen(wxGDIObj_GetGreenPen());
-			Pen.wxBLACK_PEN = new Pen(wxGDIObj_GetBlackPen());
-			Pen.wxWHITE_PEN = new Pen(wxGDIObj_GetWhitePen());
-			Pen.wxTRANSPARENT_PEN = new Pen(wxGDIObj_GetTransparentPen());
-			Pen.wxBLACK_DASHED_PEN = new Pen(wxGDIObj_GetBlackDashedPen());
-			Pen.wxGREY_PEN = new Pen(wxGDIObj_GetGreyPen());
-			Pen.wxMEDIUM_GREY_PEN = new Pen(wxGDIObj_GetMediumGreyPen());
-			Pen.wxLIGHT_GREY_PEN = new Pen(wxGDIObj_GetLightGreyPen());
+			Перо.wxRED_PEN = new Перо(wxGDIObj_GetRedPen());
+			Перо.wxCYAN_PEN = new Перо(wxGDIObj_GetCyanPen());
+			Перо.wxGREEN_PEN = new Перо(wxGDIObj_GetGreenPen());
+			Перо.wxBLACK_PEN = new Перо(wxGDIObj_GetBlackPen());
+			Перо.wxWHITE_PEN = new Перо(wxGDIObj_GetWhitePen());
+			Перо.wxTRANSPARENT_PEN = new Перо(wxGDIObj_GetTransparentPen());
+			Перо.wxBLACK_DASHED_PEN = new Перо(wxGDIObj_GetBlackDashedPen());
+			Перо.wxGREY_PEN = new Перо(wxGDIObj_GetGreyPen());
+			Перо.wxMEDIUM_GREY_PEN = new Перо(wxGDIObj_GetMediumGreyPen());
+			Перо.wxLIGHT_GREY_PEN = new Перо(wxGDIObj_GetLightGreyPen());
 
-			Brush.wxBLUE_BRUSH = new Brush(wxBLUE_BRUSH_Get());
-			Brush.wxGREEN_BRUSH = new Brush(wxGREEN_BRUSH_Get());
-			Brush.wxWHITE_BRUSH = new Brush(wxWHITE_BRUSH_Get());
-			Brush.wxBLACK_BRUSH = new Brush(wxBLACK_BRUSH_Get());
-			Brush.wxGREY_BRUSH = new Brush(wxGREY_BRUSH_Get());
-			Brush.wxMEDIUM_GREY_BRUSH = new Brush(wxMEDIUM_GREY_BRUSH_Get());
-			Brush.wxLIGHT_GREY_BRUSH = new Brush(wxLIGHT_GREY_BRUSH_Get());
-			Brush.wxTRANSPARENT_BRUSH = new Brush(wxTRANSPARENT_BRUSH_Get());
-			Brush.wxCYAN_BRUSH = new Brush(wxCYAN_BRUSH_Get());
-			Brush.wxRED_BRUSH = new Brush(wxRED_BRUSH_Get());
+			Кисть.wxBLUE_BRUSH = new Кисть(wxBLUE_BRUSH_Get());
+			Кисть.wxGREEN_BRUSH = new Кисть(wxGREEN_BRUSH_Get());
+			Кисть.wxWHITE_BRUSH = new Кисть(wxWHITE_BRUSH_Get());
+			Кисть.wxBLACK_BRUSH = new Кисть(wxBLACK_BRUSH_Get());
+			Кисть.wxGREY_BRUSH = new Кисть(wxGREY_BRUSH_Get());
+			Кисть.wxMEDIUM_GREY_BRUSH = new Кисть(wxMEDIUM_GREY_BRUSH_Get());
+			Кисть.wxLIGHT_GREY_BRUSH = new Кисть(wxLIGHT_GREY_BRUSH_Get());
+			Кисть.wxTRANSPARENT_BRUSH = new Кисть(wxTRANSPARENT_BRUSH_Get());
+			Кисть.wxCYAN_BRUSH = new Кисть(wxCYAN_BRUSH_Get());
+			Кисть.wxRED_BRUSH = new Кисть(wxRED_BRUSH_Get());
 
-			Colour.wxBLACK       = new Colour("Black");
-			Colour.wxWHITE       = new Colour("White");
-			Colour.wxRED         = new Colour("Red");
-			Colour.wxBLUE        = new Colour("Blue");
-			Colour.wxGREEN       = new Colour("Green");
-			Colour.wxCYAN        = new Colour("Cyan");
-			Colour.wxLIGHT_GREY  = new Colour("Light Gray");
+			Цвет.wxBLACK       = new Цвет("Black");
+			Цвет.wxWHITE       = new Цвет("White");
+			Цвет.wxRED         = new Цвет("Красный");
+			Цвет.wxBLUE        = new Цвет("Синий");
+			Цвет.wxGREEN       = new Цвет("Зелёный");
+			Цвет.wxCYAN        = new Цвет("Cyan");
+			Цвет.wxLIGHT_GREY  = new Цвет("Light Gray");
 
-			Bitmap.wxNullBitmap = new Bitmap(wxNullBitmap_Get());
+			Битмап.wxNullBitmap = new Битмап(wxNullBitmap_Get());
 			Icon.wxNullIcon = new Icon(wxNullIcon_Get());
 			Cursor.wxNullCursor = new Cursor(wxNullCursor_Get());
-			Pen.wxNullPen = new Pen(wxNullPen_Get());
-			Brush.wxNullBrush = new Brush(wxNullBrush_Get());
-			Palette.wxNullPalette = new Palette(wxNullPalette_Get());
-			Font.wxNullFont = new Font(wxNullFont_Get());
-			Colour.wxNullColour = new Colour(wxNullColour_Get());
+			Перо.wxNullPen = new Перо(wxNullPen_Get());
+			Кисть.wxNullBrush = new Кисть(wxNullBrush_Get());
+			Палитра.wxNullPalette = new Палитра(wxNullPalette_Get());
+			Шрифт.wxNullFont = new Шрифт(wxNullFont_Get());
+			Цвет.wxNullColour = new Цвет(wxNullColour_Get());
 	}
 
 	//-----------------------------------------------------------------------------
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxColourDatabase_ctor();
-		static extern (C) void wxColourDataBase_dtor(IntPtr self);
-		static extern (C) IntPtr wxColourDatabase_Find(IntPtr self, string name);
-		static extern (C) IntPtr wxColourDatabase_FindName(IntPtr self, IntPtr colour);
-		static extern (C) void wxColourDatabase_AddColour(IntPtr self, string name, IntPtr colour);
+		static extern (C) ЦУк wxColourDatabase_ctor();
+		static extern (C) проц wxColourDataBase_dtor(ЦУк сам);
+		static extern (C) ЦУк wxColourDatabase_Find(ЦУк сам, ткст имя);
+		static extern (C) ЦУк wxColourDatabase_FindName(ЦУк сам, ЦУк colour);
+		static extern (C) проц wxColourDatabase_AddColour(ЦУк сам, ткст имя, ЦУк colour);
 		//! \endcond
 		
 		//-----------------------------------------------------------------------------
@@ -122,53 +122,53 @@ public import wx.Colour;
 	alias ColourDatabase wxColourDatabase;
 	public class ColourDatabase : wxObject
 	{
-		public this(IntPtr wxobj)
+		public this(ЦУк шхобъ)
 		{
-			super(wxobj);
+			super(шхобъ);
 		}
 		
-		private this(IntPtr wxobj, bool memOwn)
+		private this(ЦУк шхобъ, бул memOwn)
 		{ 
-			super(wxobj);
+			super(шхобъ);
 			this.memOwn = memOwn;
 		}
 			
 		public this()
-			{ this(wxColourDatabase_ctor(), true);}
+			{ this(wxColourDatabase_ctor(), да);}
 			
 		//---------------------------------------------------------------------
 				
-		override protected void dtor() { wxColourDataBase_dtor(wxobj); }
+		override protected проц dtor() { wxColourDataBase_dtor(шхобъ); }
 			
 		//-----------------------------------------------------------------------------
 			
-		public Colour Find(string name)
+		public Цвет Find(ткст имя)
 		{
-			return new Colour(wxColourDatabase_Find(wxobj, name), true);
+			return new Цвет(wxColourDatabase_Find(шхобъ, имя), да);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public string FindName(Colour colour)
+		public ткст FindName(Цвет colour)
 		{
-			return cast(string) new wxString(wxColourDatabase_FindName(wxobj, wxObject.SafePtr(colour)), true);
+			return cast(ткст) new wxString(wxColourDatabase_FindName(шхобъ, wxObject.SafePtr(colour)), да);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public void AddColour(string name, Colour colour)
+		public проц AddColour(ткст имя, Цвет colour)
 		{
-			wxColourDatabase_AddColour(wxobj, name, wxObject.SafePtr(colour));
+			wxColourDatabase_AddColour(шхобъ, имя, wxObject.SafePtr(colour));
 		}
 	}
 	
 	//-----------------------------------------------------------------------------
 	
 		//! \cond EXTERN
-		static extern (C) IntPtr wxPenList_ctor();
-		static extern (C) void wxPenList_AddPen(IntPtr self, IntPtr pen);
-		static extern (C) void wxPenList_RemovePen(IntPtr self, IntPtr pen);
-		//static extern (C) IntPtr wxPenList_FindOrCreatePen(IntPtr self, IntPtr colour, int width, int style);
+		static extern (C) ЦУк wxPenList_ctor();
+		static extern (C) проц wxPenList_AddPen(ЦУк сам, ЦУк перо);
+		static extern (C) проц wxPenList_RemovePen(ЦУк сам, ЦУк перо);
+		//static extern (C) ЦУк wxPenList_FindOrCreatePen(ЦУк сам, ЦУк colour, цел ширина, цел стиль);
 		//! \endcond
 		
 		//-----------------------------------------------------------------------------
@@ -176,31 +176,31 @@ public import wx.Colour;
 	alias PenList wxPenList;
 	public class PenList : wxObject
 	{
-		public this(IntPtr wxobj)
-			{ super(wxobj);}
+		public this(ЦУк шхобъ)
+			{ super(шхобъ);}
 			
 		public this()
 			{ super(wxPenList_ctor());}
 			
 		//-----------------------------------------------------------------------------
 			
-		public void AddPen(Pen pen)
+		public проц AddPen(Перо перо)
 		{
-			wxPenList_AddPen(wxobj, wxObject.SafePtr(pen));
+			wxPenList_AddPen(шхобъ, wxObject.SafePtr(перо));
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public void RemovePen(Pen pen)
+		public проц RemovePen(Перо перо)
 		{
-			wxPenList_RemovePen(wxobj, wxObject.SafePtr(pen));
+			wxPenList_RemovePen(шхобъ, wxObject.SafePtr(перо));
 		}
 		
 		//-----------------------------------------------------------------------------
 	/+	
-		public Pen FindOrCreatePen(Colour colour, int width, int style)
+		public Перо FindOrCreatePen(Цвет colour, цел ширина, цел стиль)
 		{
-			return new Pen(wxPenList_FindOrCreatePen(wxobj, wxObject.SafePtr(colour), width, style));
+			return new Перо(wxPenList_FindOrCreatePen(шхобъ, wxObject.SafePtr(colour), ширина, стиль));
 		}
 		
 		+/
@@ -209,10 +209,10 @@ public import wx.Colour;
 	//-----------------------------------------------------------------------------
 	
 		//! \cond EXTERN
-		static extern (C) IntPtr wxBrushList_ctor();
-		static extern (C) void wxBrushList_AddBrush(IntPtr self, IntPtr brush);
-		static extern (C) void wxBrushList_RemoveBrush(IntPtr self, IntPtr brush);
-		//static extern (C) IntPtr wxBrushList_FindOrCreateBrush(IntPtr self, IntPtr colour, int style);
+		static extern (C) ЦУк wxBrushList_ctor();
+		static extern (C) проц wxBrushList_AddBrush(ЦУк сам, ЦУк кисть);
+		static extern (C) проц wxBrushList_RemoveBrush(ЦУк сам, ЦУк кисть);
+		//static extern (C) ЦУк wxBrushList_FindOrCreateBrush(ЦУк сам, ЦУк colour, цел стиль);
 		//! \endcond
 		
 		//-----------------------------------------------------------------------------
@@ -220,31 +220,31 @@ public import wx.Colour;
 	alias BrushList wxBrushList;
 	public class BrushList : wxObject
 	{
-		public this(IntPtr wxobj)
-			{ super(wxobj);}
+		public this(ЦУк шхобъ)
+			{ super(шхобъ);}
 			
 		public this()
 			{ super(wxBrushList_ctor());}
 			
 		//-----------------------------------------------------------------------------
 			
-		public void AddBrush(Brush brush)
+		public проц AddBrush(Кисть кисть)
 		{
-			wxBrushList_AddBrush(wxobj, wxObject.SafePtr(brush));
+			wxBrushList_AddBrush(шхобъ, wxObject.SafePtr(кисть));
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public void RemoveBrush(Brush brush)
+		public проц RemoveBrush(Кисть кисть)
 		{
-			wxBrushList_RemoveBrush(wxobj, wxObject.SafePtr(brush));
+			wxBrushList_RemoveBrush(шхобъ, wxObject.SafePtr(кисть));
 		}
 		
 		//-----------------------------------------------------------------------------
 		/+
-		public Brush FindOrCreateBrush(Colour colour, int style)
+		public Кисть FindOrCreateBrush(Цвет colour, цел стиль)
 		{
-			return new Brush(wxBrushList_FindOrCreateBrush(wxobj, wxObject.SafePtr(colour), style));
+			return new Кисть(wxBrushList_FindOrCreateBrush(шхобъ, wxObject.SafePtr(colour), стиль));
 		}
 		+/
 	}	
@@ -252,16 +252,16 @@ public import wx.Colour;
 	//-----------------------------------------------------------------------------
 	
 		//! \cond EXTERN
-		static extern (C) IntPtr wxFontList_ctor();
-		static extern (C) void wxFontList_AddFont(IntPtr self, IntPtr font);
-		static extern (C) void wxFontList_RemoveFont(IntPtr self, IntPtr font);
-		/*static extern (C) IntPtr wxFontList_FindOrCreateFont(IntPtr self, 
-			int pointSize, 
-			int family, 
-			int style, 
-			int weight,
-			bool underline,
-			string face,
+		static extern (C) ЦУк wxFontList_ctor();
+		static extern (C) проц wxFontList_AddFont(ЦУк сам, ЦУк шрифт);
+		static extern (C) проц wxFontList_RemoveFont(ЦУк сам, ЦУк шрифт);
+		/*static extern (C) ЦУк wxFontList_FindOrCreateFont(ЦУк сам, 
+			цел pointSize, 
+			цел family, 
+			цел стиль, 
+			цел weight,
+			бул underline,
+			ткст face,
 			FontEncoding encoding);*/
 		//! \endcond
 		
@@ -270,47 +270,47 @@ public import wx.Colour;
 	alias FontList wxFontList;
 	public class FontList : wxObject
 	{
-		public this(IntPtr wxobj)
-			{ super(wxobj);}
+		public this(ЦУк шхобъ)
+			{ super(шхобъ);}
 			
 		public this()
 			{ super(wxFontList_ctor());}
 			
 		//-----------------------------------------------------------------------------
 			
-		public void AddFont(Font font)
+		public проц AddFont(Шрифт шрифт)
 		{
-			wxFontList_AddFont(wxobj, wxObject.SafePtr(font));
+			wxFontList_AddFont(шхобъ, wxObject.SafePtr(шрифт));
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public void RemoveFont(Font font)
+		public проц RemoveFont(Шрифт шрифт)
 		{
-			wxFontList_RemoveFont(wxobj, wxObject.SafePtr(font));
+			wxFontList_RemoveFont(шхобъ, wxObject.SafePtr(шрифт));
 		}
 		
 		//-----------------------------------------------------------------------------
 	/+	
-		public Font FindOrCreateFont(int pointSize, int family, int style, int weight)
+		public Шрифт FindOrCreateFont(цел pointSize, цел family, цел стиль, цел weight)
 		{
-			return FindOrCreateFont(pointSize, family, style, weight, false, "", FontEncoding.wxFONTENCODING_DEFAULT);
+			return FindOrCreateFont(pointSize, family, стиль, weight, нет, "", FontEncoding.wxFONTENCODING_DEFAULT);
 		}
 		
-		public Font FindOrCreateFont(int pointSize, int family, int style, int weight, bool underline)
+		public Шрифт FindOrCreateFont(цел pointSize, цел family, цел стиль, цел weight, бул underline)
 		{
-			return FindOrCreateFont(pointSize, family, style, weight, underline, "", FontEncoding.wxFONTENCODING_DEFAULT);
+			return FindOrCreateFont(pointSize, family, стиль, weight, underline, "", FontEncoding.wxFONTENCODING_DEFAULT);
 		}
 
-		public Font FindOrCreateFont(int pointSize, int family, int style, int weight, bool underline, string face)
+		public Шрифт FindOrCreateFont(цел pointSize, цел family, цел стиль, цел weight, бул underline, ткст face)
 		{
-			return FindOrCreateFont(pointSize, family, style, weight, underline, face, FontEncoding.wxFONTENCODING_DEFAULT);
+			return FindOrCreateFont(pointSize, family, стиль, weight, underline, face, FontEncoding.wxFONTENCODING_DEFAULT);
 		}
 		
 		
-		public Font FindOrCreateFont(int pointSize, int family, int style, int weight, bool underline, string face, FontEncoding encoding)
+		public Шрифт FindOrCreateFont(цел pointSize, цел family, цел стиль, цел weight, бул underline, ткст face, FontEncoding encoding)
 		{
-			return new Font(wxFontList_FindOrCreateFont(wxobj, pointSize, family, style, weight, underline, face, encoding));
+			return new Шрифт(wxFontList_FindOrCreateFont(шхобъ, pointSize, family, стиль, weight, underline, face, encoding));
 		}
 		+/
 	}		
@@ -318,9 +318,9 @@ public import wx.Colour;
 	//-----------------------------------------------------------------------------
 	
 		//! \cond EXTERN
-		static extern (C) IntPtr wxBitmapList_ctor();
-		static extern (C) void   wxBitmapList_AddBitmap(IntPtr self, IntPtr bitmap);
-		static extern (C) void   wxBitmapList_RemoveBitmap(IntPtr self, IntPtr bitmap);
+		static extern (C) ЦУк wxBitmapList_ctor();
+		static extern (C) проц   wxBitmapList_AddBitmap(ЦУк сам, ЦУк битмап);
+		static extern (C) проц   wxBitmapList_RemoveBitmap(ЦУк сам, ЦУк битмап);
 		//! \endcond
 		
 		//-----------------------------------------------------------------------------
@@ -328,24 +328,24 @@ public import wx.Colour;
 	alias BitmapList wxBitmapList;
 	public class BitmapList : wxObject
 	{
-		public this(IntPtr wxobj)
-			{ super(wxobj);}
+		public this(ЦУк шхобъ)
+			{ super(шхобъ);}
 			
 		public this()
 			{ super(wxBitmapList_ctor());}
 			
 		//-----------------------------------------------------------------------------
 		
-		public void AddBitmap(Bitmap bitmap)
+		public проц AddBitmap(Битмап битмап)
 		{
-			wxBitmapList_AddBitmap(wxobj, wxObject.SafePtr(bitmap));
+			wxBitmapList_AddBitmap(шхобъ, wxObject.SafePtr(битмап));
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public void RemoveBitmap(Bitmap bitmap)
+		public проц RemoveBitmap(Битмап битмап)
 		{
-			wxBitmapList_RemoveBitmap(wxobj, wxObject.SafePtr(bitmap));
+			wxBitmapList_RemoveBitmap(шхобъ, wxObject.SafePtr(битмап));
 		}
 	}
 	

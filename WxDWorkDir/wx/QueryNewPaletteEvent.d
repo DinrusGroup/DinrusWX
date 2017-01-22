@@ -10,7 +10,7 @@
 // (C) 2004 by Alexander Olk
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: QueryNewPaletteEvent.d,v 1.9 2006/11/17 15:21:00 afb Exp $
+// $Ид: QueryNewPaletteEvent.d,v 1.9 2006/11/17 15:21:00 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.QueryNewPaletteEvent;
@@ -19,31 +19,31 @@ public import wx.common;
 public import wx.Event;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxQueryNewPaletteEvent_ctor(int winid);
-		static extern (C) bool wxQueryNewPaletteEvent_GetPaletteRealized(IntPtr self);
-		static extern (C) void wxQueryNewPaletteEvent_SetPaletteRealized(IntPtr self, bool realized);
+		static extern (C) ЦУк wxQueryNewPaletteEvent_ctor(цел winid);
+		static extern (C) бул wxQueryNewPaletteEvent_GetPaletteRealized(ЦУк сам);
+		static extern (C) проц wxQueryNewPaletteEvent_SetPaletteRealized(ЦУк сам, бул realized);
 		//! \endcond
 		
 		//-----------------------------------------------------------------------------
 
 	alias QueryNewPaletteEvent wxQueryNewPaletteEvent;
-	public class QueryNewPaletteEvent : Event
+	public class QueryNewPaletteEvent : Событие
 	{
-		public this(IntPtr wxobj) 
-			{ super(wxobj); }
+		public this(ЦУк шхобъ) 
+			{ super(шхобъ); }
 
-		public this(int winid=0)
+		public this(цел winid=0)
 			{ this(wxQueryNewPaletteEvent_ctor(winid)); }
 
 		//-----------------------------------------------------------------------------	
 		
-		public bool Realized() { return wxQueryNewPaletteEvent_GetPaletteRealized(wxobj); }
-		public void Realized(bool value) { wxQueryNewPaletteEvent_SetPaletteRealized(wxobj, value); }
+		public бул Realized() { return wxQueryNewPaletteEvent_GetPaletteRealized(шхобъ); }
+		public проц Realized(бул значение) { wxQueryNewPaletteEvent_SetPaletteRealized(шхобъ, значение); }
 
-		private static Event New(IntPtr obj) { return new QueryNewPaletteEvent(obj); }
+		private static Событие Нов(ЦУк объ) { return new QueryNewPaletteEvent(объ); }
 
 		static this()
 		{
-			AddEventType(wxEVT_QUERY_NEW_PALETTE,			&QueryNewPaletteEvent.New);
+			ДобавьТипСоб(wxEVT_QUERY_NEW_PALETTE,			&QueryNewPaletteEvent.Нов);
 		}
 	}

@@ -10,7 +10,7 @@
 // (C) 2003 379, Inc.
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: WizardPage.d,v 1.9 2006/11/17 15:21:01 afb Exp $
+// $Ид: WizardPage.d,v 1.9 2006/11/17 15:21:01 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.WizardPage;
@@ -21,12 +21,12 @@ public import wx.Panel;
 	{
 		//---------------------------------------------------------------------
 
-		public this(IntPtr wxobj) 
+		public this(ЦУк шхобъ) 
 		{
-			super(wxobj);
+			super(шхобъ);
 		}
 
-		static wxObject New(IntPtr ptr) { return new WizardPage(ptr); }
+		static wxObject Нов(ЦУк ptr) { return new WizardPage(ptr); }
 		//---------------------------------------------------------------------
 	}
 

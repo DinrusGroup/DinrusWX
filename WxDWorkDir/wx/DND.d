@@ -1,21 +1,6 @@
-//-----------------------------------------------------------------------------
-// wxD - Dnd.d
-// (C) 2005 bero <berobero@users.sourceforge.net>
-// based on
-// wx.NET - Dnd.cs
-//
-/// The wxDND wrapper classes.
-//
-// Written by Bryan Bulten (bryan@bulten.ca)
-// (C) 2003 by Bryan Bulten
-// Licensed under the wxWidgets license, see LICENSE.txt for details.
-// 
-// $Id: DND.d,v 1.9 2006/11/17 15:20:59 afb Exp $
-//-----------------------------------------------------------------------------
-
-module wx.DND;
+﻿module wx.DND;
 public import wx.common;
-public import wx.DataObject;
+public import wx.ОбъектДанных;
 public import wx.Window;
 
 	public enum Drag
@@ -41,15 +26,15 @@ public import wx.Window;
 
 		//! \cond EXTERN
 		extern (C) {
-		alias int function(DropSource obj, int flags) Virtual_DoDragDrop;
+		alias цел function(DropSource объ, цел флаги) Virtual_DoDragDrop;
 		}
 
-		static extern (C) IntPtr wxDropSource_Win_ctor(IntPtr win);
-		static extern (C) IntPtr wxDropSource_DataObject_ctor(IntPtr dataObject, IntPtr win);
-		static extern (C) void wxDropSource_dtor(IntPtr self);
-		static extern (C) void wxDropSource_RegisterVirtual(IntPtr self, DropSource obj, Virtual_DoDragDrop doDragDrop);
-		static extern (C) int wxDropSource_DoDragDrop(IntPtr self, int flags);
-		static extern (C) void wxDropSource_SetData(IntPtr self, IntPtr dataObject);
+		static extern (C) ЦУк wxDropSource_Win_ctor(ЦУк окн);
+		static extern (C) ЦУк wxDropSource_DataObject_ctor(ЦУк dataObject, ЦУк окн);
+		static extern (C) проц wxDropSource_dtor(ЦУк сам);
+		static extern (C) проц wxDropSource_RegisterVirtual(ЦУк сам, DropSource объ, Virtual_DoDragDrop doDragDrop);
+		static extern (C) цел wxDropSource_DoDragDrop(ЦУк сам, цел флаги);
+		static extern (C) проц wxDropSource_SetData(ЦУк сам, ЦУк dataObject);
 		//! \endcond
 		
 		//---------------------------------------------------------------------
@@ -57,96 +42,96 @@ public import wx.Window;
 	alias DropSource wxDropSource;
 	public class DropSource : wxObject
 	{
-		protected DataObject m_dataObject = null;
+		protected ОбъектДанных m_dataObject = пусто;
 		
-		public this(IntPtr wxobj)
+		public this(ЦУк шхобъ)
 		{
-			super(wxobj);
+			super(шхобъ);
 		}		
 			
-		private this(IntPtr wxobj, bool memOwn)
+		private this(ЦУк шхобъ, бул memOwn)
 		{ 
-			super(wxobj);
+			super(шхобъ);
 			this.memOwn = memOwn;
 		}
 		
-		public this(Window win = null)
+		public this(Окно окн = пусто)
 		{ 
-			this(wxDropSource_Win_ctor(wxObject.SafePtr(win)), true);
-			m_dataObject = null;
+			this(wxDropSource_Win_ctor(wxObject.SafePtr(окн)), да);
+			m_dataObject = пусто;
 			
-			wxDropSource_RegisterVirtual( wxobj, this, &staticDoDoDragDrop );
+			wxDropSource_RegisterVirtual( шхобъ, this, &staticDoDoDragDrop );
 		}
 
-		public this(DataObject dataObject, Window win = null)
+		public this(ОбъектДанных dataObject, Окно окн = пусто)
 		{
-			this(wxDropSource_DataObject_ctor(wxObject.SafePtr(dataObject), wxObject.SafePtr(win)), true);
+			this(wxDropSource_DataObject_ctor(wxObject.SafePtr(dataObject), wxObject.SafePtr(окн)), да);
 			m_dataObject = dataObject;
 
-			wxDropSource_RegisterVirtual( wxobj, this, &staticDoDoDragDrop );
+			wxDropSource_RegisterVirtual( шхобъ, this, &staticDoDoDragDrop );
 		}
 		
 		//---------------------------------------------------------------------
-		override protected void dtor() { wxDropSource_dtor(wxobj); }
+		override protected проц dtor() { wxDropSource_dtor(шхобъ); }
 
 		//---------------------------------------------------------------------
 
-		static extern (C) private int staticDoDoDragDrop(DropSource obj,int flags)
+		static extern (C) private цел staticDoDoDragDrop(DropSource объ,цел флаги)
 		{
-			return cast(int)obj.DoDragDrop(flags);
+			return cast(цел)объ.DoDragDrop(флаги);
 		}
 
-		public /+virtual+/ DragResult DoDragDrop(int flags)
+		public /+virtual+/ DragResult DoDragDrop(цел флаги)
 		{
-			return cast(DragResult)wxDropSource_DoDragDrop(wxobj, flags);
+			return cast(DragResult)wxDropSource_DoDragDrop(шхобъ, флаги);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public DataObject dataObject() { return m_dataObject; }
-		public void dataObject(DataObject value) { m_dataObject = value; wxDropSource_SetData(wxobj, wxObject.SafePtr(value)); }
+		public ОбъектДанных dataObject() { return m_dataObject; }
+		public проц dataObject(ОбъектДанных значение) { m_dataObject = значение; wxDropSource_SetData(шхобъ, wxObject.SafePtr(значение)); }
 	}
 	
 	//---------------------------------------------------------------------
 
 		//! \cond EXTERN
 		extern (C) {
-		alias int  function(DropTarget obj, int x, int y, int def) Virtual_OnDragOver;
-		alias bool function(DropTarget obj, int x, int y) Virtual_OnDrop;
-		alias int  function(DropTarget obj, int x, int y, int def) Virtual_OnData3;
-		alias bool function(DropTarget obj) Virtual_GetData;
-		alias void function(DropTarget obj) Virtual_OnLeave;
-		alias int  function(DropTarget obj, int x, int y, int def) Virtual_OnEnter;
+		alias цел  function(DropTarget объ, цел x, цел y, цел def) Virtual_OnDragOver;
+		alias бул function(DropTarget объ, цел x, цел y) Virtual_OnDrop;
+		alias цел  function(DropTarget объ, цел x, цел y, цел def) Virtual_OnData3;
+		alias бул function(DropTarget объ) Virtual_GetData;
+		alias проц function(DropTarget объ) Virtual_OnLeave;
+		alias цел  function(DropTarget объ, цел x, цел y, цел def) Virtual_OnEnter;
 		}
 		//! \endcond
 		
 		//---------------------------------------------------------------------
 		
 		//! \cond EXTERN
-		static extern (C) IntPtr wxDropTarget_ctor(IntPtr dataObject);
-		static extern (C) void wxDropTarget_dtor(IntPtr self);
-		static extern (C) void wxDropTarget_RegisterVirtual(IntPtr self, DropTarget obj, Virtual_OnDragOver onDragOver, Virtual_OnDrop onDrop, Virtual_OnData3 onData, Virtual_GetData getData, Virtual_OnLeave onLeave, Virtual_OnEnter onEnter);  
-		static extern (C) void   wxDropTarget_RegisterDisposable(IntPtr self, Virtual_Dispose onDispose);
-		static extern (C) void   wxDropTarget_SetDataObject(IntPtr self, IntPtr dataObject);
-		static extern (C) int wxDropTarget_OnEnter(IntPtr self, int x, int y, int def);
-		static extern (C) int wxDropTarget_OnDragOver(IntPtr self, int x, int y, int def);
-		static extern (C) void   wxDropTarget_OnLeave(IntPtr self);
-		static extern (C) bool wxDropTarget_OnDrop(IntPtr self, int x, int y);
-		static extern (C) bool wxDropTarget_GetData(IntPtr self);
+		static extern (C) ЦУк wxDropTarget_ctor(ЦУк dataObject);
+		static extern (C) проц wxDropTarget_dtor(ЦУк сам);
+		static extern (C) проц wxDropTarget_RegisterVirtual(ЦУк сам, DropTarget объ, Virtual_OnDragOver onDragOver, Virtual_OnDrop onDrop, Virtual_OnData3 onData, Virtual_GetData getData, Virtual_OnLeave onLeave, Virtual_OnEnter onEnter);  
+		static extern (C) проц   wxDropTarget_RegisterDisposable(ЦУк сам, Virtual_Dispose onDispose);
+		static extern (C) проц   wxDropTarget_SetDataObject(ЦУк сам, ЦУк dataObject);
+		static extern (C) цел wxDropTarget_OnEnter(ЦУк сам, цел x, цел y, цел def);
+		static extern (C) цел wxDropTarget_OnDragOver(ЦУк сам, цел x, цел y, цел def);
+		static extern (C) проц   wxDropTarget_OnLeave(ЦУк сам);
+		static extern (C) бул wxDropTarget_OnDrop(ЦУк сам, цел x, цел y);
+		static extern (C) бул wxDropTarget_GetData(ЦУк сам);
 		//! \endcond
 		
 		//---------------------------------------------------------------------
 
 	public abstract class DropTarget : wxObject
 	{
-		protected DataObject m_dataObject = null;
+		protected ОбъектДанных m_dataObject = пусто;
 		
-		public this(DataObject dataObject = null)
+		public this(ОбъектДанных dataObject = пусто)
 		{ 
-			this(wxDropTarget_ctor(wxObject.SafePtr(dataObject)), true);
+			this(wxDropTarget_ctor(wxObject.SafePtr(dataObject)), да);
 			m_dataObject = dataObject;
 
-			wxDropTarget_RegisterVirtual( wxobj, this,
+			wxDropTarget_RegisterVirtual( шхобъ, this,
 				&staticDoOnDragOver,
 				&staticOnDrop,
 				&staticDoOnData,
@@ -154,100 +139,100 @@ public import wx.Window;
 				&staticOnLeave,
 				&staticDoOnEnter);
 				
-			wxDropTarget_RegisterDisposable(wxobj, &VirtualDispose);
+			wxDropTarget_RegisterDisposable(шхобъ, &VirtualDispose);
 		}
 
-		public this(IntPtr wxobj)
+		public this(ЦУк шхобъ)
 		{
-			super(wxobj);
+			super(шхобъ);
 		}			
 		
-		private this(IntPtr wxobj, bool memOwn)
+		private this(ЦУк шхобъ, бул memOwn)
 		{ 
-			super(wxobj);
+			super(шхобъ);
 			this.memOwn = memOwn;
 		}
 		
 		//---------------------------------------------------------------------
 		
-		override protected void dtor() { wxDropTarget_dtor(wxobj); }
+		override protected проц dtor() { wxDropTarget_dtor(шхобъ); }
 		
 		//---------------------------------------------------------------------
 
-		static extern (C) private int staticDoOnDragOver(DropTarget obj, int x, int y, int def)
+		static extern (C) private цел staticDoOnDragOver(DropTarget объ, цел x, цел y, цел def)
 		{
-			return cast(int)obj.OnDragOver(x, y, cast(DragResult)def);
+			return cast(цел)объ.OnDragOver(x, y, cast(DragResult)def);
 		}
-		public /+virtual+/ DragResult OnDragOver(int x, int y, DragResult def)
+		public /+virtual+/ DragResult OnDragOver(цел x, цел y, DragResult def)
 		{
-			return cast(DragResult)wxDropTarget_OnDragOver(wxobj, x, y, cast(int)def);
-		}
-		
-		//---------------------------------------------------------------------
-
-		static extern (C) private bool staticOnDrop(DropTarget obj, int x, int y)
-		{
-			return obj.OnDrop(x,y);
-		}
-		public /+virtual+/ bool OnDrop(int x, int y)
-		{
-			return wxDropTarget_OnDrop(wxobj, x, y);
+			return cast(DragResult)wxDropTarget_OnDragOver(шхобъ, x, y, cast(цел)def);
 		}
 		
 		//---------------------------------------------------------------------
 
-		static extern (C) private int staticDoOnData(DropTarget obj, int x, int y, int def)
+		static extern (C) private бул staticOnDrop(DropTarget объ, цел x, цел y)
 		{
-			return cast(int)obj.OnData(x, y, cast(DragResult) def);
+			return объ.OnDrop(x,y);
 		}
-		public abstract DragResult OnData(int x, int y, DragResult def);
-		
-		//---------------------------------------------------------------------
-
-		static extern (C) private bool staticGetData(DropTarget obj)
+		public /+virtual+/ бул OnDrop(цел x, цел y)
 		{
-			return obj.GetData();
-		}
-		public /+virtual+/ bool GetData()
-		{
-			return wxDropTarget_GetData(wxobj);
+			return wxDropTarget_OnDrop(шхобъ, x, y);
 		}
 		
 		//---------------------------------------------------------------------
 
-		static extern (C) private int staticDoOnEnter(DropTarget obj, int x, int y, int def)
+		static extern (C) private цел staticDoOnData(DropTarget объ, цел x, цел y, цел def)
 		{
-			return cast(int)obj.OnEnter(x, y, cast(DragResult) def);
+			return cast(цел)объ.OnData(x, y, cast(DragResult) def);
 		}
-		public /+virtual+/ DragResult OnEnter(int x, int y, DragResult def)
+		public abstract DragResult OnData(цел x, цел y, DragResult def);
+		
+		//---------------------------------------------------------------------
+
+		static extern (C) private бул staticGetData(DropTarget объ)
 		{
-			return cast(DragResult)wxDropTarget_OnEnter(wxobj, x, y, cast(int)def);
+			return объ.ДайДанные();
+		}
+		public /+virtual+/ бул ДайДанные()
+		{
+			return wxDropTarget_GetData(шхобъ);
 		}
 		
 		//---------------------------------------------------------------------
 
-		static extern (C) private void staticOnLeave(DropTarget obj)
+		static extern (C) private цел staticDoOnEnter(DropTarget объ, цел x, цел y, цел def)
 		{
-			return obj.OnLeave();
+			return cast(цел)объ.OnEnter(x, y, cast(DragResult) def);
 		}
-		public /+virtual+/ void OnLeave()
+		public /+virtual+/ DragResult OnEnter(цел x, цел y, DragResult def)
 		{
-			wxDropTarget_OnLeave(wxobj);
+			return cast(DragResult)wxDropTarget_OnEnter(шхобъ, x, y, cast(цел)def);
 		}
 		
 		//---------------------------------------------------------------------
 
-		public DataObject dataObject() { return m_dataObject; }
-		public void dataObject(DataObject value) { m_dataObject = value; wxDropTarget_SetDataObject(wxobj, wxObject.SafePtr(value)); }
+		static extern (C) private проц staticOnLeave(DropTarget объ)
+		{
+			return объ.OnLeave();
+		}
+		public /+virtual+/ проц OnLeave()
+		{
+			wxDropTarget_OnLeave(шхобъ);
+		}
+		
+		//---------------------------------------------------------------------
 
-	//	public static wxObject New(IntPtr ptr) { return new DropTarget(ptr); }
+		public ОбъектДанных dataObject() { return m_dataObject; }
+		public проц dataObject(ОбъектДанных значение) { m_dataObject = значение; wxDropTarget_SetDataObject(шхобъ, wxObject.SafePtr(значение)); }
+
+	//	public static wxObject Нов(ЦУк ptr) { return new DropTarget(ptr); }
 	}
 	
 	//---------------------------------------------------------------------
 
 		//! \cond EXTERN
-		static extern (C) bool wxTextDropTarget_OnDrop(IntPtr self, int x, int y);
-		static extern (C) bool wxTextDropTarget_GetData(IntPtr self);
+		static extern (C) бул wxTextDropTarget_OnDrop(ЦУк сам, цел x, цел y);
+		static extern (C) бул wxTextDropTarget_GetData(ЦУк сам);
 		//! \endcond
 
 		//---------------------------------------------------------------------
@@ -255,42 +240,42 @@ public import wx.Window;
 	public abstract class TextDropTarget : DropTarget
 	{
 		public this()
-			{ super(new TextDataObject());}
+			{ super(new ОбъектТекстовыхДанных());}
 			
-		public abstract bool OnDropText(int x, int y, string text);
+		public abstract бул OnDropText(цел x, цел y, ткст текст);
 
 		//---------------------------------------------------------------------
 
-		public override DragResult OnData(int x, int y, DragResult def)
+		public override DragResult OnData(цел x, цел y, DragResult def)
 		{
-			if (!GetData())
+			if (!ДайДанные())
 				return DragResult.wxDragNone;
 				
-			TextDataObject dobj = cast(TextDataObject)m_dataObject;
+			ОбъектТекстовыхДанных dobj = cast(ОбъектТекстовыхДанных)m_dataObject;
 		
-			return OnDropText(x, y, dobj.Text) ? def : DragResult.wxDragNone;
+			return OnDropText(x, y, dobj.Текст) ? def : DragResult.wxDragNone;
 		}
 
 		//---------------------------------------------------------------------
         
-		public override bool OnDrop(int x, int y)
+		public override бул OnDrop(цел x, цел y)
 		{
-			return wxTextDropTarget_OnDrop(wxobj, x, y);
+			return wxTextDropTarget_OnDrop(шхобъ, x, y);
 		}
 		
 		//---------------------------------------------------------------------
 
-		public override bool GetData()
+		public override бул ДайДанные()
 		{
-			return wxTextDropTarget_GetData(wxobj);
+			return wxTextDropTarget_GetData(шхобъ);
 		}
 	}
 	
 	//---------------------------------------------------------------------
 
 		//! \cond EXTERN
-		static extern (C) bool wxFileDropTarget_OnDrop(IntPtr self, int x, int y);
-		static extern (C) bool wxFileDropTarget_GetData(IntPtr self);
+		static extern (C) бул wxFileDropTarget_OnDrop(ЦУк сам, цел x, цел y);
+		static extern (C) бул wxFileDropTarget_GetData(ЦУк сам);
 		//! \endcond
 
 		//---------------------------------------------------------------------
@@ -298,34 +283,34 @@ public import wx.Window;
 	public abstract class FileDropTarget : DropTarget
 	{
 		public this()
-			{ super(new FileDataObject());}
+			{ super(new ОбъектФайловыхДанных());}
  
-		public abstract bool OnDropFiles(int x, int y, string[] filenames);
+		public abstract бул OnDropFiles(цел x, цел y, ткст[] filenames);
 		
 		//---------------------------------------------------------------------
 
-		public override DragResult OnData(int x, int y, DragResult def)
+		public override DragResult OnData(цел x, цел y, DragResult def)
 		{
-			if ( !GetData() )
+			if ( !ДайДанные() )
 				return DragResult.wxDragNone;
 				
-			FileDataObject dobj = cast(FileDataObject)m_dataObject;
+			ОбъектФайловыхДанных dobj = cast(ОбъектФайловыхДанных)m_dataObject;
 			
-			return OnDropFiles(x, y, dobj.Filenames) ? def : DragResult.wxDragNone;
+			return OnDropFiles(x, y, dobj.Именаф) ? def : DragResult.wxDragNone;
 		}
 
 		//---------------------------------------------------------------------
                 
-		public override bool OnDrop(int x, int y)
+		public override бул OnDrop(цел x, цел y)
 		{
-			return wxFileDropTarget_OnDrop(wxobj, x, y);
+			return wxFileDropTarget_OnDrop(шхобъ, x, y);
 		}
 		
 		//---------------------------------------------------------------------
 
-		public override bool GetData()
+		public override бул ДайДанные()
 		{
-			return wxFileDropTarget_GetData(wxobj);
+			return wxFileDropTarget_GetData(шхобъ);
 		}
 	}
 

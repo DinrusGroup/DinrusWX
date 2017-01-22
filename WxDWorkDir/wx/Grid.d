@@ -1,4 +1,4 @@
-//-----------------------------------------------------------------------------
+﻿//-----------------------------------------------------------------------------
 // wxD - Grid.d
 // (C) 2005 bero <berobero@users.sourceforge.net>
 // based on
@@ -10,7 +10,7 @@
 // (C) 2003 by Bryan Bulten
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: Grid.d,v 1.11 2007/01/28 23:06:36 afb Exp $
+// $Ид: Grid.d,v 1.11 2007/01/28 23:06:36 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.Grid;
@@ -30,78 +30,78 @@ public import wx.ScrolledWindow;
     }
 
 		//! \cond EXTERN
-        static extern (C) IntPtr wxGridEvent_ctor(int id, int type, IntPtr obj, int row, int col, int x, int y, bool sel, bool control, bool shift, bool alt, bool meta);
-        static extern (C) int    wxGridEvent_GetRow(IntPtr self);
-        static extern (C) int    wxGridEvent_GetCol(IntPtr self);
-        static extern (C) void   wxGridEvent_GetPosition(IntPtr self, inout Point pt);
-        static extern (C) bool   wxGridEvent_Selecting(IntPtr self);
-        static extern (C) bool   wxGridEvent_ControlDown(IntPtr self);
-        static extern (C) bool   wxGridEvent_MetaDown(IntPtr self);
-        static extern (C) bool   wxGridEvent_ShiftDown(IntPtr self);
-        static extern (C) bool   wxGridEvent_AltDown(IntPtr self);
-        static extern (C) void wxGridEvent_Veto(IntPtr self);
-        static extern (C) void wxGridEvent_Allow(IntPtr self);
-        static extern (C) bool wxGridEvent_IsAllowed(IntPtr self);      
+        static extern (C) ЦУк wxGridEvent_ctor(цел ид, цел тип, ЦУк объ, цел row, цел col, цел x, цел y, бул sel, бул control, бул shift, бул alt, бул meta);
+        static extern (C) цел    wxGridEvent_GetRow(ЦУк сам);
+        static extern (C) цел    wxGridEvent_GetCol(ЦУк сам);
+        static extern (C) проц   wxGridEvent_GetPosition(ЦУк сам, inout Точка pt);
+        static extern (C) бул   wxGridEvent_Selecting(ЦУк сам);
+        static extern (C) бул   wxGridEvent_ControlDown(ЦУк сам);
+        static extern (C) бул   wxGridEvent_MetaDown(ЦУк сам);
+        static extern (C) бул   wxGridEvent_ShiftDown(ЦУк сам);
+        static extern (C) бул   wxGridEvent_AltDown(ЦУк сам);
+        static extern (C) проц wxGridEvent_Veto(ЦУк сам);
+        static extern (C) проц wxGridEvent_Allow(ЦУк сам);
+        static extern (C) бул wxGridEvent_IsAllowed(ЦУк сам);      
 		//! \endcond
 
         //-----------------------------------------------------------------------------
 
     alias GridEvent wxGridEvent;
-    public class GridEvent : Event 
+    public class GridEvent : Событие 
     {
-        public this(IntPtr wxobj)
-            { super(wxobj); }
+        public this(ЦУк шхобъ)
+            { super(шхобъ); }
 
-        public this(int id, int type, wxObject obj, int row, int col, int x, int y, bool sel, bool control, bool shift, bool alt, bool meta)
-            { this(wxGridEvent_ctor(id, type, wxObject.SafePtr(obj), row, col, x, y, sel, control, shift, alt, meta)); }
-
-        //-----------------------------------------------------------------------------
-
-        public int Row() { return wxGridEvent_GetRow(wxobj); }
-
-        public int Col() { return wxGridEvent_GetCol(wxobj); }
+        public this(цел ид, цел тип, wxObject объ, цел row, цел col, цел x, цел y, бул sel, бул control, бул shift, бул alt, бул meta)
+            { this(wxGridEvent_ctor(ид, тип, wxObject.SafePtr(объ), row, col, x, y, sel, control, shift, alt, meta)); }
 
         //-----------------------------------------------------------------------------
 
-        public Point Position() { 
-                Point pt;
-                wxGridEvent_GetPosition(wxobj, pt);
+        public цел Row() { return wxGridEvent_GetRow(шхобъ); }
+
+        public цел Col() { return wxGridEvent_GetCol(шхобъ); }
+
+        //-----------------------------------------------------------------------------
+
+        public Точка Положение() { 
+                Точка pt;
+                wxGridEvent_GetPosition(шхобъ, pt);
                 return pt;
             }
 
         //-----------------------------------------------------------------------------
 
-        public bool Selecting() { return wxGridEvent_Selecting(wxobj); }
+        public бул Selecting() { return wxGridEvent_Selecting(шхобъ); }
 
         //-----------------------------------------------------------------------------
 
-        public bool ControlDown() { return wxGridEvent_ControlDown(wxobj); }
+        public бул НажатКонтрол() { return wxGridEvent_ControlDown(шхобъ); }
 
-        public bool MetaDown() { return wxGridEvent_MetaDown(wxobj); }
+        public бул НажатМета() { return wxGridEvent_MetaDown(шхобъ); }
 
-        public bool ShiftDown() { return wxGridEvent_ShiftDown(wxobj); }
+        public бул НажатШифт() { return wxGridEvent_ShiftDown(шхобъ); }
 
-            public bool AltDown() { return wxGridEvent_AltDown(wxobj); }
+            public бул НажатАльт() { return wxGridEvent_AltDown(шхобъ); }
         
         //-----------------------------------------------------------------------------     
         
-        public void Veto()
+        public проц Veto()
         {
-            wxGridEvent_Veto(wxobj);
+            wxGridEvent_Veto(шхобъ);
         }
         
         //-----------------------------------------------------------------------------
         
-        public void Allow()
+        public проц Allow()
         {
-            wxGridEvent_Allow(wxobj);
+            wxGridEvent_Allow(шхобъ);
         }
         
         //-----------------------------------------------------------------------------
         
-        public bool Allowed() { return wxGridEvent_IsAllowed(wxobj); }
+        public бул Allowed() { return wxGridEvent_IsAllowed(шхобъ); }
 
-	private static Event New(IntPtr obj) { return new GridEvent(obj); }
+	private static Событие Нов(ЦУк объ) { return new GridEvent(объ); }
 
 	static this()
 	{
@@ -119,18 +119,18 @@ public import wx.ScrolledWindow;
 			wxEVT_GRID_EDITOR_HIDDEN = wxEvent_EVT_GRID_EDITOR_HIDDEN();
 			wxEVT_GRID_EDITOR_CREATED = wxEvent_EVT_GRID_EDITOR_CREATED();
 
-			AddEventType(wxEVT_GRID_CELL_LEFT_CLICK,            &GridEvent.New);
-			AddEventType(wxEVT_GRID_CELL_RIGHT_CLICK,           &GridEvent.New);
-			AddEventType(wxEVT_GRID_CELL_LEFT_DCLICK,           &GridEvent.New);
-			AddEventType(wxEVT_GRID_CELL_RIGHT_DCLICK,          &GridEvent.New);
-			AddEventType(wxEVT_GRID_LABEL_LEFT_CLICK,           &GridEvent.New);
-			AddEventType(wxEVT_GRID_LABEL_RIGHT_CLICK,          &GridEvent.New);
-			AddEventType(wxEVT_GRID_LABEL_LEFT_DCLICK,          &GridEvent.New);
-			AddEventType(wxEVT_GRID_LABEL_RIGHT_DCLICK,         &GridEvent.New);
-			AddEventType(wxEVT_GRID_CELL_CHANGE,                &GridEvent.New);
-			AddEventType(wxEVT_GRID_SELECT_CELL,                &GridEvent.New);
-			AddEventType(wxEVT_GRID_EDITOR_SHOWN,               &GridEvent.New);
-			AddEventType(wxEVT_GRID_EDITOR_HIDDEN,              &GridEvent.New);
+			ДобавьТипСоб(wxEVT_GRID_CELL_LEFT_CLICK,            &GridEvent.Нов);
+			ДобавьТипСоб(wxEVT_GRID_CELL_RIGHT_CLICK,           &GridEvent.Нов);
+			ДобавьТипСоб(wxEVT_GRID_CELL_LEFT_DCLICK,           &GridEvent.Нов);
+			ДобавьТипСоб(wxEVT_GRID_CELL_RIGHT_DCLICK,          &GridEvent.Нов);
+			ДобавьТипСоб(wxEVT_GRID_LABEL_LEFT_CLICK,           &GridEvent.Нов);
+			ДобавьТипСоб(wxEVT_GRID_LABEL_RIGHT_CLICK,          &GridEvent.Нов);
+			ДобавьТипСоб(wxEVT_GRID_LABEL_LEFT_DCLICK,          &GridEvent.Нов);
+			ДобавьТипСоб(wxEVT_GRID_LABEL_RIGHT_DCLICK,         &GridEvent.Нов);
+			ДобавьТипСоб(wxEVT_GRID_CELL_CHANGE,                &GridEvent.Нов);
+			ДобавьТипСоб(wxEVT_GRID_SELECT_CELL,                &GridEvent.Нов);
+			ДобавьТипСоб(wxEVT_GRID_EDITOR_SHOWN,               &GridEvent.Нов);
+			ДобавьТипСоб(wxEVT_GRID_EDITOR_HIDDEN,              &GridEvent.Нов);
 	}
     }
     
@@ -138,25 +138,25 @@ public import wx.ScrolledWindow;
 
 		//! \cond EXTERN
 	extern (C) {
-        alias void   function(GridCellEditor obj, IntPtr parent, int id, IntPtr evtHandler) Virtual_Create;
-        alias void   function(GridCellEditor obj, int row, int col, IntPtr grid) Virtual_BeginEdit;
-        alias bool   function(GridCellEditor obj, int row, int col, IntPtr grid) Virtual_EndEdit;
-        alias void   function(GridCellEditor obj) Virtual_Reset;
-        alias IntPtr function(GridCellEditor obj) Virtual_Clone;
-        alias void   function(GridCellEditor obj, Rectangle rect) Virtual_SetSize;
-        alias void   function(GridCellEditor obj, bool show, IntPtr attr) Virtual_Show;
-        alias void   function(GridCellEditor obj, Rectangle rect, IntPtr attr) Virtual_PaintBackground;
-        alias bool   function(GridCellEditor obj, IntPtr evt) Virtual_IsAcceptedKey;
-        alias void   function(GridCellEditor obj, IntPtr evt) Virtual_StartingKey;
-        alias void   function(GridCellEditor obj) Virtual_StartingClick;
-        alias void   function(GridCellEditor obj, IntPtr evt) Virtual_HandleReturn;
-        alias void   function(GridCellEditor obj) Virtual_Destroy;
-        alias string function(GridCellEditor obj) Virtual_GetValue;
+        alias проц   function(GridCellEditor объ, ЦУк родитель, цел ид, ЦУк evtHandler) Virtual_Create;
+        alias проц   function(GridCellEditor объ, цел row, цел col, ЦУк grid) Virtual_BeginEdit;
+        alias бул   function(GridCellEditor объ, цел row, цел col, ЦУк grid) Virtual_EndEdit;
+        alias проц   function(GridCellEditor объ) Virtual_Reset;
+        alias ЦУк function(GridCellEditor объ) Virtual_Clone;
+        alias проц   function(GridCellEditor объ, Прямоугольник прям) Virtual_SetSize;
+        alias проц   function(GridCellEditor объ, бул show, ЦУк attr) Virtual_Show;
+        alias проц   function(GridCellEditor объ, Прямоугольник прям, ЦУк attr) Virtual_PaintBackground;
+        alias бул   function(GridCellEditor объ, ЦУк evt) Virtual_IsAcceptedKey;
+        alias проц   function(GridCellEditor объ, ЦУк evt) Virtual_StartingKey;
+        alias проц   function(GridCellEditor объ) Virtual_StartingClick;
+        alias проц   function(GridCellEditor объ, ЦУк evt) Virtual_HandleReturn;
+        alias проц   function(GridCellEditor объ) Virtual_Destroy;
+        alias ткст function(GridCellEditor объ) Virtual_GetValue;
 	}
 
-        static extern (C) IntPtr wxGridCellEditor_ctor();
-	static extern (C) void wxGridCellEditor_dtor(IntPtr self);
-        static extern (C) void wxGridCellEditor_RegisterVirtual(IntPtr self, GridCellEditor obj,
+        static extern (C) ЦУк wxGridCellEditor_ctor();
+	static extern (C) проц wxGridCellEditor_dtor(ЦУк сам);
+        static extern (C) проц wxGridCellEditor_RegisterVirtual(ЦУк сам, GridCellEditor объ,
             Virtual_Create create, 
             Virtual_BeginEdit beginEdit, 
             Virtual_EndEdit endEdit, 
@@ -171,37 +171,37 @@ public import wx.ScrolledWindow;
             Virtual_HandleReturn handleReturn,
             Virtual_Destroy destroy,
             Virtual_GetValue getvalue);
-        static extern (C) bool   wxGridCellEditor_IsCreated(IntPtr self);
-        static extern (C) void   wxGridCellEditor_SetSize(IntPtr self, inout Rectangle rect);
-        static extern (C) void   wxGridCellEditor_Show(IntPtr self, bool show, IntPtr attr);
-        static extern (C) void   wxGridCellEditor_PaintBackground(IntPtr self, inout Rectangle rectCell, IntPtr attr);
-        static extern (C) bool   wxGridCellEditor_IsAcceptedKey(IntPtr self, IntPtr evt);
-        static extern (C) void   wxGridCellEditor_StartingKey(IntPtr self, IntPtr evt);
-        static extern (C) void   wxGridCellEditor_StartingClick(IntPtr self);
-        static extern (C) void   wxGridCellEditor_HandleReturn(IntPtr self, IntPtr evt);
-        static extern (C) void   wxGridCellEditor_Destroy(IntPtr self);
-        static extern (C) IntPtr wxGridCellEditor_GetValue(IntPtr self);
+        static extern (C) бул   wxGridCellEditor_IsCreated(ЦУк сам);
+        static extern (C) проц   wxGridCellEditor_SetSize(ЦУк сам, inout Прямоугольник прям);
+        static extern (C) проц   wxGridCellEditor_Show(ЦУк сам, бул show, ЦУк attr);
+        static extern (C) проц   wxGridCellEditor_PaintBackground(ЦУк сам, inout Прямоугольник rectCell, ЦУк attr);
+        static extern (C) бул   wxGridCellEditor_IsAcceptedKey(ЦУк сам, ЦУк evt);
+        static extern (C) проц   wxGridCellEditor_StartingKey(ЦУк сам, ЦУк evt);
+        static extern (C) проц   wxGridCellEditor_StartingClick(ЦУк сам);
+        static extern (C) проц   wxGridCellEditor_HandleReturn(ЦУк сам, ЦУк evt);
+        static extern (C) проц   wxGridCellEditor_Destroy(ЦУк сам);
+        static extern (C) ЦУк wxGridCellEditor_GetValue(ЦУк сам);
 		//! \endcond
 	
         //-----------------------------------------------------------------------------
         
     public abstract class GridCellEditor : GridCellWorker
     {
-        public this(IntPtr wxobj)
+        public this(ЦУк шхобъ)
 	{ 
-		super(wxobj);
+		super(шхобъ);
 	}
 	
-	private this(IntPtr wxobj, bool memOwn)
+	private this(ЦУк шхобъ, бул memOwn)
 	{ 
-		super(wxobj);
+		super(шхобъ);
 		this.memOwn = memOwn;
 	}
             
         public this()
         {
-        	this(wxGridCellEditor_ctor(), true);
-            wxGridCellEditor_RegisterVirtual(wxobj, this,
+        	this(wxGridCellEditor_ctor(), да);
+            wxGridCellEditor_RegisterVirtual(шхобъ, this,
                     &staticDoCreate,
                     &staticDoBeginEdit,
                     &staticDoEndEdit,
@@ -218,271 +218,271 @@ public import wx.ScrolledWindow;
                     &staticGetValue);                                    
         }
 
-//	public static wxObject New(IntPtr ptr) { return new GridCellEditor(ptr); }
+//	public static wxObject Нов(ЦУк ptr) { return new GridCellEditor(ptr); }
 	//---------------------------------------------------------------------
 	
-	override protected void dtor() { wxGridCellEditor_dtor(wxobj); }
+	override protected проц dtor() { wxGridCellEditor_dtor(шхобъ); }
             
         //-----------------------------------------------------------------------------
     
-        public bool IsCreated() { return wxGridCellEditor_IsCreated(wxobj); }
+        public бул IsCreated() { return wxGridCellEditor_IsCreated(шхобъ); }
     
         //-----------------------------------------------------------------------------
         
-        static extern(C) private void staticDoCreate(GridCellEditor obj, IntPtr parent, int id, IntPtr evtHandler)
+        static extern(C) private проц staticDoCreate(GridCellEditor объ, ЦУк родитель, цел ид, ЦУк evtHandler)
         {
-            obj.Create(cast(Window)wxObject.FindObject(parent), id, cast(EvtHandler)FindObject(evtHandler, &EvtHandler.New));
+            объ.Create(cast(Окно)wxObject.FindObject(родитель), ид, cast(EvtHandler)FindObject(evtHandler, &EvtHandler.Нов));
         }
     
-        public abstract void Create(Window parent, int id, EvtHandler evtHandler);
+        public abstract проц Create(Окно родитель, цел ид, EvtHandler evtHandler);
     
         //-----------------------------------------------------------------------------
         
-        static extern(C) private void staticSetSize(GridCellEditor obj, Rectangle rect)
+        static extern(C) private проц staticSetSize(GridCellEditor объ, Прямоугольник прям)
         {
-        	obj.SetSize(rect);
+        	объ.УстРазм(прям);
         }
 
-        public /+virtual+/ void SetSize(Rectangle rect)
+        public /+virtual+/ проц УстРазм(Прямоугольник прям)
         {
-            wxGridCellEditor_SetSize(wxobj, rect);
-        }
-
-        //-----------------------------------------------------------------------------
-        
-        static extern(C) private void staticDoShow(GridCellEditor obj, bool show, IntPtr attr)
-        {
-            obj.Show(show, cast(GridCellAttr)FindObject(attr, &GridCellAttr.New));
-        }
-
-        public /+virtual+/ void Show(bool show, GridCellAttr attr)
-        {
-            wxGridCellEditor_Show(wxobj, show, wxObject.SafePtr(attr));
+            wxGridCellEditor_SetSize(шхобъ, прям);
         }
 
         //-----------------------------------------------------------------------------
         
-        static extern(C) private void staticDoPaintBackground(GridCellEditor obj, Rectangle rectCell, IntPtr attr)
+        static extern(C) private проц staticDoShow(GridCellEditor объ, бул show, ЦУк attr)
         {
-            obj.PaintBackground(rectCell, cast(GridCellAttr)FindObject(attr, &GridCellAttr.New));
+            объ.Show(show, cast(GridCellAttr)FindObject(attr, &GridCellAttr.Нов));
         }
 
-        public /+virtual+/ void PaintBackground(Rectangle rectCell, GridCellAttr attr)
+        public /+virtual+/ проц Show(бул show, GridCellAttr attr)
         {
-            wxGridCellEditor_PaintBackground(wxobj, rectCell, wxObject.SafePtr(attr));
+            wxGridCellEditor_Show(шхобъ, show, wxObject.SafePtr(attr));
         }
 
         //-----------------------------------------------------------------------------
         
-        static extern(C) private void staticDoBeginEdit(GridCellEditor obj, int row, int col, IntPtr grid)
+        static extern(C) private проц staticDoPaintBackground(GridCellEditor объ, Прямоугольник rectCell, ЦУк attr)
         {
-            obj.BeginEdit(row, col, cast(Grid)FindObject(grid, &Grid.New));
+            объ.PaintBackground(rectCell, cast(GridCellAttr)FindObject(attr, &GridCellAttr.Нов));
+        }
+
+        public /+virtual+/ проц PaintBackground(Прямоугольник rectCell, GridCellAttr attr)
+        {
+            wxGridCellEditor_PaintBackground(шхобъ, rectCell, wxObject.SafePtr(attr));
+        }
+
+        //-----------------------------------------------------------------------------
+        
+        static extern(C) private проц staticDoBeginEdit(GridCellEditor объ, цел row, цел col, ЦУк grid)
+        {
+            объ.BeginEdit(row, col, cast(Grid)FindObject(grid, &Grid.Нов));
         }
     
-        public abstract void BeginEdit(int row, int col, Grid grid);
+        public abstract проц BeginEdit(цел row, цел col, Grid grid);
         
-        static extern(C) private bool staticDoEndEdit(GridCellEditor obj, int row, int col, IntPtr grid)
+        static extern(C) private бул staticDoEndEdit(GridCellEditor объ, цел row, цел col, ЦУк grid)
         {
-            return obj.EndEdit(row, col, cast(Grid)FindObject(grid, &Grid.New));
+            return объ.EndEdit(row, col, cast(Grid)FindObject(grid, &Grid.Нов));
         }
         
-        public abstract bool EndEdit(int row, int col, Grid grid);
+        public abstract бул EndEdit(цел row, цел col, Grid grid);
     
         //-----------------------------------------------------------------------------
     
-        static extern(C) private void staticReset(GridCellEditor obj)
+        static extern(C) private проц staticReset(GridCellEditor объ)
         {
-            return obj.Reset();
+            return объ.Reset();
         }
 
-        public abstract void Reset();
+        public abstract проц Reset();
     
         //-----------------------------------------------------------------------------
         
-        static extern(C) private bool staticDoIsAcceptedKey(GridCellEditor obj, IntPtr evt)
+        static extern(C) private бул staticDoIsAcceptedKey(GridCellEditor объ, ЦУк evt)
         {
-            return obj.IsAcceptedKey(cast(KeyEvent)wxObject.FindObject(evt, cast(wxObject function(IntPtr))&KeyEvent.New));
+            return объ.IsAcceptedKey(cast(СобКлавиши)wxObject.FindObject(evt, cast(wxObject function(ЦУк))&СобКлавиши.Нов));
         }
         
-        public /+virtual+/ bool IsAcceptedKey(KeyEvent evt)
+        public /+virtual+/ бул IsAcceptedKey(СобКлавиши evt)
         {
-            return wxGridCellEditor_IsAcceptedKey(wxobj, wxObject.SafePtr(evt));
+            return wxGridCellEditor_IsAcceptedKey(шхобъ, wxObject.SafePtr(evt));
         }
         
-        static extern(C) private void staticDoStartingKey(GridCellEditor obj, IntPtr evt)
+        static extern(C) private проц staticDoStartingKey(GridCellEditor объ, ЦУк evt)
         {
-            obj.StartingKey(cast(KeyEvent)wxObject.FindObject(evt, cast(wxObject function(IntPtr))&KeyEvent.New));
+            объ.StartingKey(cast(СобКлавиши)wxObject.FindObject(evt, cast(wxObject function(ЦУк))&СобКлавиши.Нов));
         }
     
-        public /+virtual+/ void StartingKey(KeyEvent evt)
+        public /+virtual+/ проц StartingKey(СобКлавиши evt)
         {
-            wxGridCellEditor_StartingKey(wxobj, wxObject.SafePtr(evt));
+            wxGridCellEditor_StartingKey(шхобъ, wxObject.SafePtr(evt));
         }
 
-	static extern(C) private void staticStartingClick(GridCellEditor obj)
+	static extern(C) private проц staticStartingClick(GridCellEditor объ)
 	{
-	    obj.StartingClick();
+	    объ.StartingClick();
 	}
-        public /+virtual+/ void StartingClick()
+        public /+virtual+/ проц StartingClick()
         {
-            wxGridCellEditor_StartingClick(wxobj);
+            wxGridCellEditor_StartingClick(шхобъ);
         }
 
         //-----------------------------------------------------------------------------
         
-        static extern(C) private void staticDoHandleReturn(GridCellEditor obj, IntPtr evt)
+        static extern(C) private проц staticDoHandleReturn(GridCellEditor объ, ЦУк evt)
         {
-            obj.HandleReturn(cast(KeyEvent)wxObject.FindObject(evt, cast(wxObject function(IntPtr))&KeyEvent.New));
+            объ.HandleReturn(cast(СобКлавиши)wxObject.FindObject(evt, cast(wxObject function(ЦУк))&СобКлавиши.Нов));
         }
 
-        public /+virtual+/ void HandleReturn(KeyEvent evt)
+        public /+virtual+/ проц HandleReturn(СобКлавиши evt)
         {
-            wxGridCellEditor_HandleReturn(wxobj, wxObject.SafePtr(evt));
+            wxGridCellEditor_HandleReturn(шхобъ, wxObject.SafePtr(evt));
         }
 
         //-----------------------------------------------------------------------------
 
-	static extern(C) private void staticDestroy(GridCellEditor obj)
+	static extern(C) private проц staticDestroy(GridCellEditor объ)
 	{
-		obj.Destroy();
+		объ.Разрушь();
 	}
 
-        public /+virtual+/ void Destroy()
+        public /+virtual+/ проц Разрушь()
         {
-            wxGridCellEditor_Destroy(wxobj);
+            wxGridCellEditor_Destroy(шхобъ);
         }
 
         //-----------------------------------------------------------------------------
         
-        static extern(C) private IntPtr staticDoClone(GridCellEditor obj)
+        static extern(C) private ЦУк staticDoClone(GridCellEditor объ)
         {
-            return wxObject.SafePtr(obj.Clone());
+            return wxObject.SafePtr(объ.Clone());
         }
         
         public abstract GridCellEditor Clone();
         
         //-----------------------------------------------------------------------------
         
-        static extern(C) private string staticGetValue(GridCellEditor obj)
+        static extern(C) private ткст staticGetValue(GridCellEditor объ)
         {
-            return obj.GetValue();
+            return объ.GetValue();
         }
-        public abstract string GetValue();
+        public abstract ткст GetValue();
 //        {
-//            return cast(string) new wxString(wxGridCellEditor_GetValue(wxobj), true);
+//            return cast(ткст) new wxString(wxGridCellEditor_GetValue(шхобъ), да);
 //        }
     }
     
     //-----------------------------------------------------------------------------
     
 		//! \cond EXTERN
-        static extern (C) IntPtr wxGridCellTextEditor_ctor();
-	static extern (C) void wxGridCellTextEditor_dtor(IntPtr self);
-        static extern (C) void wxGridCellTextEditor_Create(IntPtr self, IntPtr parent, int id, IntPtr evtHandler);
-        static extern (C) void wxGridCellTextEditor_SetSize(IntPtr self, inout Rectangle rect);
-        static extern (C) void wxGridCellTextEditor_PaintBackground(IntPtr self, inout Rectangle rectCell, IntPtr attr);
-        static extern (C) bool wxGridCellTextEditor_IsAcceptedKey(IntPtr self, IntPtr evt);
-        static extern (C) void wxGridCellTextEditor_BeginEdit(IntPtr self, int row, int col, IntPtr grid);
-        static extern (C) bool wxGridCellTextEditor_EndEdit(IntPtr self, int row, int col, IntPtr grid);
-        static extern (C) void wxGridCellTextEditor_Reset(IntPtr self);
-        static extern (C) void wxGridCellTextEditor_StartingKey(IntPtr self, IntPtr evt);
-        static extern (C) void wxGridCellTextEditor_SetParameters(IntPtr self, string parameter);
-        static extern (C) IntPtr wxGridCellTextEditor_Clone(IntPtr self);
-        static extern (C) IntPtr wxGridCellTextEditor_GetValue(IntPtr self);
+        static extern (C) ЦУк wxGridCellTextEditor_ctor();
+	static extern (C) проц wxGridCellTextEditor_dtor(ЦУк сам);
+        static extern (C) проц wxGridCellTextEditor_Create(ЦУк сам, ЦУк родитель, цел ид, ЦУк evtHandler);
+        static extern (C) проц wxGridCellTextEditor_SetSize(ЦУк сам, inout Прямоугольник прям);
+        static extern (C) проц wxGridCellTextEditor_PaintBackground(ЦУк сам, inout Прямоугольник rectCell, ЦУк attr);
+        static extern (C) бул wxGridCellTextEditor_IsAcceptedKey(ЦУк сам, ЦУк evt);
+        static extern (C) проц wxGridCellTextEditor_BeginEdit(ЦУк сам, цел row, цел col, ЦУк grid);
+        static extern (C) бул wxGridCellTextEditor_EndEdit(ЦУк сам, цел row, цел col, ЦУк grid);
+        static extern (C) проц wxGridCellTextEditor_Reset(ЦУк сам);
+        static extern (C) проц wxGridCellTextEditor_StartingKey(ЦУк сам, ЦУк evt);
+        static extern (C) проц wxGridCellTextEditor_SetParameters(ЦУк сам, ткст parameter);
+        static extern (C) ЦУк wxGridCellTextEditor_Clone(ЦУк сам);
+        static extern (C) ЦУк wxGridCellTextEditor_GetValue(ЦУк сам);
 		//! \endcond
 	
     alias GridCellTextEditor wxGridCellTextEditor;
     public class GridCellTextEditor : GridCellEditor
     {
         public this()
-            { this(wxGridCellTextEditor_ctor(), true); }
+            { this(wxGridCellTextEditor_ctor(), да); }
 
-        public this(IntPtr wxobj)
+        public this(ЦУк шхобъ)
 	{ 
-		super(wxobj);
+		super(шхобъ);
 	}
 	
-	private this(IntPtr wxobj, bool memOwn)
+	private this(ЦУк шхобъ, бул memOwn)
 	{ 
-		super(wxobj);
+		super(шхобъ);
 		this.memOwn = memOwn;
 	}
 	
 	//---------------------------------------------------------------------
 				
-	override protected void dtor() { wxGridCellTextEditor_dtor(wxobj); }
+	override protected проц dtor() { wxGridCellTextEditor_dtor(шхобъ); }
 
-        public override void Create(Window parent, int id, EvtHandler evtHandler)
+        public override проц Create(Окно родитель, цел ид, EvtHandler evtHandler)
         {
-            wxGridCellTextEditor_Create(wxobj, wxObject.SafePtr(parent), id, wxObject.SafePtr(evtHandler));
+            wxGridCellTextEditor_Create(шхобъ, wxObject.SafePtr(родитель), ид, wxObject.SafePtr(evtHandler));
         }
 
-        public override void SetSize(Rectangle rect)
+        public override проц УстРазм(Прямоугольник прям)
         {
-            wxGridCellTextEditor_SetSize(wxobj, rect);
+            wxGridCellTextEditor_SetSize(шхобъ, прям);
         }
 
-        public override void PaintBackground(Rectangle rectCell, GridCellAttr attr)
+        public override проц PaintBackground(Прямоугольник rectCell, GridCellAttr attr)
         {
-            wxGridCellTextEditor_PaintBackground(wxobj, rectCell, wxObject.SafePtr(attr));
+            wxGridCellTextEditor_PaintBackground(шхобъ, rectCell, wxObject.SafePtr(attr));
         }
 
-        public override bool IsAcceptedKey(KeyEvent evt)
+        public override бул IsAcceptedKey(СобКлавиши evt)
         {
-            return wxGridCellTextEditor_IsAcceptedKey(wxobj, wxObject.SafePtr(evt));
+            return wxGridCellTextEditor_IsAcceptedKey(шхобъ, wxObject.SafePtr(evt));
         }
 
-        public override void BeginEdit(int row, int col, Grid grid)
+        public override проц BeginEdit(цел row, цел col, Grid grid)
         {
-            wxGridCellTextEditor_BeginEdit(wxobj, row, col, wxObject.SafePtr(grid));
+            wxGridCellTextEditor_BeginEdit(шхобъ, row, col, wxObject.SafePtr(grid));
         }
 
-        public override bool EndEdit(int row, int col, Grid grid)
+        public override бул EndEdit(цел row, цел col, Grid grid)
         {
-            return wxGridCellTextEditor_EndEdit(wxobj, row, col, wxObject.SafePtr(grid));
+            return wxGridCellTextEditor_EndEdit(шхобъ, row, col, wxObject.SafePtr(grid));
         }
 
-        public override void Reset()
+        public override проц Reset()
         {
-            wxGridCellTextEditor_Reset(wxobj);
+            wxGridCellTextEditor_Reset(шхобъ);
         }
 
-        public override void StartingKey(KeyEvent evt)
+        public override проц StartingKey(СобКлавиши evt)
         {
-            wxGridCellTextEditor_StartingKey(wxobj, wxObject.SafePtr(evt));
+            wxGridCellTextEditor_StartingKey(шхобъ, wxObject.SafePtr(evt));
         }
 
-        public override void SetParameters(string parameter)
+        public override проц SetParameters(ткст parameter)
         {
-            wxGridCellTextEditor_SetParameters(wxobj, parameter);
+            wxGridCellTextEditor_SetParameters(шхобъ, parameter);
         }
 
         public override GridCellEditor Clone()
         {
-//            return cast(GridCellEditor)FindObject(wxGridCellTextEditor_Clone(wxobj), &GridCellEditor.New);
-              return new GridCellTextEditor(wxGridCellTextEditor_Clone(wxobj));
+//            return cast(GridCellEditor)FindObject(wxGridCellTextEditor_Clone(шхобъ), &GridCellEditor.Нов);
+              return new GridCellTextEditor(wxGridCellTextEditor_Clone(шхобъ));
         }
-        public override string GetValue()
+        public override ткст GetValue()
         {
-            return cast(string) new wxString(wxGridCellTextEditor_GetValue(wxobj), true);
+            return cast(ткст) new wxString(wxGridCellTextEditor_GetValue(шхобъ), да);
         }
     }
 
     //-----------------------------------------------------------------------------
 
 		//! \cond EXTERN
-        static extern (C) IntPtr wxGridCellNumberEditor_ctor(int min, int max);
-	static extern (C) void wxGridCellNumberEditor_dtor(IntPtr self);
-	static extern (C) void wxGridCellNumberEditor_RegisterDisposable(IntPtr self, Virtual_Dispose onDispose);
-        static extern (C) void wxGridCellNumberEditor_Create(IntPtr self, IntPtr parent, int id, IntPtr evtHandler);
-        static extern (C) bool wxGridCellNumberEditor_IsAcceptedKey(IntPtr self, IntPtr evt);
-        static extern (C) void wxGridCellNumberEditor_BeginEdit(IntPtr self, int row, int col, IntPtr grid);
-        static extern (C) bool wxGridCellNumberEditor_EndEdit(IntPtr self, int row, int col, IntPtr grid);
-        static extern (C) void wxGridCellNumberEditor_Reset(IntPtr self);
-        static extern (C) void wxGridCellNumberEditor_StartingKey(IntPtr self, IntPtr evt);
-        static extern (C) void wxGridCellNumberEditor_SetParameters(IntPtr self, string parameter);
-        static extern (C) IntPtr wxGridCellNumberEditor_Clone(IntPtr self);
-        static extern (C) IntPtr wxGridCellNumberEditor_GetValue(IntPtr self);
+        static extern (C) ЦУк wxGridCellNumberEditor_ctor(цел min, цел max);
+	static extern (C) проц wxGridCellNumberEditor_dtor(ЦУк сам);
+	static extern (C) проц wxGridCellNumberEditor_RegisterDisposable(ЦУк сам, Virtual_Dispose onDispose);
+        static extern (C) проц wxGridCellNumberEditor_Create(ЦУк сам, ЦУк родитель, цел ид, ЦУк evtHandler);
+        static extern (C) бул wxGridCellNumberEditor_IsAcceptedKey(ЦУк сам, ЦУк evt);
+        static extern (C) проц wxGridCellNumberEditor_BeginEdit(ЦУк сам, цел row, цел col, ЦУк grid);
+        static extern (C) бул wxGridCellNumberEditor_EndEdit(ЦУк сам, цел row, цел col, ЦУк grid);
+        static extern (C) проц wxGridCellNumberEditor_Reset(ЦУк сам);
+        static extern (C) проц wxGridCellNumberEditor_StartingKey(ЦУк сам, ЦУк evt);
+        static extern (C) проц wxGridCellNumberEditor_SetParameters(ЦУк сам, ткст parameter);
+        static extern (C) ЦУк wxGridCellNumberEditor_Clone(ЦУк сам);
+        static extern (C) ЦУк wxGridCellNumberEditor_GetValue(ЦУк сам);
 		//! \endcond
 	
     alias GridCellNumberEditor wxGridCellNumberEditor;
@@ -491,91 +491,91 @@ public import wx.ScrolledWindow;
         public this()
             { this(-1, -1); }
 
-        public this(int min)
+        public this(цел min)
             { this(min, -1); }
 
-        public this(int min, int max)
+        public this(цел min, цел max)
 	{ 
-		this(wxGridCellNumberEditor_ctor(min, max), true);
-		wxGridCellNumberEditor_RegisterDisposable(wxobj, &VirtualDispose);
+		this(wxGridCellNumberEditor_ctor(min, max), да);
+		wxGridCellNumberEditor_RegisterDisposable(шхобъ, &VirtualDispose);
 	}
 
-        public this(IntPtr wxobj)
+        public this(ЦУк шхобъ)
 	{ 
-		super(wxobj);
+		super(шхобъ);
 	}
 	
-	private this(IntPtr wxobj, bool memOwn)
+	private this(ЦУк шхобъ, бул memOwn)
 	{ 
-		super(wxobj);
+		super(шхобъ);
 		this.memOwn = memOwn;
 	}
 	
 	//---------------------------------------------------------------------
 				
-	override protected void dtor() { wxGridCellNumberEditor_dtor(wxobj); }
+	override protected проц dtor() { wxGridCellNumberEditor_dtor(шхобъ); }
 
-        public override void Create(Window parent, int id, EvtHandler evtHandler)
+        public override проц Create(Окно родитель, цел ид, EvtHandler evtHandler)
         {
-            wxGridCellNumberEditor_Create(wxobj, wxObject.SafePtr(parent), id, wxObject.SafePtr(evtHandler));
+            wxGridCellNumberEditor_Create(шхобъ, wxObject.SafePtr(родитель), ид, wxObject.SafePtr(evtHandler));
         }
 
-        public override bool IsAcceptedKey(KeyEvent evt)
+        public override бул IsAcceptedKey(СобКлавиши evt)
         {
-            return wxGridCellNumberEditor_IsAcceptedKey(wxobj, wxObject.SafePtr(evt));
+            return wxGridCellNumberEditor_IsAcceptedKey(шхобъ, wxObject.SafePtr(evt));
         }
 
-        public override void BeginEdit(int row, int col, Grid grid)
+        public override проц BeginEdit(цел row, цел col, Grid grid)
         {
-            wxGridCellNumberEditor_BeginEdit(wxobj, row, col, wxObject.SafePtr(grid));
+            wxGridCellNumberEditor_BeginEdit(шхобъ, row, col, wxObject.SafePtr(grid));
         }
 
-        public override bool EndEdit(int row, int col, Grid grid)
+        public override бул EndEdit(цел row, цел col, Grid grid)
         {
-            return wxGridCellNumberEditor_EndEdit(wxobj, row, col, wxObject.SafePtr(grid));
+            return wxGridCellNumberEditor_EndEdit(шхобъ, row, col, wxObject.SafePtr(grid));
         }
 
-        public override void Reset()
+        public override проц Reset()
         {
-            wxGridCellNumberEditor_Reset(wxobj);
+            wxGridCellNumberEditor_Reset(шхобъ);
         }
 
-        public override void StartingKey(KeyEvent evt)
+        public override проц StartingKey(СобКлавиши evt)
         {
-            wxGridCellNumberEditor_StartingKey(wxobj, wxObject.SafePtr(evt));
+            wxGridCellNumberEditor_StartingKey(шхобъ, wxObject.SafePtr(evt));
         }
 
-        public override void SetParameters(string parameter)
+        public override проц SetParameters(ткст parameter)
         {
-            wxGridCellNumberEditor_SetParameters(wxobj, parameter);
+            wxGridCellNumberEditor_SetParameters(шхобъ, parameter);
         }
 
         public override GridCellEditor Clone()
         {
-//            return cast(GridCellEditor)FindObject(wxGridCellNumberEditor_Clone(wxobj), &GridCellEditor.New);
-              return new GridCellNumberEditor(wxGridCellNumberEditor_Clone(wxobj));
+//            return cast(GridCellEditor)FindObject(wxGridCellNumberEditor_Clone(шхобъ), &GridCellEditor.Нов);
+              return new GridCellNumberEditor(wxGridCellNumberEditor_Clone(шхобъ));
         }
 
-        public override string GetValue()
+        public override ткст GetValue()
         {
-            return cast(string) new wxString(wxGridCellNumberEditor_GetValue(wxobj), true);
+            return cast(ткст) new wxString(wxGridCellNumberEditor_GetValue(шхобъ), да);
         }
     }
 
     //-----------------------------------------------------------------------------
 
 		//! \cond EXTERN
-        static extern (C) IntPtr wxGridCellFloatEditor_ctor(int width, int precision);
-	static extern (C) void wxGridCellFloatEditor_dtor(IntPtr self);
-        static extern (C) void wxGridCellFloatEditor_Create(IntPtr self, IntPtr parent, int id, IntPtr evtHandler);
-        static extern (C) bool wxGridCellFloatEditor_IsAcceptedKey(IntPtr self, IntPtr evt);
-        static extern (C) void wxGridCellFloatEditor_BeginEdit(IntPtr self, int row, int col, IntPtr grid);
-        static extern (C) bool wxGridCellFloatEditor_EndEdit(IntPtr self, int row, int col, IntPtr grid);
-        static extern (C) void wxGridCellFloatEditor_Reset(IntPtr self);
-        static extern (C) void wxGridCellFloatEditor_StartingKey(IntPtr self, IntPtr evt);
-        static extern (C) void wxGridCellFloatEditor_SetParameters(IntPtr self, string parameter);
-        static extern (C) IntPtr wxGridCellFloatEditor_Clone(IntPtr self);
-        static extern (C) IntPtr wxGridCellFloatEditor_GetValue(IntPtr self);
+        static extern (C) ЦУк wxGridCellFloatEditor_ctor(цел ширина, цел precision);
+	static extern (C) проц wxGridCellFloatEditor_dtor(ЦУк сам);
+        static extern (C) проц wxGridCellFloatEditor_Create(ЦУк сам, ЦУк родитель, цел ид, ЦУк evtHandler);
+        static extern (C) бул wxGridCellFloatEditor_IsAcceptedKey(ЦУк сам, ЦУк evt);
+        static extern (C) проц wxGridCellFloatEditor_BeginEdit(ЦУк сам, цел row, цел col, ЦУк grid);
+        static extern (C) бул wxGridCellFloatEditor_EndEdit(ЦУк сам, цел row, цел col, ЦУк grid);
+        static extern (C) проц wxGridCellFloatEditor_Reset(ЦУк сам);
+        static extern (C) проц wxGridCellFloatEditor_StartingKey(ЦУк сам, ЦУк evt);
+        static extern (C) проц wxGridCellFloatEditor_SetParameters(ЦУк сам, ткст parameter);
+        static extern (C) ЦУк wxGridCellFloatEditor_Clone(ЦУк сам);
+        static extern (C) ЦУк wxGridCellFloatEditor_GetValue(ЦУк сам);
 		//! \endcond
 	
     alias GridCellFloatEditor wxGridCellFloatEditor;
@@ -584,89 +584,89 @@ public import wx.ScrolledWindow;
         public this()
             { this(-1, -1); }
 
-        public this(int width)
-            { this(width, -1); }
+        public this(цел ширина)
+            { this(ширина, -1); }
 
-        public this(int width, int precision)
-            { this(wxGridCellFloatEditor_ctor(width, precision), true); }
+        public this(цел ширина, цел precision)
+            { this(wxGridCellFloatEditor_ctor(ширина, precision), да); }
 
-        public this(IntPtr wxobj)
+        public this(ЦУк шхобъ)
 	{ 
-		super(wxobj);
+		super(шхобъ);
 	}
 	
-	private this(IntPtr wxobj, bool memOwn)
+	private this(ЦУк шхобъ, бул memOwn)
 	{ 
-		super(wxobj);
+		super(шхобъ);
 		this.memOwn = memOwn;
 	}
 	
 	//---------------------------------------------------------------------
 				
-	override protected void dtor() { wxGridCellFloatEditor_dtor(wxobj); }
+	override protected проц dtor() { wxGridCellFloatEditor_dtor(шхобъ); }
 
-        public override void Create(Window parent, int id, EvtHandler evtHandler)
+        public override проц Create(Окно родитель, цел ид, EvtHandler evtHandler)
         {
-            wxGridCellFloatEditor_Create(wxobj, wxObject.SafePtr(parent), id, wxObject.SafePtr(evtHandler));
+            wxGridCellFloatEditor_Create(шхобъ, wxObject.SafePtr(родитель), ид, wxObject.SafePtr(evtHandler));
         }
 
-        public override bool IsAcceptedKey(KeyEvent evt)
+        public override бул IsAcceptedKey(СобКлавиши evt)
         {
-            return wxGridCellFloatEditor_IsAcceptedKey(wxobj, wxObject.SafePtr(evt));
+            return wxGridCellFloatEditor_IsAcceptedKey(шхобъ, wxObject.SafePtr(evt));
         }
 
-        public override void BeginEdit(int row, int col, Grid grid)
+        public override проц BeginEdit(цел row, цел col, Grid grid)
         {
-            wxGridCellFloatEditor_BeginEdit(wxobj, row, col, wxObject.SafePtr(grid));
+            wxGridCellFloatEditor_BeginEdit(шхобъ, row, col, wxObject.SafePtr(grid));
         }
 
-        public override bool EndEdit(int row, int col, Grid grid)
+        public override бул EndEdit(цел row, цел col, Grid grid)
         {
-            return wxGridCellFloatEditor_EndEdit(wxobj, row, col, wxObject.SafePtr(grid));
+            return wxGridCellFloatEditor_EndEdit(шхобъ, row, col, wxObject.SafePtr(grid));
         }
 
-        public override void Reset()
+        public override проц Reset()
         {
-            wxGridCellFloatEditor_Reset(wxobj);
+            wxGridCellFloatEditor_Reset(шхобъ);
         }
 
-        public override void StartingKey(KeyEvent evt)
+        public override проц StartingKey(СобКлавиши evt)
         {
-            wxGridCellFloatEditor_StartingKey(wxobj, wxObject.SafePtr(evt));
+            wxGridCellFloatEditor_StartingKey(шхобъ, wxObject.SafePtr(evt));
         }
 
-        public override void SetParameters(string parameter)
+        public override проц SetParameters(ткст parameter)
         {
-            wxGridCellFloatEditor_SetParameters(wxobj, parameter);
+            wxGridCellFloatEditor_SetParameters(шхобъ, parameter);
         }
 
         public override GridCellEditor Clone()
         {
-//            return cast(GridCellEditor)FindObject(wxGridCellFloatEditor_Clone(wxobj), &GridCellEditor.New);
-              return new GridCellFloatEditor(wxGridCellFloatEditor_Clone(wxobj));
+//            return cast(GridCellEditor)FindObject(wxGridCellFloatEditor_Clone(шхобъ), &GridCellEditor.Нов);
+              return new GridCellFloatEditor(wxGridCellFloatEditor_Clone(шхобъ));
         }
 
-        public override string GetValue()
+        public override ткст GetValue()
         {
-            return cast(string) new wxString(wxGridCellFloatEditor_GetValue(wxobj), true);
+            return cast(ткст) new wxString(wxGridCellFloatEditor_GetValue(шхобъ), да);
         }
     }
 
     //-----------------------------------------------------------------------------
     
 		//! \cond EXTERN
-        static extern (C) IntPtr wxGridCellBoolEditor_ctor();
-	static extern (C) void wxGridCellBoolEditor_dtor(IntPtr self);
-	static extern (C) void wxGridCellBoolEditor_RegisterDisposable(IntPtr self, Virtual_Dispose onDispose);
-        static extern (C) void wxGridCellBoolEditor_Create(IntPtr self, IntPtr parent, int id, IntPtr evtHandler);
-        static extern (C) void wxGridCellBoolEditor_SetSize(IntPtr self, inout Rectangle rect);
-        static extern (C) bool wxGridCellBoolEditor_IsAcceptedKey(IntPtr self, IntPtr evt);
-        static extern (C) void wxGridCellBoolEditor_BeginEdit(IntPtr self, int row, int col, IntPtr grid);
-        static extern (C) bool wxGridCellBoolEditor_EndEdit(IntPtr self, int row, int col, IntPtr grid);
-        static extern (C) void wxGridCellBoolEditor_Reset(IntPtr self);
-        static extern (C) void wxGridCellBoolEditor_StartingClick(IntPtr self);
-        static extern (C) IntPtr wxGridCellBoolEditor_Clone(IntPtr self);
-        static extern (C) IntPtr wxGridCellBoolEditor_GetValue(IntPtr self);
+        static extern (C) ЦУк wxGridCellBoolEditor_ctor();
+	static extern (C) проц wxGridCellBoolEditor_dtor(ЦУк сам);
+	static extern (C) проц wxGridCellBoolEditor_RegisterDisposable(ЦУк сам, Virtual_Dispose onDispose);
+        static extern (C) проц wxGridCellBoolEditor_Create(ЦУк сам, ЦУк родитель, цел ид, ЦУк evtHandler);
+        static extern (C) проц wxGridCellBoolEditor_SetSize(ЦУк сам, inout Прямоугольник прям);
+        static extern (C) бул wxGridCellBoolEditor_IsAcceptedKey(ЦУк сам, ЦУк evt);
+        static extern (C) проц wxGridCellBoolEditor_BeginEdit(ЦУк сам, цел row, цел col, ЦУк grid);
+        static extern (C) бул wxGridCellBoolEditor_EndEdit(ЦУк сам, цел row, цел col, ЦУк grid);
+        static extern (C) проц wxGridCellBoolEditor_Reset(ЦУк сам);
+        static extern (C) проц wxGridCellBoolEditor_StartingClick(ЦУк сам);
+        static extern (C) ЦУк wxGridCellBoolEditor_Clone(ЦУк сам);
+        static extern (C) ЦУк wxGridCellBoolEditor_GetValue(ЦУк сам);
 		//! \endcond
 	
     alias GridCellBoolEditor wxGridCellBoolEditor;
@@ -674,261 +674,261 @@ public import wx.ScrolledWindow;
     {
         public this()
 	{ 
-		this(wxGridCellBoolEditor_ctor(), true);
-		wxGridCellBoolEditor_RegisterDisposable(wxobj, &VirtualDispose);
+		this(wxGridCellBoolEditor_ctor(), да);
+		wxGridCellBoolEditor_RegisterDisposable(шхобъ, &VirtualDispose);
 	}
 
-        public this(IntPtr wxobj)
+        public this(ЦУк шхобъ)
 	{ 
-		super(wxobj);
+		super(шхобъ);
 	}
 	
-	private this(IntPtr wxobj, bool memOwn)
+	private this(ЦУк шхобъ, бул memOwn)
 	{ 
-		super(wxobj);
+		super(шхобъ);
 		this.memOwn = memOwn;
 	}
 	
 	//---------------------------------------------------------------------
 				
-	override protected void dtor() { wxGridCellBoolEditor_dtor(wxobj); }
+	override protected проц dtor() { wxGridCellBoolEditor_dtor(шхобъ); }
 
-        public override void Create(Window parent, int id, EvtHandler evtHandler)
+        public override проц Create(Окно родитель, цел ид, EvtHandler evtHandler)
         {
-            wxGridCellBoolEditor_Create(wxobj, wxObject.SafePtr(parent), id, wxObject.SafePtr(evtHandler));
+            wxGridCellBoolEditor_Create(шхобъ, wxObject.SafePtr(родитель), ид, wxObject.SafePtr(evtHandler));
         }
 
-        public override void SetSize(Rectangle rect)
+        public override проц УстРазм(Прямоугольник прям)
         {
-            wxGridCellBoolEditor_SetSize(wxobj, rect);
+            wxGridCellBoolEditor_SetSize(шхобъ, прям);
         }
 
-        public override bool IsAcceptedKey(KeyEvent evt)
+        public override бул IsAcceptedKey(СобКлавиши evt)
         {
-            return wxGridCellBoolEditor_IsAcceptedKey(wxobj, wxObject.SafePtr(evt));
+            return wxGridCellBoolEditor_IsAcceptedKey(шхобъ, wxObject.SafePtr(evt));
         }
 
-        public override void BeginEdit(int row, int col, Grid grid)
+        public override проц BeginEdit(цел row, цел col, Grid grid)
         {
-            wxGridCellBoolEditor_BeginEdit(wxobj, row, col, wxObject.SafePtr(grid));
+            wxGridCellBoolEditor_BeginEdit(шхобъ, row, col, wxObject.SafePtr(grid));
         }
         
-        public override bool EndEdit(int row, int col, Grid grid)
+        public override бул EndEdit(цел row, цел col, Grid grid)
         {
-            return wxGridCellBoolEditor_EndEdit(wxobj, row, col, wxObject.SafePtr(grid));
+            return wxGridCellBoolEditor_EndEdit(шхобъ, row, col, wxObject.SafePtr(grid));
         }
         
-        public override void Reset()
+        public override проц Reset()
         {
-            wxGridCellBoolEditor_Reset(wxobj);
+            wxGridCellBoolEditor_Reset(шхобъ);
         }
 
-        public override void StartingClick()
+        public override проц StartingClick()
         {
-            wxGridCellBoolEditor_StartingClick(wxobj);
+            wxGridCellBoolEditor_StartingClick(шхобъ);
         }
         
         public override GridCellEditor Clone()
         {
-//            return cast(GridCellEditor)FindObject(wxGridCellBoolEditor_Clone(wxobj), &GridCellEditor.New);
-              return new GridCellBoolEditor(wxGridCellBoolEditor_Clone(wxobj));
+//            return cast(GridCellEditor)FindObject(wxGridCellBoolEditor_Clone(шхобъ), &GridCellEditor.Нов);
+              return new GridCellBoolEditor(wxGridCellBoolEditor_Clone(шхобъ));
         }       
 
-        public override string GetValue()
+        public override ткст GetValue()
         {
-            return cast(string) new wxString(wxGridCellBoolEditor_GetValue(wxobj), true);
+            return cast(ткст) new wxString(wxGridCellBoolEditor_GetValue(шхобъ), да);
         }
     }
     
     //-----------------------------------------------------------------------------
     
 		//! \cond EXTERN
-        static extern (C) IntPtr wxGridCellChoiceEditor_ctor(int n, string* choices, bool allowOthers);
-	static extern (C) void wxGridCellChoiceEditor_dtor(IntPtr self);
-	static extern (C) void wxGridCellChoiceEditor_RegisterDisposable(IntPtr self, Virtual_Dispose onDispose);
-        static extern (C) void wxGridCellChoiceEditor_Create(IntPtr self, IntPtr parent, int id, IntPtr evtHandler);
-        static extern (C) void wxGridCellChoiceEditor_PaintBackground(IntPtr self, inout Rectangle rectCell, IntPtr attr);
-        static extern (C) void wxGridCellChoiceEditor_BeginEdit(IntPtr self, int row, int col, IntPtr grid);
-        static extern (C) bool wxGridCellChoiceEditor_EndEdit(IntPtr self, int row, int col, IntPtr grid);
-        static extern (C) void wxGridCellChoiceEditor_Reset(IntPtr self);
-        static extern (C) void wxGridCellChoiceEditor_SetParameters(IntPtr self, string parameter);
-        static extern (C) IntPtr wxGridCellChoiceEditor_Clone(IntPtr self);
-        static extern (C) IntPtr wxGridCellChoiceEditor_GetValue(IntPtr self);
+        static extern (C) ЦУк wxGridCellChoiceEditor_ctor(цел n, ткст* choices, бул allowOthers);
+	static extern (C) проц wxGridCellChoiceEditor_dtor(ЦУк сам);
+	static extern (C) проц wxGridCellChoiceEditor_RegisterDisposable(ЦУк сам, Virtual_Dispose onDispose);
+        static extern (C) проц wxGridCellChoiceEditor_Create(ЦУк сам, ЦУк родитель, цел ид, ЦУк evtHandler);
+        static extern (C) проц wxGridCellChoiceEditor_PaintBackground(ЦУк сам, inout Прямоугольник rectCell, ЦУк attr);
+        static extern (C) проц wxGridCellChoiceEditor_BeginEdit(ЦУк сам, цел row, цел col, ЦУк grid);
+        static extern (C) бул wxGridCellChoiceEditor_EndEdit(ЦУк сам, цел row, цел col, ЦУк grid);
+        static extern (C) проц wxGridCellChoiceEditor_Reset(ЦУк сам);
+        static extern (C) проц wxGridCellChoiceEditor_SetParameters(ЦУк сам, ткст parameter);
+        static extern (C) ЦУк wxGridCellChoiceEditor_Clone(ЦУк сам);
+        static extern (C) ЦУк wxGridCellChoiceEditor_GetValue(ЦУк сам);
 		//! \endcond
 	
     alias GridCellChoiceEditor wxGridCellChoiceEditor;
     public class GridCellChoiceEditor : GridCellEditor
     {
         public this()
-            { this(cast(string[])null, false); }
+            { this(cast(ткст[])пусто, нет); }
         
-        public this(string[] choices)
-            { this(choices, false); }
+        public this(ткст[] choices)
+            { this(choices, нет); }
         
-        public this(string[] choices, bool allowOthers)
+        public this(ткст[] choices, бул allowOthers)
 	{ 
-		this(wxGridCellChoiceEditor_ctor(choices.length, choices.ptr, allowOthers), true);
-		wxGridCellChoiceEditor_RegisterDisposable(wxobj, &VirtualDispose);
+		this(wxGridCellChoiceEditor_ctor(choices.length, choices.ptr, allowOthers), да);
+		wxGridCellChoiceEditor_RegisterDisposable(шхобъ, &VirtualDispose);
 	}
 
-        public this(IntPtr wxobj)
+        public this(ЦУк шхобъ)
 	{ 
-		super(wxobj);
+		super(шхобъ);
 	}
 	
-	private this(IntPtr wxobj, bool memOwn)
+	private this(ЦУк шхобъ, бул memOwn)
 	{ 
-		super(wxobj);
+		super(шхобъ);
 		this.memOwn = memOwn;
 	}
 	
 	//---------------------------------------------------------------------
 				
-	override protected void dtor() { wxGridCellChoiceEditor_dtor(wxobj); }
+	override protected проц dtor() { wxGridCellChoiceEditor_dtor(шхобъ); }
 
-        public override void Create(Window parent, int id, EvtHandler evtHandler)
+        public override проц Create(Окно родитель, цел ид, EvtHandler evtHandler)
         {
-            wxGridCellChoiceEditor_Create(wxobj, wxObject.SafePtr(parent), id, wxObject.SafePtr(evtHandler));
+            wxGridCellChoiceEditor_Create(шхобъ, wxObject.SafePtr(родитель), ид, wxObject.SafePtr(evtHandler));
         }
 
-        public override void PaintBackground(Rectangle rectCell, GridCellAttr attr)
+        public override проц PaintBackground(Прямоугольник rectCell, GridCellAttr attr)
         {
-            wxGridCellChoiceEditor_PaintBackground(wxobj, rectCell, wxObject.SafePtr(attr));
+            wxGridCellChoiceEditor_PaintBackground(шхобъ, rectCell, wxObject.SafePtr(attr));
         }
 
-        public override void BeginEdit(int row, int col, Grid grid)
+        public override проц BeginEdit(цел row, цел col, Grid grid)
         {
-            wxGridCellChoiceEditor_BeginEdit(wxobj, row, col, wxObject.SafePtr(grid));
+            wxGridCellChoiceEditor_BeginEdit(шхобъ, row, col, wxObject.SafePtr(grid));
         }
         
-        public override bool EndEdit(int row, int col, Grid grid)
+        public override бул EndEdit(цел row, цел col, Grid grid)
         {
-            return wxGridCellChoiceEditor_EndEdit(wxobj, row, col, wxObject.SafePtr(grid));
+            return wxGridCellChoiceEditor_EndEdit(шхобъ, row, col, wxObject.SafePtr(grid));
         }
         
-        public override void Reset()
+        public override проц Reset()
         {
-            wxGridCellChoiceEditor_Reset(wxobj);
+            wxGridCellChoiceEditor_Reset(шхобъ);
         }
 
-        public override void SetParameters(string parameter)
+        public override проц SetParameters(ткст parameter)
         {
-            wxGridCellChoiceEditor_SetParameters(wxobj, parameter);
+            wxGridCellChoiceEditor_SetParameters(шхобъ, parameter);
         }
 
         public override GridCellEditor Clone()
         {
-//            return cast(GridCellEditor)FindObject(wxGridCellChoiceEditor_Clone(wxobj), &GridCellEditor.New);
-              return new GridCellChoiceEditor(wxGridCellChoiceEditor_Clone(wxobj));
+//            return cast(GridCellEditor)FindObject(wxGridCellChoiceEditor_Clone(шхобъ), &GridCellEditor.Нов);
+              return new GridCellChoiceEditor(wxGridCellChoiceEditor_Clone(шхобъ));
         }       
 
-        public override string GetValue()
+        public override ткст GetValue()
         {
-            return cast(string) new wxString(wxGridCellChoiceEditor_GetValue(wxobj), true);
+            return cast(ткст) new wxString(wxGridCellChoiceEditor_GetValue(шхобъ), да);
         }
     }
     
     //-----------------------------------------------------------------------------
 
 		//! \cond EXTERN
-        static extern (C) IntPtr wxGridRangeSelectEvent_ctor(int id, int type, IntPtr obj, IntPtr topLeft, IntPtr bottomRight, bool sel, bool control, bool shift, bool alt, bool meta);
-        static extern (C) IntPtr wxGridRangeSelectEvent_GetTopLeftCoords(IntPtr self);
-        static extern (C) IntPtr wxGridRangeSelectEvent_GetBottomRightCoords(IntPtr self);
-        static extern (C) int wxGridRangeSelectEvent_GetTopRow(IntPtr self);
-        static extern (C) int wxGridRangeSelectEvent_GetBottomRow(IntPtr self);
-        static extern (C) int wxGridRangeSelectEvent_GetLeftCol(IntPtr self);
-        static extern (C) int wxGridRangeSelectEvent_GetRightCol(IntPtr self);
-        static extern (C) bool wxGridRangeSelectEvent_Selecting(IntPtr self);
-        static extern (C) bool wxGridRangeSelectEvent_ControlDown(IntPtr self);
-        static extern (C) bool wxGridRangeSelectEvent_MetaDown(IntPtr self);
-        static extern (C) bool wxGridRangeSelectEvent_ShiftDown(IntPtr self);
-        static extern (C) bool wxGridRangeSelectEvent_AltDown(IntPtr self);
-        static extern (C) void wxGridRangeSelectEvent_Veto(IntPtr self);
-        static extern (C) void wxGridRangeSelectEvent_Allow(IntPtr self);
-        static extern (C) bool wxGridRangeSelectEvent_IsAllowed(IntPtr self);       
+        static extern (C) ЦУк wxGridRangeSelectEvent_ctor(цел ид, цел тип, ЦУк объ, ЦУк topLeft, ЦУк bottomRight, бул sel, бул control, бул shift, бул alt, бул meta);
+        static extern (C) ЦУк wxGridRangeSelectEvent_GetTopLeftCoords(ЦУк сам);
+        static extern (C) ЦУк wxGridRangeSelectEvent_GetBottomRightCoords(ЦУк сам);
+        static extern (C) цел wxGridRangeSelectEvent_GetTopRow(ЦУк сам);
+        static extern (C) цел wxGridRangeSelectEvent_GetBottomRow(ЦУк сам);
+        static extern (C) цел wxGridRangeSelectEvent_GetLeftCol(ЦУк сам);
+        static extern (C) цел wxGridRangeSelectEvent_GetRightCol(ЦУк сам);
+        static extern (C) бул wxGridRangeSelectEvent_Selecting(ЦУк сам);
+        static extern (C) бул wxGridRangeSelectEvent_ControlDown(ЦУк сам);
+        static extern (C) бул wxGridRangeSelectEvent_MetaDown(ЦУк сам);
+        static extern (C) бул wxGridRangeSelectEvent_ShiftDown(ЦУк сам);
+        static extern (C) бул wxGridRangeSelectEvent_AltDown(ЦУк сам);
+        static extern (C) проц wxGridRangeSelectEvent_Veto(ЦУк сам);
+        static extern (C) проц wxGridRangeSelectEvent_Allow(ЦУк сам);
+        static extern (C) бул wxGridRangeSelectEvent_IsAllowed(ЦУк сам);       
 		//! \endcond
     
         //-----------------------------------------------------------------------------
     
     alias GridRangeSelectEvent wxGridRangeSelectEvent;
-    public class GridRangeSelectEvent : Event
+    public class GridRangeSelectEvent : Событие
     {
-        public this(IntPtr wxobj)
-            { super(wxobj); }
+        public this(ЦУк шхобъ)
+            { super(шхобъ); }
     
-        public this(int id, int type, wxObject obj, GridCellCoords topLeft, GridCellCoords bottomRight, bool sel, bool control, bool shift, bool alt, bool meta)
-            { super(wxGridRangeSelectEvent_ctor(id, type, wxObject.SafePtr(obj), wxObject.SafePtr(topLeft), wxObject.SafePtr(bottomRight), sel, control, shift, alt, meta)); }
+        public this(цел ид, цел тип, wxObject объ, GridCellCoords topLeft, GridCellCoords bottomRight, бул sel, бул control, бул shift, бул alt, бул meta)
+            { super(wxGridRangeSelectEvent_ctor(ид, тип, wxObject.SafePtr(объ), wxObject.SafePtr(topLeft), wxObject.SafePtr(bottomRight), sel, control, shift, alt, meta)); }
     
             //-----------------------------------------------------------------------------
     
-        public GridCellCoords TopLeftCoords() { return new GridCellCoords(wxGridRangeSelectEvent_GetTopLeftCoords(wxobj)); }
+        public GridCellCoords TopLeftCoords() { return new GridCellCoords(wxGridRangeSelectEvent_GetTopLeftCoords(шхобъ)); }
     
-        public GridCellCoords BottomRightCoords() { return new GridCellCoords(wxGridRangeSelectEvent_GetBottomRightCoords(wxobj)); }
-    
-        //-----------------------------------------------------------------------------
-    
-        public int TopRow() { return wxGridRangeSelectEvent_GetTopRow(wxobj); }
-    
-        public int BottomRow() { return wxGridRangeSelectEvent_GetBottomRow(wxobj); }
+        public GridCellCoords BottomRightCoords() { return new GridCellCoords(wxGridRangeSelectEvent_GetBottomRightCoords(шхобъ)); }
     
         //-----------------------------------------------------------------------------
     
-        public int LeftCol() { return wxGridRangeSelectEvent_GetLeftCol(wxobj); }
+        public цел TopRow() { return wxGridRangeSelectEvent_GetTopRow(шхобъ); }
     
-        public int RightCol() { return wxGridRangeSelectEvent_GetRightCol(wxobj); }
-    
-        //-----------------------------------------------------------------------------
-    
-        public bool Selecting() { return wxGridRangeSelectEvent_Selecting(wxobj); }
+        public цел BottomRow() { return wxGridRangeSelectEvent_GetBottomRow(шхобъ); }
     
         //-----------------------------------------------------------------------------
     
-        public bool ControlDown() { return wxGridRangeSelectEvent_ControlDown(wxobj); }
+        public цел LeftCol() { return wxGridRangeSelectEvent_GetLeftCol(шхобъ); }
     
-        public bool MetaDown() { return wxGridRangeSelectEvent_MetaDown(wxobj); }
+        public цел RightCol() { return wxGridRangeSelectEvent_GetRightCol(шхобъ); }
     
-        public bool ShiftDown() { return wxGridRangeSelectEvent_ShiftDown(wxobj); }
+        //-----------------------------------------------------------------------------
     
-        public bool AltDown() { return wxGridRangeSelectEvent_AltDown(wxobj); }
+        public бул Selecting() { return wxGridRangeSelectEvent_Selecting(шхобъ); }
+    
+        //-----------------------------------------------------------------------------
+    
+        public бул НажатКонтрол() { return wxGridRangeSelectEvent_ControlDown(шхобъ); }
+    
+        public бул НажатМета() { return wxGridRangeSelectEvent_MetaDown(шхобъ); }
+    
+        public бул НажатШифт() { return wxGridRangeSelectEvent_ShiftDown(шхобъ); }
+    
+        public бул НажатАльт() { return wxGridRangeSelectEvent_AltDown(шхобъ); }
         
         //-----------------------------------------------------------------------------     
         
-        public void Veto()
+        public проц Veto()
         {
-            wxGridRangeSelectEvent_Veto(wxobj);
+            wxGridRangeSelectEvent_Veto(шхобъ);
         }
         
         //-----------------------------------------------------------------------------
         
-        public void Allow()
+        public проц Allow()
         {
-            wxGridRangeSelectEvent_Allow(wxobj);
+            wxGridRangeSelectEvent_Allow(шхобъ);
         }
         
         //-----------------------------------------------------------------------------
         
-        public bool Allowed() { return wxGridRangeSelectEvent_IsAllowed(wxobj); }
+        public бул Allowed() { return wxGridRangeSelectEvent_IsAllowed(шхобъ); }
 
-	private static Event New(IntPtr obj) { return new GridRangeSelectEvent(obj); }
+	private static Событие Нов(ЦУк объ) { return new GridRangeSelectEvent(объ); }
 
 	static this()
 	{
 			wxEVT_GRID_RANGE_SELECT = wxEvent_EVT_GRID_RANGE_SELECT();
 
-			AddEventType(wxEVT_GRID_RANGE_SELECT,               &GridRangeSelectEvent.New);
+			ДобавьТипСоб(wxEVT_GRID_RANGE_SELECT,               &GridRangeSelectEvent.Нов);
 	}
     }
 
 		//! \cond EXTERN
 	extern (C) {
-        alias void function(GridCellWorker obj, string param) Virtual_SetParameters;
+        alias проц function(GridCellWorker объ, ткст param) Virtual_SetParameters;
 	}
 
-        static extern (C) IntPtr wxGridCellWorker_ctor();
-        static extern (C) void wxGridCellWorker_RegisterVirtual(IntPtr self, GridCellWorker obj, Virtual_SetParameters setParameters);
-        static extern (C) void wxGridCellWorker_IncRef(IntPtr self);
-        static extern (C) void wxGridCellWorker_DecRef(IntPtr self);
-        static extern (C) void wxGridCellWorker_SetParameters(IntPtr self, string parms);
+        static extern (C) ЦУк wxGridCellWorker_ctor();
+        static extern (C) проц wxGridCellWorker_RegisterVirtual(ЦУк сам, GridCellWorker объ, Virtual_SetParameters setParameters);
+        static extern (C) проц wxGridCellWorker_IncRef(ЦУк сам);
+        static extern (C) проц wxGridCellWorker_DecRef(ЦУк сам);
+        static extern (C) проц wxGridCellWorker_SetParameters(ЦУк сам, ткст parms);
 		//! \endcond
 	
         //-----------------------------------------------------------------------------
@@ -936,62 +936,62 @@ public import wx.ScrolledWindow;
     alias GridCellWorker wxGridCellWorker;
     public class GridCellWorker : wxObject //ClientData
     {
-        public this(IntPtr wxobj) 
+        public this(ЦУк шхобъ) 
 	{ 
-		super(wxobj);
+		super(шхобъ);
 	}
 	
-	private this(IntPtr wxobj, bool memOwn)
+	private this(ЦУк шхобъ, бул memOwn)
 	{ 
-		super(wxobj);
+		super(шхобъ);
 		this.memOwn = memOwn;
 	}
 	
         public this()
         { 
-        	this(wxGridCellWorker_ctor(), true);
-            wxGridCellWorker_RegisterVirtual(wxobj, this, &staticDoSetParameters);
+        	this(wxGridCellWorker_ctor(), да);
+            wxGridCellWorker_RegisterVirtual(шхобъ, this, &staticDoSetParameters);
         }
 	
 	//---------------------------------------------------------------------
 				
-	override protected void dtor() {}
+	override protected проц dtor() {}
         
         //-----------------------------------------------------------------------------
         
-        public void IncRef()
+        public проц IncRef()
         {
-            wxGridCellWorker_IncRef(wxobj);
+            wxGridCellWorker_IncRef(шхобъ);
         }
         
-        public void DecRef()
+        public проц DecRef()
         {
-            wxGridCellWorker_DecRef(wxobj);
+            wxGridCellWorker_DecRef(шхобъ);
         }
         
         //-----------------------------------------------------------------------------
         
-        static extern (C) private void staticDoSetParameters(GridCellWorker obj, string param)
+        static extern (C) private проц staticDoSetParameters(GridCellWorker объ, ткст param)
         {
-            obj.SetParameters(param);
+            объ.SetParameters(param);
         }
         
-        public /+virtual+/ void SetParameters(string param)
+        public /+virtual+/ проц SetParameters(ткст param)
         {
-            wxGridCellWorker_SetParameters(wxobj, param);
+            wxGridCellWorker_SetParameters(шхобъ, param);
         }
     }
     
     //-----------------------------------------------------------------------------
 
             //! \cond EXTERN
-            static extern (C) IntPtr wxGridEditorCreatedEvent_ctor(int id, int type, IntPtr obj, int row, int col, IntPtr ctrl);
-            static extern (C) int    wxGridEditorCreatedEvent_GetRow(IntPtr self);
-            static extern (C) int    wxGridEditorCreatedEvent_GetCol(IntPtr self);
-            static extern (C) IntPtr wxGridEditorCreatedEvent_GetControl(IntPtr self);
-            static extern (C) void   wxGridEditorCreatedEvent_SetRow(IntPtr self, int row);
-            static extern (C) void   wxGridEditorCreatedEvent_SetCol(IntPtr self, int col);
-            static extern (C) void   wxGridEditorCreatedEvent_SetControl(IntPtr self, IntPtr ctrl);
+            static extern (C) ЦУк wxGridEditorCreatedEvent_ctor(цел ид, цел тип, ЦУк объ, цел row, цел col, ЦУк ctrl);
+            static extern (C) цел    wxGridEditorCreatedEvent_GetRow(ЦУк сам);
+            static extern (C) цел    wxGridEditorCreatedEvent_GetCol(ЦУк сам);
+            static extern (C) ЦУк wxGridEditorCreatedEvent_GetControl(ЦУк сам);
+            static extern (C) проц   wxGridEditorCreatedEvent_SetRow(ЦУк сам, цел row);
+            static extern (C) проц   wxGridEditorCreatedEvent_SetCol(ЦУк сам, цел col);
+            static extern (C) проц   wxGridEditorCreatedEvent_SetControl(ЦУк сам, ЦУк ctrl);
             //! \endcond
 
             //-----------------------------------------------------------------------------
@@ -999,252 +999,252 @@ public import wx.ScrolledWindow;
     alias GridEditorCreatedEvent wxGridEditorCreatedEvent;
     public class GridEditorCreatedEvent : CommandEvent 
     {
-            public this(IntPtr wxobj)
-            { super(wxobj); }
+            public this(ЦУк шхобъ)
+            { super(шхобъ); }
     
-            public this(int id, int type, wxObject obj, int row, int col, Control ctrl)
-            { this(wxGridEditorCreatedEvent_ctor(id, type, wxObject.SafePtr(obj), row, col, wxObject.SafePtr(ctrl))); }
-    
-            //-----------------------------------------------------------------------------
-    
-            public int Row() { return wxGridEditorCreatedEvent_GetRow(wxobj); }
-            public void Row(int value) { wxGridEditorCreatedEvent_SetRow(wxobj, value); }
+            public this(цел ид, цел тип, wxObject объ, цел row, цел col, Control ctrl)
+            { this(wxGridEditorCreatedEvent_ctor(ид, тип, wxObject.SafePtr(объ), row, col, wxObject.SafePtr(ctrl))); }
     
             //-----------------------------------------------------------------------------
     
-            public int Col() { return wxGridEditorCreatedEvent_GetCol(wxobj); }
-            public void Col(int value) { wxGridEditorCreatedEvent_SetCol(wxobj, value); }
+            public цел Row() { return wxGridEditorCreatedEvent_GetRow(шхобъ); }
+            public проц Row(цел значение) { wxGridEditorCreatedEvent_SetRow(шхобъ, значение); }
     
             //-----------------------------------------------------------------------------
     
-            public Control control() { return cast(Control)FindObject(wxGridEditorCreatedEvent_GetControl(wxobj), &Control.New); }
-            public void control(Control value) { wxGridEditorCreatedEvent_SetControl(wxobj, wxObject.SafePtr(value)); }
+            public цел Col() { return wxGridEditorCreatedEvent_GetCol(шхобъ); }
+            public проц Col(цел значение) { wxGridEditorCreatedEvent_SetCol(шхобъ, значение); }
+    
+            //-----------------------------------------------------------------------------
+    
+            public Control control() { return cast(Control)FindObject(wxGridEditorCreatedEvent_GetControl(шхобъ), &Control.Нов); }
+            public проц control(Control значение) { wxGridEditorCreatedEvent_SetControl(шхобъ, wxObject.SafePtr(значение)); }
 
-		private static Event New(IntPtr obj) { return new GridEditorCreatedEvent(obj); }
+		private static Событие Нов(ЦУк объ) { return new GridEditorCreatedEvent(объ); }
 
 		static this()
 		{
-			AddEventType(wxEVT_GRID_EDITOR_CREATED,             &GridEditorCreatedEvent.New);        
+			ДобавьТипСоб(wxEVT_GRID_EDITOR_CREATED,             &GridEditorCreatedEvent.Нов);        
 		}
     }
     
     //-----------------------------------------------------------------------------
 
             //! \cond EXTERN
-            static extern (C) IntPtr wxGrid_ctor();
-            static extern (C) IntPtr wxGrid_ctorFull(IntPtr parent, int id, inout Point pos, inout Size size, uint style, string name);
-            static extern (C) bool   wxGrid_CreateGrid(IntPtr self, int numRows, int numCols,  int selmode);
-            static extern (C) void   wxGrid_SetSelectionMode(IntPtr self, int selmode);
-            static extern (C) int    wxGrid_GetNumberRows(IntPtr self);
-            static extern (C) int    wxGrid_GetNumberCols(IntPtr self);
-            static extern (C) IntPtr wxGrid_GetTable(IntPtr self);
-            static extern (C) bool   wxGrid_SetTable(IntPtr self, IntPtr table, bool takeOwnership, int select);
-            static extern (C) void   wxGrid_ClearGrid(IntPtr self);
-            static extern (C) bool   wxGrid_InsertRows(IntPtr self, int pos, int numRows, bool updateLabels);
-            static extern (C) bool   wxGrid_AppendRows(IntPtr self, int numRows, bool updateLabels);
-            static extern (C) bool   wxGrid_DeleteRows(IntPtr self, int pos, int numRows, bool updateLabels);
-            static extern (C) bool   wxGrid_InsertCols(IntPtr self, int pos, int numCols, bool updateLabels);
-            static extern (C) bool   wxGrid_AppendCols(IntPtr self, int numCols, bool updateLabels);
-            static extern (C) bool   wxGrid_DeleteCols(IntPtr self, int pos, int numCols, bool updateLabels);
-            static extern (C) void   wxGrid_BeginBatch(IntPtr self);
-            static extern (C) void   wxGrid_EndBatch(IntPtr self);
-            static extern (C) int    wxGrid_GetBatchCount(IntPtr self);
-            static extern (C) void   wxGrid_ForceRefresh(IntPtr self);
-            static extern (C) bool   wxGrid_IsEditable(IntPtr self);
-            static extern (C) void   wxGrid_EnableEditing(IntPtr self, bool edit);
-            static extern (C) void   wxGrid_EnableCellEditControl(IntPtr self, bool enable);
-            static extern (C) void   wxGrid_DisableCellEditControl(IntPtr self);
-            static extern (C) bool   wxGrid_CanEnableCellControl(IntPtr self);
-            static extern (C) bool   wxGrid_IsCellEditControlEnabled(IntPtr self);
-            static extern (C) bool   wxGrid_IsCellEditControlShown(IntPtr self);
-            static extern (C) bool   wxGrid_IsCurrentCellReadOnly(IntPtr self);
-            static extern (C) void   wxGrid_ShowCellEditControl(IntPtr self);
-            static extern (C) void   wxGrid_HideCellEditControl(IntPtr self);
-            static extern (C) void   wxGrid_SaveEditControlValue(IntPtr self);
-            static extern (C) int    wxGrid_YToRow(IntPtr self, int y);
-            static extern (C) int    wxGrid_XToCol(IntPtr self, int x);
-            static extern (C) int    wxGrid_YToEdgeOfRow(IntPtr self, int y);
-            static extern (C) int    wxGrid_XToEdgeOfCol(IntPtr self, int x);
-            static extern (C) void   wxGrid_CellToRect(IntPtr self, int row, int col, inout Rectangle rect);
-            static extern (C) int    wxGrid_GetGridCursorRow(IntPtr self);
-            static extern (C) int    wxGrid_GetGridCursorCol(IntPtr self);
-            static extern (C) bool   wxGrid_IsVisible(IntPtr self, int row, int col, bool wholeCellVisible);
-            static extern (C) void   wxGrid_MakeCellVisible(IntPtr self, int row, int col);
-            static extern (C) void   wxGrid_SetGridCursor(IntPtr self, int row, int col);
-            static extern (C) bool   wxGrid_MoveCursorUp(IntPtr self, bool expandSelection);
-            static extern (C) bool   wxGrid_MoveCursorDown(IntPtr self, bool expandSelection);
-            static extern (C) bool   wxGrid_MoveCursorLeft(IntPtr self, bool expandSelection);
-            static extern (C) bool   wxGrid_MoveCursorRight(IntPtr self, bool expandSelection);
-            static extern (C) bool   wxGrid_MovePageDown(IntPtr self);
-            static extern (C) bool   wxGrid_MovePageUp(IntPtr self);
-            static extern (C) bool   wxGrid_MoveCursorUpBlock(IntPtr self, bool expandSelection);
-            static extern (C) bool   wxGrid_MoveCursorDownBlock(IntPtr self, bool expandSelection);
-            static extern (C) bool   wxGrid_MoveCursorLeftBlock(IntPtr self, bool expandSelection);
-            static extern (C) bool   wxGrid_MoveCursorRightBlock(IntPtr self, bool expandSelection);
-            static extern (C) int    wxGrid_GetDefaultRowLabelSize(IntPtr self);
-            static extern (C) int    wxGrid_GetRowLabelSize(IntPtr self);
-            static extern (C) int    wxGrid_GetDefaultColLabelSize(IntPtr self);
-            static extern (C) int    wxGrid_GetColLabelSize(IntPtr self);
-            static extern (C) IntPtr wxGrid_GetLabelBackgroundColour(IntPtr self);
-            static extern (C) IntPtr wxGrid_GetLabelTextColour(IntPtr self);
-            static extern (C) IntPtr wxGrid_GetLabelFont(IntPtr self);
-            static extern (C) void   wxGrid_GetRowLabelAlignment(IntPtr self, out int horiz, out int vert);
-            static extern (C) void   wxGrid_GetColLabelAlignment(IntPtr self, out int horiz, out int vert);
-            static extern (C) IntPtr wxGrid_GetRowLabelValue(IntPtr self, int row);
-            static extern (C) IntPtr wxGrid_GetColLabelValue(IntPtr self, int col);
-            static extern (C) IntPtr wxGrid_GetGridLineColour(IntPtr self);
-            static extern (C) IntPtr wxGrid_GetCellHighlightColour(IntPtr self);
-            static extern (C) int    wxGrid_GetCellHighlightPenWidth(IntPtr self);
-            static extern (C) int    wxGrid_GetCellHighlightROPenWidth(IntPtr self);
-            static extern (C) void   wxGrid_SetRowLabelSize(IntPtr self, int width);
-            static extern (C) void   wxGrid_SetColLabelSize(IntPtr self, int height);
-            static extern (C) void   wxGrid_SetLabelBackgroundColour(IntPtr self, IntPtr col);
-            static extern (C) void   wxGrid_SetLabelTextColour(IntPtr self, IntPtr col);
-            static extern (C) void   wxGrid_SetLabelFont(IntPtr self, IntPtr fnt);
-            static extern (C) void   wxGrid_SetRowLabelAlignment(IntPtr self, int horiz, int vert);
-            static extern (C) void   wxGrid_SetColLabelAlignment(IntPtr self, int horiz, int vert);
-            static extern (C) void   wxGrid_SetRowLabelValue(IntPtr self, int row, string val);
-            static extern (C) void   wxGrid_SetColLabelValue(IntPtr self, int col, string val);
-            static extern (C) void   wxGrid_SetGridLineColour(IntPtr self, IntPtr col);
-            static extern (C) void   wxGrid_SetCellHighlightColour(IntPtr self, IntPtr col);
-            static extern (C) void   wxGrid_SetCellHighlightPenWidth(IntPtr self, int width);
-            static extern (C) void   wxGrid_SetCellHighlightROPenWidth(IntPtr self, int width);
-            static extern (C) void   wxGrid_EnableDragRowSize(IntPtr self, bool enable);
-            static extern (C) void   wxGrid_DisableDragRowSize(IntPtr self);
-            static extern (C) bool   wxGrid_CanDragRowSize(IntPtr self);
-            static extern (C) void   wxGrid_EnableDragColSize(IntPtr self, bool enable);
-            static extern (C) void   wxGrid_DisableDragColSize(IntPtr self);
-            static extern (C) bool   wxGrid_CanDragColSize(IntPtr self);
-            static extern (C) void   wxGrid_EnableDragGridSize(IntPtr self, bool enable);
-            static extern (C) void   wxGrid_DisableDragGridSize(IntPtr self);
-            static extern (C) bool   wxGrid_CanDragGridSize(IntPtr self);
-            static extern (C) void   wxGrid_SetAttr(IntPtr self, int row, int col, IntPtr attr);
-            static extern (C) void   wxGrid_SetRowAttr(IntPtr self, int row, IntPtr attr);
-            static extern (C) void   wxGrid_SetColAttr(IntPtr self, int col, IntPtr attr);
-            static extern (C) void   wxGrid_SetColFormatBool(IntPtr self, int col);
-            static extern (C) void   wxGrid_SetColFormatNumber(IntPtr self, int col);
-            static extern (C) void   wxGrid_SetColFormatFloat(IntPtr self, int col, int width, int precision);
-            static extern (C) void   wxGrid_SetColFormatCustom(IntPtr self, int col, string typeName);
-            static extern (C) void   wxGrid_EnableGridLines(IntPtr self, bool enable);
-            static extern (C) bool   wxGrid_GridLinesEnabled(IntPtr self);
-            static extern (C) int    wxGrid_GetDefaultRowSize(IntPtr self);
-            static extern (C) int    wxGrid_GetRowSize(IntPtr self, int row);
-            static extern (C) int    wxGrid_GetDefaultColSize(IntPtr self);
-            static extern (C) int    wxGrid_GetColSize(IntPtr self, int col);
-            static extern (C) IntPtr wxGrid_GetDefaultCellBackgroundColour(IntPtr self);
-            static extern (C) IntPtr wxGrid_GetCellBackgroundColour(IntPtr self, int row, int col);
-            static extern (C) IntPtr wxGrid_GetDefaultCellTextColour(IntPtr self);
-            static extern (C) IntPtr wxGrid_GetCellTextColour(IntPtr self, int row, int col);
-            static extern (C) IntPtr wxGrid_GetDefaultCellFont(IntPtr self);
-            static extern (C) IntPtr wxGrid_GetCellFont(IntPtr self, int row, int col);
-            static extern (C) void   wxGrid_GetDefaultCellAlignment(IntPtr self, inout int horiz, inout int vert);
-            static extern (C) void   wxGrid_GetCellAlignment(IntPtr self, int row, int col, inout int horiz, inout int vert);
-            static extern (C) bool   wxGrid_GetDefaultCellOverflow(IntPtr self);
-            static extern (C) bool   wxGrid_GetCellOverflow(IntPtr self, int row, int col);
-            static extern (C) void   wxGrid_GetCellSize(IntPtr self, int row, int col, inout int num_rows, inout int num_cols);
-            static extern (C) void   wxGrid_SetDefaultRowSize(IntPtr self, int height, bool resizeExistingRows);
-            static extern (C) void   wxGrid_SetRowSize(IntPtr self, int row, int height);
-            static extern (C) void   wxGrid_SetDefaultColSize(IntPtr self, int width, bool resizeExistingCols);
-            static extern (C) void   wxGrid_SetColSize(IntPtr self, int col, int width);
-            static extern (C) void   wxGrid_AutoSizeColumn(IntPtr self, int col, bool setAsMin);
-            static extern (C) void   wxGrid_AutoSizeRow(IntPtr self, int row, bool setAsMin);
-            static extern (C) void   wxGrid_AutoSizeColumns(IntPtr self, bool setAsMin);
-            static extern (C) void   wxGrid_AutoSizeRows(IntPtr self, bool setAsMin);
-            static extern (C) void   wxGrid_AutoSize(IntPtr self);
-            static extern (C) void   wxGrid_SetColMinimalWidth(IntPtr self, int col, int width);
-            static extern (C) void   wxGrid_SetRowMinimalHeight(IntPtr self, int row, int width);
-            static extern (C) void   wxGrid_SetColMinimalAcceptableWidth(IntPtr self, int width);
-            static extern (C) void   wxGrid_SetRowMinimalAcceptableHeight(IntPtr self, int width);
-            static extern (C) int    wxGrid_GetColMinimalAcceptableWidth(IntPtr self);
-            static extern (C) int    wxGrid_GetRowMinimalAcceptableHeight(IntPtr self);
-            static extern (C) void   wxGrid_SetDefaultCellBackgroundColour(IntPtr self, IntPtr wxColour);
-            static extern (C) void   wxGrid_SetDefaultCellTextColour(IntPtr self, IntPtr wxColour);
-            static extern (C) void   wxGrid_SetDefaultCellFont(IntPtr self, IntPtr wxFont);
-            static extern (C) void   wxGrid_SetCellFont(IntPtr self, int row, int col, IntPtr wxFont );
-            static extern (C) void   wxGrid_SetDefaultCellAlignment(IntPtr self, int horiz, int vert);
-            static extern (C) void   wxGrid_SetCellAlignmentHV(IntPtr self, int row, int col, int horiz, int vert);
-            static extern (C) void   wxGrid_SetDefaultCellOverflow(IntPtr self, bool allow);
-            static extern (C) void   wxGrid_SetCellOverflow(IntPtr self, int row, int col, bool allow);
-            static extern (C) void   wxGrid_SetCellSize(IntPtr self, int row, int col, int num_rows, int num_cols);
-            static extern (C) void   wxGrid_SetDefaultRenderer(IntPtr self, IntPtr renderer);
-            static extern (C) void   wxGrid_SetCellRenderer(IntPtr self, int row, int col, IntPtr renderer);
-            static extern (C) IntPtr wxGrid_GetDefaultRenderer(IntPtr self);
-            static extern (C) IntPtr wxGrid_GetCellRenderer(IntPtr self, int row, int col);
-            static extern (C) void   wxGrid_SetDefaultEditor(IntPtr self, IntPtr editor);
-            static extern (C) void   wxGrid_SetCellEditor(IntPtr self, int row, int col, IntPtr editor);
-            static extern (C) IntPtr wxGrid_GetDefaultEditor(IntPtr self);
-            static extern (C) IntPtr wxGrid_GetCellEditor(IntPtr self, int row, int col);
-            static extern (C) IntPtr wxGrid_GetCellValue(IntPtr self, int row, int col);
-            static extern (C) void   wxGrid_SetCellValue(IntPtr self, int row, int col, string s);
-            static extern (C) bool   wxGrid_IsReadOnly(IntPtr self, int row, int col);
-            static extern (C) void   wxGrid_SetReadOnly(IntPtr self, int row, int col, bool isReadOnly);
-            static extern (C) void   wxGrid_SelectRow(IntPtr self, int row, bool addToSelected);
-            static extern (C) void   wxGrid_SelectCol(IntPtr self, int col, bool addToSelected);
-            static extern (C) void   wxGrid_SelectBlock(IntPtr self, int topRow, int leftCol, int bottomRow, int rightCol, bool addToSelected);
-            static extern (C) void   wxGrid_SelectAll(IntPtr self);
-            static extern (C) bool   wxGrid_IsSelection(IntPtr self);
-            static extern (C) void   wxGrid_DeselectRow(IntPtr self, int row);
-            static extern (C) void   wxGrid_DeselectCol(IntPtr self, int col);
-            static extern (C) void   wxGrid_DeselectCell(IntPtr self, int row, int col);
-            static extern (C) void   wxGrid_ClearSelection(IntPtr self);
-            static extern (C) bool   wxGrid_IsInSelection(IntPtr self, int row, int col);
-            //static extern (C) IntPtr wxGrid_GetSelectedCells(IntPtr self);
-            //static extern (C) IntPtr wxGrid_GetSelectionBlockTopLeft(IntPtr self);
-            //static extern (C) IntPtr wxGrid_GetSelectionBlockBottomRight(IntPtr self);
-            //static extern (C) IntPtr wxGrid_GetSelectedRows(IntPtr self);
-            //static extern (C) IntPtr wxGrid_GetSelectedCols(IntPtr self);
-            static extern (C) void   wxGrid_BlockToDeviceRect(IntPtr self, IntPtr topLeft, IntPtr bottomRight, inout Rectangle rect);
-            static extern (C) IntPtr wxGrid_GetSelectionBackground(IntPtr self);
-            static extern (C) IntPtr wxGrid_GetSelectionForeground(IntPtr self);
-            static extern (C) void   wxGrid_SetSelectionBackground(IntPtr self, IntPtr c);
-            static extern (C) void   wxGrid_SetSelectionForeground(IntPtr self, IntPtr c);
-            static extern (C) void   wxGrid_RegisterDataType(IntPtr self, string typeName, IntPtr renderer, IntPtr editor);
-            static extern (C) IntPtr wxGrid_GetDefaultEditorForCell(IntPtr self, int row, int col);
-            static extern (C) IntPtr wxGrid_GetDefaultRendererForCell(IntPtr self, int row, int col);
-            static extern (C) IntPtr wxGrid_GetDefaultEditorForType(IntPtr self, string typeName);
-            static extern (C) IntPtr wxGrid_GetDefaultRendererForType(IntPtr self, string typeName);
-            static extern (C) void   wxGrid_SetMargins(IntPtr self, int extraWidth, int extraHeight);
-            static extern (C) IntPtr wxGrid_GetGridWindow(IntPtr self);
-            static extern (C) IntPtr wxGrid_GetGridRowLabelWindow(IntPtr self);
-            static extern (C) IntPtr wxGrid_GetGridColLabelWindow(IntPtr self);
-            static extern (C) IntPtr wxGrid_GetGridCornerLabelWindow(IntPtr self);
-            static extern (C) void   wxGrid_UpdateDimensions(IntPtr self);
-            static extern (C) int    wxGrid_GetRows(IntPtr self);
-            static extern (C) int    wxGrid_GetCols(IntPtr self);
-            static extern (C) int    wxGrid_GetCursorRow(IntPtr self);
-            static extern (C) int    wxGrid_GetCursorColumn(IntPtr self);
-            static extern (C) int    wxGrid_GetScrollPosX(IntPtr self);
-            static extern (C) int    wxGrid_GetScrollPosY(IntPtr self);
-            static extern (C) void   wxGrid_SetScrollX(IntPtr self, int x);
-            static extern (C) void   wxGrid_SetScrollY(IntPtr self, int y);
-            static extern (C) void   wxGrid_SetColumnWidth(IntPtr self, int col, int width);
-            static extern (C) int    wxGrid_GetColumnWidth(IntPtr self, int col);
-            static extern (C) void   wxGrid_SetRowHeight(IntPtr self, int row, int height);
-            static extern (C) int    wxGrid_GetViewHeight(IntPtr self);
-            static extern (C) int    wxGrid_GetViewWidth(IntPtr self);
-            static extern (C) void   wxGrid_SetLabelSize(IntPtr self, int orientation, int sz);
-            static extern (C) int    wxGrid_GetLabelSize(IntPtr self, int orientation);
-            static extern (C) void   wxGrid_SetLabelAlignment(IntPtr self, int orientation, int alignment);
-            static extern (C) int    wxGrid_GetLabelAlignment(IntPtr self, int orientation, int alignment);
-            static extern (C) void   wxGrid_SetLabelValue(IntPtr self, int orientation, string val, int pos);
-            static extern (C) IntPtr wxGrid_GetLabelValue(IntPtr self, int orientation, int pos);
-            static extern (C) IntPtr wxGrid_GetCellTextFontGrid(IntPtr self);
-            static extern (C) IntPtr wxGrid_GetCellTextFont(IntPtr self, int row, int col);
-            static extern (C) void   wxGrid_SetCellTextFontGrid(IntPtr self, IntPtr fnt);
-            static extern (C) void   wxGrid_SetCellTextFont(IntPtr self, IntPtr fnt, int row, int col);
-            static extern (C) void   wxGrid_SetCellTextColour(IntPtr self, int row, int col, IntPtr val);
-            static extern (C) void   wxGrid_SetCellTextColourGrid(IntPtr self, IntPtr col);
-            static extern (C) void   wxGrid_SetCellBackgroundColourGrid(IntPtr self, IntPtr col);
-            static extern (C) void   wxGrid_SetCellBackgroundColour(IntPtr self, int row, int col, IntPtr colour);
-            static extern (C) bool   wxGrid_GetEditable(IntPtr self);
-            static extern (C) void   wxGrid_SetEditable(IntPtr self, bool edit);
-            static extern (C) bool   wxGrid_GetEditInPlace(IntPtr self);
-            static extern (C) void   wxGrid_SetCellAlignment(IntPtr self, int alignment, int row, int col);
-            static extern (C) void   wxGrid_SetCellAlignmentGrid(IntPtr self, int alignment);
-            static extern (C) void   wxGrid_SetCellBitmap(IntPtr self, IntPtr bitmap, int row, int col);
-            static extern (C) void   wxGrid_SetDividerPen(IntPtr self, IntPtr pen);
-            static extern (C) IntPtr wxGrid_GetDividerPen(IntPtr self);
-            static extern (C) int    wxGrid_GetRowHeight(IntPtr self, int row);
+            static extern (C) ЦУк wxGrid_ctor();
+            static extern (C) ЦУк wxGrid_ctorFull(ЦУк родитель, цел ид, inout Точка поз, inout Размер size, бцел стиль, ткст имя);
+            static extern (C) бул   wxGrid_CreateGrid(ЦУк сам, цел numRows, цел numCols,  цел selmode);
+            static extern (C) проц   wxGrid_SetSelectionMode(ЦУк сам, цел selmode);
+            static extern (C) цел    wxGrid_GetNumberRows(ЦУк сам);
+            static extern (C) цел    wxGrid_GetNumberCols(ЦУк сам);
+            static extern (C) ЦУк wxGrid_GetTable(ЦУк сам);
+            static extern (C) бул   wxGrid_SetTable(ЦУк сам, ЦУк table, бул takeOwnership, цел select);
+            static extern (C) проц   wxGrid_ClearGrid(ЦУк сам);
+            static extern (C) бул   wxGrid_InsertRows(ЦУк сам, цел поз, цел numRows, бул updateLabels);
+            static extern (C) бул   wxGrid_AppendRows(ЦУк сам, цел numRows, бул updateLabels);
+            static extern (C) бул   wxGrid_DeleteRows(ЦУк сам, цел поз, цел numRows, бул updateLabels);
+            static extern (C) бул   wxGrid_InsertCols(ЦУк сам, цел поз, цел numCols, бул updateLabels);
+            static extern (C) бул   wxGrid_AppendCols(ЦУк сам, цел numCols, бул updateLabels);
+            static extern (C) бул   wxGrid_DeleteCols(ЦУк сам, цел поз, цел numCols, бул updateLabels);
+            static extern (C) проц   wxGrid_BeginBatch(ЦУк сам);
+            static extern (C) проц   wxGrid_EndBatch(ЦУк сам);
+            static extern (C) цел    wxGrid_GetBatchCount(ЦУк сам);
+            static extern (C) проц   wxGrid_ForceRefresh(ЦУк сам);
+            static extern (C) бул   wxGrid_IsEditable(ЦУк сам);
+            static extern (C) проц   wxGrid_EnableEditing(ЦУк сам, бул edit);
+            static extern (C) проц   wxGrid_EnableCellEditControl(ЦУк сам, бул enable);
+            static extern (C) проц   wxGrid_DisableCellEditControl(ЦУк сам);
+            static extern (C) бул   wxGrid_CanEnableCellControl(ЦУк сам);
+            static extern (C) бул   wxGrid_IsCellEditControlEnabled(ЦУк сам);
+            static extern (C) бул   wxGrid_IsCellEditControlShown(ЦУк сам);
+            static extern (C) бул   wxGrid_IsCurrentCellReadOnly(ЦУк сам);
+            static extern (C) проц   wxGrid_ShowCellEditControl(ЦУк сам);
+            static extern (C) проц   wxGrid_HideCellEditControl(ЦУк сам);
+            static extern (C) проц   wxGrid_SaveEditControlValue(ЦУк сам);
+            static extern (C) цел    wxGrid_YToRow(ЦУк сам, цел y);
+            static extern (C) цел    wxGrid_XToCol(ЦУк сам, цел x);
+            static extern (C) цел    wxGrid_YToEdgeOfRow(ЦУк сам, цел y);
+            static extern (C) цел    wxGrid_XToEdgeOfCol(ЦУк сам, цел x);
+            static extern (C) проц   wxGrid_CellToRect(ЦУк сам, цел row, цел col, inout Прямоугольник прям);
+            static extern (C) цел    wxGrid_GetGridCursorRow(ЦУк сам);
+            static extern (C) цел    wxGrid_GetGridCursorCol(ЦУк сам);
+            static extern (C) бул   wxGrid_IsVisible(ЦУк сам, цел row, цел col, бул wholeCellVisible);
+            static extern (C) проц   wxGrid_MakeCellVisible(ЦУк сам, цел row, цел col);
+            static extern (C) проц   wxGrid_SetGridCursor(ЦУк сам, цел row, цел col);
+            static extern (C) бул   wxGrid_MoveCursorUp(ЦУк сам, бул expandSelection);
+            static extern (C) бул   wxGrid_MoveCursorDown(ЦУк сам, бул expandSelection);
+            static extern (C) бул   wxGrid_MoveCursorLeft(ЦУк сам, бул expandSelection);
+            static extern (C) бул   wxGrid_MoveCursorRight(ЦУк сам, бул expandSelection);
+            static extern (C) бул   wxGrid_MovePageDown(ЦУк сам);
+            static extern (C) бул   wxGrid_MovePageUp(ЦУк сам);
+            static extern (C) бул   wxGrid_MoveCursorUpBlock(ЦУк сам, бул expandSelection);
+            static extern (C) бул   wxGrid_MoveCursorDownBlock(ЦУк сам, бул expandSelection);
+            static extern (C) бул   wxGrid_MoveCursorLeftBlock(ЦУк сам, бул expandSelection);
+            static extern (C) бул   wxGrid_MoveCursorRightBlock(ЦУк сам, бул expandSelection);
+            static extern (C) цел    wxGrid_GetDefaultRowLabelSize(ЦУк сам);
+            static extern (C) цел    wxGrid_GetRowLabelSize(ЦУк сам);
+            static extern (C) цел    wxGrid_GetDefaultColLabelSize(ЦУк сам);
+            static extern (C) цел    wxGrid_GetColLabelSize(ЦУк сам);
+            static extern (C) ЦУк wxGrid_GetLabelBackgroundColour(ЦУк сам);
+            static extern (C) ЦУк wxGrid_GetLabelTextColour(ЦУк сам);
+            static extern (C) ЦУк wxGrid_GetLabelFont(ЦУк сам);
+            static extern (C) проц   wxGrid_GetRowLabelAlignment(ЦУк сам, out цел horiz, out цел vert);
+            static extern (C) проц   wxGrid_GetColLabelAlignment(ЦУк сам, out цел horiz, out цел vert);
+            static extern (C) ЦУк wxGrid_GetRowLabelValue(ЦУк сам, цел row);
+            static extern (C) ЦУк wxGrid_GetColLabelValue(ЦУк сам, цел col);
+            static extern (C) ЦУк wxGrid_GetGridLineColour(ЦУк сам);
+            static extern (C) ЦУк wxGrid_GetCellHighlightColour(ЦУк сам);
+            static extern (C) цел    wxGrid_GetCellHighlightPenWidth(ЦУк сам);
+            static extern (C) цел    wxGrid_GetCellHighlightROPenWidth(ЦУк сам);
+            static extern (C) проц   wxGrid_SetRowLabelSize(ЦУк сам, цел ширина);
+            static extern (C) проц   wxGrid_SetColLabelSize(ЦУк сам, цел высота);
+            static extern (C) проц   wxGrid_SetLabelBackgroundColour(ЦУк сам, ЦУк col);
+            static extern (C) проц   wxGrid_SetLabelTextColour(ЦУк сам, ЦУк col);
+            static extern (C) проц   wxGrid_SetLabelFont(ЦУк сам, ЦУк fnt);
+            static extern (C) проц   wxGrid_SetRowLabelAlignment(ЦУк сам, цел horiz, цел vert);
+            static extern (C) проц   wxGrid_SetColLabelAlignment(ЦУк сам, цел horiz, цел vert);
+            static extern (C) проц   wxGrid_SetRowLabelValue(ЦУк сам, цел row, ткст val);
+            static extern (C) проц   wxGrid_SetColLabelValue(ЦУк сам, цел col, ткст val);
+            static extern (C) проц   wxGrid_SetGridLineColour(ЦУк сам, ЦУк col);
+            static extern (C) проц   wxGrid_SetCellHighlightColour(ЦУк сам, ЦУк col);
+            static extern (C) проц   wxGrid_SetCellHighlightPenWidth(ЦУк сам, цел ширина);
+            static extern (C) проц   wxGrid_SetCellHighlightROPenWidth(ЦУк сам, цел ширина);
+            static extern (C) проц   wxGrid_EnableDragRowSize(ЦУк сам, бул enable);
+            static extern (C) проц   wxGrid_DisableDragRowSize(ЦУк сам);
+            static extern (C) бул   wxGrid_CanDragRowSize(ЦУк сам);
+            static extern (C) проц   wxGrid_EnableDragColSize(ЦУк сам, бул enable);
+            static extern (C) проц   wxGrid_DisableDragColSize(ЦУк сам);
+            static extern (C) бул   wxGrid_CanDragColSize(ЦУк сам);
+            static extern (C) проц   wxGrid_EnableDragGridSize(ЦУк сам, бул enable);
+            static extern (C) проц   wxGrid_DisableDragGridSize(ЦУк сам);
+            static extern (C) бул   wxGrid_CanDragGridSize(ЦУк сам);
+            static extern (C) проц   wxGrid_SetAttr(ЦУк сам, цел row, цел col, ЦУк attr);
+            static extern (C) проц   wxGrid_SetRowAttr(ЦУк сам, цел row, ЦУк attr);
+            static extern (C) проц   wxGrid_SetColAttr(ЦУк сам, цел col, ЦУк attr);
+            static extern (C) проц   wxGrid_SetColFormatBool(ЦУк сам, цел col);
+            static extern (C) проц   wxGrid_SetColFormatNumber(ЦУк сам, цел col);
+            static extern (C) проц   wxGrid_SetColFormatFloat(ЦУк сам, цел col, цел ширина, цел precision);
+            static extern (C) проц   wxGrid_SetColFormatCustom(ЦУк сам, цел col, ткст typeName);
+            static extern (C) проц   wxGrid_EnableGridLines(ЦУк сам, бул enable);
+            static extern (C) бул   wxGrid_GridLinesEnabled(ЦУк сам);
+            static extern (C) цел    wxGrid_GetDefaultRowSize(ЦУк сам);
+            static extern (C) цел    wxGrid_GetRowSize(ЦУк сам, цел row);
+            static extern (C) цел    wxGrid_GetDefaultColSize(ЦУк сам);
+            static extern (C) цел    wxGrid_GetColSize(ЦУк сам, цел col);
+            static extern (C) ЦУк wxGrid_GetDefaultCellBackgroundColour(ЦУк сам);
+            static extern (C) ЦУк wxGrid_GetCellBackgroundColour(ЦУк сам, цел row, цел col);
+            static extern (C) ЦУк wxGrid_GetDefaultCellTextColour(ЦУк сам);
+            static extern (C) ЦУк wxGrid_GetCellTextColour(ЦУк сам, цел row, цел col);
+            static extern (C) ЦУк wxGrid_GetDefaultCellFont(ЦУк сам);
+            static extern (C) ЦУк wxGrid_GetCellFont(ЦУк сам, цел row, цел col);
+            static extern (C) проц   wxGrid_GetDefaultCellAlignment(ЦУк сам, inout цел horiz, inout цел vert);
+            static extern (C) проц   wxGrid_GetCellAlignment(ЦУк сам, цел row, цел col, inout цел horiz, inout цел vert);
+            static extern (C) бул   wxGrid_GetDefaultCellOverflow(ЦУк сам);
+            static extern (C) бул   wxGrid_GetCellOverflow(ЦУк сам, цел row, цел col);
+            static extern (C) проц   wxGrid_GetCellSize(ЦУк сам, цел row, цел col, inout цел num_rows, inout цел num_cols);
+            static extern (C) проц   wxGrid_SetDefaultRowSize(ЦУк сам, цел высота, бул resizeExistingRows);
+            static extern (C) проц   wxGrid_SetRowSize(ЦУк сам, цел row, цел высота);
+            static extern (C) проц   wxGrid_SetDefaultColSize(ЦУк сам, цел ширина, бул resizeExistingCols);
+            static extern (C) проц   wxGrid_SetColSize(ЦУк сам, цел col, цел ширина);
+            static extern (C) проц   wxGrid_AutoSizeColumn(ЦУк сам, цел col, бул setAsMin);
+            static extern (C) проц   wxGrid_AutoSizeRow(ЦУк сам, цел row, бул setAsMin);
+            static extern (C) проц   wxGrid_AutoSizeColumns(ЦУк сам, бул setAsMin);
+            static extern (C) проц   wxGrid_AutoSizeRows(ЦУк сам, бул setAsMin);
+            static extern (C) проц   wxGrid_AutoSize(ЦУк сам);
+            static extern (C) проц   wxGrid_SetColMinimalWidth(ЦУк сам, цел col, цел ширина);
+            static extern (C) проц   wxGrid_SetRowMinimalHeight(ЦУк сам, цел row, цел ширина);
+            static extern (C) проц   wxGrid_SetColMinimalAcceptableWidth(ЦУк сам, цел ширина);
+            static extern (C) проц   wxGrid_SetRowMinimalAcceptableHeight(ЦУк сам, цел ширина);
+            static extern (C) цел    wxGrid_GetColMinimalAcceptableWidth(ЦУк сам);
+            static extern (C) цел    wxGrid_GetRowMinimalAcceptableHeight(ЦУк сам);
+            static extern (C) проц   wxGrid_SetDefaultCellBackgroundColour(ЦУк сам, ЦУк wxColour);
+            static extern (C) проц   wxGrid_SetDefaultCellTextColour(ЦУк сам, ЦУк wxColour);
+            static extern (C) проц   wxGrid_SetDefaultCellFont(ЦУк сам, ЦУк wxFont);
+            static extern (C) проц   wxGrid_SetCellFont(ЦУк сам, цел row, цел col, ЦУк wxFont );
+            static extern (C) проц   wxGrid_SetDefaultCellAlignment(ЦУк сам, цел horiz, цел vert);
+            static extern (C) проц   wxGrid_SetCellAlignmentHV(ЦУк сам, цел row, цел col, цел horiz, цел vert);
+            static extern (C) проц   wxGrid_SetDefaultCellOverflow(ЦУк сам, бул allow);
+            static extern (C) проц   wxGrid_SetCellOverflow(ЦУк сам, цел row, цел col, бул allow);
+            static extern (C) проц   wxGrid_SetCellSize(ЦУк сам, цел row, цел col, цел num_rows, цел num_cols);
+            static extern (C) проц   wxGrid_SetDefaultRenderer(ЦУк сам, ЦУк renderer);
+            static extern (C) проц   wxGrid_SetCellRenderer(ЦУк сам, цел row, цел col, ЦУк renderer);
+            static extern (C) ЦУк wxGrid_GetDefaultRenderer(ЦУк сам);
+            static extern (C) ЦУк wxGrid_GetCellRenderer(ЦУк сам, цел row, цел col);
+            static extern (C) проц   wxGrid_SetDefaultEditor(ЦУк сам, ЦУк editor);
+            static extern (C) проц   wxGrid_SetCellEditor(ЦУк сам, цел row, цел col, ЦУк editor);
+            static extern (C) ЦУк wxGrid_GetDefaultEditor(ЦУк сам);
+            static extern (C) ЦУк wxGrid_GetCellEditor(ЦУк сам, цел row, цел col);
+            static extern (C) ЦУк wxGrid_GetCellValue(ЦУк сам, цел row, цел col);
+            static extern (C) проц   wxGrid_SetCellValue(ЦУк сам, цел row, цел col, ткст s);
+            static extern (C) бул   wxGrid_IsReadOnly(ЦУк сам, цел row, цел col);
+            static extern (C) проц   wxGrid_SetReadOnly(ЦУк сам, цел row, цел col, бул isReadOnly);
+            static extern (C) проц   wxGrid_SelectRow(ЦУк сам, цел row, бул addToSelected);
+            static extern (C) проц   wxGrid_SelectCol(ЦУк сам, цел col, бул addToSelected);
+            static extern (C) проц   wxGrid_SelectBlock(ЦУк сам, цел topRow, цел leftCol, цел bottomRow, цел rightCol, бул addToSelected);
+            static extern (C) проц   wxGrid_SelectAll(ЦУк сам);
+            static extern (C) бул   wxGrid_IsSelection(ЦУк сам);
+            static extern (C) проц   wxGrid_DeselectRow(ЦУк сам, цел row);
+            static extern (C) проц   wxGrid_DeselectCol(ЦУк сам, цел col);
+            static extern (C) проц   wxGrid_DeselectCell(ЦУк сам, цел row, цел col);
+            static extern (C) проц   wxGrid_ClearSelection(ЦУк сам);
+            static extern (C) бул   wxGrid_IsInSelection(ЦУк сам, цел row, цел col);
+            //static extern (C) ЦУк wxGrid_GetSelectedCells(ЦУк сам);
+            //static extern (C) ЦУк wxGrid_GetSelectionBlockTopLeft(ЦУк сам);
+            //static extern (C) ЦУк wxGrid_GetSelectionBlockBottomRight(ЦУк сам);
+            //static extern (C) ЦУк wxGrid_GetSelectedRows(ЦУк сам);
+            //static extern (C) ЦУк wxGrid_GetSelectedCols(ЦУк сам);
+            static extern (C) проц   wxGrid_BlockToDeviceRect(ЦУк сам, ЦУк topLeft, ЦУк bottomRight, inout Прямоугольник прям);
+            static extern (C) ЦУк wxGrid_GetSelectionBackground(ЦУк сам);
+            static extern (C) ЦУк wxGrid_GetSelectionForeground(ЦУк сам);
+            static extern (C) проц   wxGrid_SetSelectionBackground(ЦУк сам, ЦУк c);
+            static extern (C) проц   wxGrid_SetSelectionForeground(ЦУк сам, ЦУк c);
+            static extern (C) проц   wxGrid_RegisterDataType(ЦУк сам, ткст typeName, ЦУк renderer, ЦУк editor);
+            static extern (C) ЦУк wxGrid_GetDefaultEditorForCell(ЦУк сам, цел row, цел col);
+            static extern (C) ЦУк wxGrid_GetDefaultRendererForCell(ЦУк сам, цел row, цел col);
+            static extern (C) ЦУк wxGrid_GetDefaultEditorForType(ЦУк сам, ткст typeName);
+            static extern (C) ЦУк wxGrid_GetDefaultRendererForType(ЦУк сам, ткст typeName);
+            static extern (C) проц   wxGrid_SetMargins(ЦУк сам, цел extraWidth, цел extraHeight);
+            static extern (C) ЦУк wxGrid_GetGridWindow(ЦУк сам);
+            static extern (C) ЦУк wxGrid_GetGridRowLabelWindow(ЦУк сам);
+            static extern (C) ЦУк wxGrid_GetGridColLabelWindow(ЦУк сам);
+            static extern (C) ЦУк wxGrid_GetGridCornerLabelWindow(ЦУк сам);
+            static extern (C) проц   wxGrid_UpdateDimensions(ЦУк сам);
+            static extern (C) цел    wxGrid_GetRows(ЦУк сам);
+            static extern (C) цел    wxGrid_GetCols(ЦУк сам);
+            static extern (C) цел    wxGrid_GetCursorRow(ЦУк сам);
+            static extern (C) цел    wxGrid_GetCursorColumn(ЦУк сам);
+            static extern (C) цел    wxGrid_GetScrollPosX(ЦУк сам);
+            static extern (C) цел    wxGrid_GetScrollPosY(ЦУк сам);
+            static extern (C) проц   wxGrid_SetScrollX(ЦУк сам, цел x);
+            static extern (C) проц   wxGrid_SetScrollY(ЦУк сам, цел y);
+            static extern (C) проц   wxGrid_SetColumnWidth(ЦУк сам, цел col, цел ширина);
+            static extern (C) цел    wxGrid_GetColumnWidth(ЦУк сам, цел col);
+            static extern (C) проц   wxGrid_SetRowHeight(ЦУк сам, цел row, цел высота);
+            static extern (C) цел    wxGrid_GetViewHeight(ЦУк сам);
+            static extern (C) цел    wxGrid_GetViewWidth(ЦУк сам);
+            static extern (C) проц   wxGrid_SetLabelSize(ЦУк сам, цел orientation, цел sz);
+            static extern (C) цел    wxGrid_GetLabelSize(ЦУк сам, цел orientation);
+            static extern (C) проц   wxGrid_SetLabelAlignment(ЦУк сам, цел orientation, цел alignment);
+            static extern (C) цел    wxGrid_GetLabelAlignment(ЦУк сам, цел orientation, цел alignment);
+            static extern (C) проц   wxGrid_SetLabelValue(ЦУк сам, цел orientation, ткст val, цел поз);
+            static extern (C) ЦУк wxGrid_GetLabelValue(ЦУк сам, цел orientation, цел поз);
+            static extern (C) ЦУк wxGrid_GetCellTextFontGrid(ЦУк сам);
+            static extern (C) ЦУк wxGrid_GetCellTextFont(ЦУк сам, цел row, цел col);
+            static extern (C) проц   wxGrid_SetCellTextFontGrid(ЦУк сам, ЦУк fnt);
+            static extern (C) проц   wxGrid_SetCellTextFont(ЦУк сам, ЦУк fnt, цел row, цел col);
+            static extern (C) проц   wxGrid_SetCellTextColour(ЦУк сам, цел row, цел col, ЦУк val);
+            static extern (C) проц   wxGrid_SetCellTextColourGrid(ЦУк сам, ЦУк col);
+            static extern (C) проц   wxGrid_SetCellBackgroundColourGrid(ЦУк сам, ЦУк col);
+            static extern (C) проц   wxGrid_SetCellBackgroundColour(ЦУк сам, цел row, цел col, ЦУк colour);
+            static extern (C) бул   wxGrid_GetEditable(ЦУк сам);
+            static extern (C) проц   wxGrid_SetEditable(ЦУк сам, бул edit);
+            static extern (C) бул   wxGrid_GetEditInPlace(ЦУк сам);
+            static extern (C) проц   wxGrid_SetCellAlignment(ЦУк сам, цел alignment, цел row, цел col);
+            static extern (C) проц   wxGrid_SetCellAlignmentGrid(ЦУк сам, цел alignment);
+            static extern (C) проц   wxGrid_SetCellBitmap(ЦУк сам, ЦУк битмап, цел row, цел col);
+            static extern (C) проц   wxGrid_SetDividerPen(ЦУк сам, ЦУк перо);
+            static extern (C) ЦУк wxGrid_GetDividerPen(ЦУк сам);
+            static extern (C) цел    wxGrid_GetRowHeight(ЦУк сам, цел row);
             //! \endcond
 
         //-----------------------------------------------------------------------------
@@ -1252,871 +1252,871 @@ public import wx.ScrolledWindow;
     alias Grid wxGrid;
     public class Grid : ScrolledWindow
     {
-        public this(IntPtr wxobj)
-            { super(wxobj); }
+        public this(ЦУк шхобъ)
+            { super(шхобъ); }
 
         public this()
             { this(wxGrid_ctor()); }
 
-        public this(Window parent, int id)
-            { this(parent, id, wxDefaultPosition, wxDefaultSize, wxWANTS_CHARS, "grid"); }
+        public this(Окно родитель, цел ид)
+            { this(родитель, ид, wxDefaultPosition, wxDefaultSize, wxWANTS_CHARS, "grid"); }
 	    
-        public this(Window parent, int id, Point pos)
-            { this(parent, id, pos, wxDefaultSize, wxWANTS_CHARS, "grid"); }
+        public this(Окно родитель, цел ид, Точка поз)
+            { this(родитель, ид, поз, wxDefaultSize, wxWANTS_CHARS, "grid"); }
 	    
-        public this(Window parent, int id, Point pos, Size size)
-            { this(parent, id, pos, size, wxWANTS_CHARS, "grid"); }
+        public this(Окно родитель, цел ид, Точка поз, Размер size)
+            { this(родитель, ид, поз, size, wxWANTS_CHARS, "grid"); }
 	    
-        public this(Window parent, int id, Point pos, Size size, int style)
-            { this(parent, id, pos, size, style, "grid"); }
+        public this(Окно родитель, цел ид, Точка поз, Размер size, цел стиль)
+            { this(родитель, ид, поз, size, стиль, "grid"); }
 
-        public this(Window parent, int id, Point pos, Size size, int style, string name)
-            { this(wxGrid_ctorFull(wxObject.SafePtr(parent), id, pos, size, cast(uint)style, name)); }
+        public this(Окно родитель, цел ид, Точка поз, Размер size, цел стиль, ткст имя)
+            { this(wxGrid_ctorFull(wxObject.SafePtr(родитель), ид, поз, size, cast(бцел)стиль, имя)); }
 
-        //public  this(Window parent, int x, int y, int w, int h, int style, string name)
-        //    { super(wxGrid_ctor(wxObject.SafePtr(parent), x, y, w, h, style, name)); }
+        //public  this(Окно родитель, цел x, цел y, цел w, цел h, цел стиль, ткст имя)
+        //    { super(wxGrid_ctor(wxObject.SafePtr(родитель), x, y, w, h, стиль, имя)); }
 	
 	//---------------------------------------------------------------------
-	// ctors with self created id
+	// ctors with сам created ид
 	
-	public this(Window parent)
-            { this(parent, Window.UniqueID, wxDefaultPosition, wxDefaultSize, wxWANTS_CHARS, "grid"); }
+	public this(Окно родитель)
+            { this(родитель, Окно.UniqueID, wxDefaultPosition, wxDefaultSize, wxWANTS_CHARS, "grid"); }
 	    
-        public this(Window parent, Point pos)
-            { this(parent, Window.UniqueID, pos, wxDefaultSize, wxWANTS_CHARS, "grid"); }
+        public this(Окно родитель, Точка поз)
+            { this(родитель, Окно.UniqueID, поз, wxDefaultSize, wxWANTS_CHARS, "grid"); }
 	    
-        public this(Window parent, Point pos, Size size)
-            { this(parent, Window.UniqueID, pos, size, wxWANTS_CHARS, "grid"); }
+        public this(Окно родитель, Точка поз, Размер size)
+            { this(родитель, Окно.UniqueID, поз, size, wxWANTS_CHARS, "grid"); }
 	    
-        public this(Window parent, Point pos, Size size, int style)
-            { this(parent, Window.UniqueID, pos, size, style, "grid"); }
+        public this(Окно родитель, Точка поз, Размер size, цел стиль)
+            { this(родитель, Окно.UniqueID, поз, size, стиль, "grid"); }
 
-        public this(Window parent, Point pos, Size size, int style, string name)
-		{ this(parent, Window.UniqueID, pos, size, style, name);}
+        public this(Окно родитель, Точка поз, Размер size, цел стиль, ткст имя)
+		{ this(родитель, Окно.UniqueID, поз, size, стиль, имя);}
 
         //-----------------------------------------------------------------------------
 
-        public bool CreateGrid(int numRows, int numCols)
+        public бул CreateGrid(цел numRows, цел numCols)
         { return CreateGrid(numRows, numCols, GridSelectionMode.wxGridSelectCells); }
 
-            public bool CreateGrid(int numRows, int numCols, GridSelectionMode selmode)
+            public бул CreateGrid(цел numRows, цел numCols, GridSelectionMode selmode)
             {
-            return wxGrid_CreateGrid(wxobj, numRows, numCols, cast(int)selmode);
+            return wxGrid_CreateGrid(шхобъ, numRows, numCols, cast(цел)selmode);
             }
 
         //-----------------------------------------------------------------------------
 
-            public void SelectionMode(GridSelectionMode value) { wxGrid_SetSelectionMode(wxobj, cast(int)value); }
-            //get { return wxGrid_GetSelectionMode(wxobj); }
+            public проц SelectionMode(GridSelectionMode значение) { wxGrid_SetSelectionMode(шхобъ, cast(цел)значение); }
+            //get { return wxGrid_GetSelectionMode(шхобъ); }
     
             //-----------------------------------------------------------------------------
 
-            public int NumberRows() { return wxGrid_GetNumberRows(wxobj); }
+            public цел NumberRows() { return wxGrid_GetNumberRows(шхобъ); }
     
-            public int NumberCols() { return wxGrid_GetNumberCols(wxobj); }
+            public цел NumberCols() { return wxGrid_GetNumberCols(шхобъ); }
 
         //-----------------------------------------------------------------------------
 
-       //     public GridTableBase Table() { return cast(GridTableBase)FindObject(wxGrid_GetTable(wxobj), &GridTableBase.New); }
+       //     public GridTableBase Table() { return cast(GridTableBase)FindObject(wxGrid_GetTable(шхобъ), &GridTableBase.Нов); }
         
-        public bool SetTable(GridTableBase table)
+        public бул SetTable(GridTableBase table)
         {
-            return SetTable(table, false, GridSelectionMode.wxGridSelectCells ); 
+            return SetTable(table, нет, GridSelectionMode.wxGridSelectCells ); 
         }
         
-        public bool SetTable(GridTableBase table, bool takeOwnerShip)
+        public бул SetTable(GridTableBase table, бул takeOwnerShip)
         {
             return SetTable(table, takeOwnerShip, GridSelectionMode.wxGridSelectCells);
         }
     
-            public bool SetTable(GridTableBase table, bool takeOwnership, GridSelectionMode select)
+            public бул SetTable(GridTableBase table, бул takeOwnership, GridSelectionMode select)
             {
-            return wxGrid_SetTable(wxobj, wxObject.SafePtr(table), takeOwnership, cast(int)select);
+            return wxGrid_SetTable(шхобъ, wxObject.SafePtr(table), takeOwnership, cast(цел)select);
             }
     
             //-----------------------------------------------------------------------------
     
-            public void ClearGrid()
+            public проц ClearGrid()
             {
-            wxGrid_ClearGrid(wxobj);
+            wxGrid_ClearGrid(шхобъ);
             }
 
             //-----------------------------------------------------------------------------
         
-        public bool InsertRows()
+        public бул InsertRows()
         {
-            return InsertRows(0, 1, true);
+            return InsertRows(0, 1, да);
         }
         
-        public bool InsertRows(int pos)
+        public бул InsertRows(цел поз)
         {
-            return InsertRows(pos, 1, true);
+            return InsertRows(поз, 1, да);
         }
         
-        public bool InsertRows(int pos, int numRows)
+        public бул InsertRows(цел поз, цел numRows)
         {
-            return InsertRows(pos, numRows, true);
+            return InsertRows(поз, numRows, да);
         }   
     
-            public bool InsertRows(int pos, int numRows, bool updateLabels)
+            public бул InsertRows(цел поз, цел numRows, бул updateLabels)
             {
-            return wxGrid_InsertRows(wxobj, pos, numRows, updateLabels);
+            return wxGrid_InsertRows(шхобъ, поз, numRows, updateLabels);
         }
         
-        public bool AppendRows()
+        public бул AppendRows()
         {
-            return AppendRows(1, true);
+            return AppendRows(1, да);
         }
         
-        public bool AppendRows(int numRows)
+        public бул AppendRows(цел numRows)
         {
-            return AppendRows(numRows, true);
+            return AppendRows(numRows, да);
         }
     
-            public bool AppendRows(int numRows, bool updateLabels)
+            public бул AppendRows(цел numRows, бул updateLabels)
             {
-            return wxGrid_AppendRows(wxobj, numRows, updateLabels);
+            return wxGrid_AppendRows(шхобъ, numRows, updateLabels);
             }
         
-        public bool DeleteRows()
+        public бул DeleteRows()
         {
-            return DeleteRows(0, 1, true);
+            return DeleteRows(0, 1, да);
         }
         
-        public bool DeleteRows(int pos)
+        public бул DeleteRows(цел поз)
         {
-            return DeleteRows(pos, 1, true);
+            return DeleteRows(поз, 1, да);
         }
         
-        public bool DeleteRows(int pos, int numRows)
+        public бул DeleteRows(цел поз, цел numRows)
         {
-            return DeleteRows(pos, numRows, true);
+            return DeleteRows(поз, numRows, да);
         }
     
-            public bool DeleteRows(int pos, int numRows, bool updateLabels)
+            public бул DeleteRows(цел поз, цел numRows, бул updateLabels)
             {
-            return wxGrid_DeleteRows(wxobj, pos, numRows, updateLabels);
+            return wxGrid_DeleteRows(шхобъ, поз, numRows, updateLabels);
             }
 
         //-----------------------------------------------------------------------------
     
-        public bool InsertCols()
+        public бул InsertCols()
         {
-            return InsertCols(0, 1, true);
+            return InsertCols(0, 1, да);
         }
         
-        public bool InsertCols(int pos)
+        public бул InsertCols(цел поз)
         {
-            return InsertCols(pos, 1, true);
+            return InsertCols(поз, 1, да);
         }
         
-        public bool InsertCols(int pos, int numRows)
+        public бул InsertCols(цел поз, цел numRows)
         {
-            return InsertCols(pos, numRows, true);
+            return InsertCols(поз, numRows, да);
         }   
     
-            public bool InsertCols(int pos, int numCols, bool updateLabels)
+            public бул InsertCols(цел поз, цел numCols, бул updateLabels)
             {
-            return wxGrid_InsertCols(wxobj, pos, numCols, updateLabels);
+            return wxGrid_InsertCols(шхобъ, поз, numCols, updateLabels);
             }
         
-        public bool AppendCols()
+        public бул AppendCols()
         {
-            return AppendCols(1, true);
+            return AppendCols(1, да);
         }
         
-        public bool AppendCols(int numCols)
+        public бул AppendCols(цел numCols)
         {
-            return AppendCols(numCols, true);
+            return AppendCols(numCols, да);
         }
     
-            public bool AppendCols(int numCols, bool updateLabels)
+            public бул AppendCols(цел numCols, бул updateLabels)
             {
-            return wxGrid_AppendCols(wxobj, numCols, updateLabels);
+            return wxGrid_AppendCols(шхобъ, numCols, updateLabels);
             }
         
-        public bool DeleteCols()
+        public бул DeleteCols()
         {
-            return DeleteCols(0, 1, true);
+            return DeleteCols(0, 1, да);
         }
         
-        public bool DeleteCols(int pos)
+        public бул DeleteCols(цел поз)
         {
-            return DeleteCols(pos, 1, true);
+            return DeleteCols(поз, 1, да);
         }
         
-        public bool DeleteCols(int pos, int numRows)
+        public бул DeleteCols(цел поз, цел numRows)
         {
-            return DeleteCols(pos, numRows, true);
+            return DeleteCols(поз, numRows, да);
         }
     
-            public bool DeleteCols(int pos, int numCols, bool updateLabels)
+            public бул DeleteCols(цел поз, цел numCols, бул updateLabels)
             {
-            return wxGrid_DeleteCols(wxobj, pos, numCols, updateLabels);
+            return wxGrid_DeleteCols(шхобъ, поз, numCols, updateLabels);
             }
 
             //-----------------------------------------------------------------------------
     
-            public void BeginBatch()
+            public проц BeginBatch()
             {
-            wxGrid_BeginBatch(wxobj);
+            wxGrid_BeginBatch(шхобъ);
             }
     
-            public void EndBatch()
+            public проц EndBatch()
             {
-            wxGrid_EndBatch(wxobj);
+            wxGrid_EndBatch(шхобъ);
             }
     
-            public int BatchCount() { return wxGrid_GetBatchCount(wxobj); }
+            public цел BatchCount() { return wxGrid_GetBatchCount(шхобъ); }
     
             //-----------------------------------------------------------------------------
     
-            public void ForceRefresh()
+            public проц ForceRefresh()
             {
-            wxGrid_ForceRefresh(wxobj);
+            wxGrid_ForceRefresh(шхобъ);
             }
     
             //-----------------------------------------------------------------------------
     
-            public bool IsEditable() { return wxGrid_IsEditable(wxobj); }
-            public void IsEditable(bool value) { wxGrid_EnableEditing(wxobj, value); }
+            public бул IsEditable() { return wxGrid_IsEditable(шхобъ); }
+            public проц IsEditable(бул значение) { wxGrid_EnableEditing(шхобъ, значение); }
     
             //-----------------------------------------------------------------------------
     
-            public void CellEditControlEnabled(bool value) { wxGrid_EnableCellEditControl(wxobj, value); }
-            public bool CellEditControlEnabled() { return wxGrid_IsCellEditControlEnabled(wxobj); }
+            public проц CellEditControlEnabled(бул значение) { wxGrid_EnableCellEditControl(шхобъ, значение); }
+            public бул CellEditControlEnabled() { return wxGrid_IsCellEditControlEnabled(шхобъ); }
     
-            public void DisableCellEditControl()
+            public проц DisableCellEditControl()
             {
-            wxGrid_DisableCellEditControl(wxobj);
+            wxGrid_DisableCellEditControl(шхобъ);
             }
     
-            public bool CanEnableCellControl() { return wxGrid_CanEnableCellControl(wxobj); }
+            public бул CanEnableCellControl() { return wxGrid_CanEnableCellControl(шхобъ); }
     
             //-----------------------------------------------------------------------------
     
-            public bool IsCellEditControlShown() { return wxGrid_IsCellEditControlShown(wxobj); }
+            public бул IsCellEditControlShown() { return wxGrid_IsCellEditControlShown(шхобъ); }
     
-            public bool IsCurrentCellReadOnly() { return wxGrid_IsCurrentCellReadOnly(wxobj); }
+            public бул IsCurrentCellReadOnly() { return wxGrid_IsCurrentCellReadOnly(шхобъ); }
 
             //-----------------------------------------------------------------------------
     
-            public void ShowCellEditControl()
+            public проц ShowCellEditControl()
             {
-            wxGrid_ShowCellEditControl(wxobj);
+            wxGrid_ShowCellEditControl(шхобъ);
             }
     
-            public void HideCellEditControl()
+            public проц HideCellEditControl()
             {
-            wxGrid_HideCellEditControl(wxobj);
-            }
-    
-            //-----------------------------------------------------------------------------
-    
-            public void SaveEditControlValue()
-            {
-            wxGrid_SaveEditControlValue(wxobj);
+            wxGrid_HideCellEditControl(шхобъ);
             }
     
             //-----------------------------------------------------------------------------
     
-            /*public void XYToCell(int x, int y,  GridCellCoords )
+            public проц SaveEditControlValue()
             {
-                    wxGrid_XYToCell(wxobj, x, y, wxObject.SafePtr(GridCellCoords ));
+            wxGrid_SaveEditControlValue(шхобъ);
+            }
+    
+            //-----------------------------------------------------------------------------
+    
+            /*public проц XYToCell(цел x, цел y,  GridCellCoords )
+            {
+                    wxGrid_XYToCell(шхобъ, x, y, wxObject.SafePtr(GridCellCoords ));
             }*/
     
             //-----------------------------------------------------------------------------
     
-            public int YToRow(int y)
+            public цел YToRow(цел y)
             {
-            return wxGrid_YToRow(wxobj, y);
+            return wxGrid_YToRow(шхобъ, y);
             }
     
-            public int XToCol(int x)
+            public цел XToCol(цел x)
             {
-            return wxGrid_XToCol(wxobj, x);
+            return wxGrid_XToCol(шхобъ, x);
             }
     
-            public int YToEdgeOfRow(int y)
+            public цел YToEdgeOfRow(цел y)
             {
-            return wxGrid_YToEdgeOfRow(wxobj, y);
+            return wxGrid_YToEdgeOfRow(шхобъ, y);
             }
     
-            public int XToEdgeOfCol(int x)
+            public цел XToEdgeOfCol(цел x)
             {
-            return wxGrid_XToEdgeOfCol(wxobj, x);
-            }
-    
-            //-----------------------------------------------------------------------------
-    
-            public Rectangle CellToRect(int row, int col)
-            {
-            Rectangle rect;
-            wxGrid_CellToRect(wxobj, row, col, rect);
-            return rect;
+            return wxGrid_XToEdgeOfCol(шхобъ, x);
             }
     
             //-----------------------------------------------------------------------------
     
-            public int GridCursorRow() { return wxGrid_GetGridCursorRow(wxobj); }
-    
-            public int GridCursorCol() { return wxGrid_GetGridCursorCol(wxobj); }
-    
-            //-----------------------------------------------------------------------------
-    
-            public bool IsVisible(int row, int col, bool wholeCellVisible)
+            public Прямоугольник CellToRect(цел row, цел col)
             {
-            return wxGrid_IsVisible(wxobj, row, col, wholeCellVisible);
+            Прямоугольник прям;
+            wxGrid_CellToRect(шхобъ, row, col, прям);
+            return прям;
             }
     
             //-----------------------------------------------------------------------------
     
-            public void MakeCellVisible(int row, int col)
+            public цел GridCursorRow() { return wxGrid_GetGridCursorRow(шхобъ); }
+    
+            public цел GridCursorCol() { return wxGrid_GetGridCursorCol(шхобъ); }
+    
+            //-----------------------------------------------------------------------------
+    
+            public бул IsVisible(цел row, цел col, бул wholeCellVisible)
             {
-            wxGrid_MakeCellVisible(wxobj, row, col);
+            return wxGrid_IsVisible(шхобъ, row, col, wholeCellVisible);
             }
     
             //-----------------------------------------------------------------------------
     
-            public void SetGridCursor(int row, int col)
+            public проц MakeCellVisible(цел row, цел col)
             {
-            wxGrid_SetGridCursor(wxobj, row, col);
+            wxGrid_MakeCellVisible(шхобъ, row, col);
             }
     
             //-----------------------------------------------------------------------------
     
-            public bool MoveCursorUp(bool expandSelection)
+            public проц SetGridCursor(цел row, цел col)
             {
-            return wxGrid_MoveCursorUp(wxobj, expandSelection);
-            }
-    
-            public bool MoveCursorDown(bool expandSelection)
-            {
-            return wxGrid_MoveCursorDown(wxobj, expandSelection);
-            }
-    
-            public bool MoveCursorLeft(bool expandSelection)
-            {
-            return wxGrid_MoveCursorLeft(wxobj, expandSelection);
-            }
-    
-            public bool MoveCursorRight(bool expandSelection)
-            {
-            return wxGrid_MoveCursorRight(wxobj, expandSelection);
-            }
-    
-            public bool MovePageDown()
-            {
-            return wxGrid_MovePageDown(wxobj);
-            }
-    
-            public bool MovePageUp()
-            {
-            return wxGrid_MovePageUp(wxobj);
+            wxGrid_SetGridCursor(шхобъ, row, col);
             }
     
             //-----------------------------------------------------------------------------
     
-            public bool MoveCursorUpBlock(bool expandSelection)
+            public бул MoveCursorUp(бул expandSelection)
             {
-            return wxGrid_MoveCursorUpBlock(wxobj, expandSelection);
+            return wxGrid_MoveCursorUp(шхобъ, expandSelection);
             }
     
-            public bool MoveCursorDownBlock(bool expandSelection)
+            public бул MoveCursorDown(бул expandSelection)
             {
-            return wxGrid_MoveCursorDownBlock(wxobj, expandSelection);
+            return wxGrid_MoveCursorDown(шхобъ, expandSelection);
             }
     
-            public bool MoveCursorLeftBlock(bool expandSelection)
+            public бул MoveCursorLeft(бул expandSelection)
             {
-            return wxGrid_MoveCursorLeftBlock(wxobj, expandSelection);
+            return wxGrid_MoveCursorLeft(шхобъ, expandSelection);
             }
     
-            public bool MoveCursorRightBlock(bool expandSelection)
+            public бул MoveCursorRight(бул expandSelection)
             {
-            return wxGrid_MoveCursorRightBlock(wxobj, expandSelection);
+            return wxGrid_MoveCursorRight(шхобъ, expandSelection);
             }
     
-            //-----------------------------------------------------------------------------
-    
-            public int DefaultRowLabelSize() { return wxGrid_GetDefaultRowLabelSize(wxobj); }
-    
-            public int RowLabelSize() { return wxGrid_GetRowLabelSize(wxobj); }
-            public void RowLabelSize(int value) { wxGrid_SetRowLabelSize(wxobj, value); }
-    
-            //-----------------------------------------------------------------------------
-    
-            public int DefaultColLabelSize() { return wxGrid_GetDefaultColLabelSize(wxobj); }
-    
-            public int ColLabelSize() { return wxGrid_GetColLabelSize(wxobj); }
-            public void ColLabelSize(int value) { wxGrid_SetColLabelSize(wxobj, value); }
-    
-            //-----------------------------------------------------------------------------
-    
-            public Colour LabelBackgroundColour() { return new Colour(wxGrid_GetLabelBackgroundColour(wxobj), true); }
-            public void LabelBackgroundColour(Colour value) { wxGrid_SetLabelBackgroundColour(wxobj, wxObject.SafePtr(value)); }
-    
-            public Colour LabelTextColour() { return new Colour(wxGrid_GetLabelTextColour(wxobj), true); }
-            public void LabelTextColour(Colour value) { wxGrid_SetLabelTextColour(wxobj, wxObject.SafePtr(value)); }
-    
-            //-----------------------------------------------------------------------------
-    
-            public Font LabelFont() { return new Font(wxGrid_GetLabelFont(wxobj)); }
-            public void LabelFont(Font value) { wxGrid_SetLabelFont(wxobj, wxObject.SafePtr(value)); }
-    
-            //-----------------------------------------------------------------------------
-    
-            public void GetRowLabelAlignment(out int horiz, out int vert)
+            public бул MovePageDown()
             {
-            wxGrid_GetRowLabelAlignment(wxobj, horiz, vert);
+            return wxGrid_MovePageDown(шхобъ);
             }
     
-            public void GetColLabelAlignment(out int horiz, out int vert)
+            public бул MovePageUp()
             {
-            wxGrid_GetColLabelAlignment(wxobj, horiz, vert);
+            return wxGrid_MovePageUp(шхобъ);
             }
     
             //-----------------------------------------------------------------------------
     
-            public string GetRowLabelValue(int row)
+            public бул MoveCursorUpBlock(бул expandSelection)
             {
-            return cast(string) new wxString(wxGrid_GetRowLabelValue(wxobj, row), true);
+            return wxGrid_MoveCursorUpBlock(шхобъ, expandSelection);
             }
     
-            public string GetColLabelValue(int col)
+            public бул MoveCursorDownBlock(бул expandSelection)
             {
-            return cast(string) new wxString(wxGrid_GetColLabelValue(wxobj, col), true);
+            return wxGrid_MoveCursorDownBlock(шхобъ, expandSelection);
             }
     
-            //-----------------------------------------------------------------------------
-    
-            public Colour GridLineColour() { return new Colour(wxGrid_GetGridLineColour(wxobj), true); }
-            public void GridLineColour(Colour value) { wxGrid_SetGridLineColour(wxobj, wxObject.SafePtr(value)); }
-    
-            //-----------------------------------------------------------------------------
-    
-            public Colour CellHighlightColour() { return new Colour(wxGrid_GetCellHighlightColour(wxobj), true); }
-            public void CellHighlightColour(Colour value) { wxGrid_SetCellHighlightColour(wxobj, wxObject.SafePtr(value)); }
-    
-            //-----------------------------------------------------------------------------
-    
-            public int CellHighlightPenWidth() { return wxGrid_GetCellHighlightPenWidth(wxobj); }
-            public void CellHighlightPenWidth(int value) { wxGrid_SetCellHighlightPenWidth(wxobj, value); }
-    
-            //-----------------------------------------------------------------------------
-    
-            public int CellHighlightROPenWidth() { return wxGrid_GetCellHighlightROPenWidth(wxobj); }
-            public void CellHighlightROPenWidth(int value) { wxGrid_SetCellHighlightROPenWidth(wxobj, value); }
-    
-            //-----------------------------------------------------------------------------
-    
-            public void SetRowLabelAlignment(int horiz, int vert)
+            public бул MoveCursorLeftBlock(бул expandSelection)
             {
-            wxGrid_SetRowLabelAlignment(wxobj, horiz, vert);
+            return wxGrid_MoveCursorLeftBlock(шхобъ, expandSelection);
             }
     
-            public void SetColLabelAlignment(int horiz, int vert)
+            public бул MoveCursorRightBlock(бул expandSelection)
             {
-            wxGrid_SetColLabelAlignment(wxobj, horiz, vert);
+            return wxGrid_MoveCursorRightBlock(шхобъ, expandSelection);
             }
     
             //-----------------------------------------------------------------------------
     
-            public void SetRowLabelValue(int row, string str)
+            public цел DefaultRowLabelSize() { return wxGrid_GetDefaultRowLabelSize(шхобъ); }
+    
+            public цел RowLabelSize() { return wxGrid_GetRowLabelSize(шхобъ); }
+            public проц RowLabelSize(цел значение) { wxGrid_SetRowLabelSize(шхобъ, значение); }
+    
+            //-----------------------------------------------------------------------------
+    
+            public цел DefaultColLabelSize() { return wxGrid_GetDefaultColLabelSize(шхобъ); }
+    
+            public цел ColLabelSize() { return wxGrid_GetColLabelSize(шхобъ); }
+            public проц ColLabelSize(цел значение) { wxGrid_SetColLabelSize(шхобъ, значение); }
+    
+            //-----------------------------------------------------------------------------
+    
+            public Цвет LabelBackgroundColour() { return new Цвет(wxGrid_GetLabelBackgroundColour(шхобъ), да); }
+            public проц LabelBackgroundColour(Цвет значение) { wxGrid_SetLabelBackgroundColour(шхобъ, wxObject.SafePtr(значение)); }
+    
+            public Цвет LabelTextColour() { return new Цвет(wxGrid_GetLabelTextColour(шхобъ), да); }
+            public проц LabelTextColour(Цвет значение) { wxGrid_SetLabelTextColour(шхобъ, wxObject.SafePtr(значение)); }
+    
+            //-----------------------------------------------------------------------------
+    
+            public Шрифт LabelFont() { return new Шрифт(wxGrid_GetLabelFont(шхобъ)); }
+            public проц LabelFont(Шрифт значение) { wxGrid_SetLabelFont(шхобъ, wxObject.SafePtr(значение)); }
+    
+            //-----------------------------------------------------------------------------
+    
+            public проц GetRowLabelAlignment(out цел horiz, out цел vert)
             {
-            wxGrid_SetRowLabelValue(wxobj, row, str);
+            wxGrid_GetRowLabelAlignment(шхобъ, horiz, vert);
             }
     
-            public void SetColLabelValue(int col, string str)
+            public проц GetColLabelAlignment(out цел horiz, out цел vert)
             {
-            wxGrid_SetColLabelValue(wxobj, col, str);
+            wxGrid_GetColLabelAlignment(шхобъ, horiz, vert);
             }
     
             //-----------------------------------------------------------------------------
     
-            public void DragRowSizeEnabled(bool value) { wxGrid_EnableDragRowSize(wxobj, value); }
-            public bool DragRowSizeEnabled() { return wxGrid_CanDragRowSize(wxobj); }
-    
-            public void DisableDragRowSize()
+            public ткст GetRowLabelValue(цел row)
             {
-            wxGrid_DisableDragRowSize(wxobj);
+            return cast(ткст) new wxString(wxGrid_GetRowLabelValue(шхобъ, row), да);
+            }
+    
+            public ткст GetColLabelValue(цел col)
+            {
+            return cast(ткст) new wxString(wxGrid_GetColLabelValue(шхобъ, col), да);
             }
     
             //-----------------------------------------------------------------------------
     
-            public void DragColSizeEnabled(bool value) { wxGrid_EnableDragColSize(wxobj, value); }
-            public bool DragColSizeEnabled() { return wxGrid_CanDragColSize(wxobj); }
+            public Цвет GridLineColour() { return new Цвет(wxGrid_GetGridLineColour(шхобъ), да); }
+            public проц GridLineColour(Цвет значение) { wxGrid_SetGridLineColour(шхобъ, wxObject.SafePtr(значение)); }
     
-            public void DisableDragColSize()
+            //-----------------------------------------------------------------------------
+    
+            public Цвет CellHighlightColour() { return new Цвет(wxGrid_GetCellHighlightColour(шхобъ), да); }
+            public проц CellHighlightColour(Цвет значение) { wxGrid_SetCellHighlightColour(шхобъ, wxObject.SafePtr(значение)); }
+    
+            //-----------------------------------------------------------------------------
+    
+            public цел CellHighlightPenWidth() { return wxGrid_GetCellHighlightPenWidth(шхобъ); }
+            public проц CellHighlightPenWidth(цел значение) { wxGrid_SetCellHighlightPenWidth(шхобъ, значение); }
+    
+            //-----------------------------------------------------------------------------
+    
+            public цел CellHighlightROPenWidth() { return wxGrid_GetCellHighlightROPenWidth(шхобъ); }
+            public проц CellHighlightROPenWidth(цел значение) { wxGrid_SetCellHighlightROPenWidth(шхобъ, значение); }
+    
+            //-----------------------------------------------------------------------------
+    
+            public проц SetRowLabelAlignment(цел horiz, цел vert)
             {
-            wxGrid_DisableDragColSize(wxobj);
+            wxGrid_SetRowLabelAlignment(шхобъ, horiz, vert);
+            }
+    
+            public проц SetColLabelAlignment(цел horiz, цел vert)
+            {
+            wxGrid_SetColLabelAlignment(шхобъ, horiz, vert);
             }
     
             //-----------------------------------------------------------------------------
     
-            public void DragGridSizeEnabled(bool value) { wxGrid_EnableDragGridSize(wxobj, value); }
-            public bool DragGridSizeEnabled() { return wxGrid_CanDragGridSize(wxobj); }
-    
-            public void DisableDragGridSize()
+            public проц SetRowLabelValue(цел row, ткст str)
             {
-            wxGrid_DisableDragGridSize(wxobj);
+            wxGrid_SetRowLabelValue(шхобъ, row, str);
+            }
+    
+            public проц SetColLabelValue(цел col, ткст str)
+            {
+            wxGrid_SetColLabelValue(шхобъ, col, str);
             }
     
             //-----------------------------------------------------------------------------
     
-            public void SetAttr(int row, int col, GridCellAttr attr)
-            {
-            wxGrid_SetAttr(wxobj, row, col, wxObject.SafePtr(attr));
-            }
+            public проц DragRowSizeEnabled(бул значение) { wxGrid_EnableDragRowSize(шхобъ, значение); }
+            public бул DragRowSizeEnabled() { return wxGrid_CanDragRowSize(шхобъ); }
     
-            public void SetRowAttr(int row, GridCellAttr attr)
+            public проц DisableDragRowSize()
             {
-            wxGrid_SetRowAttr(wxobj, row, wxObject.SafePtr(attr));
-            }
-    
-            public void SetColAttr(int col, GridCellAttr attr)
-            {
-            wxGrid_SetColAttr(wxobj, col, wxObject.SafePtr(attr));
+            wxGrid_DisableDragRowSize(шхобъ);
             }
     
             //-----------------------------------------------------------------------------
     
-            public void ColFormatBool(int value) { wxGrid_SetColFormatBool(wxobj, value); }
+            public проц DragColSizeEnabled(бул значение) { wxGrid_EnableDragColSize(шхобъ, значение); }
+            public бул DragColSizeEnabled() { return wxGrid_CanDragColSize(шхобъ); }
     
-            public void ColFormatNumber(int value) { wxGrid_SetColFormatNumber(wxobj, value); }
+            public проц DisableDragColSize()
+            {
+            wxGrid_DisableDragColSize(шхобъ);
+            }
+    
+            //-----------------------------------------------------------------------------
+    
+            public проц DragGridSizeEnabled(бул значение) { wxGrid_EnableDragGridSize(шхобъ, значение); }
+            public бул DragGridSizeEnabled() { return wxGrid_CanDragGridSize(шхобъ); }
+    
+            public проц DisableDragGridSize()
+            {
+            wxGrid_DisableDragGridSize(шхобъ);
+            }
+    
+            //-----------------------------------------------------------------------------
+    
+            public проц SetAttr(цел row, цел col, GridCellAttr attr)
+            {
+            wxGrid_SetAttr(шхобъ, row, col, wxObject.SafePtr(attr));
+            }
+    
+            public проц SetRowAttr(цел row, GridCellAttr attr)
+            {
+            wxGrid_SetRowAttr(шхобъ, row, wxObject.SafePtr(attr));
+            }
+    
+            public проц SetColAttr(цел col, GridCellAttr attr)
+            {
+            wxGrid_SetColAttr(шхобъ, col, wxObject.SafePtr(attr));
+            }
+    
+            //-----------------------------------------------------------------------------
+    
+            public проц ColFormatBool(цел значение) { wxGrid_SetColFormatBool(шхобъ, значение); }
+    
+            public проц ColFormatNumber(цел значение) { wxGrid_SetColFormatNumber(шхобъ, значение); }
         
-        public void SetColFormatFloat(int col)
+        public проц SetColFormatFloat(цел col)
         {
             SetColFormatFloat(col, -1, -1);
         }
         
-        public void SetColFormatFloat(int col, int width)
+        public проц SetColFormatFloat(цел col, цел ширина)
         {
-            SetColFormatFloat(col, width, -1);
+            SetColFormatFloat(col, ширина, -1);
         }
     
-            public void SetColFormatFloat(int col, int width, int precision)
+            public проц SetColFormatFloat(цел col, цел ширина, цел precision)
             {
-            wxGrid_SetColFormatFloat(wxobj, col, width, precision);
+            wxGrid_SetColFormatFloat(шхобъ, col, ширина, precision);
             }
     
-            public void SetColFormatCustom(int col, string typeName)
+            public проц SetColFormatCustom(цел col, ткст typeName)
             {
-            wxGrid_SetColFormatCustom(wxobj, col, typeName);
-            }
-    
-            //-----------------------------------------------------------------------------
-    
-            public void GridLinesEnabled(bool value) { wxGrid_EnableGridLines(wxobj, value); } 
-            public bool GridLinesEnabled() { return wxGrid_GridLinesEnabled(wxobj); }
-    
-            //-----------------------------------------------------------------------------
-    
-            public int DefaultRowSize() { return wxGrid_GetDefaultRowSize(wxobj); }
-    
-            public int GetRowSize(int row)
-            {
-            return wxGrid_GetRowSize(wxobj, row);
-            }
-    
-            public int DefaultColSize() { return wxGrid_GetDefaultColSize(wxobj); }
-    
-            public int GetColSize(int col)
-            {
-            return wxGrid_GetColSize(wxobj, col);
+            wxGrid_SetColFormatCustom(шхобъ, col, typeName);
             }
     
             //-----------------------------------------------------------------------------
     
-            public Colour DefaultCellBackgroundColour() { return new Colour(wxGrid_GetDefaultCellBackgroundColour(wxobj), true); }
-            public void DefaultCellBackgroundColour(Colour value) { wxGrid_SetDefaultCellBackgroundColour(wxobj, wxObject.SafePtr(value)); }
-    
-            public Colour DefaultCellTextColour() { return new Colour(wxGrid_GetDefaultCellTextColour(wxobj), true); }
-            public void DefaultCellTextColour(Colour value) { wxGrid_SetDefaultCellTextColour(wxobj, wxObject.SafePtr(value)); }
+            public проц GridLinesEnabled(бул значение) { wxGrid_EnableGridLines(шхобъ, значение); } 
+            public бул GridLinesEnabled() { return wxGrid_GridLinesEnabled(шхобъ); }
     
             //-----------------------------------------------------------------------------
     
-            public Font DefaultCellFont() { return new Font(wxGrid_GetDefaultCellFont(wxobj)); }
-            public void DefaultCellFont(Font value) { wxGrid_SetDefaultCellFont(wxobj, wxObject.SafePtr(value)); }
+            public цел DefaultRowSize() { return wxGrid_GetDefaultRowSize(шхобъ); }
     
-            public Font GetCellFont(int row, int col)
+            public цел GetRowSize(цел row)
             {
-            return new Font(wxGrid_GetCellFont(wxobj, row, col));
+            return wxGrid_GetRowSize(шхобъ, row);
             }
     
-            //-----------------------------------------------------------------------------
+            public цел DefaultColSize() { return wxGrid_GetDefaultColSize(шхобъ); }
     
-            public void GetDefaultCellAlignment(inout int horiz, inout int vert)
+            public цел GetColSize(цел col)
             {
-            wxGrid_GetDefaultCellAlignment(wxobj, horiz, vert);
+            return wxGrid_GetColSize(шхобъ, col);
             }
     
             //-----------------------------------------------------------------------------
     
-            public void GetCellAlignment(int row, int col, inout int horiz, inout int vert)
+            public Цвет DefaultCellBackgroundColour() { return new Цвет(wxGrid_GetDefaultCellBackgroundColour(шхобъ), да); }
+            public проц DefaultCellBackgroundColour(Цвет значение) { wxGrid_SetDefaultCellBackgroundColour(шхобъ, wxObject.SafePtr(значение)); }
+    
+            public Цвет DefaultCellTextColour() { return new Цвет(wxGrid_GetDefaultCellTextColour(шхобъ), да); }
+            public проц DefaultCellTextColour(Цвет значение) { wxGrid_SetDefaultCellTextColour(шхобъ, wxObject.SafePtr(значение)); }
+    
+            //-----------------------------------------------------------------------------
+    
+            public Шрифт DefaultCellFont() { return new Шрифт(wxGrid_GetDefaultCellFont(шхобъ)); }
+            public проц DefaultCellFont(Шрифт значение) { wxGrid_SetDefaultCellFont(шхобъ, wxObject.SafePtr(значение)); }
+    
+            public Шрифт GetCellFont(цел row, цел col)
             {
-            wxGrid_GetCellAlignment(wxobj, row, col, horiz, vert);
+            return new Шрифт(wxGrid_GetCellFont(шхобъ, row, col));
             }
     
             //-----------------------------------------------------------------------------
     
-            public bool DefaultCellOverflow() { return wxGrid_GetDefaultCellOverflow(wxobj); }
-            public void DefaultCellOverflow(bool value) { wxGrid_SetDefaultCellOverflow(wxobj, value); }
-    
-            public bool GetCellOverflow(int row, int col)
+            public проц GetDefaultCellAlignment(inout цел horiz, inout цел vert)
             {
-            return wxGrid_GetCellOverflow(wxobj, row, col);
+            wxGrid_GetDefaultCellAlignment(шхобъ, horiz, vert);
             }
     
             //-----------------------------------------------------------------------------
     
-            public void GetCellSize(int row, int col, inout int num_rows, inout int num_cols)
+            public проц GetCellAlignment(цел row, цел col, inout цел horiz, inout цел vert)
             {
-            wxGrid_GetCellSize(wxobj, row, col, num_rows, num_cols);
+            wxGrid_GetCellAlignment(шхобъ, row, col, horiz, vert);
             }
     
             //-----------------------------------------------------------------------------
     
-            public void SetDefaultRowSize(int height, bool resizeExistingRows)
-            {
-            wxGrid_SetDefaultRowSize(wxobj, height, resizeExistingRows);
-            }
+            public бул DefaultCellOverflow() { return wxGrid_GetDefaultCellOverflow(шхобъ); }
+            public проц DefaultCellOverflow(бул значение) { wxGrid_SetDefaultCellOverflow(шхобъ, значение); }
     
-            public void SetRowSize(int row, int height)
+            public бул GetCellOverflow(цел row, цел col)
             {
-            wxGrid_SetRowSize(wxobj, row, height);
-            }
-    
-            //-----------------------------------------------------------------------------
-    
-            public void SetDefaultColSize(int width, bool resizeExistingCols)
-            {
-            wxGrid_SetDefaultColSize(wxobj, width, resizeExistingCols);
-            }
-    
-            public void SetColSize(int col, int width)
-            {
-            wxGrid_SetColSize(wxobj, col, width);
+            return wxGrid_GetCellOverflow(шхобъ, row, col);
             }
     
             //-----------------------------------------------------------------------------
     
-            public void AutoSizeColumn(int col, bool setAsMin)
+            public проц GetCellSize(цел row, цел col, inout цел num_rows, inout цел num_cols)
             {
-            wxGrid_AutoSizeColumn(wxobj, col, setAsMin);
+            wxGrid_GetCellSize(шхобъ, row, col, num_rows, num_cols);
             }
     
-            public void AutoSizeRow(int row, bool setAsMin)
+            //-----------------------------------------------------------------------------
+    
+            public проц SetDefaultRowSize(цел высота, бул resizeExistingRows)
             {
-            wxGrid_AutoSizeRow(wxobj, row, setAsMin);
+            wxGrid_SetDefaultRowSize(шхобъ, высота, resizeExistingRows);
+            }
+    
+            public проц SetRowSize(цел row, цел высота)
+            {
+            wxGrid_SetRowSize(шхобъ, row, высота);
+            }
+    
+            //-----------------------------------------------------------------------------
+    
+            public проц SetDefaultColSize(цел ширина, бул resizeExistingCols)
+            {
+            wxGrid_SetDefaultColSize(шхобъ, ширина, resizeExistingCols);
+            }
+    
+            public проц SetColSize(цел col, цел ширина)
+            {
+            wxGrid_SetColSize(шхобъ, col, ширина);
+            }
+    
+            //-----------------------------------------------------------------------------
+    
+            public проц AutoSizeColumn(цел col, бул setAsMin)
+            {
+            wxGrid_AutoSizeColumn(шхобъ, col, setAsMin);
+            }
+    
+            public проц AutoSizeRow(цел row, бул setAsMin)
+            {
+            wxGrid_AutoSizeRow(шхобъ, row, setAsMin);
             }
     
             //-----------------------------------------------------------------------------
         
-        public void AutoSizeColumns()
+        public проц AutoSizeColumns()
         {
-            AutoSizeColumns(true);
+            AutoSizeColumns(да);
         }
     
-            public void AutoSizeColumns(bool setAsMin)
+            public проц AutoSizeColumns(бул setAsMin)
             {
-            wxGrid_AutoSizeColumns(wxobj, setAsMin);
+            wxGrid_AutoSizeColumns(шхобъ, setAsMin);
             }
         
-        public void AutoSizeRows()
+        public проц AutoSizeRows()
         {
-            AutoSizeRows(true);
+            AutoSizeRows(да);
         }
     
-            public void AutoSizeRows(bool setAsMin)
+            public проц AutoSizeRows(бул setAsMin)
             {
-            wxGrid_AutoSizeRows(wxobj, setAsMin);
+            wxGrid_AutoSizeRows(шхобъ, setAsMin);
             }
     
             //-----------------------------------------------------------------------------
     
-            public void AutoSize()
+            public проц AutoSize()
             {
-            wxGrid_AutoSize(wxobj);
+            wxGrid_AutoSize(шхобъ);
             }
     
             //-----------------------------------------------------------------------------
     
-            public void SetColMinimalWidth(int col, int width)
+            public проц SetColMinimalWidth(цел col, цел ширина)
             {
-            wxGrid_SetColMinimalWidth(wxobj, col, width);
+            wxGrid_SetColMinimalWidth(шхобъ, col, ширина);
             }
     
-            public void SetRowMinimalHeight(int row, int width)
+            public проц SetRowMinimalHeight(цел row, цел ширина)
             {
-            wxGrid_SetRowMinimalHeight(wxobj, row, width);
-            }
-    
-            //-----------------------------------------------------------------------------
-    
-            public void ColMinimalAcceptableWidth(int value) { wxGrid_SetColMinimalAcceptableWidth(wxobj, value); }
-            public int ColMinimalAcceptableWidth() { return wxGrid_GetColMinimalAcceptableWidth(wxobj); }
-    
-            public void RowMinimalAcceptableHeight(int value) { wxGrid_SetRowMinimalAcceptableHeight(wxobj, value); }
-            public int RowMinimalAcceptableHeight() { return wxGrid_GetRowMinimalAcceptableHeight(wxobj); }
-    
-            //-----------------------------------------------------------------------------
-    
-            public void SetCellFont(int row, int col, Font fnt)
-            {
-            wxGrid_SetCellFont(wxobj, row, col, wxObject.SafePtr(fnt));
+            wxGrid_SetRowMinimalHeight(шхобъ, row, ширина);
             }
     
             //-----------------------------------------------------------------------------
     
-            public void SetDefaultCellAlignment(int horiz, int vert)
-            {
-            wxGrid_SetDefaultCellAlignment(wxobj, horiz, vert);
-            }
+            public проц ColMinimalAcceptableWidth(цел значение) { wxGrid_SetColMinimalAcceptableWidth(шхобъ, значение); }
+            public цел ColMinimalAcceptableWidth() { return wxGrid_GetColMinimalAcceptableWidth(шхобъ); }
     
-            public void SetCellAlignment(int row, int col, int horiz, int vert)
-            {
-            wxGrid_SetCellAlignmentHV(wxobj, row, col, horiz, vert);
-            }
+            public проц RowMinimalAcceptableHeight(цел значение) { wxGrid_SetRowMinimalAcceptableHeight(шхобъ, значение); }
+            public цел RowMinimalAcceptableHeight() { return wxGrid_GetRowMinimalAcceptableHeight(шхобъ); }
     
-            public void SetCellOverflow(int row, int col, bool allow)
-            {
-            wxGrid_SetCellOverflow(wxobj, row, col, allow);
-            }
+            //-----------------------------------------------------------------------------
     
-            public void SetCellSize(int row, int col, int num_rows, int num_cols)
+            public проц SetCellFont(цел row, цел col, Шрифт fnt)
             {
-            wxGrid_SetCellSize(wxobj, row, col, num_rows, num_cols);
+            wxGrid_SetCellFont(шхобъ, row, col, wxObject.SafePtr(fnt));
             }
     
             //-----------------------------------------------------------------------------
     
-            public void DefaultRenderer(GridCellRenderer value) { wxGrid_SetDefaultRenderer(wxobj, wxObject.SafePtr(value)); }
-            //get { return wxGrid_GetDefaultRenderer(wxobj); }
+            public проц SetDefaultCellAlignment(цел horiz, цел vert)
+            {
+            wxGrid_SetDefaultCellAlignment(шхобъ, horiz, vert);
+            }
+    
+            public проц SetCellAlignment(цел row, цел col, цел horiz, цел vert)
+            {
+            wxGrid_SetCellAlignmentHV(шхобъ, row, col, horiz, vert);
+            }
+    
+            public проц SetCellOverflow(цел row, цел col, бул allow)
+            {
+            wxGrid_SetCellOverflow(шхобъ, row, col, allow);
+            }
+    
+            public проц SetCellSize(цел row, цел col, цел num_rows, цел num_cols)
+            {
+            wxGrid_SetCellSize(шхобъ, row, col, num_rows, num_cols);
+            }
     
             //-----------------------------------------------------------------------------
     
-            public void SetCellRenderer(int row, int col, GridCellRenderer renderer)
+            public проц DefaultRenderer(GridCellRenderer значение) { wxGrid_SetDefaultRenderer(шхобъ, wxObject.SafePtr(значение)); }
+            //get { return wxGrid_GetDefaultRenderer(шхобъ); }
+    
+            //-----------------------------------------------------------------------------
+    
+            public проц SetCellRenderer(цел row, цел col, GridCellRenderer renderer)
             {
-            wxGrid_SetCellRenderer(wxobj, row, col, wxObject.SafePtr(renderer));
+            wxGrid_SetCellRenderer(шхобъ, row, col, wxObject.SafePtr(renderer));
             }
     
             //-----------------------------------------------------------------------------
     /+
-            public GridCellRenderer GetCellRenderer(int row, int col)
+            public GridCellRenderer GetCellRenderer(цел row, цел col)
             {
-                    return cast(GridCellRenderer)FindObject(wxGrid_GetCellRenderer(wxobj, row, col), &GridCellRenderer.New);
+                    return cast(GridCellRenderer)FindObject(wxGrid_GetCellRenderer(шхобъ, row, col), &GridCellRenderer.Нов);
             }
     +/
             //-----------------------------------------------------------------------------
     
-            public void DefaultEditor(GridCellEditor value) { wxGrid_SetDefaultEditor(wxobj, wxObject.SafePtr(value)); }/+
-            public GridCellEditor DefaultEditor() { return cast(GridCellEditor)FindObject(wxGrid_GetDefaultEditor(wxobj), &GridCellEditor.New); }
+            public проц DefaultEditor(GridCellEditor значение) { wxGrid_SetDefaultEditor(шхобъ, wxObject.SafePtr(значение)); }/+
+            public GridCellEditor DefaultEditor() { return cast(GridCellEditor)FindObject(wxGrid_GetDefaultEditor(шхобъ), &GridCellEditor.Нов); }
     +/
             //-----------------------------------------------------------------------------
     
-            public void SetCellEditor(int row, int col, GridCellEditor editor)
+            public проц SetCellEditor(цел row, цел col, GridCellEditor editor)
             {
-                wxGrid_SetCellEditor(wxobj, row, col, wxObject.SafePtr(editor));
+                wxGrid_SetCellEditor(шхобъ, row, col, wxObject.SafePtr(editor));
             }
     
             //-----------------------------------------------------------------------------
     /+
-            public GridCellEditor GetCellEditor(int row, int col)
+            public GridCellEditor GetCellEditor(цел row, цел col)
             {
-                return cast(GridCellEditor)FindObject(wxGrid_GetCellEditor(wxobj, row, col), &GridCellEditor.New);
+                return cast(GridCellEditor)FindObject(wxGrid_GetCellEditor(шхобъ, row, col), &GridCellEditor.Нов);
             }
     +/
             //-----------------------------------------------------------------------------
     
-            public string GetCellValue(int row, int col)
+            public ткст GetCellValue(цел row, цел col)
             {
-                return cast(string) new wxString(wxGrid_GetCellValue(wxobj, row, col), true);
+                return cast(ткст) new wxString(wxGrid_GetCellValue(шхобъ, row, col), да);
             }
     
             //-----------------------------------------------------------------------------
     
-            public void SetCellValue(int row, int col, string s)
+            public проц SetCellValue(цел row, цел col, ткст s)
             {
-                wxGrid_SetCellValue(wxobj, row, col, s);
+                wxGrid_SetCellValue(шхобъ, row, col, s);
             }
     
             //-----------------------------------------------------------------------------
     
-            public bool IsReadOnly(int row, int col)
+            public бул IsReadOnly(цел row, цел col)
             {
-                return wxGrid_IsReadOnly(wxobj, row, col);
+                return wxGrid_IsReadOnly(шхобъ, row, col);
             }
         
-        public void SetReadOnly(int row, int col)
+        public проц SetReadOnly(цел row, цел col)
         {
-            SetReadOnly(row, col, true);
+            SetReadOnly(row, col, да);
         }
     
-            public void SetReadOnly(int row, int col, bool isReadOnly)
+            public проц SetReadOnly(цел row, цел col, бул isReadOnly)
             {
-            wxGrid_SetReadOnly(wxobj, row, col, isReadOnly);
+            wxGrid_SetReadOnly(шхобъ, row, col, isReadOnly);
             }
     
             //-----------------------------------------------------------------------------
     
-            public void SelectRow(int row, bool addToSelected)
+            public проц SelectRow(цел row, бул addToSelected)
             {
-            wxGrid_SelectRow(wxobj, row, addToSelected);
+            wxGrid_SelectRow(шхобъ, row, addToSelected);
             }
     
-            public void SelectCol(int col, bool addToSelected)
+            public проц SelectCol(цел col, бул addToSelected)
             {
-            wxGrid_SelectCol(wxobj, col, addToSelected);
-            }
-    
-            //-----------------------------------------------------------------------------
-    
-            public void SelectBlock(int topRow, int leftCol, int bottomRow, int rightCol, bool addToSelected)
-            {
-            wxGrid_SelectBlock(wxobj, topRow, leftCol, bottomRow, rightCol, addToSelected);
+            wxGrid_SelectCol(шхобъ, col, addToSelected);
             }
     
             //-----------------------------------------------------------------------------
     
-            public void SelectAll()
+            public проц SelectBlock(цел topRow, цел leftCol, цел bottomRow, цел rightCol, бул addToSelected)
             {
-            wxGrid_SelectAll(wxobj);
+            wxGrid_SelectBlock(шхобъ, topRow, leftCol, bottomRow, rightCol, addToSelected);
             }
     
             //-----------------------------------------------------------------------------
     
-            public bool IsSelection() { return wxGrid_IsSelection(wxobj); }
-    
-            //-----------------------------------------------------------------------------
-    
-            public void DeselectRow(int row)
+            public проц SelectAll()
             {
-            wxGrid_DeselectRow(wxobj, row);
-            }
-    
-            public void DeselectCol(int col)
-            {
-            wxGrid_DeselectCol(wxobj, col);
-            }
-    
-            public void DeselectCell(int row, int col)
-            {
-            wxGrid_DeselectCell(wxobj, row, col);
+            wxGrid_SelectAll(шхобъ);
             }
     
             //-----------------------------------------------------------------------------
     
-            public void ClearSelection()
+            public бул IsSelection() { return wxGrid_IsSelection(шхобъ); }
+    
+            //-----------------------------------------------------------------------------
+    
+            public проц DeselectRow(цел row)
             {
-            wxGrid_ClearSelection(wxobj);
+            wxGrid_DeselectRow(шхобъ, row);
+            }
+    
+            public проц DeselectCol(цел col)
+            {
+            wxGrid_DeselectCol(шхобъ, col);
+            }
+    
+            public проц DeselectCell(цел row, цел col)
+            {
+            wxGrid_DeselectCell(шхобъ, row, col);
             }
     
             //-----------------------------------------------------------------------------
     
-            public bool IsInSelection(int row, int col)
+            public проц ClearSelection()
             {
-            return wxGrid_IsInSelection(wxobj, row, col);
+            wxGrid_ClearSelection(шхобъ);
+            }
+    
+            //-----------------------------------------------------------------------------
+    
+            public бул IsInSelection(цел row, цел col)
+            {
+            return wxGrid_IsInSelection(шхобъ, row, col);
             }
     
             //-----------------------------------------------------------------------------
@@ -2125,345 +2125,345 @@ public import wx.ScrolledWindow;
 version(NOT_IMPLEMENTED){
             public GridCellCoordsArray GetSelectedCells()
         {
-            return wxGrid_GetSelectedCells(wxobj);
+            return wxGrid_GetSelectedCells(шхобъ);
             }
 
             //-----------------------------------------------------------------------------
     
             public GridCellCoordsArray GetSelectionBlockTopLeft()
             {
-            return wxGrid_GetSelectionBlockTopLeft(wxobj);
+            return wxGrid_GetSelectionBlockTopLeft(шхобъ);
             }
     
             //-----------------------------------------------------------------------------
     
             public GridCellCoordsArray GetSelectionBlockBottomRight()
             {
-            return wxGrid_GetSelectionBlockBottomRight(wxobj);
+            return wxGrid_GetSelectionBlockBottomRight(шхобъ);
             }
     
             //-----------------------------------------------------------------------------
     
-            public ArrayInt GetSelectedRows()
+            public МассивЦел GetSelectedRows()
             {
-            return wxGrid_GetSelectedRows(wxobj);
+            return wxGrid_GetSelectedRows(шхобъ);
             }
     
             //-----------------------------------------------------------------------------
     
-            public ArrayInt GetSelectedCols()
+            public МассивЦел GetSelectedCols()
             {
-            return wxGrid_GetSelectedCols(wxobj);
+            return wxGrid_GetSelectedCols(шхобъ);
             }
 } // version(NOT_IMPLEMENTED)
 //! \endcond
             //-----------------------------------------------------------------------------
     
-            public Rectangle BlockToDeviceRect(GridCellCoords topLeft, GridCellCoords bottomRight)
+            public Прямоугольник BlockToDeviceRect(GridCellCoords topLeft, GridCellCoords bottomRight)
             {
-            Rectangle rect;
-            wxGrid_BlockToDeviceRect(wxobj, wxObject.SafePtr(topLeft), wxObject.SafePtr(bottomRight), rect);
-            return rect;
+            Прямоугольник прям;
+            wxGrid_BlockToDeviceRect(шхобъ, wxObject.SafePtr(topLeft), wxObject.SafePtr(bottomRight), прям);
+            return прям;
             }
     
             //-----------------------------------------------------------------------------
     
-            public Colour SelectionBackground() { return new Colour(wxGrid_GetSelectionBackground(wxobj), true); }
-            public void SelectionBackground(Colour value) { wxGrid_SetSelectionBackground(wxobj, wxObject.SafePtr(value)); }
+            public Цвет SelectionBackground() { return new Цвет(wxGrid_GetSelectionBackground(шхобъ), да); }
+            public проц SelectionBackground(Цвет значение) { wxGrid_SetSelectionBackground(шхобъ, wxObject.SafePtr(значение)); }
     
             //-----------------------------------------------------------------------------
     
-            public Colour SelectionForeground() { return new Colour(wxGrid_GetSelectionForeground(wxobj), true); }
-            public void SelectionForeground(Colour value) { wxGrid_SetSelectionForeground(wxobj, wxObject.SafePtr(value)); }
+            public Цвет SelectionForeground() { return new Цвет(wxGrid_GetSelectionForeground(шхобъ), да); }
+            public проц SelectionForeground(Цвет значение) { wxGrid_SetSelectionForeground(шхобъ, wxObject.SafePtr(значение)); }
     
             //-----------------------------------------------------------------------------
     
-            public void RegisterDataType(string typeName, GridCellRenderer renderer, GridCellEditor editor)
+            public проц RegisterDataType(ткст typeName, GridCellRenderer renderer, GridCellEditor editor)
             {
-            wxGrid_RegisterDataType(wxobj, typeName, wxObject.SafePtr(renderer), wxObject.SafePtr(editor));
+            wxGrid_RegisterDataType(шхобъ, typeName, wxObject.SafePtr(renderer), wxObject.SafePtr(editor));
             }
     
             //-----------------------------------------------------------------------------
     /+
-            public GridCellEditor GetDefaultEditorForCell(int row, int col)
+            public GridCellEditor GetDefaultEditorForCell(цел row, цел col)
             {
-            return cast(GridCellEditor)FindObject(wxGrid_GetDefaultEditorForCell(wxobj, row, col), &GridCellEditor.New);
+            return cast(GridCellEditor)FindObject(wxGrid_GetDefaultEditorForCell(шхобъ, row, col), &GridCellEditor.Нов);
             }
     +/
             //-----------------------------------------------------------------------------
     /+
-            public GridCellRenderer GetDefaultRendererForCell(int row, int col)
+            public GridCellRenderer GetDefaultRendererForCell(цел row, цел col)
             {
-                    return cast(GridCellRenderer)FindObject(wxGrid_GetDefaultRendererForCell(wxobj, row, col), &GridCellRenderer.New);
+                    return cast(GridCellRenderer)FindObject(wxGrid_GetDefaultRendererForCell(шхобъ, row, col), &GridCellRenderer.Нов);
             }
     +/
             //-----------------------------------------------------------------------------
     /+
-            public GridCellEditor GetDefaultEditorForType(string typeName)
+            public GridCellEditor GetDefaultEditorForType(ткст typeName)
             {
-            return cast(GridCellEditor)FindObject(wxGrid_GetDefaultEditorForType(wxobj, typeName), &GridCellEditor.New);
+            return cast(GridCellEditor)FindObject(wxGrid_GetDefaultEditorForType(шхобъ, typeName), &GridCellEditor.Нов);
             }
     +/
             //-----------------------------------------------------------------------------
     /+
-            public GridCellRenderer GetDefaultRendererForType(string typeName)
+            public GridCellRenderer GetDefaultRendererForType(ткст typeName)
             {
-                    return cast(GridCellRenderer)FindObject(wxGrid_GetDefaultRendererForType(wxobj, typeName), &GridCellRenderer.New);
+                    return cast(GridCellRenderer)FindObject(wxGrid_GetDefaultRendererForType(шхобъ, typeName), &GridCellRenderer.Нов);
             }
     +/
             //-----------------------------------------------------------------------------
     
-            public void SetMargins(int extraWidth, int extraHeight)
+            public проц SetMargins(цел extraWidth, цел extraHeight)
             {
-            wxGrid_SetMargins(wxobj, extraWidth, extraHeight);
+            wxGrid_SetMargins(шхобъ, extraWidth, extraHeight);
             }
     
             //-----------------------------------------------------------------------------
     
-            public Window GridWindow() { return cast(Window)FindObject(wxGrid_GetGridWindow(wxobj)); }
+            public Окно GridWindow() { return cast(Окно)FindObject(wxGrid_GetGridWindow(шхобъ)); }
     
-            public Window GridRowLabelWindow() { return cast(Window)FindObject(wxGrid_GetGridRowLabelWindow(wxobj)); }
+            public Окно GridRowLabelWindow() { return cast(Окно)FindObject(wxGrid_GetGridRowLabelWindow(шхобъ)); }
     
-            public Window GridColLabelWindow() { return cast(Window)FindObject(wxGrid_GetGridColLabelWindow(wxobj)); }
+            public Окно GridColLabelWindow() { return cast(Окно)FindObject(wxGrid_GetGridColLabelWindow(шхобъ)); }
     
-            public Window GridCornerLabelWindow() { return cast(Window)FindObject(wxGrid_GetGridCornerLabelWindow(wxobj)); }
+            public Окно GridCornerLabelWindow() { return cast(Окно)FindObject(wxGrid_GetGridCornerLabelWindow(шхобъ)); }
     
             //-----------------------------------------------------------------------------
     
-            public void UpdateDimensions()
+            public проц UpdateDimensions()
             {
-            wxGrid_UpdateDimensions(wxobj);
+            wxGrid_UpdateDimensions(шхобъ);
             }
     
             //-----------------------------------------------------------------------------
     
-            public int Rows() { return wxGrid_GetRows(wxobj); }
+            public цел Rows() { return wxGrid_GetRows(шхобъ); }
     
-            public int Cols() { return wxGrid_GetCols(wxobj); }
-    
-            //-----------------------------------------------------------------------------
-    
-            public int CursorRow() { return wxGrid_GetCursorRow(wxobj); }
-    
-            public int CursorColumn() { return wxGrid_GetCursorColumn(wxobj); }
+            public цел Cols() { return wxGrid_GetCols(шхобъ); }
     
             //-----------------------------------------------------------------------------
     
-            public int ScrollPosX() { return wxGrid_GetScrollPosX(wxobj); }
-            public void ScrollPosX(int value) { wxGrid_SetScrollX(wxobj, value); }
+            public цел CursorRow() { return wxGrid_GetCursorRow(шхобъ); }
     
-            public int ScrollPosY() { return wxGrid_GetScrollPosY(wxobj); }
-            public void ScrollPosY(int value) { wxGrid_SetScrollY(wxobj, value); }
+            public цел CursorColumn() { return wxGrid_GetCursorColumn(шхобъ); }
     
             //-----------------------------------------------------------------------------
     
-            public void SetColumnWidth(int col, int width)
+            public цел ScrollPosX() { return wxGrid_GetScrollPosX(шхобъ); }
+            public проц ScrollPosX(цел значение) { wxGrid_SetScrollX(шхобъ, значение); }
+    
+            public цел ScrollPosY() { return wxGrid_GetScrollPosY(шхобъ); }
+            public проц ScrollPosY(цел значение) { wxGrid_SetScrollY(шхобъ, значение); }
+    
+            //-----------------------------------------------------------------------------
+    
+            public проц SetColumnWidth(цел col, цел ширина)
             {
-            wxGrid_SetColumnWidth(wxobj, col, width);
+            wxGrid_SetColumnWidth(шхобъ, col, ширина);
             }
     
-            public int GetColumnWidth(int col)
+            public цел GetColumnWidth(цел col)
             {
-            return wxGrid_GetColumnWidth(wxobj, col);
-            }
-    
-            //-----------------------------------------------------------------------------
-    
-            public void SetRowHeight(int row, int height)
-            {
-            wxGrid_SetRowHeight(wxobj, row, height);
+            return wxGrid_GetColumnWidth(шхобъ, col);
             }
     
             //-----------------------------------------------------------------------------
     
-            public int ViewHeight() { return wxGrid_GetViewHeight(wxobj); }
-    
-            public int ViewWidth() { return wxGrid_GetViewWidth(wxobj); }
-    
-            //-----------------------------------------------------------------------------
-    
-            public void SetLabelSize(int orientation, int sz)
+            public проц SetRowHeight(цел row, цел высота)
             {
-            wxGrid_SetLabelSize(wxobj, orientation, sz);
-            }
-    
-            public int GetLabelSize(int orientation)
-            {
-            return wxGrid_GetLabelSize(wxobj, orientation);
+            wxGrid_SetRowHeight(шхобъ, row, высота);
             }
     
             //-----------------------------------------------------------------------------
     
-            public void SetLabelAlignment(int orientation, int alignment)
+            public цел ViewHeight() { return wxGrid_GetViewHeight(шхобъ); }
+    
+            public цел ViewWidth() { return wxGrid_GetViewWidth(шхобъ); }
+    
+            //-----------------------------------------------------------------------------
+    
+            public проц SetLabelSize(цел orientation, цел sz)
             {
-            wxGrid_SetLabelAlignment(wxobj, orientation, alignment);
+            wxGrid_SetLabelSize(шхобъ, orientation, sz);
             }
     
-            public int GetLabelAlignment(int orientation, int alignment)
+            public цел GetLabelSize(цел orientation)
             {
-            return wxGrid_GetLabelAlignment(wxobj, orientation, alignment);
+            return wxGrid_GetLabelSize(шхобъ, orientation);
             }
     
             //-----------------------------------------------------------------------------
     
-            public void SetLabelValue(int orientation, string val, int pos)
+            public проц SetLabelAlignment(цел orientation, цел alignment)
             {
-            wxGrid_SetLabelValue(wxobj, orientation, val, pos);
+            wxGrid_SetLabelAlignment(шхобъ, orientation, alignment);
             }
     
-            public string GetLabelValue(int orientation, int pos)
+            public цел GetLabelAlignment(цел orientation, цел alignment)
             {
-            return cast(string) new wxString(wxGrid_GetLabelValue(wxobj, orientation, pos), true);
-            }
-    
-            //-----------------------------------------------------------------------------
-    
-            public Font CellTextFont() { return new Font(wxGrid_GetCellTextFontGrid(wxobj)); }
-            public void CellTextFont(Font value) { wxGrid_SetCellTextFontGrid(wxobj, wxObject.SafePtr(value)); }
-    
-            //-----------------------------------------------------------------------------
-    
-            public Font GetCellTextFont(int row, int col)
-            {
-            return new Font(wxGrid_GetCellTextFont(wxobj, row, col));
-            }
-    
-            public void SetCellTextFont(Font fnt, int row, int col)
-            {
-            wxGrid_SetCellTextFont(wxobj, wxObject.SafePtr(fnt), row, col);
+            return wxGrid_GetLabelAlignment(шхобъ, orientation, alignment);
             }
     
             //-----------------------------------------------------------------------------
     
-            public void SetCellTextColour(int row, int col, Colour val)
+            public проц SetLabelValue(цел orientation, ткст val, цел поз)
             {
-            wxGrid_SetCellTextColour(wxobj, row, col, wxObject.SafePtr(val));
+            wxGrid_SetLabelValue(шхобъ, orientation, val, поз);
+            }
+    
+            public ткст GetLabelValue(цел orientation, цел поз)
+            {
+            return cast(ткст) new wxString(wxGrid_GetLabelValue(шхобъ, orientation, поз), да);
             }
     
             //-----------------------------------------------------------------------------
     
-            public void CellTextColour(Colour value) { wxGrid_SetCellTextColourGrid(wxobj, wxObject.SafePtr(value)); }
+            public Шрифт CellTextFont() { return new Шрифт(wxGrid_GetCellTextFontGrid(шхобъ)); }
+            public проц CellTextFont(Шрифт значение) { wxGrid_SetCellTextFontGrid(шхобъ, wxObject.SafePtr(значение)); }
+    
+            //-----------------------------------------------------------------------------
+    
+            public Шрифт GetCellTextFont(цел row, цел col)
+            {
+            return new Шрифт(wxGrid_GetCellTextFont(шхобъ, row, col));
+            }
+    
+            public проц SetCellTextFont(Шрифт fnt, цел row, цел col)
+            {
+            wxGrid_SetCellTextFont(шхобъ, wxObject.SafePtr(fnt), row, col);
+            }
+    
+            //-----------------------------------------------------------------------------
+    
+            public проц SetCellTextColour(цел row, цел col, Цвет val)
+            {
+            wxGrid_SetCellTextColour(шхобъ, row, col, wxObject.SafePtr(val));
+            }
+    
+            //-----------------------------------------------------------------------------
+    
+            public проц CellTextColour(Цвет значение) { wxGrid_SetCellTextColourGrid(шхобъ, wxObject.SafePtr(значение)); }
     
             //-----------------------------------------------------------------------------
                 
-            public Colour GetCellTextColour(int row, int col)
+            public Цвет GetCellTextColour(цел row, цел col)
             {
-            return new Colour(wxGrid_GetCellTextColour(wxobj, row, col), true); 
+            return new Цвет(wxGrid_GetCellTextColour(шхобъ, row, col), да); 
             }
     
             //-----------------------------------------------------------------------------
     
-            public void CellBackgroundColour(Colour value) { wxGrid_SetCellBackgroundColourGrid(wxobj, wxObject.SafePtr(value)); }
+            public проц CellBackgroundColour(Цвет значение) { wxGrid_SetCellBackgroundColourGrid(шхобъ, wxObject.SafePtr(значение)); }
     
             //-----------------------------------------------------------------------------
     
-            public void SetCellBackgroundColour(int row, int col, Colour colour)
+            public проц SetCellBackgroundColour(цел row, цел col, Цвет colour)
             {
-            wxGrid_SetCellBackgroundColour(wxobj, row, col, wxObject.SafePtr(colour));
+            wxGrid_SetCellBackgroundColour(шхобъ, row, col, wxObject.SafePtr(colour));
             }
     
-            public Colour GetCellBackgroundColour(int row, int col)
+            public Цвет GetCellBackgroundColour(цел row, цел col)
             {
-            return new Colour(wxGrid_GetCellBackgroundColour(wxobj, row, col), true); 
-            }
-    
-            //-----------------------------------------------------------------------------
-    
-            public bool Editable() { return wxGrid_GetEditable(wxobj); }
-            public void Editable(bool value) { wxGrid_SetEditable(wxobj, value); }
-    
-            //-----------------------------------------------------------------------------
-    
-            public bool EditInPlace() { return wxGrid_GetEditInPlace(wxobj); }
-    
-            //-----------------------------------------------------------------------------
-    
-            public void SetCellAlignment(int alignment, int row, int col)
-            {
-            wxGrid_SetCellAlignment(wxobj, alignment, row, col);
-            }
-    
-            public void CellAlignment(int value) { wxGrid_SetCellAlignmentGrid(wxobj, value); }
-    
-            //-----------------------------------------------------------------------------
-    
-            public void SetCellBitmap(Bitmap bitmap, int row, int col)
-            {
-            wxGrid_SetCellBitmap(wxobj, wxObject.SafePtr(bitmap), row, col);
+            return new Цвет(wxGrid_GetCellBackgroundColour(шхобъ, row, col), да); 
             }
     
             //-----------------------------------------------------------------------------
     
-            public void DividerPen(Pen value) { wxGrid_SetDividerPen(wxobj, wxObject.SafePtr(value)); }
-            public Pen DividerPen() { return new Pen(wxGrid_GetDividerPen(wxobj)); }
+            public бул Editable() { return wxGrid_GetEditable(шхобъ); }
+            public проц Editable(бул значение) { wxGrid_SetEditable(шхобъ, значение); }
     
             //-----------------------------------------------------------------------------
     
-            public int GetRowHeight(int row)
+            public бул EditInPlace() { return wxGrid_GetEditInPlace(шхобъ); }
+    
+            //-----------------------------------------------------------------------------
+    
+            public проц SetCellAlignment(цел alignment, цел row, цел col)
             {
-            return wxGrid_GetRowHeight(wxobj, row);
+            wxGrid_SetCellAlignment(шхобъ, alignment, row, col);
+            }
+    
+            public проц CellAlignment(цел значение) { wxGrid_SetCellAlignmentGrid(шхобъ, значение); }
+    
+            //-----------------------------------------------------------------------------
+    
+            public проц SetCellBitmap(Битмап битмап, цел row, цел col)
+            {
+            wxGrid_SetCellBitmap(шхобъ, wxObject.SafePtr(битмап), row, col);
+            }
+    
+            //-----------------------------------------------------------------------------
+    
+            public проц DividerPen(Перо значение) { wxGrid_SetDividerPen(шхобъ, wxObject.SafePtr(значение)); }
+            public Перо DividerPen() { return new Перо(wxGrid_GetDividerPen(шхобъ)); }
+    
+            //-----------------------------------------------------------------------------
+    
+            public цел GetRowHeight(цел row)
+            {
+            return wxGrid_GetRowHeight(шхобъ, row);
             }
 
         //-----------------------------------------------------------------------------
 
-		public void CellLeftClick_Add(EventListener value) { AddCommandListener(Event.wxEVT_GRID_CELL_LEFT_CLICK, ID, value, this); }
-		public void CellLeftClick_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц CellLeftClick_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_GRID_CELL_LEFT_CLICK, ИД, значение, this); }
+		public проц CellLeftClick_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void CellRightClick_Add(EventListener value) { AddCommandListener(Event.wxEVT_GRID_CELL_RIGHT_CLICK, ID, value, this); }
-		public void CellRightClick_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц CellRightClick_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_GRID_CELL_RIGHT_CLICK, ИД, значение, this); }
+		public проц CellRightClick_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void CellLeftDoubleClick_Add(EventListener value) { AddCommandListener(Event.wxEVT_GRID_CELL_LEFT_DCLICK, ID, value, this); }
-		public void CellLeftDoubleClick_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц CellLeftDoubleClick_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_GRID_CELL_LEFT_DCLICK, ИД, значение, this); }
+		public проц CellLeftDoubleClick_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void CellRightDoubleClick_Add(EventListener value) { AddCommandListener(Event.wxEVT_GRID_CELL_RIGHT_DCLICK, ID, value, this); }
-		public void CellRightDoubleClick_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц CellRightDoubleClick_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_GRID_CELL_RIGHT_DCLICK, ИД, значение, this); }
+		public проц CellRightDoubleClick_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void LabelLeftClick_Add(EventListener value) { AddCommandListener(Event.wxEVT_GRID_LABEL_LEFT_CLICK, ID, value, this); }
-		public void LabelLeftClick_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц LabelLeftClick_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_GRID_LABEL_LEFT_CLICK, ИД, значение, this); }
+		public проц LabelLeftClick_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void LabelRightClick_Add(EventListener value) { AddCommandListener(Event.wxEVT_GRID_LABEL_RIGHT_CLICK, ID, value, this); }
-		public void LabelRightClick_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц LabelRightClick_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_GRID_LABEL_RIGHT_CLICK, ИД, значение, this); }
+		public проц LabelRightClick_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void LabelLeftDoubleClick_Add(EventListener value) { AddCommandListener(Event.wxEVT_GRID_LABEL_LEFT_DCLICK, ID, value, this); }
-		public void LabelLeftDoubleClick_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц LabelLeftDoubleClick_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_GRID_LABEL_LEFT_DCLICK, ИД, значение, this); }
+		public проц LabelLeftDoubleClick_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void LabelRightDoubleClick_Add(EventListener value) { AddCommandListener(Event.wxEVT_GRID_LABEL_RIGHT_DCLICK, ID, value, this); }
-		public void LabelRightDoubleClick_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц LabelRightDoubleClick_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_GRID_LABEL_RIGHT_DCLICK, ИД, значение, this); }
+		public проц LabelRightDoubleClick_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void RowSize_Add(EventListener value) { AddCommandListener(Event.wxEVT_GRID_ROW_SIZE, ID, value, this); }
-		public void RowSize_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц RowSize_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_GRID_ROW_SIZE, ИД, значение, this); }
+		public проц RowSize_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void ColumnSize_Add(EventListener value) { AddCommandListener(Event.wxEVT_GRID_COL_SIZE, ID, value, this); }
-		public void ColumnSize_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц ColumnSize_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_GRID_COL_SIZE, ИД, значение, this); }
+		public проц ColumnSize_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void RangeSelect_Add(EventListener value) { AddCommandListener(Event.wxEVT_GRID_RANGE_SELECT, ID, value, this); }
-		public void RangeSelect_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц RangeSelect_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_GRID_RANGE_SELECT, ИД, значение, this); }
+		public проц RangeSelect_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void CellChange_Add(EventListener value) { AddCommandListener(Event.wxEVT_GRID_CELL_CHANGE, ID, value, this); }
-		public void CellChange_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц CellChange_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_GRID_CELL_CHANGE, ИД, значение, this); }
+		public проц CellChange_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void SelectCell_Add(EventListener value) { AddCommandListener(Event.wxEVT_GRID_SELECT_CELL, ID, value, this); }
-		public void SelectCell_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц SelectCell_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_GRID_SELECT_CELL, ИД, значение, this); }
+		public проц SelectCell_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void EditorShown_Add(EventListener value) { AddCommandListener(Event.wxEVT_GRID_EDITOR_SHOWN, ID, value, this); }
-		public void EditorShown_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц EditorShown_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_GRID_EDITOR_SHOWN, ИД, значение, this); }
+		public проц EditorShown_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void EditorHidden_Add(EventListener value) { AddCommandListener(Event.wxEVT_GRID_EDITOR_HIDDEN, ID, value, this); }
-		public void EditorHidden_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц EditorHidden_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_GRID_EDITOR_HIDDEN, ИД, значение, this); }
+		public проц EditorHidden_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
-		public void EditorCreate_Add(EventListener value) { AddCommandListener(Event.wxEVT_GRID_EDITOR_CREATED, ID, value, this); }
-		public void EditorCreate_Remove(EventListener value) { RemoveHandler(value, this); }
+		public проц EditorCreate_Add(EventListener значение) { AddCommandListener(Событие.wxEVT_GRID_EDITOR_CREATED, ИД, значение, this); }
+		public проц EditorCreate_Remove(EventListener значение) { RemoveHandler(значение, this); }
 
     }
 
         //! \cond EXTERN
-        static extern (C) IntPtr wxGridCellCoords_ctor();
-	static extern (C) void   wxGridCellCoords_dtor(IntPtr self);
-        static extern (C) int    wxGridCellCoords_GetRow(IntPtr self);
-        static extern (C) void   wxGridCellCoords_SetRow(IntPtr self, int n);
-        static extern (C) int    wxGridCellCoords_GetCol(IntPtr self);
-        static extern (C) void   wxGridCellCoords_SetCol(IntPtr self, int n);
-        static extern (C) void   wxGridCellCoords_Set(IntPtr self, int row, int col);
+        static extern (C) ЦУк wxGridCellCoords_ctor();
+	static extern (C) проц   wxGridCellCoords_dtor(ЦУк сам);
+        static extern (C) цел    wxGridCellCoords_GetRow(ЦУк сам);
+        static extern (C) проц   wxGridCellCoords_SetRow(ЦУк сам, цел n);
+        static extern (C) цел    wxGridCellCoords_GetCol(ЦУк сам);
+        static extern (C) проц   wxGridCellCoords_SetCol(ЦУк сам, цел n);
+        static extern (C) проц   wxGridCellCoords_Set(ЦУк сам, цел row, цел col);
         //! \endcond
 	
         //-----------------------------------------------------------------------------
@@ -2471,82 +2471,82 @@ version(NOT_IMPLEMENTED){
     alias GridCellCoords wxGridCellCoords;
     public class GridCellCoords : wxObject
     {
-        public this(IntPtr wxobj)
+        public this(ЦУк шхобъ)
 	{ 
-		super(wxobj);
+		super(шхобъ);
 	}
 	
-	private this(IntPtr wxobj, bool memOwn)
+	private this(ЦУк шхобъ, бул memOwn)
 	{ 
-		super(wxobj);
+		super(шхобъ);
 		this.memOwn = memOwn;
 	}
     
         public this()
-            { this(wxGridCellCoords_ctor(), true); }
+            { this(wxGridCellCoords_ctor(), да); }
     
-        public this(int r, int c)
+        public this(цел к, цел c)
         {
         	this();
-            Set(r, c);
+            Установи(к, c);
         }
 	
 	//---------------------------------------------------------------------
 				
-	override protected void dtor() { wxGridCellCoords_dtor(wxobj); }
+	override protected проц dtor() { wxGridCellCoords_dtor(шхобъ); }
     
         //-----------------------------------------------------------------------------
     
-        public void Row(int value) { wxGridCellCoords_SetRow(wxobj, value); }
-        public int Row() { return wxGridCellCoords_GetRow(wxobj); }
+        public проц Row(цел значение) { wxGridCellCoords_SetRow(шхобъ, значение); }
+        public цел Row() { return wxGridCellCoords_GetRow(шхобъ); }
     
         //-----------------------------------------------------------------------------
     
-        public void Col(int value) { wxGridCellCoords_SetCol(wxobj, value); }
-        public int Col() { return wxGridCellCoords_GetCol(wxobj); }
+        public проц Col(цел значение) { wxGridCellCoords_SetCol(шхобъ, значение); }
+        public цел Col() { return wxGridCellCoords_GetCol(шхобъ); }
     
         //-----------------------------------------------------------------------------
     
-        public void Set(int row, int col)
+        public проц Установи(цел row, цел col)
         {
-            wxGridCellCoords_Set(wxobj, row, col);
+            wxGridCellCoords_Set(шхобъ, row, col);
         }
     }
 
         //! \cond EXTERN
-        static extern (C) IntPtr wxGridCellAttr_ctor(IntPtr colText, IntPtr colBack, IntPtr font, int hAlign, int vAlign);
-        static extern (C) IntPtr wxGridCellAttr_ctor2();
-        static extern (C) IntPtr wxGridCellAttr_ctor3(IntPtr attrDefault);
-        static extern (C) IntPtr wxGridCellAttr_Clone(IntPtr self);
-        static extern (C) void   wxGridCellAttr_MergeWith(IntPtr self, IntPtr mergefrom);
-        static extern (C) void   wxGridCellAttr_IncRef(IntPtr self);
-        static extern (C) void   wxGridCellAttr_DecRef(IntPtr self);
-        static extern (C) void   wxGridCellAttr_SetTextColour(IntPtr self, IntPtr colText);
-        static extern (C) void   wxGridCellAttr_SetBackgroundColour(IntPtr self, IntPtr colBack);
-        static extern (C) void   wxGridCellAttr_SetFont(IntPtr self, IntPtr font);
-        static extern (C) void   wxGridCellAttr_SetAlignment(IntPtr self, int hAlign, int vAlign);
-        static extern (C) void   wxGridCellAttr_SetSize(IntPtr self, int num_rows, int num_cols);
-        static extern (C) void   wxGridCellAttr_SetOverflow(IntPtr self, bool allow);
-        static extern (C) void   wxGridCellAttr_SetReadOnly(IntPtr self, bool isReadOnly);
-        static extern (C) void   wxGridCellAttr_SetRenderer(IntPtr self, IntPtr renderer);
-        static extern (C) void   wxGridCellAttr_SetEditor(IntPtr self, IntPtr editor);
-        static extern (C) bool   wxGridCellAttr_HasTextColour(IntPtr self);
-        static extern (C) bool   wxGridCellAttr_HasBackgroundColour(IntPtr self);
-        static extern (C) bool   wxGridCellAttr_HasFont(IntPtr self);
-        static extern (C) bool   wxGridCellAttr_HasAlignment(IntPtr self);
-        static extern (C) bool   wxGridCellAttr_HasRenderer(IntPtr self);
-        static extern (C) bool   wxGridCellAttr_HasEditor(IntPtr self);
-        static extern (C) bool   wxGridCellAttr_HasReadWriteMode(IntPtr self);
-        static extern (C) IntPtr wxGridCellAttr_GetTextColour(IntPtr self);
-        static extern (C) IntPtr wxGridCellAttr_GetBackgroundColour(IntPtr self);
-        static extern (C) IntPtr wxGridCellAttr_GetFont(IntPtr self);
-        static extern (C) void   wxGridCellAttr_GetAlignment(IntPtr self, inout int hAlign, inout int vAlign);
-        static extern (C) void   wxGridCellAttr_GetSize(IntPtr self, inout int num_rows, inout int num_cols);
-        static extern (C) bool   wxGridCellAttr_GetOverflow(IntPtr self);
-        static extern (C) IntPtr wxGridCellAttr_GetRenderer(IntPtr self, IntPtr grid, int row, int col);
-        static extern (C) IntPtr wxGridCellAttr_GetEditor(IntPtr self, IntPtr grid, int row, int col);
-        static extern (C) bool   wxGridCellAttr_IsReadOnly(IntPtr self);
-        static extern (C) void   wxGridCellAttr_SetDefAttr(IntPtr self, IntPtr defAttr);
+        static extern (C) ЦУк wxGridCellAttr_ctor(ЦУк colText, ЦУк colBack, ЦУк шрифт, цел hAlign, цел vAlign);
+        static extern (C) ЦУк wxGridCellAttr_ctor2();
+        static extern (C) ЦУк wxGridCellAttr_ctor3(ЦУк attrDefault);
+        static extern (C) ЦУк wxGridCellAttr_Clone(ЦУк сам);
+        static extern (C) проц   wxGridCellAttr_MergeWith(ЦУк сам, ЦУк mergefrom);
+        static extern (C) проц   wxGridCellAttr_IncRef(ЦУк сам);
+        static extern (C) проц   wxGridCellAttr_DecRef(ЦУк сам);
+        static extern (C) проц   wxGridCellAttr_SetTextColour(ЦУк сам, ЦУк colText);
+        static extern (C) проц   wxGridCellAttr_SetBackgroundColour(ЦУк сам, ЦУк colBack);
+        static extern (C) проц   wxGridCellAttr_SetFont(ЦУк сам, ЦУк шрифт);
+        static extern (C) проц   wxGridCellAttr_SetAlignment(ЦУк сам, цел hAlign, цел vAlign);
+        static extern (C) проц   wxGridCellAttr_SetSize(ЦУк сам, цел num_rows, цел num_cols);
+        static extern (C) проц   wxGridCellAttr_SetOverflow(ЦУк сам, бул allow);
+        static extern (C) проц   wxGridCellAttr_SetReadOnly(ЦУк сам, бул isReadOnly);
+        static extern (C) проц   wxGridCellAttr_SetRenderer(ЦУк сам, ЦУк renderer);
+        static extern (C) проц   wxGridCellAttr_SetEditor(ЦУк сам, ЦУк editor);
+        static extern (C) бул   wxGridCellAttr_HasTextColour(ЦУк сам);
+        static extern (C) бул   wxGridCellAttr_HasBackgroundColour(ЦУк сам);
+        static extern (C) бул   wxGridCellAttr_HasFont(ЦУк сам);
+        static extern (C) бул   wxGridCellAttr_HasAlignment(ЦУк сам);
+        static extern (C) бул   wxGridCellAttr_HasRenderer(ЦУк сам);
+        static extern (C) бул   wxGridCellAttr_HasEditor(ЦУк сам);
+        static extern (C) бул   wxGridCellAttr_HasReadWriteMode(ЦУк сам);
+        static extern (C) ЦУк wxGridCellAttr_GetTextColour(ЦУк сам);
+        static extern (C) ЦУк wxGridCellAttr_GetBackgroundColour(ЦУк сам);
+        static extern (C) ЦУк wxGridCellAttr_GetFont(ЦУк сам);
+        static extern (C) проц   wxGridCellAttr_GetAlignment(ЦУк сам, inout цел hAlign, inout цел vAlign);
+        static extern (C) проц   wxGridCellAttr_GetSize(ЦУк сам, inout цел num_rows, inout цел num_cols);
+        static extern (C) бул   wxGridCellAttr_GetOverflow(ЦУк сам);
+        static extern (C) ЦУк wxGridCellAttr_GetRenderer(ЦУк сам, ЦУк grid, цел row, цел col);
+        static extern (C) ЦУк wxGridCellAttr_GetEditor(ЦУк сам, ЦУк grid, цел row, цел col);
+        static extern (C) бул   wxGridCellAttr_IsReadOnly(ЦУк сам);
+        static extern (C) проц   wxGridCellAttr_SetDefAttr(ЦУк сам, ЦУк defAttr);
         //! \endcond
 	
         //-----------------------------------------------------------------------------
@@ -2561,244 +2561,244 @@ version(NOT_IMPLEMENTED){
     
         //-----------------------------------------------------------------------------
     
-        public this(IntPtr wxobj) 
+        public this(ЦУк шхобъ) 
 	{ 
-		super(wxobj);
+		super(шхобъ);
 	}
 	
-	private this(IntPtr wxobj, bool memOwn)
+	private this(ЦУк шхобъ, бул memOwn)
 	{ 
-		super(wxobj);
+		super(шхобъ);
 		this.memOwn = memOwn;
 	}
             
         public this()
-            { this(wxGridCellAttr_ctor2(), true); }
+            { this(wxGridCellAttr_ctor2(), да); }
             
         public this(GridCellAttr attrDefault)
-            { this(wxGridCellAttr_ctor3(wxObject.SafePtr(attrDefault)), true); }
+            { this(wxGridCellAttr_ctor3(wxObject.SafePtr(attrDefault)), да); }
     
-        public this(Colour colText, Colour colBack, Font font, int hAlign, int vAlign)
-            { this(wxGridCellAttr_ctor(wxObject.SafePtr(colText), wxObject.SafePtr(colBack), wxObject.SafePtr(font), hAlign, vAlign), true); }
+        public this(Цвет colText, Цвет colBack, Шрифт шрифт, цел hAlign, цел vAlign)
+            { this(wxGridCellAttr_ctor(wxObject.SafePtr(colText), wxObject.SafePtr(colBack), wxObject.SafePtr(шрифт), hAlign, vAlign), да); }
 	    
-	public static wxObject New(IntPtr ptr) { return new GridCellAttr(ptr); }
+	public static wxObject Нов(ЦУк ptr) { return new GridCellAttr(ptr); }
 	//---------------------------------------------------------------------
 				
-	override protected void dtor() {}
+	override protected проц dtor() {}
     
         //-----------------------------------------------------------------------------
     
         public GridCellAttr Clone()
         {
-            return new GridCellAttr(wxGridCellAttr_Clone(wxobj));
+            return new GridCellAttr(wxGridCellAttr_Clone(шхобъ));
         }
     
         //-----------------------------------------------------------------------------
     
-        public void MergeWith(GridCellAttr mergefrom)
+        public проц MergeWith(GridCellAttr mergefrom)
         {
-            wxGridCellAttr_MergeWith(wxobj, wxObject.SafePtr(mergefrom));
+            wxGridCellAttr_MergeWith(шхобъ, wxObject.SafePtr(mergefrom));
         }
     
         //-----------------------------------------------------------------------------
     
-        public void IncRef()
+        public проц IncRef()
         {
-            wxGridCellAttr_IncRef(wxobj);
+            wxGridCellAttr_IncRef(шхобъ);
         }
     
         //-----------------------------------------------------------------------------
     
-        public void DecRef()
+        public проц DecRef()
         {
-            wxGridCellAttr_DecRef(wxobj);
+            wxGridCellAttr_DecRef(шхобъ);
         }
     
         //-----------------------------------------------------------------------------
     
-        public void TextColour(Colour value) { wxGridCellAttr_SetTextColour(wxobj, wxObject.SafePtr(value)); }
-        public Colour TextColour() { return new Colour(wxGridCellAttr_GetTextColour(wxobj), true); }
+        public проц TextColour(Цвет значение) { wxGridCellAttr_SetTextColour(шхобъ, wxObject.SafePtr(значение)); }
+        public Цвет TextColour() { return new Цвет(wxGridCellAttr_GetTextColour(шхобъ), да); }
     
         //-----------------------------------------------------------------------------
         
-        public void BackgroundColour(Colour value) { wxGridCellAttr_SetBackgroundColour(wxobj, wxObject.SafePtr(value)); }
-        public Colour BackgroundColour() { return new Colour(wxGridCellAttr_GetBackgroundColour(wxobj), true); }
+        public проц ЦветЗП(Цвет значение) { wxGridCellAttr_SetBackgroundColour(шхобъ, wxObject.SafePtr(значение)); }
+        public Цвет ЦветЗП() { return new Цвет(wxGridCellAttr_GetBackgroundColour(шхобъ), да); }
         
         //-----------------------------------------------------------------------------
         
-        public void font(Font value) { wxGridCellAttr_SetFont(wxobj, wxObject.SafePtr(value)); }
-        public Font font() { return new Font(wxGridCellAttr_GetFont(wxobj)); }
+        public проц шрифт(Шрифт значение) { wxGridCellAttr_SetFont(шхобъ, wxObject.SafePtr(значение)); }
+        public Шрифт шрифт() { return new Шрифт(wxGridCellAttr_GetFont(шхобъ)); }
         
         //-----------------------------------------------------------------------------
         
-        public void SetAlignment(int hAlign, int vAlign)
+        public проц SetAlignment(цел hAlign, цел vAlign)
         {
-            wxGridCellAttr_SetAlignment(wxobj, hAlign, vAlign);
+            wxGridCellAttr_SetAlignment(шхобъ, hAlign, vAlign);
         }
         
-        public void GetAlignment(inout int hAlign, inout int vAlign)
+        public проц GetAlignment(inout цел hAlign, inout цел vAlign)
         {
-            wxGridCellAttr_GetAlignment(wxobj, hAlign, vAlign);
+            wxGridCellAttr_GetAlignment(шхобъ, hAlign, vAlign);
         }
         
-        public void SetSize(int num_rows, int num_cols)
+        public проц УстРазм(цел num_rows, цел num_cols)
         {
-            wxGridCellAttr_SetSize(wxobj, num_rows, num_cols);
+            wxGridCellAttr_SetSize(шхобъ, num_rows, num_cols);
         }
         
-        public void GetSize(inout int num_rows, inout int num_cols)
+        public проц GetSize(inout цел num_rows, inout цел num_cols)
         {
-            wxGridCellAttr_GetSize(wxobj, num_rows, num_cols);
-        }
-        
-        //-----------------------------------------------------------------------------
-        
-        public void Overflow(bool value) { wxGridCellAttr_SetOverflow(wxobj, value); }
-        public bool Overflow() { return wxGridCellAttr_GetOverflow(wxobj); }
-        
-        //-----------------------------------------------------------------------------
-        
-        public void ReadOnly(bool value) { wxGridCellAttr_SetReadOnly(wxobj, value); }
-        public bool ReadOnly() { return wxGridCellAttr_IsReadOnly(wxobj); }
-        
-        //-----------------------------------------------------------------------------
-        
-        public void SetRenderer(GridCellRenderer renderer)
-        {
-            wxGridCellAttr_SetRenderer(wxobj, wxObject.SafePtr(renderer));
+            wxGridCellAttr_GetSize(шхобъ, num_rows, num_cols);
         }
         
         //-----------------------------------------------------------------------------
         
-        public void Editor(GridCellEditor value) { wxGridCellAttr_SetEditor(wxobj, wxObject.SafePtr(value)); }
+        public проц Overflow(бул значение) { wxGridCellAttr_SetOverflow(шхобъ, значение); }
+        public бул Overflow() { return wxGridCellAttr_GetOverflow(шхобъ); }
+        
+        //-----------------------------------------------------------------------------
+        
+        public проц ReadOnly(бул значение) { wxGridCellAttr_SetReadOnly(шхобъ, значение); }
+        public бул ReadOnly() { return wxGridCellAttr_IsReadOnly(шхобъ); }
+        
+        //-----------------------------------------------------------------------------
+        
+        public проц SetRenderer(GridCellRenderer renderer)
+        {
+            wxGridCellAttr_SetRenderer(шхобъ, wxObject.SafePtr(renderer));
+        }
+        
+        //-----------------------------------------------------------------------------
+        
+        public проц Editor(GridCellEditor значение) { wxGridCellAttr_SetEditor(шхобъ, wxObject.SafePtr(значение)); }
         /+
-        public GridCellEditor GetEditor(Grid grid, int row, int col)
+        public GridCellEditor GetEditor(Grid grid, цел row, цел col)
         {
-            return cast(GridCellEditor)FindObject(wxGridCellAttr_GetEditor(wxobj, wxObject.SafePtr(grid), row, col), &GridCellEditor.New);
+            return cast(GridCellEditor)FindObject(wxGridCellAttr_GetEditor(шхобъ, wxObject.SafePtr(grid), row, col), &GridCellEditor.Нов);
         }
         +/
         //-----------------------------------------------------------------------------
         
-        public bool HasTextColour() { return wxGridCellAttr_HasTextColour(wxobj); }
+        public бул HasTextColour() { return wxGridCellAttr_HasTextColour(шхобъ); }
         
-        public bool HasBackgroundColour() { return wxGridCellAttr_HasBackgroundColour(wxobj); }
+        public бул HasBackgroundColour() { return wxGridCellAttr_HasBackgroundColour(шхобъ); }
         
-        public bool HasFont() { return wxGridCellAttr_HasFont(wxobj); }
+        public бул HasFont() { return wxGridCellAttr_HasFont(шхобъ); }
         
-        public bool HasAlignment() { return wxGridCellAttr_HasAlignment(wxobj); }
+        public бул HasAlignment() { return wxGridCellAttr_HasAlignment(шхобъ); }
         
-        public bool HasRenderer() { return wxGridCellAttr_HasRenderer(wxobj); }
+        public бул HasRenderer() { return wxGridCellAttr_HasRenderer(шхобъ); }
         
-        public bool HasEditor() { return wxGridCellAttr_HasEditor(wxobj); }
+        public бул HasEditor() { return wxGridCellAttr_HasEditor(шхобъ); }
         
-        public bool HasReadWriteMode() { return wxGridCellAttr_HasReadWriteMode(wxobj); }
+        public бул HasReadWriteMode() { return wxGridCellAttr_HasReadWriteMode(шхобъ); }
         
         //-----------------------------------------------------------------------------
         /+
-        public GridCellRenderer GetRenderer(Grid grid, int row, int col)
+        public GridCellRenderer GetRenderer(Grid grid, цел row, цел col)
         {
-            return cast(GridCellRenderer)FindObject(wxGridCellAttr_GetRenderer(wxobj, wxObject.SafePtr(grid), row, col), &GridCellRenderer.New);
+            return cast(GridCellRenderer)FindObject(wxGridCellAttr_GetRenderer(шхобъ, wxObject.SafePtr(grid), row, col), &GridCellRenderer.Нов);
         }
         +/
         //-----------------------------------------------------------------------------
         
-        public void DefAttr(GridCellAttr value) { wxGridCellAttr_SetDefAttr(wxobj, wxObject.SafePtr(value)); }
+        public проц DefAttr(GridCellAttr значение) { wxGridCellAttr_SetDefAttr(шхобъ, wxObject.SafePtr(значение)); }
     }
 
         //! \cond EXTERN
-        static extern (C) IntPtr wxGridSizeEvent_ctor();
-        static extern (C) IntPtr wxGridSizeEvent_ctorParam(int id, int type, IntPtr obj, int rowOrCol, int x, int y, bool control, bool shift, bool alt, bool meta);
-        static extern (C) int    wxGridSizeEvent_GetRowOrCol(IntPtr self);
-        static extern (C) void   wxGridSizeEvent_GetPosition(IntPtr self, inout Point pt);
-        static extern (C) bool   wxGridSizeEvent_ControlDown(IntPtr self);
-        static extern (C) bool   wxGridSizeEvent_MetaDown(IntPtr self);
-        static extern (C) bool   wxGridSizeEvent_ShiftDown(IntPtr self);
-        static extern (C) bool   wxGridSizeEvent_AltDown(IntPtr self);
-        static extern (C) void wxGridSizeEvent_Veto(IntPtr self);
-        static extern (C) void wxGridSizeEvent_Allow(IntPtr self);
-        static extern (C) bool wxGridSizeEvent_IsAllowed(IntPtr self);          
+        static extern (C) ЦУк wxGridSizeEvent_ctor();
+        static extern (C) ЦУк wxGridSizeEvent_ctorParam(цел ид, цел тип, ЦУк объ, цел rowOrCol, цел x, цел y, бул control, бул shift, бул alt, бул meta);
+        static extern (C) цел    wxGridSizeEvent_GetRowOrCol(ЦУк сам);
+        static extern (C) проц   wxGridSizeEvent_GetPosition(ЦУк сам, inout Точка pt);
+        static extern (C) бул   wxGridSizeEvent_ControlDown(ЦУк сам);
+        static extern (C) бул   wxGridSizeEvent_MetaDown(ЦУк сам);
+        static extern (C) бул   wxGridSizeEvent_ShiftDown(ЦУк сам);
+        static extern (C) бул   wxGridSizeEvent_AltDown(ЦУк сам);
+        static extern (C) проц wxGridSizeEvent_Veto(ЦУк сам);
+        static extern (C) проц wxGridSizeEvent_Allow(ЦУк сам);
+        static extern (C) бул wxGridSizeEvent_IsAllowed(ЦУк сам);          
         //! \endcond
     
         //-----------------------------------------------------------------------------
         
     alias GridSizeEvent wxGridSizeEvent;
-    public class GridSizeEvent : Event 
+    public class GridSizeEvent : Событие 
     {
-        public this(IntPtr wxobj) 
-            { super(wxobj); }
+        public this(ЦУк шхобъ) 
+            { super(шхобъ); }
         
         public this()
             { this(wxGridSizeEvent_ctor()); }
         
-        public this(int id, int type, wxObject obj, int rowOrCol, int x, int y, bool control, bool shift, bool alt, bool meta)
-            { this(wxGridSizeEvent_ctorParam(id, type, wxObject.SafePtr(obj), rowOrCol, x, y, control, shift, alt, meta)); }
+        public this(цел ид, цел тип, wxObject объ, цел rowOrCol, цел x, цел y, бул control, бул shift, бул alt, бул meta)
+            { this(wxGridSizeEvent_ctorParam(ид, тип, wxObject.SafePtr(объ), rowOrCol, x, y, control, shift, alt, meta)); }
         
         //-----------------------------------------------------------------------------
         
-        public int RowOrCol() { return wxGridSizeEvent_GetRowOrCol(wxobj); }
+        public цел RowOrCol() { return wxGridSizeEvent_GetRowOrCol(шхобъ); }
         
         //-----------------------------------------------------------------------------
         
-        public Point Position() { 
-                Point pt;
-                wxGridSizeEvent_GetPosition(wxobj, pt); 
+        public Точка Положение() { 
+                Точка pt;
+                wxGridSizeEvent_GetPosition(шхобъ, pt); 
                 return pt;
             }
         
         //-----------------------------------------------------------------------------
         
-        public bool ControlDown() { return wxGridSizeEvent_ControlDown(wxobj); }
+        public бул НажатКонтрол() { return wxGridSizeEvent_ControlDown(шхобъ); }
     
-        public bool MetaDown() { return wxGridSizeEvent_MetaDown(wxobj); }
+        public бул НажатМета() { return wxGridSizeEvent_MetaDown(шхобъ); }
         
-        public bool ShiftDown() { return wxGridSizeEvent_ShiftDown(wxobj); }
+        public бул НажатШифт() { return wxGridSizeEvent_ShiftDown(шхобъ); }
         
-        public bool AltDown() { return wxGridSizeEvent_AltDown(wxobj); }
+        public бул НажатАльт() { return wxGridSizeEvent_AltDown(шхобъ); }
         
         //-----------------------------------------------------------------------------     
         
-        public void Veto()
+        public проц Veto()
         {
-            wxGridSizeEvent_Veto(wxobj);
+            wxGridSizeEvent_Veto(шхобъ);
         }
         
         //-----------------------------------------------------------------------------
         
-        public void Allow()
+        public проц Allow()
         {
-            wxGridSizeEvent_Allow(wxobj);
+            wxGridSizeEvent_Allow(шхобъ);
         }
         
         //-----------------------------------------------------------------------------
         
-        public bool Allowed() { return wxGridSizeEvent_IsAllowed(wxobj); }
+        public бул Allowed() { return wxGridSizeEvent_IsAllowed(шхобъ); }
 
-	private static Event New(IntPtr obj) { return new GridSizeEvent(obj); }
+	private static Событие Нов(ЦУк объ) { return new GridSizeEvent(объ); }
 
 	static this()
 	{
 			wxEVT_GRID_ROW_SIZE = wxEvent_EVT_GRID_ROW_SIZE();
 			wxEVT_GRID_COL_SIZE = wxEvent_EVT_GRID_COL_SIZE();
 
-			AddEventType(wxEVT_GRID_ROW_SIZE,                   &GridSizeEvent.New);
-			AddEventType(wxEVT_GRID_COL_SIZE,                   &GridSizeEvent.New);
+			ДобавьТипСоб(wxEVT_GRID_ROW_SIZE,                   &GridSizeEvent.Нов);
+			ДобавьТипСоб(wxEVT_GRID_COL_SIZE,                   &GridSizeEvent.Нов);
 	}
     }
     
     //-----------------------------------------------------------------------------
 
 	extern (C) {
-        alias void function(GridCellRenderer obj, IntPtr grid, IntPtr attr, IntPtr dc, Rectangle rect, int row, int col, bool isSelected) Virtual_Draw;
-        alias Size function(GridCellRenderer obj, IntPtr grid, IntPtr attr, IntPtr dc, int row, int col) Virtual_GetBestSize;
-        alias IntPtr function(GridCellRenderer obj) Virtual_RendererClone;
+        alias проц function(GridCellRenderer объ, ЦУк grid, ЦУк attr, ЦУк dc, Прямоугольник прям, цел row, цел col, бул isSelected) Virtual_Draw;
+        alias Размер function(GridCellRenderer объ, ЦУк grid, ЦУк attr, ЦУк dc, цел row, цел col) Virtual_GetBestSize;
+        alias ЦУк function(GridCellRenderer объ) Virtual_RendererClone;
 	}
 
         //-----------------------------------------------------------------------------
         
         //! \cond EXTERN
-        static extern (C) IntPtr wxGridCellRenderer_ctor();
-	static extern (C) void wxGridCellRenderer_dtor(IntPtr self);
-        static extern (C) void wxGridCellRenderer_RegisterVirtual(IntPtr self, GridCellRenderer obj, Virtual_Draw draw, Virtual_GetBestSize getBestSize, Virtual_RendererClone clone);
+        static extern (C) ЦУк wxGridCellRenderer_ctor();
+	static extern (C) проц wxGridCellRenderer_dtor(ЦУк сам);
+        static extern (C) проц wxGridCellRenderer_RegisterVirtual(ЦУк сам, GridCellRenderer объ, Virtual_Draw draw, Virtual_GetBestSize getBestSize, Virtual_RendererClone clone);
         //! \endcond
 	
 	//-----------------------------------------------------------------------------
@@ -2807,56 +2807,56 @@ version(NOT_IMPLEMENTED){
     {
         public this()
         {
-        	this(wxGridCellRenderer_ctor(), true);
+        	this(wxGridCellRenderer_ctor(), да);
 
-            wxGridCellRenderer_RegisterVirtual(wxobj, this,
+            wxGridCellRenderer_RegisterVirtual(шхобъ, this,
                 &staticDoDraw,
                 &staticDoGetBestSize,
                 &staticDoClone);
         }
         
-        public this(IntPtr wxobj)
+        public this(ЦУк шхобъ)
 	{ 
-		super(wxobj);
+		super(шхобъ);
 	}
 	
-	private this(IntPtr wxobj, bool memOwn)
+	private this(ЦУк шхобъ, бул memOwn)
 	{ 
-		super(wxobj);
+		super(шхобъ);
 		this.memOwn = memOwn;
 	}
 	
-	//public static wxObject New(IntPtr ptr) { return new GridCellRenderer(ptr);}
+	//public static wxObject Нов(ЦУк ptr) { return new GridCellRenderer(ptr);}
 	
 	//---------------------------------------------------------------------
 	
-	override protected void dtor() { wxGridCellRenderer_dtor(wxobj); }
+	override protected проц dtor() { wxGridCellRenderer_dtor(шхобъ); }
         
         //-----------------------------------------------------------------------------
         
-        static extern (C) private void staticDoDraw(GridCellRenderer obj, IntPtr grid, IntPtr attr, IntPtr dc, Rectangle rect, int row, int col, bool isSelected)
+        static extern (C) private проц staticDoDraw(GridCellRenderer объ, ЦУк grid, ЦУк attr, ЦУк dc, Прямоугольник прям, цел row, цел col, бул isSelected)
         {
-            //if ( FindObject(grid) === null ) Console.WriteLine("grid == null"); else Console.WriteLine("grid found");
-            obj.Draw(cast(Grid)FindObject(grid, &Grid.New), cast(GridCellAttr)FindObject(attr, &GridCellAttr.New), cast(DC)wxObject.FindObject(dc), rect, row, col, isSelected);
+            //if ( FindObject(grid) === пусто ) Console.WriteLine("grid == пусто"); else Console.WriteLine("grid found");
+            объ.Draw(cast(Grid)FindObject(grid, &Grid.Нов), cast(GridCellAttr)FindObject(attr, &GridCellAttr.Нов), cast(DC)wxObject.FindObject(dc), прям, row, col, isSelected);
         }
         
-        public abstract void Draw(Grid grid, GridCellAttr attr, DC dc, Rectangle rect, int row, int col, bool isSelected);
+        public abstract проц Draw(Grid grid, GridCellAttr attr, DC dc, Прямоугольник прям, цел row, цел col, бул isSelected);
         
         //-----------------------------------------------------------------------------
         
-        static extern (C) private Size staticDoGetBestSize(GridCellRenderer obj, IntPtr grid, IntPtr attr, IntPtr dc,  int row, int col)
+        static extern (C) private Размер staticDoGetBestSize(GridCellRenderer объ, ЦУк grid, ЦУк attr, ЦУк dc,  цел row, цел col)
         {
-            return obj.GetBestSize(cast(Grid)FindObject(grid, &Grid.New), cast(GridCellAttr)FindObject(attr, &GridCellAttr.New), cast(DC)wxObject.FindObject(dc, &DC.New), row, col);
+            return объ.GetBestSize(cast(Grid)FindObject(grid, &Grid.Нов), cast(GridCellAttr)FindObject(attr, &GridCellAttr.Нов), cast(DC)wxObject.FindObject(dc, &DC.Нов), row, col);
             
         }
         
-        public abstract Size GetBestSize(Grid grid, GridCellAttr attr, DC dc, int row, int col);
+        public abstract Размер GetBestSize(Grid grid, GridCellAttr attr, DC dc, цел row, цел col);
         
         //-----------------------------------------------------------------------------
         
-        static extern (C) private IntPtr staticDoClone(GridCellRenderer obj)
+        static extern (C) private ЦУк staticDoClone(GridCellRenderer объ)
         {
-            return wxObject.SafePtr(obj.Clone());
+            return wxObject.SafePtr(объ.Clone());
         }
         
         public abstract GridCellRenderer Clone();
@@ -2865,12 +2865,12 @@ version(NOT_IMPLEMENTED){
     //-----------------------------------------------------------------------------
     
         //! \cond EXTERN
-        static extern (C) IntPtr wxGridCellStringRenderer_ctor();
-	static extern (C) void wxGridCellStringRenderer_dtor(IntPtr self);
-	static extern (C) void wxGridCellStringRenderer_RegisterDisposable(IntPtr self, Virtual_Dispose onDispose);
-        static extern (C) void wxGridCellStringRenderer_Draw(IntPtr self, IntPtr grid, IntPtr attr, IntPtr dc, inout Rectangle rect, int row, int col, bool isSelected);
-        static extern (C) void wxGridCellStringRenderer_GetBestSize(IntPtr self, IntPtr grid, IntPtr attr, IntPtr dc, int row, int col, out Size size);
-        static extern (C) IntPtr wxGridCellStringRenderer_Clone(IntPtr self);
+        static extern (C) ЦУк wxGridCellStringRenderer_ctor();
+	static extern (C) проц wxGridCellStringRenderer_dtor(ЦУк сам);
+	static extern (C) проц wxGridCellStringRenderer_RegisterDisposable(ЦУк сам, Virtual_Dispose onDispose);
+        static extern (C) проц wxGridCellStringRenderer_Draw(ЦУк сам, ЦУк grid, ЦУк attr, ЦУк dc, inout Прямоугольник прям, цел row, цел col, бул isSelected);
+        static extern (C) проц wxGridCellStringRenderer_GetBestSize(ЦУк сам, ЦУк grid, ЦУк attr, ЦУк dc, цел row, цел col, out Размер size);
+        static extern (C) ЦУк wxGridCellStringRenderer_Clone(ЦУк сам);
         //! \endcond
 	
     alias GridCellStringRenderer wxGridCellStringRenderer;
@@ -2878,107 +2878,107 @@ version(NOT_IMPLEMENTED){
     {
         public this()
 	{ 
-		this(wxGridCellStringRenderer_ctor(), true);
-		wxGridCellStringRenderer_RegisterDisposable(wxobj, &VirtualDispose);
+		this(wxGridCellStringRenderer_ctor(), да);
+		wxGridCellStringRenderer_RegisterDisposable(шхобъ, &VirtualDispose);
 	}
             
-        public this(IntPtr wxobj)
+        public this(ЦУк шхобъ)
 	{ 
-		super(wxobj);
+		super(шхобъ);
 	}
 	
-	private this(IntPtr wxobj, bool memOwn)
+	private this(ЦУк шхобъ, бул memOwn)
 	{ 
-		super(wxobj);
+		super(шхобъ);
 		this.memOwn = memOwn;
 	}
 	
 	//---------------------------------------------------------------------
 	
-	override protected void dtor() { wxGridCellStringRenderer_dtor(wxobj); }
+	override protected проц dtor() { wxGridCellStringRenderer_dtor(шхобъ); }
 
 	//---------------------------------------------------------------------
 
-        public override void Draw(Grid grid, GridCellAttr attr, DC dc, Rectangle rect, int row, int col, bool isSelected)
+        public override проц Draw(Grid grid, GridCellAttr attr, DC dc, Прямоугольник прям, цел row, цел col, бул isSelected)
         {
-            wxGridCellStringRenderer_Draw(wxobj, wxObject.SafePtr(grid), wxObject.SafePtr(attr), wxObject.SafePtr(dc), rect, row, col, isSelected);
+            wxGridCellStringRenderer_Draw(шхобъ, wxObject.SafePtr(grid), wxObject.SafePtr(attr), wxObject.SafePtr(dc), прям, row, col, isSelected);
         }
         
-        public override Size GetBestSize(Grid grid, GridCellAttr attr, DC dc, int row, int col)
+        public override Размер GetBestSize(Grid grid, GridCellAttr attr, DC dc, цел row, цел col)
         {
-            Size size;
-            wxGridCellStringRenderer_GetBestSize(wxobj, wxObject.SafePtr(grid), wxObject.SafePtr(attr), wxObject.SafePtr(dc), row, col, size);         
+            Размер size;
+            wxGridCellStringRenderer_GetBestSize(шхобъ, wxObject.SafePtr(grid), wxObject.SafePtr(attr), wxObject.SafePtr(dc), row, col, size);         
             return size;
         }
         
         public override GridCellRenderer Clone()
         {
-//            return cast(GridCellRenderer)FindObject(wxGridCellStringRenderer_Clone(wxobj), &GridCellRenderer.New);
-              return new GridCellStringRenderer(wxGridCellStringRenderer_Clone(wxobj));
+//            return cast(GridCellRenderer)FindObject(wxGridCellStringRenderer_Clone(шхобъ), &GridCellRenderer.Нов);
+              return new GridCellStringRenderer(wxGridCellStringRenderer_Clone(шхобъ));
         }       
     }
     
     //-----------------------------------------------------------------------------
     
-        static extern (C) IntPtr wxGridCellNumberRenderer_ctor();
-	static extern (C) void wxGridCellNumberRenderer_dtor(IntPtr self);
-        static extern (C) void wxGridCellNumberRenderer_Draw(IntPtr self, IntPtr grid, IntPtr attr, IntPtr dc, inout Rectangle rect, int row, int col, bool isSelected);
-        static extern (C) void wxGridCellNumberRenderer_GetBestSize(IntPtr self, IntPtr grid, IntPtr attr, IntPtr dc, int row, int col, out Size size);
-        static extern (C) IntPtr wxGridCellNumberRenderer_Clone(IntPtr self);
+        static extern (C) ЦУк wxGridCellNumberRenderer_ctor();
+	static extern (C) проц wxGridCellNumberRenderer_dtor(ЦУк сам);
+        static extern (C) проц wxGridCellNumberRenderer_Draw(ЦУк сам, ЦУк grid, ЦУк attr, ЦУк dc, inout Прямоугольник прям, цел row, цел col, бул isSelected);
+        static extern (C) проц wxGridCellNumberRenderer_GetBestSize(ЦУк сам, ЦУк grid, ЦУк attr, ЦУк dc, цел row, цел col, out Размер size);
+        static extern (C) ЦУк wxGridCellNumberRenderer_Clone(ЦУк сам);
 	
     alias GridCellNumberRenderer wxGridCellNumberRenderer;
     public class GridCellNumberRenderer : GridCellStringRenderer
     {
         public this()
-            { this(wxGridCellNumberRenderer_ctor(), true); }
+            { this(wxGridCellNumberRenderer_ctor(), да); }
             
-        public this(IntPtr wxobj)
+        public this(ЦУк шхобъ)
 	{ 
-		super(wxobj);
+		super(шхобъ);
 	}
 	
-	private this(IntPtr wxobj, bool memOwn)
+	private this(ЦУк шхобъ, бул memOwn)
 	{ 
-		super(wxobj);
+		super(шхобъ);
 		this.memOwn = memOwn;
 	}
 	
 	//---------------------------------------------------------------------
 				
-	override protected void dtor() { wxGridCellNumberRenderer_dtor(wxobj); }
+	override protected проц dtor() { wxGridCellNumberRenderer_dtor(шхобъ); }
         
-        public override void Draw(Grid grid, GridCellAttr attr, DC dc, Rectangle rect, int row, int col, bool isSelected)
+        public override проц Draw(Grid grid, GridCellAttr attr, DC dc, Прямоугольник прям, цел row, цел col, бул isSelected)
         {
-            wxGridCellNumberRenderer_Draw(wxobj, wxObject.SafePtr(grid), wxObject.SafePtr(attr), wxObject.SafePtr(dc), rect, row, col, isSelected);
+            wxGridCellNumberRenderer_Draw(шхобъ, wxObject.SafePtr(grid), wxObject.SafePtr(attr), wxObject.SafePtr(dc), прям, row, col, isSelected);
         }
         
-        public override Size GetBestSize(Grid grid, GridCellAttr attr, DC dc, int row, int col)
+        public override Размер GetBestSize(Grid grid, GridCellAttr attr, DC dc, цел row, цел col)
         {
-            Size size;
-            wxGridCellNumberRenderer_GetBestSize(wxobj, wxObject.SafePtr(grid), wxObject.SafePtr(attr), wxObject.SafePtr(dc), row, col, size);         
+            Размер size;
+            wxGridCellNumberRenderer_GetBestSize(шхобъ, wxObject.SafePtr(grid), wxObject.SafePtr(attr), wxObject.SafePtr(dc), row, col, size);         
             return size;
         }
         
         public override GridCellRenderer Clone()
         {
-        //    return cast(GridCellRenderer)FindObject(wxGridCellNumberRenderer_Clone(wxobj), &GridCellRenderer.New);
-            return new GridCellNumberRenderer(wxGridCellNumberRenderer_Clone(wxobj));
+        //    return cast(GridCellRenderer)FindObject(wxGridCellNumberRenderer_Clone(шхобъ), &GridCellRenderer.Нов);
+            return new GridCellNumberRenderer(wxGridCellNumberRenderer_Clone(шхобъ));
         }               
     }
     
     //-----------------------------------------------------------------------------
     
         //! \cond EXTERN
-        static extern (C) IntPtr wxGridCellFloatRenderer_ctor(int width, int precision);
-	static extern (C) void wxGridCellFloatRenderer_dtor(IntPtr self);
-        static extern (C) void wxGridCellFloatRenderer_Draw(IntPtr self, IntPtr grid, IntPtr attr, IntPtr dc, inout Rectangle rect, int row, int col, bool isSelected);
-        static extern (C) void wxGridCellFloatRenderer_GetBestSize(IntPtr self, IntPtr grid, IntPtr attr, IntPtr dc, int row, int col, out Size size);
-        static extern (C) IntPtr wxGridCellFloatRenderer_Clone(IntPtr self);
-        static extern (C) int wxGridCellFloatRenderer_GetWidth(IntPtr self);
-        static extern (C) void wxGridCellFloatRenderer_SetWidth(IntPtr self, int width);
-        static extern (C) int wxGridCellFloatRenderer_GetPrecision(IntPtr self);
-        static extern (C) void wxGridCellFloatRenderer_SetPrecision(IntPtr self, int precision);
-        static extern (C) void wxGridCellFloatRenderer_SetParameters(IntPtr self, string parameter);
+        static extern (C) ЦУк wxGridCellFloatRenderer_ctor(цел ширина, цел precision);
+	static extern (C) проц wxGridCellFloatRenderer_dtor(ЦУк сам);
+        static extern (C) проц wxGridCellFloatRenderer_Draw(ЦУк сам, ЦУк grid, ЦУк attr, ЦУк dc, inout Прямоугольник прям, цел row, цел col, бул isSelected);
+        static extern (C) проц wxGridCellFloatRenderer_GetBestSize(ЦУк сам, ЦУк grid, ЦУк attr, ЦУк dc, цел row, цел col, out Размер size);
+        static extern (C) ЦУк wxGridCellFloatRenderer_Clone(ЦУк сам);
+        static extern (C) цел wxGridCellFloatRenderer_GetWidth(ЦУк сам);
+        static extern (C) проц wxGridCellFloatRenderer_SetWidth(ЦУк сам, цел ширина);
+        static extern (C) цел wxGridCellFloatRenderer_GetPrecision(ЦУк сам);
+        static extern (C) проц wxGridCellFloatRenderer_SetPrecision(ЦУк сам, цел precision);
+        static extern (C) проц wxGridCellFloatRenderer_SetParameters(ЦУк сам, ткст parameter);
         //! \endcond
 	
     alias GridCellFloatRenderer wxGridCellFloatRenderer;
@@ -2987,66 +2987,66 @@ version(NOT_IMPLEMENTED){
         public this()
             { this(-1, -1); }
             
-        public this(int width)
-            { this(width, -1); }
+        public this(цел ширина)
+            { this(ширина, -1); }
             
-        public this(int width, int precision)
-            { this(wxGridCellFloatRenderer_ctor(width, precision), true); }
+        public this(цел ширина, цел precision)
+            { this(wxGridCellFloatRenderer_ctor(ширина, precision), да); }
                 
-        public this(IntPtr wxobj)
+        public this(ЦУк шхобъ)
 	{ 
-		super(wxobj);
+		super(шхобъ);
 	}
 	
-	private this(IntPtr wxobj, bool memOwn)
+	private this(ЦУк шхобъ, бул memOwn)
 	{ 
-		super(wxobj);
+		super(шхобъ);
 		this.memOwn = memOwn;
 	}
 	
 	//---------------------------------------------------------------------
 				
-	override protected void dtor() { wxGridCellFloatRenderer_dtor(wxobj); }
+	override protected проц dtor() { wxGridCellFloatRenderer_dtor(шхобъ); }
         
-        public override void SetParameters(string parameter)
+        public override проц SetParameters(ткст parameter)
         {
-            wxGridCellFloatRenderer_SetParameters(wxobj, parameter);
+            wxGridCellFloatRenderer_SetParameters(шхобъ, parameter);
         }
         
-        public int Width() { return wxGridCellFloatRenderer_GetWidth(wxobj); }
-        public void Width(int value) { wxGridCellFloatRenderer_SetWidth(wxobj,value); }
+        public цел Ширина() { return wxGridCellFloatRenderer_GetWidth(шхобъ); }
+        public проц Ширина(цел значение) { wxGridCellFloatRenderer_SetWidth(шхобъ,значение); }
         
-        public int Precision() { return wxGridCellFloatRenderer_GetPrecision(wxobj); }
-        public void Precision(int value) { wxGridCellFloatRenderer_SetPrecision(wxobj, value); }
+        public цел Precision() { return wxGridCellFloatRenderer_GetPrecision(шхобъ); }
+        public проц Precision(цел значение) { wxGridCellFloatRenderer_SetPrecision(шхобъ, значение); }
         
-        public override void Draw(Grid grid, GridCellAttr attr, DC dc, Rectangle rect, int row, int col, bool isSelected)
+        public override проц Draw(Grid grid, GridCellAttr attr, DC dc, Прямоугольник прям, цел row, цел col, бул isSelected)
         {
-            wxGridCellFloatRenderer_Draw(wxobj, wxObject.SafePtr(grid), wxObject.SafePtr(attr), wxObject.SafePtr(dc), rect, row, col, isSelected);
+            wxGridCellFloatRenderer_Draw(шхобъ, wxObject.SafePtr(grid), wxObject.SafePtr(attr), wxObject.SafePtr(dc), прям, row, col, isSelected);
         }
         
-        public override Size GetBestSize(Grid grid, GridCellAttr attr, DC dc, int row, int col)
+        public override Размер GetBestSize(Grid grid, GridCellAttr attr, DC dc, цел row, цел col)
         {
-            Size size;
-            wxGridCellFloatRenderer_GetBestSize(wxobj, wxObject.SafePtr(grid), wxObject.SafePtr(attr), wxObject.SafePtr(dc), row, col, size);          
+            Размер size;
+            wxGridCellFloatRenderer_GetBestSize(шхобъ, wxObject.SafePtr(grid), wxObject.SafePtr(attr), wxObject.SafePtr(dc), row, col, size);          
             return size;
         }
         
         public override GridCellRenderer Clone()
         {
-//            return cast(GridCellRenderer)FindObject(wxGridCellFloatRenderer_Clone(wxobj), &GridCellRenderer.New);
-            return new GridCellFloatRenderer(wxGridCellFloatRenderer_Clone(wxobj));
+//            return cast(GridCellRenderer)FindObject(wxGridCellFloatRenderer_Clone(шхобъ), &GridCellRenderer.Нов);
+            return new GridCellFloatRenderer(wxGridCellFloatRenderer_Clone(шхобъ));
         }                       
     }
     
     //-----------------------------------------------------------------------------
     
         //! \cond EXTERN
-        static extern (C) IntPtr wxGridCellBoolRenderer_ctor();
-	static extern (C) void wxGridCellBoolRenderer_dtor(IntPtr self);
-	static extern (C) void wxGridCellBoolRenderer_RegisterDisposable(IntPtr self, Virtual_Dispose onDispose);
-        static extern (C) void wxGridCellBoolRenderer_Draw(IntPtr self, IntPtr grid, IntPtr attr, IntPtr dc, inout Rectangle rect, int row, int col, bool isSelected);
-        static extern (C) void wxGridCellBoolRenderer_GetBestSize(IntPtr self, IntPtr grid, IntPtr attr, IntPtr dc, int row, int col, out Size size);
-        static extern (C) IntPtr wxGridCellBoolRenderer_Clone(IntPtr self);
+        static extern (C) ЦУк wxGridCellBoolRenderer_ctor();
+	static extern (C) проц wxGridCellBoolRenderer_dtor(ЦУк сам);
+	static extern (C) проц wxGridCellBoolRenderer_RegisterDisposable(ЦУк сам, Virtual_Dispose onDispose);
+        static extern (C) проц wxGridCellBoolRenderer_Draw(ЦУк сам, ЦУк grid, ЦУк attr, ЦУк dc, inout Прямоугольник прям, цел row, цел col, бул isSelected);
+        static extern (C) проц wxGridCellBoolRenderer_GetBestSize(ЦУк сам, ЦУк grid, ЦУк attr, ЦУк dc, цел row, цел col, out Размер size);
+        static extern (C) ЦУк wxGridCellBoolRenderer_Clone(ЦУк сам);
         //! \endcond
 	
     alias GridCellBoolRenderer wxGridCellBoolRenderer;
@@ -3054,78 +3054,78 @@ version(NOT_IMPLEMENTED){
     {
         public this()
 	{ 
-		this(wxGridCellBoolRenderer_ctor(), true);
-		wxGridCellBoolRenderer_RegisterDisposable(wxobj, &VirtualDispose);
+		this(wxGridCellBoolRenderer_ctor(), да);
+		wxGridCellBoolRenderer_RegisterDisposable(шхобъ, &VirtualDispose);
 	}
             
-        public this(IntPtr wxobj)
+        public this(ЦУк шхобъ)
 	{ 
-		super(wxobj);
+		super(шхобъ);
 	}
 	
-	private this(IntPtr wxobj, bool memOwn)
+	private this(ЦУк шхобъ, бул memOwn)
 	{ 
-		super(wxobj);
+		super(шхобъ);
 		this.memOwn = memOwn;
 	}
 	
 	//---------------------------------------------------------------------
 				
-	override protected void dtor() { wxGridCellBoolRenderer_dtor(wxobj); }
+	override protected проц dtor() { wxGridCellBoolRenderer_dtor(шхобъ); }
         
-        public override void Draw(Grid grid, GridCellAttr attr, DC dc, Rectangle rect, int row, int col, bool isSelected)
+        public override проц Draw(Grid grid, GridCellAttr attr, DC dc, Прямоугольник прям, цел row, цел col, бул isSelected)
         {
-            wxGridCellBoolRenderer_Draw(wxobj, wxObject.SafePtr(grid), wxObject.SafePtr(attr), wxObject.SafePtr(dc), rect, row, col, isSelected);
+            wxGridCellBoolRenderer_Draw(шхобъ, wxObject.SafePtr(grid), wxObject.SafePtr(attr), wxObject.SafePtr(dc), прям, row, col, isSelected);
         }
         
-        public override Size GetBestSize(Grid grid, GridCellAttr attr, DC dc, int row, int col)
+        public override Размер GetBestSize(Grid grid, GridCellAttr attr, DC dc, цел row, цел col)
         {
-            Size size;
-            wxGridCellBoolRenderer_GetBestSize(wxobj, wxObject.SafePtr(grid), wxObject.SafePtr(attr), wxObject.SafePtr(dc), row, col, size);           
+            Размер size;
+            wxGridCellBoolRenderer_GetBestSize(шхобъ, wxObject.SafePtr(grid), wxObject.SafePtr(attr), wxObject.SafePtr(dc), row, col, size);           
             return size;
         }
         
         public override GridCellRenderer Clone()
         {
-//            return cast(GridCellRenderer)FindObject(wxGridCellBoolRenderer_Clone(wxobj), &GridCellRenderer.New);
-            return new GridCellBoolRenderer(wxGridCellBoolRenderer_Clone(wxobj));
+//            return cast(GridCellRenderer)FindObject(wxGridCellBoolRenderer_Clone(шхобъ), &GridCellRenderer.Нов);
+            return new GridCellBoolRenderer(wxGridCellBoolRenderer_Clone(шхобъ));
         }
     }
     
     //-----------------------------------------------------------------------------
     
         extern (C) {
-        alias int  function(GridTableBase obj) Virtual_GetNumberRows;
-        alias int  function(GridTableBase obj) Virtual_GetNumberCols;
-        alias bool function(GridTableBase obj, int row, int col) Virtual_IsEmptyCell;
-        alias string function(GridTableBase obj, int row, int col) Virtual_GetValue_gt;
-        alias void function(GridTableBase obj, int row, int col, IntPtr val) Virtual_SetValue;
-        alias bool function(GridTableBase obj, int row, int col, IntPtr typeName) Virtual_CanGetValueAs;
-        alias int  function(GridTableBase obj, int row, int col) Virtual_GetValueAsLong;
-        alias double function(GridTableBase obj, int row, int col) Virtual_GetValueAsDouble;
-        alias void function(GridTableBase obj, int row, int col, int value) Virtual_SetValueAsLong;
-        alias void function(GridTableBase obj, int row, int col, double value) Virtual_SetValueAsDouble;
-        alias void function(GridTableBase obj, int row, int col, bool value) Virtual_SetValueAsBool;
-        alias IntPtr function(GridTableBase obj, int row, int col, IntPtr typeName) Virtual_GetValueAsCustom;
-        alias void function(GridTableBase obj, int row, int col, IntPtr typeName, IntPtr value) Virtual_SetValueAsCustom;
-        alias string function(GridTableBase obj, int col) Virtual_GetColLabelValue;
-        alias void function(GridTableBase obj, IntPtr grid) Virtual_SetView;
-        alias IntPtr function(GridTableBase obj) Virtual_GetView;
-        alias void function(GridTableBase obj) Virtual_Clear;
-        alias bool function(GridTableBase obj, int pos, int numRows) Virtual_InsertRows;
-        alias bool function(GridTableBase obj, int numRows) Virtual_AppendRows;
-        alias void function(GridTableBase obj, int row, IntPtr val) Virtual_SetRowLabelValue;
-        alias void function(GridTableBase obj, IntPtr attrProvider) Virtual_SetAttrProvider;
-        alias IntPtr function(GridTableBase obj) Virtual_GetAttrProvider;
-        alias bool function(GridTableBase obj) Virtual_CanHaveAttributes;
-        alias IntPtr function(GridTableBase obj, int row, int col, int kind) Virtual_GetAttr_gt;
-        alias void function(GridTableBase obj, IntPtr attr, int row, int col) Virtual_SetAttr_gt;
-        alias void function(GridTableBase obj, IntPtr attr, int row) Virtual_SetRowAttr_gt;
+        alias цел  function(GridTableBase объ) Virtual_GetNumberRows;
+        alias цел  function(GridTableBase объ) Virtual_GetNumberCols;
+        alias бул function(GridTableBase объ, цел row, цел col) Virtual_IsEmptyCell;
+        alias ткст function(GridTableBase объ, цел row, цел col) Virtual_GetValue_gt;
+        alias проц function(GridTableBase объ, цел row, цел col, ЦУк val) Virtual_SetValue;
+        alias бул function(GridTableBase объ, цел row, цел col, ЦУк typeName) Virtual_CanGetValueAs;
+        alias цел  function(GridTableBase объ, цел row, цел col) Virtual_GetValueAsLong;
+        alias дво function(GridTableBase объ, цел row, цел col) Virtual_GetValueAsDouble;
+        alias проц function(GridTableBase объ, цел row, цел col, цел значение) Virtual_SetValueAsLong;
+        alias проц function(GridTableBase объ, цел row, цел col, дво значение) Virtual_SetValueAsDouble;
+        alias проц function(GridTableBase объ, цел row, цел col, бул значение) Virtual_SetValueAsBool;
+        alias ЦУк function(GridTableBase объ, цел row, цел col, ЦУк typeName) Virtual_GetValueAsCustom;
+        alias проц function(GridTableBase объ, цел row, цел col, ЦУк typeName, ЦУк значение) Virtual_SetValueAsCustom;
+        alias ткст function(GridTableBase объ, цел col) Virtual_GetColLabelValue;
+        alias проц function(GridTableBase объ, ЦУк grid) Virtual_SetView;
+        alias ЦУк function(GridTableBase объ) Virtual_GetView;
+        alias проц function(GridTableBase объ) Virtual_Clear;
+        alias бул function(GridTableBase объ, цел поз, цел numRows) Virtual_InsertRows;
+        alias бул function(GridTableBase объ, цел numRows) Virtual_AppendRows;
+        alias проц function(GridTableBase объ, цел row, ЦУк val) Virtual_SetRowLabelValue;
+        alias проц function(GridTableBase объ, ЦУк attrProvider) Virtual_SetAttrProvider;
+        alias ЦУк function(GridTableBase объ) Virtual_GetAttrProvider;
+        alias бул function(GridTableBase объ) Virtual_CanHaveAttributes;
+        alias ЦУк function(GridTableBase объ, цел row, цел col, цел вид) Virtual_GetAttr_gt;
+        alias проц function(GridTableBase объ, ЦУк attr, цел row, цел col) Virtual_SetAttr_gt;
+        alias проц function(GridTableBase объ, ЦУк attr, цел row) Virtual_SetRowAttr_gt;
         }
 
         //! \cond EXTERN
-        static extern (C) IntPtr wxGridTableBase_ctor();
-        static extern (C) void wxGridTableBase_RegisterVirtual(IntPtr self, GridTableBase obj, 
+        static extern (C) ЦУк wxGridTableBase_ctor();
+        static extern (C) проц wxGridTableBase_RegisterVirtual(ЦУк сам, GridTableBase объ, 
             Virtual_GetNumberRows getNumberRows, 
             Virtual_GetNumberCols getNumberCols, 
             Virtual_IsEmptyCell isEmptyCell, 
@@ -3163,42 +3163,42 @@ version(NOT_IMPLEMENTED){
             Virtual_SetRowAttr_gt setRowAttr,
             Virtual_SetRowAttr_gt setColAttr);
 
-        static extern (C) int    wxGridTableBase_GetNumberRows(IntPtr self);
-        static extern (C) int    wxGridTableBase_GetNumberCols(IntPtr self);
-        static extern (C) bool   wxGridTableBase_IsEmptyCell(IntPtr self, int row, int col);
-        static extern (C) IntPtr wxGridTableBase_GetValue(IntPtr self, int row, int col);
-        static extern (C) void   wxGridTableBase_SetValue(IntPtr self, int row, int col, IntPtr val);
-        static extern (C) IntPtr wxGridTableBase_GetTypeName(IntPtr self, int row, int col);
-        static extern (C) bool   wxGridTableBase_CanGetValueAs(IntPtr self, int row, int col, string typeName);
-        static extern (C) bool   wxGridTableBase_CanSetValueAs(IntPtr self, int row, int col, string typeName);
-        static extern (C) int   wxGridTableBase_GetValueAsLong(IntPtr self, int row, int col);
-        static extern (C) double wxGridTableBase_GetValueAsDouble(IntPtr self, int row, int col);
-        static extern (C) bool   wxGridTableBase_GetValueAsBool(IntPtr self, int row, int col);
-        static extern (C) void   wxGridTableBase_SetValueAsLong(IntPtr self, int row, int col, int val);
-        static extern (C) void   wxGridTableBase_SetValueAsDouble(IntPtr self, int row, int col, double val);
-        static extern (C) void   wxGridTableBase_SetValueAsBool(IntPtr self, int row, int col, bool val);
-        static extern (C) IntPtr wxGridTableBase_GetValueAsCustom(IntPtr self, int row, int col, string typeName);
-        static extern (C) void   wxGridTableBase_SetValueAsCustom(IntPtr self, int row, int col, string typeName, IntPtr val);
-        static extern (C) void   wxGridTableBase_SetView(IntPtr self, IntPtr grid);
-        static extern (C) IntPtr wxGridTableBase_GetView(IntPtr self);
-        static extern (C) void   wxGridTableBase_Clear(IntPtr self);
-        static extern (C) bool   wxGridTableBase_InsertRows(IntPtr self, int pos, int numRows);
-        static extern (C) bool   wxGridTableBase_AppendRows(IntPtr self, int numRows);
-        static extern (C) bool   wxGridTableBase_DeleteRows(IntPtr self, int pos, int numRows);
-        static extern (C) bool   wxGridTableBase_InsertCols(IntPtr self, int pos, int numCols);
-        static extern (C) bool   wxGridTableBase_AppendCols(IntPtr self, int numCols);
-        static extern (C) bool   wxGridTableBase_DeleteCols(IntPtr self, int pos, int numCols);
-        static extern (C) IntPtr wxGridTableBase_GetRowLabelValue(IntPtr self, int row);
-        static extern (C) IntPtr wxGridTableBase_GetColLabelValue(IntPtr self, int col);
-        static extern (C) void   wxGridTableBase_SetRowLabelValue(IntPtr self, int row, string val);
-        static extern (C) void   wxGridTableBase_SetColLabelValue(IntPtr self, int col, string val);
-        static extern (C) void   wxGridTableBase_SetAttrProvider(IntPtr self, IntPtr attrProvider);
-        static extern (C) IntPtr wxGridTableBase_GetAttrProvider(IntPtr self);
-        static extern (C) bool   wxGridTableBase_CanHaveAttributes(IntPtr self);
-        static extern (C) IntPtr wxGridTableBase_GetAttr(IntPtr self, int row, int col, int kind);
-        static extern (C) void   wxGridTableBase_SetAttr(IntPtr self, IntPtr attr, int row, int col);
-        static extern (C) void   wxGridTableBase_SetRowAttr(IntPtr self, IntPtr attr, int row);
-        static extern (C) void   wxGridTableBase_SetColAttr(IntPtr self, IntPtr attr, int col);
+        static extern (C) цел    wxGridTableBase_GetNumberRows(ЦУк сам);
+        static extern (C) цел    wxGridTableBase_GetNumberCols(ЦУк сам);
+        static extern (C) бул   wxGridTableBase_IsEmptyCell(ЦУк сам, цел row, цел col);
+        static extern (C) ЦУк wxGridTableBase_GetValue(ЦУк сам, цел row, цел col);
+        static extern (C) проц   wxGridTableBase_SetValue(ЦУк сам, цел row, цел col, ЦУк val);
+        static extern (C) ЦУк wxGridTableBase_GetTypeName(ЦУк сам, цел row, цел col);
+        static extern (C) бул   wxGridTableBase_CanGetValueAs(ЦУк сам, цел row, цел col, ткст typeName);
+        static extern (C) бул   wxGridTableBase_CanSetValueAs(ЦУк сам, цел row, цел col, ткст typeName);
+        static extern (C) цел   wxGridTableBase_GetValueAsLong(ЦУк сам, цел row, цел col);
+        static extern (C) дво wxGridTableBase_GetValueAsDouble(ЦУк сам, цел row, цел col);
+        static extern (C) бул   wxGridTableBase_GetValueAsBool(ЦУк сам, цел row, цел col);
+        static extern (C) проц   wxGridTableBase_SetValueAsLong(ЦУк сам, цел row, цел col, цел val);
+        static extern (C) проц   wxGridTableBase_SetValueAsDouble(ЦУк сам, цел row, цел col, дво val);
+        static extern (C) проц   wxGridTableBase_SetValueAsBool(ЦУк сам, цел row, цел col, бул val);
+        static extern (C) ЦУк wxGridTableBase_GetValueAsCustom(ЦУк сам, цел row, цел col, ткст typeName);
+        static extern (C) проц   wxGridTableBase_SetValueAsCustom(ЦУк сам, цел row, цел col, ткст typeName, ЦУк val);
+        static extern (C) проц   wxGridTableBase_SetView(ЦУк сам, ЦУк grid);
+        static extern (C) ЦУк wxGridTableBase_GetView(ЦУк сам);
+        static extern (C) проц   wxGridTableBase_Clear(ЦУк сам);
+        static extern (C) бул   wxGridTableBase_InsertRows(ЦУк сам, цел поз, цел numRows);
+        static extern (C) бул   wxGridTableBase_AppendRows(ЦУк сам, цел numRows);
+        static extern (C) бул   wxGridTableBase_DeleteRows(ЦУк сам, цел поз, цел numRows);
+        static extern (C) бул   wxGridTableBase_InsertCols(ЦУк сам, цел поз, цел numCols);
+        static extern (C) бул   wxGridTableBase_AppendCols(ЦУк сам, цел numCols);
+        static extern (C) бул   wxGridTableBase_DeleteCols(ЦУк сам, цел поз, цел numCols);
+        static extern (C) ЦУк wxGridTableBase_GetRowLabelValue(ЦУк сам, цел row);
+        static extern (C) ЦУк wxGridTableBase_GetColLabelValue(ЦУк сам, цел col);
+        static extern (C) проц   wxGridTableBase_SetRowLabelValue(ЦУк сам, цел row, ткст val);
+        static extern (C) проц   wxGridTableBase_SetColLabelValue(ЦУк сам, цел col, ткст val);
+        static extern (C) проц   wxGridTableBase_SetAttrProvider(ЦУк сам, ЦУк attrProvider);
+        static extern (C) ЦУк wxGridTableBase_GetAttrProvider(ЦУк сам);
+        static extern (C) бул   wxGridTableBase_CanHaveAttributes(ЦУк сам);
+        static extern (C) ЦУк wxGridTableBase_GetAttr(ЦУк сам, цел row, цел col, цел вид);
+        static extern (C) проц   wxGridTableBase_SetAttr(ЦУк сам, ЦУк attr, цел row, цел col);
+        static extern (C) проц   wxGridTableBase_SetRowAttr(ЦУк сам, ЦУк attr, цел row);
+        static extern (C) проц   wxGridTableBase_SetColAttr(ЦУк сам, ЦУк attr, цел col);
         //! \endcond
         
         //-----------------------------------------------------------------------------
@@ -3208,7 +3208,7 @@ version(NOT_IMPLEMENTED){
         public this()
         {
         	this(wxGridTableBase_ctor());
-            wxGridTableBase_RegisterVirtual(wxobj, this, 
+            wxGridTableBase_RegisterVirtual(шхобъ, this, 
                 &staticGetNumberRows,
                 &staticGetNumberCols,
                 &staticIsEmptyCell,
@@ -3248,401 +3248,401 @@ version(NOT_IMPLEMENTED){
             );
         }
         
-        public this(IntPtr wxobj)
-            { super(wxobj); }
+        public this(ЦУк шхобъ)
+            { super(шхобъ); }
         
-        //public static wxObject New(IntPtr ptr) { return new GridTableBase(ptr); }
+        //public static wxObject Нов(ЦУк ptr) { return new GridTableBase(ptr); }
         //-----------------------------------------------------------------------------
         
-        static extern (C) private int staticGetNumberRows(GridTableBase obj)
+        static extern (C) private цел staticGetNumberRows(GridTableBase объ)
         {
-            return obj.GetNumberRows();
+            return объ.GetNumberRows();
         }
-        public abstract int GetNumberRows();
+        public abstract цел GetNumberRows();
 //        {
-//            return wxGridTableBase_GetNumberRows(wxobj);
+//            return wxGridTableBase_GetNumberRows(шхобъ);
 //        }
         
-        static extern (C) private int staticGetNumberCols(GridTableBase obj)
+        static extern (C) private цел staticGetNumberCols(GridTableBase объ)
         {
-            return obj.GetNumberCols();
+            return объ.GetNumberCols();
         }
-        public abstract int GetNumberCols();
+        public abstract цел GetNumberCols();
 //        {
-//            return wxGridTableBase_GetNumberCols(wxobj);
-//        }
-        
-        //-----------------------------------------------------------------------------
-        
-        static extern (C) private bool staticIsEmptyCell(GridTableBase obj, int row, int col)
-        {
-            return obj.IsEmptyCell(row,col);
-        }
-        public abstract bool IsEmptyCell(int row, int col);
-//        {
-//            return wxGridTableBase_IsEmptyCell(wxobj, row, col);
+//            return wxGridTableBase_GetNumberCols(шхобъ);
 //        }
         
         //-----------------------------------------------------------------------------
         
-        static extern (C) private string staticGetValue(GridTableBase obj, int row, int col)
+        static extern (C) private бул staticIsEmptyCell(GridTableBase объ, цел row, цел col)
         {
-            return obj.GetValue(row,col);
+            return объ.IsEmptyCell(row,col);
         }
-        public abstract string GetValue(int row, int col);
+        public abstract бул IsEmptyCell(цел row, цел col);
 //        {
-//            return cast(string) new wxString(wxGridTableBase_GetValue(wxobj, row, col), true);
+//            return wxGridTableBase_IsEmptyCell(шхобъ, row, col);
+//        }
+        
+        //-----------------------------------------------------------------------------
+        
+        static extern (C) private ткст staticGetValue(GridTableBase объ, цел row, цел col)
+        {
+            return объ.GetValue(row,col);
+        }
+        public abstract ткст GetValue(цел row, цел col);
+//        {
+//            return cast(ткст) new wxString(wxGridTableBase_GetValue(шхобъ, row, col), да);
 //        }
 
-        static extern (C) private void staticDoSetValue(GridTableBase obj, int row, int col, IntPtr val)
+        static extern (C) private проц staticDoSetValue(GridTableBase объ, цел row, цел col, ЦУк val)
         {
-            obj.SetValue(row, col, cast(string) new wxString(val));
+            объ.SetValue(row, col, cast(ткст) new wxString(val));
         }       
         
-        public abstract void SetValue(int row, int col, string val);
+        public abstract проц SetValue(цел row, цел col, ткст val);
 //        {
-//            wxGridTableBase_SetValue(wxobj, row, col, val);
+//            wxGridTableBase_SetValue(шхобъ, row, col, val);
 //        }
         
         //-----------------------------------------------------------------------------
         
-        static extern (C) private string staticGetTypeName(GridTableBase obj, int row, int col)
+        static extern (C) private ткст staticGetTypeName(GridTableBase объ, цел row, цел col)
         {
-            return obj.GetTypeName(row,col);
+            return объ.GetTypeName(row,col);
         }
-        public /+virtual+/ string GetTypeName(int row, int col)
+        public /+virtual+/ ткст GetTypeName(цел row, цел col)
         {
-            return cast(string) new wxString(wxGridTableBase_GetTypeName(wxobj, row, col), true);
-        }
-        
-        static extern (C) private bool staticDoCanGetValueAs(GridTableBase obj, int row, int col, IntPtr typeName)
-        {
-            return obj.CanGetValueAs(row, col, cast(string) new wxString(typeName));
+            return cast(ткст) new wxString(wxGridTableBase_GetTypeName(шхобъ, row, col), да);
         }
         
-        public /+virtual+/ bool CanGetValueAs(int row, int col, string typeName)
+        static extern (C) private бул staticDoCanGetValueAs(GridTableBase объ, цел row, цел col, ЦУк typeName)
         {
-            return wxGridTableBase_CanGetValueAs(wxobj, row, col, typeName);
+            return объ.CanGetValueAs(row, col, cast(ткст) new wxString(typeName));
+        }
+        
+        public /+virtual+/ бул CanGetValueAs(цел row, цел col, ткст typeName)
+        {
+            return wxGridTableBase_CanGetValueAs(шхобъ, row, col, typeName);
         }
 
-        static extern (C) private bool staticDoCanSetValueAs(GridTableBase obj, int row, int col, IntPtr typeName)
+        static extern (C) private бул staticDoCanSetValueAs(GridTableBase объ, цел row, цел col, ЦУк typeName)
         {
-            return obj.CanSetValueAs(row, col, cast(string) new wxString(typeName));
+            return объ.CanSetValueAs(row, col, cast(ткст) new wxString(typeName));
         }
         
-        public /+virtual+/ bool CanSetValueAs(int row, int col, string typeName)
+        public /+virtual+/ бул CanSetValueAs(цел row, цел col, ткст typeName)
         {
-            return wxGridTableBase_CanSetValueAs(wxobj, row, col, typeName);
-        }
-        
-        //-----------------------------------------------------------------------------
-        
-        static extern (C) private int staticGetValueAsLong(GridTableBase obj, int row, int col)
-	{
-	    return obj.GetValueAsLong(row,col);
-	}
-        public /+virtual+/ int GetValueAsLong(int row, int col)
-        {
-            return wxGridTableBase_GetValueAsLong(wxobj, row, col);
-        }
-        
-        static extern (C) private double staticGetValueAsDouble(GridTableBase obj, int row, int col)
-	{
-	    return obj.GetValueAsDouble(row,col);
-	}
-        public /+virtual+/ double GetValueAsDouble(int row, int col)
-        {
-            return wxGridTableBase_GetValueAsDouble(wxobj, row, col);
-        }
-        
-        static extern (C) private bool staticGetValueAsBool(GridTableBase obj, int row, int col)
-	{
-	    return obj.GetValueAsBool(row,col);
-	}
-        public /+virtual+/ bool GetValueAsBool(int row, int col)
-        {
-            return wxGridTableBase_GetValueAsBool(wxobj, row, col);
+            return wxGridTableBase_CanSetValueAs(шхобъ, row, col, typeName);
         }
         
         //-----------------------------------------------------------------------------
         
-        static extern (C) private void staticSetValueAsLong(GridTableBase obj, int row, int col, int val)
+        static extern (C) private цел staticGetValueAsLong(GridTableBase объ, цел row, цел col)
 	{
-	    return obj.SetValueAsLong(row,col,val);
+	    return объ.GetValueAsLong(row,col);
 	}
-        public /+virtual+/ void SetValueAsLong(int row, int col, int val)
+        public /+virtual+/ цел GetValueAsLong(цел row, цел col)
         {
-            wxGridTableBase_SetValueAsLong(wxobj, row, col, val);
+            return wxGridTableBase_GetValueAsLong(шхобъ, row, col);
         }
         
-        static extern (C) private void staticSetValueAsDouble(GridTableBase obj, int row, int col, double val)
+        static extern (C) private дво staticGetValueAsDouble(GridTableBase объ, цел row, цел col)
 	{
-	    return obj.SetValueAsDouble(row,col,val);
+	    return объ.GetValueAsDouble(row,col);
 	}
-        public /+virtual+/ void SetValueAsDouble(int row, int col, double val)
+        public /+virtual+/ дво GetValueAsDouble(цел row, цел col)
         {
-            wxGridTableBase_SetValueAsDouble(wxobj, row, col, val);
+            return wxGridTableBase_GetValueAsDouble(шхобъ, row, col);
         }
         
-        static extern (C) private void staticSetValueAsBool(GridTableBase obj, int row, int col, bool val)
+        static extern (C) private бул staticGetValueAsBool(GridTableBase объ, цел row, цел col)
 	{
-	    return obj.SetValueAsBool(row,col,val);
+	    return объ.GetValueAsBool(row,col);
 	}
-        public /+virtual+/ void SetValueAsBool(int row, int col, bool val)
+        public /+virtual+/ бул GetValueAsBool(цел row, цел col)
         {
-            wxGridTableBase_SetValueAsBool(wxobj, row, col, val);
+            return wxGridTableBase_GetValueAsBool(шхобъ, row, col);
         }
         
         //-----------------------------------------------------------------------------
         
-        static extern (C) private IntPtr staticDoGetValueAsCustom(GridTableBase obj, int row, int col, IntPtr typeName)
+        static extern (C) private проц staticSetValueAsLong(GridTableBase объ, цел row, цел col, цел val)
+	{
+	    return объ.SetValueAsLong(row,col,val);
+	}
+        public /+virtual+/ проц SetValueAsLong(цел row, цел col, цел val)
         {
-            return wxObject.SafePtr(obj.GetValueAsCustom(row, col, cast(string) new wxString(typeName)));
+            wxGridTableBase_SetValueAsLong(шхобъ, row, col, val);
         }
         
-        public /+virtual+/ wxObject GetValueAsCustom(int row, int col, string typeName)
+        static extern (C) private проц staticSetValueAsDouble(GridTableBase объ, цел row, цел col, дво val)
+	{
+	    return объ.SetValueAsDouble(row,col,val);
+	}
+        public /+virtual+/ проц SetValueAsDouble(цел row, цел col, дво val)
         {
-            return FindObject(wxGridTableBase_GetValueAsCustom(wxobj, row, col, typeName));
+            wxGridTableBase_SetValueAsDouble(шхобъ, row, col, val);
         }
         
-        static extern (C) private void staticDoSetValueAsCustom(GridTableBase obj, int row, int col, IntPtr typeName, IntPtr val)
+        static extern (C) private проц staticSetValueAsBool(GridTableBase объ, цел row, цел col, бул val)
+	{
+	    return объ.SetValueAsBool(row,col,val);
+	}
+        public /+virtual+/ проц SetValueAsBool(цел row, цел col, бул val)
         {
-            obj.SetValueAsCustom(row, col, cast(string) new wxString(typeName), FindObject(val));
-        }
-        
-        public /+virtual+/ void SetValueAsCustom(int row, int col, string typeName, wxObject val)
-        {
-            wxGridTableBase_SetValueAsCustom(wxobj, row, col, typeName, wxObject.SafePtr(val));
+            wxGridTableBase_SetValueAsBool(шхобъ, row, col, val);
         }
         
         //-----------------------------------------------------------------------------
         
-        static extern (C) private void staticDoSetView(GridTableBase obj, IntPtr grid)
+        static extern (C) private ЦУк staticDoGetValueAsCustom(GridTableBase объ, цел row, цел col, ЦУк typeName)
         {
-            obj.SetView(cast(Grid)FindObject(grid, &Grid.New));
+            return wxObject.SafePtr(объ.GetValueAsCustom(row, col, cast(ткст) new wxString(typeName)));
         }
         
-        public /+virtual+/ void SetView(Grid grid)
+        public /+virtual+/ wxObject GetValueAsCustom(цел row, цел col, ткст typeName)
         {
-            wxGridTableBase_SetView(wxobj, wxObject.SafePtr(grid));
+            return FindObject(wxGridTableBase_GetValueAsCustom(шхобъ, row, col, typeName));
         }
         
-        static extern (C) private IntPtr staticDoGetView(GridTableBase obj)
+        static extern (C) private проц staticDoSetValueAsCustom(GridTableBase объ, цел row, цел col, ЦУк typeName, ЦУк val)
         {
-            return wxObject.SafePtr(obj.GetView());
+            объ.SetValueAsCustom(row, col, cast(ткст) new wxString(typeName), FindObject(val));
+        }
+        
+        public /+virtual+/ проц SetValueAsCustom(цел row, цел col, ткст typeName, wxObject val)
+        {
+            wxGridTableBase_SetValueAsCustom(шхобъ, row, col, typeName, wxObject.SafePtr(val));
+        }
+        
+        //-----------------------------------------------------------------------------
+        
+        static extern (C) private проц staticDoSetView(GridTableBase объ, ЦУк grid)
+        {
+            объ.SetView(cast(Grid)FindObject(grid, &Grid.Нов));
+        }
+        
+        public /+virtual+/ проц SetView(Grid grid)
+        {
+            wxGridTableBase_SetView(шхобъ, wxObject.SafePtr(grid));
+        }
+        
+        static extern (C) private ЦУк staticDoGetView(GridTableBase объ)
+        {
+            return wxObject.SafePtr(объ.GetView());
         }
         
         public /+virtual+/ Grid GetView()
         {
-            return cast(Grid)FindObject(wxGridTableBase_GetView(wxobj), &Grid.New);
+            return cast(Grid)FindObject(wxGridTableBase_GetView(шхобъ), &Grid.Нов);
         }
         
         //-----------------------------------------------------------------------------
         
-        static extern (C) private void staticClear(GridTableBase obj)
+        static extern (C) private проц staticClear(GridTableBase объ)
 	{
-	    obj.Clear();
+	    объ.Очисть();
 	}
-        public /+virtual+/ void Clear()
+        public /+virtual+/ проц Очисть()
         {
-            wxGridTableBase_Clear(wxobj);
+            wxGridTableBase_Clear(шхобъ);
         }
         
         //-----------------------------------------------------------------------------
         
-        static extern (C) private bool staticInsertRows(GridTableBase obj, int pos, int numRows)
+        static extern (C) private бул staticInsertRows(GridTableBase объ, цел поз, цел numRows)
 	{
-	    return obj.InsertRows(pos, numRows);
+	    return объ.InsertRows(поз, numRows);
 	}
-        public /+virtual+/ bool InsertRows(int pos, int numRows)
+        public /+virtual+/ бул InsertRows(цел поз, цел numRows)
         {
-            return wxGridTableBase_InsertRows(wxobj, pos, numRows);
+            return wxGridTableBase_InsertRows(шхобъ, поз, numRows);
         }
         
-        static extern (C) private bool staticAppendRows(GridTableBase obj, int numRows)
+        static extern (C) private бул staticAppendRows(GridTableBase объ, цел numRows)
         {
-            return obj.AppendRows(numRows);
+            return объ.AppendRows(numRows);
         }
-        public /+virtual+/ bool AppendRows(int numRows)
+        public /+virtual+/ бул AppendRows(цел numRows)
         {
-            return wxGridTableBase_AppendRows(wxobj, numRows);
+            return wxGridTableBase_AppendRows(шхобъ, numRows);
         }
         
-        static extern (C) private bool staticDeleteRows(GridTableBase obj, int pos, int numRows)
+        static extern (C) private бул staticDeleteRows(GridTableBase объ, цел поз, цел numRows)
 	{
-	    return obj.DeleteRows(pos, numRows);
+	    return объ.DeleteRows(поз, numRows);
 	}
-        public /+virtual+/ bool DeleteRows(int pos, int numRows)
+        public /+virtual+/ бул DeleteRows(цел поз, цел numRows)
         {
-            return wxGridTableBase_DeleteRows(wxobj, pos, numRows);
+            return wxGridTableBase_DeleteRows(шхобъ, поз, numRows);
         }
         
         //-----------------------------------------------------------------------------
         
-        static extern (C) private bool staticInsertCols(GridTableBase obj, int pos, int numCols)
+        static extern (C) private бул staticInsertCols(GridTableBase объ, цел поз, цел numCols)
 	{
-	    return obj.InsertCols(pos, numCols);
+	    return объ.InsertCols(поз, numCols);
 	}
-        public /+virtual+/ bool InsertCols(int pos, int numCols)
+        public /+virtual+/ бул InsertCols(цел поз, цел numCols)
         {
-            return wxGridTableBase_InsertCols(wxobj, pos, numCols);
+            return wxGridTableBase_InsertCols(шхобъ, поз, numCols);
         }
         
-        static extern (C) private bool staticAppendCols(GridTableBase obj, int numCols)
+        static extern (C) private бул staticAppendCols(GridTableBase объ, цел numCols)
         {
-            return obj.AppendCols(numCols);
+            return объ.AppendCols(numCols);
         }
-        public /+virtual+/ bool AppendCols(int numCols)
+        public /+virtual+/ бул AppendCols(цел numCols)
         {
-            return wxGridTableBase_AppendCols(wxobj, numCols);
+            return wxGridTableBase_AppendCols(шхобъ, numCols);
         }
         
-        static extern (C) private bool staticDeleteCols(GridTableBase obj, int pos, int numCols)
+        static extern (C) private бул staticDeleteCols(GridTableBase объ, цел поз, цел numCols)
 	{
-	    return obj.DeleteCols(pos, numCols);
+	    return объ.DeleteCols(поз, numCols);
 	}
-        public /+virtual+/ bool DeleteCols(int pos, int numCols)
+        public /+virtual+/ бул DeleteCols(цел поз, цел numCols)
         {
-            return wxGridTableBase_DeleteCols(wxobj, pos, numCols);
+            return wxGridTableBase_DeleteCols(шхобъ, поз, numCols);
         }
         
         //-----------------------------------------------------------------------------
         
-        static extern (C) private string staticGetRowLabelValue(GridTableBase obj, int row)
+        static extern (C) private ткст staticGetRowLabelValue(GridTableBase объ, цел row)
         {
-            return obj.GetRowLabelValue(row);
+            return объ.GetRowLabelValue(row);
         }
-        public /+virtual+/ string GetRowLabelValue(int row)
+        public /+virtual+/ ткст GetRowLabelValue(цел row)
         {
-            return cast(string) new wxString(wxGridTableBase_GetRowLabelValue(wxobj, row), true);
-        }
-        
-        static extern (C) private string staticGetColLabelValue(GridTableBase obj, int col)
-        {
-            return obj.GetColLabelValue(col);
-        }
-        public /+virtual+/ string GetColLabelValue(int col)
-        {
-            return cast(string) new wxString(wxGridTableBase_GetColLabelValue(wxobj, col), true);
+            return cast(ткст) new wxString(wxGridTableBase_GetRowLabelValue(шхобъ, row), да);
         }
         
-        static extern (C) private void staticDoSetRowLabelValue(GridTableBase obj, int row, IntPtr val)
+        static extern (C) private ткст staticGetColLabelValue(GridTableBase объ, цел col)
         {
-            obj.SetRowLabelValue(row, cast(string) new wxString(val));
+            return объ.GetColLabelValue(col);
+        }
+        public /+virtual+/ ткст GetColLabelValue(цел col)
+        {
+            return cast(ткст) new wxString(wxGridTableBase_GetColLabelValue(шхобъ, col), да);
+        }
+        
+        static extern (C) private проц staticDoSetRowLabelValue(GridTableBase объ, цел row, ЦУк val)
+        {
+            объ.SetRowLabelValue(row, cast(ткст) new wxString(val));
         }       
         
-        public /+virtual+/ void SetRowLabelValue(int row, string val)
+        public /+virtual+/ проц SetRowLabelValue(цел row, ткст val)
         {
-            wxGridTableBase_SetRowLabelValue(wxobj, row, val);
+            wxGridTableBase_SetRowLabelValue(шхобъ, row, val);
         }
         
-        static extern (C) private void staticDoSetColLabelValue(GridTableBase obj, int col, IntPtr val)
+        static extern (C) private проц staticDoSetColLabelValue(GridTableBase объ, цел col, ЦУк val)
         {
-            obj.SetColLabelValue(col, cast(string) new wxString(val));
+            объ.SetColLabelValue(col, cast(ткст) new wxString(val));
         }       
         
-        public /+virtual+/ void SetColLabelValue(int col, string val)
+        public /+virtual+/ проц SetColLabelValue(цел col, ткст val)
         {
-            wxGridTableBase_SetColLabelValue(wxobj, col, val);
+            wxGridTableBase_SetColLabelValue(шхобъ, col, val);
         }       
         
         //-----------------------------------------------------------------------------
         
-        static extern (C) private void staticDoSetAttrProvider(GridTableBase obj, IntPtr attrProvider)
+        static extern (C) private проц staticDoSetAttrProvider(GridTableBase объ, ЦУк attrProvider)
         {
-            obj.SetAttrProvider(cast(GridCellAttrProvider)FindObject(attrProvider, &GridCellAttrProvider.New));
+            объ.SetAttrProvider(cast(GridCellAttrProvider)FindObject(attrProvider, &GridCellAttrProvider.Нов));
         }
         
-        public void SetAttrProvider(GridCellAttrProvider attrProvider)
+        public проц SetAttrProvider(GridCellAttrProvider attrProvider)
         {
-            wxGridTableBase_SetAttrProvider(wxobj, wxObject.SafePtr(attrProvider));
+            wxGridTableBase_SetAttrProvider(шхобъ, wxObject.SafePtr(attrProvider));
         }
         
-        static extern (C) private IntPtr staticDoGetAttrProvider(GridTableBase obj)
+        static extern (C) private ЦУк staticDoGetAttrProvider(GridTableBase объ)
         {
-            return wxObject.SafePtr(obj.GetAttrProvider());
+            return wxObject.SafePtr(объ.GetAttrProvider());
         }
         
         public GridCellAttrProvider GetAttrProvider()
         {
-            return new GridCellAttrProvider(wxGridTableBase_GetAttrProvider(wxobj));
+            return new GridCellAttrProvider(wxGridTableBase_GetAttrProvider(шхобъ));
         }
         
-        static extern (C) private bool staticCanHaveAttributes(GridTableBase obj)
+        static extern (C) private бул staticCanHaveAttributes(GridTableBase объ)
         {
-            return obj.CanHaveAttributes();
+            return объ.CanHaveAttributes();
         }
-        public /+virtual+/ bool CanHaveAttributes()
+        public /+virtual+/ бул CanHaveAttributes()
         {
-            return wxGridTableBase_CanHaveAttributes(wxobj);
-        }
-        
-        //-----------------------------------------------------------------------------
-        
-        static extern (C) private IntPtr staticDoGetAttr(GridTableBase obj, int row, int col, int kind)
-        {
-            return wxObject.SafePtr(obj.GetAttr(row, col, cast(GridCellAttr.AttrKind) kind));
-        }
-        
-        public /+virtual+/ GridCellAttr GetAttr(int row, int col, GridCellAttr.AttrKind kind)
-        {
-            return cast(GridCellAttr)FindObject(wxGridTableBase_GetAttr(wxobj, row, col, cast(int)kind), &GridCellAttr.New);
-        }
-        
-        static extern (C) private void staticDoSetAttr(GridTableBase obj, IntPtr attr, int row, int col)
-        {
-            obj.SetAttr(cast(GridCellAttr)FindObject(attr, &GridCellAttr.New), row, col);
-        }
-        
-        public /+virtual+/ void SetAttr(GridCellAttr attr, int row, int col)
-        {
-            wxGridTableBase_SetAttr(wxobj, wxObject.SafePtr(attr), row, col);
+            return wxGridTableBase_CanHaveAttributes(шхобъ);
         }
         
         //-----------------------------------------------------------------------------
         
-        static extern (C) private void staticDoSetRowAttr(GridTableBase obj, IntPtr attr, int row)
+        static extern (C) private ЦУк staticDoGetAttr(GridTableBase объ, цел row, цел col, цел вид)
         {
-            obj.SetRowAttr(cast(GridCellAttr)FindObject(attr, &GridCellAttr.New), row);
+            return wxObject.SafePtr(объ.GetAttr(row, col, cast(GridCellAttr.AttrKind) вид));
         }
         
-        public /+virtual+/ void SetRowAttr(GridCellAttr attr, int row)
+        public /+virtual+/ GridCellAttr GetAttr(цел row, цел col, GridCellAttr.AttrKind вид)
         {
-            wxGridTableBase_SetRowAttr(wxobj, wxObject.SafePtr(attr), row);
+            return cast(GridCellAttr)FindObject(wxGridTableBase_GetAttr(шхобъ, row, col, cast(цел)вид), &GridCellAttr.Нов);
         }
         
-        static extern (C) private void staticDoSetColAttr(GridTableBase obj, IntPtr attr, int col)
+        static extern (C) private проц staticDoSetAttr(GridTableBase объ, ЦУк attr, цел row, цел col)
         {
-            obj.SetColAttr(cast(GridCellAttr)FindObject(attr, &GridCellAttr.New), col);
+            объ.SetAttr(cast(GridCellAttr)FindObject(attr, &GridCellAttr.Нов), row, col);
+        }
+        
+        public /+virtual+/ проц SetAttr(GridCellAttr attr, цел row, цел col)
+        {
+            wxGridTableBase_SetAttr(шхобъ, wxObject.SafePtr(attr), row, col);
+        }
+        
+        //-----------------------------------------------------------------------------
+        
+        static extern (C) private проц staticDoSetRowAttr(GridTableBase объ, ЦУк attr, цел row)
+        {
+            объ.SetRowAttr(cast(GridCellAttr)FindObject(attr, &GridCellAttr.Нов), row);
+        }
+        
+        public /+virtual+/ проц SetRowAttr(GridCellAttr attr, цел row)
+        {
+            wxGridTableBase_SetRowAttr(шхобъ, wxObject.SafePtr(attr), row);
+        }
+        
+        static extern (C) private проц staticDoSetColAttr(GridTableBase объ, ЦУк attr, цел col)
+        {
+            объ.SetColAttr(cast(GridCellAttr)FindObject(attr, &GridCellAttr.Нов), col);
         }       
         
-        public /+virtual+/ void SetColAttr(GridCellAttr attr, int col)
+        public /+virtual+/ проц SetColAttr(GridCellAttr attr, цел col)
         {
-            wxGridTableBase_SetColAttr(wxobj, wxObject.SafePtr(attr), col);
+            wxGridTableBase_SetColAttr(шхобъ, wxObject.SafePtr(attr), col);
         }
     }
     
 	extern (C) {
-        alias IntPtr function(GridCellAttrProvider obj, int row, int col, int kind) Virtual_GetAttr;
-        alias void function(GridCellAttrProvider obj, IntPtr attr, int row, int col) Virtual_SetAttr;
-        alias void function(GridCellAttrProvider obj, IntPtr attr, int row) Virtual_SetRowAttr;
+        alias ЦУк function(GridCellAttrProvider объ, цел row, цел col, цел вид) Virtual_GetAttr;
+        alias проц function(GridCellAttrProvider объ, ЦУк attr, цел row, цел col) Virtual_SetAttr;
+        alias проц function(GridCellAttrProvider объ, ЦУк attr, цел row) Virtual_SetRowAttr;
 	}
 
         //! \cond EXTERN
-        static extern (C) IntPtr wxGridCellAttrProvider_ctor();
-	static extern (C) void wxGridCellAttrProvider_dtor(IntPtr self);
-        static extern (C) void wxGridCellAttrProvider_RegisterVirtual(IntPtr self,GridCellAttrProvider obj, 
+        static extern (C) ЦУк wxGridCellAttrProvider_ctor();
+	static extern (C) проц wxGridCellAttrProvider_dtor(ЦУк сам);
+        static extern (C) проц wxGridCellAttrProvider_RegisterVirtual(ЦУк сам,GridCellAttrProvider объ, 
             Virtual_GetAttr getAttr,
             Virtual_SetAttr setAttr,
             Virtual_SetRowAttr setRowAttr,
             Virtual_SetRowAttr setColAttr);
-	static extern (C) void wxGridCellAttrProvider_RegisterDisposable(IntPtr self, Virtual_Dispose onDispose);
-        static extern (C) IntPtr wxGridCellAttrProvider_GetAttr(IntPtr self, int row, int col, int kind);
-        static extern (C) void wxGridCellAttrProvider_SetAttr(IntPtr self, IntPtr attr, int row, int col); 
-        static extern (C) void wxGridCellAttrProvider_SetRowAttr(IntPtr self, IntPtr attr, int row); 
-        static extern (C) void wxGridCellAttrProvider_SetColAttr(IntPtr self, IntPtr attr, int col); 
-        static extern (C) void wxGridCellAttrProvider_UpdateAttrRows(IntPtr self, int pos, int numRows);
-        static extern (C) void wxGridCellAttrProvider_UpdateAttrCols(IntPtr self, int pos, int numCols);
+	static extern (C) проц wxGridCellAttrProvider_RegisterDisposable(ЦУк сам, Virtual_Dispose onDispose);
+        static extern (C) ЦУк wxGridCellAttrProvider_GetAttr(ЦУк сам, цел row, цел col, цел вид);
+        static extern (C) проц wxGridCellAttrProvider_SetAttr(ЦУк сам, ЦУк attr, цел row, цел col); 
+        static extern (C) проц wxGridCellAttrProvider_SetRowAttr(ЦУк сам, ЦУк attr, цел row); 
+        static extern (C) проц wxGridCellAttrProvider_SetColAttr(ЦУк сам, ЦУк attr, цел col); 
+        static extern (C) проц wxGridCellAttrProvider_UpdateAttrRows(ЦУк сам, цел поз, цел numRows);
+        static extern (C) проц wxGridCellAttrProvider_UpdateAttrCols(ЦУк сам, цел поз, цел numCols);
         //! \endcond
 	
         //-----------------------------------------------------------------------------
@@ -3650,89 +3650,89 @@ version(NOT_IMPLEMENTED){
     alias GridCellAttrProvider wxGridCellAttrProvider;
     public class GridCellAttrProvider : wxObject  // ClientData
     {
-        public this(IntPtr wxobj) 
+        public this(ЦУк шхобъ) 
 	{ 
-		super(wxobj);
+		super(шхобъ);
 	}
 	
-	private this(IntPtr wxobj, bool memOwn)
+	private this(ЦУк шхобъ, бул memOwn)
 	{ 
-		super(wxobj);
+		super(шхобъ);
 		this.memOwn = memOwn;
 	}
         
         public this()
         { 
-        	this(wxGridCellAttrProvider_ctor(), true);
+        	this(wxGridCellAttrProvider_ctor(), да);
 
-            wxGridCellAttrProvider_RegisterVirtual(wxobj,this,
+            wxGridCellAttrProvider_RegisterVirtual(шхобъ,this,
                 &staticDoGetAttr,
                 &staticDoSetAttr,
                 &staticDoSetRowAttr,
                 &staticDoSetColAttr);
 		
-		wxGridCellAttrProvider_RegisterDisposable(wxobj, &VirtualDispose);
+		wxGridCellAttrProvider_RegisterDisposable(шхобъ, &VirtualDispose);
         }
 	
-	public static wxObject New(IntPtr ptr) { return new GridCellAttrProvider(ptr); }
+	public static wxObject Нов(ЦУк ptr) { return new GridCellAttrProvider(ptr); }
 	//---------------------------------------------------------------------
 				
-	override protected void dtor() { wxGridCellAttrProvider_dtor(wxobj); }
+	override protected проц dtor() { wxGridCellAttrProvider_dtor(шхобъ); }
         
         //-----------------------------------------------------------------------------
         
-        static extern (C) private IntPtr staticDoGetAttr(GridCellAttrProvider obj, int row, int col, int kind)
+        static extern (C) private ЦУк staticDoGetAttr(GridCellAttrProvider объ, цел row, цел col, цел вид)
         {
-            return wxObject.SafePtr(obj.GetAttr(row, col, cast(GridCellAttr.AttrKind) kind));
+            return wxObject.SafePtr(объ.GetAttr(row, col, cast(GridCellAttr.AttrKind) вид));
         }
         
-        public /+virtual+/ GridCellAttr GetAttr(int row, int col, GridCellAttr.AttrKind kind)
+        public /+virtual+/ GridCellAttr GetAttr(цел row, цел col, GridCellAttr.AttrKind вид)
         {
-            return cast(GridCellAttr)FindObject(wxGridCellAttrProvider_GetAttr(wxobj, row, col, cast(int)kind), &GridCellAttr.New);
+            return cast(GridCellAttr)FindObject(wxGridCellAttrProvider_GetAttr(шхобъ, row, col, cast(цел)вид), &GridCellAttr.Нов);
         }
         
-        static extern (C) private void staticDoSetAttr(GridCellAttrProvider obj, IntPtr attr, int row, int col)
+        static extern (C) private проц staticDoSetAttr(GridCellAttrProvider объ, ЦУк attr, цел row, цел col)
         {
-            obj.SetAttr(cast(GridCellAttr)FindObject(attr, &GridCellAttr.New), row, col);
+            объ.SetAttr(cast(GridCellAttr)FindObject(attr, &GridCellAttr.Нов), row, col);
         }
         
-        public /+virtual+/ void SetAttr(GridCellAttr attr, int row, int col)
+        public /+virtual+/ проц SetAttr(GridCellAttr attr, цел row, цел col)
         {
-            wxGridCellAttrProvider_SetAttr(wxobj, wxObject.SafePtr(attr), row, col);
+            wxGridCellAttrProvider_SetAttr(шхобъ, wxObject.SafePtr(attr), row, col);
         }
         
         //-----------------------------------------------------------------------------
         
-        static extern (C) private void staticDoSetRowAttr(GridCellAttrProvider obj, IntPtr attr, int row)
+        static extern (C) private проц staticDoSetRowAttr(GridCellAttrProvider объ, ЦУк attr, цел row)
         {
-            obj.SetRowAttr(cast(GridCellAttr)FindObject(attr, &GridCellAttr.New), row);
+            объ.SetRowAttr(cast(GridCellAttr)FindObject(attr, &GridCellAttr.Нов), row);
         }
         
-        public /+virtual+/ void SetRowAttr(GridCellAttr attr, int row)
+        public /+virtual+/ проц SetRowAttr(GridCellAttr attr, цел row)
         {
-            wxGridCellAttrProvider_SetRowAttr(wxobj, wxObject.SafePtr(attr), row);
+            wxGridCellAttrProvider_SetRowAttr(шхобъ, wxObject.SafePtr(attr), row);
         }
         
-        static extern (C) private void staticDoSetColAttr(GridCellAttrProvider obj, IntPtr attr, int col)
+        static extern (C) private проц staticDoSetColAttr(GridCellAttrProvider объ, ЦУк attr, цел col)
         {
-            obj.SetColAttr(cast(GridCellAttr)FindObject(attr, &GridCellAttr.New), col);
+            объ.SetColAttr(cast(GridCellAttr)FindObject(attr, &GridCellAttr.Нов), col);
         }       
         
-        public /+virtual+/ void SetColAttr(GridCellAttr attr, int col)
+        public /+virtual+/ проц SetColAttr(GridCellAttr attr, цел col)
         {
-            wxGridCellAttrProvider_SetColAttr(wxobj, wxObject.SafePtr(attr), col);
+            wxGridCellAttrProvider_SetColAttr(шхобъ, wxObject.SafePtr(attr), col);
         }
         
         //-----------------------------------------------------------------------------
         
-        public void UpdateAttrRows(int pos, int numRows)
+        public проц UpdateAttrRows(цел поз, цел numRows)
         {
-            wxGridCellAttrProvider_UpdateAttrRows(wxobj, pos, numRows);
+            wxGridCellAttrProvider_UpdateAttrRows(шхобъ, поз, numRows);
         }
         
-        public void UpdateAttrCols(int pos, int numCols)
+        public проц UpdateAttrCols(цел поз, цел numCols)
         {
-            wxGridCellAttrProvider_UpdateAttrCols(wxobj, pos, numCols);
+            wxGridCellAttrProvider_UpdateAttrCols(шхобъ, поз, numCols);
         }       
     }
 +/

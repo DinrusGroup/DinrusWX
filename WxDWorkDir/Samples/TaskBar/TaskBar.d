@@ -1,10 +1,10 @@
 /////////////////////////////////////////////////////////////////////////////
-// Name:        tbtest.cpp
+// Имя:        tbtest.cpp
 // Purpose:     wxTaskBarIcon demo
 // Author:      Julian Smart
 // Modified by: afb, ported to wxD
 // Created:     01/02/97
-// RCS-ID:      $Id: TaskBar.d,v 1.1 2007/09/08 09:30:28 afb Exp $
+// RCS-ИД:      $Ид: TaskBar.d,v 1.1 2007/09/08 09:30:28 afb Exp $
 // Copyright:   (c)
 // Licence:     wxWindows licence
 /////////////////////////////////////////////////////////////////////////////
@@ -12,12 +12,12 @@
 import wx.wx;
 
 // Declare two frames
-MyDialog   dialog = null;
+MyDialog   dialog = пусто;
 
-void main()
+проц main()
 {
-	MyApp app = new MyApp();
-	app.Run();
+	MyApp прил = new MyApp();
+	прил.Пуск();
 }
 
 // Define a new application
@@ -25,14 +25,14 @@ class MyApp: wxApp
 {
 public:
 
-bool OnInit()
+бул ПриИниц()
 {
-    // Create the main frame window
-    dialog = new MyDialog(null, wxID_ANY, "wxTaskBarIcon Test Dialog", Dialog.wxDefaultPosition, wxSize(365, 290));
+    // Create the main frame окно
+    dialog = new MyDialog(пусто, wxID_ANY, "wxTaskBarIcon Test Dialog", Dialog.wxDefaultPosition, wxSize(365, 290));
 
-    dialog.Show(true);
+    dialog.Show(да);
 
-    return true;
+    return да;
 }
 
 }
@@ -41,15 +41,15 @@ class MyDialog: wxDialog
 {
 public:
 
-this(wxWindow parent, int id, string title,
-    wxPoint pos, wxSize size, int windowStyle = wxDEFAULT_DIALOG_STYLE)
+this(wxWindow родитель, цел ид, ткст title,
+    wxPoint поз, wxSize size, цел windowStyle = wxDEFAULT_DIALOG_STYLE)
 {
-    super(parent, id, title, pos, size, windowStyle);
+    super(родитель, ид, title, поз, size, windowStyle);
 
     Init();
 
     EVT_BUTTON(MenuIDs.wxID_OK, &OnOK);
-    EVT_BUTTON(MenuIDs.wxID_EXIT, &OnExit);
+    EVT_BUTTON(MenuIDs.wxID_EXIT, &ПриВыходе);
     EVT_CLOSE(&OnCloseWindow);
 }
 
@@ -58,36 +58,36 @@ this(wxWindow parent, int id, string title,
     delete m_taskBarIcon;
 }
 
-void OnOK(Object sender, Event event)
+проц OnOK(Объект sender, Событие event)
 {
-    Show(false);
+    Show(нет);
 }
 
-void OnExit(Object sender, Event event)
+проц ПриВыходе(Объект sender, Событие event)
 {
-    Close(true);
+    Закрой(да);
 }
 
-void OnCloseWindow(Object sender, Event event)
+проц OnCloseWindow(Объект sender, Событие event)
 {
-    Destroy();
+    Разрушь();
 }
 
-void Init()
+проц Init()
 {
-  cast(void)new wxStaticText(this, wxID_ANY, "Press 'Hide me' to hide me, Exit to quit.",
+  cast(проц)new wxStaticText(this, wxID_ANY, "Press 'Hide me' to hide me, Exit to quit.",
                          wxPoint(10, 20));
 
-  cast(void)new wxStaticText(this, wxID_ANY, "Double-click on the taskbar icon to show me again.",
+  cast(проц)new wxStaticText(this, wxID_ANY, "Double-click on the taskbar иконка to show me again.",
                          wxPoint(10, 40));
 
-  cast(void)new wxButton(this, MenuIDs.wxID_EXIT, "Exit", wxPoint(185, 230), wxSize(80, 25));
+  cast(проц)new wxButton(this, MenuIDs.wxID_EXIT, "Exit", wxPoint(185, 230), wxSize(80, 25));
   (new wxButton(this, wxID_OK, "Hide me", wxPoint(100, 230), wxSize(80, 25))).SetDefault();
-  Centre(Orientation.wxBOTH);
+  Centre(Ориентация.wxBOTH);
    
   m_taskBarIcon = new MyTaskBarIcon();
   if (!m_taskBarIcon.SetIcon(new Icon("../Samples/TaskBar/mondrian.png"), "wxTaskBarIcon Sample"))
-        MessageBox("Could not set icon.");
+        MessageBox("Could not set иконка.");
 }
 
 protected:
@@ -126,37 +126,37 @@ public:
     }
 
 
-void OnMenuRestore(Object sender, Event event)
+проц OnMenuRestore(Объект sender, Событие event)
 {
-    dialog.Show(true);
+    dialog.Show(да);
 }
 
-void OnMenuExit(Object sender, Event event)
+проц OnMenuExit(Объект sender, Событие event)
 {
-    dialog.Close(true);
+    dialog.Закрой(да);
 }
 
-static bool check = true;
+static бул check = да;
 
-void OnMenuCheckmark(Object sender, Event event)
+проц OnMenuCheckmark(Объект sender, Событие event)
 {
        check =!check;
 }
 
-void OnMenuUICheckmark(Object sender, Event event)
+проц OnMenuUICheckmark(Объект sender, Событие event)
 {
        (cast(UpdateUIEvent)event).Check( check );
 }
 
-void OnMenuSetNewIcon(Object sender, Event event)
+проц OnMenuSetNewIcon(Объект sender, Событие event)
 {
-    wxIcon icon = new Icon("../Samples/TaskBar/smile.png");
+    wxIcon иконка = new Icon("../Samples/TaskBar/smile.png");
 
-    if (!SetIcon(icon, "wxTaskBarIcon Sample - a different icon"))
-        MessageBox("Could not set new icon.");
+    if (!SetIcon(иконка, "wxTaskBarIcon Sample - a different иконка"))
+        MessageBox("Could not set new иконка.");
 }
 
-void OnMenuSetOldIcon(Object sender, Event event)
+проц OnMenuSetOldIcon(Объект sender, Событие event)
 {
     if (IsIconInstalled())
     {
@@ -164,11 +164,11 @@ void OnMenuSetOldIcon(Object sender, Event event)
     }
     else
     {
-        MessageBox("wxTaskBarIcon Sample - icon already is the old version");
+        MessageBox("wxTaskBarIcon Sample - иконка already is the old version");
     }
 }
 
-void OnMenuSub(Object sender, Event event)
+проц OnMenuSub(Объект sender, Событие event)
 {
     MessageBox("You clicked on a submenu!");
 }
@@ -178,29 +178,29 @@ wxMenu CreatePopupMenu()
 {
     // Try creating menus different ways
     // TODO: Probably try calling SetBitmap with some XPMs here
-    wxMenu menu = new wxMenu;
-    menu.Append(PU_RESTORE, "&Restore TBTest");
-    menu.AppendSeparator();
-    menu.Append(PU_OLD_ICON, "&Restore Old Icon");    
-    menu.Append(PU_NEW_ICON, "&Set New Icon");
-    menu.AppendSeparator();
-    menu.Append(PU_CHECKMARK, "Checkmark","", ItemKind.wxITEM_CHECK);
-    menu.AppendSeparator();
+    wxMenu меню = new wxMenu;
+    меню.Append(PU_RESTORE, "&Restore TBTest");
+    меню.AppendSeparator();
+    меню.Append(PU_OLD_ICON, "&Restore Old Icon");    
+    меню.Append(PU_NEW_ICON, "&Установи Нов Icon");
+    меню.AppendSeparator();
+    меню.Append(PU_CHECKMARK, "Checkmark","", ItemKind.wxITEM_CHECK);
+    меню.AppendSeparator();
     wxMenu submenu = new wxMenu;
     submenu.Append(PU_SUB1, "One submenu");
     submenu.AppendSeparator();
     submenu.Append(PU_SUB2, "Another submenu");
-    menu.Append(PU_SUBMAIN, "Submenu", submenu);
-version(__WXMAC__) {} else { /*Mac has built-in quit menu*/
-    menu.AppendSeparator();
-    menu.Append(PU_EXIT,    "E&xit");
+    меню.Append(PU_SUBMAIN, "Submenu", submenu);
+version(__WXMAC__) {} else { /*Mac has built-in quit меню*/
+    меню.AppendSeparator();
+    меню.Append(PU_EXIT,    "E&xit");
 }
-    return menu;
+    return меню;
 }
 
-void OnLeftButtonDClick(Object sender, Event event)
+проц OnLeftButtonDClick(Объект sender, Событие event)
 {
-    dialog.Show(true);
+    dialog.Show(да);
 }
 
 }

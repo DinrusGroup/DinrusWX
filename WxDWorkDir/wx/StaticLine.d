@@ -10,7 +10,7 @@
 // (C) 2003 by Robert Roebling
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: StaticLine.d,v 1.10 2007/03/13 17:02:41 afb Exp $
+// $Ид: StaticLine.d,v 1.10 2007/03/13 17:02:41 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.StaticLine;
@@ -18,10 +18,10 @@ public import wx.common;
 public import wx.Control;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxStaticLine_ctor();
-		static extern (C) bool wxStaticLine_Create(IntPtr self, IntPtr parent, int id, inout Point pos, inout Size size, uint style, string name);
-		static extern (C) bool wxStaticLine_IsVertical(IntPtr self);
-		static extern (C) int  wxStaticLine_GetDefaultSize(IntPtr self);
+		static extern (C) ЦУк wxStaticLine_ctor();
+		static extern (C) бул wxStaticLine_Create(ЦУк сам, ЦУк родитель, цел ид, inout Точка поз, inout Размер size, бцел стиль, ткст имя);
+		static extern (C) бул wxStaticLine_IsVertical(ЦУк сам);
+		static extern (C) цел  wxStaticLine_GetDefaultSize(ЦУк сам);
 		//! \endcond
 
 		//---------------------------------------------------------------------
@@ -30,51 +30,51 @@ public import wx.Control;
 	public class StaticLine : Control
 	{
 		enum {
-			wxLI_HORIZONTAL	= Orientation.wxHORIZONTAL,
-			wxLI_VERTICAL		= Orientation.wxVERTICAL,
+			wxLI_HORIZONTAL	= Ориентация.wxHORIZONTAL,
+			wxLI_VERTICAL		= Ориентация.wxVERTICAL,
 		}
 		
-		public const string wxStaticTextNameStr = "message";
+		public const ткст wxStaticTextNameStr = "message";
 		//---------------------------------------------------------------------
 		
-		public this(IntPtr wxobj) 
-			{ super(wxobj);}
+		public this(ЦУк шхобъ) 
+			{ super(шхобъ);}
         
 		public this()
 			{ super(wxStaticLine_ctor()); }
 
-		public this(Window parent, int id, Point pos = wxDefaultPosition, Size size = wxDefaultSize, int style = wxLI_HORIZONTAL, string name = wxStaticTextNameStr)
+		public this(Окно родитель, цел ид, Точка поз = wxDefaultPosition, Размер size = wxDefaultSize, цел стиль = wxLI_HORIZONTAL, ткст имя = wxStaticTextNameStr)
 		{
 			super(wxStaticLine_ctor());
-			if (!Create(parent, id, pos, size, style, name))
+			if (!Create(родитель, ид, поз, size, стиль, имя))
 			{
 				throw new InvalidOperationException("Failed to create StaticText");
 			}
 		}
 		
-		public static wxObject New(IntPtr wxobj) { return new StaticLine(wxobj); }
+		public static wxObject Нов(ЦУк шхобъ) { return new StaticLine(шхобъ); }
 	
 		//---------------------------------------------------------------------
-		// ctors with self created id
+		// ctors with сам created ид
 		
-		public this(Window parent, Point pos = wxDefaultPosition, Size size = wxDefaultSize, int style = wxLI_HORIZONTAL, string name = wxStaticTextNameStr)
-			{ this(parent, Window.UniqueID, pos, size, style, name);}
+		public this(Окно родитель, Точка поз = wxDefaultPosition, Размер size = wxDefaultSize, цел стиль = wxLI_HORIZONTAL, ткст имя = wxStaticTextNameStr)
+			{ this(родитель, Окно.UniqueID, поз, size, стиль, имя);}
 		
 		//---------------------------------------------------------------------
 
-		public bool Create(Window parent, int id, inout Point pos, inout Size size, int style, string name)
+		public бул Create(Окно родитель, цел ид, inout Точка поз, inout Размер size, цел стиль, ткст имя)
 		{
-			return wxStaticLine_Create(wxobj, wxObject.SafePtr(parent), id, pos, size, cast(uint)style, name);
+			return wxStaticLine_Create(шхобъ, wxObject.SafePtr(родитель), ид, поз, size, cast(бцел)стиль, имя);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public bool IsVertical()
+		public бул IsVertical()
 		{
-			return wxStaticLine_IsVertical(wxobj);
+			return wxStaticLine_IsVertical(шхобъ);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public int DefaultSize() { return wxStaticLine_GetDefaultSize(wxobj); }
+		public цел DefaultSize() { return wxStaticLine_GetDefaultSize(шхобъ); }
 	}

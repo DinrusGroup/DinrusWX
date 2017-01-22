@@ -1,4 +1,4 @@
-//-----------------------------------------------------------------------------
+﻿//-----------------------------------------------------------------------------
 // wxD - DirDialog.d
 // (C) 2005 bero <berobero@users.sourceforge.net>
 // based on
@@ -10,7 +10,7 @@
 // (C) 2003 Bryan Bulten
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: DirDialog.d,v 1.10 2007/01/28 23:06:36 afb Exp $
+// $Ид: DirDialog.d,v 1.10 2007/01/28 23:06:36 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.DirDialog;
@@ -18,18 +18,18 @@ public import wx.common;
 public import wx.Dialog;
 
 		//! \cond EXTERN
-        static extern (C) IntPtr wxDirDialog_ctor(IntPtr parent, string message, string defaultPath, uint style, inout Point pos, inout Size size, string name);
+        static extern (C) ЦУк wxDirDialog_ctor(ЦУк родитель, ткст message, ткст defaultPath, бцел стиль, inout Точка поз, inout Размер size, ткст имя);
 
-        static extern (C) void   wxDirDialog_SetPath(IntPtr self, string path);
-        static extern (C) IntPtr wxDirDialog_GetPath(IntPtr self);
+        static extern (C) проц   wxDirDialog_SetPath(ЦУк сам, ткст путь);
+        static extern (C) ЦУк wxDirDialog_GetPath(ЦУк сам);
 
-        static extern (C) int    wxDirDialog_GetStyle(IntPtr self);
-        static extern (C) void   wxDirDialog_SetStyle(IntPtr self, int style);
+        static extern (C) цел    wxDirDialog_GetStyle(ЦУк сам);
+        static extern (C) проц   wxDirDialog_SetStyle(ЦУк сам, цел стиль);
 
-        static extern (C) void   wxDirDialog_SetMessage(IntPtr self, string message);
-        static extern (C) IntPtr wxDirDialog_GetMessage(IntPtr self);
+        static extern (C) проц   wxDirDialog_SetMessage(ЦУк сам, ткст message);
+        static extern (C) ЦУк wxDirDialog_GetMessage(ЦУк сам);
 
-        static extern (C) int    wxDirDialog_ShowModal(IntPtr self);
+        static extern (C) цел    wxDirDialog_ShowModal(ЦУк сам);
 		//! \endcond
 
         //-----------------------------------------------------------------------------
@@ -40,53 +40,53 @@ public import wx.Dialog;
 	enum {  wxDD_NEW_DIR_BUTTON  = 0x0080 }
 	enum {  wxDD_DEFAULT_STYLE = (wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER | wxDD_NEW_DIR_BUTTON) }
 
-	public const string wxDirSelectorPromptStr = "Select a directory";
-	public const string wxDirDialogNameStr = "DirDialog";
+	public const ткст wxDirSelectorPromptStr = "Select a directory";
+	public const ткст wxDirDialogNameStr = "DirDialog";
 	
-        public this(IntPtr wxobj) 
-            { super(wxobj); }
+        public this(ЦУк шхобъ) 
+            { super(шхобъ); }
 
-        public this(Window parent, string title = wxDirSelectorPromptStr, string defaultPath = "", int style = wxDD_DEFAULT_STYLE, Point pos = wxDefaultPosition, Size size = wxDefaultSize, string name = wxDirDialogNameStr)
-            { this(wxDirDialog_ctor(wxObject.SafePtr(parent), title, defaultPath, style, pos, size, name)); }
-
-        //-----------------------------------------------------------------------------
-
-        public void Path(string value) { wxDirDialog_SetPath(wxobj, value); }
-        public string Path() { return cast(string) new wxString(wxDirDialog_GetPath(wxobj), true); }
+        public this(Окно родитель, ткст title = wxDirSelectorPromptStr, ткст defaultPath = "", цел стиль = wxDD_DEFAULT_STYLE, Точка поз = wxDefaultPosition, Размер size = wxDefaultSize, ткст имя = wxDirDialogNameStr)
+            { this(wxDirDialog_ctor(wxObject.SafePtr(родитель), title, defaultPath, стиль, поз, size, имя)); }
 
         //-----------------------------------------------------------------------------
 
-        public void Message(string value) { wxDirDialog_SetMessage(wxobj, value); }
-        public string Message() { return cast(string) new wxString(wxDirDialog_GetMessage(wxobj), true); }
+        public проц Путь(ткст значение) { wxDirDialog_SetPath(шхобъ, значение); }
+        public ткст Путь() { return cast(ткст) new wxString(wxDirDialog_GetPath(шхобъ), да); }
 
         //-----------------------------------------------------------------------------
 
-        public override int ShowModal()
+        public проц Message(ткст значение) { wxDirDialog_SetMessage(шхобъ, значение); }
+        public ткст Message() { return cast(ткст) new wxString(wxDirDialog_GetMessage(шхобъ), да); }
+
+        //-----------------------------------------------------------------------------
+
+        public override цел ShowModal()
         {
-            return wxDirDialog_ShowModal(wxobj);
+            return wxDirDialog_ShowModal(шхобъ);
         }
 
         //-----------------------------------------------------------------------------
 
-        public void Style(int value) { wxDirDialog_SetStyle(wxobj, value); }
-        public int Style() { return wxDirDialog_GetStyle(wxobj); }
+        public проц Style(цел значение) { wxDirDialog_SetStyle(шхобъ, значение); }
+        public цел Style() { return wxDirDialog_GetStyle(шхобъ); }
 
         //-----------------------------------------------------------------------------
     }
 
 	//! \cond EXTERN
-	extern (C) string wxDirSelector_func(string message,
-              string defaultPath,
-              int style,
-              inout Point pos,
-              IntPtr parent);
+	extern (C) ткст wxDirSelector_func(ткст message,
+              ткст defaultPath,
+              цел стиль,
+              inout Точка поз,
+              ЦУк родитель);
 	//! \endcond
 
-	string DirSelector(string message = null,
-              string defaultPath = null,
-              int style = DirDialog.wxDD_DEFAULT_STYLE ,
-              Point pos = Dialog.wxDefaultPosition,
-              Window parent = null)
+	ткст DirSelector(ткст message = пусто,
+              ткст defaultPath = пусто,
+              цел стиль = DirDialog.wxDD_DEFAULT_STYLE ,
+              Точка поз = Dialog.wxDefaultPosition,
+              Окно родитель = пусто)
 	{
-		return wxDirSelector_func(message,defaultPath,style,pos,wxObject.SafePtr(parent));
+		return wxDirSelector_func(message,defaultPath,стиль,поз,wxObject.SafePtr(родитель));
 	}

@@ -1,4 +1,4 @@
-//-----------------------------------------------------------------------------
+﻿//-----------------------------------------------------------------------------
 // wxD - Log.d
 // (C) 2005 bero <berobero@users.sourceforge.net>
 // based on
@@ -10,7 +10,7 @@
 // (C) 2003 Alexander Olk
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: Log.d,v 1.13 2008/07/29 11:14:50 afb Exp $
+// $Ид: Log.d,v 1.13 2008/07/29 11:14:50 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.Log;
@@ -21,7 +21,7 @@ public import wx.TextCtrl;
 version (Tango)
 {
 import tango.core.Vararg;
-import tango.text.convert.Format;
+import tango.текст.convert.Format;
 }
 version(Phobos)
 {
@@ -36,18 +36,18 @@ import dinrus;
 //! \endcond
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxLog_ctor();
-		static extern (C) bool wxLog_IsEnabled();
-		static extern (C) void wxLog_FlushActive();
-		static extern (C) IntPtr wxLog_SetActiveTargetTextCtrl(IntPtr pLogger);
-		static extern (C) void wxLog_Log_Function(int what, string szFormat);
-		static extern (C) void wxLog_AddTraceMask(string tmask);
+		static extern (C) ЦУк wxLog_ctor();
+		static extern (C) бул wxLog_IsEnabled();
+		static extern (C) проц wxLog_FlushActive();
+		static extern (C) ЦУк wxLog_SetActiveTargetTextCtrl(ЦУк pLogger);
+		static extern (C) проц wxLog_Log_Function(цел what, ткст szFormat);
+		static extern (C) проц wxLog_AddTraceMask(ткст tmask);
 		//! \endcond
 		
 	alias Log wxLog;
 	public class Log : wxObject
 	{
-		enum eLogLevel : int
+		enum eLogLevel : цел
 		{
 			xLOG,
 			xFATALERROR,
@@ -59,86 +59,86 @@ import dinrus;
 			xSYSERROR
 		}
 		
-		public this(IntPtr wxobj)
-		    { super(wxobj);}
+		public this(ЦУк шхобъ)
+		    { super(шхобъ);}
 
 		public this()
 		    { super(wxLog_ctor());}
 
 
-		static bool IsEnabled() { return wxLog_IsEnabled(); }
+		static бул IsEnabled() { return wxLog_IsEnabled(); }
 
-		public static void FlushActive()
+		public static проц FlushActive()
 		{
 			wxLog_FlushActive();
 		}
 
 		// at the moment only TextCtrl
-		public static void SetActiveTarget(TextCtrl pLogger)
+		public static проц SetActiveTarget(TextCtrl pLogger)
 		{
 			wxLog_SetActiveTargetTextCtrl(wxObject.SafePtr(pLogger));
 		}
 
-		public static void AddTraceMask(string tmask)
+		public static проц AddTraceMask(ткст tmask)
 		{
 			wxLog_AddTraceMask(tmask);
 		}
 
-		public static void LogMessage(...)
+		public static проц LogMessage(...)
 		{
-			wxLog_Log_Function(cast(int)eLogLevel.xLOG, stringFormat(_arguments,_argptr));
+			wxLog_Log_Function(cast(цел)eLogLevel.xLOG, stringFormat(_arguments,_argptr));
 		}
 
-		public static void LogFatalError(...)
+		public static проц LogFatalError(...)
 		{
-			wxLog_Log_Function(cast(int)eLogLevel.xFATALERROR, stringFormat(_arguments,_argptr));
+			wxLog_Log_Function(cast(цел)eLogLevel.xFATALERROR, stringFormat(_arguments,_argptr));
 		}
 
-		public static void LogError(...)
+		public static проц LogError(...)
 		{
-			wxLog_Log_Function(cast(int)eLogLevel.xERROR, stringFormat(_arguments,_argptr));
+			wxLog_Log_Function(cast(цел)eLogLevel.xERROR, stringFormat(_arguments,_argptr));
 		}
 
-		public static void LogWarning(...)
+		public static проц LogWarning(...)
 		{
-			wxLog_Log_Function(cast(int)eLogLevel.xWARNING, stringFormat(_arguments,_argptr));
+			wxLog_Log_Function(cast(цел)eLogLevel.xWARNING, stringFormat(_arguments,_argptr));
 		}
 
-		public static void LogInfo(...)
+		public static проц LogInfo(...)
 		{
-			wxLog_Log_Function(cast(int)eLogLevel.xINFO, stringFormat(_arguments,_argptr));
+			wxLog_Log_Function(cast(цел)eLogLevel.xINFO, stringFormat(_arguments,_argptr));
 		}
 
-		public static void LogVerbose(...)
+		public static проц LogVerbose(...)
 		{
-			wxLog_Log_Function(cast(int)eLogLevel.xVERBOSE, stringFormat(_arguments,_argptr));
+			wxLog_Log_Function(cast(цел)eLogLevel.xVERBOSE, stringFormat(_arguments,_argptr));
 		}
 
-		public static void LogStatus(...)
+		public static проц LogStatus(...)
 		{
-			wxLog_Log_Function(cast(int)eLogLevel.xSTATUS, stringFormat(_arguments,_argptr));
+			wxLog_Log_Function(cast(цел)eLogLevel.xSTATUS, stringFormat(_arguments,_argptr));
 		}
 
-		public static void LogSysError(...)
+		public static проц LogSysError(...)
 		{
-			wxLog_Log_Function(cast(int)eLogLevel.xSYSERROR, stringFormat(_arguments,_argptr));
+			wxLog_Log_Function(cast(цел)eLogLevel.xSYSERROR, stringFormat(_arguments,_argptr));
 		}
 
-		private static string stringFormat(TypeInfo[] arguments, va_list argptr)
+		private static ткст stringFormat(TypeInfo[] arguments, va_list argptr)
 		{
-			char[] s;
+			сим[] s;
 
 		version (Tango)
 		{
-			char[] fmts = "";
-			for(int i=0; i < arguments.length; i++) {
+			сим[] fmts = "";
+			for(цел i=0; i < arguments.length; i++) {
 				fmts ~= "{}";
 			}
 			s = Format.convert(arguments, argptr, fmts);
 		}
 		version( Phobos)
 		{
-			void putc(dchar c)
+			проц putc(dchar c)
 			{
 				std.utf.encode(s, c);
 			}
@@ -149,7 +149,7 @@ import dinrus;
 
 		version(Dinrus)
 		{
-			void putc(dchar c)
+			проц putc(dchar c)
 			{
 				кодируйЮ(s, c);
 			}
@@ -163,41 +163,41 @@ import dinrus;
 //! \cond VERSION
 version (none) {
 /* C# compatible */
-private static string stringFormat(char[] str,va_list argptr,TypeInfo[] arguments)
+private static ткст stringFormat(сим[] str,va_list argptr,TypeInfo[] arguments)
 {
 	if (arguments.length==0) return str;
 
-	string[] args = new string[arguments.length];
+	ткст[] args = new ткст[arguments.length];
 
-	for(uint i=0;i<arguments.length;i++) {
-		TypeInfo id = arguments[i];
-		char[] value;
-		if (id == typeid(int)) {
-			value = .toString(*cast(int*)argptr);
-			argptr += int.sizeof;
+	for(бцел i=0;i<arguments.length;i++) {
+		TypeInfo ид = arguments[i];
+		сим[] значение;
+		if (ид == typeid(цел)) {
+			значение = .toString(*cast(цел*)argptr);
+			argptr += цел.sizeof;
 		}
-		else if (id == typeid(long)) {
-			value = .toString(*cast(long*)argptr);
+		else if (ид == typeid(long)) {
+			значение = .toString(*cast(long*)argptr);
 			argptr += long.sizeof;
 		}
-		else if (id == typeid(float)) {
-			value = .toString(*cast(long*)argptr);
+		else if (ид == typeid(float)) {
+			значение = .toString(*cast(long*)argptr);
 			argptr += long.sizeof;
 		}
-		else if (id == typeid(double)) {
-			value = .toString(*cast(long*)argptr);
+		else if (ид == typeid(дво)) {
+			значение = .toString(*cast(long*)argptr);
 			argptr += long.sizeof;
 		}
-		else if (id == typeid(string)) {
-			value = *cast(string*)argptr;
-			argptr += string.sizeof;
+		else if (ид == typeid(ткст)) {
+			значение = *cast(ткст*)argptr;
+			argptr += ткст.sizeof;
 		}
-		args[i] = value;
+		args[i] = значение;
 	}
 
-	string ret;
+	ткст ret;
 	while(1) {
-		int start,end;
+		цел start,end;
 		start = find(str,'{');
 		if (start<0) break;
 
@@ -206,7 +206,7 @@ private static string stringFormat(char[] str,va_list argptr,TypeInfo[] argument
 
 		end = find(str,'}');
 		assert(end>0);
-		int idx = atoi(str[0..end]);
+		цел idx = atoi(str[0..end]);
 		assert(idx<args.length);
 		
 		ret ~= args[idx];

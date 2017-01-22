@@ -1,19 +1,4 @@
-//-----------------------------------------------------------------------------
-// wxD - App.d
-// (C) 2005 bero <berobero@users.sourceforge.net>
-// (C) 2006 afb <afb@users.sourceforge.net>
-// based on
-// wx.NET - App.cs
-//
-/// The wxApp wrapper class.
-//
-// Written by Jason Perkins (jason@379.com)
-// (C) 2003 by 379, Inc.
-// Licensed under the wxWidgets license, see LICENSE.txt for details.
-//
-// $Id: App.d,v 1.18 2008/09/26 09:28:28 afb Exp $
-//-----------------------------------------------------------------------------
-
+﻿
 module wx.App;
 public import wx.common;
 public import wx.EvtHandler;
@@ -23,224 +8,197 @@ public import wx.Clipboard;
 public import wx.FontMisc;
 
 //! \cond STD
-version (Tango)
-{
-import tango.core.Version;
-import tango.stdc.stringz;
-import tango.text.convert.Utf;
- static if (Tango.Major == 0 && Tango.Minor < 994)
- {
-alias toUtf8z toStringz;
-char[] toUTF8( char[] str) { return str; }
-char[] toUTF8(wchar[] str) { return toUtf8(str); }
-char[] toUTF8(dchar[] str) { return toUtf8(str); }
- }
- else
- {
-char[] toUTF8( char[] str) { return str; }
-char[] toUTF8(wchar[] str) { return toString(str); }
-char[] toUTF8(dchar[] str) { return toString(str); }
- }
-}
 
-version(Phobos)
-{
-private import std.string;
-private import std.utf;
-}
-
-version(Dinrus)
-{
-import dinrus;
+import stdrus;
 alias вТкст0 toStringz;
 alias вТкст toString;
 alias вЮ8 toUTF8;
-}
+
 //! \endcond
 
 		//! \cond EXTERN
 	extern (C) {
-	alias bool function(App o) Virtual_OnInit;
-	alias int  function(App o) Virtual_OnRun;
-	alias int  function(App o) Virtual_OnExit;
-	alias bool function(App o,inout int argc,char** argv) Virtual_Initialize;
+	alias бул function(Прил o) Virtual_OnInit;
+	alias цел  function(Прил o) Virtual_OnRun;
+	alias цел  function(Прил o) Virtual_OnExit;
+	alias бул function(Прил o,inout цел argc,сим** argv) Virtual_Initialize;
 	}
 	
-	static extern (C) IntPtr wxApp_ctor();
-	static extern (C) void wxApp_RegisterVirtual(IntPtr self, App o, Virtual_OnInit onInit, Virtual_OnRun onRun, Virtual_OnExit onExit, Virtual_Initialize initalize);
-	static extern (C) bool wxApp_Initialize(IntPtr self,inout int argc,char** argv);
-	static extern (C) bool wxApp_OnInit(IntPtr self);
-	static extern (C) bool wxApp_OnRun(IntPtr self);
-	static extern (C) int wxApp_OnExit(IntPtr self);
+	static extern (C) ЦУк wxApp_ctor();
+	static extern (C) проц wxApp_RegisterVirtual(ЦУк сам, Прил o, Virtual_OnInit onInit, Virtual_OnRun onRun, Virtual_OnExit onExit, Virtual_Initialize initalize);
+	static extern (C) бул wxApp_Initialize(ЦУк сам,inout цел argc,сим** argv);
+	static extern (C) бул wxApp_OnInit(ЦУк сам);
+	static extern (C) бул wxApp_OnRun(ЦУк сам);
+	static extern (C) цел wxApp_OnExit(ЦУк сам);
 	
-        static extern (C) void   wxApp_Run(int argc, char** argv);
+        static extern (C) проц   wxApp_Run(цел argc, сим** argv);
 
-        static extern (C) void   wxApp_SetVendorName(IntPtr self, string name);
-        static extern (C) IntPtr wxApp_GetVendorName(IntPtr self);
+        static extern (C) проц   wxApp_SetVendorName(ЦУк сам, ткст имя);
+        static extern (C) ЦУк wxApp_GetVendorName(ЦУк сам);
 
-        static extern (C) void   wxApp_SetAppName(IntPtr self, string name);
-        static extern (C) IntPtr wxApp_GetAppName(IntPtr self);
+        static extern (C) проц   wxApp_SetAppName(ЦУк сам, ткст имя);
+        static extern (C) ЦУк wxApp_GetAppName(ЦУк сам);
 
-        static extern (C) void   wxApp_SetTopWindow(IntPtr self, IntPtr window);
-        static extern (C) IntPtr wxApp_GetTopWindow(IntPtr self);
+        static extern (C) проц   wxApp_SetTopWindow(ЦУк сам, ЦУк окно);
+        static extern (C) ЦУк wxApp_GetTopWindow(ЦУк сам);
 
-        static extern (C) bool   wxApp_SafeYield(IntPtr win, bool onlyIfNeeded);
-        static extern (C) bool   wxApp_Yield(IntPtr self, bool onlyIfNeeded);
-       // static extern (C) void   wxApp_WakeUpIdle();
-        static extern (C) void   wxApp_ExitMainLoop(IntPtr self);
+        static extern (C) бул   wxApp_SafeYield(ЦУк окн, бул толькЕслиНужно);
+        static extern (C) бул   wxApp_Yield(ЦУк сам, бул толькЕслиНужно);
+       // static extern (C) проц   wxApp_WakeUpIdle();
+        static extern (C) проц   wxApp_ExitMainLoop(ЦУк сам);
 		//! \endcond
 
         //---------------------------------------------------------------------
 
-    alias App wxApp;
+    alias Прил wxApp;
 	/// The wxApp class represents the application itself.
 	/**
 	  * It is used to:
 	  * - set and get application-wide properties;
 	  * - implement the windowing system message or event loop;
-	  * - initiate application processing via wxApp::OnInit;
+	  * - initiate application processing via wxApp::ПриИниц;
 	  * - allow default processing of events not handled by other objects in the application.
 	  **/
-    public abstract class App : EvtHandler
+    public abstract class Прил : EvtHandler
     {
         
-        private static App app;
-	private Object m_caughtException=null;
-	public void catchException(Object e) {m_caughtException=e;}
+        private static Прил прил;
+	private Объект m_caughtException=пусто;
+	public проц catchException(Объект e) {m_caughtException=e;}
 
         //---------------------------------------------------------------------
 
        this() 
         {
         	super(wxApp_ctor());
-            app = this;
+            прил = this;
 		
-		FontMapper.initialize();
+		FontMapper.инициализуй();
 	    
-	    wxApp_RegisterVirtual(wxobj, this, &staticOnInit, &staticOnRun, &staticOnExit, &staticInitialize);
+	    wxApp_RegisterVirtual(шхобъ, this, &staticOnInit, &staticOnRun, &staticOnExit, &staticInitialize);
         }
 
         //---------------------------------------------------------------------
 
-	extern (C) private static bool staticInitialize(App o,inout int argc,char** argv)
+	extern (C) private static бул staticInitialize(Прил o,inout цел argc,сим** argv)
  	{
-		return o.Initialize(argc,argv);
+		return o.Инициализуй(argc,argv);
  	}
 
- 	extern (C) private static bool staticOnInit(App o)
+ 	extern (C) private static бул staticOnInit(Прил o)
  	{
- 		Clipboard.initialize();
-		try return o.OnInit();
-		catch(Object e) o.catchException(e);
-		return false;
+ 		БуферОбмена.инициализуй();
+		try return o.ПриИниц();
+		catch(Объект e) o.catchException(e);
+		return нет;
  	}
 
-	extern (C) private static int  staticOnRun(App o)
+	extern (C) private static цел  staticOnRun(Прил o)
  	{
-		return o.OnRun();
+		return o.ПриПуске();
  	}
 
-	extern (C) private static int  staticOnExit(App o)
+	extern (C) private static цел  staticOnExit(Прил o)
  	{
-		return o.OnExit();
+		return o.ПриВыходе();
  	}
 
-	private bool Initialize(inout int argc,char** argv)
+	private бул Инициализуй(inout цел argc,сим** argv)
 	{
-		bool ret = wxApp_Initialize(wxobj, argc,argv);
+		бул ret = wxApp_Initialize(шхобъ, argc,argv);
 		InitializeStockObjects();
 		return ret;
 	}
 
-	public /+virtual+/ bool OnInit()
+	public /+virtual+/ бул ПриИниц()
 	{
-		return wxApp_OnInit(wxobj);
+		return wxApp_OnInit(шхобъ);
 	}
 	
-	public /+virtual+/ int OnRun()
+	public /+virtual+/ цел ПриПуске()
 	{
-		return wxApp_OnRun(wxobj);
+		return wxApp_OnRun(шхобъ);
 	}
 
-	public /+virtual+/ int OnExit()
+	public /+virtual+/ цел ПриВыходе()
 	{
-		return wxApp_OnExit(wxobj);
+		return wxApp_OnExit(шхобъ);
 	}
 
         //---------------------------------------------------------------------
 
-        public static App GetApp() 
+        public static Прил ДайПрил() 
         {
-            return app;
+            return прил;
         }
 
         //---------------------------------------------------------------------
 
-        public void Run()
+        public проц Пуск()
         {
-            char[][] args; // = Environment.GetCommandLineArgs();
+            сим[][] args; // = Environment.GetCommandLineArgs();
             args.length = 1;
             args[0] = "wx".dup;
-            Run(args);
+            Пуск(args);
         }
 
-        public void Run(char[][] args)
+        public проц Пуск(сим[][] args)
         {
-			char*[] c_args = new char*[args.length];
-			foreach (int i, char[] arg; args)
+			сим*[] c_args = new сим*[args.length];
+			foreach (цел i, сим[] arg; args)
 			{
-				string str = arg;// assumeUnique(arg);
-				c_args[i] = cast(char*) toStringz(toUTF8(str));
+				ткст str = arg;// assumeUnique(arg);
+				c_args[i] = cast(сим*) toStringz(toUTF8(str));
 			}
 			
             wxApp_Run(c_args.length, c_args.ptr);
 			
 			if(m_caughtException)
 			{
-				Object e=m_caughtException;
+				Объект e=m_caughtException;
 				//Maybe the user catches this exception and runs
-				//the app again, so we have to clean up
-				m_caughtException=null;
+				//the прил again, so we have to clean up
+				m_caughtException=пусто;
 				throw e;
 			}
         }
 
         //---------------------------------------------------------------------
         
-        public string VendorName() { return cast(string) new wxString(wxApp_GetVendorName(wxobj), true); }
-        public void VendorName(string name) { wxApp_SetVendorName(wxobj, name); }
-        public string AppName() { return cast(string) new wxString(wxApp_GetAppName(wxobj), true); }
-        public void AppName(string name) { wxApp_SetAppName(wxobj, name); }
+        public ткст ИмяПроизводителя() { return cast(ткст) new wxString(wxApp_GetVendorName(шхобъ), да); }
+        public проц ИмяПроизводителя(ткст имя) { wxApp_SetVendorName(шхобъ, имя); }
+        public ткст ИмяПрил() { return cast(ткст) new wxString(wxApp_GetAppName(шхобъ), да); }
+        public проц ИмяПрил(ткст имя) { wxApp_SetAppName(шхобъ, имя); }
 
         //---------------------------------------------------------------------
 
-        public Window TopWindow() { return cast(Window) FindObject(wxApp_GetTopWindow(wxobj)); }
-        public void TopWindow(Window window) { wxApp_SetTopWindow(wxobj, window.wxobj); }
+        public Окно ТопОкно() { return cast(Окно) FindObject(wxApp_GetTopWindow(шхобъ)); }
+        public проц ТопОкно(Окно окно) { wxApp_SetTopWindow(шхобъ, окно.шхобъ); }
 
         //---------------------------------------------------------------------
 
-        public static bool SafeYield() 
-            { return wxApp_SafeYield(wxObject.SafePtr(null), false); }
-        public static bool SafeYield(Window win) 
-            { return wxApp_SafeYield(wxObject.SafePtr(win), false); }
-        public static bool SafeYield(Window win, bool onlyIfNeeded) 
-            { return wxApp_SafeYield(wxObject.SafePtr(win), onlyIfNeeded); }
+        public static бул SafeYield() 
+            { return wxApp_SafeYield(wxObject.SafePtr(пусто), нет); }
+        public static бул SafeYield(Окно окн) 
+            { return wxApp_SafeYield(wxObject.SafePtr(окн), нет); }
+        public static бул SafeYield(Окно окн, бул толькЕслиНужно) 
+            { return wxApp_SafeYield(wxObject.SafePtr(окн), толькЕслиНужно); }
 
-        public bool Yield() 
-            { return wxApp_Yield(wxobj, false); }
-        public bool Yield(bool onlyIfNeeded) 
-            { return wxApp_Yield(wxobj, onlyIfNeeded); }
+        public бул Yield() 
+            { return wxApp_Yield(шхобъ, нет); }
+        public бул Yield(бул толькЕслиНужно) 
+            { return wxApp_Yield(шхобъ, толькЕслиНужно); }
 
         //---------------------------------------------------------------------
 /+
-        public static void WakeUpIdle()
+        public static проц WakeUpIdle()
         {
             wxApp_WakeUpIdle();
         }
 		+/
-		public void ExitMainLoop()
+		public проц ВыходИзГлавнЦикла()
 		{
-			wxApp_ExitMainLoop(wxobj);
+			wxApp_ExitMainLoop(шхобъ);
 		}
 
         //---------------------------------------------------------------------

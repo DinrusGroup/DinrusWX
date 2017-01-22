@@ -10,7 +10,7 @@
 // (C) 2003 Bryan Bulten
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: NotebookSizer.d,v 1.9 2006/11/17 15:21:00 afb Exp $
+// $Ид: NotebookSizer.d,v 1.9 2006/11/17 15:21:00 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.NotebookSizer;
@@ -19,10 +19,10 @@ public import wx.Sizer;
 public import wx.Notebook;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxNotebookSizer_ctor(IntPtr nb);
-		static extern (C) void wxNotebookSizer_RecalcSizes(IntPtr self);
-		static extern (C) void wxNotebookSizer_CalcMin(IntPtr self, inout Size size);
-		static extern (C) IntPtr wxNotebookSizer_GetNotebook(IntPtr self);
+		static extern (C) ЦУк wxNotebookSizer_ctor(ЦУк nb);
+		static extern (C) проц wxNotebookSizer_RecalcSizes(ЦУк сам);
+		static extern (C) проц wxNotebookSizer_CalcMin(ЦУк сам, inout Размер size);
+		static extern (C) ЦУк wxNotebookSizer_GetNotebook(ЦУк сам);
 		//! \endcond
 
 		//---------------------------------------------------------------------
@@ -30,9 +30,9 @@ public import wx.Notebook;
 	alias NotebookSizer wxNotebookSizer;
 	/*deprecated*/ public class NotebookSizer : Sizer
 	{
-		public this(IntPtr wxobj)
+		public this(ЦУк шхобъ)
 		{
-			super(wxobj);
+			super(шхобъ);
 		}
 
 		public this(Notebook nb)
@@ -42,17 +42,17 @@ public import wx.Notebook;
 
 		//---------------------------------------------------------------------
 
-		public override void RecalcSizes()
+		public override проц RecalcSizes()
 		{
-			wxNotebookSizer_RecalcSizes(wxobj);
+			wxNotebookSizer_RecalcSizes(шхобъ);
 		}
 
 		//---------------------------------------------------------------------
 
-		public override Size CalcMin()
+		public override Размер CalcMin()
 		{
-			Size size;
-			wxNotebookSizer_CalcMin(wxobj, size);
+			Размер size;
+			wxNotebookSizer_CalcMin(шхобъ, size);
 			return size;
 		}
 
@@ -61,7 +61,7 @@ public import wx.Notebook;
 		public Notebook notebook() 
 			{
 				return cast(Notebook)FindObject(
-                                    wxNotebookSizer_GetNotebook(wxobj)
+                                    wxNotebookSizer_GetNotebook(шхобъ)
                                 );
 			}
 

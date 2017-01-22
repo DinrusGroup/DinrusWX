@@ -10,7 +10,7 @@
 // (C) 2003 Alexander Olk
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: ProgressDialog.d,v 1.9 2006/11/17 15:21:00 afb Exp $
+// $Ид: ProgressDialog.d,v 1.9 2006/11/17 15:21:00 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.ProgressDialog;
@@ -18,11 +18,11 @@ public import wx.common;
 public import wx.Dialog;
 
 		//! \cond EXTERN
-        static extern (C) IntPtr wxProgressDialog_ctor(string title, string message, int maximum, IntPtr parent, uint style);
-	static extern (C) void wxProgressDialog_dtor(IntPtr self);
-        static extern (C) bool wxProgressDialog_Update(IntPtr self, int value, string newmsg);
-        static extern (C) void wxProgressDialog_Resume(IntPtr self);
-        static extern (C) bool wxProgressDialog_Show(IntPtr self, bool show);
+        static extern (C) ЦУк wxProgressDialog_ctor(ткст title, ткст message, цел maximum, ЦУк родитель, бцел стиль);
+	static extern (C) проц wxProgressDialog_dtor(ЦУк сам);
+        static extern (C) бул wxProgressDialog_Update(ЦУк сам, цел значение, ткст newmsg);
+        static extern (C) проц wxProgressDialog_Resume(ЦУк сам);
+        static extern (C) бул wxProgressDialog_Show(ЦУк сам, бул show);
 		//! \endcond
 
         //-----------------------------------------------------------------------------
@@ -30,51 +30,51 @@ public import wx.Dialog;
     alias ProgressDialog wxProgressDialog;
     public class ProgressDialog : Dialog
     {
-        public const int wxPD_CAN_ABORT      = 0x0001;
-        public const int wxPD_APP_MODAL      = 0x0002;
-        public const int wxPD_AUTO_HIDE      = 0x0004;
-        public const int wxPD_ELAPSED_TIME   = 0x0008;
-        public const int wxPD_ESTIMATED_TIME = 0x0010;
-        public const int wxPD_REMAINING_TIME = 0x0040;
+        public const цел wxPD_CAN_ABORT      = 0x0001;
+        public const цел wxPD_APP_MODAL      = 0x0002;
+        public const цел wxPD_AUTO_HIDE      = 0x0004;
+        public const цел wxPD_ELAPSED_TIME   = 0x0008;
+        public const цел wxPD_ESTIMATED_TIME = 0x0010;
+        public const цел wxPD_REMAINING_TIME = 0x0040;
 	
 		//---------------------------------------------------------------------
 
-        public this(IntPtr wxobj)
-            { super(wxobj);}
+        public this(ЦУк шхобъ)
+            { super(шхобъ);}
 
-        public this(string title, string message, int maximum = 100, Window parent = null, int style = wxPD_APP_MODAL | wxPD_AUTO_HIDE)
-            { this(wxProgressDialog_ctor(title, message, maximum, wxObject.SafePtr(parent), cast(uint)style));}
+        public this(ткст title, ткст message, цел maximum = 100, Окно родитель = пусто, цел стиль = wxPD_APP_MODAL | wxPD_AUTO_HIDE)
+            { this(wxProgressDialog_ctor(title, message, maximum, wxObject.SafePtr(родитель), cast(бцел)стиль));}
 
         //-----------------------------------------------------------------------------
 
-        public bool Update(int value)
+        public бул Обнови(цел значение)
         {
-            return wxProgressDialog_Update(wxobj, value, "");
+            return wxProgressDialog_Update(шхобъ, значение, "");
         }
 
 		//---------------------------------------------------------------------
 
-        public bool Update(int value, string newmsg)
+        public бул Обнови(цел значение, ткст newmsg)
         {
-            return wxProgressDialog_Update(wxobj, value, newmsg);
+            return wxProgressDialog_Update(шхобъ, значение, newmsg);
         }
 
 		//---------------------------------------------------------------------
 
-        public void Resume()
+        public проц Resume()
         {
-            wxProgressDialog_Resume(wxobj);
+            wxProgressDialog_Resume(шхобъ);
         }
 
 		//---------------------------------------------------------------------
 
-        public override bool Show(bool show=true)
+        public override бул Show(бул show=да)
         {
-            return wxProgressDialog_Show(wxobj, show);
+            return wxProgressDialog_Show(шхобъ, show);
         }
 	
 	//---------------------------------------------------------------------
 	
-	override protected void dtor() { wxProgressDialog_dtor(wxobj); }
+	override protected проц dtor() { wxProgressDialog_dtor(шхобъ); }
     }
 

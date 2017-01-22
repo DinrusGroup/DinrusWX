@@ -7,7 +7,7 @@
 // (C) 2007
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: defsext.d,v 1.2 2007/08/21 20:55:45 afb Exp $
+// $Ид: defsext.d,v 1.2 2007/08/21 20:55:45 afb Exp $
 //-----------------------------------------------------------------------------
 
 import wx.PrintDialog; // printing dialog
@@ -16,13 +16,13 @@ import wx.PrintDialog; // printing dialog
 // declarations
 //============================================================================
 
-const char[] DEFAULT_LANGUAGE = "<default>";
+const сим[] DEFAULT_LANGUAGE = "<default>";
 
-const char[] PAGE_COMMON = "Common";
-const char[] PAGE_LANGUAGES = "Languages";
-const char[] PAGE_STYLE_TYPES = "Style types";
+const сим[] PAGE_COMMON = "Common";
+const сим[] PAGE_LANGUAGES = "Languages";
+const сим[] PAGE_STYLE_TYPES = "Style types";
 
-const int STYLE_TYPES_COUNT = 32;
+const цел STYLE_TYPES_COUNT = 32;
 
 
 // ----------------------------------------------------------------------------
@@ -30,7 +30,7 @@ const int STYLE_TYPES_COUNT = 32;
 // ----------------------------------------------------------------------------
 
 enum {
-    // menu IDs
+    // меню IDs
     myID_PROPERTIES = wxID_HIGHEST,
     myID_INDENTINC,
     myID_INDENTRED,

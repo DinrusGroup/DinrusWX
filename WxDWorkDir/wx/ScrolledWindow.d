@@ -10,7 +10,7 @@
 // (C) 2003 by 379, Inc.
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: ScrolledWindow.d,v 1.9 2006/11/17 15:21:00 afb Exp $
+// $Ид: ScrolledWindow.d,v 1.9 2006/11/17 15:21:00 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.ScrolledWindow;
@@ -18,18 +18,18 @@ public import wx.common;
 public import wx.Panel;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxScrollWnd_ctor(IntPtr parent, int id, inout Point pos, inout Size size, uint style, string name);
-		static extern (C) void   wxScrollWnd_PrepareDC(IntPtr self, IntPtr dc);
-		static extern (C) void   wxScrollWnd_SetScrollbars(IntPtr self, int pixX, int pixY, int numX, int numY, int x, int y, bool noRefresh);
-		static extern (C) void   wxScrollWnd_GetViewStart(IntPtr self, inout int x, inout int y);
-		static extern (C) void   wxScrollWnd_GetScrollPixelsPerUnit(IntPtr self, inout int xUnit, inout int yUnit);
+		static extern (C) ЦУк wxScrollWnd_ctor(ЦУк родитель, цел ид, inout Точка поз, inout Размер size, бцел стиль, ткст имя);
+		static extern (C) проц   wxScrollWnd_PrepareDC(ЦУк сам, ЦУк dc);
+		static extern (C) проц   wxScrollWnd_SetScrollbars(ЦУк сам, цел pixX, цел pixY, цел numX, цел numY, цел x, цел y, бул noRefresh);
+		static extern (C) проц   wxScrollWnd_GetViewStart(ЦУк сам, inout цел x, inout цел y);
+		static extern (C) проц   wxScrollWnd_GetScrollPixelsPerUnit(ЦУк сам, inout цел xUnit, inout цел yUnit);
 		
-		static extern (C) void   wxScrollWnd_CalcScrolledPosition(IntPtr self, int x, int y, inout int xx, inout int yy);
-		static extern (C) void   wxScrollWnd_CalcUnscrolledPosition(IntPtr self, int x, int y, inout int xx, inout int yy);
-		static extern (C) void   wxScrollWnd_GetVirtualSize(IntPtr self, inout int x, inout int y);
-		static extern (C) void   wxScrollWnd_Scroll(IntPtr self, int x, int y);
-		static extern (C) void   wxScrollWnd_SetScrollRate(IntPtr self, int xstep, int ystep);
-		static extern (C) void   wxScrollWnd_SetTargetWindow(IntPtr self, IntPtr window);
+		static extern (C) проц   wxScrollWnd_CalcScrolledPosition(ЦУк сам, цел x, цел y, inout цел xx, inout цел yy);
+		static extern (C) проц   wxScrollWnd_CalcUnscrolledPosition(ЦУк сам, цел x, цел y, inout цел xx, inout цел yy);
+		static extern (C) проц   wxScrollWnd_GetVirtualSize(ЦУк сам, inout цел x, inout цел y);
+		static extern (C) проц   wxScrollWnd_Scroll(ЦУк сам, цел x, цел y);
+		static extern (C) проц   wxScrollWnd_SetScrollRate(ЦУк сам, цел xstep, цел ystep);
+		static extern (C) проц   wxScrollWnd_SetTargetWindow(ЦУк сам, ЦУк окно);
 		//! \endcond
 
 		//---------------------------------------------------------------------
@@ -41,53 +41,53 @@ public import wx.Panel;
 			wxScrolledWindowStyle = (wxHSCROLL | wxVSCROLL),
 		}
 	
-		public this(IntPtr wxobj) 
-			{ super(wxobj); }
+		public this(ЦУк шхобъ) 
+			{ super(шхобъ); }
 
-		public this(Window parent, int id /*= wxID_ANY*/, Point pos = wxDefaultPosition, Size size = wxDefaultSize, int style = wxScrolledWindowStyle, string name = wxPanelNameStr)
+		public this(Окно родитель, цел ид /*= wxID_ANY*/, Точка поз = wxDefaultPosition, Размер size = wxDefaultSize, цел стиль = wxScrolledWindowStyle, ткст имя = wxPanelNameStr)
 		{
-			super(wxScrollWnd_ctor(wxObject.SafePtr(parent), id, pos, size, style, name));
+			super(wxScrollWnd_ctor(wxObject.SafePtr(родитель), ид, поз, size, стиль, имя));
 			EVT_PAINT(&OnPaint);
 		}
 
-		public this(Window parent, Point pos = wxDefaultPosition, Size size = wxDefaultSize, int style = wxScrolledWindowStyle, string name = wxPanelNameStr)
+		public this(Окно родитель, Точка поз = wxDefaultPosition, Размер size = wxDefaultSize, цел стиль = wxScrolledWindowStyle, ткст имя = wxPanelNameStr)
 		{
-			this(parent,Window.UniqueID,pos,size,style,name);
+			this(родитель,Окно.UniqueID,поз,size,стиль,имя);
 		}
 
 		//---------------------------------------------------------------------
 
-		public /+virtual+/ void OnDraw(DC dc)
+		public /+virtual+/ проц OnDraw(DC dc)
 		{
 		}
 
 		//---------------------------------------------------------------------
 
-		public override void PrepareDC(DC dc)
+		public override проц PrepareDC(DC dc)
 		{
-			wxScrollWnd_PrepareDC(wxobj, dc.wxobj);
+			wxScrollWnd_PrepareDC(шхобъ, dc.шхобъ);
 		}
 
 		//---------------------------------------------------------------------
 
-		public void SetScrollbars(int pixelsPerUnitX, int pixelsPerUnitY, int noUnitsX, int noUnitsY)
+		public проц SetScrollbars(цел pixelsPerUnitX, цел pixelsPerUnitY, цел noUnitsX, цел noUnitsY)
 		{ 
-			SetScrollbars(pixelsPerUnitY, pixelsPerUnitY, noUnitsY, noUnitsY, 0, 0, false); 
+			SetScrollbars(pixelsPerUnitY, pixelsPerUnitY, noUnitsY, noUnitsY, 0, 0, нет); 
 		}
 		
-		public void SetScrollbars(int pixelsPerUnitX, int pixelsPerUnitY, int noUnitsX, int noUnitsY, int x, int y)
+		public проц SetScrollbars(цел pixelsPerUnitX, цел pixelsPerUnitY, цел noUnitsX, цел noUnitsY, цел x, цел y)
 		{ 
-			SetScrollbars(pixelsPerUnitY, pixelsPerUnitY, noUnitsY, noUnitsY, x, y, false); 
+			SetScrollbars(pixelsPerUnitY, pixelsPerUnitY, noUnitsY, noUnitsY, x, y, нет); 
 		}
 		
-		public void SetScrollbars(int pixelsPerUnitX, int pixelsPerUnitY, int noUnitsX, int noUnitsY, int x, int y, bool noRefresh)
+		public проц SetScrollbars(цел pixelsPerUnitX, цел pixelsPerUnitY, цел noUnitsX, цел noUnitsY, цел x, цел y, бул noRefresh)
 		{
-			wxScrollWnd_SetScrollbars(wxobj, pixelsPerUnitX, pixelsPerUnitY, noUnitsX, noUnitsY, x, y, noRefresh);
+			wxScrollWnd_SetScrollbars(шхобъ, pixelsPerUnitX, pixelsPerUnitY, noUnitsX, noUnitsY, x, y, noRefresh);
 		}
 
 		//---------------------------------------------------------------------
 
-		private void OnPaint(Object sender, Event e)
+		private проц OnPaint(Объект sender, Событие e)
 		{
 			PaintDC dc = new PaintDC(this);
 			PrepareDC(dc);
@@ -97,61 +97,61 @@ public import wx.Panel;
 
 		//---------------------------------------------------------------------
 
-		public Point ViewStart()
+		public Точка ViewStart()
 		{
-			Point pt;
+			Точка pt;
 			GetViewStart(pt.X, pt.Y);
 			return pt;
 		}
 
-		public void GetViewStart(inout int x, inout int y)
+		public проц GetViewStart(inout цел x, inout цел y)
 		{
-			wxScrollWnd_GetViewStart(wxobj, x, y);
+			wxScrollWnd_GetViewStart(шхобъ, x, y);
 		}
 
 		//---------------------------------------------------------------------
 
-		public void GetScrollPixelsPerUnit(inout int xUnit, inout int yUnit)
+		public проц GetScrollPixelsPerUnit(inout цел xUnit, inout цел yUnit)
 		{
-			wxScrollWnd_GetScrollPixelsPerUnit(wxobj, xUnit, yUnit);
+			wxScrollWnd_GetScrollPixelsPerUnit(шхобъ, xUnit, yUnit);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void CalcScrolledPosition(int x, int y, inout int xx, inout int yy)
+		public проц CalcScrolledPosition(цел x, цел y, inout цел xx, inout цел yy)
 		{
-			wxScrollWnd_CalcScrolledPosition(wxobj, x, y, xx, yy);
+			wxScrollWnd_CalcScrolledPosition(шхобъ, x, y, xx, yy);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void CalcUnscrolledPosition(int x, int y, inout int xx, inout int yy)
+		public проц CalcUnscrolledPosition(цел x, цел y, inout цел xx, inout цел yy)
 		{
-			wxScrollWnd_CalcUnscrolledPosition(wxobj, x, y, xx, yy);
+			wxScrollWnd_CalcUnscrolledPosition(шхобъ, x, y, xx, yy);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void GetVirtualSize(inout int x, inout int y)
+		public проц GetVirtualSize(inout цел x, inout цел y)
 		{
-			wxScrollWnd_GetVirtualSize(wxobj, x, y);
+			wxScrollWnd_GetVirtualSize(шхобъ, x, y);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void Scroll(int x, int y)
+		public проц Scroll(цел x, цел y)
 		{
-			wxScrollWnd_Scroll(wxobj, x, y);
+			wxScrollWnd_Scroll(шхобъ, x, y);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void SetScrollRate(int xstep, int ystep)
+		public проц SetScrollRate(цел xstep, цел ystep)
 		{
-			wxScrollWnd_SetScrollRate(wxobj, xstep, ystep);
+			wxScrollWnd_SetScrollRate(шхобъ, xstep, ystep);
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public void TargetWindow(Window value) { wxScrollWnd_SetTargetWindow(wxobj, wxObject.SafePtr(value)); }
+		public проц TargetWindow(Окно значение) { wxScrollWnd_SetTargetWindow(шхобъ, wxObject.SafePtr(значение)); }
 	}

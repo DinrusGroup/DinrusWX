@@ -8,11 +8,11 @@
 // (C) 2004 Alexander Olk
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: Listbook.d,v 1.9 2006/11/17 15:20:58 afb Exp $
+// $Ид: Listbook.d,v 1.9 2006/11/17 15:20:58 afb Exp $
 //-----------------------------------------------------------------------------
 
 import wx.wx;
-private import std.string;
+private import std.ткст;
 
 	public class ListbookFrame : Frame
 	{
@@ -29,17 +29,17 @@ private import std.string;
 
 		//---------------------------------------------------------------------
 
-		public this(string title, Point pos, Size size)
+		public this(ткст title, Точка поз, Размер size)
 		{
-			super(title, pos, size);
-			// Set the window icon and status bar
+			super(title, поз, size);
+			// Установи the окно иконка and status bar
 
-			icon = new Icon("../Samples/Listbook/mondrian.png");
+			иконка = new Icon("../Samples/Listbook/mondrian.png");
 
 			CreateStatusBar();
 			StatusText = "Welcome to the Listbook Sample!";	
 			
-			Menu menuFile = new Menu();
+			Меню menuFile = new Меню();
 			menuFile.AppendWL( Cmd.About, "&About", & OnAbout ) ;
 			menuFile.AppendSeparator();
 			menuFile.AppendWL( Cmd.Quit, "E&xit\tAlt-X", "Quit this program", & OnQuit) ;
@@ -55,16 +55,16 @@ private import std.string;
 
 			listbook = new MyListbook( this, -1 );
 
-			BoxSizer bSizer = new BoxSizer( Orientation.wxVERTICAL );
-			bSizer.Add( listbook, 1, Stretch.wxGROW );
-			bSizer.Add( textCtrl, 0, Stretch.wxGROW );
+			BoxSizer bSizer = new BoxSizer( Ориентация.wxVERTICAL );
+			bSizer.Добавь( listbook, 1, Stretch.wxGROW );
+			bSizer.Добавь( textCtrl, 0, Stretch.wxGROW );
 
 			sizer = bSizer;
 		}
 
 		//---------------------------------------------------------------------	
 
-		public void OnAbout( Object sender, Event e )
+		public проц OnAbout( Объект sender, Событие e )
 		{
 			MessageBox( "wxD Listbook sample\n2004 by Alexander Olk\nportred D by BERO", "About",
 				Dialog.wxOK | Dialog.wxICON_INFORMATION);
@@ -72,9 +72,9 @@ private import std.string;
 
 		//---------------------------------------------------------------------	
 
-		public void OnQuit( Object sender, Event e )
+		public проц OnQuit( Объект sender, Событие e )
 		{
-			Close();
+			Закрой();
 		}
 	}   
 	
@@ -86,25 +86,25 @@ private import std.string;
 
 		//---------------------------------------------------------------------	
 
-		public this( Window parent, int id)
+		public this( Окно родитель, цел ид)
 		{
-			super( parent, id );
+			super( родитель, ид );
 			imageList = new ImageList( 32, 32 );
 
 			// load bitmaps
-			for ( int i = 1; i < 16; ++i )
+			for ( цел i = 1; i < 16; ++i )
 			{
-				Bitmap bmp = new Bitmap( std.string.format( "../Samples/Listbook/bmp/toblom%02d.png", 
+				Битмап bmp = new Битмап( std.ткст.format( "../Samples/Listbook/bmp/toblom%02d.png", 
 					i ) );
-				imageList.Add( bmp );
+				imageList.Добавь( bmp );
 			}
 
 			AssignImageList( imageList );
 
-			for ( int i = 1; i < 16; ++i )
+			for ( цел i = 1; i < 16; ++i )
 			{
 				ListbookPanel p = new ListbookPanel( this, -1, i );
-				AddPage( p , std.string.format( "Picture %d    ", i ), false, i - 1 );
+				AddPage( p , std.ткст.format( "Picture %d    ", i ), нет, i - 1 );
 			} 
 
 			EVT_LISTBOOK_PAGE_CHANGED( -1, & OnPageChanged ) ;
@@ -113,26 +113,26 @@ private import std.string;
 
 		//---------------------------------------------------------------------	
 
-		public void OnPageChanged( Object sender, Event e )
+		public проц OnPageChanged( Объект sender, Событие e )
 		{
 			ListbookEvent le = cast(ListbookEvent) e;
 
 			Log.LogMessage( "OnPageChanged, old: " ~ .toString(le.OldSelection) ~ ", " ~
 				"new: " ~ .toString(le.Selection) ~ ", Selection: " ~ .toString(this.Selection) );
 
-			e.Skip();
+			e.Пропусти();
 		}
 
 		//---------------------------------------------------------------------	
 
-		public void OnPageChanging( Object sender, Event e )
+		public проц OnPageChanging( Объект sender, Событие e )
 		{
 			ListbookEvent le = cast(ListbookEvent) e;
 
 			Log.LogMessage( "OnPageChanging, old: " ~ .toString(le.OldSelection) ~ ", " ~
 				"new: " ~ .toString(le.Selection) ~ ", Selection: " ~ .toString(this.Selection) );
 
-			e.Skip();
+			e.Пропусти();
 		}
 	}
 
@@ -144,20 +144,20 @@ private import std.string;
 		
 		//---------------------------------------------------------------------	
 
-		public this( Window parent, int id, int number )
+		public this( Окно родитель, цел ид, цел number )
 		{
-			super( parent, id );
+			super( родитель, ид );
 			htmlWindow = new HtmlWindow( this );
 			htmlWindow.AppendToPage( "<html><body><center><h1>This is HtmlWindow page " ~
 				.toString(number) ~ ".</h1><br><br><br>" ~ 
-				"<img height=\"32\" width=\"32\" alt=\"\" " ~
+				"<img высота=\"32\" ширина=\"32\" alt=\"\" " ~
 				"src=\"" ~
-				std.string.format( "../Samples/Listbook/bmp/toblom%02d.png", number ) ~
+				std.ткст.format( "../Samples/Listbook/bmp/toblom%02d.png", number ) ~
 				"\">" ~
 				"</center></body></html>" );
 
-			BoxSizer bSizer = new BoxSizer( Orientation.wxVERTICAL );
-			bSizer.Add( htmlWindow, 1, Stretch.wxGROW );
+			BoxSizer bSizer = new BoxSizer( Ориентация.wxVERTICAL );
+			bSizer.Добавь( htmlWindow, 1, Stretch.wxGROW );
 
 			sizer = bSizer;
 		}
@@ -165,32 +165,32 @@ private import std.string;
 
 	//---------------------------------------------------------------------	
 
-	public class ListbookApp : App
+	public class ListbookApp : Прил
 	{
 		//---------------------------------------------------------------------
 
-		public override bool OnInit()
+		public override бул ПриИниц()
 		{
-			ListbookFrame frame = new ListbookFrame("Listbook wxWidgets Sample", Point(10, 100), Size(650,340));
-			frame.Show(true);
+			ListbookFrame frame = new ListbookFrame("Listbook wxWidgets Sample", Точка(10, 100), Размер(650,340));
+			frame.Show(да);
 
-			return true;
+			return да;
 		}
 
 		//---------------------------------------------------------------------
 
 		
-		static void Main()
+		static проц Main()
 		{
-			ListbookApp app = new ListbookApp();
-			app.Run();
+			ListbookApp прил = new ListbookApp();
+			прил.Пуск();
 		}
 
 		//---------------------------------------------------------------------
 	}
 
 
-void main()
+проц main()
 {
 	ListbookApp.Main();
 }

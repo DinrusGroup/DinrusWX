@@ -1,4 +1,4 @@
-//-----------------------------------------------------------------------------
+﻿//-----------------------------------------------------------------------------
 // wxD - ChildFocusEvent.d
 // (C) 2005 bero <berobero@users.sourceforge.net>
 // based on
@@ -10,7 +10,7 @@
 // (C) 2004 by Alexander Olk
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: ChildFocusEvent.d,v 1.9 2006/11/17 15:20:59 afb Exp $
+// $Ид: ChildFocusEvent.d,v 1.9 2006/11/17 15:20:59 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.ChildFocusEvent;
@@ -20,8 +20,8 @@ public import wx.CommandEvent;
 public import wx.Window;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxChildFocusEvent_ctor(IntPtr win);
-		static extern (C) IntPtr wxChildFocusEvent_GetWindow(IntPtr self);
+		static extern (C) ЦУк wxChildFocusEvent_ctor(ЦУк окн);
+		static extern (C) ЦУк wxChildFocusEvent_GetWindow(ЦУк сам);
 		//! \endcond
 		
 		//-----------------------------------------------------------------------------
@@ -29,20 +29,20 @@ public import wx.Window;
 	alias ChildFocusEvent wxChildFocusEvent;
 	public class ChildFocusEvent : CommandEvent
 	{
-		public this(IntPtr wxobj) 
-			{ super(wxobj); }
+		public this(ЦУк шхобъ) 
+			{ super(шхобъ); }
 			
-		public this(Window win)
-			{ super(wxChildFocusEvent_ctor(wxObject.SafePtr(win))); }
+		public this(Окно окн)
+			{ super(wxChildFocusEvent_ctor(wxObject.SafePtr(окн))); }
 
 		//-----------------------------------------------------------------------------	
 		
-		public Window window() { return cast(Window)FindObject(wxChildFocusEvent_GetWindow(wxobj), &Window.New); }
+		public Окно окно() { return cast(Окно)FindObject(wxChildFocusEvent_GetWindow(шхобъ), &Окно.Нов); }
 
-		private static Event New(IntPtr obj) { return new ChildFocusEvent(obj); }
+		private static Событие Нов(ЦУк объ) { return new ChildFocusEvent(объ); }
 
 		static this()
 		{
-			AddEventType(wxEVT_CHILD_FOCUS,				&ChildFocusEvent.New);
+			ДобавьТипСоб(wxEVT_CHILD_FOCUS,				&ChildFocusEvent.Нов);
 		}
 	}

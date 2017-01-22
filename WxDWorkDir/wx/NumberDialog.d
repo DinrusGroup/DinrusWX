@@ -6,7 +6,7 @@
 //
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: NumberDialog.d,v 1.7 2006/11/17 15:21:00 afb Exp $
+// $Ид: NumberDialog.d,v 1.7 2006/11/17 15:21:00 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.NumberDialog;
@@ -14,10 +14,10 @@ public import wx.common;
 public import wx.Dialog;
 
 		//! \cond EXTERN
-        static extern (C) IntPtr wxNumberEntryDialog_ctor(IntPtr parent, string message, string prompt, string caption, int value, int min, int max, inout Point pos);
-        static extern (C) void wxNumberEntryDialog_dtor(IntPtr self);
-        static extern (C) int wxNumberEntryDialog_GetValue(IntPtr self);
-        static extern (C) int wxNumberEntryDialog_ShowModal(IntPtr self);
+        static extern (C) ЦУк wxNumberEntryDialog_ctor(ЦУк родитель, ткст message, ткст prompt, ткст caption, цел значение, цел min, цел max, inout Точка поз);
+        static extern (C) проц wxNumberEntryDialog_dtor(ЦУк сам);
+        static extern (C) цел wxNumberEntryDialog_GetValue(ЦУк сам);
+        static extern (C) цел wxNumberEntryDialog_ShowModal(ЦУк сам);
 		//! \endcond
 
         //-----------------------------------------------------------------------------
@@ -25,35 +25,35 @@ public import wx.Dialog;
     alias NumberEntryDialog wxNumberEntryDialog;
     public class NumberEntryDialog : Dialog
     {
-        public const int wxNumberEntryDialogStyle = (Dialog.wxOK | Dialog.wxCANCEL | Dialog.wxCENTRE );
+        public const цел wxNumberEntryDialogStyle = (Dialog.wxOK | Dialog.wxCANCEL | Dialog.wxCENTRE );
 
-        public this(IntPtr wxobj)
-            { super(wxobj);}
+        public this(ЦУк шхобъ)
+            { super(шхобъ);}
 
-        public  this(Window parent, string message, string prompt, string caption, int value, int min, int max, Point pos = wxDefaultPosition)
-            { this(wxNumberEntryDialog_ctor(wxObject.SafePtr(parent), message, prompt, caption, value, min, max, pos)); }
+        public  this(Окно родитель, ткст message, ткст prompt, ткст caption, цел значение, цел min, цел max, Точка поз = wxDefaultPosition)
+            { this(wxNumberEntryDialog_ctor(wxObject.SafePtr(родитель), message, prompt, caption, значение, min, max, поз)); }
 
         //-----------------------------------------------------------------------------
 
-        public int Value() { return wxNumberEntryDialog_GetValue(wxobj); }
+        public цел Value() { return wxNumberEntryDialog_GetValue(шхобъ); }
 
         //---------------------------------------------------------------------
 
-        public override int ShowModal()
+        public override цел ShowModal()
         {
-            return wxNumberEntryDialog_ShowModal(wxobj);
+            return wxNumberEntryDialog_ShowModal(шхобъ);
         }
     }
 
     //-----------------------------------------------------------------------------
 
 		//! \cond EXTERN
-        static extern (C) int wxGetNumberFromUser_func(string message, string prompt, string caption, int value, int min, int max, IntPtr parent, inout Point pos);
+        static extern (C) цел wxGetNumberFromUser_func(ткст message, ткст prompt, ткст caption, цел значение, цел min, цел max, ЦУк родитель, inout Точка поз);
 		//! \endcond
 
         //-----------------------------------------------------------------------------
 
-        public int GetNumberFromUser(string message, string prompt, string caption, int value = 0, int min = 0, int max = 100, Window parent = null, Point pos = Dialog.wxDefaultPosition)
+        public цел GetNumberFromUser(ткст message, ткст prompt, ткст caption, цел значение = 0, цел min = 0, цел max = 100, Окно родитель = пусто, Точка поз = Dialog.wxDefaultPosition)
         {
-            return wxGetNumberFromUser_func(message, prompt, caption, value, min, max, wxObject.SafePtr(parent), pos);
+            return wxGetNumberFromUser_func(message, prompt, caption, значение, min, max, wxObject.SafePtr(родитель), поз);
         }

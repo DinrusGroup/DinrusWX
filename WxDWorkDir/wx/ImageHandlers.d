@@ -1,4 +1,4 @@
-//-----------------------------------------------------------------------------
+﻿//-----------------------------------------------------------------------------
 // wxD - ImageHandlers.d
 // (C) 2005 bero <berobero@users.sourceforge.net>
 // based on
@@ -10,7 +10,7 @@
 // (C) 2004 by Alexander Olk
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: ImageHandlers.d,v 1.9 2006/11/17 15:21:00 afb Exp $
+// $Ид: ImageHandlers.d,v 1.9 2006/11/17 15:21:00 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.ImageHandlers;
@@ -18,17 +18,17 @@ public import wx.common;
 public import wx.Image;
 
   //! \cond EXTERN
-  public static extern (C) IntPtr BMPHandler_ctor();
-  public static extern (C) IntPtr ICOHandler_ctor();
-  public static extern (C) IntPtr CURHandler_ctor();
-  public static extern (C) IntPtr ANIHandler_ctor();
-  public static extern (C) IntPtr GIFHandler_ctor();
-  public static extern (C) IntPtr PNGHandler_ctor();
-  public static extern (C) IntPtr PCXHandler_ctor();
-  public static extern (C) IntPtr JPEGHandler_ctor();
-  public static extern (C) IntPtr XPMHandler_ctor();
-  public static extern (C) IntPtr PNMHandler_ctor();
-  public static extern (C) IntPtr TIFFHandler_ctor();
+  public static extern (C) ЦУк BMPHandler_ctor();
+  public static extern (C) ЦУк ICOHandler_ctor();
+  public static extern (C) ЦУк CURHandler_ctor();
+  public static extern (C) ЦУк ANIHandler_ctor();
+  public static extern (C) ЦУк GIFHandler_ctor();
+  public static extern (C) ЦУк PNGHandler_ctor();
+  public static extern (C) ЦУк PCXHandler_ctor();
+  public static extern (C) ЦУк JPEGHandler_ctor();
+  public static extern (C) ЦУк XPMHandler_ctor();
+  public static extern (C) ЦУк PNMHandler_ctor();
+  public static extern (C) ЦУк TIFFHandler_ctor();
   //! \endcond
   
   
@@ -36,7 +36,7 @@ public import wx.Image;
 alias BMPHandler wxBMPHandler;
 public class BMPHandler : ImageHandler 
 {
-  public this(IntPtr ptr) { super(ptr); }
+  public this(ЦУк ptr) { super(ptr); }
   
   public this()
   {
@@ -47,7 +47,7 @@ public class BMPHandler : ImageHandler
 alias ICOHandler wxICOHandler;
 public class ICOHandler : BMPHandler 
 {
-  public this(IntPtr ptr) { super(ptr); }
+  public this(ЦУк ptr) { super(ptr); }
 
   public this()
   {
@@ -58,7 +58,7 @@ public class ICOHandler : BMPHandler
 alias CURHandler wxCURHandler;
 public class CURHandler : ICOHandler 
 {
-  public this(IntPtr ptr) { super(ptr); }
+  public this(ЦУк ptr) { super(ptr); }
 
   public this()
   {
@@ -69,7 +69,7 @@ public class CURHandler : ICOHandler
 alias ANIHandler wxANIHandler;
 public class ANIHandler : CURHandler 
 {
-  public this(IntPtr ptr) { super(ptr); }
+  public this(ЦУк ptr) { super(ptr); }
 
   public this()
   {
@@ -80,7 +80,7 @@ public class ANIHandler : CURHandler
 alias PNGHandler wxPNGHandler;
 public class PNGHandler : ImageHandler 
 {
-  public this(IntPtr ptr) { super(ptr); }
+  public this(ЦУк ptr) { super(ptr); }
 
   public this()
   {
@@ -91,7 +91,7 @@ public class PNGHandler : ImageHandler
 alias GIFHandler wxGIFHandler;
 public class GIFHandler : ImageHandler 
 {
-  public this(IntPtr ptr) { super(ptr); }
+  public this(ЦУк ptr) { super(ptr); }
 
   public this()
   {
@@ -102,7 +102,7 @@ public class GIFHandler : ImageHandler
 alias PCXHandler wxPCXHandler;
 public class PCXHandler : ImageHandler 
 {
-  public this(IntPtr ptr) { super(ptr); }
+  public this(ЦУк ptr) { super(ptr); }
 
   public this()
   {
@@ -113,7 +113,7 @@ public class PCXHandler : ImageHandler
 alias JPEGHandler wxJPEGHandler;
 public class JPEGHandler : ImageHandler 
 {
-  public this(IntPtr ptr) { super(ptr); }
+  public this(ЦУк ptr) { super(ptr); }
 
   public this()
   {
@@ -125,7 +125,7 @@ public class JPEGHandler : ImageHandler
 alias PNMHandler wxPNMHandler;
 public class PNMHandler : ImageHandler 
 {
-  public this(IntPtr ptr) { super(ptr); }
+  public this(ЦУк ptr) { super(ptr); }
 
   public this()
   {
@@ -136,7 +136,7 @@ public class PNMHandler : ImageHandler
 alias XPMHandler wxXPMHandler;
 public class XPMHandler : ImageHandler 
 {
-  public this(IntPtr ptr) { super(ptr); }
+  public this(ЦУк ptr) { super(ptr); }
 
   public this()
   {
@@ -147,7 +147,7 @@ public class XPMHandler : ImageHandler
 alias TIFFHandler wxTIFFHandler;
 public class TIFFHandler : ImageHandler 
 {
-  public this(IntPtr ptr) { super(ptr); }
+  public this(ЦУк ptr) { super(ptr); }
 
   public this()
   {

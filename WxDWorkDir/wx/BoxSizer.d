@@ -1,4 +1,4 @@
-//-----------------------------------------------------------------------------
+﻿//-----------------------------------------------------------------------------
 // wxD - BoxSizer.d
 // (C) 2005 bero <berobero.sourceforge.net>
 // based on
@@ -10,7 +10,7 @@
 // (C) 2003 Bryan Bulten
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: BoxSizer.d,v 1.9 2006/11/17 15:20:59 afb Exp $
+// $Ид: BoxSizer.d,v 1.9 2006/11/17 15:20:59 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.BoxSizer;
@@ -19,18 +19,18 @@ public import wx.Sizer;
 
 		//! \cond EXTERN
 		extern(C) {
-		alias void function(BoxSizer obj) Virtual_voidvoid;
-		alias void function(BoxSizer obj,out Size size) Virtual_wxSizevoid;
+		alias проц function(BoxSizer объ) Virtual_voidvoid;
+		alias проц function(BoxSizer объ,out Размер size) Virtual_wxSizevoid;
 		}
 		
-		static extern (C) void wxBoxSizer_RegisterVirtual(IntPtr self, BoxSizer obj, Virtual_voidvoid recalcSizes, Virtual_wxSizevoid calcMin);	
-		static extern (C) void wxBoxSizer_RegisterDisposable(IntPtr self, Virtual_Dispose onDispose);
+		static extern (C) проц wxBoxSizer_RegisterVirtual(ЦУк сам, BoxSizer объ, Virtual_voidvoid recalcSizes, Virtual_wxSizevoid calcMin);	
+		static extern (C) проц wxBoxSizer_RegisterDisposable(ЦУк сам, Virtual_Dispose onDispose);
 	
-		static extern (C) IntPtr wxBoxSizer_ctor(int orient);
-		static extern (C) void wxBoxSizer_RecalcSizes(IntPtr self);
-		static extern (C) void wxBoxSizer_CalcMin(IntPtr self,out Size size);
-		static extern (C) int wxBoxSizer_GetOrientation(IntPtr self);
-		static extern (C) void wxBoxSizer_SetOrientation(IntPtr self, int orient);
+		static extern (C) ЦУк wxBoxSizer_ctor(цел orient);
+		static extern (C) проц wxBoxSizer_RecalcSizes(ЦУк сам);
+		static extern (C) проц wxBoxSizer_CalcMin(ЦУк сам,out Размер size);
+		static extern (C) цел wxBoxSizer_GetOrientation(ЦУк сам);
+		static extern (C) проц wxBoxSizer_SetOrientation(ЦУк сам, цел orient);
 		//! \endcond
 
 		//---------------------------------------------------------------------
@@ -38,35 +38,35 @@ public import wx.Sizer;
 	alias BoxSizer wxBoxSizer;
 	public class BoxSizer : Sizer
 	{
-		public this(IntPtr wxobj)
-			{ super(wxobj); }
+		public this(ЦУк шхобъ)
+			{ super(шхобъ); }
 			
-		public this(int orient)
+		public this(цел orient)
 		{ 
-			this(wxBoxSizer_ctor(cast(int)orient));
-			wxBoxSizer_RegisterVirtual(wxobj, this, &staticRecalcSizes, &staticCalcMin);
-			wxBoxSizer_RegisterDisposable(wxobj, &VirtualDispose);
+			this(wxBoxSizer_ctor(cast(цел)orient));
+			wxBoxSizer_RegisterVirtual(шхобъ, this, &staticRecalcSizes, &staticCalcMin);
+			wxBoxSizer_RegisterDisposable(шхобъ, &VirtualDispose);
 		}
 			
 		//---------------------------------------------------------------------
-		extern(C) private static void staticRecalcSizes(BoxSizer obj) { return obj.RecalcSizes(); }
-		extern(C) private static void staticCalcMin(BoxSizer obj,out Size size) { size = obj.CalcMin(); }
+		extern(C) private static проц staticRecalcSizes(BoxSizer объ) { return объ.RecalcSizes(); }
+		extern(C) private static проц staticCalcMin(BoxSizer объ,out Размер size) { size = объ.CalcMin(); }
 
-		public override void RecalcSizes()
+		public override проц RecalcSizes()
 		{
-			wxBoxSizer_RecalcSizes(wxobj);
+			wxBoxSizer_RecalcSizes(шхобъ);
 		}
 		
 		//---------------------------------------------------------------------
-		public override Size CalcMin()
+		public override Размер CalcMin()
 		{
-			Size size;
-			wxBoxSizer_CalcMin(wxobj,size);
+			Размер size;
+			wxBoxSizer_CalcMin(шхобъ,size);
 			return size;
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public int Orientation() { return wxBoxSizer_GetOrientation(wxobj); }
-		public void Orientation(int value) { wxBoxSizer_SetOrientation(wxobj, value); }
+		public цел Ориентация() { return wxBoxSizer_GetOrientation(шхобъ); }
+		public проц Ориентация(цел значение) { wxBoxSizer_SetOrientation(шхобъ, значение); }
 	}

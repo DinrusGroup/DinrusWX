@@ -8,11 +8,11 @@
 // (C) 2004 Alexander Olk
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: ListView.d,v 1.9 2006/11/17 15:20:58 afb Exp $
+// $Ид: ListView.d,v 1.9 2006/11/17 15:20:58 afb Exp $
 //-----------------------------------------------------------------------------
 
 import wx.wx;
-private import std.string;
+private import std.ткст;
 
 	public class ListViewFrame : Frame
 	{
@@ -28,17 +28,17 @@ private import std.string;
 
 		//---------------------------------------------------------------------
 
-		public this(string title, Point pos, Size size)
+		public this(ткст title, Точка поз, Размер size)
 		{
-			super(title, pos, size);
-			// Set the window icon and status bar
+			super(title, поз, size);
+			// Установи the окно иконка and status bar
 
-			this.icon = new Icon("../Samples/ListView/mondrian.png");
+			this.иконка = new Icon("../Samples/ListView/mondrian.png");
 
 			CreateStatusBar();
 			StatusText = "Welcome to the ListView Sample!";	
 			
-			Menu menuFile = new Menu();
+			Меню menuFile = new Меню();
 			menuFile.AppendWL( Cmd.About, "&About", & OnAbout ) ;
 			menuFile.AppendSeparator();
 			menuFile.AppendWL( Cmd.Quit, "E&xit\tAlt-X", "Quit this program", & OnQuit) ;
@@ -54,16 +54,16 @@ private import std.string;
 			
 			MyListView mlv = new MyListView( this );
 
-			BoxSizer bSizer = new BoxSizer( Orientation.wxVERTICAL );
-			bSizer.Add( mlv, 1, Stretch.wxGROW );
-			bSizer.Add( textCtrl, 0, Stretch.wxGROW );
+			BoxSizer bSizer = new BoxSizer( Ориентация.wxVERTICAL );
+			bSizer.Добавь( mlv, 1, Stretch.wxGROW );
+			bSizer.Добавь( textCtrl, 0, Stretch.wxGROW );
 
 			this.sizer = bSizer;
 		}
 
 		//---------------------------------------------------------------------	
 
-		public void OnAbout( Object sender, Event e )
+		public проц OnAbout( Объект sender, Событие e )
 		{
 			MessageBox( "wxD ListView sample\n2004 by Alexander Olk", "About",
 				Dialog.wxOK | Dialog.wxICON_INFORMATION );
@@ -71,9 +71,9 @@ private import std.string;
 
 		//---------------------------------------------------------------------	
 
-		public void OnQuit( Object sender, Event e )
+		public проц OnQuit( Объект sender, Событие e )
 		{
-			Close();
+			Закрой();
 		}
 	}   
 	
@@ -81,26 +81,26 @@ private import std.string;
 	
 	public class MyListView : ListView
 	{
-		public this( Window parent )
+		public this( Окно родитель )
 		{
-			super( parent, -1, wxDefaultPosition, wxDefaultSize, ListCtrl.wxLC_REPORT | ListCtrl.wxLC_EDIT_LABELS  );
+			super( родитель, -1, wxDefaultPosition, wxDefaultSize, ListCtrl.wxLC_REPORT | ListCtrl.wxLC_EDIT_LABELS  );
 		
 			InsertColumn( 0, "First Column" );
 			SetColumnWidth( 0, 200 );
 			
 			ListItem itemCol = new ListItem();
-			itemCol.Text = "Second Column";
+			itemCol.Текст = "Second Column";
 			itemCol.Align = ListCtrl.wxLIST_FORMAT_CENTER;
-			itemCol.Width = 300;
+			itemCol.Ширина = 300;
 			InsertColumn( 1, itemCol );
 		
-			for ( int i = 0; i < 200; ++i )
+			for ( цел i = 0; i < 200; ++i )
 			{
-				string buf = "Col 1 Item " ~ .toString(i);
-				int tmp = InsertItem( i, buf, 0);
+				ткст buf = "Col 1 Элемент " ~ .toString(i);
+				цел tmp = InsertItem( i, buf, 0);
 				SetItemData( tmp, i );
 				
-				buf = "Col 2 Item " ~ .toString(i);
+				buf = "Col 2 Элемент " ~ .toString(i);
 				SetItem( i, 1, buf );
 			}
 				
@@ -113,7 +113,7 @@ private import std.string;
 		
 		//---------------------------------------------------------------------	
 		
-		public void OnColumnClick( Object sender, Event e )
+		public проц OnColumnClick( Объект sender, Событие e )
 		{
 			ListEvent le = cast(ListEvent)e;
 			
@@ -122,25 +122,25 @@ private import std.string;
 		
 		//---------------------------------------------------------------------	
 		
-		public void OnItemSelect( Object sender, Event e )
+		public проц OnItemSelect( Объект sender, Событие e )
 		{
 			ListEvent le = cast(ListEvent)e;
 			
-			Log.LogMessage( "Value 1st field of selected item: " ~ le.Text );
+			Log.LogMessage( "Value 1st field of selected элемент: " ~ le.Текст );
 			
 			ListItem info = new ListItem();
-			info.Id = le.Index;
+			info.Ид = le.Index;
 			info.Column = 1;
-			info.Mask = ListCtrl.wxLIST_MASK_TEXT;
+			info.Маска = ListCtrl.wxLIST_MASK_TEXT;
 			
 			GetItem( info );
 			
-			Log.LogMessage( "Value of 2nd field of selected item: " ~ info.Text );
+			Log.LogMessage( "Value of 2nd field of selected элемент: " ~ info.Текст );
 		}
 		
 		//---------------------------------------------------------------------	
 		
-		public void OnColumnRightClick( Object sender, Event e )
+		public проц OnColumnRightClick( Объект sender, Событие e )
 		{
 			ListEvent le = cast(ListEvent)e;
 			
@@ -150,27 +150,27 @@ private import std.string;
 	
 	//---------------------------------------------------------------------	
 
-	public class ListViewApp : App
+	public class ListViewApp : Прил
 	{
-		public override bool OnInit()
+		public override бул ПриИниц()
 		{
-			ListViewFrame frame = new ListViewFrame("ListView wxWidgets Sample", Point(10, 100), Size(650,340));
-			frame.Show(true);
+			ListViewFrame frame = new ListViewFrame("ListView wxWidgets Sample", Точка(10, 100), Размер(650,340));
+			frame.Show(да);
 
-			return true;
+			return да;
 		}
 
 		//---------------------------------------------------------------------
 
 		
-		static void Main()
+		static проц Main()
 		{
-			ListViewApp app = new ListViewApp();
-			app.Run();
+			ListViewApp прил = new ListViewApp();
+			прил.Пуск();
 		}
 	}
 
-void main(char[][] argv)
+проц main(сим[][] argv)
 {
 	ListViewApp.Main();
 }

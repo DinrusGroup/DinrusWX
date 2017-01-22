@@ -1,18 +1,4 @@
-//-----------------------------------------------------------------------------
-// wxD - DbGrid.d
-// (C) 2005 bero <berobero@users.sourceforge.net>
-// based on
-// wx.NET - DbGrid
-//
-/// The DbGrid class.
-//
-// Written by Alexander Olk (xenomorph2@onlinehome.de)
-// (C) 2003 by Alexander Olk
-// Licensed under the wxWidgets license, see LICENSE.txt for details.
-// 
-// $Id: DbGrid.d,v 1.9 2006/11/17 15:20:59 afb Exp $
-//-----------------------------------------------------------------------------
-
+﻿
 module wx.DbGrid;
 public import wx.common;
 public import wx.Grid;
@@ -20,9 +6,9 @@ public import wx.Grid;
 	alias Column wxColumn;
 	public class Column
 	{
-		private string dbcolumnname;
-		private string newcolumnname;
-		private int width;
+		private ткст dbcolumnname;
+		private ткст newcolumnname;
+		private цел ширина;
 
 		//-----------------------------------------------------------------------------
 
@@ -30,18 +16,18 @@ public import wx.Grid;
 
 		//-----------------------------------------------------------------------------
 
-		public string dbColumnName() { return dbcolumnname; }
-		public void dbColumnName(string value) { dbcolumnname = value; }
+		public ткст dbColumnName() { return dbcolumnname; }
+		public проц dbColumnName(ткст значение) { dbcolumnname = значение; }
 
 		//-----------------------------------------------------------------------------
 
-		public string newColumnName() { return newcolumnname; }
-		public void newColumnName(string value) { newcolumnname = value; }
+		public ткст newColumnName() { return newcolumnname; }
+		public проц newColumnName(ткст значение) { newcolumnname = значение; }
 
 		//-----------------------------------------------------------------------------
 
-		public int Width() { return width; }
-		public void Width(int value) { width = value; }
+		public цел Ширина() { return ширина; }
+		public проц Ширина(цел значение) { ширина = значение; }
 	}
 
 	//-----------------------------------------------------------------------------
@@ -51,7 +37,7 @@ public import wx.Grid;
 	{
 		private Column[] cols;
 
-		private int DEFAULT_COLUMN_WIDTH = 75;
+		private цел DEFAULT_COLUMN_WIDTH = 75;
 
 		//-----------------------------------------------------------------------------
 
@@ -62,36 +48,36 @@ public import wx.Grid;
 
 		//-----------------------------------------------------------------------------
 
-		public void Add(string dbcolumnname, string newcolumnname)
+		public проц Добавь(ткст dbcolumnname, ткст newcolumnname)
 		{
-			Add(dbcolumnname, newcolumnname, DEFAULT_COLUMN_WIDTH);
+			Добавь(dbcolumnname, newcolumnname, DEFAULT_COLUMN_WIDTH);
 		}
 
-		public void Add(string dbcolumnname, string newcolumnname, int width)
+		public проц Добавь(ткст dbcolumnname, ткст newcolumnname, цел ширина)
 		{
 			Column col = new Column();
 			col.dbColumnName = dbcolumnname;
 			col.newColumnName = newcolumnname;
-			col.Width = width;
+			col.Ширина = ширина;
 			cols =~ col;
 		}
 
 		//-----------------------------------------------------------------------------
 
-		public uint length() { return cols.length; }
+		public бцел length() { return cols.length; }
 
 		//-----------------------------------------------------------------------------
 
-		public Column opIndex(int index)
+		public Column opIndex(цел индекс)
 		{
-			return cols[index];
+			return cols[индекс];
 		}
 
 		//-----------------------------------------------------------------------------
 
-		public Column Search(string dbcolumnname)
+		public Column Search(ткст dbcolumnname)
 		{
-			Column result = null;
+			Column result = пусто;
 			foreach (Column col;cols) 
 			{
 				if (col.dbColumnName == dbcolumnname)
@@ -105,9 +91,9 @@ public import wx.Grid;
 
 		//-----------------------------------------------------------------------------
 
-		public Column SearchDbColumnName(string newcolumnname)
+		public Column SearchDbColumnName(ткст newcolumnname)
 		{
-			Column result = null;
+			Column result = пусто;
 			foreach (Column col;cols) 
 			{
 				if (col.newColumnName.Equals(newcolumnname))
@@ -125,8 +111,8 @@ public import wx.Grid;
 
 		//-----------------------------------------------------------------------------
 
-		public int DefaultColumnWidth() { return DEFAULT_COLUMN_WIDTH; }
-		public void DefaultColumnWidth(int value) { DEFAULT_COLUMN_WIDTH = value; }
+		public цел DefaultColumnWidth() { return DEFAULT_COLUMN_WIDTH; }
+		public проц DefaultColumnWidth(цел значение) { DEFAULT_COLUMN_WIDTH = значение; }
 	}
 	
 	//-----------------------------------------------------------------------------
@@ -145,33 +131,33 @@ public import wx.Grid;
 	alias DbGrid wxDbGrid;
 	public class DbGrid : Grid
 	{
-		private DataSet myDataSet = null;
-		private ColumnMapping colmap = null;
+		private DataSet myDataSet = пусто;
+		private ColumnMapping colmap = пусто;
 		
-		private string tablename;
+		private ткст tablename;
 		
-		private bool datasetorcolmap = false; // if false, then dataset mapping else column mapping
+		private бул datasetorcolmap = нет; // if нет, then dataset mapping else column mapping
 		
 		//-----------------------------------------------------------------------------
 		
-		public this(IntPtr wxobj)
-			{ super(wxobj);}
+		public this(ЦУк шхобъ)
+			{ super(шхобъ);}
 
-		public this(Window parent, int id)
-			{ this(parent, id, wxDefaultPosition, wxDefaultSize, wxWANTS_CHARS, "grid"); }
+		public this(Окно родитель, цел ид)
+			{ this(родитель, ид, wxDefaultPosition, wxDefaultSize, wxWANTS_CHARS, "grid"); }
 
-		public this(Window parent, int id, Point pos)
-			{ this(parent, id, pos, wxDefaultSize, wxWANTS_CHARS, "grid"); }
+		public this(Окно родитель, цел ид, Точка поз)
+			{ this(родитель, ид, поз, wxDefaultSize, wxWANTS_CHARS, "grid"); }
 
-		public this(Window parent, int id, Point pos, Size size)
-			{ this(parent, id, pos, size, wxWANTS_CHARS, "grid"); }
+		public this(Окно родитель, цел ид, Точка поз, Размер size)
+			{ this(родитель, ид, поз, size, wxWANTS_CHARS, "grid"); }
 
-		public this(Window parent, int id, Point pos, Size size, int style)
-			{ this(parent, id, pos, size, style, "grid"); }
+		public this(Окно родитель, цел ид, Точка поз, Размер size, цел стиль)
+			{ this(родитель, ид, поз, size, стиль, "grid"); }
 
-		public this(Window parent, int id, Point pos, Size size, int style, string name)
+		public this(Окно родитель, цел ид, Точка поз, Размер size, цел стиль, ткст имя)
 		{
-			super(parent, id, pos, size, style, name);
+			super(родитель, ид, поз, size, стиль, имя);
 			myDataSet = new DataSet();
 			colmap = new ColumnMapping();
 
@@ -179,103 +165,103 @@ public import wx.Grid;
 		}
 		
 		//---------------------------------------------------------------------
-		// ctors with self created id
+		// ctors with сам created ид
 		
-		public this(Window parent)
-			{ this(parent, Window.UniqueID, wxDefaultPosition, wxDefaultSize, wxWANTS_CHARS, "grid"); }
+		public this(Окно родитель)
+			{ this(родитель, Окно.UniqueID, wxDefaultPosition, wxDefaultSize, wxWANTS_CHARS, "grid"); }
 
-		public this(Window parent, Point pos)
-			{ this(parent, Window.UniqueID, pos, wxDefaultSize, wxWANTS_CHARS, "grid"); }
+		public this(Окно родитель, Точка поз)
+			{ this(родитель, Окно.UniqueID, поз, wxDefaultSize, wxWANTS_CHARS, "grid"); }
 
-		public this(Window parent, Point pos, Size size)
-			{ this(parent, Window.UniqueID, pos, size, wxWANTS_CHARS, "grid"); }
+		public this(Окно родитель, Точка поз, Размер size)
+			{ this(родитель, Окно.UniqueID, поз, size, wxWANTS_CHARS, "grid"); }
 
-		public this(Window parent, Point pos, Size size, int style)
-			{ this(parent, Window.UniqueID, pos, size, style, "grid"); }
+		public this(Окно родитель, Точка поз, Размер size, цел стиль)
+			{ this(родитель, Окно.UniqueID, поз, size, стиль, "grid"); }
 
-		public this(Window parent, Point pos, Size size, int style, string name)
-			{ this(parent, Window.UniqueID, pos, size, style, name);}
+		public this(Окно родитель, Точка поз, Размер size, цел стиль, ткст имя)
+			{ this(родитель, Окно.UniqueID, поз, size, стиль, имя);}
 		
 		//-----------------------------------------------------------------------------
 
 		public DataSet dataSet() { return myDataSet; }
-		public void dataSet(DataSet value) { myDataSet = value; }
+		public проц dataSet(DataSet значение) { myDataSet = значение; }
 		
 		//-----------------------------------------------------------------------------
 		
 		public ColumnMapping columnMapping() { return colmap; }
-		public void columnMapping(ColumnMapping value) { colmap = value; }
+		public проц columnMapping(ColumnMapping значение) { colmap = значение; }
 		
 		//-----------------------------------------------------------------------------
 		
-		public int DefaultColumnWidth() { return colmap.DefaultColumnWidth; }
-		public void DefaultColumnWidth(int value) { colmap.DefaultColumnWidth = value; }
+		public цел DefaultColumnWidth() { return colmap.DefaultColumnWidth; }
+		public проц DefaultColumnWidth(цел значение) { colmap.DefaultColumnWidth = значение; }
 		
 		//-----------------------------------------------------------------------------
 		
-		public void AddColumnMapping(string dbcolumnname, string newcolumnname)
+		public проц AddColumnMapping(ткст dbcolumnname, ткст newcolumnname)
 		{
-			colmap.Add(dbcolumnname, newcolumnname);
+			colmap.Добавь(dbcolumnname, newcolumnname);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public void AddColumnMapping(string dbcolumnname, string newcolumnname, int width)
+		public проц AddColumnMapping(ткст dbcolumnname, ткст newcolumnname, цел ширина)
 		{
-			colmap.Add(dbcolumnname, newcolumnname, width);
+			colmap.Добавь(dbcolumnname, newcolumnname, ширина);
 		}
 
 		//-----------------------------------------------------------------------------
 		
 		// Create the grid, map columnnames
 		// grid columns equal dataset columns
-		public DbGridMsg CreateGridFromDataSet(string tablename)
+		public DbGridMsg CreateGridFromDataSet(ткст tablename)
 		{
-			if (dataSet != null) 
+			if (dataSet != пусто) 
 			{
 				// No tables;dataset
-				if (dataSet.Tables.Count == 0)
+				if (dataSet.Tables.Счёт == 0)
 				{
 					return DbGridMsg.NO_TABLE_ERROR;
 				}
 				
 				// No columns;dataset
-				if (dataSet.Tables[tablename].Columns.Count == 0)
+				if (dataSet.Tables[tablename].Columns.Счёт == 0)
 				{
 					return DbGridMsg.NO_COLUMN_ERROR;
 				}
 				
-				datasetorcolmap = false;
+				datasetorcolmap = нет;
 				
 				this.tablename = tablename;
-				int r = 0;
-				int c = 0;
+				цел к = 0;
+				цел c = 0;
 				DataTable table = dataSet.Tables[tablename];
-				int numcols = table.Columns.Count;
+				цел numcols = table.Columns.Счёт;
 				
-				if ( !CreateGrid(table.Rows.Count, numcols) )
+				if ( !CreateGrid(table.Rows.Счёт, numcols) )
 				{
 					return DbGridMsg.GRID_CREATION_ERROR;
 				}
 				
 				RowLabelSize = 0; 
 				
-				// If a mapping name exists use mapping name
+				// If a mapping имя exists use mapping имя
 				// else use dataset column caption
 				foreach (DataColumn col;table.Columns) 
 				{
 					Column icol = colmap.Search(col.Caption);
 					
-					string ncolname=col.Caption;
+					ткст ncolname=col.Caption;
 					
-					if (icol != null)
+					if (icol != пусто)
 					{
 						if (icol.newColumnName.Length > 0)
 						{
 							ncolname = icol.newColumnName;
 						}
 
-						SetColumnWidth(c, icol.Width);
+						SetColumnWidth(c, icol.Ширина);
 					}
 						
 					SetColLabelValue(c, ncolname);
@@ -288,10 +274,10 @@ public import wx.Grid;
 					c = 0;					
 					foreach (DataColumn col;table.Columns) 
 					{
-						SetCellValue(r, c, row[col].ToString());
+						SetCellValue(к, c, row[col].ToString());
 						c++;
 					}
-					r++;
+					к++;
 				}
 			}			
 
@@ -302,37 +288,37 @@ public import wx.Grid;
 		
 		// Create the grid, map columnnames
 		// grid columns equal ColumnMapping columns
-		public DbGridMsg CreateGridFromColumnMapping(string tablename)
+		public DbGridMsg CreateGridFromColumnMapping(ткст tablename)
 		{
-			if (dataSet != null) 
+			if (dataSet != пусто) 
 			{
 				// No tables;dataset
-				if (dataSet.Tables.Count == 0)
+				if (dataSet.Tables.Счёт == 0)
 				{
 					return DbGridMsg.NO_TABLE_ERROR;
 				}
 				
 				// No columns;dataset
-				if (dataSet.Tables[tablename].Columns.Count == 0)
+				if (dataSet.Tables[tablename].Columns.Счёт == 0)
 				{
 					return DbGridMsg.NO_COLUMN_ERROR;
 				}
 				
 				// No columns;colmap
-				if ( colmap.Count == 0 )
+				if ( colmap.Счёт == 0 )
 				{
 					return DbGridMsg.NO_COLUMN_MAPPING_ERROR;
 				}
 				
-				datasetorcolmap = true;
+				datasetorcolmap = да;
 				
 				this.tablename = tablename;
-				int r = 0;
-				int c = 0;
+				цел к = 0;
+				цел c = 0;
 				DataTable table = dataSet.Tables[tablename];
-				int numcols = colmap.Count;
+				цел numcols = colmap.Счёт;
 				
-				if ( !CreateGrid(table.Rows.Count, numcols) )
+				if ( !CreateGrid(table.Rows.Счёт, numcols) )
 				{
 					return DbGridMsg.GRID_CREATION_ERROR;
 				}
@@ -342,7 +328,7 @@ public import wx.Grid;
 				// Grid column names = colmap newColumnName
 				foreach (Column icol;colmap.Cols) 
 				{					
-					SetColumnWidth(c, icol.Width);
+					SetColumnWidth(c, icol.Ширина);
 						
 					SetColLabelValue(c, icol.newColumnName);
 					c++;
@@ -354,10 +340,10 @@ public import wx.Grid;
 					c = 0;		
 					foreach (Column col;colmap.Cols) 
 					{					
-						SetCellValue(r, c, row[col.dbColumnName].ToString());
+						SetCellValue(к, c, row[col.dbColumnName].ToString());
 						c++;
 					}
-					r++;
+					к++;
 				}
 			}			
 
@@ -369,19 +355,19 @@ public import wx.Grid;
 		// currently this only works manually
 		// you have to call it from the application
 		// it will add a new row to the grid and the datatable;the dataset
-		public void AddRow()
+		public проц AddRow()
 		{
-			AppendRows(1, true);
+			AppendRows(1, да);
 			DataRow nrow = myDataSet.Tables[tablename].NewRow();
-			myDataSet.Tables[tablename].Rows.Add(nrow);
+			myDataSet.Tables[tablename].Rows.Добавь(nrow);
 		}
 		
 		//-----------------------------------------------------------------------------
 		
 		// Returns the currently selected row
-		public DataRow GetRow(int num)
+		public DataRow GetRow(цел num)
 		{
-			DataRow dr = null;
+			DataRow dr = пусто;
 			
 			try
 			{			
@@ -389,7 +375,7 @@ public import wx.Grid;
 			}
 			catch (Exception e)
 			{
-				dr = null;
+				dr = пусто;
 			}
 			
 			return dr;
@@ -398,10 +384,10 @@ public import wx.Grid;
 		//-----------------------------------------------------------------------------		
 		
 		// Cell change ?? Change the corresponding dataset also
-		private void OnGridCellChange(Object sender, Event e)
+		private проц OnGridCellChange(Объект sender, Событие e)
 		{
 			GridEvent ge = cast(GridEvent)e;
-			string s = GetColLabelValue(ge.Col);		
+			ткст s = GetColLabelValue(ge.Col);		
 			DataRow row = myDataSet.Tables[tablename].Rows[ge.Row];			
 			row[s] = GetCellValue(ge.Row, ge.Col);
 		}

@@ -1,4 +1,4 @@
-//-----------------------------------------------------------------------------
+﻿//-----------------------------------------------------------------------------
 // wxD - ChoiceDialog.d
 // (C) 2005 bero <berobero.sourceforge.net>
 // based on
@@ -10,7 +10,7 @@
 // (C) 2003 Alexander Olk
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: ChoiceDialog.d,v 1.11 2007/01/28 23:06:36 afb Exp $
+// $Ид: ChoiceDialog.d,v 1.11 2007/01/28 23:06:36 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.ChoiceDialog;
@@ -20,11 +20,11 @@ public import wx.ClientData;
 public import wx.ArrayInt;
 
 		//! \cond EXTERN
-        static extern (C) IntPtr wxSingleChoiceDialog_ctor(IntPtr parent, string message, string caption, int n, string* choices, IntPtr clientData, uint style, inout Point pos);
-        static extern (C) void wxSingleChoiceDialog_SetSelection(IntPtr self, int sel);
-        static extern (C) int wxSingleChoiceDialog_GetSelection(IntPtr self);
-        static extern (C) IntPtr wxSingleChoiceDialog_GetStringSelection(IntPtr self);
-        static extern (C) IntPtr wxSingleChoiceDialog_GetSelectionClientData(IntPtr self);
+        static extern (C) ЦУк wxSingleChoiceDialog_ctor(ЦУк родитель, ткст message, ткст caption, цел n, ткст* choices, ЦУк clientData, бцел стиль, inout Точка поз);
+        static extern (C) проц wxSingleChoiceDialog_SetSelection(ЦУк сам, цел sel);
+        static extern (C) цел wxSingleChoiceDialog_GetSelection(ЦУк сам);
+        static extern (C) ЦУк wxSingleChoiceDialog_GetStringSelection(ЦУк сам);
+        static extern (C) ЦУк wxSingleChoiceDialog_GetSelectionClientData(ЦУк сам);
 		//! \endcond
 
         //-----------------------------------------------------------------------------
@@ -35,53 +35,53 @@ public import wx.ArrayInt;
         enum {
             wxCHOICEDLG_STYLE	= (wxDEFAULT_DIALOG_STYLE | wxRESIZE_BORDER | wxOK | wxCANCEL | wxCENTRE)
         }
-	public const int wxCHOICE_HEIGHT = 150;
-	public const int wxCHOICE_WIDTH  = 200;
+	public const цел wxCHOICE_HEIGHT = 150;
+	public const цел wxCHOICE_WIDTH  = 200;
 
 
         // TODO: ClientData... !?!
 
-        public this(IntPtr wxobj)
-            { super(wxobj);}
+        public this(ЦУк шхобъ)
+            { super(шхобъ);}
 
-        public  this(Window parent, string message, string caption, string[] choices, ClientData clientData = null, int style =  wxCHOICEDLG_STYLE, Point pos = wxDefaultPosition)
-            { super(wxSingleChoiceDialog_ctor(wxObject.SafePtr(parent), message, caption, choices.length, choices.ptr, wxObject.SafePtr(clientData), style, pos));}
+        public  this(Окно родитель, ткст message, ткст caption, ткст[] choices, ClientData clientData = пусто, цел стиль =  wxCHOICEDLG_STYLE, Точка поз = wxDefaultPosition)
+            { super(wxSingleChoiceDialog_ctor(wxObject.SafePtr(родитель), message, caption, choices.length, choices.ptr, wxObject.SafePtr(clientData), стиль, поз));}
 
         //-----------------------------------------------------------------------------
 
-        public void Selection(int sel)
+        public проц Selection(цел sel)
         {
-            wxSingleChoiceDialog_SetSelection(wxobj, sel);
+            wxSingleChoiceDialog_SetSelection(шхобъ, sel);
         }
 
         //-----------------------------------------------------------------------------
 
-        public int Selection()
+        public цел Selection()
         {
-            return wxSingleChoiceDialog_GetSelection(wxobj);
+            return wxSingleChoiceDialog_GetSelection(шхобъ);
         }
 
         //-----------------------------------------------------------------------------
 
-        public string StringSelection()
+        public ткст StringSelection()
         {
-            return cast(string) new wxString(wxSingleChoiceDialog_GetStringSelection(wxobj), true);
+            return cast(ткст) new wxString(wxSingleChoiceDialog_GetStringSelection(шхобъ), да);
         }
 
         //-----------------------------------------------------------------------------
 
         public ClientData SelectionClientData()
         {
-            return cast(ClientData)FindObject(wxSingleChoiceDialog_GetSelectionClientData(wxobj));
+            return cast(ClientData)FindObject(wxSingleChoiceDialog_GetSelectionClientData(шхобъ));
         }
     }
 
 	//-----------------------------------------------------------------------------
 
 		//! \cond EXTERN
-        static extern (C) IntPtr wxMultiChoiceDialog_ctor(IntPtr parent, string message, string caption, int n, string* choices, uint style, inout Point pos);
-        static extern (C) void wxMultiChoiceDialog_SetSelections(IntPtr self, int* sel, int numsel);
-        static extern (C) IntPtr wxMultiChoiceDialog_GetSelections(IntPtr self);
+        static extern (C) ЦУк wxMultiChoiceDialog_ctor(ЦУк родитель, ткст message, ткст caption, цел n, ткст* choices, бцел стиль, inout Точка поз);
+        static extern (C) проц wxMultiChoiceDialog_SetSelections(ЦУк сам, цел* sel, цел numsel);
+        static extern (C) ЦУк wxMultiChoiceDialog_GetSelections(ЦУк сам);
 		//! \endcond
 
         //-----------------------------------------------------------------------------
@@ -89,24 +89,24 @@ public import wx.ArrayInt;
     alias MultiChoiceDialog wxMultiChoiceDialog;
     public class MultiChoiceDialog : Dialog
     {
-        public this(IntPtr wxobj)
-            { super(wxobj);}
+        public this(ЦУк шхобъ)
+            { super(шхобъ);}
 
-        public  this(Window parent, string message, string caption, string[] choices, int style = SingleChoiceDialog.wxCHOICEDLG_STYLE, Point pos = wxDefaultPosition)
-            { super(wxMultiChoiceDialog_ctor(wxObject.SafePtr(parent), message, caption, choices.length, choices.ptr, style, pos));}
+        public  this(Окно родитель, ткст message, ткст caption, ткст[] choices, цел стиль = SingleChoiceDialog.wxCHOICEDLG_STYLE, Точка поз = wxDefaultPosition)
+            { super(wxMultiChoiceDialog_ctor(wxObject.SafePtr(родитель), message, caption, choices.length, choices.ptr, стиль, поз));}
 
         //-----------------------------------------------------------------------------
 
-        public void SetSelections(int[] sel)
+        public проц SetSelections(цел[] sel)
         {
-            wxMultiChoiceDialog_SetSelections(wxobj, sel.ptr, sel.length);
+            wxMultiChoiceDialog_SetSelections(шхобъ, sel.ptr, sel.length);
         }
 
         //-----------------------------------------------------------------------------
 	
-        public int[] GetSelections()
+        public цел[] GetSelections()
         {
-            return (new ArrayInt(wxMultiChoiceDialog_GetSelections(wxobj), true)).toArray();
+            return (new МассивЦел(wxMultiChoiceDialog_GetSelections(шхобъ), да)).вМассив();
         }
         
     }
@@ -114,30 +114,30 @@ public import wx.ArrayInt;
 	//-----------------------------------------------------------------------------
 
 	//! \cond EXTERN
-	static extern (C) IntPtr wxGetSingleChoice_func(string message, string caption, int n, string* choices, IntPtr parent, int x, int y, bool centre, int width, int height);
-	static extern (C) int wxGetSingleChoiceIndex_func(string message, string caption, int n, string* choices, IntPtr parent, int x, int y, bool centre, int width, int height);
-	static extern (C) void* wxGetSingleChoiceData_func(string message, string caption, int n, string* choices, void **client_data, IntPtr parent, int x, int y, bool centre, int width, int height);
-	static extern (C) uint wxGetMultipleChoices_func(IntPtr selections,string message, string caption, int n, string* choices, IntPtr parent, int x, int y, bool centre, int width, int height);
+	static extern (C) ЦУк wxGetSingleChoice_func(ткст message, ткст caption, цел n, ткст* choices, ЦУк родитель, цел x, цел y, бул centre, цел ширина, цел высота);
+	static extern (C) цел wxGetSingleChoiceIndex_func(ткст message, ткст caption, цел n, ткст* choices, ЦУк родитель, цел x, цел y, бул centre, цел ширина, цел высота);
+	static extern (C) проц* wxGetSingleChoiceData_func(ткст message, ткст caption, цел n, ткст* choices, проц **client_data, ЦУк родитель, цел x, цел y, бул centre, цел ширина, цел высота);
+	static extern (C) бцел wxGetMultipleChoices_func(ЦУк selections,ткст message, ткст caption, цел n, ткст* choices, ЦУк родитель, цел x, цел y, бул centre, цел ширина, цел высота);
 	//! \endcond
 
-	public string GetSingleChoice(string message, string caption, string[] choices, Window parent = null, int x = -1, int y= -1, bool centre = true, int width = SingleChoiceDialog.wxCHOICE_WIDTH, int height = SingleChoiceDialog.wxCHOICE_HEIGHT)
+	public ткст GetSingleChoice(ткст message, ткст caption, ткст[] choices, Окно родитель = пусто, цел x = -1, цел y= -1, бул centre = да, цел ширина = SingleChoiceDialog.wxCHOICE_WIDTH, цел высота = SingleChoiceDialog.wxCHOICE_HEIGHT)
 	{
-		return cast(string) new wxString(wxGetSingleChoice_func(message, caption, choices.length, choices.ptr, wxObject.SafePtr(parent), x, y, centre, width, height), true);
+		return cast(ткст) new wxString(wxGetSingleChoice_func(message, caption, choices.length, choices.ptr, wxObject.SafePtr(родитель), x, y, centre, ширина, высота), да);
 	}
 
-	public int GetSingleChoiceIndex(string message, string caption, string[] choices, Window parent = null, int x = -1, int y= -1, bool centre = true, int width = SingleChoiceDialog.wxCHOICE_WIDTH, int height = SingleChoiceDialog.wxCHOICE_HEIGHT)
+	public цел GetSingleChoiceIndex(ткст message, ткст caption, ткст[] choices, Окно родитель = пусто, цел x = -1, цел y= -1, бул centre = да, цел ширина = SingleChoiceDialog.wxCHOICE_WIDTH, цел высота = SingleChoiceDialog.wxCHOICE_HEIGHT)
 	{
-		return wxGetSingleChoiceIndex_func(message, caption, choices.length, choices.ptr, wxObject.SafePtr(parent), x, y, centre, width, height);
+		return wxGetSingleChoiceIndex_func(message, caption, choices.length, choices.ptr, wxObject.SafePtr(родитель), x, y, centre, ширина, высота);
 	}
 
-	public void* GetSingleChoiceData(string message, string caption, string[] choices, void **client_data, Window parent = null, int x = -1, int y= -1, bool centre = true, int width = SingleChoiceDialog.wxCHOICE_WIDTH, int height = SingleChoiceDialog.wxCHOICE_HEIGHT)
+	public проц* GetSingleChoiceData(ткст message, ткст caption, ткст[] choices, проц **client_data, Окно родитель = пусто, цел x = -1, цел y= -1, бул centre = да, цел ширина = SingleChoiceDialog.wxCHOICE_WIDTH, цел высота = SingleChoiceDialog.wxCHOICE_HEIGHT)
 	{
-		return wxGetSingleChoiceData_func(message, caption, choices.length, choices.ptr, client_data, wxObject.SafePtr(parent), x, y, centre, width, height);
+		return wxGetSingleChoiceData_func(message, caption, choices.length, choices.ptr, client_data, wxObject.SafePtr(родитель), x, y, centre, ширина, высота);
 	}
 
-	public int[] GetMultipleChoices(string message, string caption, string[] choices, Window parent = null, int x = -1, int y= -1, bool centre = true, int width = SingleChoiceDialog.wxCHOICE_WIDTH, int height = SingleChoiceDialog.wxCHOICE_HEIGHT)
+	public цел[] GetMultipleChoices(ткст message, ткст caption, ткст[] choices, Окно родитель = пусто, цел x = -1, цел y= -1, бул centre = да, цел ширина = SingleChoiceDialog.wxCHOICE_WIDTH, цел высота = SingleChoiceDialog.wxCHOICE_HEIGHT)
 	{
-		ArrayInt ari = new ArrayInt();
-		uint sz = wxGetMultipleChoices_func(wxObject.SafePtr(ari), message, caption, choices.length, choices.ptr, wxObject.SafePtr(parent), x, y, centre, width, height);
-		return ari.toArray();
+		МассивЦел ari = new МассивЦел();
+		бцел sz = wxGetMultipleChoices_func(wxObject.SafePtr(ari), message, caption, choices.length, choices.ptr, wxObject.SafePtr(родитель), x, y, centre, ширина, высота);
+		return ari.вМассив();
 	}

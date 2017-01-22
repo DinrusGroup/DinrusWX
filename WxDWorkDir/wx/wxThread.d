@@ -6,7 +6,7 @@
 //
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: Thread.d,v 1.1 2007/08/21 20:58:44 afb Exp $
+// $Ид: Thread.d,v 1.1 2007/08/21 20:58:44 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.wxThread;
@@ -79,7 +79,7 @@ enum
 // POSIX implementation, they're less efficient. Second, and more importantly,
 // they CAN NOT BE USED WITH CONDITION VARIABLES under Unix! Using them with
 // wxCondition will work under Windows and some Unices (notably Linux) but will
-// deadlock under other Unix versions (e.g. Solaris). As it might be difficult
+// deadlock under other Unix versions (e.з. Solaris). As it might be difficult
 // to ensure that a recursive mutex is not used with wxCondition, it is a good
 // idea to avoid using recursive mutexes at all. Also, the last problem with
 // them is that some (older) Unix versions don't support this at all -- which
@@ -96,9 +96,9 @@ enum wxMutexType
 	//-----------------------------------------------------------------------------
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxMutex_ctor(int mutexType);
-		static extern (C) void wxMutex_dtor(IntPtr self);
-		static extern (C) bool wxMutex_IsOk(IntPtr self);
+		static extern (C) ЦУк wxMutex_ctor(цел mutexType);
+		static extern (C) проц wxMutex_dtor(ЦУк сам);
+		static extern (C) бул wxMutex_IsOk(ЦУк сам);
 		//! \endcond
 
 		//-----------------------------------------------------------------------------
@@ -106,39 +106,39 @@ enum wxMutexType
 	alias Mutex wxMutex;
 //! A mutex object is a synchronization object whose state is set to signaled
 //! when it is not owned by any thread, and nonsignaled when it is owned. Its
-//! name comes from its usefulness in coordinating mutually-exclusive access to
+//! имя comes from its usefulness in coordinating mutually-exclusive access to
 //! a shared resource. Only one thread at a time can own a mutex object.
 	public class Mutex : wxObject
 	{
-		public this(IntPtr wxobj)
+		public this(ЦУк шхобъ)
 		{ 
-			super(wxobj);
+			super(шхобъ);
 		}
 		
-		public bool IsOk()
+		public бул IsOk()
 		{
-			return wxMutex_IsOk(wxobj);
+			return wxMutex_IsOk(шхобъ);
 		}
 
-		override protected void dtor() { wxMutex_dtor(wxobj); }
+		override protected проц dtor() { wxMutex_dtor(шхобъ); }
 	}
 
 	alias MutexLocker wxMutexLocker;
 	public class MutexLocker : wxObject
 	{
-		public this(IntPtr wxobj)
+		public this(ЦУк шхобъ)
 		{ 
-			super(wxobj);
+			super(шхобъ);
 		}
 	}
 
 		//-----------------------------------------------------------------------------
 
 		//! \cond EXTERN
-		static extern (C) IntPtr wxCriticalSection_ctor(int mutexType);
-		static extern (C) void wxCriticalSection_dtor(IntPtr self);
-		static extern (C) void wxCriticalSection_Enter(IntPtr self);
-		static extern (C) void wxCriticalSection_Leave(IntPtr self);
+		static extern (C) ЦУк wxCriticalSection_ctor(цел mutexType);
+		static extern (C) проц wxCriticalSection_dtor(ЦУк сам);
+		static extern (C) проц wxCriticalSection_Enter(ЦУк сам);
+		static extern (C) проц wxCriticalSection_Leave(ЦУк сам);
 		//! \endcond
 
 	alias CriticalSection wxCriticalSection;
@@ -148,30 +148,30 @@ enum wxMutexType
 //! mutexes.
 	public class CriticalSection : wxObject
 	{
-		public this(IntPtr wxobj)
+		public this(ЦУк шхобъ)
 		{ 
-			super(wxobj);
+			super(шхобъ);
 		}
 		
-		public void Enter()
+		public проц Enter()
 		{
-			wxCriticalSection_Enter(wxobj);
+			wxCriticalSection_Enter(шхобъ);
 		}
 
-		public void Leave()
+		public проц Leave()
 		{
-			wxCriticalSection_Leave(wxobj);
+			wxCriticalSection_Leave(шхобъ);
 		}
 
-		override protected void dtor() { wxCriticalSection_dtor(wxobj); }
+		override protected проц dtor() { wxCriticalSection_dtor(шхобъ); }
 	}
 
 	alias CriticalSectionLocker wxCriticalSectionLocker;
 	public class CriticalSectionLocker : wxObject
 	{
-		public this(IntPtr wxobj)
+		public this(ЦУк шхобъ)
 		{ 
-			super(wxobj);
+			super(шхобъ);
 		}
 	}
 
@@ -182,9 +182,9 @@ enum wxMutexType
 //! thread(s) to wait until some condition is fulfilled
 	public class Condition : wxObject
 	{
-		public this(IntPtr wxobj)
+		public this(ЦУк шхобъ)
 		{ 
-			super(wxobj);
+			super(шхобъ);
 		}
 	}
 
@@ -195,9 +195,9 @@ enum wxMutexType
 //!              a shared resource
 	public class Semaphore : wxObject
 	{
-		public this(IntPtr wxobj)
+		public this(ЦУк шхобъ)
 		{ 
-			super(wxobj);
+			super(шхобъ);
 		}
 	}
 
@@ -207,30 +207,30 @@ enum wxMutexType
 //! wxThread: class encapsulating a thread of execution
 	public class Thread : wxObject
 	{
-		public this(IntPtr wxobj)
+		public this(ЦУк шхобъ)
 		{ 
-			super(wxobj);
+			super(шхобъ);
 		}
 	}
 
 	alias ThreadHelperThread wxThreadHelperThread;
 	public class ThreadHelperThread : wxObject
 	{
-		public this(IntPtr wxobj)
+		public this(ЦУк шхобъ)
 		{ 
-			super(wxobj);
+			super(шхобъ);
 		}
 	}
 
 	alias ThreadHelper wxThreadHelper;
 //! wxThreadHelper: this class implements the threading logic to run a
-//! background task in another object (such as a window).  It is a mix-in: just
+//! background task in another object (such as a окно).  It is a mix-in: just
 //! derive from it to implement a threading background task in your class.
 	public class ThreadHelper : wxObject
 	{
-		public this(IntPtr wxobj)
+		public this(ЦУк шхобъ)
 		{ 
-			super(wxobj);
+			super(шхобъ);
 		}
 	}
 

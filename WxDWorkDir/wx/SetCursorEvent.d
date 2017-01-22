@@ -10,7 +10,7 @@
 // (C) 2004 by Alexander Olk
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Id: SetCursorEvent.d,v 1.9 2006/11/17 15:21:00 afb Exp $
+// $Ид: SetCursorEvent.d,v 1.9 2006/11/17 15:21:00 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.SetCursorEvent;
@@ -21,46 +21,46 @@ public import wx.Event;
 public import wx.Cursor;
 
 		//! \cond EXTERN
-		static extern (C) IntPtr	wxSetCursorEvent_ctor(int x,int y);
-		static extern (C) int		wxSetCursorEvent_GetX(IntPtr self);
-		static extern (C) int		wxSetCursorEvent_GetY(IntPtr self);
-		static extern (C) void		wxSetCursorEvent_SetCursor(IntPtr self, IntPtr cursor);
-		static extern (C) IntPtr	wxSetCursorEvent_GetCursor(IntPtr self);
-		static extern (C) bool		wxSetCursorEvent_HasCursor(IntPtr self);
+		static extern (C) ЦУк	wxSetCursorEvent_ctor(цел x,цел y);
+		static extern (C) цел		wxSetCursorEvent_GetX(ЦУк сам);
+		static extern (C) цел		wxSetCursorEvent_GetY(ЦУк сам);
+		static extern (C) проц		wxSetCursorEvent_SetCursor(ЦУк сам, ЦУк cursor);
+		static extern (C) ЦУк	wxSetCursorEvent_GetCursor(ЦУк сам);
+		static extern (C) бул		wxSetCursorEvent_HasCursor(ЦУк сам);
 		//! \endcond
 		
 		//-----------------------------------------------------------------------------
 
 	alias SetCursorEvent wxSetCursorEvent;
-	public class SetCursorEvent : Event
+	public class SetCursorEvent : Событие
 	{
-		public this(IntPtr wxobj) 
-			{ super(wxobj); }
+		public this(ЦУк шхобъ) 
+			{ super(шхобъ); }
 
-		public this(int x=0,int y=0)
+		public this(цел x=0,цел y=0)
 			{ this(wxSetCursorEvent_ctor(x,y)); }
 
 		//-----------------------------------------------------------------------------	
 		
-		public int X() { return wxSetCursorEvent_GetX(wxobj); }
+		public цел X() { return wxSetCursorEvent_GetX(шхобъ); }
 		
 		//-----------------------------------------------------------------------------	
 		
-		public int Y() { return wxSetCursorEvent_GetY(wxobj); }
+		public цел Y() { return wxSetCursorEvent_GetY(шхобъ); }
 		
 		//-----------------------------------------------------------------------------	
 		
-		public Cursor cursor() { return cast(Cursor)FindObject(wxSetCursorEvent_GetCursor(wxobj), &Cursor.New); }
-		public void cursor(Cursor value) { wxSetCursorEvent_SetCursor(wxobj, wxObject.SafePtr(value)); }
+		public Cursor cursor() { return cast(Cursor)FindObject(wxSetCursorEvent_GetCursor(шхобъ), &Cursor.Нов); }
+		public проц cursor(Cursor значение) { wxSetCursorEvent_SetCursor(шхобъ, wxObject.SafePtr(значение)); }
 		
 		//-----------------------------------------------------------------------------	
 		
-		public bool HasCursor() { return wxSetCursorEvent_HasCursor(wxobj); }
+		public бул HasCursor() { return wxSetCursorEvent_HasCursor(шхобъ); }
 
-		private static Event New(IntPtr obj) { return new SetCursorEvent(obj); }
+		private static Событие Нов(ЦУк объ) { return new SetCursorEvent(объ); }
 
 		static this()
 		{
-			AddEventType(wxEVT_SET_CURSOR,				&SetCursorEvent.New);
+			ДобавьТипСоб(wxEVT_SET_CURSOR,				&SetCursorEvent.Нов);
 		}
 	}
