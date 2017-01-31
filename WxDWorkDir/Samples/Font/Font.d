@@ -252,7 +252,7 @@ alias std.ткст.find indexOf;
 		
 		public проц OnViewMsg( Объект sender, Событие e )
 		{
-			FileDialog dialog = new FileDialog( this, "Открой an email message file", s_dir, s_file, "*" );
+			FileДиалог dialog = new FileДиалог( this, "Открой an email message file", s_dir, s_file, "*" );
 			if ( dialog.ShowModal() != wxID_OK ) return;
 			
 			s_dir = dialog.Directory;
@@ -351,7 +351,7 @@ alias std.ткст.find indexOf;
 		public проц OnAbout( Объект sender, Событие e )
 		{
 			MessageBox( this, "wxWidgets шрифт demo\n(c) 1999 Vadim Zeitlin\nPorted to wxD by BERO",
-				"About Шрифт", Dialog.wxOK | Dialog.wxICON_INFORMATION );
+				"About Шрифт", Диалог.wxOK | Диалог.wxICON_INFORMATION );
 		}		
 		
 		//---------------------------------------------------------------------
@@ -451,7 +451,7 @@ alias std.ткст.find indexOf;
 			данные.InitialFont = m_canvas.TextFont;
 			данные.colour = m_canvas.colour;
 			
-			FontDialog dialog = new FontDialog( this, данные );
+			FontДиалог dialog = new FontДиалог( this, данные );
 			if ( dialog.ShowModal() == wxID_OK )
 			{
 				FontData refData = dialog.fontData;

@@ -309,8 +309,8 @@ alias std.ткст.find indexOf;
 				
 				if ( idx != -1 && m_notebook.GetPageText( idx ) == "Veto" )
 				{
-					MessageDialog md = new MessageDialog( this, "Are you sure you want to leave this notebook page?\n(This demonstrates veto-ing)",
-							"Notebook sample", Dialog.wxICON_QUESTION | Dialog.wxYES_NO );
+					MessageДиалог md = new MessageДиалог( this, "Are you sure you want to leave this notebook page?\n(This demonstrates veto-ing)",
+							"Notebook sample", Диалог.wxICON_QUESTION | Диалог.wxYES_NO );
 						
 					if ( md.ShowModal() != wxID_YES )
 					{

@@ -119,7 +119,7 @@ pragma(lib,"wxd.lib");
 		public проц OnButtonClicked( Объект sender, Событие e )
 		{
 			MessageBox("I get called first", "Message dialog EventDemoFrame",
-							Dialog.wxOK | Dialog.wxICON_INFORMATION);
+							Диалог.wxOK | Диалог.wxICON_INFORMATION);
 		}
 		
 		//---------------------------------------------------------------------
@@ -134,7 +134,7 @@ pragma(lib,"wxd.lib");
 		public проц OnMenuAboutClicked( Объект sender, Событие e )
 		{
 			MessageBox("This is the about Box...", "EventDemoFrame About...",
-							Dialog.wxOK | Dialog.wxICON_INFORMATION);
+							Диалог.wxOK | Диалог.wxICON_INFORMATION);
 		}
 		
 		//---------------------------------------------------------------------
@@ -187,7 +187,7 @@ pragma(lib,"wxd.lib");
 		public проц OnButtonClicked( Объект sender, Событие e )
 		{
 			MessageBox("I am second", "Message dialog DummyClass1",
-							Dialog.wxOK | Dialog.wxICON_INFORMATION);
+							Диалог.wxOK | Диалог.wxICON_INFORMATION);
 		}
 	}
 	
@@ -198,7 +198,7 @@ pragma(lib,"wxd.lib");
 		public проц OnButtonClicked( Объект sender, Событие e )
 		{
 			MessageBox("And I am the third", "Message dialog DummyClass2",
-							Dialog.wxOK | Dialog.wxICON_INFORMATION);
+							Диалог.wxOK | Диалог.wxICON_INFORMATION);
 		}
 	}
 

@@ -54,7 +54,7 @@ import FileNameFunc;   // Normalize file путь.
 
 // global print данные, to remember settings during the session
 PrintData g_printData = пусто;
-PageSetupDialogData g_pageSetupData = пусто;
+PageSetupДиалогData g_pageSetupData = пусто;
 
 //============================================================================
 // implementations
@@ -87,7 +87,7 @@ public class StyledTextApp : Прил {
 
 		// инициализуй print данные and setup
 		g_printData = new PrintData;
-		g_pageSetupData = new PageSetupDialogData;
+		g_pageSetupData = new PageSetupДиалогData;
 
 		// create application frame
 		frame = new AppFrame (assumeUnique(g_appname));
@@ -222,8 +222,8 @@ public class AppFrame : Frame
 		if (!edit) return;
 		
 		ткст fname;
-		scope FileDialog dlg = new FileDialog(this, "Открой file", "", "", "Any file (*)|*",
-			FileDialog.wxOPEN | FileDialog.wxFILE_MUST_EXIST | FileDialog.wxCHANGE_DIR);
+		scope FileДиалог dlg = new FileДиалог(this, "Открой file", "", "", "Any file (*)|*",
+			FileДиалог.wxOPEN | FileДиалог.wxFILE_MUST_EXIST | FileДиалог.wxCHANGE_DIR);
 		
 		if (dlg.ShowModal() != wxID_OK) return;
 
@@ -236,7 +236,7 @@ public class AppFrame : Frame
 		if (!edit) return;
 
 		if (!edit.Modified()) {
-			MessageBox("There is nothing to save!", "Save file", Dialog.wxOK | Dialog.wxICON_EXCLAMATION);
+			MessageBox("There is nothing to save!", "Save file", Диалог.wxOK | Диалог.wxICON_EXCLAMATION);
 			return;
 		}
 		edit.СохраниФайл ();
@@ -247,9 +247,9 @@ public class AppFrame : Frame
 		if (!edit) return;
 
 		ткст фимя;
-		scope FileDialog dlg = new FileDialog(this, "Save file", "", "", "Any file (*)|*",
+		scope FileДиалог dlg = new FileДиалог(this, "Save file", "", "", "Any file (*)|*",
 		
-			FileDialog.wxSAVE | FileDialog.wxOVERWRITE_PROMPT);
+			FileДиалог.wxSAVE | FileДиалог.wxOVERWRITE_PROMPT);
 
 		if (dlg.ShowModal() != wxID_OK) return;
 
@@ -263,11 +263,11 @@ public class AppFrame : Frame
 
 		if (edit.Modified()) {
 			if (MessageBox("Текст is not saved, save before closing?", "Закрой",
-					Dialog.wxYES_NO | Dialog.wxICON_QUESTION) == Dialog.wxYES) {
+					Диалог.wxYES_NO | Диалог.wxICON_QUESTION) == Диалог.wxYES) {
 				edit.СохраниФайл();
 				if (edit.Modified()) {
 					MessageBox("Текст could not be saved!", "Закрой abort",
-							Dialog.wxOK | Dialog.wxICON_EXCLAMATION);
+							Диалог.wxOK | Диалог.wxICON_EXCLAMATION);
 					return;
 				}
 			}
@@ -290,22 +290,22 @@ public class AppFrame : Frame
 	public проц OnPrintSetup (Объект sender, Событие event)
 	{
 		g_pageSetupData.printData = g_printData;
-		PageSetupDialog pageSetupDialog = new PageSetupDialog(this, g_pageSetupData);
-		pageSetupDialog.ShowModal();
-		g_printData = pageSetupDialog.PageSetupData.printData;
-		g_pageSetupData = pageSetupDialog.PageSetupData;
+		PageSetupДиалог pageSetupДиалог = new PageSetupДиалог(this, g_pageSetupData);
+		pageSetupДиалог.ShowModal();
+		g_printData = pageSetupДиалог.PageSetupData.printData;
+		g_pageSetupData = pageSetupДиалог.PageSetupData;
 	}
 
 	public проц OnPrintPreview (Объект sender, Событие event)
 	{
-		PrintDialogData printDialogData = new PrintDialogData(g_printData);
+		PrintДиалогData printДиалогData = new PrintДиалогData(g_printData);
 		PrintPreview preview = new PrintPreview (new EditPrint (edit),
-			new EditPrint (edit), printDialogData);
+			new EditPrint (edit), printДиалогData);
 		
 		if (!preview.Ок()) {
 			MessageBox ("There was a problem with previewing.\n" ~
 							 "Perhaps your current printer is not correctly?",
-						  "Previewing", Dialog.wxOK);
+						  "Previewing", Диалог.wxOK);
 			return;
 		}
 
@@ -319,18 +319,18 @@ public class AppFrame : Frame
 
 	public проц OnPrint (Объект sender, Событие event)
 	{
-		PrintDialogData printDialogData = new PrintDialogData(g_printData);
-		Printer printer = new Printer(printDialogData);
+		PrintДиалогData printДиалогData = new PrintДиалогData(g_printData);
+		Printer printer = new Printer(printДиалогData);
 		EditPrint printout = new EditPrint(edit);
 		if (!printer.Print (this, printout, да)) {
 			if (printer.LastError() == PrinterError.wxPRINTER_ERROR) {
 			MessageBox ("There was a problem with printing.\n" ~
 						  "Perhaps your current printer is not correctly?",
-						  "Previewing", Dialog.wxOK);
+						  "Previewing", Диалог.wxOK);
 				return;
 			}
 		}
-		g_printData = printer.printDialogData.printData;
+		g_printData = printer.printДиалогData.printData;
 	}
 
 	// edit events
@@ -482,7 +482,7 @@ public class AppFrame : Frame
 // AppAbout
 //----------------------------------------------------------------------------
 
-public class AppAbout : Dialog
+public class AppAbout : Диалог
 {
 	private Timer timer;
 

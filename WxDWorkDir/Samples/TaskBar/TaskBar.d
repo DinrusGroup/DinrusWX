@@ -12,7 +12,7 @@
 import wx.wx;
 
 // Declare two frames
-MyDialog   dialog = пусто;
+MyДиалог   dialog = пусто;
 
 проц main()
 {
@@ -28,7 +28,7 @@ public:
 бул ПриИниц()
 {
     // Create the main frame окно
-    dialog = new MyDialog(пусто, wxID_ANY, "wxTaskBarIcon Test Dialog", Dialog.wxDefaultPosition, wxSize(365, 290));
+    dialog = new MyДиалог(пусто, wxID_ANY, "wxTaskBarIcon Test Диалог", Диалог.wxDefaultPosition, wxSize(365, 290));
 
     dialog.Show(да);
 
@@ -37,7 +37,7 @@ public:
 
 }
 
-class MyDialog: wxDialog
+class MyДиалог: wxDialog
 {
 public:
 

@@ -20,7 +20,7 @@ import wx.wx;
 		{
 			About = MenuIDs.wxID_ABOUT,
 			Quit = MenuIDs.wxID_EXIT,
-			Dialog = MenuIDs.wxID_HIGHEST + 1
+			Диалог = MenuIDs.wxID_HIGHEST + 1
 		}
 
 		//---------------------------------------------------------------------
@@ -38,7 +38,7 @@ import wx.wx;
 			// Установи up a меню
 
 			Меню fileMenu = new Меню();
-			fileMenu.Append(Cmd.Dialog, "&Show dialog\tAlt-D", "Show test dialog");
+			fileMenu.Append(Cmd.Диалог, "&Show dialog\tAlt-D", "Show test dialog");
 			fileMenu.Append(Cmd.Quit, "E&xit\tAlt-X", "Quit this program");
 
 			Меню helpMenu = new Меню();
@@ -58,7 +58,7 @@ import wx.wx;
 			// Установи up the event table
 
 			EVT_MENU(Cmd.Quit,    &OnQuit);
-			EVT_MENU(Cmd.Dialog,  &OnDialog);
+			EVT_MENU(Cmd.Диалог,  &OnДиалог);
 			EVT_MENU(Cmd.About,   &OnAbout);
 		}
 
@@ -71,9 +71,9 @@ import wx.wx;
 
 		//---------------------------------------------------------------------
 
-		public проц OnDialog(Объект sender, Событие e)
+		public проц OnДиалог(Объект sender, Событие e)
 		{
-            Dialog dialog = new Dialog( this, -1, "Test dialog", Точка(50,50), Размер(450,340) );
+            Диалог dialog = new Диалог( this, -1, "Test dialog", Точка(50,50), Размер(450,340) );
             BoxSizer main_sizer = new BoxSizer( Ориентация.wxVERTICAL );
 
             StaticBoxSizer top_sizer = new StaticBoxSizer( new StaticBox( dialog, -1, "Bitmaps" ), Ориентация.wxHORIZONTAL );
@@ -101,7 +101,7 @@ import wx.wx;
 		public проц OnAbout(Объект sender, Событие e)
 		{
 			ткст msg = "This is the About dialog of the minimal sample.\nWelcome to " ~ wxVERSION_STRING;
-			MessageBox(this, msg, "About Minimal", Dialog.wxOK | Dialog.wxICON_INFORMATION);
+			MessageBox(this, msg, "About Minimal", Диалог.wxOK | Диалог.wxICON_INFORMATION);
 		}
 
 		//---------------------------------------------------------------------

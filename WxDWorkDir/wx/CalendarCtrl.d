@@ -17,7 +17,7 @@ module wx.CalendarCtrl;
 public import wx.common;
 public import wx.wxDateTime;
 public import wx.Colour;
-public import wx.Шрифт;
+public import wx.Font;
 public import wx.Control;
 public import wx.CommandEvent;
 

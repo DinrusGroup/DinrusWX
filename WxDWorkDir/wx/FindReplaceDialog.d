@@ -1,16 +1,16 @@
 ﻿//-----------------------------------------------------------------------------
-// wxD - FindReplaceDialog.d
+// wxD - FindReplaceДиалог.d
 // (C) 2005 bero <berobero@users.sourceforge.net>
 // based on
-// wx.NET - FindReplaceDialog.cs
+// wx.NET - FindReplaceДиалог.cs
 //
-/// The wxFindReplaceDialog wrapper class.
+/// The wxFindReplaceДиалог wrapper class.
 //
 // Written by Bryan Bulten (bryan@bulten.ca)
 // (C) 2003 Bryan Bulten
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Ид: FindReplaceDialog.d,v 1.10 2007/01/28 23:06:36 afb Exp $
+// $Ид: FindReplaceДиалог.d,v 1.10 2007/01/28 23:06:36 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.FindReplaceDialog;
@@ -19,17 +19,17 @@ public import wx.Dialog;
 public import wx.CommandEvent;
 
 		//! \cond EXTERN
-        static extern (C) ЦУк wxFindReplaceDialog_ctor();
-        static extern (C) бул   wxFindReplaceDialog_Create(ЦУк сам, ЦУк родитель, ЦУк данные, ткст title, бцел стиль);
+        static extern (C) ЦУк wxFindReplaceДиалог_ctor();
+        static extern (C) бул   wxFindReplaceДиалог_Create(ЦУк сам, ЦУк родитель, ЦУк данные, ткст title, бцел стиль);
 
-        static extern (C) ЦУк wxFindReplaceDialog_GetData(ЦУк сам);
-        static extern (C) проц   wxFindReplaceDialog_SetData(ЦУк сам, ЦУк данные);
+        static extern (C) ЦУк wxFindReplaceДиалог_GetData(ЦУк сам);
+        static extern (C) проц   wxFindReplaceДиалог_SetData(ЦУк сам, ЦУк данные);
 		//! \endcond
 
         //-----------------------------------------------------------------------------
 
-    alias FindReplaceDialog wxFindReplaceDialog;
-    public class FindReplaceDialog : Dialog
+    alias FindReplaceДиалог wxFindReplaceДиалог;
+    public class FindReplaceДиалог : Диалог
     {
         public const цел wxFR_DOWN       = 1;
         public const цел wxFR_WHOLEWORD  = 2;
@@ -46,26 +46,26 @@ public import wx.CommandEvent;
             { super(шхобъ); }
 
         public this()
-            { super(wxFindReplaceDialog_ctor()); }
+            { super(wxFindReplaceДиалог_ctor()); }
 
         public this(Окно родитель, FindReplaceData данные, ткст title, цел стиль = 0)
         {
-        	super(wxFindReplaceDialog_ctor());
+        	super(wxFindReplaceДиалог_ctor());
             if (!Create(родитель, данные, title, стиль))
             {
-                throw new InvalidOperationException("Could not create FindReplaceDialog");
+                throw new InvalidOperationException("Could not create FindReplaceДиалог");
             }
         }
 
         public бул Create(Окно родитель, FindReplaceData данные, ткст title, цел стиль = 0)
         {
-            return wxFindReplaceDialog_Create(шхобъ, wxObject.SafePtr(родитель), wxObject.SafePtr(данные), title, cast(бцел)стиль);
+            return wxFindReplaceДиалог_Create(шхобъ, wxObject.SafePtr(родитель), wxObject.SafePtr(данные), title, cast(бцел)стиль);
         }
 
         //-----------------------------------------------------------------------------
 
-        public FindReplaceData Data() { return cast(FindReplaceData)FindObject(wxFindReplaceDialog_GetData(шхобъ), &FindReplaceData.Нов); }
-        public проц Data(FindReplaceData значение) { wxFindReplaceDialog_SetData(шхобъ, wxObject.SafePtr(значение)); } 
+        public FindReplaceData Data() { return cast(FindReplaceData)FindObject(wxFindReplaceДиалог_GetData(шхобъ), &FindReplaceData.Нов); }
+        public проц Data(FindReplaceData значение) { wxFindReplaceДиалог_SetData(шхобъ, wxObject.SafePtr(значение)); } 
 
         //-----------------------------------------------------------------------------
 
@@ -88,24 +88,24 @@ public import wx.CommandEvent;
 	//-----------------------------------------------------------------------------
 
 		//! \cond EXTERN
-        static extern (C) ЦУк wxFindDialogEvent_ctor(цел commandType, цел ид);
+        static extern (C) ЦУк wxFindДиалогEvent_ctor(цел commandType, цел ид);
 
-        static extern (C) цел    wxFindDialogEvent_GetFlags(ЦУк сам);
-        static extern (C) проц   wxFindDialogEvent_SetFlags(ЦУк сам, цел флаги);
+        static extern (C) цел    wxFindДиалогEvent_GetFlags(ЦУк сам);
+        static extern (C) проц   wxFindДиалогEvent_SetFlags(ЦУк сам, цел флаги);
 
-        static extern (C) ЦУк wxFindDialogEvent_GetFindString(ЦУк сам);
-        static extern (C) проц   wxFindDialogEvent_SetFindString(ЦУк сам, ткст str);
+        static extern (C) ЦУк wxFindДиалогEvent_GetFindString(ЦУк сам);
+        static extern (C) проц   wxFindДиалогEvent_SetFindString(ЦУк сам, ткст str);
 
-        static extern (C) ЦУк wxFindDialogEvent_GetReplaceString(ЦУк сам);
-        static extern (C) проц   wxFindDialogEvent_SetReplaceString(ЦУк сам, ткст str);
+        static extern (C) ЦУк wxFindДиалогEvent_GetReplaceString(ЦУк сам);
+        static extern (C) проц   wxFindДиалогEvent_SetReplaceString(ЦУк сам, ткст str);
 
-        static extern (C) ЦУк wxFindDialogEvent_GetDialog(ЦУк сам);
+        static extern (C) ЦУк wxFindДиалогEvent_GetДиалог(ЦУк сам);
 		//! \endcond
 
         //-----------------------------------------------------------------------------
 
-    alias FindDialogEvent wxFindDialogEvent;
-    public class FindDialogEvent : CommandEvent
+    alias FindДиалогEvent wxFindДиалогEvent;
+    public class FindДиалогEvent : CommandEvent
     {
 	static this()
 	{
@@ -115,11 +115,11 @@ public import wx.CommandEvent;
 			wxEVT_COMMAND_FIND_REPLACE_ALL = wxEvent_EVT_COMMAND_FIND_REPLACE_ALL();
 			wxEVT_COMMAND_FIND_CLOSE = wxEvent_EVT_COMMAND_FIND_CLOSE();
 
-			ДобавьТипСоб(wxEVT_COMMAND_FIND,	&FindDialogEvent.Нов);
-			ДобавьТипСоб(wxEVT_COMMAND_FIND_NEXT,	&FindDialogEvent.Нов);
-			ДобавьТипСоб(wxEVT_COMMAND_FIND_REPLACE,	&FindDialogEvent.Нов);
-			ДобавьТипСоб(wxEVT_COMMAND_FIND_REPLACE_ALL,	&FindDialogEvent.Нов);
-			ДобавьТипСоб(wxEVT_COMMAND_FIND_CLOSE,	&FindDialogEvent.Нов);
+			ДобавьТипСоб(wxEVT_COMMAND_FIND,	&FindДиалогEvent.Нов);
+			ДобавьТипСоб(wxEVT_COMMAND_FIND_NEXT,	&FindДиалогEvent.Нов);
+			ДобавьТипСоб(wxEVT_COMMAND_FIND_REPLACE,	&FindДиалогEvent.Нов);
+			ДобавьТипСоб(wxEVT_COMMAND_FIND_REPLACE_ALL,	&FindДиалогEvent.Нов);
+			ДобавьТипСоб(wxEVT_COMMAND_FIND_CLOSE,	&FindДиалогEvent.Нов);
 	
 	}
 
@@ -127,28 +127,28 @@ public import wx.CommandEvent;
             { super(шхобъ); }
 
         public this(цел commandType, цел ид)
-            { super(wxFindDialogEvent_ctor(commandType, ид)); }
+            { super(wxFindДиалогEvent_ctor(commandType, ид)); }
 
-	public static Событие Нов(ЦУк ptr) { return new FindDialogEvent(ptr); }
-
-        //-----------------------------------------------------------------------------
-
-        public цел Флаги() { return wxFindDialogEvent_GetFlags(шхобъ); }
-        public проц Флаги(цел значение) { wxFindDialogEvent_SetFlags(шхобъ, значение); }
+	public static Событие Нов(ЦУк ptr) { return new FindДиалогEvent(ptr); }
 
         //-----------------------------------------------------------------------------
 
-        public ткст FindString() { return cast(ткст) new wxString(wxFindDialogEvent_GetFindString(шхобъ), да); }
-        public проц FindString(ткст значение) { wxFindDialogEvent_SetFindString(шхобъ, значение); }
+        public цел Флаги() { return wxFindДиалогEvent_GetFlags(шхобъ); }
+        public проц Флаги(цел значение) { wxFindДиалогEvent_SetFlags(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public ткст ReplaceString() { return cast(ткст) new wxString(wxFindDialogEvent_GetReplaceString(шхобъ), да); }
-        public проц ReplaceString(ткст значение) { wxFindDialogEvent_SetReplaceString(шхобъ, значение); }
+        public ткст FindString() { return cast(ткст) new wxString(wxFindДиалогEvent_GetFindString(шхобъ), да); }
+        public проц FindString(ткст значение) { wxFindДиалогEvent_SetFindString(шхобъ, значение); }
 
         //-----------------------------------------------------------------------------
 
-        public FindReplaceDialog Dialog() { return cast(FindReplaceDialog)FindObject(wxFindDialogEvent_GetDialog(шхобъ)); }
+        public ткст ReplaceString() { return cast(ткст) new wxString(wxFindДиалогEvent_GetReplaceString(шхобъ), да); }
+        public проц ReplaceString(ткст значение) { wxFindДиалогEvent_SetReplaceString(шхобъ, значение); }
+
+        //-----------------------------------------------------------------------------
+
+        public FindReplaceДиалог Диалог() { return cast(FindReplaceДиалог)FindObject(wxFindДиалогEvent_GetДиалог(шхобъ)); }
     }
 
 	//-----------------------------------------------------------------------------

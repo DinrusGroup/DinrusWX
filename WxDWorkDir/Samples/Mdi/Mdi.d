@@ -101,7 +101,7 @@ struct ArrayList /* for .NET compatibility */
 		
 		public проц OnAbout( Объект sender, Событие e )
 		{
-			MessageDialog md = new MessageDialog( this, "wxWidgets 2.0 MDI Demo\nPorted to wxD by Alexander Olk 2004\n", "About MDI Demo" );
+			MessageДиалог md = new MessageДиалог( this, "wxWidgets 2.0 MDI Demo\nPorted to wxD by Alexander Olk 2004\n", "About MDI Demo" );
 			md.ShowModal();
 		}
 
@@ -134,7 +134,7 @@ struct ArrayList /* for .NET compatibility */
 			if ( ce.CanVeto && MyFrame.gs_nFrames > 0 )
 			{
 				ткст msg = .toString(gs_nFrames) ~ " windows still open, close anyhow?";
-				MessageDialog md = new MessageDialog( this, msg, "Please confirm", Dialog.wxICON_QUESTION | Dialog.wxYES_NO );
+				MessageДиалог md = new MessageДиалог( this, msg, "Please confirm", Диалог.wxICON_QUESTION | Диалог.wxYES_NO );
 				if ( md.ShowModal() != wxID_YES )
 				{
 					ce.Veto();
@@ -440,8 +440,8 @@ struct ArrayList /* for .NET compatibility */
 
 			if ( canvas && canvas.IsDirty )
 			{
-				MessageDialog md = new MessageDialog( пусто, "Really close ?", "Please confirm", 
-						Dialog.wxICON_QUESTION | Dialog.wxYES_NO );
+				MessageДиалог md = new MessageДиалог( пусто, "Really close ?", "Please confirm", 
+						Диалог.wxICON_QUESTION | Диалог.wxYES_NO );
 				if ( md.ShowModal() != wxID_YES )
 				{
 					ce.Veto();

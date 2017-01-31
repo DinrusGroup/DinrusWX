@@ -1,8 +1,8 @@
 ﻿//-----------------------------------------------------------------------------
-// wxD - Dialog.d
+// wxD - Диалог.d
 // (C) 2005 bero <berobero@users.sourceforge.net>
 // based on
-// wx.NET - Dialog.cs
+// wx.NET - Диалог.cs
 //
 /// The wxDialog wrapper class.
 //
@@ -10,7 +10,7 @@
 // (C) 2003 by 379, Inc.
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Ид: Dialog.d,v 1.11 2007/04/19 19:45:26 afb Exp $
+// $Ид: Диалог.d,v 1.11 2007/04/19 19:45:26 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.Dialog;
@@ -42,12 +42,12 @@ public import wx.Window;
 
 		//---------------------------------------------------------------------
 		
-	alias Dialog wxDialog;
+	alias Диалог wxDialog;
 	/// A dialog box is a окно with a title bar and sometimes a
 	/// system меню, which can be moved around the screen. It can contain
 	/// controls and other windows and is usually used to allow the user
 	/// to make some choice or to answer a question.
-	public class Dialog : Окно
+	public class Диалог : Окно
 	{
 		enum {
 		wxCENTER		= 0x00000001,
@@ -93,7 +93,7 @@ public import wx.Window;
 			super(wxDialog_ctor());
 			if (!Create(родитель, ид, title, поз, size, стиль, имя))
 			{
-				throw new InvalidOperationException("Failed to create Dialog");
+				throw new InvalidOperationException("Не удалось создать Диалог");
 			}
 		}
 		

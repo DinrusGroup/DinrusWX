@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------
-// $Ид: CompareModesDialog.d,v 1.9 2006/11/17 15:20:57 afb Exp $
+// $Ид: CompareModesДиалог.d,v 1.9 2006/11/17 15:20:57 afb Exp $
 // Michael S. Muegel mike _at_ muegel dot org
 //
 // Licensed	under the Widgets license, see LICENSE.txt for details.
@@ -9,7 +9,7 @@
 import wx.wx;
 import wx.Display;
 
-	public class CompareModesDialog : Dialog
+	public class CompareModesДиалог : Диалог
 
 	{
 

@@ -148,7 +148,7 @@ alias writefln PRINT;
         {
             ткст msg = "This is the wxWidgets controls sample written in D.";
             MessageBox(this, msg, "About Controls",
-                                       Dialog.wxOK);
+                                       Диалог.wxOK);
         }
 
         //---------------------------------------------------------------------
@@ -1115,16 +1115,16 @@ alias writefln PRINT;
 				return;
 			}
 			
-			ProgressDialog pd = new ProgressDialog("Progress dialog example",
+			ProgressДиалог pd = new ProgressДиалог("Progress dialog example",
 													"An informative message",
 													max,
 													this,
-													ProgressDialog.wxPD_CAN_ABORT |
-													ProgressDialog.wxPD_AUTO_HIDE |
-													ProgressDialog.wxPD_APP_MODAL |
-													ProgressDialog.wxPD_ELAPSED_TIME |
-													ProgressDialog.wxPD_ESTIMATED_TIME |
-													ProgressDialog.wxPD_REMAINING_TIME );
+													ProgressДиалог.wxPD_CAN_ABORT |
+													ProgressДиалог.wxPD_AUTO_HIDE |
+													ProgressДиалог.wxPD_APP_MODAL |
+													ProgressДиалог.wxPD_ELAPSED_TIME |
+													ProgressДиалог.wxPD_ESTIMATED_TIME |
+													ProgressДиалог.wxPD_REMAINING_TIME );
 													
 			бул cont = да;
 			for ( цел i = 0; i <= max; i++ )
@@ -1149,7 +1149,7 @@ alias writefln PRINT;
 			{
 				текст.AppendText("Progress dialog aborted!\n");
 				
-				// use Dispose() or Show(нет) to close the ProgressDialog
+				// use Dispose() or Show(нет) to close the ProgressДиалог
 				// otherwise the dialog won't get closed and the прил hangs
 				//pd.Dispose();
 				pd.Show(нет);
@@ -1166,10 +1166,10 @@ alias writefln PRINT;
 			цел selOld = ne.OldSelection;
 			if ( selOld == 2 )
 			{
-				MessageDialog md = new MessageDialog(this, "This demonstrates how a program may prevent the\n" ~
+				MessageДиалог md = new MessageДиалог(this, "This demonstrates how a program may prevent the\n" ~
 									"page change from taking place - if you select\n" ~
 									"[No] the current page will stay the third one\n",
-									"Control sample", Dialog.wxNO_DEFAULT|Dialog.wxICON_QUESTION | Dialog.wxYES_NO);
+									"Control sample", Диалог.wxNO_DEFAULT|Диалог.wxICON_QUESTION | Диалог.wxYES_NO);
 				
 				if ( md.ShowModal() != wxID_YES )
 				{					

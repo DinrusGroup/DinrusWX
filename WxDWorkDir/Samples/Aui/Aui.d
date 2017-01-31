@@ -518,7 +518,7 @@ else
 
   проц OnCreatePerspective(Объект sender, Событие event)
   {
-    TextEntryDialog dlg = new TextEntryDialog(this, "Enter a имя for the new perspective:",
+    TextEntryДиалог dlg = new TextEntryДиалог(this, "Enter a имя for the new perspective:",
                 "wxAUI Test");
 
     dlg.Value = format("Perspective %d", m_perspectives.length+1);
@@ -1084,7 +1084,7 @@ private:
 
   проц OnSetColor(Объект sender, Событие event)
   {
-    ColourDialog dlg = new ColourDialog(m_frame);
+    ColourДиалог dlg = new ColourДиалог(m_frame);
     dlg.Title = "Color Picker";
     if (dlg.ShowModal() != wxID_OK)
       return;

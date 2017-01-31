@@ -31,8 +31,8 @@ import wx.wx;
 			CreateStatusBar( 1 );
 			
 			EVT_MENU( XmlResource.XRCID( "exit_tool_or_menuitem" ), & OnExitToolOrMenuCommand ) ;
-			EVT_MENU( XmlResource.XRCID( "non_derived_dialog_tool_or_menuitem" ), & OnNonDerivedDialogToolOrMenuCommand ) ;
-			EVT_MENU( XmlResource.XRCID( "derived_tool_or_menuitem" ), & OnDerivedDialogToolOrMenuCommand ) ;
+			EVT_MENU( XmlResource.XRCID( "non_derived_dialog_tool_or_menuitem" ), & OnNonDerivedДиалогToolOrMenuCommand ) ;
+			EVT_MENU( XmlResource.XRCID( "derived_tool_or_menuitem" ), & OnDerivedДиалогToolOrMenuCommand ) ;
 			EVT_MENU( XmlResource.XRCID( "controls_tool_or_menuitem" ), & OnControlsToolOrMenuCommand ) ;
 			EVT_MENU( XmlResource.XRCID( "uncentered_tool_or_menuitem" ), & OnUncenteredToolOrMenuCommand ) ;
 			EVT_MENU( XmlResource.XRCID( "custom_class_tool_or_menuitem" ), & OnCustomClassToolOrMenuCommand ) ;
@@ -52,20 +52,20 @@ import wx.wx;
 		
 		//---------------------------------------------------------------------	
 		
-		public проц OnNonDerivedDialogToolOrMenuCommand( Объект sender, Событие e )
+		public проц OnNonDerivedДиалогToolOrMenuCommand( Объект sender, Событие e )
 		{
-			Dialog dlg = XmlResource.Get().LoadDialog(this, "non_derived_dialog" ); 
+			Диалог dlg = XmlResource.Get().LoadДиалог(this, "non_derived_dialog" ); 
 			
 			dlg.ShowModal();
 		}
 		
 		//---------------------------------------------------------------------	
 		
-		public проц OnDerivedDialogToolOrMenuCommand( Объект sender, Событие e )
+		public проц OnDerivedДиалогToolOrMenuCommand( Объект sender, Событие e )
 		{
-			PreferencesDialog preferencesDialog = new PreferencesDialog( this );
+			PreferencesДиалог preferencesДиалог = new PreferencesДиалог( this );
 			
-			preferencesDialog.ShowModal();
+			preferencesДиалог.ShowModal();
 		}
 		
 		//---------------------------------------------------------------------	
@@ -73,20 +73,20 @@ import wx.wx;
 		public проц OnWxGladeMenu( Объект sender, Событие e )
 		{
 		
-			/*Dialog dlg = XmlResource.Get().LoadDialog(this, "wxglade_dialog" ); 
+			/*Диалог dlg = XmlResource.Get().LoadДиалог(this, "wxglade_dialog" ); 
 			
 			dlg.ShowModal();*/
 			
-			wxGladeDialog wxgladeDialog = new wxGladeDialog( this );
+			wxGladeДиалог wxgladeДиалог = new wxGladeДиалог( this );
 			
-			wxgladeDialog.ShowModal();
+			wxgladeДиалог.ShowModal();
 		}
 		
 		//---------------------------------------------------------------------	
 		
 		public проц OnControlsToolOrMenuCommand( Объект sender, Событие e )
 		{
-			Dialog dlg = XmlResource.Get().LoadDialog(this, "controls_dialog" );
+			Диалог dlg = XmlResource.Get().LoadДиалог(this, "controls_dialog" );
 			
 			//ListCtrl lc = (ListCtrl)dlg.FindWindow( XmlResource.XRCID( "controls_listctrl" ), typeof( ListCtrl) );
 			
@@ -112,7 +112,7 @@ import wx.wx;
 		
 		public проц OnUncenteredToolOrMenuCommand( Объект sender, Событие e )
 		{
-			Dialog dlg = XmlResource.Get().LoadDialog( this, "uncentered_dialog" );
+			Диалог dlg = XmlResource.Get().LoadДиалог( this, "uncentered_dialog" );
 			dlg.ShowModal();
 		}
 		
@@ -120,7 +120,7 @@ import wx.wx;
 		
 		public проц OnCustomClassToolOrMenuCommand( Объект sender, Событие e )
 		{
-			Dialog dlg = XmlResource.Get().LoadDialog( this, "custom_class_dialog" );
+			Диалог dlg = XmlResource.Get().LoadДиалог( this, "custom_class_dialog" );
 			
 			MyResizableListCtrl a_myResizableListCtrl = new MyResizableListCtrl( dlg,
 									-1,
@@ -138,7 +138,7 @@ import wx.wx;
 		
 		public проц OnPlatformPropertyToolOrMenuCommand( Объект sender, Событие e )
 		{
-			Dialog dlg = XmlResource.Get().LoadDialog( this, "platform_property_dialog" );
+			Диалог dlg = XmlResource.Get().LoadДиалог( this, "platform_property_dialog" );
 			dlg.ShowModal();
 		}
 		
@@ -146,7 +146,7 @@ import wx.wx;
 		
 		public проц OnArtProviderToolOrMenuCommand( Объект sender, Событие e )
 		{
-			Dialog dlg = XmlResource.Get().LoadDialog( this, "art_provider_dialog" );
+			Диалог dlg = XmlResource.Get().LoadДиалог( this, "art_provider_dialog" );
 			dlg.ShowModal();
 		}
 		
@@ -154,7 +154,7 @@ import wx.wx;
 		
 		public проц OnVariableExpansionToolOrMenuCommand( Объект sender, Событие e )
 		{
-			Dialog dlg = XmlResource.Get().LoadDialog( this, "variable_expansion_dialog" );
+			Диалог dlg = XmlResource.Get().LoadДиалог( this, "variable_expansion_dialog" );
 			dlg.ShowModal();
 		}
 		
@@ -164,17 +164,17 @@ import wx.wx;
 		{
 			ткст msg = "This is the about dialog of XML resources demo.\n" 
 					"Ported to D by BERO";
-			MessageBox( this, msg, "About XML resources demo", Dialog.wxOK | Dialog.wxICON_INFORMATION );
+			MessageBox( this, msg, "About XML resources demo", Диалог.wxOK | Диалог.wxICON_INFORMATION );
 		}
 	}   
 	
 	//---------------------------------------------------------------------	
 	
-	public class PreferencesDialog : Dialog
+	public class PreferencesДиалог : Диалог
 	{
 		public this( Окно родитель )
 		{
-			XmlResource.Get().LoadDialog( this, родитель, "derived_dialog" );
+			XmlResource.Get().LoadДиалог( this, родитель, "derived_dialog" );
 		
 			EVT_BUTTON( XmlResource.XRCID( "my_button" ), & OnMyButtonClicked ) ;
 			EVT_UPDATE_UI( XmlResource.XRCID( "my_checkbox" ), & OuUpdateUIMyCheckbox ) ;
@@ -185,7 +185,7 @@ import wx.wx;
 		
 		public проц OnMyButtonClicked( Объект sender, Событие e )
 		{
-			MessageBox( this, "You cliecked on My Кнопка", "", Dialog.wxOK  | Dialog.wxICON_INFORMATION );
+			MessageBox( this, "You cliecked on My Кнопка", "", Диалог.wxOK  | Диалог.wxICON_INFORMATION );
 		}
 		
 		//---------------------------------------------------------------------	
@@ -201,8 +201,8 @@ import wx.wx;
 		
 		public проц OnOK( Объект sender, Событие e )
 		{
-			MessageDialog md = new MessageDialog( this, "Press OK to close Derived dialog, or Cancel to abort",
-					"Overriding base class OK button handler", Dialog.wxOK | Dialog.wxCANCEL | Dialog.wxCENTER );
+			MessageДиалог md = new MessageДиалог( this, "Press OK to close Derived dialog, or Cancel to abort",
+					"Overriding base class OK button handler", Диалог.wxOK | Диалог.wxCANCEL | Диалог.wxCENTER );
 					
 			if ( md.ShowModal() == wxID_OK )
 			{
@@ -279,11 +279,11 @@ import wx.wx;
 	
 	//---------------------------------------------------------------------	
 	
-	public class wxGladeDialog : Dialog
+	public class wxGladeДиалог : Диалог
 	{
 		public this( Окно родитель )
 		{
-			XmlResource.Get().LoadDialog( this, родитель, "wxglade_dialog" );
+			XmlResource.Get().LoadДиалог( this, родитель, "wxglade_dialog" );
 		
 			EVT_BUTTON( wxID_OK, & OnOK ) ;
 		}

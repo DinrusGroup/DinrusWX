@@ -16,7 +16,7 @@
 module wx.SystemSettings;
 public import wx.common;
 public import wx.Colour;
-public import wx.Шрифт;
+public import wx.Font;
 
     public enum SystemFont
     {

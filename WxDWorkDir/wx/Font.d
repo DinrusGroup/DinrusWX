@@ -13,7 +13,7 @@
 // $Ид: Шрифт.d,v 1.12 2009/01/13 22:18:51 afb Exp $
 //-----------------------------------------------------------------------------
 
-module wx.Шрифт;
+module wx.Font;
 public import wx.common;
 public import wx.GDIObject;
 

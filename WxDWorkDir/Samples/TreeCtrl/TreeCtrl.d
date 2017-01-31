@@ -328,7 +328,7 @@ private import std.ткст;
 		public проц OnAbout(Объект sender, Событие e)
 		{
 			ткст msg = "Tree test sample\n(c) Julian Smart 1997, Vadim Zeitlin 1998\nPorted to wxD by Jason Perkins and Alexander Olk";
-			MessageBox(this, msg, "About Tree Test", Dialog.wxOK | Dialog.wxICON_INFORMATION);
+			MessageBox(this, msg, "About Tree Test", Диалог.wxOK | Диалог.wxICON_INFORMATION);
 		}
 
 		//---------------------------------------------------------------------
@@ -690,7 +690,7 @@ private import std.ткст;
 			{                                 
 				MessageBox(this, "Please select some элемент first!", 
 						"Tree sample error",              
-						Dialog.wxOK | Dialog.wxICON_EXCLAMATION);
+						Диалог.wxOK | Диалог.wxICON_EXCLAMATION);
 				return;                                             
 			}
 		}

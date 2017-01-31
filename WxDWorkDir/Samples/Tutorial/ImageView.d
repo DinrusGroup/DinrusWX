@@ -178,10 +178,10 @@ import ImageViewer;
          */
         protected проц OnFileOpenDir(Объект sender, Событие evt)
         {
-            DirDialog dlg = new DirDialog(this, "Choose an рисунок directory",
+            DirДиалог dlg = new DirДиалог(this, "Choose an рисунок directory",
                                           m_directory);
 
-            if (dlg.ShowModal() == Dialog.wxID_OK) {
+            if (dlg.ShowModal() == Диалог.wxID_OK) {
                 m_directory = dlg.Путь;
 
                 // List the images. GetFiles is not very powerful: it is
@@ -205,7 +205,7 @@ import ImageViewer;
             // Display a message box.  The message box will have an OK button
             // (wxOK), and an information иконка (wxICON_INFORMATION)
             MessageBoxl(this, msg, "About ImageView", 
-                                    Dialog.wxOK | Dialog.wxICON_INFORMATION);
+                                    Диалог.wxOK | Диалог.wxICON_INFORMATION);
         }
 
         protected проц OnClose(Объект sender, Событие evt)
@@ -216,11 +216,11 @@ import ImageViewer;
             ткст msg = "Are you sure you'd like to exit?";
 
             цел result = MessageBox(this, msg, "Exit ImageView",
-                                                 Dialog.wxYES_NO |
-                                                 Dialog.wxICON_QUESTION);
+                                                 Диалог.wxYES_NO |
+                                                 Диалог.wxICON_QUESTION);
 
             // Did the user click yes?
-            if (result == Dialog.wxYES) {
+            if (result == Диалог.wxYES) {
                 // They did, we tell wxWidgets to take care of closing the
                 // application
                 evt.Пропусти();

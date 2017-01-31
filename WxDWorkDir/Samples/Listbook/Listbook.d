@@ -67,7 +67,7 @@ private import std.ткст;
 		public проц OnAbout( Объект sender, Событие e )
 		{
 			MessageBox( "wxD Listbook sample\n2004 by Alexander Olk\nportred D by BERO", "About",
-				Dialog.wxOK | Dialog.wxICON_INFORMATION);
+				Диалог.wxOK | Диалог.wxICON_INFORMATION);
 		}
 
 		//---------------------------------------------------------------------	

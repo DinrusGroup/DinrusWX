@@ -549,8 +549,8 @@ public class Edit : StyledTextCtrl {
 		// get filname
 		if (!m_filename)
 		{
-			FileDialog dlg = new FileDialog(this, "Открой file", "", "",
-					"Any file (*)|*", FileDialog.wxOPEN | FileDialog.wxFILE_MUST_EXIST | FileDialog.wxCHANGE_DIR);
+			FileДиалог dlg = new FileДиалог(this, "Открой file", "", "",
+					"Any file (*)|*", FileДиалог.wxOPEN | FileДиалог.wxFILE_MUST_EXIST | FileДиалог.wxCHANGE_DIR);
 			if (dlg.ShowModal() != wxID_OK) return нет;
 			
 			m_filename = dlg.Путь;
@@ -583,8 +583,8 @@ public class Edit : StyledTextCtrl {
 		// get filname
 		if (!m_filename)
 		{
-			FileDialog dlg = new FileDialog(this, "Save file", "", "", "Any file (*)|*",
-					FileDialog.wxSAVE | FileDialog.wxOVERWRITE_PROMPT);
+			FileДиалог dlg = new FileДиалог(this, "Save file", "", "", "Any file (*)|*",
+					FileДиалог.wxSAVE | FileДиалог.wxOVERWRITE_PROMPT);
 			if (dlg.ShowModal() != wxID_OK) return нет;
 			
 			m_filename = dlg.Путь;
@@ -618,12 +618,12 @@ public class Edit : StyledTextCtrl {
 // EditProperties
 //----------------------------------------------------------------------------
 
-public class EditProperties : Dialog {
+public class EditProperties : Диалог {
 
 	public this (Edit edit, long стиль)
 	{
 		super(edit, wxID_ANY, "", wxDefaultPosition, wxDefaultSize,
-				стиль | Dialog.wxDEFAULT_DIALOG_STYLE | Dialog.wxRESIZE_BORDER);
+				стиль | Диалог.wxDEFAULT_DIALOG_STYLE | Диалог.wxRESIZE_BORDER);
 
 		// sets the application title
 		Title ("Properties");

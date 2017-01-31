@@ -14,7 +14,7 @@ import wx.wx;
 
     public class MyFrame : Frame
     {
-        enum Cmd { Открой, OpenURL, About, Quit, Dialog, Back, Forward }
+        enum Cmd { Открой, OpenURL, About, Quit, Диалог, Back, Forward }
 
 
         HtmlWindow m_html;
@@ -92,11 +92,11 @@ import wx.wx;
 
         public проц OnOpenURL(Объект sender, Событие e)
         {
-            TextEntryDialog dlg = 
-                new TextEntryDialog(this, "Enter URL to open", "Открой URL", 
+            TextEntryДиалог dlg = 
+                new TextEntryДиалог(this, "Enter URL to open", "Открой URL", 
                                     "http://wxnet.sourceforge.net/news.html", 
-                                    Dialog.wxOK | Dialog.wxCANCEL);
-            if (dlg.ShowModal() == Dialog.wxID_OK) {
+                                    Диалог.wxOK | Диалог.wxCANCEL);
+            if (dlg.ShowModal() == Диалог.wxID_OK) {
                 m_html.LoadPage(dlg.Value);
             }
         }
@@ -110,7 +110,7 @@ import wx.wx;
 
         public проц OnAbout(Объект sender, Событие e)
         {
-            HtmlAboutDialog dlg = new HtmlAboutDialog(this);
+            HtmlAboutДиалог dlg = new HtmlAboutДиалог(this);
             dlg.ShowModal();
         }
 
@@ -119,9 +119,9 @@ import wx.wx;
         public проц OnBack(Объект sender, Событие e)
         {
             if (!m_html.HistoryBack()) {
-                MessageDialog dlg = 
-                    new MessageDialog(this, "Can't go back any further", 
-                                      "HTML", Dialog.wxOK | Dialog.wxCENTRE);
+                MessageДиалог dlg = 
+                    new MessageДиалог(this, "Can't go back any further", 
+                                      "HTML", Диалог.wxOK | Диалог.wxCENTRE);
                 dlg.ShowModal();
             }
         }
@@ -129,9 +129,9 @@ import wx.wx;
         public проц OnForward(Объект sender, Событие e)
         {
             if (!m_html.HistoryForward()) {
-                MessageDialog dlg = 
-                    new MessageDialog(this, "There is no forward", 
-                                      "HTML", Dialog.wxOK | Dialog.wxCENTRE);
+                MessageДиалог dlg = 
+                    new MessageДиалог(this, "There is no forward", 
+                                      "HTML", Диалог.wxOK | Диалог.wxCENTRE);
                 dlg.ShowModal();
             }
         }
@@ -139,7 +139,7 @@ import wx.wx;
         //---------------------------------------------------------------------
     }
 
-    public class HtmlAboutDialog : Dialog
+    public class HtmlAboutДиалог : Диалог
     {
         //---------------------------------------------------------------------
 

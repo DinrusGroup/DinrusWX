@@ -21,7 +21,7 @@ import wx.wx;
         private Шрифт m_testFont;
 
         private PrintData m_printData;
-        private PageSetupDialogData m_pageSetupData;
+        private PageSetupДиалогData m_pageSetupData;
 
 		public this(ткст title, Точка поз, Размер size)
 		{
@@ -65,7 +65,7 @@ import wx.wx;
             // Misc initialization 
 
             m_printData     = new PrintData();
-            m_pageSetupData = new PageSetupDialogData();
+            m_pageSetupData = new PageSetupДиалогData();
 
             иконка = new Icon("../Samples/Printing/mondrian.png");
 
@@ -77,8 +77,8 @@ import wx.wx;
 
 		public проц OnPrint(Объект sender, Событие e)
         {
-            PrintDialogData printDialogData = new PrintDialogData(m_printData);
-            Printer printer = new Printer(printDialogData);
+            PrintДиалогData printДиалогData = new PrintДиалогData(m_printData);
+            Printer printer = new Printer(printДиалогData);
 
             MyPrintout printout = new MyPrintout("My printout");
 
@@ -87,56 +87,56 @@ import wx.wx;
                     MessageBox(
                             "There was a problem printing.\n" 
                             "Perhaps your current printer is not set correctly?",
-                            "Printing", Dialog.wxOK
+                            "Printing", Диалог.wxOK
                         );
                 }
                 else {
                     MessageBox("You cancelled printing", 
-                                            "Printing", Dialog.wxOK);
+                                            "Printing", Диалог.wxOK);
                 }
             }
             else {
-                m_printData = printer.printDialogData.printData;
+                m_printData = printer.printДиалогData.printData;
             }
         }
 
 		public проц OnPrintSetup(Объект sender, Событие e)
         {
-            PrintDialog printerDialog = new PrintDialog(this, m_printData);
+            PrintДиалог printerДиалог = new PrintДиалог(this, m_printData);
 
-            printerDialog.printDialogData.SetupDialog = да;
-            printerDialog.ShowModal();
+            printerДиалог.printДиалогData.SetupДиалог = да;
+            printerДиалог.ShowModal();
 
-            m_printData = printerDialog.printDialogData.printData;
+            m_printData = printerДиалог.printДиалогData.printData;
         }
 
 		public проц OnPageSetup(Объект sender, Событие e)
         {
-            m_pageSetupData = new PageSetupDialogData(m_printData);
+            m_pageSetupData = new PageSetupДиалогData(m_printData);
 
-            PageSetupDialog pageSetupDialog = 
-                new PageSetupDialog(this, m_pageSetupData);
-            pageSetupDialog.ShowModal();
+            PageSetupДиалог pageSetupДиалог = 
+                new PageSetupДиалог(this, m_pageSetupData);
+            pageSetupДиалог.ShowModal();
 
-            m_printData = pageSetupDialog.PageSetupData.printData;
-            m_pageSetupData = pageSetupDialog.PageSetupData;
+            m_printData = pageSetupДиалог.PageSetupData.printData;
+            m_pageSetupData = pageSetupДиалог.PageSetupData;
         }
 
 		public проц OnPrintPreview(Объект sender, Событие e)
         {
             // Pass two printout Objects: for preview, and possible printing.
-            PrintDialogData printDialogData = new PrintDialogData(m_printData);
+            PrintДиалогData printДиалогData = new PrintДиалогData(m_printData);
 
             PrintPreview preview = 
                 new PrintPreview(new MyPrintout(""), new MyPrintout(""), 
-                                 printDialogData);
+                                 printДиалогData);
 
             if (!preview.Ок)
             {
                 MessageBox(
                         "There was a problem previewing.\n" ~ 
                         "Perhaps your current printer is not set correctly?",
-                        "Previewing", Dialog.wxOK
+                        "Previewing", Диалог.wxOK
                     );
                 return;
             }
@@ -163,7 +163,7 @@ import wx.wx;
                          "Demo by BERO ";
 
 			MessageBox(this, msg, "About wxD Printing Demo", 
-                                       Dialog.wxOK | Dialog.wxICON_INFORMATION);
+                                       Диалог.wxOK | Диалог.wxICON_INFORMATION);
 		}
 
         public static проц Draw(DC dc)

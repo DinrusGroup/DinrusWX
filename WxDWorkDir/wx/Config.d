@@ -15,7 +15,7 @@
 
 module wx.Config;
 public import wx.common;
-public import wx.Шрифт;
+public import wx.Font;
 public import wx.Colour;
 public import wx.wxString;
 

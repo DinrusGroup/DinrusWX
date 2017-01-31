@@ -1,6 +1,6 @@
 ﻿module wx.DND;
 public import wx.common;
-public import wx.ОбъектДанных;
+public import wx.DataObject;
 public import wx.Window;
 
 	public enum Drag

@@ -55,8 +55,8 @@ import stdrus;
 		static extern (C) проц wxXmlResource_InitAllHandlers(ЦУк сам);
 		static extern (C) бул wxXmlResource_Load(ЦУк сам, ткст filemask);
 		static extern (C) бул wxXmlResource_LoadFromByteArray(ЦУк сам, ткст filemask, ЦУк данные, цел length);
-		static extern (C) ЦУк wxXmlResource_LoadDialog(ЦУк сам, ЦУк родитель, ткст имя);
-		static extern (C) бул wxXmlResource_LoadDialogDlg(ЦУк сам, ЦУк dlg, ЦУк родитель, ткст имя);
+		static extern (C) ЦУк wxXmlResource_LoadДиалог(ЦУк сам, ЦУк родитель, ткст имя);
+		static extern (C) бул wxXmlResource_LoadДиалогDlg(ЦУк сам, ЦУк dlg, ЦУк родитель, ткст имя);
 		static extern (C) цел wxXmlResource_GetXRCID(ткст str_id);
 		static extern (C) ЦУк wxXmlResource_ctorByFilemask(ткст filemask, цел флаги);
 		static extern (C) ЦУк wxXmlResource_ctor(цел флаги);
@@ -200,22 +200,22 @@ import stdrus;
 	
 		//---------------------------------------------------------------------
 
-		public Dialog LoadDialog(Окно родитель, ткст имя)
+		public Диалог LoadДиалог(Окно родитель, ткст имя)
 		{
 			SetSubclassDefaults();
-			ЦУк ptr = wxXmlResource_LoadDialog(шхобъ,wxObject.SafePtr(родитель),имя);
+			ЦУк ptr = wxXmlResource_LoadДиалог(шхобъ,wxObject.SafePtr(родитель),имя);
 			if (ptr != ЦУк.init)
-				return new Dialog(ptr);
+				return new Диалог(ptr);
 			else
 				return пусто;
 		}
 	
 		//---------------------------------------------------------------------
         
-		public бул LoadDialog(Dialog dlg, Окно родитель, ткст имя)
+		public бул LoadДиалог(Диалог dlg, Окно родитель, ткст имя)
 		{
 			SetSubclassDefaults();
-			return wxXmlResource_LoadDialogDlg(шхобъ,wxObject.SafePtr(dlg),wxObject.SafePtr(родитель),имя);
+			return wxXmlResource_LoadДиалогDlg(шхобъ,wxObject.SafePtr(dlg),wxObject.SafePtr(родитель),имя);
 		}
 	
 		//---------------------------------------------------------------------

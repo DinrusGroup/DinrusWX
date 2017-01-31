@@ -8,15 +8,15 @@ import io.Stdout, wx.wx;
  /**
   * This class shows a окно containing a statusbar with the текст 'Hello World'
   */
-public class HelloWorldApp : Прил
+public class ПриветМир : Прил
 {
 	public override бул ПриИниц()
 	{
-        wxFrame frame = new wxFrame(пусто, wxID_ANY, "Hello wxWidgets World");
-        //frame.CreateStatusBar();
-       // frame.StatusText = "Hello World";
-        frame.Show(да);
-       // ТопОкно = frame;
+        Фрейм фрейм = new Фрейм(пусто, wxID_ANY, "Hello wxWidgets World");
+        //фрейм.CreateStatusBar();
+       // фрейм.StatusText = "Hello World";
+        фрейм.Показать(да);
+       // ТопОкно = фрейм;
         return да;
 	}
 }
@@ -26,7 +26,7 @@ public class HelloWorldApp : Прил
 {
 
 Стдвыв("Проверка работы Стдвыв").нс;
-HelloWorldApp прил = new HelloWorldApp();
+ПриветМир прил = new ПриветМир();
 
 Стдвыв(прил.ИмяПроизводителя()).нс;
 

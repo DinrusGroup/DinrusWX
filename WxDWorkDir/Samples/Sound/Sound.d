@@ -95,8 +95,8 @@ import wx.Sound;
 
 		public проц OnSelectFile(Объект sender, Событие e)
 		{
-			FileDialog dlg = new FileDialog (this, "Choose a sound file",
-							 "", "", "WAV files (*.wav)|*.wav", FileDialog.wxOPEN|FileDialog.wxCHANGE_DIR);
+			FileДиалог dlg = new FileДиалог (this, "Choose a sound file",
+							 "", "", "WAV files (*.wav)|*.wav", FileДиалог.wxOPEN|FileДиалог.wxCHANGE_DIR);
 			if ( dlg.ShowModal() == wxID_OK )
 			{
 				m_soundFile = dlg.Путь;
@@ -155,7 +155,7 @@ import wx.Sound;
 		public проц OnAbout(Объект sender, Событие e)
 		{
 			ткст msg = "This is the About dialog of the sound sample.\nWelcome to " ~ wxVERSION_STRING;
-			MessageBox(this, msg, "About", Dialog.wxOK | Dialog.wxICON_INFORMATION);
+			MessageBox(this, msg, "About", Диалог.wxOK | Диалог.wxICON_INFORMATION);
 		}
 
 		//---------------------------------------------------------------------

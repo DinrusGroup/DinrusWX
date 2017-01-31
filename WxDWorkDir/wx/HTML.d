@@ -1569,7 +1569,7 @@ public import wx.MouseEvent;
 		
 		//-----------------------------------------------------------------------------
 		
-		public PageSetupDialogData PageSetupData() { return cast(PageSetupDialogData)FindObject(wxHtmlEasyPrinting_GetPageSetupData(шхобъ), &PageSetupDialogData.Нов); }
+		public PageSetupДиалогData PageSetupData() { return cast(PageSetupДиалогData)FindObject(wxHtmlEasyPrinting_GetPageSetupData(шхобъ), &PageSetupДиалогData.Нов); }
 	}
 
 	//-----------------------------------------------------------------------------

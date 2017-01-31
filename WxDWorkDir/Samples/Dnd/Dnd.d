@@ -202,7 +202,7 @@ private import std.ткст;
         public проц OnAbout(Объект sender, Событие e)
         {
             ткст msg = "This is the About dialog of the dnd sample.";
-            MessageBox(this, msg, "About Dnd", Dialog.wxOK | Dialog.wxICON_INFORMATION);
+            MessageBox(this, msg, "About Dnd", Диалог.wxOK | Диалог.wxICON_INFORMATION);
         }
 
         //---------------------------------------------------------------------
@@ -282,7 +282,7 @@ private import std.ткст;
 		
 	public проц OnHelp(Объект sender, Событие e)
 	{
-		MessageDialog md = new MessageDialog(this, 
+		MessageДиалог md = new MessageДиалог(this, 
 			"This small program demonstrates drag & drop support in wxD. The program окно\n" 
 			"consists of 3 parts: the bottom pane is for debug messages, so that you can see what's\n" 
                         "going on inside. The top part is split into 2 listboxes, the left one accepts files\n" 

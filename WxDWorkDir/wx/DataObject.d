@@ -13,7 +13,7 @@
 // $Ид: ОбъектДанных.d,v 1.10 2007/01/28 23:06:36 afb Exp $
 //-----------------------------------------------------------------------------
 
-module wx.ОбъектДанных;
+module wx.DataObject;
 public import wx.common;
 public import wx.ArrayString;
 

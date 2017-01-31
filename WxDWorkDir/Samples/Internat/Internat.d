@@ -20,7 +20,7 @@ private import std.ткст;
 		{ 
 			About, 
 			Quit, 
-			Dialog,
+			Диалог,
 			INTERNAT_TEXT,
     			INTERNAT_TEST,
     			INTERNAT_TEST_1,
@@ -76,7 +76,7 @@ private import std.ткст;
 			ткст msg = _("I18n sample\n(c) 1998, 1999 Vadim Zeitlin and Julian Smart");
 			msg ~= _("\nPorted 2005 to wxD by BERO\n\n");
 			msg ~= localeInfo;
-			MessageBox(this, msg, _("About Internat"), Dialog.wxOK | Dialog.wxICON_INFORMATION);
+			MessageBox(this, msg, _("About Internat"), Диалог.wxOK | Диалог.wxICON_INFORMATION);
 		}
 	}
 

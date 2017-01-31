@@ -1,22 +1,22 @@
 ﻿//-----------------------------------------------------------------------------
-// wxD - FontDialog.d
+// wxD - FontДиалог.d
 // (C) 2005 bero <berobero@users.sourceforge.net>
 // based on
 // wx.NET - Fontdlg.cs
 //
-/// The wxFontDialog wrapper class.
+/// The wxFontДиалог wrapper class.
 //
 // Written by Bryan Bulten (bryan@bulten.ca)
 // (C) 2003 Bryan Bulten
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Ид: FontDialog.d,v 1.9 2006/11/17 15:20:59 afb Exp $
+// $Ид: FontДиалог.d,v 1.9 2006/11/17 15:20:59 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.FontDialog;
 public import wx.common;
 public import wx.Dialog;
-public import wx.Шрифт;
+public import wx.Font;
 public import wx.GdiCommon; //for nullobject
 
 		//! \cond EXTERN
@@ -115,24 +115,24 @@ public import wx.GdiCommon; //for nullobject
     }
 
 		//! \cond EXTERN
-		static extern (C) ЦУк wxFontDialog_ctor();
-		static extern (C) бул   wxFontDialog_Create(ЦУк сам, ЦУк родитель, ЦУк данные);
-		static extern (C) проц   wxFontDialog_dtor(ЦУк сам);
+		static extern (C) ЦУк wxFontДиалог_ctor();
+		static extern (C) бул   wxFontДиалог_Create(ЦУк сам, ЦУк родитель, ЦУк данные);
+		static extern (C) проц   wxFontДиалог_dtor(ЦУк сам);
 
-		static extern (C) цел    wxFontDialog_ShowModal(ЦУк сам);
-		static extern (C) ЦУк wxFontDialog_GetFontData(ЦУк сам);
+		static extern (C) цел    wxFontДиалог_ShowModal(ЦУк сам);
+		static extern (C) ЦУк wxFontДиалог_GetFontData(ЦУк сам);
 		//! \endcond
 
         //---------------------------------------------------------------------
 
-	alias FontDialog wxFontDialog;
-	public class FontDialog : Dialog
+	alias FontДиалог wxFontДиалог;
+	public class FontДиалог : Диалог
 	{
         public this(ЦУк шхобъ)
             { super(шхобъ); }
 
         public this()
-            { super(wxFontDialog_ctor()); }
+            { super(wxFontДиалог_ctor()); }
 
         public this(Окно родитель)
             { this(родитель, пусто); }
@@ -142,27 +142,27 @@ public import wx.GdiCommon; //for nullobject
         	this();
             if (!Create(родитель, данные)) 
             {
-                throw new InvalidOperationException("Failed to create FontDialog");
+                throw new InvalidOperationException("Failed to create FontДиалог");
             }
         }
 
         public бул Create(Окно родитель, FontData данные)
         {
-            return wxFontDialog_Create(шхобъ, wxObject.SafePtr(родитель), wxObject.SafePtr(данные));
+            return wxFontДиалог_Create(шхобъ, wxObject.SafePtr(родитель), wxObject.SafePtr(данные));
         }
 
         //---------------------------------------------------------------------
 
         public FontData fontData() 
         {
-            return cast(FontData)FindObject(wxFontDialog_GetFontData(шхобъ), &FontData.Нов);
+            return cast(FontData)FindObject(wxFontДиалог_GetFontData(шхобъ), &FontData.Нов);
         }
 
         //---------------------------------------------------------------------
 
         public override цел ShowModal()
         {
-            return wxFontDialog_ShowModal(шхобъ);
+            return wxFontДиалог_ShowModal(шхобъ);
         }
 
         //---------------------------------------------------------------------

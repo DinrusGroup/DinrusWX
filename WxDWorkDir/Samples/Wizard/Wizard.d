@@ -85,7 +85,7 @@ import wx.wx;
         public проц OnAbout(Объект sender, Событие e)
         {
             ткст msg = "Demo of wxWizard class\n(c) 1999, 2000 Vadim Zeitlin\n ported for D by BERO";
-            MessageBox(this, msg, "About wxWizard Sample", Dialog.wxOK | Dialog.wxICON_INFORMATION);
+            MessageBox(this, msg, "About wxWizard Sample", Диалог.wxOK | Диалог.wxICON_INFORMATION);
         }
 
         //---------------------------------------------------------------------
@@ -137,7 +137,7 @@ import wx.wx;
             if (!checkbox.Value)
             {
                 ткст msg = "Check the checkbox first!";
-                MessageBox(this, msg, "No way", Dialog.wxOK | Dialog.wxICON_WARNING);
+                MessageBox(this, msg, "No way", Диалог.wxOK | Диалог.wxICON_WARNING);
                 return нет;
             }
 

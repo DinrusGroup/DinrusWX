@@ -1,16 +1,16 @@
 //-----------------------------------------------------------------------------
-// wxD - ProgressDialog.d
+// wxD - ProgressДиалог.d
 // (C) 2005 bero <berobero@users.sourceforge.net>
 // based on
-// wx.NET - ProgressDialog.cs
+// wx.NET - ProgressДиалог.cs
 //
-/// The wxProgressDialog wrapper class.
+/// The wxProgressДиалог wrapper class.
 //
 // Written by Alexander Olk (xenomorph2@onlinehome.de)
 // (C) 2003 Alexander Olk
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Ид: ProgressDialog.d,v 1.9 2006/11/17 15:21:00 afb Exp $
+// $Ид: ProgressДиалог.d,v 1.9 2006/11/17 15:21:00 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.ProgressDialog;
@@ -18,17 +18,17 @@ public import wx.common;
 public import wx.Dialog;
 
 		//! \cond EXTERN
-        static extern (C) ЦУк wxProgressDialog_ctor(ткст title, ткст message, цел maximum, ЦУк родитель, бцел стиль);
-	static extern (C) проц wxProgressDialog_dtor(ЦУк сам);
-        static extern (C) бул wxProgressDialog_Update(ЦУк сам, цел значение, ткст newmsg);
-        static extern (C) проц wxProgressDialog_Resume(ЦУк сам);
-        static extern (C) бул wxProgressDialog_Show(ЦУк сам, бул show);
+        static extern (C) ЦУк wxProgressДиалог_ctor(ткст title, ткст message, цел maximum, ЦУк родитель, бцел стиль);
+	static extern (C) проц wxProgressДиалог_dtor(ЦУк сам);
+        static extern (C) бул wxProgressДиалог_Update(ЦУк сам, цел значение, ткст newmsg);
+        static extern (C) проц wxProgressДиалог_Resume(ЦУк сам);
+        static extern (C) бул wxProgressДиалог_Show(ЦУк сам, бул show);
 		//! \endcond
 
         //-----------------------------------------------------------------------------
 
-    alias ProgressDialog wxProgressDialog;
-    public class ProgressDialog : Dialog
+    alias ProgressДиалог wxProgressДиалог;
+    public class ProgressДиалог : Диалог
     {
         public const цел wxPD_CAN_ABORT      = 0x0001;
         public const цел wxPD_APP_MODAL      = 0x0002;
@@ -43,38 +43,38 @@ public import wx.Dialog;
             { super(шхобъ);}
 
         public this(ткст title, ткст message, цел maximum = 100, Окно родитель = пусто, цел стиль = wxPD_APP_MODAL | wxPD_AUTO_HIDE)
-            { this(wxProgressDialog_ctor(title, message, maximum, wxObject.SafePtr(родитель), cast(бцел)стиль));}
+            { this(wxProgressДиалог_ctor(title, message, maximum, wxObject.SafePtr(родитель), cast(бцел)стиль));}
 
         //-----------------------------------------------------------------------------
 
         public бул Обнови(цел значение)
         {
-            return wxProgressDialog_Update(шхобъ, значение, "");
+            return wxProgressДиалог_Update(шхобъ, значение, "");
         }
 
 		//---------------------------------------------------------------------
 
         public бул Обнови(цел значение, ткст newmsg)
         {
-            return wxProgressDialog_Update(шхобъ, значение, newmsg);
+            return wxProgressДиалог_Update(шхобъ, значение, newmsg);
         }
 
 		//---------------------------------------------------------------------
 
         public проц Resume()
         {
-            wxProgressDialog_Resume(шхобъ);
+            wxProgressДиалог_Resume(шхобъ);
         }
 
 		//---------------------------------------------------------------------
 
         public override бул Show(бул show=да)
         {
-            return wxProgressDialog_Show(шхобъ, show);
+            return wxProgressДиалог_Show(шхобъ, show);
         }
 	
 	//---------------------------------------------------------------------
 	
-	override protected проц dtor() { wxProgressDialog_dtor(шхобъ); }
+	override protected проц dtor() { wxProgressДиалог_dtor(шхобъ); }
     }
 

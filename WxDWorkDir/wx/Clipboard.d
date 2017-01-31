@@ -16,8 +16,8 @@
 
 module wx.Clipboard;
 public import wx.common;
-public import wx.ФорматДанных;
-public import wx.ОбъектДанных;
+public import wx.DataFormat;
+public import wx.DataObject;
 
 		//! \cond EXTERN
 		static extern (C) ЦУк wxClipboard_ctor();

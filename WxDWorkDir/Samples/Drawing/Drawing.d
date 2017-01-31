@@ -360,7 +360,7 @@ class MyFrame : public Frame
                     Copyright (c) Robert Roebling 1999");
 
 
-        MessageBox(msg, "About Drawing", Dialog.wxOK | Dialog.wxICON_INFORMATION, this);
+        MessageBox(msg, "About Drawing", Диалог.wxOK | Диалог.wxICON_INFORMATION, this);
     }
 
 
@@ -492,7 +492,7 @@ class MyFrame : public Frame
     {
         Цвет col;
         ColourData данные;
-        ColourDialog dialog = new ColourDialog(this, данные);
+        ColourДиалог dialog = new ColourДиалог(this, данные);
 
         if ( dialog.ShowModal() == wxID_OK )
         {

@@ -85,7 +85,7 @@ import wx.wx;
 		{
 			MessageBox( this, "HtmlHelpController class sample.\n" 
 				"\n" 
-				"Ported to wxD by BERO", "About HtmlHelpController", Dialog.wxOK | Dialog.wxICON_INFORMATION );
+				"Ported to wxD by BERO", "About HtmlHelpController", Диалог.wxOK | Диалог.wxICON_INFORMATION );
 		}
 	}
 	

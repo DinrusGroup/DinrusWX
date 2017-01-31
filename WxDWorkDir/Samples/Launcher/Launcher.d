@@ -56,9 +56,9 @@ private import std.c.process;
 			ткст clr; //= Environment.GetEnvironmentVariable("CLR_LAUNCHER");
 			if (clr == "ilrun")
 			{
-				MessageDialog md = new MessageDialog(this, 
+				MessageДиалог md = new MessageДиалог(this, 
 					"There is a bug in DotGNU cast(of)Portable.NET v0.6.6 that does not allow the Launcher to work properly. Process.Start(\"ilrun example.exe\") does not work and results in a defunct process.\n\nYou may continue to use the Launcher; however, unless you have a newer version PNET samples probably won't launch when you click them.",
-					"Launcher Error", Dialog.wxOK | Dialog.wxICON_WARNING);
+					"Launcher Error", Диалог.wxOK | Диалог.wxICON_WARNING);
 				md.ShowModal();
 			}
 		*/
@@ -179,9 +179,9 @@ private import std.c.process;
 
 		private проц TellError(ткст msg)
 		{
-			MessageDialog md = new MessageDialog(this, 
+			MessageДиалог md = new MessageДиалог(this, 
 				"An error occured while trying to launch your sample:\n\n" ~ msg,
-				"Sample Launch Error", Dialog.wxOK | Dialog.wxICON_WARNING);
+				"Sample Launch Error", Диалог.wxOK | Диалог.wxICON_WARNING);
 			md.ShowModal();
 		}
 	}

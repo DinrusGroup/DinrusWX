@@ -22,7 +22,7 @@ public import wx.Button;
 		static extern (C) ЦУк wxPanel_ctor();
 		static extern (C) ЦУк wxPanel_ctor2(ЦУк родитель, цел ид, inout Точка поз, inout Размер size, бцел стиль, ткст имя);
 		static extern (C) бул wxPanel_Create(ЦУк сам, ЦУк родитель, цел ид, inout Точка поз, inout Размер size, бцел стиль, ткст имя);
-		static extern (C) проц wxPanel_InitDialog(ЦУк сам);
+		static extern (C) проц wxPanel_InitДиалог(ЦУк сам);
 		static extern (C) ЦУк wxPanel_GetDefaultItem(ЦУк сам);
 		static extern (C) проц wxPanel_SetDefaultItem(ЦУк сам, ЦУк btn);
 		//! \endcond
@@ -73,9 +73,9 @@ public import wx.Button;
 
 		//---------------------------------------------------------------------
 
-		public override проц InitDialog()
+		public override проц InitДиалог()
 		{
-			wxPanel_InitDialog(шхобъ);
+			wxPanel_InitДиалог(шхобъ);
 		}
 
 		//---------------------------------------------------------------------

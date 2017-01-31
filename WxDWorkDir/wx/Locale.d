@@ -15,7 +15,7 @@
 
 module wx.Locale;
 public import wx.common;
-public import wx.Шрифт;
+public import wx.Font;
 
 	public enum Language
 	{

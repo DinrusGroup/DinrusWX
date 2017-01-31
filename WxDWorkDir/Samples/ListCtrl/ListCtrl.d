@@ -208,7 +208,7 @@ private import std.ткст;
 		public проц OnAbout( Объект sender, Событие e )
 		{
 			MessageBox( "List test sample\nJulian Smart (c) 1997\nPorted to wxD by BERO", "About",
-				Dialog.wxOK | Dialog.wxICON_INFORMATION );
+				Диалог.wxOK | Диалог.wxICON_INFORMATION );
 		}
 
 		//---------------------------------------------------------------------	

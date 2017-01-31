@@ -193,7 +193,7 @@ private import std.ткст;
 			MessageBox( this, "This sample shows wxHtmlListBox class.\n" 
 				"\n" 
 				"(c) 2003 Vadim Zeitlin\n" 
-				"Ported to wxD by BERO", "About HtmlLbox", Dialog.wxOK | Dialog.wxICON_INFORMATION );
+				"Ported to wxD by BERO", "About HtmlLbox", Диалог.wxOK | Диалог.wxICON_INFORMATION );
 		}
 		
 		//---------------------------------------------------------------------
@@ -253,7 +253,7 @@ private import std.ткст;
 			данные.colour = m_hlbox.ЦветЗП;
 			данные.ChooseFull = да;
 			
-			ColourDialog cd = new ColourDialog( this, данные );
+			ColourДиалог cd = new ColourДиалог( this, данные );
 			cd.Title = "Choose the background colour";
 			
 			if ( cd.ShowModal() == wxID_OK )
@@ -279,7 +279,7 @@ private import std.ткст;
 			данные.colour = m_hlbox.ЦветЗП;
 			данные.ChooseFull = да;
 			
-			ColourDialog cd = new ColourDialog( this, данные );
+			ColourДиалог cd = new ColourДиалог( this, данные );
 			cd.Title = "Choose the selection background colour";
 			
 			if ( cd.ShowModal() == wxID_OK )

@@ -434,7 +434,7 @@ private import std.ткст;
 
 		public проц SetLabelColour( Объект sender, Событие e )
 		{
-			ColourDialog dlg = new ColourDialog(this);
+			ColourДиалог dlg = new ColourДиалог(this);
 			if ( dlg.ShowModal() == wxID_OK )
 			{
 				ColourData retData = dlg.colourData;
@@ -446,7 +446,7 @@ private import std.ткст;
 		
 		public проц SetLabelTextColour( Объект sender, Событие e )
 		{
-			ColourDialog dlg = new ColourDialog(this);
+			ColourДиалог dlg = new ColourДиалог(this);
 			if ( dlg.ShowModal() == wxID_OK )
 			{
 				ColourData retData = dlg.colourData;
@@ -461,7 +461,7 @@ private import std.ткст;
 			FontData данные = new FontData();
 			данные.InitialFont = grid.LabelFont;
 			
-			FontDialog fd = new FontDialog(this, данные);
+			FontДиалог fd = new FontДиалог(this, данные);
 			
 			if ( fd.ShowModal() == wxID_OK )
 			{			
@@ -568,7 +568,7 @@ private import std.ткст;
 
 		public проц SetGridLineColour( Объект sender, Событие e )
 		{
-			ColourDialog dlg = new ColourDialog(this);
+			ColourДиалог dlg = new ColourДиалог(this);
 			if ( dlg.ShowModal() == wxID_OK )
 			{
 				ColourData retData = dlg.colourData;
@@ -638,7 +638,7 @@ private import std.ткст;
 
 		public проц SetCellFgColour( Объект sender, Событие e )
 		{
-			ColourDialog dlg = new ColourDialog(this);
+			ColourДиалог dlg = new ColourДиалог(this);
 			if ( dlg.ShowModal() == wxID_OK )
 			{
 				ColourData retData = dlg.colourData;
@@ -654,7 +654,7 @@ private import std.ткст;
 
 		public проц SetCellBgColour( Объект sender, Событие e )
 		{
-			ColourDialog dlg = new ColourDialog(this);
+			ColourДиалог dlg = new ColourДиалог(this);
 			if ( dlg.ShowModal() == wxID_OK )
 			{
 				ColourData retData = dlg.colourData;
@@ -674,7 +674,7 @@ private import std.ткст;
 			MessageBox( "\n\nwxGrid demo \n\n" ~
 				"Ported to wxD \nby BERO\n" ,
 				"About",
-				Dialog.wxOK );			
+				Диалог.wxOK );			
 		}		
 
 		public проц OnQuit( Объект sender, Событие e )
@@ -762,7 +762,7 @@ private import std.ткст;
 		{
 			ткст[] choices = [ "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" ];
 
-			SingleChoiceDialog dlg = new SingleChoiceDialog(this, "Choose the thickness of the highlight перо:",
+			SingleChoiceДиалог dlg = new SingleChoiceДиалог(this, "Choose the thickness of the highlight перо:",
 				"Перо Ширина", choices);
 
 			цел current = grid.CellHighlightPenWidth;
@@ -777,7 +777,7 @@ private import std.ткст;
 		{
 			ткст[] choices = [ "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10" ];
 
-			SingleChoiceDialog dlg = new SingleChoiceDialog(this, "Choose the thickness of the highlight перо:",
+			SingleChoiceДиалог dlg = new SingleChoiceДиалог(this, "Choose the thickness of the highlight перо:",
 				"Перо Ширина", choices);
 
 			цел current = grid.CellHighlightROPenWidth;
@@ -908,7 +908,7 @@ private import std.ткст;
 			if ( ( ge.Col == 4 ) &&
 				( ge.Row == 0 ) &&
 				( MessageBox( "Are you sure you wish to edit this cell",
-						"Checking", Dialog.wxYES_NO ) == Dialog.wxNO ) ) 
+						"Checking", Диалог.wxYES_NO ) == Диалог.wxNO ) ) 
 			{
 
 				ge.Veto();
@@ -926,7 +926,7 @@ private import std.ткст;
 			if ( ( ge.Col == 4 ) &&
 				( ge.Row == 0 ) &&
 				( MessageBox( "Are you sure you wish to finish editing this cell",
-						"Checking", Dialog.wxYES_NO ) == Dialog.wxNO ) ) 
+						"Checking", Диалог.wxYES_NO ) == Диалог.wxNO ) ) 
 			{
 
 				ge.Veto();

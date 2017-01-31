@@ -29,7 +29,7 @@ public import wx.WizardPage;
 		//---------------------------------------------------------------------
 		
 	alias Wizard wxWizard;
-	public class Wizard : Dialog
+	public class Wizard : Диалог
 	{
 		public this(ЦУк шхобъ) 
 			{ super(шхобъ);}

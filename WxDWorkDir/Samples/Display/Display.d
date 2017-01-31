@@ -11,7 +11,7 @@
 //-----------------------------------------------------------------------------
 
 import wx.wx;
-import CompareModesDialog;
+import CompareModesДиалог;
 import wx.Display;
 
 	// Client данные class for the choice	control	containing the video modes
@@ -146,7 +146,7 @@ import wx.Display;
 				sizerTop.Добавь(sizer,	1, Direction.wxALL | Stretch.wxEXPAND, 10);
 
 				sizerTop.Добавь(new Кнопка(page, ID_ResetMode, "&Reset mode"),
-					0, Direction.wxALL | Dialog.wxCENTRE, 5);
+					0, Direction.wxALL | Диалог.wxCENTRE, 5);
 				page.SetSizer(sizerTop);
 
 				m_notebook.AddPage(page, "Display "	+ nDpy.ToString());
@@ -198,7 +198,7 @@ import wx.Display;
 		{
 			ткст msg = "This is the wxWidgets display sample ported to C#. Port by Michael S. Muegel.";
 			MessageBox(this, msg, "About Display Sample",
-				Dialog.wxOK);
+				Диалог.wxOK);
 		}
 
 		public проц	OnChangeMode(Объект	sender,	Событие e)
@@ -208,7 +208,7 @@ import wx.Display;
 			VideoMode mode = cast(VideoMode) (cast(MyVideoModeClientData)ce.ClientObject).mode;
 			if (! display.ChangeMode(mode))
 				MessageBox(this, "Changing video mode failed!", 
-					"Error", Dialog.wxOK | Dialog.wxICON_WARNING);
+					"Error", Диалог.wxOK | Диалог.wxICON_WARNING);
 		}
 
 		public проц	OnResetMode(Объект sender, Событие e)
@@ -235,11 +235,11 @@ import wx.Display;
 			if ( dpy ==	Display.wxNOT_FOUND )
 				MessageBox(this, 
 					"Mouse clicked outside of display at " ~ ptScreen.ToString(),
-					"Error", Dialog.wxOK | Dialog.wxICON_WARNING);
+					"Error", Диалог.wxOK | Диалог.wxICON_WARNING);
 			else
 				MessageBox(this, "Mouse clicked in display #" +
 					dpy.ToString() + " at " ~ ptScreen.ToString(), 
-					"Click Result", Dialog.wxOK);
+					"Click Result", Диалог.wxOK);
 
 		}
 
@@ -254,14 +254,14 @@ import wx.Display;
 			}
 
 
-			MessageBox(this, "EVT_DISPLAY_CHANGED fired. Display resolution has been changed.", "Resolution Changed", Dialog.wxOK);
+			MessageBox(this, "EVT_DISPLAY_CHANGED fired. Display resolution has been changed.", "Resolution Changed", Диалог.wxOK);
 
 			e.Пропусти();
 		}
 
 		public проц	OnCompareModes(Объект sender, Событие	e)
 		{
-			CompareModesDialog dialog = new CompareModesDialog(this, 
+			CompareModesДиалог dialog = new CompareModesДиалог(this, 
 				-1, CurrentDisplay());
 			dialog.ShowModal();
 		}

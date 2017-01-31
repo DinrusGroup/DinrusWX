@@ -1,8 +1,8 @@
 //-----------------------------------------------------------------------------
-// wxD - TipDialog.d
+// wxD - TipДиалог.d
 // (C) 2005 bero <berobero@users.sourceforge.net>
 // based on
-// wx.NET - TipDialog.cs
+// wx.NET - TipДиалог.cs
 //
 /// The wxTipProvider proxy interface.
 //
@@ -10,7 +10,7 @@
 // (C) 2003 by Alexander Olk
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Ид: TipDialog.d,v 1.9 2006/11/17 15:21:01 afb Exp $
+// $Ид: TipДиалог.d,v 1.9 2006/11/17 15:21:01 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.TipDialog;

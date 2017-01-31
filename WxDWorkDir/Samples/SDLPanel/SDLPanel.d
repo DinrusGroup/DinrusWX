@@ -217,7 +217,7 @@ private:
     проц onHelpAbout(Объект sender, Событие event)
     {
     MessageBox("wx-sdl tutorial\nCopyright (C) 2005 John Ratliff",
-                 "about wx-sdl tutorial", Dialog.wxOK | Dialog.wxICON_INFORMATION);
+                 "about wx-sdl tutorial", Диалог.wxOK | Диалог.wxICON_INFORMATION);
     }
     
 public:

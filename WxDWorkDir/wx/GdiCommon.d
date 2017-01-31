@@ -20,7 +20,7 @@ public import wx.Cursor;
 public import wx.Icon;
 public import wx.Перо;
 public import wx.Brush;
-public import wx.Шрифт;
+public import wx.Font;
 public import wx.Colour;
 
 		//! \cond EXTERN
