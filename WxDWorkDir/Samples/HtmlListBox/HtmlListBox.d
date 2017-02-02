@@ -12,7 +12,7 @@
 //-----------------------------------------------------------------------------
 
 import wx.wx;
-private import std.ткст;
+private import std.string;
 
 
 	public class MyHtmlListBox : HtmlListBox
@@ -60,7 +60,7 @@ private import std.ткст;
 		{
 			цел level = ( n % 6 ) + 1;
 		
-			return std.ткст.format("<h%d><шрифт color=#%02x%02x%02x>Элемент</шрифт> <с>%d</с></h%d>",
+			return std.string.format("<h%d><шрифт color=#%02x%02x%02x>Элемент</шрифт> <с>%d</с></h%d>",
 				level,
 				abs(n - 192) % 256,
 				abs(n - 256) % 256,
@@ -94,7 +94,7 @@ private import std.ткст;
 	
 	//---------------------------------------------------------------------
 	
-	public class MyFrame : Frame
+	public class MyFrame : Фрейм
 	{
 		public enum Cmd { HtmlLbox_Quit,
 			HtmlLbox_SetMargins,
@@ -341,7 +341,7 @@ private import std.ткст;
 						s ~= ", ";
 					}
 					
-					s ~= std.ткст.toString(элемент);
+					s ~= std.string.toString(элемент);
 					
 				}
 				

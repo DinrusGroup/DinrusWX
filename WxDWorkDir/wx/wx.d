@@ -96,7 +96,7 @@ public import wx.PaintEvent;
 public import wx.Palette;
 public import wx.PaletteChangedEvent;
 public import wx.Panel;
-public import wx.Перо;
+public import wx.Pen;
 public import wx.PrintData;
 public import wx.PrintDialog;
 public import wx.PrintPreview;

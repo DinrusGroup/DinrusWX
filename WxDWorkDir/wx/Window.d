@@ -234,13 +234,13 @@ public import wx.ToolTip;
 		static extern (C) бул   wxWindow_Validate(ЦУк сам);
 		static extern (C) бул   wxWindow_TransferDataToWindow(ЦУк сам);
 		static extern (C) бул   wxWindow_TransferDataFromWindow(ЦУк сам);
-		static extern (C) проц   wxWindow_InitДиалог(ЦУк сам);
+		static extern (C) проц   wxWindow_InitDialog(ЦУк сам);
 		static extern (C) проц   wxWindow_SetAcceleratorTable(ЦУк сам, ЦУк accel);
 		static extern (C) ЦУк wxWindow_GetAcceleratorTable(ЦУк сам);
-		static extern (C) проц   wxWindow_ConvertPixelsToДиалогPoint(ЦУк сам, inout Точка pt, out Точка point);
-		static extern (C) проц   wxWindow_ConvertДиалогToPixelsPoint(ЦУк сам, inout Точка pt, out Точка point);
-		static extern (C) проц   wxWindow_ConvertPixelsToДиалогSize(ЦУк сам, inout Размер sz, out Размер size);
-		static extern (C) проц   wxWindow_ConvertДиалогToPixelsSize(ЦУк сам, inout Размер sz, out Размер size);
+		static extern (C) проц   wxWindow_ConvertPixelsToDialogPoint(ЦУк сам, inout Точка pt, out Точка point);
+		static extern (C) проц   wxWindow_ConvertDialogToPixelsPoint(ЦУк сам, inout Точка pt, out Точка point);
+		static extern (C) проц   wxWindow_ConvertPixelsToDialogSize(ЦУк сам, inout Размер sz, out Размер size);
+		static extern (C) проц   wxWindow_ConvertDialogToPixelsSize(ЦУк сам, inout Размер sz, out Размер size);
 		static extern (C) проц   wxWindow_WarpPointer(ЦУк сам, цел x, цел y);
 		static extern (C) проц   wxWindow_CaptureMouse(ЦУк сам);
 		static extern (C) проц   wxWindow_ReleaseMouse(ЦУк сам);
@@ -1142,38 +1142,38 @@ public import wx.ToolTip;
 
 		//---------------------------------------------------------------------
 
-		public /+virtual+/ проц InitДиалог()
+		public /+virtual+/ проц InitDialog()
 		{
-			wxWindow_InitДиалог(шхобъ);
+			wxWindow_InitDialog(шхобъ);
 		}
 
 		//---------------------------------------------------------------------
 
-		public /+virtual+/ Точка ConvertPixelsToДиалог(Точка pt)
+		public /+virtual+/ Точка ConvertPixelsToDialog(Точка pt)
 		{
 			Точка point;
-			wxWindow_ConvertPixelsToДиалогPoint(шхобъ, pt, point);
+			wxWindow_ConvertPixelsToDialogPoint(шхобъ, pt, point);
 			return point;
 		}
 
-		public /+virtual+/ Точка ConvertДиалогToPixels(Точка pt)
+		public /+virtual+/ Точка ConvertDialogToPixels(Точка pt)
 		{
 			Точка point;
-			wxWindow_ConvertДиалогToPixelsPoint(шхобъ, pt, point);
+			wxWindow_ConvertDialogToPixelsPoint(шхобъ, pt, point);
 			return point;
 		}
 
-		public /+virtual+/ Размер ConvertPixelsToДиалог(Размер sz)
+		public /+virtual+/ Размер ConvertPixelsToDialog(Размер sz)
 		{
 			Размер size;
-			wxWindow_ConvertPixelsToДиалогSize(шхобъ, sz, size);
+			wxWindow_ConvertPixelsToDialogSize(шхобъ, sz, size);
 			return size;
 		}
 
-		public /+virtual+/ Размер ConvertДиалогToPixels(Размер sz)
+		public /+virtual+/ Размер ConvertDialogToPixels(Размер sz)
 		{
 			Размер size;
-			wxWindow_ConvertPixelsToДиалогSize(шхобъ, sz, size);
+			wxWindow_ConvertPixelsToDialogSize(шхобъ, sz, size);
 			return size;
 		}
 

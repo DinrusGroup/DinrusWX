@@ -133,12 +133,12 @@ public import wx.MDI;
 		
 		//-----------------------------------------------------------------------------
 		
-		public бул LayoutFrame(Frame frame)
+		public бул LayoutFrame(Фрейм frame)
 		{
 			return LayoutFrame(frame, пусто);
 		}
 		
-		public бул LayoutFrame(Frame frame, Окно mainWindow)
+		public бул LayoutFrame(Фрейм frame, Окно mainWindow)
 		{
 			return wxLayoutAlgorithm_LayoutFrame(шхобъ, wxObject.SafePtr(frame), wxObject.SafePtr(mainWindow));
 		}

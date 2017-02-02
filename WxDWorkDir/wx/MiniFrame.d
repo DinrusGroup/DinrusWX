@@ -25,7 +25,7 @@ public import wx.Frame;
         //-----------------------------------------------------------------------------
 
     alias MiniFrame wxMiniFrame;
-    public class MiniFrame : Frame
+    public class MiniFrame : Фрейм
     {
         enum { wxDEFAULT_MINIFRAME_STYLE = wxCAPTION | wxCLIP_CHILDREN | wxRESIZE_BORDER }
     

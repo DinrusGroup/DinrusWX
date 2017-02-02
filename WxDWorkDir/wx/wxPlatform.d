@@ -18,7 +18,7 @@ version (Tango)
 }
 else // Phobos
 {
-private import std.ткст;
+private import std.string;
 }
 //! \endcond
 

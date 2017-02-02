@@ -49,7 +49,7 @@ import wx.wx;
 	}
 
 
-	public class MyFrame : Frame
+	public class MyFrame : Фрейм
 	{
 		private MySplitterWindow splitter;
 		private MyCanvas         left, right;
@@ -194,11 +194,11 @@ import wx.wx;
 
 	public class MySplitterWindow : SplitterWindow
 	{
-		private Frame родитель;
+		private Фрейм родитель;
 
 		//---------------------------------------------------------------------
 
-		public this(Frame родитель)
+		public this(Фрейм родитель)
 		{
 			super(родитель, -1,
 			       wxDefaultPosition, wxDefaultSize,

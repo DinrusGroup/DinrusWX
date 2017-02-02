@@ -248,7 +248,7 @@ public import wx.StyledTextCtrl;
 			// only iterate through the list if listener.owner != пусто
 			// Only the new event system can handle more then one EventListener
 			// because the EventListener gets connected via its owner and not
-			// via a Frame, Диалог, etc...
+			// via a Фрейм, Диалог, etc...
 			try
 			{
 				if ( listener.owner )

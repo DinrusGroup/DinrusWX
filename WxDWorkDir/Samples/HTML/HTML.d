@@ -12,7 +12,7 @@
 
 import wx.wx;
 
-    public class MyFrame : Frame
+    public class MyFrame : Фрейм
     {
         enum Cmd { Открой, OpenURL, About, Quit, Диалог, Back, Forward }
 

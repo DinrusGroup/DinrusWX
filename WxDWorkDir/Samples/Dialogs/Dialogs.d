@@ -31,15 +31,15 @@ alias FileSystem.getDirectory GETCWD;
 }
 else // Phobos
 {
-private import std.ткст;
+private import std.string;
 private import std.random;
-alias std.ткст.find indexOf;
-alias std.ткст.rfind LastIndexOf;
+alias std.string.find indexOf;
+alias std.string.rfind LastIndexOf;
 alias std.file.getcwd GETCWD;
 alias std.random.rand RAND;
 }
 
-	public class MyFrame : Frame
+	public class MyFrame : Фрейм
 	{
 		enum Cmd 
 		{
@@ -60,8 +60,8 @@ alias std.random.rand RAND;
 
 		// for Find and Замени
 		public FindReplaceData m_findData;
-		public FindReplaceДиалог m_dlgFind;
-		public FindReplaceДиалог m_dlgReplace;
+		public ДиалогПоискЗамена m_dlgFind;
+		public ДиалогПоискЗамена m_dlgReplace;
 
 		public MyModelessДиалог m_dialog;
 
@@ -370,7 +370,7 @@ alias std.random.rand RAND;
 
 		public проц OnFileOpen(Объект sender, Событие e)
 		{
-			FileДиалог fd = new FileДиалог(this,
+			ФайлДиалог fd = new ФайлДиалог(this,
 				"Testing open file dialog",
 				"",
 				"",
@@ -393,7 +393,7 @@ alias std.random.rand RAND;
 			ткст путь = FileSelector( "Select the file to load",
 				"", "", s_extDef,
 				"Waveform (*.wav)|*.wav|Plain текст (*.txt)|*.txt|All files (*.*)|*.*",
-				FileДиалог.wxCHANGE_DIR,
+				ФайлДиалог.wxCHANGE_DIR,
 				this );
 			if (путь.length == 0) return;
 
@@ -408,10 +408,10 @@ alias std.random.rand RAND;
 
 		public проц OnFilesOpen(Объект sender, Событие e)
 		{
-			FileДиалог fd = new FileДиалог(this,
+			ФайлДиалог fd = new ФайлДиалог(this,
 				"Testing open multiple file dialog",
 				"", "", "*",
-				FileДиалог.wxMULTIPLE);
+				ФайлДиалог.wxMULTIPLE);
 
 			if (fd.ShowModal() == wxID_OK)
 			{
@@ -433,12 +433,12 @@ alias std.random.rand RAND;
 
 		public проц OnFileSave(Объект sender, Событие e)
 		{
-			FileДиалог fd = new FileДиалог(this,
+			ФайлДиалог fd = new ФайлДиалог(this,
 				"Testing save file dialog",
 				"",
 				"myletter.doc",
 				"Текст files (*.txt)|*.txt|Document files (*.doc)|*.doc",
-				FileДиалог.wxSAVE | FileДиалог.wxOVERWRITE_PROMPT);
+				ФайлДиалог.wxSAVE | ФайлДиалог.wxOVERWRITE_PROMPT);
 
 			fd.FilterIndex = 1;
 
@@ -520,29 +520,29 @@ alias std.random.rand RAND;
 
 		public проц OnFind(Объект sender, Событие e)
 		{
-			m_dlgFind = new FindReplaceДиалог(
+			m_dlgFind = new ДиалогПоискЗамена(
 				this,
 				m_findData,
 				"Find Диалог",
-				FindReplaceДиалог.wxFR_NOWHOLEWORD);
+				ДиалогПоискЗамена.wxFR_NOWHOLEWORD);
 			m_dlgFind.Show(да);
 		}
 
 		public проц OnReplace(Объект sender, Событие e)
 		{
-			m_dlgReplace = new FindReplaceДиалог(
+			m_dlgReplace = new ДиалогПоискЗамена(
 				this,
 				m_findData,
 				"Find and replace dialog",
-				FindReplaceДиалог.wxFR_REPLACEDIALOG);
+				ДиалогПоискЗамена.wxFR_REPLACEDIALOG);
 			m_dlgReplace.Show(да);
 		}
 
 		public ткст DecodeFindДиалогEventFlags(цел флаги)
 		{
-			ткст 	str = (((флаги & FindReplaceДиалог.wxFR_DOWN) != 0) ? "down" : "up") ~ ", " ~
-				(((флаги & FindReplaceДиалог.wxFR_WHOLEWORD) != 0) ? "whole words only, " : "") ~
-				(((флаги & FindReplaceДиалог.wxFR_MATCHCASE) != 0) ? "" : "not ") ~
+			ткст 	str = (((флаги & ДиалогПоискЗамена.wxFR_DOWN) != 0) ? "down" : "up") ~ ", " ~
+				(((флаги & ДиалогПоискЗамена.wxFR_WHOLEWORD) != 0) ? "whole words only, " : "") ~
+				(((флаги & ДиалогПоискЗамена.wxFR_MATCHCASE) != 0) ? "" : "not ") ~
 				"case sensitive";
 
 			return str;
@@ -571,7 +571,7 @@ alias std.random.rand RAND;
 			}
 			else if ( etype == Событие.wxEVT_COMMAND_FIND_CLOSE )
 			{
-				FindReplaceДиалог dlg = fre.Диалог;
+				ДиалогПоискЗамена dlg = fre.Диалог;
 
 				цел idMenu;
 				ткст txt;

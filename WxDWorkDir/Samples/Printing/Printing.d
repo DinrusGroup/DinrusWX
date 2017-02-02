@@ -13,7 +13,7 @@
 
 import wx.wx;
 
-	public class MyFrame : Frame
+	public class MyFrame : Фрейм
 	{
 		enum Cmd { Print, PrintSetup, PageSetup, PrintPreview, About, Quit }
 
@@ -21,7 +21,7 @@ import wx.wx;
         private Шрифт m_testFont;
 
         private PrintData m_printData;
-        private PageSetupДиалогData m_pageSetupData;
+        private PageSetupDialogData m_pageSetupData;
 
 		public this(ткст title, Точка поз, Размер size)
 		{
@@ -65,7 +65,7 @@ import wx.wx;
             // Misc initialization 
 
             m_printData     = new PrintData();
-            m_pageSetupData = new PageSetupДиалогData();
+            m_pageSetupData = new PageSetupDialogData();
 
             иконка = new Icon("../Samples/Printing/mondrian.png");
 
@@ -77,8 +77,8 @@ import wx.wx;
 
 		public проц OnPrint(Объект sender, Событие e)
         {
-            PrintДиалогData printДиалогData = new PrintДиалогData(m_printData);
-            Printer printer = new Printer(printДиалогData);
+            PrintDialogData printDialogData = new PrintDialogData(m_printData);
+            Printer printer = new Printer(printDialogData);
 
             MyPrintout printout = new MyPrintout("My printout");
 
@@ -96,40 +96,40 @@ import wx.wx;
                 }
             }
             else {
-                m_printData = printer.printДиалогData.printData;
+                m_printData = printer.printDialogData.printData;
             }
         }
 
 		public проц OnPrintSetup(Объект sender, Событие e)
         {
-            PrintДиалог printerДиалог = new PrintДиалог(this, m_printData);
+            PrintDialog printerДиалог = new PrintDialog(this, m_printData);
 
-            printerДиалог.printДиалогData.SetupДиалог = да;
+            printerДиалог.printDialogData.SetupDialog = да;
             printerДиалог.ShowModal();
 
-            m_printData = printerДиалог.printДиалогData.printData;
+            m_printData = printerДиалог.printDialogData.printData;
         }
 
 		public проц OnPageSetup(Объект sender, Событие e)
         {
-            m_pageSetupData = new PageSetupДиалогData(m_printData);
+            m_pageSetupData = new PageSetupDialogData(m_printData);
 
-            PageSetupДиалог pageSetupДиалог = 
-                new PageSetupДиалог(this, m_pageSetupData);
-            pageSetupДиалог.ShowModal();
+            PageSetupDialog pageSetupDialog = 
+                new PageSetupDialog(this, m_pageSetupData);
+            pageSetupDialog.ShowModal();
 
-            m_printData = pageSetupДиалог.PageSetupData.printData;
-            m_pageSetupData = pageSetupДиалог.PageSetupData;
+            m_printData = pageSetupDialog.PageSetupData.printData;
+            m_pageSetupData = pageSetupDialog.PageSetupData;
         }
 
 		public проц OnPrintPreview(Объект sender, Событие e)
         {
             // Pass two printout Objects: for preview, and possible printing.
-            PrintДиалогData printДиалогData = new PrintДиалогData(m_printData);
+            PrintDialogData printDialogData = new PrintDialogData(m_printData);
 
             PrintPreview preview = 
                 new PrintPreview(new MyPrintout(""), new MyPrintout(""), 
-                                 printДиалогData);
+                                 printDialogData);
 
             if (!preview.Ок)
             {
@@ -199,7 +199,7 @@ import wx.wx;
 
     public class MyCanvas : ScrolledWindow
     {
-        public this(Frame frame)
+        public this(Фрейм frame)
         { 
             super(frame) ;
             ЦветЗП = new Цвет("White");

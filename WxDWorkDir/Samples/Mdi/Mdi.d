@@ -13,7 +13,7 @@
 
 import wx.wx;
 private import std.stdio;
-private import std.ткст;
+private import std.string;
 
 struct ArrayList /* for .NET compatibility */
 {
@@ -110,7 +110,7 @@ struct ArrayList /* for .NET compatibility */
 		public проц OnNewWindow( Объект sender, Событие e )
 		{
 			writefln( "MyFrame: OnNewWindow");
-			MyChild subframe = new MyChild( this, "Canvas Frame", Точка( -1, -1 ),
+			MyChild subframe = new MyChild( this, "Canvas Фрейм", Точка( -1, -1 ),
 					Размер( -1, -1 ), wxDEFAULT_FRAME_STYLE );
 
 			subframe.Show( да );	
@@ -292,7 +292,7 @@ struct ArrayList /* for .NET compatibility */
 		
 		private MyCanvas canvas = пусто;
 		
-		public static ткст s_title = "Canvas Frame";
+		public static ткст s_title = "Canvas Фрейм";
 		
 		//---------------------------------------------------------------------
 		
@@ -305,7 +305,7 @@ struct ArrayList /* for .NET compatibility */
 			
 			SetSizeHints( 100, 100 );
 			
-			ткст atitle = "Canvas Frame " ~ .toString( ++MyFrame.gs_nFrames );
+			ткст atitle = "Canvas Фрейм " ~ .toString( ++MyFrame.gs_nFrames );
 			
 			Title = atitle;
 			

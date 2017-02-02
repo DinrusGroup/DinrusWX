@@ -31,7 +31,7 @@ private import tango.io.Console;
 }
 else // Phobos
 {
-private import std.ткст;
+private import std.string;
 private import std.stdio;
 alias writefln PRINT;
 }
@@ -64,7 +64,7 @@ alias writefln PRINT;
     //-------------------------------------------------------------------------
     // Main application frame
 
-    public class MyFrame : Frame
+    public class MyFrame : Фрейм
     {
         public const цел ID_ABOUT       = 100;
         public const цел ID_EXIT        = 101;
@@ -299,7 +299,7 @@ alias writefln PRINT;
 
         //---------------------------------------------------------------------
 
-        public this(Frame frame, цел x, цел y, цел w, цел h)
+        public this(Фрейм frame, цел x, цел y, цел w, цел h)
         {
             super(frame, -1, Точка(x, y), Размер(w, h));
             ткст[] choices = [

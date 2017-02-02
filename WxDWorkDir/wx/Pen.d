@@ -13,7 +13,7 @@
 // $Ид: Перо.d,v 1.9 2006/11/17 15:21:00 afb Exp $
 //-----------------------------------------------------------------------------
 
-module wx.Перо;
+module wx.Pen;
 public import wx.common;
 public import wx.Defs;
 public import wx.GDIObject;

@@ -10,7 +10,7 @@
 // $Ид: Edit.d,v 1.5 2008/09/26 11:37:06 afb Exp $
 //-----------------------------------------------------------------------------
 
-import std.ткст : find, rfind, format, tolower;
+import std.string : find, rfind, format, tolower;
 import std.путь : getBaseName;
 
 import wx.wx;
@@ -549,8 +549,8 @@ public class Edit : StyledTextCtrl {
 		// get filname
 		if (!m_filename)
 		{
-			FileДиалог dlg = new FileДиалог(this, "Открой file", "", "",
-					"Any file (*)|*", FileДиалог.wxOPEN | FileДиалог.wxFILE_MUST_EXIST | FileДиалог.wxCHANGE_DIR);
+			ФайлДиалог dlg = new ФайлДиалог(this, "Открой file", "", "",
+					"Any file (*)|*", ФайлДиалог.wxOPEN | ФайлДиалог.wxFILE_MUST_EXIST | ФайлДиалог.wxCHANGE_DIR);
 			if (dlg.ShowModal() != wxID_OK) return нет;
 			
 			m_filename = dlg.Путь;
@@ -583,8 +583,8 @@ public class Edit : StyledTextCtrl {
 		// get filname
 		if (!m_filename)
 		{
-			FileДиалог dlg = new FileДиалог(this, "Save file", "", "", "Any file (*)|*",
-					FileДиалог.wxSAVE | FileДиалог.wxOVERWRITE_PROMPT);
+			ФайлДиалог dlg = new ФайлДиалог(this, "Save file", "", "", "Any file (*)|*",
+					ФайлДиалог.wxSAVE | ФайлДиалог.wxOVERWRITE_PROMPT);
 			if (dlg.ShowModal() != wxID_OK) return нет;
 			
 			m_filename = dlg.Путь;

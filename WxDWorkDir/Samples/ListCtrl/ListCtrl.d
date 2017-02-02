@@ -13,7 +13,7 @@
 
 import wx.wx;
 private import std.stdio;
-private import std.ткст;
+private import std.string;
 
 	public enum Cmd
 	{
@@ -51,7 +51,7 @@ private import std.ткст;
 	
 	//---------------------------------------------------------------------
 
-	public class MyFrame : Frame
+	public class MyFrame : Фрейм
 	{
 		public ImageList m_imageListNormal;
 		public ImageList m_imageListSmall;

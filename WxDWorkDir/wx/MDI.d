@@ -46,7 +46,7 @@ public import wx.Frame;
 		//-----------------------------------------------------------------------------
 
 	alias MDIParentFrame wxMDIParentFrame;
-	public class MDIParentFrame : Frame
+	public class MDIParentFrame : Фрейм
 	{
 		enum { wxDEFAULT_MDI_FRAME_STYLE = wxDEFAULT_FRAME_STYLE | wxVSCROLL | wxHSCROLL }
 		
@@ -167,7 +167,7 @@ public import wx.Frame;
 		//-----------------------------------------------------------------------------
 
 	alias MDIChildFrame wxMDIChildFrame;
-	public class MDIChildFrame : Frame 
+	public class MDIChildFrame : Фрейм 
 	{
 		public this(ЦУк шхобъ) 
 			{ super(шхобъ); }

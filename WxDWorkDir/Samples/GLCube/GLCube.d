@@ -156,7 +156,7 @@ import gl.gl;
 		}
     }
 
-	public class MyFrame : Frame
+	public class MyFrame : Фрейм
 	{
 		enum Cmd { Quit = 1 }
 
@@ -207,7 +207,7 @@ import gl.gl;
 					wxDefaultPosition, wxDefaultSize);
 			}
    
-			// moved the Frame sizing to after canvas was added,
+			// moved the Фрейм sizing to after canvas was added,
 			// since otherwise the frame showed empty on wxMac ?
 			frame.size = Размер(400, 300);
 

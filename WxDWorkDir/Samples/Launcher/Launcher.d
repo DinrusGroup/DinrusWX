@@ -15,7 +15,7 @@ import wx.wx;
 private import std.process;
 private import std.c.process;
 
-	public class LauncherFrame : Frame
+	public class LauncherFrame : Фрейм
 	{
 		private MiddleHtmlWindow middleHtmlWindow = пусто;
 		private TopHtmlWindow topHtmlWindow = пусто;

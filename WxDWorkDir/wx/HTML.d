@@ -1569,7 +1569,7 @@ public import wx.MouseEvent;
 		
 		//-----------------------------------------------------------------------------
 		
-		public PageSetupДиалогData PageSetupData() { return cast(PageSetupДиалогData)FindObject(wxHtmlEasyPrinting_GetPageSetupData(шхобъ), &PageSetupДиалогData.Нов); }
+		public PageSetupDialogData PageSetupData() { return cast(PageSetupDialogData)FindObject(wxHtmlEasyPrinting_GetPageSetupData(шхобъ), &PageSetupDialogData.Нов); }
 	}
 
 	//-----------------------------------------------------------------------------
@@ -1712,12 +1712,12 @@ public import wx.MouseEvent;
 		
 		//-----------------------------------------------------------------------------
 		
-		public проц SetRelatedFrame(Frame frame, ткст format)
+		public проц SetRelatedFrame(Фрейм frame, ткст format)
 		{
 			wxHtmlWindow_SetRelatedFrame(шхобъ, wxObject.SafePtr(frame), format);
 		}
 		
-		public Frame RelatedFrame() { return cast(Frame)FindObject(wxHtmlWindow_GetRelatedFrame(шхобъ), &Frame.Нов); }
+		public Фрейм RelatedFrame() { return cast(Фрейм)FindObject(wxHtmlWindow_GetRelatedFrame(шхобъ), &Фрейм.Нов); }
 		
 		//-----------------------------------------------------------------------------
 		

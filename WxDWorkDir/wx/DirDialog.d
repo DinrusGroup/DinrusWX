@@ -18,18 +18,18 @@ public import wx.common;
 public import wx.Dialog;
 
 		//! \cond EXTERN
-        static extern (C) ЦУк wxDirДиалог_ctor(ЦУк родитель, ткст message, ткст defaultPath, бцел стиль, inout Точка поз, inout Размер size, ткст имя);
+        static extern (C) ЦУк wxDirDialog_ctor(ЦУк родитель, ткст message, ткст defaultPath, бцел стиль, inout Точка поз, inout Размер size, ткст имя);
 
-        static extern (C) проц   wxDirДиалог_SetPath(ЦУк сам, ткст путь);
-        static extern (C) ЦУк wxDirДиалог_GetPath(ЦУк сам);
+        static extern (C) проц   wxDirDialog_SetPath(ЦУк сам, ткст путь);
+        static extern (C) ЦУк wxDirDialog_GetPath(ЦУк сам);
 
-        static extern (C) цел    wxDirДиалог_GetStyle(ЦУк сам);
-        static extern (C) проц   wxDirДиалог_SetStyle(ЦУк сам, цел стиль);
+        static extern (C) цел    wxDirDialog_GetStyle(ЦУк сам);
+        static extern (C) проц   wxDirDialog_SetStyle(ЦУк сам, цел стиль);
 
-        static extern (C) проц   wxDirДиалог_SetMessage(ЦУк сам, ткст message);
-        static extern (C) ЦУк wxDirДиалог_GetMessage(ЦУк сам);
+        static extern (C) проц   wxDirDialog_SetMessage(ЦУк сам, ткст message);
+        static extern (C) ЦУк wxDirDialog_GetMessage(ЦУк сам);
 
-        static extern (C) цел    wxDirДиалог_ShowModal(ЦУк сам);
+        static extern (C) цел    wxDirDialog_ShowModal(ЦУк сам);
 		//! \endcond
 
         //-----------------------------------------------------------------------------
@@ -47,29 +47,29 @@ public import wx.Dialog;
             { super(шхобъ); }
 
         public this(Окно родитель, ткст title = wxDirSelectorPromptStr, ткст defaultPath = "", цел стиль = wxDD_DEFAULT_STYLE, Точка поз = wxDefaultPosition, Размер size = wxDefaultSize, ткст имя = wxDirДиалогNameStr)
-            { this(wxDirДиалог_ctor(wxObject.SafePtr(родитель), title, defaultPath, стиль, поз, size, имя)); }
+            { this(wxDirDialog_ctor(wxObject.SafePtr(родитель), title, defaultPath, стиль, поз, size, имя)); }
 
         //-----------------------------------------------------------------------------
 
-        public проц Путь(ткст значение) { wxDirДиалог_SetPath(шхобъ, значение); }
-        public ткст Путь() { return cast(ткст) new wxString(wxDirДиалог_GetPath(шхобъ), да); }
+        public проц Путь(ткст значение) { wxDirDialog_SetPath(шхобъ, значение); }
+        public ткст Путь() { return cast(ткст) new wxString(wxDirDialog_GetPath(шхобъ), да); }
 
         //-----------------------------------------------------------------------------
 
-        public проц Message(ткст значение) { wxDirДиалог_SetMessage(шхобъ, значение); }
-        public ткст Message() { return cast(ткст) new wxString(wxDirДиалог_GetMessage(шхобъ), да); }
+        public проц Message(ткст значение) { wxDirDialog_SetMessage(шхобъ, значение); }
+        public ткст Message() { return cast(ткст) new wxString(wxDirDialog_GetMessage(шхобъ), да); }
 
         //-----------------------------------------------------------------------------
 
         public override цел ShowModal()
         {
-            return wxDirДиалог_ShowModal(шхобъ);
+            return wxDirDialog_ShowModal(шхобъ);
         }
 
         //-----------------------------------------------------------------------------
 
-        public проц Style(цел значение) { wxDirДиалог_SetStyle(шхобъ, значение); }
-        public цел Style() { return wxDirДиалог_GetStyle(шхобъ); }
+        public проц Style(цел значение) { wxDirDialog_SetStyle(шхобъ, значение); }
+        public цел Style() { return wxDirDialog_GetStyle(шхобъ); }
 
         //-----------------------------------------------------------------------------
     }

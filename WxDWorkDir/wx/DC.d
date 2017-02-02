@@ -2,7 +2,7 @@
 module wx.DC;
 public import wx.common;
 public import wx.Window;
-public import wx.Перо;
+public import wx.Pen;
 public import wx.Brush;
 public import wx.ArrayInt;
 

@@ -12,9 +12,9 @@
 //-----------------------------------------------------------------------------
 
 import wx.wx;
-private import std.ткст;
+private import std.string;
 
-	public class GridFrame : Frame
+	public class GridFrame : Фрейм
 	{
 		enum Cmd  
 		{
@@ -705,7 +705,7 @@ private import std.ткст;
 		
 		public проц OnSmallGrid( Объект sender, Событие e )
 		{
-			Frame frame = new Frame( пусто, -1, "A Small Grid", wxDefaultPosition, Размер( 640, 480 ) );
+			Фрейм frame = new Фрейм( пусто, -1, "A Small Grid", wxDefaultPosition, Размер( 640, 480 ) );
 			Panel panel = new Panel( frame, -1 );
 			Grid agrid = new Grid( panel, -1, Точка( 10, 10 ), Размер( 400, 400 ), wxWANTS_CHARS | wxSIMPLE_BORDER );
 			agrid.CreateGrid( 3, 3 );
@@ -941,7 +941,7 @@ private import std.ткст;
 	
 	//---------------------------------------------------------------------
 	
-	public class BugsGridFrame : Frame
+	public class BugsGridFrame : Фрейм
 	{
 		public enum Columns
 		{
@@ -1328,7 +1328,7 @@ private import std.ткст;
 	
 	//---------------------------------------------------------------------
 	
-	public class BigGridFrame : Frame
+	public class BigGridFrame : Фрейм
 	{
 		private Grid m_grid;
 		private BigGridTable m_table;

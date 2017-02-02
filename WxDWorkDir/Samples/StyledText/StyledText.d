@@ -54,7 +54,7 @@ import FileNameFunc;   // Normalize file путь.
 
 // global print данные, to remember settings during the session
 PrintData g_printData = пусто;
-PageSetupДиалогData g_pageSetupData = пусто;
+PageSetupDialogData g_pageSetupData = пусто;
 
 //============================================================================
 // implementations
@@ -87,7 +87,7 @@ public class StyledTextApp : Прил {
 
 		// инициализуй print данные and setup
 		g_printData = new PrintData;
-		g_pageSetupData = new PageSetupДиалогData;
+		g_pageSetupData = new PageSetupDialogData;
 
 		// create application frame
 		frame = new AppFrame (assumeUnique(g_appname));
@@ -105,7 +105,7 @@ public class StyledTextApp : Прил {
 // AppFrame
 //----------------------------------------------------------------------------
 
-public class AppFrame : Frame
+public class AppFrame : Фрейм
 {
 
 	private Edit edit;
@@ -222,8 +222,8 @@ public class AppFrame : Frame
 		if (!edit) return;
 		
 		ткст fname;
-		scope FileДиалог dlg = new FileДиалог(this, "Открой file", "", "", "Any file (*)|*",
-			FileДиалог.wxOPEN | FileДиалог.wxFILE_MUST_EXIST | FileДиалог.wxCHANGE_DIR);
+		scope ФайлДиалог dlg = new ФайлДиалог(this, "Открой file", "", "", "Any file (*)|*",
+			ФайлДиалог.wxOPEN | ФайлДиалог.wxFILE_MUST_EXIST | ФайлДиалог.wxCHANGE_DIR);
 		
 		if (dlg.ShowModal() != wxID_OK) return;
 
@@ -247,9 +247,9 @@ public class AppFrame : Frame
 		if (!edit) return;
 
 		ткст фимя;
-		scope FileДиалог dlg = new FileДиалог(this, "Save file", "", "", "Any file (*)|*",
+		scope ФайлДиалог dlg = new ФайлДиалог(this, "Save file", "", "", "Any file (*)|*",
 		
-			FileДиалог.wxSAVE | FileДиалог.wxOVERWRITE_PROMPT);
+			ФайлДиалог.wxSAVE | ФайлДиалог.wxOVERWRITE_PROMPT);
 
 		if (dlg.ShowModal() != wxID_OK) return;
 
@@ -290,17 +290,17 @@ public class AppFrame : Frame
 	public проц OnPrintSetup (Объект sender, Событие event)
 	{
 		g_pageSetupData.printData = g_printData;
-		PageSetupДиалог pageSetupДиалог = new PageSetupДиалог(this, g_pageSetupData);
-		pageSetupДиалог.ShowModal();
-		g_printData = pageSetupДиалог.PageSetupData.printData;
-		g_pageSetupData = pageSetupДиалог.PageSetupData;
+		PageSetupDialog pageSetupDialog = new PageSetupDialog(this, g_pageSetupData);
+		pageSetupDialog.ShowModal();
+		g_printData = pageSetupDialog.PageSetupData.printData;
+		g_pageSetupData = pageSetupDialog.PageSetupData;
 	}
 
 	public проц OnPrintPreview (Объект sender, Событие event)
 	{
-		PrintДиалогData printДиалогData = new PrintДиалогData(g_printData);
+		PrintDialogData printDialogData = new PrintDialogData(g_printData);
 		PrintPreview preview = new PrintPreview (new EditPrint (edit),
-			new EditPrint (edit), printДиалогData);
+			new EditPrint (edit), printDialogData);
 		
 		if (!preview.Ок()) {
 			MessageBox ("There was a problem with previewing.\n" ~
@@ -319,8 +319,8 @@ public class AppFrame : Frame
 
 	public проц OnPrint (Объект sender, Событие event)
 	{
-		PrintДиалогData printДиалогData = new PrintДиалогData(g_printData);
-		Printer printer = new Printer(printДиалогData);
+		PrintDialogData printDialogData = new PrintDialogData(g_printData);
+		Printer printer = new Printer(printDialogData);
 		EditPrint printout = new EditPrint(edit);
 		if (!printer.Print (this, printout, да)) {
 			if (printer.LastError() == PrinterError.wxPRINTER_ERROR) {
@@ -330,7 +330,7 @@ public class AppFrame : Frame
 				return;
 			}
 		}
-		g_printData = printer.printДиалогData.printData;
+		g_printData = printer.printDialogData.printData;
 	}
 
 	// edit events

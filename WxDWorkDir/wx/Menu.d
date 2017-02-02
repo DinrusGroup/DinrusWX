@@ -555,7 +555,7 @@ public import wx.MenuBar;
 		// need this...
 		private Окно родитель = пусто;
 
-		// if events were connected with Frame.MenuBar or Окно.PopupMenu
+		// if events were connected with Фрейм.MenuBar or Окно.PopupMenu
 		// that means with ConnectEvents(), we have a Invoking Окно and can add 
 		// the event directly to the EventHandler
 		private бул eventsconnected = нет; 
@@ -590,9 +590,9 @@ public import wx.MenuBar;
 			// But for now we have to add the EventListener to the EventHandler of the invoking окно,
 			// otherwise nothing happens.
 			// As цел as we do not have an invoking окно, which means, that for example the
-			// MenuBar of this Меню isn't connected to a Frame, the EventListener gets only
+			// MenuBar of this Меню isn't connected to a Фрейм, the EventListener gets only
 			// added to the ArrayList, otherwise it gets directly added to the EventHandler of
-			// the invoking окно. When Frame.MenuBar is set, it will call ConnectEvents() 
+			// the invoking окно. When Фрейм.MenuBar is set, it will call ConnectEvents() 
 			// for each Меню ; MenuBar
 			eventListeners ~=  new MenuListener( inId, el, owner );
 			
@@ -601,7 +601,7 @@ public import wx.MenuBar;
 		}	
 		
 		//---------------------------------------------------------------------
-		// ConnectEvents gets only called from Окно and Frame
+		// ConnectEvents gets only called from Окно and Фрейм
 		
 		public проц ConnectEvents(Окно родитель)
 		{

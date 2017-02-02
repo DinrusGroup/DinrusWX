@@ -44,7 +44,7 @@ import wx.wx;
     }
 
 
-    public class MyFrame : Frame
+    public class MyFrame : Фрейм
     {
         //---------------------------------------------------------------------
 

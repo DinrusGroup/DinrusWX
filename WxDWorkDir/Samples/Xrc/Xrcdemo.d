@@ -13,7 +13,7 @@
 
 import wx.wx;
 
-	public class XrcFrame : Frame
+	public class XrcFrame : Фрейм
 	{
 		public this()
 			{ this( пусто ); }
@@ -54,7 +54,7 @@ import wx.wx;
 		
 		public проц OnNonDerivedДиалогToolOrMenuCommand( Объект sender, Событие e )
 		{
-			Диалог dlg = XmlResource.Get().LoadДиалог(this, "non_derived_dialog" ); 
+			Диалог dlg = XmlResource.Get().LoadDialog(this, "non_derived_dialog" ); 
 			
 			dlg.ShowModal();
 		}
@@ -73,7 +73,7 @@ import wx.wx;
 		public проц OnWxGladeMenu( Объект sender, Событие e )
 		{
 		
-			/*Диалог dlg = XmlResource.Get().LoadДиалог(this, "wxglade_dialog" ); 
+			/*Диалог dlg = XmlResource.Get().LoadDialog(this, "wxglade_dialog" ); 
 			
 			dlg.ShowModal();*/
 			
@@ -86,7 +86,7 @@ import wx.wx;
 		
 		public проц OnControlsToolOrMenuCommand( Объект sender, Событие e )
 		{
-			Диалог dlg = XmlResource.Get().LoadДиалог(this, "controls_dialog" );
+			Диалог dlg = XmlResource.Get().LoadDialog(this, "controls_dialog" );
 			
 			//ListCtrl lc = (ListCtrl)dlg.FindWindow( XmlResource.XRCID( "controls_listctrl" ), typeof( ListCtrl) );
 			
@@ -112,7 +112,7 @@ import wx.wx;
 		
 		public проц OnUncenteredToolOrMenuCommand( Объект sender, Событие e )
 		{
-			Диалог dlg = XmlResource.Get().LoadДиалог( this, "uncentered_dialog" );
+			Диалог dlg = XmlResource.Get().LoadDialog( this, "uncentered_dialog" );
 			dlg.ShowModal();
 		}
 		
@@ -120,7 +120,7 @@ import wx.wx;
 		
 		public проц OnCustomClassToolOrMenuCommand( Объект sender, Событие e )
 		{
-			Диалог dlg = XmlResource.Get().LoadДиалог( this, "custom_class_dialog" );
+			Диалог dlg = XmlResource.Get().LoadDialog( this, "custom_class_dialog" );
 			
 			MyResizableListCtrl a_myResizableListCtrl = new MyResizableListCtrl( dlg,
 									-1,
@@ -138,7 +138,7 @@ import wx.wx;
 		
 		public проц OnPlatformPropertyToolOrMenuCommand( Объект sender, Событие e )
 		{
-			Диалог dlg = XmlResource.Get().LoadДиалог( this, "platform_property_dialog" );
+			Диалог dlg = XmlResource.Get().LoadDialog( this, "platform_property_dialog" );
 			dlg.ShowModal();
 		}
 		
@@ -146,7 +146,7 @@ import wx.wx;
 		
 		public проц OnArtProviderToolOrMenuCommand( Объект sender, Событие e )
 		{
-			Диалог dlg = XmlResource.Get().LoadДиалог( this, "art_provider_dialog" );
+			Диалог dlg = XmlResource.Get().LoadDialog( this, "art_provider_dialog" );
 			dlg.ShowModal();
 		}
 		
@@ -154,7 +154,7 @@ import wx.wx;
 		
 		public проц OnVariableExpansionToolOrMenuCommand( Объект sender, Событие e )
 		{
-			Диалог dlg = XmlResource.Get().LoadДиалог( this, "variable_expansion_dialog" );
+			Диалог dlg = XmlResource.Get().LoadDialog( this, "variable_expansion_dialog" );
 			dlg.ShowModal();
 		}
 		
@@ -174,7 +174,7 @@ import wx.wx;
 	{
 		public this( Окно родитель )
 		{
-			XmlResource.Get().LoadДиалог( this, родитель, "derived_dialog" );
+			XmlResource.Get().LoadDialog( this, родитель, "derived_dialog" );
 		
 			EVT_BUTTON( XmlResource.XRCID( "my_button" ), & OnMyButtonClicked ) ;
 			EVT_UPDATE_UI( XmlResource.XRCID( "my_checkbox" ), & OuUpdateUIMyCheckbox ) ;
@@ -283,7 +283,7 @@ import wx.wx;
 	{
 		public this( Окно родитель )
 		{
-			XmlResource.Get().LoadДиалог( this, родитель, "wxglade_dialog" );
+			XmlResource.Get().LoadDialog( this, родитель, "wxglade_dialog" );
 		
 			EVT_BUTTON( wxID_OK, & OnOK ) ;
 		}

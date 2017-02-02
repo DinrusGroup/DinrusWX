@@ -25,7 +25,7 @@
 //-----------------------------------------------------------------------------
 
 private import std.stdio;
-private import std.ткст;
+private import std.string;
 
 import wx.wx;
 
@@ -231,7 +231,7 @@ public:
     Размер size=wxDefaultSize;
  
          // Create the SDLFrame
-    Create(пусто, ID_FRAME, "Frame Title", поз,
+    Create(пусто, ID_FRAME, "Фрейм Title", поз,
            size, wxCAPTION | wxSYSTEM_MENU | 
            wxMINIMIZE_BOX | wxCLOSE_BOX, "");
 
@@ -306,7 +306,7 @@ public:
     {
         // инициализуй SDL
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
-        fwritefln(stderr, "unable to init SDL: ", std.ткст.toString(SDL_GetError()));
+        fwritefln(stderr, "unable to init SDL: ", std.string.toString(SDL_GetError()));
         
         return -1;
     }

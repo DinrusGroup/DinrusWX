@@ -14,10 +14,10 @@ public import wx.common;
 public import wx.Dialog;
 
 		//! \cond EXTERN
-        static extern (C) ЦУк wxNumberEntryДиалог_ctor(ЦУк родитель, ткст message, ткст prompt, ткст caption, цел значение, цел min, цел max, inout Точка поз);
-        static extern (C) проц wxNumberEntryДиалог_dtor(ЦУк сам);
-        static extern (C) цел wxNumberEntryДиалог_GetValue(ЦУк сам);
-        static extern (C) цел wxNumberEntryДиалог_ShowModal(ЦУк сам);
+        static extern (C) ЦУк wxNumberEntryDialog_ctor(ЦУк родитель, ткст message, ткст prompt, ткст caption, цел значение, цел min, цел max, inout Точка поз);
+        static extern (C) проц wxNumberEntryDialog_dtor(ЦУк сам);
+        static extern (C) цел wxNumberEntryDialog_GetValue(ЦУк сам);
+        static extern (C) цел wxNumberEntryDialog_ShowModal(ЦУк сам);
 		//! \endcond
 
         //-----------------------------------------------------------------------------
@@ -31,17 +31,17 @@ public import wx.Dialog;
             { super(шхобъ);}
 
         public  this(Окно родитель, ткст message, ткст prompt, ткст caption, цел значение, цел min, цел max, Точка поз = wxDefaultPosition)
-            { this(wxNumberEntryДиалог_ctor(wxObject.SafePtr(родитель), message, prompt, caption, значение, min, max, поз)); }
+            { this(wxNumberEntryDialog_ctor(wxObject.SafePtr(родитель), message, prompt, caption, значение, min, max, поз)); }
 
         //-----------------------------------------------------------------------------
 
-        public цел Value() { return wxNumberEntryДиалог_GetValue(шхобъ); }
+        public цел Value() { return wxNumberEntryDialog_GetValue(шхобъ); }
 
         //---------------------------------------------------------------------
 
         public override цел ShowModal()
         {
-            return wxNumberEntryДиалог_ShowModal(шхобъ);
+            return wxNumberEntryDialog_ShowModal(шхобъ);
         }
     }
 

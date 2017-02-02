@@ -40,7 +40,7 @@ import tango.текст.convert.Integer;
 
 version(Phobos)
 {
-private import std.ткст;
+private import std.string;
 private import std.conv;
 }
 

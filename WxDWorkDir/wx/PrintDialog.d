@@ -1,16 +1,16 @@
 //-----------------------------------------------------------------------------
-// wxD - PrintДиалог.d
+// wxD - PrintDialog.d
 // (C) 2005 bero <berobero@users.sourceforge.net>
 // based on
-// wx.NET - PrintДиалог.cs
+// wx.NET - PrintDialog.cs
 //
-/// The wxPrintДиалог wrapper classes.
+/// The wxPrintDialog wrapper classes.
 //
 // Written by Bryan Bulten (bryan@bulten.ca)
 // (C) 2003 Bryan Bulten
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Ид: PrintДиалог.d,v 1.9 2006/11/17 15:21:00 afb Exp $
+// $Ид: PrintDialog.d,v 1.9 2006/11/17 15:21:00 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.PrintDialog;
@@ -19,101 +19,101 @@ public import wx.Dialog;
 public import wx.PrintData;
 
 		//! \cond EXTERN
-        static extern (C) ЦУк wxPageSetupДиалог_ctor(ЦУк родитель, ЦУк данные);
-        static extern (C) ЦУк wxPageSetupДиалог_GetPageSetupData(ЦУк сам);
+        static extern (C) ЦУк wxPageSetupDialog_ctor(ЦУк родитель, ЦУк данные);
+        static extern (C) ЦУк wxPageSetupDialog_GetPageSetupData(ЦУк сам);
 		//! \endcond
 
         //-----------------------------------------------------------------------------
 
-    alias PageSetupДиалог wxPageSetupДиалог;
-    public class PageSetupДиалог : Диалог
+    alias PageSetupDialog wxPageSetupDialog;
+    public class PageSetupDialog : Диалог
     {
         private this(ЦУк шхобъ)
             { super(шхобъ); }
 
         public this(Окно родитель)
             { this(родитель, пусто); }
-        public this(Окно родитель, PageSetupДиалогData данные)
-            { this(wxPageSetupДиалог_ctor(wxObject.SafePtr(родитель), wxObject.SafePtr(данные))); }
+        public this(Окно родитель, PageSetupDialogData данные)
+            { this(wxPageSetupDialog_ctor(wxObject.SafePtr(родитель), wxObject.SafePtr(данные))); }
 
         //-----------------------------------------------------------------------------
 
-        public PageSetupДиалогData PageSetupData() { return cast(PageSetupДиалогData)FindObject(wxPageSetupДиалог_GetPageSetupData(шхобъ), &PageSetupДиалогData.Нов); }
+        public PageSetupDialogData PageSetupData() { return cast(PageSetupDialogData)FindObject(wxPageSetupDialog_GetPageSetupData(шхобъ), &PageSetupDialogData.Нов); }
     }
 
 		//! \cond EXTERN
-        static extern (C) ЦУк wxPrintДиалог_ctor(ЦУк родитель, ЦУк данные);
-        static extern (C) ЦУк wxPrintДиалог_ctorPrintData(ЦУк родитель, ЦУк данные);
-        static extern (C) ЦУк wxPrintДиалог_GetPrintData(ЦУк сам);
-        static extern (C) ЦУк wxPrintДиалог_GetPrintДиалогData(ЦУк сам);
-        static extern (C) ЦУк wxPrintДиалог_GetPrintDC(ЦУк сам);
+        static extern (C) ЦУк wxPrintDialog_ctor(ЦУк родитель, ЦУк данные);
+        static extern (C) ЦУк wxPrintDialog_ctorPrintData(ЦУк родитель, ЦУк данные);
+        static extern (C) ЦУк wxPrintDialog_GetPrintData(ЦУк сам);
+        static extern (C) ЦУк wxPrintDialog_GetPrintDialogData(ЦУк сам);
+        static extern (C) ЦУк wxPrintDialog_GetPrintDC(ЦУк сам);
 		//! \endcond
 
         //-----------------------------------------------------------------------------
 
-    alias PrintДиалог wxPrintДиалог;
-    public class PrintДиалог : Диалог
+    alias PrintDialog wxPrintDialog;
+    public class PrintDialog : Диалог
     {
         private this(ЦУк шхобъ)
             { super(шхобъ); }
 
         public this(Окно родитель)
-            { this(родитель, cast(PrintДиалогData)пусто); }
-        public this(Окно родитель, PrintДиалогData данные)
-            { this(wxPrintДиалог_ctor(wxObject.SafePtr(родитель), wxObject.SafePtr(данные))); }
+            { this(родитель, cast(PrintDialogData)пусто); }
+        public this(Окно родитель, PrintDialogData данные)
+            { this(wxPrintDialog_ctor(wxObject.SafePtr(родитель), wxObject.SafePtr(данные))); }
 
         public this(Окно родитель, PrintData данные)
-            { this(wxPrintДиалог_ctorPrintData(wxObject.SafePtr(родитель), wxObject.SafePtr(данные))); }
+            { this(wxPrintDialog_ctorPrintData(wxObject.SafePtr(родитель), wxObject.SafePtr(данные))); }
 
         //-----------------------------------------------------------------------------
 
-        public PrintData printData() { return cast(PrintData)FindObject(wxPrintДиалог_GetPrintData(шхобъ), &PrintData.Нов); }
+        public PrintData printData() { return cast(PrintData)FindObject(wxPrintDialog_GetPrintData(шхобъ), &PrintData.Нов); }
 
         //-----------------------------------------------------------------------------
 
-        public PrintДиалогData printДиалогData() { return cast(PrintДиалогData)FindObject(wxPrintДиалог_GetPrintДиалогData(шхобъ), &PrintДиалогData.Нов); }
+        public PrintDialogData printDialogData() { return cast(PrintDialogData)FindObject(wxPrintDialog_GetPrintDialogData(шхобъ), &PrintDialogData.Нов); }
 
         //-----------------------------------------------------------------------------
 
-        public DC PrintDC() { return cast(DC)FindObject(wxPrintДиалог_GetPrintDC(шхобъ), &DC.Нов); }
+        public DC PrintDC() { return cast(DC)FindObject(wxPrintDialog_GetPrintDC(шхобъ), &DC.Нов); }
     }
 
 //! \cond VERSION
 version(none) /*(__WXGTK__)*/{
     
 		//! \cond EXTERN
-        static extern (C) ЦУк wxPrintSetupДиалог_ctor(ЦУк родитель, ЦУк данные);
-        static extern (C) ЦУк wxPrintSetupДиалог_ctorPrintData(ЦУк родитель, ЦУк данные);
-        static extern (C) проц wxPrintSetupДиалог_Init(ЦУк сам, ЦУк данные);
-        static extern (C) ЦУк wxPrintSetupДиалог_GetPrintData(ЦУк сам);
+        static extern (C) ЦУк wxPrintSetupDialog_ctor(ЦУк родитель, ЦУк данные);
+        static extern (C) ЦУк wxPrintSetupDialog_ctorPrintData(ЦУк родитель, ЦУк данные);
+        static extern (C) проц wxPrintSetupDialog_Init(ЦУк сам, ЦУк данные);
+        static extern (C) ЦУк wxPrintSetupDialog_GetPrintData(ЦУк сам);
 		//! \endcond
 
         //-----------------------------------------------------------------------------
 
-    alias PrintSetupДиалог wxPrintSetupДиалог;
-    public class PrintSetupДиалог : Диалог
+    alias PrintSetupDialog wxPrintSetupDialog;
+    public class PrintSetupDialog : Диалог
     {
         private this(ЦУк шхобъ)
             { super(шхобъ); }
 
         public this(Окно родитель) 
-            { this(родитель, cast(PrintДиалогData)пусто); }
-        public this(Окно родитель, PrintДиалогData данные)
-            { this(wxPrintSetupДиалог_ctor(wxObject.SafePtr(родитель), wxObject.SafePtr(данные))); }
+            { this(родитель, cast(PrintDialogData)пусто); }
+        public this(Окно родитель, PrintDialogData данные)
+            { this(wxPrintSetupDialog_ctor(wxObject.SafePtr(родитель), wxObject.SafePtr(данные))); }
 
         public this(Окно родитель, PrintData данные)
-            { this(wxPrintSetupДиалог_ctorPrintData(wxObject.SafePtr(родитель), wxObject.SafePtr(данные))); }
+            { this(wxPrintSetupDialog_ctorPrintData(wxObject.SafePtr(родитель), wxObject.SafePtr(данные))); }
 
         //-----------------------------------------------------------------------------
 
         public проц Init(PrintData данные)
         {
-            wxPrintSetupДиалог_Init(шхобъ, wxObject.SafePtr(данные));
+            wxPrintSetupDialog_Init(шхобъ, wxObject.SafePtr(данные));
         }
 
         //-----------------------------------------------------------------------------
 
-        public PrintData printData() { return cast(PrintData)FindObject(wxPrintSetupДиалог_GetPrintData(шхобъ), &PrintData.Нов); }
+        public PrintData printData() { return cast(PrintData)FindObject(wxPrintSetupDialog_GetPrintData(шхобъ), &PrintData.Нов); }
     }
 
 } // __WXGTK__

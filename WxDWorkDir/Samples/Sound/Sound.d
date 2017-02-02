@@ -16,7 +16,7 @@ import wx.Sound;
 
 ткст WAV_FILE = "doggrowl.wav";
 
-	public class MyFrame : Frame
+	public class MyFrame : Фрейм
 	{
 		// IDs for the controls and the меню commands
 		enum
@@ -95,8 +95,8 @@ import wx.Sound;
 
 		public проц OnSelectFile(Объект sender, Событие e)
 		{
-			FileДиалог dlg = new FileДиалог (this, "Choose a sound file",
-							 "", "", "WAV files (*.wav)|*.wav", FileДиалог.wxOPEN|FileДиалог.wxCHANGE_DIR);
+			ФайлДиалог dlg = new ФайлДиалог (this, "Choose a sound file",
+							 "", "", "WAV files (*.wav)|*.wav", ФайлДиалог.wxOPEN|ФайлДиалог.wxCHANGE_DIR);
 			if ( dlg.ShowModal() == wxID_OK )
 			{
 				m_soundFile = dlg.Путь;

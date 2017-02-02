@@ -12,7 +12,7 @@
 //-----------------------------------------------------------------------------
 
 import wx.wx;
-private import std.ткст;
+private import std.string;
 
     public class DNDText : TextDropTarget
     {
@@ -67,7 +67,7 @@ private import std.ткст;
 	
 	//---------------------------------------------------------------------	
 		
-    public class DndFrame : Frame
+    public class DndFrame : Фрейм
     {
         enum Cmd { Menu_Drag, Menu_DragMoveDef, Menu_DragMoveAllow, Menu_About, Menu_Quit,
 			Menu_Clear, Menu_Help, Menu_Copy, Menu_Paste}

@@ -12,9 +12,9 @@
 //-----------------------------------------------------------------------------
 
 import wx.wx;
-private import std.ткст;
+private import std.string;
 
-	public class ListViewFrame : Frame
+	public class ListViewFrame : Фрейм
 	{
 		enum Cmd 
 		{

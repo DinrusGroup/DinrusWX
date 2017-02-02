@@ -40,7 +40,7 @@ pragma(lib,"wxd.lib");
  
 	//---------------------------------------------------------------------
  
-	public class EventDemoFrame : Frame
+	public class EventDemoFrame : Фрейм
 	{
 		// Do not change the code between region and endregion ( incl. region and endregion )...
 		//#region Wxg2wxnet IDS: EventDemoFrame

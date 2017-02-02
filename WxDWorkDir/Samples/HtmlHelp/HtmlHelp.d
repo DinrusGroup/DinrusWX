@@ -13,7 +13,7 @@
 
 import wx.wx;
 
-	public class MyFrame : Frame
+	public class MyFrame : Фрейм
 	{
 		public enum Cmd 
 		{ 

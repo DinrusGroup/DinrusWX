@@ -22,7 +22,7 @@ else // Phobos
 import std.file;
 import std.путь;
 import std.regexp;
-import std.ткст;
+import std.string;
 }
 
 private static const сим[] wSep = к"\",
@@ -261,7 +261,7 @@ body
 		// Remove the drive from the путь
 		version(Windows)
 		{
-			цел idx = std.ткст.find(путь, ":");
+			цел idx = std.string.find(путь, ":");
 			drive ~= idx != -1 ? путь[0..(idx + 1)] : "";
 			if (idx != -1)
 			{
@@ -277,7 +277,7 @@ body
 		}
 
 		// Remove repeating separators
-		путь = std.ткст.squeeze(путь, sep);
+		путь = std.string.squeeze(путь, sep);
 
 		// If there's an initial separator even after a drive, save it off
 		if (путь != "")
@@ -289,7 +289,7 @@ body
 		}
 
 		// Split the путь components
-		pathComps = std.ткст.split(путь, sep);
+		pathComps = std.string.split(путь, sep);
 
 		while (pcIdx < pathComps.length)
 		{
@@ -407,7 +407,7 @@ body
 			}
 		}
 
-		result = std.ткст.join(pathComps, sep);
+		result = std.string.join(pathComps, sep);
 	}
 	// Путь was either a separator, curdir or pardir reference
 	else
@@ -465,7 +465,7 @@ body
 		// Convert separators
 		if (std.regexp.find(путь, lSep) != -1)
 		{
-			путь = std.ткст.replace(путь, lSep, wSep);
+			путь = std.string.replace(путь, lSep, wSep);
 
 			return путь.dup;
 		}

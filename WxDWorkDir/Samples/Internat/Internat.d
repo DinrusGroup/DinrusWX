@@ -12,9 +12,9 @@
 //-----------------------------------------------------------------------------
 
 import wx.wx;
-private import std.ткст;
+private import std.string;
 
-	public class MyFrame : Frame
+	public class MyFrame : Фрейм
 	{
 		enum Cmd
 		{ 
@@ -70,7 +70,7 @@ private import std.ткст;
 			ткст sysname = m_locale.SysName;
 			ткст canname = m_locale.CanonicalName;
 			
-			ткст localeInfo = std.ткст.format( _("Language: %s\nSystem locale имя:\n%s\nCanonical locale имя: %s\n"),
+			ткст localeInfo = std.string.format( _("Language: %s\nSystem locale имя:\n%s\nCanonical locale имя: %s\n"),
 					locale, sysname, canname );
 		
 			ткст msg = _("I18n sample\n(c) 1998, 1999 Vadim Zeitlin and Julian Smart");

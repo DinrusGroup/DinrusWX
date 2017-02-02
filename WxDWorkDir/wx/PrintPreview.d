@@ -36,7 +36,7 @@ public import wx.Printer;
         static extern (C) бул   wxPrintPreview_PaintPage(ЦУк сам, ЦУк canvas, ЦУк dc);
         static extern (C) бул   wxPrintPreview_DrawBlankPage(ЦУк сам, ЦУк canvas, ЦУк dc);
         static extern (C) бул   wxPrintPreview_RenderPage(ЦУк сам, цел pageNum);
-        static extern (C) ЦУк wxPrintPreview_GetPrintДиалогData(ЦУк сам);
+        static extern (C) ЦУк wxPrintPreview_GetPrintDialogData(ЦУк сам);
         static extern (C) проц   wxPrintPreview_SetZoom(ЦУк сам, цел percent);
         static extern (C) цел    wxPrintPreview_GetZoom(ЦУк сам);
         static extern (C) цел    wxPrintPreview_GetMaxPage(ЦУк сам);
@@ -55,7 +55,7 @@ public import wx.Printer;
         private this(ЦУк шхобъ)
             { super(шхобъ); }
 
-        public this(Printout printout, Printout printoutForPrinting, PrintДиалогData данные)
+        public this(Printout printout, Printout printoutForPrinting, PrintDialogData данные)
             { this(wxPrintPreview_ctor(wxObject.SafePtr(printout), wxObject.SafePtr(printoutForPrinting), wxObject.SafePtr(данные))); }
 
         public this(Printout printout, Printout printoutForPrinting)
@@ -85,8 +85,8 @@ public import wx.Printer;
 
         //-----------------------------------------------------------------------------
 
-        public проц frame(Frame значение) { wxPrintPreview_SetFrame(шхобъ, wxObject.SafePtr(значение)); }
-        public Frame frame() { return cast(Frame)FindObject(wxPrintPreview_GetFrame(шхобъ), &Frame.Нов); }
+        public проц frame(Фрейм значение) { wxPrintPreview_SetFrame(шхобъ, wxObject.SafePtr(значение)); }
+        public Фрейм frame() { return cast(Фрейм)FindObject(wxPrintPreview_GetFrame(шхобъ), &Фрейм.Нов); }
 
         //-----------------------------------------------------------------------------
 
@@ -116,7 +116,7 @@ public import wx.Printer;
 
         //-----------------------------------------------------------------------------
 
-        public PrintДиалогData printДиалогData() { return cast(PrintДиалогData)FindObject(wxPrintPreview_GetPrintДиалогData(шхобъ), &PrintДиалогData.Нов); }
+        public PrintDialogData printDialogData() { return cast(PrintDialogData)FindObject(wxPrintPreview_GetPrintDialogData(шхобъ), &PrintDialogData.Нов); }
 
         //-----------------------------------------------------------------------------
 
@@ -159,7 +159,7 @@ public import wx.Printer;
         //-----------------------------------------------------------------------------
 
     alias PreviewFrame wxPreviewFrame;
-    public class PreviewFrame : Frame
+    public class PreviewFrame : Фрейм
     {
         private this(ЦУк шхобъ) 
             { super(шхобъ); }

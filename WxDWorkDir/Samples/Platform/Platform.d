@@ -8,7 +8,7 @@ import tango.io.Console;
 else // Phobos
 {
 private import std.stdio;
-private import std.ткст;
+private import std.string;
 
 alias format FORMAT;
 alias writefln PRINT;

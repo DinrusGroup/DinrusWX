@@ -13,8 +13,8 @@
 
 import wx.wx;
 private import std.stream;
-private import std.ткст;
-alias std.ткст.find indexOf;
+private import std.string;
+alias std.string.find indexOf;
 
 	public class MyCanvas : Окно
 	{
@@ -136,7 +136,7 @@ alias std.ткст.find indexOf;
 	
 	//---------------------------------------------------------------------
 	
-	public class FontFrame : Frame
+	public class FontFrame : Фрейм
 	{
 		enum Cmd { Font_Quit, Font_About, Font_ViewMsg, Font_IncSize, Font_DecSize, Font_Bold,
 			Font_Italic, Font_Underlined, Font_wxNORMAL_FONT, Font_wxSMALL_FONT, Font_wxITALIC_FONT,
@@ -252,7 +252,7 @@ alias std.ткст.find indexOf;
 		
 		public проц OnViewMsg( Объект sender, Событие e )
 		{
-			FileДиалог dialog = new FileДиалог( this, "Открой an email message file", s_dir, s_file, "*" );
+			ФайлДиалог dialog = new ФайлДиалог( this, "Открой an email message file", s_dir, s_file, "*" );
 			if ( dialog.ShowModal() != wxID_OK ) return;
 			
 			s_dir = dialog.Directory;

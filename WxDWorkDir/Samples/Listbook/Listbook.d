@@ -12,9 +12,9 @@
 //-----------------------------------------------------------------------------
 
 import wx.wx;
-private import std.ткст;
+private import std.string;
 
-	public class ListbookFrame : Frame
+	public class ListbookFrame : Фрейм
 	{
 		enum Cmd 
 		{
@@ -94,7 +94,7 @@ private import std.ткст;
 			// load bitmaps
 			for ( цел i = 1; i < 16; ++i )
 			{
-				Битмап bmp = new Битмап( std.ткст.format( "../Samples/Listbook/bmp/toblom%02d.png", 
+				Битмап bmp = new Битмап( std.string.format( "../Samples/Listbook/bmp/toblom%02d.png", 
 					i ) );
 				imageList.Добавь( bmp );
 			}
@@ -104,7 +104,7 @@ private import std.ткст;
 			for ( цел i = 1; i < 16; ++i )
 			{
 				ListbookPanel p = new ListbookPanel( this, -1, i );
-				AddPage( p , std.ткст.format( "Picture %d    ", i ), нет, i - 1 );
+				AddPage( p , std.string.format( "Picture %d    ", i ), нет, i - 1 );
 			} 
 
 			EVT_LISTBOOK_PAGE_CHANGED( -1, & OnPageChanged ) ;
@@ -152,7 +152,7 @@ private import std.ткст;
 				.toString(number) ~ ".</h1><br><br><br>" ~ 
 				"<img высота=\"32\" ширина=\"32\" alt=\"\" " ~
 				"src=\"" ~
-				std.ткст.format( "../Samples/Listbook/bmp/toblom%02d.png", number ) ~
+				std.string.format( "../Samples/Listbook/bmp/toblom%02d.png", number ) ~
 				"\">" ~
 				"</center></body></html>" );
 

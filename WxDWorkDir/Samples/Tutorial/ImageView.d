@@ -38,7 +38,7 @@ import ImageViewer;
     /**
      * This is the main frame.  All user interaction will start here.
      */
-    public class ImageViewFrame : Frame
+    public class ImageViewFrame : Фрейм
     {
         // Every control that we want to handle events for will need an 
         // integer ИД, these IDs are listed below.
@@ -109,7 +109,7 @@ import ImageViewer;
             menuBar.Append(helpMenu, "&Справка");
 
             // Next we tell the frame to use the меню bar that we've created, 
-            // using the Frame.MenuBar property.
+            // using the Фрейм.MenuBar property.
             this.menuBar = menuBar;
 
             // Create a status bar with 2 fields
@@ -122,7 +122,7 @@ import ImageViewer;
             // The splitter окно allows two child windows to be displayed
             // with a bar between them.
             //
-            // When there is only one child in a Frame, the child will fill
+            // When there is only one child in a Фрейм, the child will fill
             // that frame, hence we don't need a sizer in this frame.
             SplitterWindow split = new SplitterWindow(this, -1);
 
@@ -164,7 +164,7 @@ import ImageViewer;
 		//note: buggy
 		бул listing(сим[] фимя)
 		{
-			if (std.ткст.find(фимя,ext)>=0)
+			if (std.string.find(фимя,ext)>=0)
 				result ~= фимя;
 			return да;
 		}

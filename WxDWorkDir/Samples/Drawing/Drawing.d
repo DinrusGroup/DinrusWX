@@ -218,7 +218,7 @@ public:
 
 
 // Define a new frame тип: this is going to be our main frame
-class MyFrame : public Frame
+class MyFrame : public Фрейм
 {
 
     // frame ructor
@@ -685,7 +685,7 @@ class MyCanvas: public ScrolledWindow
         long x = dc.DeviceToLogicalX( поз.X );
         long y = dc.DeviceToLogicalY( поз.Y );
 
-        ткст str = "Current mouse position: " ~ std.ткст.toString(x) ~ ", " ~ std.ткст.toString(y );
+        ткст str = "Current mouse position: " ~ std.string.toString(x) ~ ", " ~ std.string.toString(y );
         m_owner.StatusText = str;
 
 //        wxUnusedVar(event);
@@ -706,7 +706,7 @@ class MyCanvas: public ScrolledWindow
     {
         dc.перо( new Перо( "black", ширина, СтильЗаливки.wxSOLID) );
         dc.кисть( Кисть.wxRED_BRUSH );
-        dc.РисуйТекст(("Testing lines of ширина " ~ std.ткст.toString(ширина)), x + 10, y - 10);
+        dc.РисуйТекст(("Testing lines of ширина " ~ std.string.toString(ширина)), x + 10, y - 10);
         dc.РисуйПрям( x+10, y+10, 100, 190 );
 
         dc.РисуйТекст(("Solid/dot/short dash/long dash/dot dash"), x + 150, y + 10);

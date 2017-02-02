@@ -18,7 +18,7 @@ public import wx.common;
 public import wx.Bitmap;
 public import wx.Cursor;
 public import wx.Icon;
-public import wx.Перо;
+public import wx.Pen;
 public import wx.Brush;
 public import wx.Font;
 public import wx.Colour;
@@ -217,8 +217,8 @@ public import wx.Colour;
 		
 		//-----------------------------------------------------------------------------
 	
-	alias BrushList wxBrushList;
-	public class BrushList : wxObject
+	alias КистьСписок wxBrushList;
+	public class КистьСписок : wxObject
 	{
 		public this(ЦУк шхобъ)
 			{ super(шхобъ);}
@@ -228,14 +228,14 @@ public import wx.Colour;
 			
 		//-----------------------------------------------------------------------------
 			
-		public проц AddBrush(Кисть кисть)
+		public проц ДобавьКисть(Кисть кисть)
 		{
 			wxBrushList_AddBrush(шхобъ, wxObject.SafePtr(кисть));
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public проц RemoveBrush(Кисть кисть)
+		public проц УдалиКисть(Кисть кисть)
 		{
 			wxBrushList_RemoveBrush(шхобъ, wxObject.SafePtr(кисть));
 		}
@@ -267,8 +267,8 @@ public import wx.Colour;
 		
 		//-----------------------------------------------------------------------------
 	
-	alias FontList wxFontList;
-	public class FontList : wxObject
+	alias ШрифтСписок wxFontList;
+	public class ШрифтСписок : wxObject
 	{
 		public this(ЦУк шхобъ)
 			{ super(шхобъ);}
@@ -278,14 +278,14 @@ public import wx.Colour;
 			
 		//-----------------------------------------------------------------------------
 			
-		public проц AddFont(Шрифт шрифт)
+		public проц ДобавьШрифт(Шрифт шрифт)
 		{
 			wxFontList_AddFont(шхобъ, wxObject.SafePtr(шрифт));
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public проц RemoveFont(Шрифт шрифт)
+		public проц УдалиШрифт(Шрифт шрифт)
 		{
 			wxFontList_RemoveFont(шхобъ, wxObject.SafePtr(шрифт));
 		}
@@ -325,8 +325,8 @@ public import wx.Colour;
 		
 		//-----------------------------------------------------------------------------
 		
-	alias BitmapList wxBitmapList;
-	public class BitmapList : wxObject
+	alias БитмапСписок wxBitmapList;
+	public class БитмапСписок : wxObject
 	{
 		public this(ЦУк шхобъ)
 			{ super(шхобъ);}
@@ -336,14 +336,14 @@ public import wx.Colour;
 			
 		//-----------------------------------------------------------------------------
 		
-		public проц AddBitmap(Битмап битмап)
+		public проц ДобавьБитмап(Битмап битмап)
 		{
 			wxBitmapList_AddBitmap(шхобъ, wxObject.SafePtr(битмап));
 		}
 		
 		//-----------------------------------------------------------------------------
 		
-		public проц RemoveBitmap(Битмап битмап)
+		public проц УдалиБитмап(Битмап битмап)
 		{
 			wxBitmapList_RemoveBitmap(шхобъ, wxObject.SafePtr(битмап));
 		}

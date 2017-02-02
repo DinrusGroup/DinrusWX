@@ -82,12 +82,12 @@ public import wx.Dialog;
 	//---------------------------------------------------------------------
 	
 		//! \cond EXTERN
-		static extern (C) ЦУк wxColourДиалог_ctor();
-		static extern (C) бул   wxColourДиалог_Create(ЦУк сам, ЦУк родитель, ЦУк данные);
-		static extern (C) ЦУк wxColourДиалог_GetColourData(ЦУк сам);
-		static extern (C) цел    wxColourДиалог_ShowModal(ЦУк сам);
+		static extern (C) ЦУк wxColourDialog_ctor();
+		static extern (C) бул   wxColourDialog_Create(ЦУк сам, ЦУк родитель, ЦУк данные);
+		static extern (C) ЦУк wxColourDialog_GetColourData(ЦУк сам);
+		static extern (C) цел    wxColourDialog_ShowModal(ЦУк сам);
 		
-		static extern (C) ЦУк wxColourДиалог_GetColourFromUser(ЦУк родитель, ЦУк colInit);
+		static extern (C) ЦУк wxColourDialog_GetColourFromUser(ЦУк родитель, ЦУк colInit);
 		//! \endcond
 	
 		//---------------------------------------------------------------------
@@ -99,11 +99,11 @@ public import wx.Dialog;
 			{ super(шхобъ); }
 	
 		public this()
-			{ super(wxColourДиалог_ctor()); }
+			{ super(wxColourDialog_ctor()); }
 	
 		public this(Окно родитель, ColourData данные = пусто)
 		{
-			super(wxColourДиалог_ctor());
+			super(wxColourDialog_ctor());
 			if (!Create(родитель, данные)) 
 			{
 				throw new InvalidOperationException("Failed to create ColourДиалог");
@@ -112,7 +112,7 @@ public import wx.Dialog;
 	
 		public бул Create(Окно родитель, ColourData данные = пусто)
 		{
-			return wxColourДиалог_Create(шхобъ, wxObject.SafePtr(родитель),
+			return wxColourDialog_Create(шхобъ, wxObject.SafePtr(родитель),
 							wxObject.SafePtr(данные));
 		}
 	
@@ -120,14 +120,14 @@ public import wx.Dialog;
 	
 		public ColourData colourData() 
 			{
-				return cast(ColourData)FindObject(wxColourДиалог_GetColourData(шхобъ), &ColourData.Нов);
+				return cast(ColourData)FindObject(wxColourDialog_GetColourData(шхобъ), &ColourData.Нов);
 			}
 	
 		//---------------------------------------------------------------------
 	
 		public override цел ShowModal()
 		{
-			return wxColourДиалог_ShowModal(шхобъ);
+			return wxColourDialog_ShowModal(шхобъ);
 		}
 		
 		//---------------------------------------------------------------------
@@ -136,5 +136,5 @@ public import wx.Dialog;
 
 		public static Цвет GetColourFromUser(Окно родитель=пусто, Цвет colInit=пусто)
 		{
-			return new Цвет(wxColourДиалог_GetColourFromUser(wxObject.SafePtr(родитель), wxObject.SafePtr(colInit)));
+			return new Цвет(wxColourDialog_GetColourFromUser(wxObject.SafePtr(родитель), wxObject.SafePtr(colInit)));
 		}

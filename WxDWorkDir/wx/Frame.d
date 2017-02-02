@@ -1,8 +1,8 @@
 ﻿//-----------------------------------------------------------------------------
-// wxD - Frame.d
+// wxD - Фрейм.d
 // (C) 2005 bero <berobero@users.sourceforge.net>
 // based on
-// wx.NET - Frame.cs
+// wx.NET - Фрейм.cs
 //
 /// The wxFrame wrapper class.
 //
@@ -10,7 +10,7 @@
 // (C) 2003 by 379, Inc.
 // Licensed under the wxWidgets license, see LICENSE.txt for details.
 //
-// $Ид: Frame.d,v 1.12 2008/11/04 14:29:16 afb Exp $
+// $Ид: Фрейм.d,v 1.12 2008/11/04 14:29:16 afb Exp $
 //-----------------------------------------------------------------------------
 
 module wx.Frame;
@@ -64,12 +64,12 @@ public import wx.Icon;
             
 		//---------------------------------------------------------------------
 
-	alias Frame wxFrame;
+	alias Фрейм wxFrame;
 	/// A frame is a окно whose size and position can (usually) be
 	/// changed by the user. It usually has thick borders and a title bar,
 	/// and can optionally contain a меню bar, toolbar and status bar.
 	/// A frame can contain any окно that is not a frame or dialog.
-	public class Frame : Окно
+	public class Фрейм : Окно
 	{
 		public const цел wxFULLSCREEN_NOMENUBAR   = 0x0001;
 		public const цел wxFULLSCREEN_NOTOOLBAR   = 0x0002;
@@ -95,7 +95,7 @@ public import wx.Icon;
 			this(wxFrame_ctor());
 			if (!Create(родитель, ид, title, поз, size, стиль, имя))
 			{
-				throw new InvalidOperationException("Failed to create Frame");
+				throw new InvalidOperationException("Не удалось создать Фрейм");
 			}
 		}
 		

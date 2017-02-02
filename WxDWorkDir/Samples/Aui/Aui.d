@@ -22,7 +22,7 @@ import wx.ColourDialog;
 import wx.HTML;
 import wx.Window;
 import wx.aui.aui;
-import std.ткст;
+import std.string;
 
 
 // -- application --
@@ -31,7 +31,7 @@ class MyApp : Прил
 {
   public бул ПриИниц()
   {
-    Frame frame = new MyFrame(пусто,
+    Фрейм frame = new MyFrame(пусто,
                    wxID_ANY,
                    "wxAUI 0.9.2 Test Application",
                    Окно.wxDefaultPosition,
@@ -58,7 +58,7 @@ class MyApp : Прил
 
 // -- frame --
 
-class MyFrame : public Frame
+class MyFrame : public Фрейм
 {
   enum
   {

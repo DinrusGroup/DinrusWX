@@ -115,12 +115,12 @@ public import wx.GdiCommon; //for nullobject
     }
 
 		//! \cond EXTERN
-		static extern (C) ЦУк wxFontДиалог_ctor();
-		static extern (C) бул   wxFontДиалог_Create(ЦУк сам, ЦУк родитель, ЦУк данные);
-		static extern (C) проц   wxFontДиалог_dtor(ЦУк сам);
+		static extern (C) ЦУк wxFontDialog_ctor();
+		static extern (C) бул   wxFontDialog_Create(ЦУк сам, ЦУк родитель, ЦУк данные);
+		static extern (C) проц   wxFontDialog_dtor(ЦУк сам);
 
-		static extern (C) цел    wxFontДиалог_ShowModal(ЦУк сам);
-		static extern (C) ЦУк wxFontДиалог_GetFontData(ЦУк сам);
+		static extern (C) цел    wxFontDialog_ShowModal(ЦУк сам);
+		static extern (C) ЦУк wxFontDialog_GetFontData(ЦУк сам);
 		//! \endcond
 
         //---------------------------------------------------------------------
@@ -132,7 +132,7 @@ public import wx.GdiCommon; //for nullobject
             { super(шхобъ); }
 
         public this()
-            { super(wxFontДиалог_ctor()); }
+            { super(wxFontDialog_ctor()); }
 
         public this(Окно родитель)
             { this(родитель, пусто); }
@@ -148,21 +148,21 @@ public import wx.GdiCommon; //for nullobject
 
         public бул Create(Окно родитель, FontData данные)
         {
-            return wxFontДиалог_Create(шхобъ, wxObject.SafePtr(родитель), wxObject.SafePtr(данные));
+            return wxFontDialog_Create(шхобъ, wxObject.SafePtr(родитель), wxObject.SafePtr(данные));
         }
 
         //---------------------------------------------------------------------
 
         public FontData fontData() 
         {
-            return cast(FontData)FindObject(wxFontДиалог_GetFontData(шхобъ), &FontData.Нов);
+            return cast(FontData)FindObject(wxFontDialog_GetFontData(шхобъ), &FontData.Нов);
         }
 
         //---------------------------------------------------------------------
 
         public override цел ShowModal()
         {
-            return wxFontДиалог_ShowModal(шхобъ);
+            return wxFontDialog_ShowModal(шхобъ);
         }
 
         //---------------------------------------------------------------------

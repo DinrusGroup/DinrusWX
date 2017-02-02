@@ -12,7 +12,7 @@
 //-----------------------------------------------------------------------------
 
 import wx.wx;
-private import std.ткст;
+private import std.string;
 
 	public class TreeTestApp : Прил
 	{
@@ -53,7 +53,7 @@ private import std.ткст;
 
 	//---------------------------------------------------------------------
 
-	public class MyFrame : Frame
+	public class MyFrame : Фрейм
 	{
 		public enum Cmd 
 		{

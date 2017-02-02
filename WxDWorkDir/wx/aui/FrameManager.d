@@ -410,7 +410,7 @@ public class FrameManager : EvtHandler
       super(шхобъ);
     }
 
-    public this(Frame frame = пусто, бцел флаги = wxFrameManagerOption.wxAUI_MGR_DEFAULT)
+    public this(Фрейм frame = пусто, бцел флаги = wxFrameManagerOption.wxAUI_MGR_DEFAULT)
     {
       this(wxFrameManager_ctor(wxObject.SafePtr(frame), флаги));
     }
@@ -420,13 +420,13 @@ public class FrameManager : EvtHandler
     public проц SetFlags(бцел флаги) { wxFrameManager_SetFlags(шхобъ, флаги); }
     public бцел GetFlags() { return wxFrameManager_GetFlags(шхобъ); }
 
-    public проц SetFrame(Frame frame) { wxFrameManager_SetFrame(шхобъ, wxObject.SafePtr(frame)); }
-    public Frame GetFrame()
+    public проц SetFrame(Фрейм frame) { wxFrameManager_SetFrame(шхобъ, wxObject.SafePtr(frame)); }
+    public Фрейм GetFrame()
     {
       ЦУк ptr = wxFrameManager_GetFrame(шхобъ);
       wxObject o = FindObject(ptr);
-      if (o) return cast(Frame)o;
-      else return new Frame(ptr);
+      if (o) return cast(Фрейм)o;
+      else return new Фрейм(ptr);
     }
 
     public проц SetArtProvider(DockArt art_provider) { wxFrameManager_SetArtProvider(шхобъ, wxObject.SafePtr(art_provider)); }

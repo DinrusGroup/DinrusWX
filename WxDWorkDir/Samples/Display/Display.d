@@ -46,7 +46,7 @@ import wx.Display;
 	} // MyApp
 
 	// Define a	new	frame тип:	this is	going to be	our	main frame
-	public class MyFrame : Frame
+	public class MyFrame : Фрейм
 	{
 		// меню items
 		public const цел ID_About = 100;

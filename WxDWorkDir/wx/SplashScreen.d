@@ -27,7 +27,7 @@ public import wx.Frame;
         //-----------------------------------------------------------------------------
 
     alias SplashScreen wxSplashScreen;
-    public class SplashScreen : Frame
+    public class SplashScreen : Фрейм
     {
 	enum {
         	wxSPLASH_CENTRE_ON_PARENT   = 0x01,

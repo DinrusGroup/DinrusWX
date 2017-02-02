@@ -161,10 +161,10 @@ public import wx.Frame;
 		
 		//-----------------------------------------------------------------------------
 		
-		public Frame frame() { 
+		public Фрейм frame() { 
 				ЦУк tmp = wxHtmlHelpController_GetFrame(шхобъ); 
 				if ( tmp != ЦУк.init )
-					return new Frame(tmp);
+					return new Фрейм(tmp);
 				else
 					return пусто;
 			}

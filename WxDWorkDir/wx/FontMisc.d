@@ -35,8 +35,8 @@ public import wx.ArrayString;
 		static extern (C) бул   wxFontMapper_IsEncodingAvailable(ЦУк сам, цел encoding, ткст facename);
 		static extern (C) бул   wxFontMapper_GetAltForEncoding(ЦУк сам, цел encoding, out цел alt_encoding, ткст facename, бул interactive);
 		
-		static extern (C) проц   wxFontMapper_SetДиалогParent(ЦУк сам, ЦУк родитель);
-		static extern (C) проц   wxFontMapper_SetДиалогTitle(ЦУк сам, ткст title);
+		static extern (C) проц   wxFontMapper_SetDialogParent(ЦУк сам, ЦУк родитель);
+		static extern (C) проц   wxFontMapper_SetDialogTitle(ЦУк сам, ткст title);
 		//! \endcond
 		
 		//---------------------------------------------------------------------
@@ -158,16 +158,16 @@ public import wx.ArrayString;
 		
 		//---------------------------------------------------------------------
 		
-		public проц SetДиалогParent(Окно родитель)
+		public проц SetDialogParent(Окно родитель)
 		{
-			wxFontMapper_SetДиалогParent(шхобъ, wxObject.SafePtr(родитель));
+			wxFontMapper_SetDialogParent(шхобъ, wxObject.SafePtr(родитель));
 		}
 		
 		//---------------------------------------------------------------------
 		
-		public проц SetДиалогTitle(ткст title)
+		public проц SetDialogTitle(ткст title)
 		{
-			wxFontMapper_SetДиалогTitle(шхобъ, title);
+			wxFontMapper_SetDialogTitle(шхобъ, title);
 		}
 	}
 	

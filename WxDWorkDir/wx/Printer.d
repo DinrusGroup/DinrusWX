@@ -29,12 +29,12 @@ public import wx.PrintData;
         static extern (C) ЦУк wxPrinter_ctor(ЦУк данные);
         static extern (C) ЦУк wxPrinter_CreateAbortWindow(ЦУк сам, ЦУк родитель, ЦУк printout);
         static extern (C) проц   wxPrinter_ReportError(ЦУк сам, ЦУк родитель, ЦУк printout, ткст message);
-        static extern (C) ЦУк wxPrinter_GetPrintДиалогData(ЦУк сам);
+        static extern (C) ЦУк wxPrinter_GetPrintDialogData(ЦУк сам);
         static extern (C) бул   wxPrinter_GetAbort(ЦУк сам);
         static extern (C) цел    wxPrinter_GetLastError(ЦУк сам);
         static extern (C) бул   wxPrinter_Setup(ЦУк сам, ЦУк родитель);
         static extern (C) бул   wxPrinter_Print(ЦУк сам, ЦУк родитель, ЦУк printout, бул prompt);
-        static extern (C) ЦУк wxPrinter_PrintДиалог(ЦУк сам, ЦУк родитель);
+        static extern (C) ЦУк wxPrinter_PrintDialog(ЦУк сам, ЦУк родитель);
 		//! \endcond
 
         //-----------------------------------------------------------------------------
@@ -46,8 +46,8 @@ public import wx.PrintData;
             { super(шхобъ); }
 
         public this()
-            { this(cast(PrintДиалогData)пусто); }
-        public this(PrintДиалогData данные)
+            { this(cast(PrintDialogData)пусто); }
+        public this(PrintDialogData данные)
             { this(wxPrinter_ctor(wxObject.SafePtr(данные))); }
 
         //-----------------------------------------------------------------------------
@@ -66,7 +66,7 @@ public import wx.PrintData;
 
         //-----------------------------------------------------------------------------
 
-        public PrintДиалогData printДиалогData() { return cast(PrintДиалогData)FindObject(wxPrinter_GetPrintДиалогData(шхобъ), &PrintДиалогData.Нов); }
+        public PrintDialogData printDialogData() { return cast(PrintDialogData)FindObject(wxPrinter_GetPrintDialogData(шхобъ), &PrintDialogData.Нов); }
 
         //-----------------------------------------------------------------------------
 
@@ -92,9 +92,9 @@ public import wx.PrintData;
 
         //-----------------------------------------------------------------------------
 
-        public DC PrintДиалог(Окно родитель)
+        public DC PrintDialog(Окно родитель)
         {
-            return cast(DC)FindObject(wxPrinter_PrintДиалог(шхобъ, wxObject.SafePtr(родитель)), &DC.Нов);
+            return cast(DC)FindObject(wxPrinter_PrintDialog(шхобъ, wxObject.SafePtr(родитель)), &DC.Нов);
         }
     }
 

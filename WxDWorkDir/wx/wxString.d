@@ -27,7 +27,7 @@ alias Объект.toUtf8 toString;
 
 version(Phobos) // Phobos
 {
-private import std.ткст;
+private import std.string;
 private import std.utf;
 }
 

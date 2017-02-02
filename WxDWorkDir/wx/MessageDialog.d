@@ -26,8 +26,8 @@ public import wx.Dialog;
 		static extern (C) цел    wxMsgBox(ЦУк родитель, ткст msg, ткст cap, бцел стиль, inout Точка поз);
 
 		// Message dialog methods
-		static extern (C) ЦУк wxMessageДиалог_ctor(ЦУк родитель, ткст message, ткст caption, бцел стиль, inout Точка поз);
-		static extern (C) цел    wxMessageДиалог_ShowModal(ЦУк сам);
+		static extern (C) ЦУк wxMessageDialog_ctor(ЦУк родитель, ткст message, ткст caption, бцел стиль, inout Точка поз);
+		static extern (C) цел    wxMessageDialog_ShowModal(ЦУк сам);
 
 		//! \endcond
 
@@ -41,13 +41,13 @@ public import wx.Dialog;
 			{ super(шхобъ); }
 
 		public this(Окно родитель, ткст msg, ткст caption=wxMessageBoxCaptionStr, цел стиль=wxOK | wxCENTRE, Точка поз = wxDefaultPosition)
-			{ this(wxMessageДиалог_ctor(wxObject.SafePtr(родитель), msg, caption, cast(бцел)стиль, поз)); }
+			{ this(wxMessageDialog_ctor(wxObject.SafePtr(родитель), msg, caption, cast(бцел)стиль, поз)); }
 
 		//---------------------------------------------------------------------
 
 		public override цел ShowModal()
 		{
-			return wxMessageДиалог_ShowModal(шхобъ);
+			return wxMessageDialog_ShowModal(шхобъ);
 		}
 
 		//---------------------------------------------------------------------

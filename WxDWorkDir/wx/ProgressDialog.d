@@ -18,11 +18,11 @@ public import wx.common;
 public import wx.Dialog;
 
 		//! \cond EXTERN
-        static extern (C) ЦУк wxProgressДиалог_ctor(ткст title, ткст message, цел maximum, ЦУк родитель, бцел стиль);
-	static extern (C) проц wxProgressДиалог_dtor(ЦУк сам);
-        static extern (C) бул wxProgressДиалог_Update(ЦУк сам, цел значение, ткст newmsg);
-        static extern (C) проц wxProgressДиалог_Resume(ЦУк сам);
-        static extern (C) бул wxProgressДиалог_Show(ЦУк сам, бул show);
+        static extern (C) ЦУк wxProgressDialog_ctor(ткст title, ткст message, цел maximum, ЦУк родитель, бцел стиль);
+	static extern (C) проц wxProgressDialog_dtor(ЦУк сам);
+        static extern (C) бул wxProgressDialog_Update(ЦУк сам, цел значение, ткст newmsg);
+        static extern (C) проц wxProgressDialog_Resume(ЦУк сам);
+        static extern (C) бул wxProgressDialog_Show(ЦУк сам, бул show);
 		//! \endcond
 
         //-----------------------------------------------------------------------------
@@ -43,38 +43,38 @@ public import wx.Dialog;
             { super(шхобъ);}
 
         public this(ткст title, ткст message, цел maximum = 100, Окно родитель = пусто, цел стиль = wxPD_APP_MODAL | wxPD_AUTO_HIDE)
-            { this(wxProgressДиалог_ctor(title, message, maximum, wxObject.SafePtr(родитель), cast(бцел)стиль));}
+            { this(wxProgressDialog_ctor(title, message, maximum, wxObject.SafePtr(родитель), cast(бцел)стиль));}
 
         //-----------------------------------------------------------------------------
 
         public бул Обнови(цел значение)
         {
-            return wxProgressДиалог_Update(шхобъ, значение, "");
+            return wxProgressDialog_Update(шхобъ, значение, "");
         }
 
 		//---------------------------------------------------------------------
 
         public бул Обнови(цел значение, ткст newmsg)
         {
-            return wxProgressДиалог_Update(шхобъ, значение, newmsg);
+            return wxProgressDialog_Update(шхобъ, значение, newmsg);
         }
 
 		//---------------------------------------------------------------------
 
         public проц Resume()
         {
-            wxProgressДиалог_Resume(шхобъ);
+            wxProgressDialog_Resume(шхобъ);
         }
 
 		//---------------------------------------------------------------------
 
         public override бул Show(бул show=да)
         {
-            return wxProgressДиалог_Show(шхобъ, show);
+            return wxProgressDialog_Show(шхобъ, show);
         }
 	
 	//---------------------------------------------------------------------
 	
-	override protected проц dtor() { wxProgressДиалог_dtor(шхобъ); }
+	override protected проц dtor() { wxProgressDialog_dtor(шхобъ); }
     }
 

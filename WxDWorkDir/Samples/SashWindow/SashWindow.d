@@ -12,11 +12,11 @@
 //-----------------------------------------------------------------------------
 
 import wx.wx;
-private import std.ткст;
+private import std.string;
 
 	//---------------------------------------------------------------------	
 
-	public class SashWindowFrame : Frame
+	public class SashWindowFrame : Фрейм
 	{
 		public this( ткст title, Точка поз, Размер size )
 		{

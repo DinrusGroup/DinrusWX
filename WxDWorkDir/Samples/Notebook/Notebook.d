@@ -12,10 +12,10 @@
 //-----------------------------------------------------------------------------
 
 import wx.wx;
-private import std.ткст;
-alias std.ткст.find indexOf;
+private import std.string;
+alias std.string.find indexOf;
 
-	public class MyFrame : Frame
+	public class MyFrame : Фрейм
 	{
 		enum ID_CONTROLS 
 		{

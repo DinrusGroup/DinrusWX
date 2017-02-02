@@ -15,7 +15,7 @@ public class ПриветМир : Прил
         Фрейм фрейм = new Фрейм(пусто, wxID_ANY, "Hello wxWidgets World");
         //фрейм.CreateStatusBar();
        // фрейм.StatusText = "Hello World";
-        фрейм.Показать(да);
+        фрейм.ShowFullScreen(да);
        // ТопОкно = фрейм;
         return да;
 	}
