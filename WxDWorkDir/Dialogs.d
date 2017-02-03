@@ -78,7 +78,7 @@ import stdrus;
 		{
 			super(title, поз, size);
 			// Установи the окно иконка
-			иконка = new Icon("./Samples/Диалогs/mondrian.png");
+			иконка = new Icon("./Samples/Dialogs/mondrian.png");
 
 			// Установи up a меню
 			Меню fileMenu = new Меню();

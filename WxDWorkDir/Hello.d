@@ -1,12 +1,12 @@
 //-----------------------------------------------------------------------------
 // wxD/Samples - Hello.d
-// converted to wxD from http://www.wxwidgets.org/wiki/индекс.php/Hello_World
+// converted to wxD from http://www.wxwidgets.org/wiki/index.php/Hello_World
 //-----------------------------------------------------------------------------
 
 import io.Stdout, wx.wx;
 
  /**
-  * This class shows a окно containing a statusbar with the текст 'Hello World'
+  * Класс показывает окно, в строке состояния которого написан текст 'Hello World'
   */
 public class ПриветМир : Прил
 {
