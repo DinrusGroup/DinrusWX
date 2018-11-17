@@ -1,0 +1,334 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="DinrusWX" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug Win32">
+				<Option platforms="Windows;" />
+				<Option output="DinrusWX-2.8.12-gnu_dbg" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-DWIN32" />
+					<Add option="-D_DEBUG" />
+					<Add option="-D_WINDOWS" />
+					<Add option="-D_USRDLL" />
+					<Add option="-DDINRUSWX_EXPORTS" />
+					<Add directory="$(MSBuildProjectDirectory)/wxWidgets-2.8.12/include/" />
+					<Add directory="$(IncludePath)" />
+					<Add directory="wxWidgets-2.8.12/lib/gcc_lib/mswu" />
+				</Compiler>
+				<Linker>
+					<Add library="wxWidgets-2.8.12/lib/gcc_lib/libwxmsw28u.a" />
+					<Add library="wxWidgets-2.8.12/lib/gcc_lib/libwxmsw28u_gl.a" />
+					<Add library="wxWidgets-2.8.12/lib/gcc_lib/libwxexpat.a" />
+					<Add library="wxWidgets-2.8.12/lib/gcc_lib/libwxjpeg.a" />
+					<Add library="wxWidgets-2.8.12/lib/gcc_lib/libwxpng.a" />
+					<Add library="wxWidgets-2.8.12/lib/gcc_lib/libwxregexu.a" />
+					<Add library="wxWidgets-2.8.12/lib/gcc_lib/libwxtiff.a" />
+					<Add library="wxWidgets-2.8.12/lib/gcc_lib/libwxzlib.a" />
+					<Add library="E:/msys32/mingw32/i686-w64-mingw32/lib/libgdi32.a" />
+					<Add library="E:/msys32/mingw32/i686-w64-mingw32/lib/libgdiplus.a" />
+					<Add library="E:/msys32/mingw32/i686-w64-mingw32/lib/libglu32.a" />
+					<Add library="E:/msys32/mingw32/i686-w64-mingw32/lib/libglut32.a" />
+					<Add library="E:/msys32/mingw32/i686-w64-mingw32/lib/libopengl32.a" />
+					<Add directory="wxWidgets-2.8.12/lib/gcc_lib/mswu" />
+					<Add directory="$(LibraryPath)" />
+					<Add directory="C:/Program Files/Microsoft SDKs/Windows/v7.1A/Lib" />
+					<Add directory="wxWidgets-2.8.12/include" />
+				</Linker>
+			</Target>
+			<Target title="Debug x64">
+				<Option output="DinrusWX-2.8.12-gnu_dbg" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-D_DEBUG" />
+					<Add option="-D_WINDOWS" />
+					<Add option="-D_USRDLL" />
+					<Add option="-DDINRUSWX_EXPORTS" />
+					<Add directory="./wxWidgets-2.8.12/include" />
+					<Add directory="$(IncludePath)" />
+				</Compiler>
+				<Linker>
+					<Add library="wxWidgets-2.8.12/lib/gcc_lib/libwxmsw28u.a" />
+					<Add library="wxWidgets-2.8.12/lib/gcc_lib/libwxmsw28u_gl.a" />
+					<Add library="wxWidgets-2.8.12/lib/gcc_lib/libwxexpat.a" />
+					<Add library="wxWidgets-2.8.12/lib/gcc_lib/libwxjpeg.a" />
+					<Add library="wxWidgets-2.8.12/lib/gcc_lib/libwxpng.a" />
+					<Add library="wxWidgets-2.8.12/lib/gcc_lib/libwxregexu.a" />
+					<Add library="wxWidgets-2.8.12/lib/gcc_lib/libwxtiff.a" />
+					<Add library="wxWidgets-2.8.12/lib/gcc_lib/libwxzlib.a" />
+					<Add library="E:/msys32/mingw32/i686-w64-mingw32/lib/libgdi32.a" />
+					<Add library="E:/msys32/mingw32/i686-w64-mingw32/lib/libgdiplus.a" />
+					<Add library="E:/msys32/mingw32/i686-w64-mingw32/lib/libglu32.a" />
+					<Add library="E:/msys32/mingw32/i686-w64-mingw32/lib/libglut32.a" />
+					<Add library="E:/msys32/mingw32/i686-w64-mingw32/lib/libopengl32.a" />
+					<Add directory="./wxWidgets-2.8.12/lib/vc_lib" />
+					<Add directory="$(LibraryPath)" />
+				</Linker>
+			</Target>
+			<Target title="Release x64">
+				<Option output="DinrusWX-2.8.12-gnu" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-DNDEBUG" />
+					<Add option="-D_WINDOWS" />
+					<Add option="-D_USRDLL" />
+					<Add option="-DDINRUSWX_EXPORTS" />
+				</Compiler>
+				<Linker>
+					<Add library="wxWidgets-2.8.12/lib/gcc_lib/libwxmsw28u.a" />
+					<Add library="wxWidgets-2.8.12/lib/gcc_lib/libwxmsw28u_gl.a" />
+					<Add library="wxWidgets-2.8.12/lib/gcc_lib/libwxexpat.a" />
+					<Add library="wxWidgets-2.8.12/lib/gcc_lib/libwxjpeg.a" />
+					<Add library="wxWidgets-2.8.12/lib/gcc_lib/libwxpng.a" />
+					<Add library="wxWidgets-2.8.12/lib/gcc_lib/libwxregexu.a" />
+					<Add library="wxWidgets-2.8.12/lib/gcc_lib/libwxtiff.a" />
+					<Add library="wxWidgets-2.8.12/lib/gcc_lib/libwxzlib.a" />
+					<Add library="E:/msys32/mingw32/i686-w64-mingw32/lib/libgdi32.a" />
+					<Add library="E:/msys32/mingw32/i686-w64-mingw32/lib/libgdiplus.a" />
+					<Add library="E:/msys32/mingw32/i686-w64-mingw32/lib/libglu32.a" />
+					<Add library="E:/msys32/mingw32/i686-w64-mingw32/lib/libglut32.a" />
+					<Add library="E:/msys32/mingw32/i686-w64-mingw32/lib/libopengl32.a" />
+				</Linker>
+			</Target>
+			<Target title="Release Win32">
+				<Option output="DinrusWX-2.8.12-gnu" prefix_auto="1" extension_auto="1" />
+				<Option type="3" />
+				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
+				<Compiler>
+					<Add option="-DWIN32" />
+					<Add option="-DNDEBUG" />
+					<Add option="-D_WINDOWS" />
+					<Add option="-D_USRDLL" />
+					<Add option="-DDINRUSWX_EXPORTS" />
+					<Add directory="F:/DinrusWX_28/wxWidgets-2.8.12/lib/vc_lib/mswu" />
+					<Add directory="F:/DinrusWX_28/wxWidgets-2.8.12/include" />
+					<Add directory="$(IncludePath)" />
+				</Compiler>
+				<Linker>
+					<Add library="wxbase28u.lib" />
+					<Add library="wxmsw28u_core.lib" />
+					<Add library="wxmsw28u_adv.lib" />
+					<Add library="wxmsw28u_gl.lib" />
+					<Add library="wxmsw28u_html.lib" />
+					<Add library="wxmsw28u_media.lib" />
+					<Add library="wxmsw28u_dbgrid.lib" />
+					<Add library="wxmsw28u_qa.lib" />
+					<Add library="wxmsw28u_richtext.lib" />
+					<Add library="wxmsw28u_xrc.lib" />
+					<Add library="wxbase28u_net.lib" />
+					<Add library="wxbase28u_xml.lib" />
+					<Add library="wxmsw28u_aui.lib" />
+					<Add library="wxpng.lib" />
+					<Add library="wxregexu.lib" />
+					<Add library="wxtiff.lib" />
+					<Add library="wxjpeg.lib" />
+					<Add library="wxzlib.lib" />
+					<Add library="wxexpat.lib" />
+					<Add library="ComCtl32.Lib" />
+					<Add library="rpcrt4.lib" />
+					<Add library="winmm.lib" />
+					<Add library="wxWidgets-2.8.12/lib/gcc_lib/libwxmsw28u.a" />
+					<Add library="wxWidgets-2.8.12/lib/gcc_lib/libwxmsw28u_gl.a" />
+					<Add library="wxWidgets-2.8.12/lib/gcc_lib/libwxexpat.a" />
+					<Add library="wxWidgets-2.8.12/lib/gcc_lib/libwxjpeg.a" />
+					<Add library="wxWidgets-2.8.12/lib/gcc_lib/libwxpng.a" />
+					<Add library="wxWidgets-2.8.12/lib/gcc_lib/libwxregexu.a" />
+					<Add library="wxWidgets-2.8.12/lib/gcc_lib/libwxtiff.a" />
+					<Add library="wxWidgets-2.8.12/lib/gcc_lib/libwxzlib.a" />
+					<Add library="E:/msys32/mingw32/i686-w64-mingw32/lib/libgdi32.a" />
+					<Add library="E:/msys32/mingw32/i686-w64-mingw32/lib/libgdiplus.a" />
+					<Add library="E:/msys32/mingw32/i686-w64-mingw32/lib/libglu32.a" />
+					<Add library="E:/msys32/mingw32/i686-w64-mingw32/lib/libglut32.a" />
+					<Add library="E:/msys32/mingw32/i686-w64-mingw32/lib/libopengl32.a" />
+					<Add directory="c:/Program Files/Windows Kits/8.1/Lib/winv6.3/um/x86/" />
+					<Add directory="F:/DinrusWX_28/wxWidgets-2.8.12/lib/vc_lib" />
+					<Add directory="$(LibraryPath)" />
+					<Add directory="C:/Program Files/Microsoft SDKs/Windows/v7.1A/Lib" />
+					<Add directory="F:/REPOSITORII/GitHubRepo/DinrusWX/trunk/DinrusWX/wxWidgets-2.8.12/lib/vc_lib" />
+				</Linker>
+			</Target>
+		</Build>
+		<Unit filename="DinrusWX.cpp" />
+		<Unit filename="accel.cpp" />
+		<Unit filename="activateevent.cpp" />
+		<Unit filename="app.cpp" />
+		<Unit filename="artprovider.cpp" />
+		<Unit filename="bitmap.cpp" />
+		<Unit filename="bitmapbutton.cpp" />
+		<Unit filename="boxsizer.cpp" />
+		<Unit filename="brush.cpp" />
+		<Unit filename="button.cpp" />
+		<Unit filename="calendarctrl.cpp" />
+		<Unit filename="caret.cpp" />
+		<Unit filename="checkbox.cpp" />
+		<Unit filename="childfocusevent.cpp" />
+		<Unit filename="choice.cpp" />
+		<Unit filename="choicedialog.cpp" />
+		<Unit filename="clientdata.cpp" />
+		<Unit filename="clipboard.cpp" />
+		<Unit filename="closeevent.cpp" />
+		<Unit filename="colour.cpp" />
+		<Unit filename="colourdialog.cpp" />
+		<Unit filename="combobox.cpp" />
+		<Unit filename="commandevent.cpp" />
+		<Unit filename="config.cpp" />
+		<Unit filename="contextmenuevent.cpp" />
+		<Unit filename="control.cpp" />
+		<Unit filename="control.inc" />
+		<Unit filename="cursor.cpp" />
+		<Unit filename="dataformat.cpp" />
+		<Unit filename="dataobject.cpp" />
+		<Unit filename="dc.cpp" />
+		<Unit filename="dialog.cpp" />
+		<Unit filename="dirdialog.cpp" />
+		<Unit filename="display.cpp" />
+		<Unit filename="displaychangedevent.cpp" />
+		<Unit filename="dllmain.cpp" />
+		<Unit filename="dnd.cpp" />
+		<Unit filename="document.cpp" />
+		<Unit filename="eraseevent.cpp" />
+		<Unit filename="event.cpp" />
+		<Unit filename="evthandler.cpp" />
+		<Unit filename="filedialog.cpp" />
+		<Unit filename="findreplacedialog.cpp" />
+		<Unit filename="flexgridsizer.cpp" />
+		<Unit filename="focusevent.cpp" />
+		<Unit filename="font.cpp" />
+		<Unit filename="fontdialog.cpp" />
+		<Unit filename="fontmisc.cpp" />
+		<Unit filename="frame.cpp" />
+		<Unit filename="gauge.cpp" />
+		<Unit filename="gdicmn.cpp" />
+		<Unit filename="gdiobject.cpp" />
+		<Unit filename="glcanvas.cpp" />
+		<Unit filename="global.cpp" />
+		<Unit filename="grid.cpp" />
+		<Unit filename="gridbagsizer.cpp" />
+		<Unit filename="gridctrl.cpp" />
+		<Unit filename="gridsizer.cpp" />
+		<Unit filename="helpevent.cpp" />
+		<Unit filename="html.cpp" />
+		<Unit filename="htmlhelpctrl.cpp" />
+		<Unit filename="htmllbox.cpp" />
+		<Unit filename="icon.cpp" />
+		<Unit filename="iconizeevent.cpp" />
+		<Unit filename="idleevent.cpp" />
+		<Unit filename="image.cpp" />
+		<Unit filename="imagelist.cpp" />
+		<Unit filename="imghandler.cpp" />
+		<Unit filename="initdialogevent.cpp" />
+		<Unit filename="keyevent.cpp" />
+		<Unit filename="laywin.cpp" />
+		<Unit filename="listbook.cpp" />
+		<Unit filename="listbox.cpp" />
+		<Unit filename="listctrl.cpp" />
+		<Unit filename="locale.cpp" />
+		<Unit filename="log.cpp" />
+		<Unit filename="manager.cpp" />
+		<Unit filename="maximizeevent.cpp" />
+		<Unit filename="mdi.cpp" />
+		<Unit filename="memorydc.cpp" />
+		<Unit filename="menu.cpp" />
+		<Unit filename="menubar.cpp" />
+		<Unit filename="menuitem.cpp" />
+		<Unit filename="messagedialog.cpp" />
+		<Unit filename="miniframe.cpp" />
+		<Unit filename="mousecapturechangedevent.cpp" />
+		<Unit filename="mouseevent.cpp" />
+		<Unit filename="moveevent.cpp" />
+		<Unit filename="navigationkeyevent.cpp" />
+		<Unit filename="ncpaintevent.cpp" />
+		<Unit filename="notebook.cpp" />
+		<Unit filename="notebooksizer.cpp" />
+		<Unit filename="notifyevent.cpp" />
+		<Unit filename="numdialog.cpp" />
+		<Unit filename="object.cpp" />
+		<Unit filename="paintevent.cpp" />
+		<Unit filename="palette.cpp" />
+		<Unit filename="palettechangedevent.cpp" />
+		<Unit filename="panel.cpp" />
+		<Unit filename="panel.inc" />
+		<Unit filename="pen.cpp" />
+		<Unit filename="printdata.cpp" />
+		<Unit filename="printdialog.cpp" />
+		<Unit filename="printer.cpp" />
+		<Unit filename="printpreview.cpp" />
+		<Unit filename="progdlg.cpp" />
+		<Unit filename="querynewpaletteevent.cpp" />
+		<Unit filename="radiobox.cpp" />
+		<Unit filename="radiobutton.cpp" />
+		<Unit filename="region.cpp" />
+		<Unit filename="sashwindow.cpp" />
+		<Unit filename="scrollbar.cpp" />
+		<Unit filename="scrolledwindow.cpp" />
+		<Unit filename="setcursorevent.cpp" />
+		<Unit filename="showevent.cpp" />
+		<Unit filename="sizeevent.cpp" />
+		<Unit filename="sizer.cpp" />
+		<Unit filename="sizeritem.cpp" />
+		<Unit filename="slider.cpp" />
+		<Unit filename="sound.cpp" />
+		<Unit filename="spinbutton.cpp" />
+		<Unit filename="spinctrl.cpp" />
+		<Unit filename="splashscreen.cpp" />
+		<Unit filename="splitterwindow.cpp" />
+		<Unit filename="staticbitmap.cpp" />
+		<Unit filename="staticbox.cpp" />
+		<Unit filename="staticboxsizer.cpp" />
+		<Unit filename="staticline.cpp" />
+		<Unit filename="statictext.cpp" />
+		<Unit filename="statusbar.cpp" />
+		<Unit filename="stdafx.cpp" />
+		<Unit filename="stdafx.h" />
+		<Unit filename="syscolourchangedevent.cpp" />
+		<Unit filename="systemsettings.cpp" />
+		<Unit filename="tabctrl.cpp" />
+		<Unit filename="targetver.h" />
+		<Unit filename="taskbaricon.cpp" />
+		<Unit filename="textctrl.cpp" />
+		<Unit filename="textdialog.cpp" />
+		<Unit filename="thread.cpp" />
+		<Unit filename="timer.cpp" />
+		<Unit filename="tipdialog.cpp" />
+		<Unit filename="tipwindow.cpp" />
+		<Unit filename="togglebutton.cpp" />
+		<Unit filename="toolbar.cpp" />
+		<Unit filename="tooltip.cpp" />
+		<Unit filename="treectrl.cpp" />
+		<Unit filename="updateuievent.cpp" />
+		<Unit filename="validator.cpp" />
+		<Unit filename="vlbox.cpp" />
+		<Unit filename="vscroll.cpp" />
+		<Unit filename="window.cpp" />
+		<Unit filename="window.inc" />
+		<Unit filename="windowcreateevent.cpp" />
+		<Unit filename="windowdestroyevent.cpp" />
+		<Unit filename="wizard.cpp" />
+		<Unit filename="wxaui.cpp" />
+		<Unit filename="wxdatetime.cpp" />
+		<Unit filename="wxplatform.cpp" />
+		<Unit filename="wxstring.cpp" />
+		<Unit filename="wxversion.cpp" />
+		<Unit filename="xmlresource.cpp" />
+		<Extensions>
+			<code_completion />
+			<envvars />
+			<debugger />
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>
