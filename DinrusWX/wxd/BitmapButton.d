@@ -48,7 +48,7 @@ static extern (C) IntPtr wxBitmapButton_GetBitmapFocus(IntPtr self);
 static extern (C) void wxBitmapButton_SetBitmapDisabled(IntPtr self, IntPtr bitmap);
 static extern (C) IntPtr wxBitmapButton_GetBitmapDisabled(IntPtr self);
 
-static extern (C) void wxBitmapButton_OnSetBitmap(IntPtr self);
+//static extern (C) void wxBitmapButton_OnSetBitmap(IntPtr self);
 
 //static extern (C) void wxBitmapButton_ApplyParentThemeBackground(IntPtr self, IntPtr colour);
 //! \endcond
@@ -242,7 +242,7 @@ public class BitmapButton : Control
     {
         wxBitmapButton_SetBitmapDisabled(wxobj, wxObject.SafePtr(value));
     }
-
+/*
 version(WX29){}
     else{
     //---------------------------------------------------------------------
@@ -257,9 +257,8 @@ version(WX29){}
     {
         wxBitmapButton_OnSetBitmap(wxobj);
     }
-
 }
-
+ */
     //---------------------------------------------------------------------
 
     /*public /+virtual+/ void ApplyParentThemeBackground(Colour bg)

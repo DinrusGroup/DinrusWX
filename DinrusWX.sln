@@ -5,7 +5,10 @@ VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DinrusWX", "DinrusWX.vcxproj", "{C12B9A9E-AA1A-41C9-AA5A-451AEE4F46E3}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "DinrusWX_31", "DinrusWX_31.vcxproj", "{67707C27-5FE6-4CBD-9EF5-65618E84A5B4}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3F001052-791F-4CD8-8578-998AB0E893AF}"
+	ProjectSection(SolutionItems) = preProject
+		wxWidgets-2.8.12\build\msw\wx.sln = wxWidgets-2.8.12\build\msw\wx.sln
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,14 +26,6 @@ Global
 		{C12B9A9E-AA1A-41C9-AA5A-451AEE4F46E3}.Release|x64.Build.0 = Release|x64
 		{C12B9A9E-AA1A-41C9-AA5A-451AEE4F46E3}.Release|x86.ActiveCfg = Release|Win32
 		{C12B9A9E-AA1A-41C9-AA5A-451AEE4F46E3}.Release|x86.Build.0 = Release|Win32
-		{67707C27-5FE6-4CBD-9EF5-65618E84A5B4}.Debug|x64.ActiveCfg = Debug|x64
-		{67707C27-5FE6-4CBD-9EF5-65618E84A5B4}.Debug|x64.Build.0 = Debug|x64
-		{67707C27-5FE6-4CBD-9EF5-65618E84A5B4}.Debug|x86.ActiveCfg = Debug|Win32
-		{67707C27-5FE6-4CBD-9EF5-65618E84A5B4}.Debug|x86.Build.0 = Debug|Win32
-		{67707C27-5FE6-4CBD-9EF5-65618E84A5B4}.Release|x64.ActiveCfg = Release|x64
-		{67707C27-5FE6-4CBD-9EF5-65618E84A5B4}.Release|x64.Build.0 = Release|x64
-		{67707C27-5FE6-4CBD-9EF5-65618E84A5B4}.Release|x86.ActiveCfg = Release|Win32
-		{67707C27-5FE6-4CBD-9EF5-65618E84A5B4}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
